@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java2">/*<br />
+ * (c) Copyright 2007, 2008 Hewlett-Packard Development Company, LP<br />
+ * All rights reserved.<br />
+ * [See end of file]<br />
+ */<br />
+<br />
+</span><span class="java4">package </span><span class="java10">arq.examples.bgpmatching;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.rdf.model.Model;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.rdf.model.ModelFactory;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.rdf.model.Property;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.rdf.model.Resource;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.engine.main.StageGenerator;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.util.QueryExecUtils;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.util.StringUtils;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.query.*;<br />
+<br />
+</span><span class="java14">/** Example to execute a query but handle the<br />
+ *&#xA0; basic graph patterns in the query in some special way.<br />
+ *&#xA0; Stages are one step in executing a basic graph pattern (BGP).<br />
+ *&#xA0; A StageGenerator builds a StageList and the stage list<br />
+ *&#xA0; is executes with the output (a QueryIterator) of the previous<br />
+ *&#xA0; stage fed int the current stage. <br />
+ */&#xA0; <br />
+<br />
+</span><span class="java4">public class </span><span class="java10">StageAltMain<br />
+</span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">static </span><span class="java10">String NS = </span><span class="java5">&#34;http://example/&#34; </span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static </span><span class="java9">void </span><span class="java10">main</span><span class="java8">(</span><span class="java10">String</span><span class="java8">[] </span><span class="java10">argv</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">String</span><span class="java8">[] </span><span class="java10">queryString = <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;PREFIX ns: &lt;&#34;</span><span class="java10">+NS+</span><span class="java5">&#34;&gt;&#34; </span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;SELECT ?v &#34;</span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;{ ?s ns:p1 'xyz' ;&#34;</span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;&#xA0;&#xA0;&#xA0;&#xA0; ns:p2 ?v }&#34;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">} </span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// The stage generator to be used for a query execution <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // is read from the context.&#xA0; There is a global context, which<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // is cloned when a query execution object (query engine) is<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // created.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // Normally, StageGenerators are chained - a new one inspects the<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // execution request and sees if it handles it.&#xA0; If it does not,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // it sends the request to the stage generator that was already registered. <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // The normal stage generator is registerd in the global context.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // This can be replaced, so that every query execution uses the<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // alternative stage generator, or the cloned context can be<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // alter so that just one query execution is affected.<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // Change the stage generator for all queries ...<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java4">false </span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">StageGenerator origStageGen = </span><span class="java8">(</span><span class="java10">StageGenerator</span><span class="java8">)</span><span class="java10">ARQ.getContext</span><span class="java8">()</span><span class="java10">.get</span><span class="java8">(</span><span class="java10">ARQ.stageGenerator</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; StageGenerator stageGenAlt = </span><span class="java4">new </span><span class="java10">StageGeneratorAlt</span><span class="java8">(</span><span class="java10">origStageGen</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; ARQ.getContext</span><span class="java8">()</span><span class="java10">.set</span><span class="java8">(</span><span class="java10">ARQ.stageGenerator, stageGenAlt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Query query = QueryFactory.create</span><span class="java8">( </span><span class="java10">StringUtils.join</span><span class="java8">(</span><span class="java5">&#34;\n&#34;</span><span class="java10">, queryString</span><span class="java8">)) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; QueryExecution engine = QueryExecutionFactory.create</span><span class="java8">(</span><span class="java10">query, makeData</span><span class="java8">()) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// ... or set on a per-execution basis.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java4">true </span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">StageGenerator origStageGen = </span><span class="java8">(</span><span class="java10">StageGenerator</span><span class="java8">)</span><span class="java10">engine.getContext</span><span class="java8">()</span><span class="java10">.get</span><span class="java8">(</span><span class="java10">ARQ.stageGenerator</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; StageGenerator stageGenAlt = </span><span class="java4">new </span><span class="java10">StageGeneratorAlt</span><span class="java8">(</span><span class="java10">origStageGen</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; engine.getContext</span><span class="java8">()</span><span class="java10">.set</span><span class="java8">(</span><span class="java10">ARQ.stageGenerator, stageGenAlt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">QueryExecUtils.executeQuery</span><span class="java8">(</span><span class="java10">query, engine</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java10">Model makeData</span><span class="java8">()<br />
+&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Model model = ModelFactory.createDefaultModel</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Resource r = model.createResource</span><span class="java8">(</span><span class="java10">NS+</span><span class="java5">&#34;r&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Property p1 = model.createProperty</span><span class="java8">(</span><span class="java10">NS+</span><span class="java5">&#34;p1&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Property p2 = model.createProperty</span><span class="java8">(</span><span class="java10">NS+</span><span class="java5">&#34;p2&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; model.add</span><span class="java8">(</span><span class="java10">r, p1, </span><span class="java5">&#34;xyz&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; model.add</span><span class="java8">(</span><span class="java10">r, p2, </span><span class="java5">&#34;abc&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">model ;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+}<br />
+<br />
+</span><span class="java2">/*<br />
+ * (c) Copyright 2007, 2008 Hewlett-Packard Development Company, LP<br />
+ * All rights reserved.<br />
+ *<br />
+ * Redistribution and use in source and binary forms, with or without<br />
+ * modification, are permitted provided that the following conditions<br />
+ * are met:<br />
+ * 1. Redistributions of source code must retain the above copyright<br />
+ *&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer.<br />
+ * 2. Redistributions in binary form must reproduce the above copyright<br />
+ *&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer in the<br />
+ *&#xA0;&#xA0;&#xA0; documentation and/or other materials provided with the distribution.<br />
+ * 3. The name of the author may not be used to endorse or promote products<br />
+ *&#xA0;&#xA0;&#xA0; derived from this software without specific prior written permission.<br />
+ *<br />
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR<br />
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES<br />
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.<br />
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,<br />
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT<br />
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,<br />
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY<br />
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT<br />
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF<br />
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br />
+ */</span></code></div></body>
+</html>

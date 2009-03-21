@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java14">/*****************************************************************************<br />
+ * Source code information<br />
+ * -----------------------<br />
+ * Original author&#xA0;&#xA0;&#xA0; Ian Dickinson, HP Labs Bristol<br />
+ * Author email&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; ian.dickinson@hp.com<br />
+ * Package&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Jena 2<br />
+ * Web&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; http://sourceforge.net/projects/jena/<br />
+ * Created&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; 22-Aug-2003<br />
+ * Filename&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; $RCSfile: Main.java,v $<br />
+ * Revision&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; $Revision: 1.1 $<br />
+ * Release status&#xA0;&#xA0;&#xA0;&#xA0; $State: Exp $<br />
+ *<br />
+ * Last modified on&#xA0;&#xA0; $Date: 2005/10/06 17:49:06 $<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; by&#xA0;&#xA0; $Author: andy_seaborne $<br />
+ *<br />
+ * (c) Copyright 2002, 2003, 2004, 2005 Hewlett-Packard Development Company, LP<br />
+ * (see footer for full conditions)<br />
+ *****************************************************************************/<br />
+<br />
+</span><span class="java3">// Package<br />
+///////////////<br />
+</span><span class="java4">package </span><span class="java10">jena.examples.ontology.describeClass;<br />
+<br />
+<br />
+</span><span class="java3">// Imports<br />
+///////////////<br />
+</span><span class="java4">import </span><span class="java10">java.util.Iterator;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.ontology.*;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.rdf.model.ModelFactory;<br />
+<br />
+<br />
+</span><span class="java14">/**<br />
+ * </span><span class="java12">&lt;p&gt;<br />
+ </span><span class="java14">* Execution wrapper for describe-class example<br />
+ * </span><span class="java12">&lt;/p&gt;<br />
+ </span><span class="java14">*<br />
+ * </span><span class="java11">@author </span><span class="java14">Ian Dickinson, HP Labs<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; (&lt;a&#xA0; href=&#34;mailto:Ian.Dickinson@hp.com&#34; &gt;email</span><span class="java12">&lt;/a&gt;</span><span class="java14">)<br />
+ * </span><span class="java11">@version </span><span class="java14">CVS $Id: Main.java,v 1.1 2005/10/06 17:49:06 andy_seaborne Exp $<br />
+ */<br />
+</span><span class="java4">public class </span><span class="java10">Main </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// Constants<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; // Static variables<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; // Instance variables<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; // Constructors<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; // External signature methods<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static </span><span class="java9">void </span><span class="java10">main</span><span class="java8">( </span><span class="java10">String</span><span class="java8">[] </span><span class="java10">args </span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// read the argument file, or the default<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">String source = </span><span class="java8">(</span><span class="java10">args.length == </span><span class="java7">0</span><span class="java8">) </span><span class="java10">? </span><span class="java5">&#34;http://www.w3.org/TR/2003/CR-owl-guide-20030818/wine&#34; </span><span class="java10">: args</span><span class="java8">[</span><span class="java7">0</span><span class="java8">]</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// guess if we're using a daml source<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">boolean </span><span class="java10">isDAML = source.endsWith</span><span class="java8">( </span><span class="java5">&#34;.daml&#34; </span><span class="java8">)</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; OntModel m = ModelFactory.createOntologyModel</span><span class="java8">(<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">isDAML ? OntModelSpec.DAML_MEM : OntModelSpec.OWL_MEM, </span><span class="java4">null<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">)</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// we have a local copy of the wine ontology<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">m.getDocumentManager</span><span class="java8">()</span><span class="java10">.addAltEntry</span><span class="java8">( </span><span class="java5">&#34;http://www.w3.org/TR/2003/CR-owl-guide-20030818/wine&#34;</span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;file:./testing/reasoners/bugs/wine.owl&#34; </span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; m.getDocumentManager</span><span class="java8">()</span><span class="java10">.addAltEntry</span><span class="java8">( </span><span class="java5">&#34;http://www.w3.org/TR/2003/CR-owl-guide-20030818/food&#34;</span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;file:./testing/reasoners/bugs/food.owl&#34; </span><span class="java8">)</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// read the source document<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">m.read</span><span class="java8">( </span><span class="java10">source </span><span class="java8">)</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; DescribeClass dc = </span><span class="java4">new </span><span class="java10">DescribeClass</span><span class="java8">()</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">(</span><span class="java10">args.length &gt;= </span><span class="java7">2</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// we have a named class to describe<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">OntClass c = m.getOntClass</span><span class="java8">( </span><span class="java10">args</span><span class="java8">[</span><span class="java7">1</span><span class="java8">] )</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; dc.describeClass</span><span class="java8">( </span><span class="java10">System.out, c </span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">else </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">for </span><span class="java8">(</span><span class="java10">Iterator i = m.listClasses</span><span class="java8">()</span><span class="java10">;&#xA0; i.hasNext</span><span class="java8">()</span><span class="java10">; </span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// now list the classes<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">dc.describeClass</span><span class="java8">( </span><span class="java10">System.out, </span><span class="java8">(</span><span class="java10">OntClass</span><span class="java8">) </span><span class="java10">i.next</span><span class="java8">() )</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; }<br />
+&#xA0;&#xA0;&#xA0; }<br />
+<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// Internal implementation methods<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; //==============================================================================<br />
+&#xA0;&#xA0;&#xA0; // Inner class definitions<br />
+&#xA0;&#xA0;&#xA0; //==============================================================================<br />
+<br />
+</span><span class="java8">}<br />
+<br />
+<br />
+</span><span class="java2">/*<br />
+&#xA0;&#xA0;&#xA0; (c) Copyright 2002, 2003, 2004, 2005 Hewlett-Packard Development Company, LP<br />
+&#xA0;&#xA0;&#xA0; All rights reserved.<br />
+<br />
+&#xA0;&#xA0;&#xA0; Redistribution and use in source and binary forms, with or without<br />
+&#xA0;&#xA0;&#xA0; modification, are permitted provided that the following conditions<br />
+&#xA0;&#xA0;&#xA0; are met:<br />
+<br />
+&#xA0;&#xA0;&#xA0; 1. Redistributions of source code must retain the above copyright<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer.<br />
+<br />
+&#xA0;&#xA0;&#xA0; 2. Redistributions in binary form must reproduce the above copyright<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer in the<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; documentation and/or other materials provided with the distribution.<br />
+<br />
+&#xA0;&#xA0;&#xA0; 3. The name of the author may not be used to endorse or promote products<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; derived from this software without specific prior written permission.<br />
+<br />
+&#xA0;&#xA0;&#xA0; THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR<br />
+&#xA0;&#xA0;&#xA0; IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES<br />
+&#xA0;&#xA0;&#xA0; OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.<br />
+&#xA0;&#xA0;&#xA0; IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,<br />
+&#xA0;&#xA0;&#xA0; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT<br />
+&#xA0;&#xA0;&#xA0; NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,<br />
+&#xA0;&#xA0;&#xA0; DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY<br />
+&#xA0;&#xA0;&#xA0; THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT<br />
+&#xA0;&#xA0;&#xA0; (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF<br />
+&#xA0;&#xA0;&#xA0; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br />
+*/<br />
+</span></code></div></body>
+</html>

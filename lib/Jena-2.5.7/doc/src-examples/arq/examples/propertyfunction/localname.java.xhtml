@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java2">/*<br />
+ * (c) Copyright 2006, 2007, 2008 Hewlett-Packard Development Company, LP<br />
+ * All rights reserved.<br />
+ * [See end of file]<br />
+ */<br />
+<br />
+</span><span class="java4">package </span><span class="java10">arq.examples.propertyfunction;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">java.util.*;<br />
+<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.graph.Graph;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.graph.Node;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.graph.Triple;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.core.Var;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.engine.ExecutionContext;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.engine.QueryIterator;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.engine.binding.Binding;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.engine.binding.Binding1;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.engine.binding.BindingMap;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.engine.iterator.QueryIterNullIterator;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.engine.iterator.QueryIterPlainWrapper;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.engine.iterator.QueryIterSingleton;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.pfunction.PFuncSimple;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.util.NodeUtils;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.util.iterator.ExtendedIterator;<br />
+<br />
+</span><span class="java14">/** Example property function that creates the association between a URI and it's localname.<br />
+ *&#xA0; See also splitIRI which is more general. This is just an example.<br />
+ * <br />
+ *&#xA0; If it is not a URI, then does not match.<br />
+ *&#xA0; <br />
+ *&#xA0; Use as: <br />
+ *&#xA0; <br />
+ *&#xA0; </span><span class="java12">&lt;pre&gt;<br />
+ </span><span class="java14">*&#xA0;&#xA0;&#xA0; ?uri ext:localname ?localname<br />
+ *&#xA0; </span><span class="java12">&lt;/pre&gt;<br />
+ </span><span class="java14">* <br />
+ *&#xA0; Depending on whether the subject/object are bound when called:<br />
+ *&#xA0; </span><span class="java12">&lt;ul&gt;<br />
+ </span><span class="java14">*&#xA0; </span><span class="java12">&lt;li&gt;</span><span class="java14">subject bound, object unbound =&gt; assign the local name to variable in object slot</span><span class="java12">&lt;/li&gt; <br />
+ </span><span class="java14">*&#xA0; </span><span class="java12">&lt;li&gt;</span><span class="java14">subject bound, object bound =&gt; check the subject has the local name given by object</span><span class="java12">&lt;/li&gt;<br />
+ </span><span class="java14">*&#xA0; </span><span class="java12">&lt;li&gt;</span><span class="java14">subject unbound, object bound =&gt; find all URIs in the model (s, p or o) that have that local name</span><span class="java12">&lt;/li&gt;<br />
+ </span><span class="java14">*&#xA0; </span><span class="java12">&lt;li&gt;</span><span class="java14">subject unbound, object unbound =&gt; generate all localname for all URI resources in the model</span><span class="java12">&lt;/li&gt;<br />
+ </span><span class="java14">*&#xA0; </span><span class="java12">&lt;/ul&gt;<br />
+ </span><span class="java14">*&#xA0; The two searching forms (subject unbound) are expensive.<br />
+<br />
+ *&#xA0; Anything not a URI (subject) or string (object) causes no match.<br />
+ * <br />
+ * <br />
+ * </span><span class="java11">@author </span><span class="java14">Andy Seaborne<br />
+ */ <br />
+<br />
+</span><span class="java4">public class </span><span class="java10">localname </span><span class="java4">extends </span><span class="java10">PFuncSimple<br />
+</span><span class="java8">{<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public </span><span class="java10">QueryIterator execEvaluated</span><span class="java8">(</span><span class="java10">Binding binding, Node nodeURI, Node predicate, Node nodeLocalname, ExecutionContext execCxt</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">! nodeURI.isVariable</span><span class="java8">() )<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">execFixedSubject</span><span class="java8">(</span><span class="java10">nodeURI, nodeLocalname, binding, execCxt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">else<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; return </span><span class="java10">execAllNodes</span><span class="java8">(</span><span class="java10">Var.alloc</span><span class="java8">(</span><span class="java10">nodeURI</span><span class="java8">)</span><span class="java10">, nodeLocalname, binding, execCxt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// Subject is bound : still two cases: object bound (do a check) and object unbound (assign the local name)<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java10">QueryIterator execFixedSubject</span><span class="java8">(</span><span class="java10">Node nodeURI, Node nodeLocalname, Binding binding, ExecutionContext execCxt</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">! nodeURI.isURI</span><span class="java8">() )<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Subject bound but not a URI<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return new </span><span class="java10">QueryIterNullIterator</span><span class="java8">(</span><span class="java10">execCxt</span><span class="java8">) </span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Subject is bound and a URI - get the localname as a Node <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Node localname = Node.createLiteral</span><span class="java8">(</span><span class="java10">nodeURI.getLocalName</span><span class="java8">()) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Object - unbound variable or a value? <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">! nodeLocalname.isVariable</span><span class="java8">() )<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Object bound or a query constant.&#xA0; Is it the same as the calculated value?<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">nodeLocalname.equals</span><span class="java8">(</span><span class="java10">localname</span><span class="java8">) )<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Same<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return new </span><span class="java10">QueryIterSingleton</span><span class="java8">(</span><span class="java10">binding, execCxt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// No - different - no match.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return new </span><span class="java10">QueryIterNullIterator</span><span class="java8">(</span><span class="java10">execCxt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Object unbound variable - assign the localname to it.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Binding b = </span><span class="java4">new </span><span class="java10">Binding1</span><span class="java8">(</span><span class="java10">binding, Var.alloc</span><span class="java8">(</span><span class="java10">nodeLocalname</span><span class="java8">)</span><span class="java10">, localname</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Return an iterator.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return new </span><span class="java10">QueryIterSingleton</span><span class="java8">(</span><span class="java10">b, execCxt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// Unbound subject - work hard.<br />
+&#xA0;&#xA0;&#xA0; // Still two cases: object bound (filter by localname) and object unbound (generate all localnames for all URIs)<br />
+&#xA0;&#xA0;&#xA0; // Warning - will scan the entire graph (there is no localname index) but this example code. <br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java10">QueryIterator execAllNodes</span><span class="java8">(</span><span class="java10">Var subjVar, Node nodeLocalname,&#xA0; Binding input, ExecutionContext execCxt</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">! nodeLocalname.isVariable</span><span class="java8">() )<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">! nodeLocalname.isLiteral</span><span class="java8">() )<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Not a variable, not a literal=&gt; can't match<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return new </span><span class="java10">QueryIterNullIterator</span><span class="java8">(</span><span class="java10">execCxt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if</span><span class="java8">( </span><span class="java10">! NodeUtils.isStringLiteral</span><span class="java8">(</span><span class="java10">nodeLocalname</span><span class="java8">) )<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// If a typed literal, must be XSD string.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return new </span><span class="java10">QueryIterNullIterator</span><span class="java8">(</span><span class="java10">execCxt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">//Set bindings = new HashSet() ;&#xA0;&#xA0;&#xA0; // Use a Set if you want unique results. <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">List bindings = </span><span class="java4">new </span><span class="java10">ArrayList</span><span class="java8">() </span><span class="java10">;&#xA0;&#xA0; </span><span class="java3">// Use a list if you want counting results. <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Graph graph = execCxt.getActiveGraph</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; ExtendedIterator iter = graph.find</span><span class="java8">(</span><span class="java10">Node.ANY, Node.ANY, Node.ANY</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">for </span><span class="java8">( </span><span class="java10">; iter.hasNext</span><span class="java8">() </span><span class="java10">; </span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Triple t = </span><span class="java8">(</span><span class="java10">Triple</span><span class="java8">)</span><span class="java10">iter.next</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; slot</span><span class="java8">(</span><span class="java10">bindings, input, t.getSubject</span><span class="java8">()</span><span class="java10">,&#xA0;&#xA0; subjVar, nodeLocalname</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; slot</span><span class="java8">(</span><span class="java10">bindings, input, t.getPredicate</span><span class="java8">()</span><span class="java10">, subjVar, nodeLocalname</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; slot</span><span class="java8">(</span><span class="java10">bindings, input, t.getObject</span><span class="java8">()</span><span class="java10">,&#xA0;&#xA0;&#xA0; subjVar, nodeLocalname</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return new </span><span class="java10">QueryIterPlainWrapper</span><span class="java8">(</span><span class="java10">bindings.iterator</span><span class="java8">()</span><span class="java10">, execCxt</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private </span><span class="java9">void </span><span class="java10">slot</span><span class="java8">(</span><span class="java10">Collection bindings, Binding input, Node node, Var subjVar, Node nodeLocalname</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">! node.isURI</span><span class="java8">() ) </span><span class="java4">return </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Node localname = Node.createLiteral</span><span class="java8">(</span><span class="java10">node.getLocalName</span><span class="java8">()) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">nodeLocalname.isVariable</span><span class="java8">() )<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Object is an unbound variable.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Binding b = </span><span class="java4">new </span><span class="java10">BindingMap</span><span class="java8">(</span><span class="java10">input</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Bind a pair for subject and object variables<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">b.add</span><span class="java8">(</span><span class="java10">Var.alloc</span><span class="java8">(</span><span class="java10">subjVar</span><span class="java8">)</span><span class="java10">, node</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; b.add</span><span class="java8">(</span><span class="java10">Var.alloc</span><span class="java8">(</span><span class="java10">nodeLocalname</span><span class="java8">)</span><span class="java10">, localname</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; bindings.add</span><span class="java8">(</span><span class="java10">b</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Object is a value / bound variable.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">! nodeLocalname.sameValueAs</span><span class="java8">(</span><span class="java10">localname</span><span class="java8">) )<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Bind subject to this node.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Binding b = </span><span class="java4">new </span><span class="java10">Binding1</span><span class="java8">(</span><span class="java10">input, subjVar, node</span><span class="java8">) </span><span class="java10">; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; bindings.add</span><span class="java8">(</span><span class="java10">b</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+}<br />
+<br />
+</span><span class="java2">/*<br />
+ * (c) Copyright 2006, 2007, 2008 Hewlett-Packard Development Company, LP<br />
+ * All rights reserved.<br />
+ *<br />
+ * Redistribution and use in source and binary forms, with or without<br />
+ * modification, are permitted provided that the following conditions<br />
+ * are met:<br />
+ * 1. Redistributions of source code must retain the above copyright<br />
+ *&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer.<br />
+ * 2. Redistributions in binary form must reproduce the above copyright<br />
+ *&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer in the<br />
+ *&#xA0;&#xA0;&#xA0; documentation and/or other materials provided with the distribution.<br />
+ * 3. The name of the author may not be used to endorse or promote products<br />
+ *&#xA0;&#xA0;&#xA0; derived from this software without specific prior written permission.<br />
+ *<br />
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR<br />
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES<br />
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.<br />
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,<br />
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT<br />
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,<br />
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY<br />
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT<br />
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF<br />
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br />
+ */</span></code></div></body>
+</html>

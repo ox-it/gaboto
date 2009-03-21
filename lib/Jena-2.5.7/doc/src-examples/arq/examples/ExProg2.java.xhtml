@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java2">/*<br />
+ * (c) Copyright 2005, 2006, 2007, 2008 Hewlett-Packard Development Company, LP<br />
+ * All rights reserved.<br />
+ * [See end of file]<br />
+ */<br />
+<br />
+</span><span class="java4">package </span><span class="java10">arq.examples;<br />
+<br />
+<br />
+</span><span class="java3">// The ARQ application API.<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.graph.Triple;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.query.*;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.rdf.model.*;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.core.Var;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.expr.E_Regex;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.expr.Expr;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.expr.ExprVar;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.syntax.ElementFilter;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.syntax.ElementGroup;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.util.IndentedWriter;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.vocabulary.DC;<br />
+<br />
+</span><span class="java14">/** Example : Build a query with a filter programmatically.<br />
+ *&#xA0; Note: it is often better to build and execute an algebra expression.&#xA0; See other examples.<br />
+ * <br />
+ * </span><span class="java11">@author </span><span class="java14">Andy Seaborne<br />
+ */<br />
+<br />
+</span><span class="java4">public class </span><span class="java10">ExProg2<br />
+</span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">static public final </span><span class="java10">String NL = System.getProperty</span><span class="java8">(</span><span class="java5">&#34;line.separator&#34;</span><span class="java8">) </span><span class="java10">; <br />
+&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static </span><span class="java9">void </span><span class="java10">main</span><span class="java8">(</span><span class="java10">String</span><span class="java8">[] </span><span class="java10">args</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Model model = createModel</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Query query = QueryFactory.make</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; query.setQueryType</span><span class="java8">(</span><span class="java10">Query.QueryTypeSelect</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// See also ExProg1<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">ElementGroup elg = </span><span class="java4">new </span><span class="java10">ElementGroup</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Var varTitle = Var.alloc</span><span class="java8">(</span><span class="java5">&#34;title&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Var varX = Var.alloc</span><span class="java8">(</span><span class="java5">&#34;x&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Triple t1 = </span><span class="java4">new </span><span class="java10">Triple</span><span class="java8">(</span><span class="java10">varX, DC.title.asNode</span><span class="java8">()</span><span class="java10">,&#xA0; varTitle</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; elg.addTriplePattern</span><span class="java8">(</span><span class="java10">t1</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Adds a filter.&#xA0; Need to wrap variable in a NodeVar.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Expr expr = </span><span class="java4">new </span><span class="java10">E_Regex</span><span class="java8">(</span><span class="java4">new </span><span class="java10">ExprVar</span><span class="java8">(</span><span class="java10">varTitle</span><span class="java8">)</span><span class="java10">, </span><span class="java5">&#34;sparql&#34;</span><span class="java10">, </span><span class="java5">&#34;i&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; ElementFilter filter = </span><span class="java4">new&#xA0; </span><span class="java10">ElementFilter</span><span class="java8">(</span><span class="java10">expr</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; elg.addElementFilter</span><span class="java8">(</span><span class="java10">filter</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Attach the group to query.&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">query.setQueryPattern</span><span class="java8">(</span><span class="java10">elg</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Choose what we want - SELECT ?title<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">query.addResultVar</span><span class="java8">(</span><span class="java10">varTitle</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Print query with line numbers<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // Prefix mapping just helps serialization<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">query.getPrefixMapping</span><span class="java8">()</span><span class="java10">.setNsPrefix</span><span class="java8">(</span><span class="java5">&#34;dc&#34; </span><span class="java10">, DC.getURI</span><span class="java8">()) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; query.serialize</span><span class="java8">(</span><span class="java4">new </span><span class="java10">IndentedWriter</span><span class="java8">(</span><span class="java10">System.out,true</span><span class="java8">)) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; System.out.println</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; QueryExecution qexec = QueryExecutionFactory.create</span><span class="java8">(</span><span class="java10">query, model</span><span class="java8">) </span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">try </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Assumption: it's a SELECT query.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">ResultSet rs = qexec.execSelect</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// The order of results is undefined.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">System.out.println</span><span class="java8">(</span><span class="java5">&#34;Titles: &#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">for </span><span class="java8">( </span><span class="java10">; rs.hasNext</span><span class="java8">() </span><span class="java10">; </span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">QuerySolution rb = rs.nextSolution</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Get title - variable names do not include the '?' (or '$')<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">RDFNode x = rb.get</span><span class="java8">(</span><span class="java5">&#34;title&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Check the type of the result value<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">( </span><span class="java10">x </span><span class="java4">instanceof </span><span class="java10">Literal </span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Literal titleStr = </span><span class="java8">(</span><span class="java10">Literal</span><span class="java8">)</span><span class="java10">x&#xA0; ;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; System.out.println</span><span class="java8">(</span><span class="java5">&#34;&#xA0;&#xA0;&#xA0; &#34;</span><span class="java10">+titleStr</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">else<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">System.out.println</span><span class="java8">(</span><span class="java5">&#34;Strange - not a literal: &#34;</span><span class="java10">+x</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; }<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">finally<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// QueryExecution objects should be closed to free any system resources <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">qexec.close</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0; }<br />
+&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static </span><span class="java10">Model createModel</span><span class="java8">()<br />
+&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Model model = ModelFactory.createDefaultModel</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Resource r1 = model.createResource</span><span class="java8">(</span><span class="java5">&#34;http://example.org/book#1&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Resource r2 = model.createResource</span><span class="java8">(</span><span class="java5">&#34;http://example.org/book#2&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Resource r3 = model.createResource</span><span class="java8">(</span><span class="java5">&#34;http://example.org/book#3&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; r1.addProperty</span><span class="java8">(</span><span class="java10">DC.title, </span><span class="java5">&#34;SPARQL - the book&#34;</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">.addProperty</span><span class="java8">(</span><span class="java10">DC.description, </span><span class="java5">&#34;A book about SPARQL&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; r2.addProperty</span><span class="java8">(</span><span class="java10">DC.title, </span><span class="java5">&#34;Advanced techniques for SPARQL&#34;</span><span class="java8">) </span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; r3.addProperty</span><span class="java8">(</span><span class="java10">DC.title, </span><span class="java5">&#34;Jena - an RDF framework for Java&#34;</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">.addProperty</span><span class="java8">(</span><span class="java10">DC.description, </span><span class="java5">&#34;A book about Jena&#34;</span><span class="java8">) </span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">model ;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+}<br />
+<br />
+<br />
+</span><span class="java2">/*<br />
+ * (c) Copyright 2005, 2006, 2007, 2008 Hewlett-Packard Development Company, LP<br />
+ * All rights reserved.<br />
+ *<br />
+ * Redistribution and use in source and binary forms, with or without<br />
+ * modification, are permitted provided that the following conditions<br />
+ * are met:<br />
+ * 1. Redistributions of source code must retain the above copyright<br />
+ *&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer.<br />
+ * 2. Redistributions in binary form must reproduce the above copyright<br />
+ *&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer in the<br />
+ *&#xA0;&#xA0;&#xA0; documentation and/or other materials provided with the distribution.<br />
+ * 3. The name of the author may not be used to endorse or promote products<br />
+ *&#xA0;&#xA0;&#xA0; derived from this software without specific prior written permission.<br />
+ *<br />
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR<br />
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES<br />
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.<br />
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,<br />
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT<br />
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,<br />
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY<br />
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT<br />
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF<br />
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br />
+ */</span></code></div></body>
+</html>

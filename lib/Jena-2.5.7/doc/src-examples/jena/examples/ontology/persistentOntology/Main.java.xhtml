@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java14">/*****************************************************************************<br />
+ * Source code information<br />
+ * -----------------------<br />
+ * Original author&#xA0;&#xA0;&#xA0; Ian Dickinson, HP Labs Bristol<br />
+ * Author email&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; ian.dickinson@hp.com<br />
+ * Package&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Jena 2<br />
+ * Web&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; http://jena.sourceforge.net<br />
+ * Created&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; 22-Aug-2003<br />
+ * Filename&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; $RCSfile: Main.java,v $<br />
+ * Revision&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; $Revision: 1.2 $<br />
+ * Release status&#xA0;&#xA0;&#xA0;&#xA0; $State: Exp $<br />
+ *<br />
+ * Last modified on&#xA0;&#xA0; $Date: 2005/10/08 08:38:07 $<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; by&#xA0;&#xA0; $Author: ian_dickinson $<br />
+ *<br />
+ * (c) Copyright 2002, 2003, 2004, 2005 Hewlett-Packard Development Company, LP<br />
+ * (see footer for full conditions)<br />
+ *****************************************************************************/<br />
+<br />
+</span><span class="java3">// Package<br />
+///////////////<br />
+</span><span class="java4">package </span><span class="java10">jena.examples.ontology.persistentOntology;<br />
+<br />
+<br />
+</span><span class="java3">// Imports<br />
+///////////////<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.ontology.*;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.rdf.model.ModelMaker;<br />
+<br />
+<br />
+</span><span class="java14">/**<br />
+ * </span><span class="java12">&lt;p&gt;<br />
+ </span><span class="java14">* Simple execution wrapper for persistent ontology example.<br />
+ * </span><span class="java12">&lt;/p&gt;<br />
+ </span><span class="java14">* </span><span class="java12">&lt;p&gt;<br />
+ </span><span class="java14">* Usage:<br />
+ * </span><span class="java12">&lt;pre&gt;<br />
+ </span><span class="java14">* java jena.examples.ontology.persistentOntology.Main<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [--dbUser string]&#xA0;&#xA0;&#xA0;&#xA0; e.g: --dbUser ijd<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [--dbURL string]&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; e.g: --dbURL jdbc:postgresql://localhost/jenatest<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [--dbPw string]&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; e.g: --dbPw nosecrets<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [--dbType string]&#xA0;&#xA0;&#xA0;&#xA0; e.g: --dbType PostgreSQL<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [--dbDriver string]&#xA0;&#xA0; e.g: --dbDriver org.postgresql.Driver<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [--reload]&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; if true will reload the source data<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; [sourceURL]&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; optional source URL for the data to persist<br />
+ * </span><span class="java12">&lt;/pre&gt;<br />
+ </span><span class="java14">* If no db parameters or source URL is given, defaults will be used.<br />
+ * </span><span class="java12">&lt;/p&gt;<br />
+ </span><span class="java14">*<br />
+ * </span><span class="java11">@author </span><span class="java14">Ian Dickinson, HP Labs<br />
+ *&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; (&lt;a&#xA0; href=&#34;mailto:Ian.Dickinson@hp.com&#34; &gt;email</span><span class="java12">&lt;/a&gt;</span><span class="java14">)<br />
+ * </span><span class="java11">@version </span><span class="java14">CVS $Id: Main.java,v 1.2 2005/10/08 08:38:07 ian_dickinson Exp $<br />
+ */<br />
+</span><span class="java4">public class </span><span class="java10">Main </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// Constants<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java10">String ONT1 = </span><span class="java5">&#34;urn:x-hp-jena:test1&#34;</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java10">String ONT2 = </span><span class="java5">&#34;urn:x-hp-jena:test2&#34;</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java10">String DB_URL = </span><span class="java5">&#34;jdbc:postgresql://localhost/jenatest&#34;</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java10">String DB_USER = </span><span class="java5">&#34;ijd&#34;</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java10">String DB_PASSWD = </span><span class="java5">&#34;&#34;</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java10">String DB = </span><span class="java5">&#34;PostgreSQL&#34;</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static final </span><span class="java10">String DB_DRIVER = </span><span class="java5">&#34;org.postgresql.Driver&#34;</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// Static variables<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; // database connection parameters, with defaults<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java10">String s_dbURL = DB_URL;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java10">String s_dbUser = DB_USER;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java10">String s_dbPw = DB_PASSWD;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java10">String s_dbType = DB;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java10">String s_dbDriver = DB_DRIVER;<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// if true, reload the data<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java9">boolean </span><span class="java10">s_reload = </span><span class="java4">false</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// source URL to load data from; if null, use default<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java10">String s_source;<br />
+<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// Instance variables<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+<br />
+&#xA0;&#xA0;&#xA0; // Constructors<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; // External signature methods<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static </span><span class="java9">void </span><span class="java10">main</span><span class="java8">( </span><span class="java10">String</span><span class="java8">[] </span><span class="java10">args </span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">processArgs</span><span class="java8">( </span><span class="java10">args </span><span class="java8">)</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// check for default sources<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">(</span><span class="java10">s_source == </span><span class="java4">null</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">s_source = getDefaultSource</span><span class="java8">()</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// create the helper class we use to handle the persistent ontologies<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">PersistentOntology po = </span><span class="java4">new </span><span class="java10">PersistentOntology</span><span class="java8">()</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// ensure the JDBC driver class is loaded<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">try </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">Class.forName</span><span class="java8">( </span><span class="java10">s_dbDriver </span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">catch </span><span class="java8">(</span><span class="java10">Exception e</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">System.err.println</span><span class="java8">( </span><span class="java5">&#34;Failed to load the driver for the database: &#34; </span><span class="java10">+ e.getMessage</span><span class="java8">() )</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; System.err.println</span><span class="java8">( </span><span class="java5">&#34;Have you got the CLASSPATH set correctly?&#34; </span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// are we re-loading the data this time?<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if </span><span class="java8">(</span><span class="java10">s_reload</span><span class="java8">) {<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// we pass cleanDB=true to clear out existing models<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // NOTE: this will remove ALL Jena models from the named persistent store, so<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // use with care if you have existing data stored<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">ModelMaker maker = po.getRDBMaker</span><span class="java8">( </span><span class="java10">s_dbURL, s_dbUser, s_dbPw, s_dbType, </span><span class="java4">true </span><span class="java8">)</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// now load the source data into the newly cleaned db<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">po.loadDB</span><span class="java8">( </span><span class="java10">maker, s_source </span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// now we list the classes in the database, to show that the persistence worked<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">ModelMaker maker = po.getRDBMaker</span><span class="java8">( </span><span class="java10">s_dbURL, s_dbUser, s_dbPw, s_dbType, </span><span class="java4">false </span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; po.listClasses</span><span class="java8">( </span><span class="java10">maker, s_source </span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">// Internal implementation methods<br />
+&#xA0;&#xA0;&#xA0; //////////////////////////////////<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Process any command line arguments<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java9">void </span><span class="java10">processArgs</span><span class="java8">( </span><span class="java10">String</span><span class="java8">[] </span><span class="java10">args </span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java9">int </span><span class="java10">i = </span><span class="java7">0</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">while </span><span class="java8">(</span><span class="java10">i &lt; args.length</span><span class="java8">) {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">String arg = args</span><span class="java8">[</span><span class="java10">i++</span><span class="java8">]</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">if&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">(</span><span class="java10">arg.equals</span><span class="java8">( </span><span class="java5">&#34;--dbUser&#34; </span><span class="java8">))&#xA0;&#xA0; {</span><span class="java10">s_dbURL = args</span><span class="java8">[</span><span class="java10">i++</span><span class="java8">]</span><span class="java10">;</span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">else if </span><span class="java8">(</span><span class="java10">arg.equals</span><span class="java8">( </span><span class="java5">&#34;--dbURL&#34; </span><span class="java8">))&#xA0;&#xA0;&#xA0; {</span><span class="java10">s_dbURL = args</span><span class="java8">[</span><span class="java10">i++</span><span class="java8">]</span><span class="java10">;</span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">else if </span><span class="java8">(</span><span class="java10">arg.equals</span><span class="java8">( </span><span class="java5">&#34;--dbPasswd&#34; </span><span class="java8">)) {</span><span class="java10">s_dbPw = args</span><span class="java8">[</span><span class="java10">i++</span><span class="java8">]</span><span class="java10">;</span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">else if </span><span class="java8">(</span><span class="java10">arg.equals</span><span class="java8">( </span><span class="java5">&#34;--dbType&#34; </span><span class="java8">))&#xA0;&#xA0; {</span><span class="java10">s_dbType = args</span><span class="java8">[</span><span class="java10">i++</span><span class="java8">]</span><span class="java10">;</span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">else if </span><span class="java8">(</span><span class="java10">arg.equals</span><span class="java8">( </span><span class="java5">&#34;--reload&#34; </span><span class="java8">))&#xA0;&#xA0; {</span><span class="java10">s_reload = </span><span class="java4">true</span><span class="java10">;</span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">else if </span><span class="java8">(</span><span class="java10">arg.equals</span><span class="java8">( </span><span class="java5">&#34;--dbDriver&#34; </span><span class="java8">)) {</span><span class="java10">s_dbDriver = args</span><span class="java8">[</span><span class="java10">i++</span><span class="java8">]</span><span class="java10">;</span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">else </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// assume this is a URL to load data from<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">s_source = arg;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; }<br />
+&#xA0;&#xA0;&#xA0; }<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java14">/**<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * Answer the default source document, and set up the document manager<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * so that we can find it on the file system<br />
+&#xA0;&#xA0;&#xA0;&#xA0; *<br />
+&#xA0;&#xA0;&#xA0;&#xA0; * </span><span class="java11">@return </span><span class="java14">The URI of the default source document<br />
+&#xA0;&#xA0;&#xA0;&#xA0; */<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">private static </span><span class="java10">String getDefaultSource</span><span class="java8">() {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// use the ont doc mgr to map from a generic URN to a local source file<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">OntDocumentManager.getInstance</span><span class="java8">()</span><span class="java10">.addAltEntry</span><span class="java8">( </span><span class="java10">ONT1, </span><span class="java5">&#34;file:src-examples/data/test1.owl&#34; </span><span class="java8">)</span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; OntDocumentManager.getInstance</span><span class="java8">()</span><span class="java10">.addAltEntry</span><span class="java8">( </span><span class="java10">ONT2, </span><span class="java5">&#34;file:src-examples/data/test2.owl&#34; </span><span class="java8">)</span><span class="java10">;<br />
+<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">ONT1;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java3">//==============================================================================<br />
+&#xA0;&#xA0;&#xA0; // Inner class definitions<br />
+&#xA0;&#xA0;&#xA0; //==============================================================================<br />
+<br />
+</span><span class="java8">}<br />
+<br />
+<br />
+</span><span class="java2">/*<br />
+&#xA0;&#xA0;&#xA0; (c) Copyright 2002, 2003, 2004, 2005 Hewlett-Packard Development Company, LP<br />
+&#xA0;&#xA0;&#xA0; All rights reserved.<br />
+<br />
+&#xA0;&#xA0;&#xA0; Redistribution and use in source and binary forms, with or without<br />
+&#xA0;&#xA0;&#xA0; modification, are permitted provided that the following conditions<br />
+&#xA0;&#xA0;&#xA0; are met:<br />
+<br />
+&#xA0;&#xA0;&#xA0; 1. Redistributions of source code must retain the above copyright<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer.<br />
+<br />
+&#xA0;&#xA0;&#xA0; 2. Redistributions in binary form must reproduce the above copyright<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer in the<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; documentation and/or other materials provided with the distribution.<br />
+<br />
+&#xA0;&#xA0;&#xA0; 3. The name of the author may not be used to endorse or promote products<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; derived from this software without specific prior written permission.<br />
+<br />
+&#xA0;&#xA0;&#xA0; THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR<br />
+&#xA0;&#xA0;&#xA0; IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES<br />
+&#xA0;&#xA0;&#xA0; OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.<br />
+&#xA0;&#xA0;&#xA0; IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,<br />
+&#xA0;&#xA0;&#xA0; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT<br />
+&#xA0;&#xA0;&#xA0; NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,<br />
+&#xA0;&#xA0;&#xA0; DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY<br />
+&#xA0;&#xA0;&#xA0; THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT<br />
+&#xA0;&#xA0;&#xA0; (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF<br />
+&#xA0;&#xA0;&#xA0; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br />
+*/<br />
+</span></code></div></body>
+</html>

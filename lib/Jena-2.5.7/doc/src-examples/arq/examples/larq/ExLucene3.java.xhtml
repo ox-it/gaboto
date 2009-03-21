@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<style type="text/css">
+td.java, td.java-ln {vertical-align:top;}
+tt.java, tt.java-ln, pre.java, pre.java-ln {line-height:1em; margin-bottom:0em;}
+td.java-ln { text-align:right; }
+tt.java-ln, pre.java-ln { color:#888888 }
+/* Background       */ span.java0  { font-size: 10pt; color:#ffffff; }
+/* Line numbers       */ span.java1  { font-size: 10pt; color:#808080; }
+/* Multi-line comments       */ span.java2  { font-size: 10pt; color:#3f7f5f; }
+/* Single-line comments       */ span.java3  { font-size: 10pt; color:#3f7f5f; }
+/* Keywords       */ span.java4  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Strings       */ span.java5  { font-size: 10pt; color:#2a00ff; }
+/* Character constants       */ span.java6  { font-size: 10pt; color:#990000; }
+/* Numeric constants       */ span.java7  { font-size: 10pt; color:#990000; }
+/* Parenthesis       */ span.java8  { font-size: 10pt; color:#000000; }
+/* Primitive Types       */ span.java9  { font-size: 10pt; color:#7f0055; font-weight:bold; }
+/* Others       */ span.java10  { font-size: 10pt; color:#000000; }
+/* Javadoc keywords       */ span.java11  { font-size: 10pt; color:#7f9fbf; }
+/* Javadoc HTML tags       */ span.java12  { font-size: 10pt; color:#7f7f9f; }
+/* Javadoc links       */ span.java13  { font-size: 10pt; color:#3f3fbf; }
+/* Javadoc others       */ span.java14  { font-size: 10pt; color:#3f5fbf; }
+/* Undefined       */ span.java15  { font-size: 10pt; color:#ff6100; }
+/* Annotation       */ span.java16  { font-size: 10pt; color:#646464; }
+</style>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<title></title>
+</head>
+<body>
+<div class="java"><code class="java"><span class="java2">/*<br />
+ * (c) Copyright 2006, 2007, 2008 Hewlett-Packard Development Company, LP<br />
+ * All rights reserved.<br />
+ * [See end of file]<br />
+ */<br />
+<br />
+</span><span class="java4">package </span><span class="java10">arq.examples.larq;<br />
+<br />
+<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.query.ARQ;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.query.larq.IndexBuilderString;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.query.larq.IndexLARQ;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.rdf.model.Model;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.rdf.model.ModelFactory;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.util.StringUtils;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.sparql.util.Utils;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.util.FileManager;<br />
+</span><span class="java4">import </span><span class="java10">com.hp.hpl.jena.vocabulary.DC;<br />
+<br />
+</span><span class="java14">/** Example code to load a model from a file, index string literals on the DC title property, <br />
+ * then execute a SPARQL query with a Lucene search in it.<br />
+ * <br />
+ * </span><span class="java11">@author </span><span class="java14">Andy Seaborne<br />
+ */<br />
+<br />
+</span><span class="java4">public class </span><span class="java10">ExLucene3<br />
+</span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">public static </span><span class="java9">void </span><span class="java10">main</span><span class="java8">(</span><span class="java10">String</span><span class="java8">[] </span><span class="java10">a</span><span class="java8">) </span><span class="java4">throws </span><span class="java10">Exception<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">{<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">System.out.println</span><span class="java8">(</span><span class="java5">&#34;ARQ Example: &#34;</span><span class="java10">+Utils.classShortName</span><span class="java8">(</span><span class="java10">ExLucene3.</span><span class="java4">class</span><span class="java8">)) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; System.out.println</span><span class="java8">(</span><span class="java5">&#34;ARQ: &#34;</span><span class="java10">+ARQ.VERSION</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; System.out.println</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; Model model = ModelFactory.createDefaultModel</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; IndexLARQ index = buildTitleIndex</span><span class="java8">(</span><span class="java10">model,&#xA0; </span><span class="java5">&#34;testing/LARQ/data-1.ttl&#34;</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Search for string <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">String searchString = </span><span class="java5">&#34;+document&#34; </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// This time, find documents with a matching DC title. <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">String queryString = StringUtils.join</span><span class="java8">(</span><span class="java5">&#34;\n&#34;</span><span class="java10">, </span><span class="java4">new </span><span class="java10">String</span><span class="java8">[]{<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;PREFIX xsd:&#xA0;&#xA0;&#xA0; &lt;http://www.w3.org/2001/XMLSchema#&gt;&#34; </span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;PREFIX :&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; &lt;http://example/&gt;&#34; </span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;PREFIX pf:&#xA0;&#xA0;&#xA0;&#xA0; &lt;http://jena.hpl.hp.com/ARQ/property#&gt;&#34;</span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;PREFIX&#xA0; dc:&#xA0;&#xA0;&#xA0; &lt;http://purl.org/dc/elements/1.1/&gt;&#34;</span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;SELECT ?title {&#34; </span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;&#xA0;&#xA0;&#xA0; ?title pf:textMatch '&#34;</span><span class="java10">+searchString+</span><span class="java5">&#34;'.&#34;</span><span class="java10">,<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java5">&#34;}&#34;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java8">}) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Two of three docuemnts should match. <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">ExLucene1.performQuery</span><span class="java8">(</span><span class="java10">model, index, queryString</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; index.close</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0; </span><span class="java4">static </span><span class="java10">IndexLARQ buildTitleIndex</span><span class="java8">(</span><span class="java10">Model model, String datafile</span><span class="java8">)<br />
+&#xA0;&#xA0;&#xA0; {<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// ---- Read and index just the title strings.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">IndexBuilderString larqBuilder = </span><span class="java4">new </span><span class="java10">IndexBuilderString</span><span class="java8">(</span><span class="java10">DC.title</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// Index statements as they are added to the model.<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">model.register</span><span class="java8">(</span><span class="java10">larqBuilder</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// To just build the index, create a model that does not store statements <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // Model model2 = ModelFactory.createModelForGraph(new GraphSink()) ;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">FileManager.get</span><span class="java8">()</span><span class="java10">.readModel</span><span class="java8">(</span><span class="java10">model, datafile</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// ---- Alternatively build the index after the model has been created. <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // larqBuilder.indexStatements(model.listStatements()) ;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; // ---- Finish indexing<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">larqBuilder.closeWriter</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; model.unregister</span><span class="java8">(</span><span class="java10">larqBuilder</span><span class="java8">) </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java3">// ---- Create the access index&#xA0; <br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java10">IndexLARQ index = larqBuilder.getIndex</span><span class="java8">() </span><span class="java10">;<br />
+&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; </span><span class="java4">return </span><span class="java10">index ; <br />
+&#xA0;&#xA0;&#xA0; </span><span class="java8">}<br />
+<br />
+}<br />
+<br />
+</span><span class="java2">/*<br />
+ * (c) Copyright 2006, 2007, 2008 Hewlett-Packard Development Company, LP<br />
+ * All rights reserved.<br />
+ *<br />
+ * Redistribution and use in source and binary forms, with or without<br />
+ * modification, are permitted provided that the following conditions<br />
+ * are met:<br />
+ * 1. Redistributions of source code must retain the above copyright<br />
+ *&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer.<br />
+ * 2. Redistributions in binary form must reproduce the above copyright<br />
+ *&#xA0;&#xA0;&#xA0; notice, this list of conditions and the following disclaimer in the<br />
+ *&#xA0;&#xA0;&#xA0; documentation and/or other materials provided with the distribution.<br />
+ * 3. The name of the author may not be used to endorse or promote products<br />
+ *&#xA0;&#xA0;&#xA0; derived from this software without specific prior written permission.<br />
+ *<br />
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR<br />
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES<br />
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.<br />
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,<br />
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT<br />
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,<br />
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY<br />
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT<br />
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF<br />
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.<br />
+ */</span></code></div></body>
+</html>
