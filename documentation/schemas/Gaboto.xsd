@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="Gaboto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="config"/>
+        <xs:element ref="GabotoBeans"/>
+        <xs:element ref="GabotoEntities"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="config">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="namespaces"/>
+        <xs:element ref="namespacePrefixes"/>
+        <xs:element ref="database"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="namespaces">
+    <xs:complexType>
+      <xs:attribute name="data" use="required" type="xs:anyURI"/>
+      <xs:attribute name="graphs" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="namespacePrefixes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="namespacePrefix"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="namespacePrefix">
+    <xs:complexType>
+      <xs:attribute name="ns" use="required" type="xs:anyURI"/>
+      <xs:attribute name="prefix" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="database">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="engineName"/>
+        <xs:element ref="url"/>
+        <xs:element ref="user"/>
+        <xs:element ref="password"/>
+        <xs:element ref="driver"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="engineName" type="xs:NCName"/>
+  <xs:element name="url" type="xs:anyURI"/>
+  <xs:element name="user" type="xs:NCName"/>
+  <xs:element name="password" type="xs:NCName"/>
+  <xs:element name="driver" type="xs:NCName"/>
+  <xs:element name="GabotoBeans">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="GabotoBean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GabotoBean">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="properties"/>
+        <xs:element minOccurs="0" ref="customMethods"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="type" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="properties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="property"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="passiveProperty"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="property">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="indirectProperty"/>
+        <xs:element minOccurs="0" ref="unstoredProperty"/>
+      </xs:sequence>
+      <xs:attribute name="collection" type="xs:NCName"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+      <xs:attribute name="uri" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="indirectProperty">
+    <xs:complexType>
+      <xs:attribute name="n" type="xs:integer"/>
+      <xs:attribute name="uri" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="unstoredProperty">
+    <xs:complexType>
+      <xs:attribute name="uri" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="passiveProperty">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="relationshipType" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+      <xs:attribute name="uri" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="customMethods">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="method"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="method" type="xs:string"/>
+  <xs:element name="GabotoEntities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="GabotoEntity"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GabotoEntity">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="GabotoEntities"/>
+        <xs:element ref="customMethods"/>
+        <xs:element ref="properties"/>
+      </xs:choice>
+      <xs:attribute name="abstract" type="xs:boolean"/>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+      <xs:attribute name="type" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
