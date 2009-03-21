@@ -1,0 +1,52 @@
+#####################################################
+#
+# Author: Arno Mittelbach
+# Date: 03.02.2009
+# 
+# Description:
+#
+#####################################################
+
+PREFIX dc:<http://purl.org/dc/elements/1.1/>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:<http://www.w3.org/2002/07/owl#>
+PREFIX xsd:<http://www.w3.org/2001/XMLSchema>
+PREFIX rdfcon:<http://ns.ox.ac.uk/namespace/rdfcon/2009/02/owl#>
+PREFIX owl-time:<http://www.w3.org/2006/time#>
+PREFIX rdfg:<http://www.w3.org/2004/03/trix/rdfg-1/>
+
+SELECT DISTINCT ?graph ?beginDescYear ?beginDescMonth ?beginDescDay  ?durationYears ?durationMonths ?durationDays
+WHERE
+{ 
+       # get time dimension
+       ?graph rdfcon:hasTemporalDimension ?dim .
+       
+       # talking about intervals
+       ?dim a owl-time:Interval;
+          owl-time:hasBeginning ?begin .
+
+       #beginning is an instance
+       ?begin a owl-time:Instant;
+           owl-time:hasDateTimeDescription ?beginDesc.
+     
+       # There must be at least a year
+       ?beginDesc a owl-time:DateTimeDescription ;
+                owl-time:year ?beginDescYear .
+       
+       # There might be further month and day descriptions
+       OPTIONAL { ?beginDesc owl-time:month ?beginDescMonth . } .
+       OPTIONAL { ?beginDesc owl-time:day ?beginDescDay . } .
+       
+      
+     #duration
+     OPTIONAL {
+       ?dim owl-time:hasDurationDescription ?duration.
+       ?duration a owl-time:DurationDescription.
+       
+       # find optional duration descriptions (for now: years, months and days)
+       OPTIONAL { ?duration owl-time:years ?durationYears . } .
+       OPTIONAL { ?duration owl-time:months ?durationMonths. } .
+       OPTIONAL { ?duration owl-time:days ?durationDays. } .
+     } .
+}
