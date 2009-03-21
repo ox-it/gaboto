@@ -1,0 +1,315 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix swp: <http://www.w3.org/2004/03/trix/swp-2/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ex: <http:// www.example.org/vocabulary#> .
+@prefix tpl: <http://www.wiwiss.fu-berlin.de/suhl/bizer/TPL/> .
+@prefix gb: <http://www.ncbi.nlm.nih.gov/NCBI_GBSeq#> .
+@prefix tprefsl: <http://www.wiwiss.fu-berlin.de/suhl/bizer/TPrefsL/> .
+@prefix vcard: <http://www.w3.org/2001/vcard-rdf/3.0#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/#> .
+@prefix dtype: <http://www.w3.org/2001/XMLSchema#> . 
+@prefix exdata: <http://www.example.org//TPLuseCase1/exampleData#> .
+@prefix fin: <http://www.fu-berlin/suhl/bizer/financialscenario/vocabulary/> .
+@prefix iso: <http://www.daml.org/2001/09/countries/iso-3166-ont#> .
+@prefix : <http://www.fu-berlin/suhl/bizer/financialscenario/policies/> .
+
+# ----------------------------------------------------
+# Policy Suite for the Financial Scenario V0.1
+# ----------------------------------------------------
+
+<>  rdf:type tpl:TrustPolicySuite;
+    tpl:suiteName "Financial Trust Policies" ;
+    tpl:includesPolicy :Policy1 ;
+    tpl:includesPolicy :Policy2 ;
+    tpl:includesPolicy :Policy3 ;
+    tpl:includesPolicy :Policy4 ;
+    tpl:includesPolicy :Policy5 ;
+    tpl:includesPolicy :Policy6 ;
+    tpl:includesPolicy :Policy7 ;
+    tpl:includesPolicy :Policy8 ;
+    tpl:includesPolicy :Policy9 ;
+    tpl:includesPolicy :Policy10 ;
+    tpl:includesPolicy :Policy11 ;
+    tpl:includesPolicy :Policy12 ;
+    tpl:includesPolicy :Policy13 .
+
+# ----------------------------------------------------
+# Policy 1:
+# Trust only rating agencies
+# ----------------------------------------------------
+
+:Policy1 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust only rating agencies" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """(?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by the rating agency " ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """(?authority rdf:type fin:RatingAgency)""" ;
+        tpl:textExplanation "@@?authority@@.";
+    ] .
+
+
+
+# ----------------------------------------------------
+# Policy 2:
+# Trust only information portals
+# ----------------------------------------------------
+
+
+:Policy2 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust only online portals" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """(?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by the information portal @@?authority@@." ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """(?authority rdf:type fin:InfoPortal)""" ;
+    ] .
+
+
+# ----------------------------------------------------
+# Policy 3:
+# Trust only discussion forums
+# ----------------------------------------------------
+#
+# TriQL query:
+# ?graph1 (?GRAPH swp:assertedBy ?warrant .
+#          ?warrant swp:authorithy ?authority )
+# ?graph2 (?authority rdf:type fin:DiscussionForum )
+
+
+:Policy3 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust only discussion forums" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """(?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by the discussion forum @@?authority@@." ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """(?authority rdf:type fin:DiscussionForum)""" ;
+    ] .
+
+
+
+# ----------------------------------------------------
+# Policy 4:
+# Trust only sources which contains at least one information
+# object which is newer than a certain date.
+# ----------------------------------------------------
+
+
+:Policy4 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Data should be newer than X" ;
+    tpl:policyDescription "Uses only data which is newer than a date, defined by the browser." ;
+    tpl:textExplanation "The information is beliefed because the document @@?GRAPH@@ contains at leas one
+    information object which was stated at @@?date@@, which is after 2004/1/1." ;
+    tpl:graphPattern [
+        tpl:pattern """?graph1 (?GRAPH swp:assertedBy ?warrant .
+                                ?warrant swp:authority ?auth )""" ;
+    ] ;
+    tpl:graphPattern [
+         tpl:pattern """?graph2 (?news fin:newsSource ?auth .
+					    ?news dc:date ?date)""" ;
+    ] ;
+    tpl:constraint "?date > '2004-03-01T00:00+01:00'^^dtype:date" .
+
+
+
+
+# ----------------------------------------------------
+# Policy 5:
+# Trust only sources from the UK.
+# ----------------------------------------------------
+
+
+:Policy5 rdf:type tpl:TrustPolicy ;
+    tpl:policyName " Trust only sources from the UK " ;
+    tpl:textExplanation "The information is beliefed because its NewsSource is from the UK " ;
+    tpl:graphPattern [
+        tpl:pattern """?graph1 (?GRAPH swp:assertedBy ?x . 
+					  ?x swp:authority ?auth )""" ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """?graph2 (?auth fin:country ?c )""" ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """?graph3 (?c rdf:type iso:Country .
+					  ?c iso:name ?name )""" ;
+    ] ;
+    tpl:constraint "?name EQ ' UNITED KINGDOM '" .
+
+
+
+# ----------------------------------------------------
+# Policy 6:
+# Trust only the institution the information is about
+# ----------------------------------------------------
+
+
+
+:Policy6 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust only the institution the information is about" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph1 (?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by the institution @@?authority@@ which is the same institution the information is about." ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph2 (?news fin:newsSource ?authority)""" ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph3 (?news fin:newsAbout ?authority)""" ;
+    ] .
+
+
+
+
+# ----------------------------------------------------
+# Policy 7:
+# Trust only information published by <http://www.theregister.co.uk>
+# ----------------------------------------------------
+
+:Policy7 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust only information published by the register" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """(?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority <http://www.theregister.co.uk>)""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by <http://www.theregister.co.uk>." ;
+    ] .
+
+
+
+# ----------------------------------------------------
+# Policy 8:
+# Trust sources which have at least one author with email address.
+# ----------------------------------------------------
+
+:Policy8 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust sources which have at least one author with email address " ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph1 (?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by @@?authority@@ and at least one author has the valid email address @@?mail@@." ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph2 (?news fin:newsSource ?authority .
+					   ?news fin:author ?author .
+					   ?author vcard:EMAIL ?mail )""" ;
+   ] .
+
+
+# ----------------------------------------------------
+# Policy 9:
+# Trust sources which have at least one author
+# ----------------------------------------------------
+
+:Policy9 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust sources which have at least one author" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """?graph1 (?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by @@?authority@@ can be trusted because it has at least one author." ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """?graph2 (?news fin:newsSource ?authority .
+					  ?news fin:author ?author)""" ;
+   ] .
+
+
+# ----------------------------------------------------
+# Policy 10:
+# Trust only sources which published more than 3 news objects
+# ----------------------------------------------------
+
+:Policy10 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust only sources which published more than 3 news objects" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """?graph1 (?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by @@?authority@@ can be trusted because it provides more than 3 information objects." ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """?graph2 (?news fin:newsSource ?authority)""" ;
+    ] ;
+    tpl:constraint "COUNT(?news) >= 3" .
+
+
+# ----------------------------------------------------
+# Policy 11:
+# Don't trust the source the information is about
+# ----------------------------------------------------
+
+
+:Policy11 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Don't the source the information is about" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph1 (?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by the institution @@?authority@@ which is not the institution @@?about@@ ." ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph2 (?news fin:newsSource ?authority)""" ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph3 (?news fin:newsAbout ?about)""" ;
+    ] ;
+
+    tpl:constraint "?about NE ?authority" .  
+
+
+# ----------------------------------------------------
+# Policy 12:
+# Trust only sources which have at least one rating
+# ----------------------------------------------------
+
+
+:Policy12 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust only sources which have at least one rating" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph1 (?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by the institution @@?authority@@ which has at leas one rating." ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph2 (?rating fin:newsAbout ?authority .
+        						 ?rating rdf:type fin:Rating )""" ;
+    ] .
+
+# ----------------------------------------------------
+# Policy 13:
+# Trust only sources which have at least one news object
+# published by reuters
+# ----------------------------------------------------
+
+
+:Policy13 rdf:type tpl:TrustPolicy ;
+    tpl:policyName "Trust only sources which have at least one news object published by reuters" ;
+    tpl:textExplanation "The information is stated in the document" ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph1 (?GRAPH swp:assertedBy ?warrant .
+                        ?warrant swp:authority ?authority )""" ;
+        tpl:textExplanation "@@?GRAPH@@, which is asserted by the institution @@?authority@@ which has at leas one information object published by reuters." ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph2 (?news fin:newsSource ?authority .
+        						 ?news fin:author ?author )""" ;
+    ] ;
+    tpl:graphPattern [
+        tpl:pattern """ ?graph3 (?author foaf:name ?name )""" ;
+    ] ;
+    tpl:constraint "?name EQ ' Reuters '" .

@@ -1,0 +1,15 @@
+@prefix : <http://example.com/ns#> .
+
+:graph1 { :a :a :a }
+
+:graph2 :- { :b :b :b . }
+
+:graph3 {
+	:d :d :d .
+
+	# URIs are realtive to base URI
+	<#e> <#e> <#e> .
+
+	# TriG is always UTF-8 encoded
+	:a :a "äöü" .
+}

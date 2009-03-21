@@ -1,0 +1,55 @@
+--------------------------------
+Semantic Web Client Library V0.1
+--------------------------------
+
+Executing SPARQL query: 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX doap: <http://usefulinc.com/ns/doap#>
+SELECT DISTINCT ?name ?mbox ?projectName 
+WHERE { 
+  <http://dig.csail.mit.edu/2005/ajar/ajaw/data#Tabulator> doap:developer ?dev .
+  ?dev foaf:name ?name .
+  OPTIONAL { ?dev foaf:mbox ?mbox }
+  OPTIONAL { ?dev doap:Project ?proj . 
+             ?proj foaf:name ?projectName }
+}
+
+------------------------------------------------------------------------------------
+| name                   | mbox                     | projectName                  |
+====================================================================================
+| "Ruth Dhanaraj"        |                          |                              |
+| "Timothy Berners-Lee"  | <mailto:timbl@w3.org>    |                              |
+| "David Sheets"         |                          |                              |
+| "James Hollenbach"     | <mailto:jambo@mit.edu>   |                              |
+| "Dan Connolly"         | <mailto:connolly@w3.org> |                              |
+| "\n\n\n\nDan Connolly" | <mailto:connolly@w3.org> |                              |
+| "Adam Lerer"           | "alerer@mit.edu"         |                              |
+| "Yuhsin Joyce Chen"    | "yuhsin@mit.edu"         |                              |
+| "Yu-hsin Chen"         | "yuhsin@mit.edu"         |                              |
+| "Lydia Chilton"        | "hmslydia@gmail.com"     |                              |
+| "Lydia Chilton"        | "hmslydia@gmail.com"     | "The illustrious project II" |
+| "Lydia Chilton"        | "hmslydia@gmail.com"     | "The inimitable project III" |
+------------------------------------------------------------------------------------
+Successfully dereferenced URIs: 
+
+http://dig.csail.mit.edu/2005/ajar/ajaw/data
+http://usefulinc.com/ns/doap
+http://web.mit.edu/jambo/www/foaf.rdf
+http://www.w3.org/People/Berners-Lee/card
+http://web.mit.edu/hmslydia/Public/foaf.rdf
+http://web.mit.edu/alerer/www/foaf.rdf
+http://web.mit.edu/yuhsin/www/foaf.rdf
+http://web.mit.edu/ruthdhan/www/foaf.rdf
+http://web.mit.edu/dsheets/www/foaf.rdf
+http://xmlns.com/foaf/0.1/mbox
+http://xmlns.com/foaf/0.1/name
+http://www.w3.org/People/Connolly/home-smart.rdf
+http://web.mit.edu/hmslydia/Public/project02.rdf
+http://web.mit.edu/hmslydia/Public/project03.rdf
+--------------------------------
+Unsuccessfully dereferenced URIs: 
+
+http://www.w3.org/People/Connolly/
+http://open.bbc.co.uk/catalogue/xml/contributor/169456
+--------------------------------
