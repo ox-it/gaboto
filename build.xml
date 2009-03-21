@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project default="deploy" name="gaboto" basedir=".">
+    <description>The Gaboto Library</description>
+    
+    <property name="src.dir"     value="src"/>
+    <property name="build.dir"   value="bin"/>
+    <property name="lib.dir"     value="lib"/>
+	<property name="documentation.dir"     value="documentation"/>
+	<property name="example-data.dir"     value="exampledata"/>
+    <property name="deploy.tmp.dir"     value="deploy_tmp"/>
+	<property name="deploy.dir"     value="deploy"/>
+    <property name="vocab.dir"   value="src/org/oucs/gaboto/vocabulary"/>
+    
+    <property name="web.xml" value="src/web.xml" />
+    
+
+    <!-- load ant contrib -->
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+      <classpath>
+        <pathelement location="${lib.dir}/ant-contrib-0.6-bin/lib/ant-contrib-0.6.jar"/>
+      </classpath>
+    </taskdef>
+
+    <target name="make.fs.output">
+        <!-- creates a fileset including all the files from the output directory, called ecl1-bin if your binary directory is bin/ -->
+        <antclipse produce="fileset" idcontainer="ecl1" includeoutput="true" includesource="false"
+        includelibs="false" verbose="true"/>
+    </target>
+    <target name="make.fs.sources">
+        <!-- creates a fileset for each source directory, called ecl2-*source-dir-name*/ -->
+        <antclipse produce="fileset" idcontainer="ecl2" includeoutput="false" includesource="true"
+        includelibs="false" verbose="true"/>
+    </target>
+    <target name="make.fs.libs">
+        <!-- creates a fileset sontaining all your project libs called ecl3/ -->
+        <antclipse produce="fileset" idcontainer="ecl3" verbose="true"/>
+    </target>
+    <target name="make.cp">
+        <!-- creates a fileset sontaining all your project libs called eclp/ -->
+        <antclipse produce="classpath" idcontainer="eclp" verbose="true" includeoutput="true"/>
+    </target>
+    
+    
+    <target name="clean">
+        <tstamp>
+            <format property="now" pattern="d-MM-yyyy hh:mm aa"/>
+        </tstamp>
+        <echo message="===========================================" />
+        <echo message="Creating new build of Gaboto: ${now}"  />
+        <echo message="--------------------" />
+        <echo message="Cleaning current directory" />
+        <echo message="===========================================" />
+        
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="init">
+      <echo message="==========================================" />
+      <echo message="OS Name: ${os.name}                       " />
+      <echo message="Java Home: ${java.home}                   " />
+      <echo message="Ant java version: ${ant.java.version}     " />
+      <echo message="Java vendor: ${java.vendor}               " />
+      <echo message="Java Version: ${java.version}             " />
+      <echo message="==========================================" />
+     
+      <mkdir dir="${build.dir}"/>
+      <mkdir dir="${deploy.tmp.dir}"/>
+   </target>
+    
+    <!--
+     Creates Java helper classes for various schemata.
+    -->
+    <target name="schemas" depends="init, make.fs.libs, make.fs.output, make.fs.sources, make.cp">
+    	<!-- create Gaboto Vocabulary -->
+        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+          <arg value="-i" />
+          <arg value="ontologies/gaboto.owl" />
+          <arg value="-n" />
+          <arg value="GabotoVocab" />
+          <arg value="-o" />
+          <arg value="${vocab.dir}/GabotoVocab.java" />
+          <arg value="--ontology" />
+          <arg value="--package" />
+          <arg value="org.oucs.gaboto.vocabulary"/>
+        </java>
+    	
+    	<!-- create OxPoints Vocabulary -->
+        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+          <arg value="-i" />
+          <arg value="ontologies/oxpoints.owl" />
+          <arg value="-n" />
+          <arg value="OxPointsVocab" />
+          <arg value="-o" />
+          <arg value="${vocab.dir}/OxPointsVocab.java" />
+          <arg value="--ontology" />
+          <arg value="--package" />
+          <arg value="org.oucs.gaboto.vocabulary"/>
+        </java>
+        
+        <!-- create geo vocabulary -->
+        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+          <arg value="-i" />
+          <arg value="ontologies/geo.owl" />
+          <arg value="-o" />
+          <arg value="${vocab.dir}" />
+          <arg value="--classnamesuffix" />
+          <arg value="Vocab" />
+          <arg value="--include"/>
+          <arg value="http://www.w3.org/2003/01/geo/wgs84_pos"/>
+          <arg value="--ontology" />
+          <arg value="--package" />
+          <arg value="org.oucs.gaboto.vocabulary"/>
+        </java>
+        
+          <!-- create time vocabulary -->
+           <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+              <arg value="-i" />
+              <arg value="ontologies/time.owl" />
+              <arg value="-o" />
+              <arg value="${vocab.dir}" />
+              <arg value="--classnamesuffix" />
+              <arg value="Vocab" />
+              <arg value="--ontology" />
+              <arg value="--package" />
+              <arg value="org.oucs.gaboto.vocabulary"/>
+            </java>
+        
+        <!-- create rdfcon vocabulary -->
+                    <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+                      <arg value="-i" />
+                      <arg value="ontologies/rdfcon.owl" />
+                      <arg value="-n" />
+                      <arg value="RDFCON" />
+                      <arg value="-o" />
+                      <arg value="${vocab.dir}" />
+                      <arg value="--ontology" />
+                      <arg value="--package" />
+                      <arg value="org.oucs.gaboto.vocabulary"/>
+                    </java>
+        
+        <!-- create dc vocabulary -->
+                    <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+                      <arg value="-i" />
+                      <arg value="ontologies/DC.owl" />
+                      <arg value="-n" />
+                      <arg value="DC" />
+                      <arg value="-o" />
+                      <arg value="${vocab.dir}" />
+                      <arg value="--ontology" />
+                      <arg value="--package" />
+                      <arg value="org.oucs.gaboto.vocabulary"/>
+                    </java>
+        
+        <!-- create rdfg vocabulary -->
+            <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+              <arg value="-i" />
+              <arg value="ontologies/rdfg.rdf" />
+              <arg value="-n" />
+              <arg value="RDFG" />
+              <arg value="--rdfs" />
+              <arg value="-a" />
+              <arg value="http://www.w3.org/2004/03/trix/rdfg-1/"/>
+              <arg value="--ontology" />
+              <arg value="-o" />
+              <arg value="${vocab.dir}" />
+              <arg value="--package" />
+              <arg value="org.oucs.gaboto.vocabulary"/>
+            </java>
+
+        <!-- create vCard vocabulary -->
+        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+          <arg value="-i" />
+          <arg value="ontologies/vCard.owl" />
+          <arg value="-n" />
+          <arg value="VCard" />
+          <arg value="-o" />
+          <arg value="${vocab.dir}" />
+          <arg value="--ontology" />
+          <arg value="--package" />
+          <arg value="org.oucs.gaboto.vocabulary"/>
+        </java>
+    	
+    	<!-- create vCard vocabulary -->
+        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+          <arg value="-i" />
+          <arg value="ontologies/gabotoKML.owl" />
+          <arg value="-o" />
+          <arg value="${vocab.dir}" />
+          <arg value="--ontology" />
+          <arg value="--package" />
+          <arg value="org.oucs.gaboto.vocabulary"/>
+        </java>    	
+    </target>
+    
+
+    
+    
+    <!-- The entire build //-->
+    <target name="compile" depends="clean, init, make.fs.libs, make.fs.output, make.fs.sources, make.cp">
+        <echo message="The output path is ${ecl1outpath}"/>
+        <echo message="The source path is ${ecl2srcpath}"/>
+       
+        <!-- makes a jar file with the content of the output directory -->
+        <!-- zip destfile="${deploy.tmp.dir}/out.jar"><fileset refid="ecl1-${ecl1outpath}"/></zip -->
+        <!-- makes a zip file with all your sources (supposing you have only source directory) -->
+         <!-- zip destfile="${deploy.tmp.dir}/src.zip"><fileset refid="ecl2-${ecl2srcpath}"/></zip -->
+        <!-- makes a big zip file with all your project libraries -->
+        <!--zip destfile="${deploy.tmp.dir}/libs.zip"><fileset refid="ecl3"/></zip-->
+        
+        <!-- copy libs to deploy dir -->
+        <copy todir="${deploy.tmp.dir}/lib" flatten="true">
+            <fileset refid="ecl3"/>
+        </copy>
+        
+        
+        
+        <!-- imports the classpath into a property then echoes the property -->
+        <property name="cpcontent" refid="eclp"/>
+        <echo>The newly created classpath is ${cpcontent}</echo>
+        
+        <echo message="==========================================" />
+        <echo message="Compiling source files" />
+        <echo message="==========================================" />
+        
+        <javac 
+            debug="on"
+            srcdir="${src.dir}" 
+            destdir="${build.dir}"
+            nowarn="on"
+            encoding="utf-8"
+            classpathref="eclp"/>
+        
+        <echo message="==========================================" />
+        <echo message="Copy source and config files" />
+        <echo message="==========================================" />
+        <copy todir="${build.dir}">
+             <fileset dir="${src.dir}" includes="**/*.xml"/>
+             <fileset dir="${src.dir}" includes="**/*.properties"/>
+             <fileset dir="${src.dir}" includes="**/*.java"/>
+        	 <fileset dir="${src.dir}" includes="**/*.txt"/>
+        </copy>
+    </target>
+    
+	
+	<target name="deploy" depends="compile">
+    	<!-- copy properties -->
+    	<copy todir="${deploy.tmp.dir}">
+             <fileset dir="${src.dir}" includes="**/*.properties"/>
+        </copy>
+    	
+    	<!-- copy documentation -->
+    	<copy todir="${deploy.tmp.dir}/doc">
+    		   <fileset dir="${documentation.dir}"/>
+    	</copy>
+    	
+    	<!-- copy exampledata -->
+        <copy todir="${deploy.tmp.dir}/example-data">
+               <fileset dir="${example-data.dir}"/>
+        </copy>
+         
+         <jar destfile="${deploy.tmp.dir}/gaboto.jar" 
+                                 basedir="${build.dir}" includes="**/*.*">
+                <manifest>
+                  <attribute name="Created-By" value="Arno Mittelbach"/>
+                  
+                  <attribute name="Implementation-Title" value="gaboto"/>
+                  <attribute name="Implementation-Version" value="0.1beta"/>
+                </manifest>
+          </jar>
+        
+        <!-- create zipfile -->
+        <zip destfile="${deploy.dir}/gaboto.zip">
+            <fileset dir="${deploy.tmp.dir}"/>
+        </zip>
+    	
+    	<!-- copy gaboto jar -->
+    	<copy todir="${deploy.dir}">
+    		   <fileset file="${deploy.tmp.dir}/gaboto.jar"/>
+    	</copy>
+    	
+    	<!-- cleanup -->
+    	<delete dir="${deploy.tmp.dir}"/>
+    </target>
+	
+    <target name="gabotoConfiguration" depends="compile">
+         <java classname="org.oucs.gaboto.helperscripts.CreateClassesFromConfiguration" classpathref="eclp" fork="yes">
+           <arg value="src/Gaboto.xml"/>
+           <arg value="src/org/oucs/gaboto/entities"/>
+           <arg value="src/org/oucs/gaboto/beans"/>
+           <arg value="src/org/oucs/gaboto/util"/>
+         </java>
+    </target>
+	
+	<target name="configureAndDeploy" depends="gabotoConfiguration">
+		<antcall target="compile"/>
+		<antcall target="deploy"/>
+	</target>
+    
+</project>
