@@ -231,15 +231,15 @@ public class TestTimeSpan {
 			
 			ts = TimeSpan.createFromInstants(early, late);
 			
-			/*System.out.println(early);
+			System.out.println(early);
 			System.out.println(ts.getBegin());
 			System.out.println(late);
 			System.out.println(ts.getEnd());
 			System.out.println();
-			*/
+			
 			
 			assertTrue(ts.getBegin().aboutTheSame(early));
-			assertTrue(ts.getEnd().aboutTheSame(late));
+			assertTrue(ts.getEnd() + " not the same as " + late, ts.getEnd().aboutTheSame(late));
 		}
 	}
 	
