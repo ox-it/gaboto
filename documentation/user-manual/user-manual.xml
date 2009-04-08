@@ -1036,7 +1036,8 @@ public class Test1 {
                                     <p>
                                         The <ref target="#chap_objectModel_Gaboto">Gaboto</ref> object provides two mechanisms to
                                         find entities. You can either ask for a set of URIs (<emph>getEntityURIsFor</emph>) or directly create
-                                        <ref target="#chap_objectModel_GabotoTimeBasedEntity">GabotoTimeBasedEntities</ref> (<epmh>loadEntitiesOverTimeWithProperty</epmh>).
+                                        <ref target="#chap_objectModel_GabotoTimeBasedEntity">GabotoTimeBasedEntities</ref> 
+                                        (<emph>loadEntitiesOverTimeWithProperty</emph>).
                                     </p>
                                     <p>
                                         This example lists all URIs of entities that have a title:
@@ -2332,7 +2333,7 @@ public class CollegesNearEntity extends GabotoQueryImpl {
                         see, how we use the entities and properties, defined in this ontology in the Gaboto configuration.
                     </p>
                     <egXML xmlns="http://www.tei-c.org/ns/Examples">
-                        <xi:include href="../../ontologies/Gaboto.owl"/>
+                        <xi:include href="../../ontologies/gaboto.owl"/>
                     </egXML>
                 </div>
             </div>
