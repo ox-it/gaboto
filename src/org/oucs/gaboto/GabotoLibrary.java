@@ -60,7 +60,7 @@ public class GabotoLibrary {
 		GabotoLibrary.config = config;
 		
 		// configure logging
-		PropertyConfigurator.configure("src/log4j.properties");
+		PropertyConfigurator.configure("log4j.properties");
 		
 		logger.info("Gaboto system has been initialized.");
 	}
