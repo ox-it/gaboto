@@ -5,10 +5,10 @@
     <property name="src.dir"     value="src"/>
     <property name="build.dir"   value="bin"/>
     <property name="lib.dir"     value="lib"/>
-	<property name="documentation.dir"     value="documentation"/>
-	<property name="example-data.dir"     value="exampledata"/>
+    <property name="documentation.dir"     value="documentation"/>
+    <property name="example-data.dir"     value="exampledata"/>
     <property name="deploy.tmp.dir"     value="deploy_tmp"/>
-	<property name="deploy.dir"     value="deploy"/>
+    <property name="deploy.dir"     value="deploy"/>
     <property name="vocab.dir"   value="src/org/oucs/gaboto/vocabulary"/>
     
     <property name="web.xml" value="src/web.xml" />
@@ -71,7 +71,7 @@
      Creates Java helper classes for various schemata.
     -->
     <target name="schemas" depends="init, make.fs.libs, make.fs.output, make.fs.sources, make.cp">
-    	<!-- create Gaboto Vocabulary -->
+        <!-- create Gaboto Vocabulary -->
         <java classname="jena.schemagen" classpathref="eclp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/gaboto.owl" />
@@ -83,8 +83,8 @@
           <arg value="--package" />
           <arg value="org.oucs.gaboto.vocabulary"/>
         </java>
-    	
-    	<!-- create OxPoints Vocabulary -->
+        
+        <!-- create OxPoints Vocabulary -->
         <java classname="jena.schemagen" classpathref="eclp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/oxpoints.owl" />
@@ -179,8 +179,8 @@
           <arg value="--package" />
           <arg value="org.oucs.gaboto.vocabulary"/>
         </java>
-    	
-    	<!-- create vCard vocabulary -->
+        
+        <!-- create vCard vocabulary -->
         <java classname="jena.schemagen" classpathref="eclp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/gabotoKML.owl" />
@@ -189,7 +189,7 @@
           <arg value="--ontology" />
           <arg value="--package" />
           <arg value="org.oucs.gaboto.vocabulary"/>
-        </java>    	
+        </java>        
     </target>
     
 
@@ -237,23 +237,23 @@
              <fileset dir="${src.dir}" includes="**/*.xml"/>
              <fileset dir="${src.dir}" includes="**/*.properties"/>
              <fileset dir="${src.dir}" includes="**/*.java"/>
-        	 <fileset dir="${src.dir}" includes="**/*.txt"/>
+             <fileset dir="${src.dir}" includes="**/*.txt"/>
         </copy>
     </target>
     
-	
-	<target name="deploy" depends="compile">
-    	<!-- copy properties -->
-    	<copy todir="${deploy.tmp.dir}">
+    
+    <target name="deploy" depends="compile">
+        <!-- copy properties -->
+        <copy todir="${deploy.tmp.dir}">
              <fileset dir="${src.dir}" includes="**/*.properties"/>
         </copy>
-    	
-    	<!-- copy documentation -->
-    	<copy todir="${deploy.tmp.dir}/doc">
-    		   <fileset dir="${documentation.dir}"/>
-    	</copy>
-    	
-    	<!-- copy exampledata -->
+        
+        <!-- copy documentation -->
+        <copy todir="${deploy.tmp.dir}/doc">
+               <fileset dir="${documentation.dir}"/>
+        </copy>
+        
+        <!-- copy exampledata -->
         <copy todir="${deploy.tmp.dir}/example-data">
                <fileset dir="${example-data.dir}"/>
         </copy>
@@ -272,16 +272,16 @@
         <zip destfile="${deploy.dir}/gaboto.zip">
             <fileset dir="${deploy.tmp.dir}"/>
         </zip>
-    	
-    	<!-- copy gaboto jar -->
-    	<copy todir="${deploy.dir}">
-    		   <fileset file="${deploy.tmp.dir}/gaboto.jar"/>
-    	</copy>
-    	
-    	<!-- cleanup -->
-    	<delete dir="${deploy.tmp.dir}"/>
+        
+        <!-- copy gaboto jar -->
+        <copy todir="${deploy.dir}">
+               <fileset file="${deploy.tmp.dir}/gaboto.jar"/>
+        </copy>
+        
+        <!-- cleanup -->
+        <delete dir="${deploy.tmp.dir}"/>
     </target>
-	
+    
     <target name="gabotoConfiguration" depends="compile">
          <java classname="org.oucs.gaboto.helperscripts.CreateClassesFromConfiguration" classpathref="eclp" fork="yes">
            <arg value="src/Gaboto.xml"/>
@@ -290,10 +290,11 @@
            <arg value="src/org/oucs/gaboto/util"/>
          </java>
     </target>
-	
-	<target name="configureAndDeploy" depends="gabotoConfiguration">
-		<antcall target="compile"/>
-		<antcall target="deploy"/>
-	</target>
+    
+    <target name="configureAndDeploy" depends="gabotoConfiguration">
+        <antcall target="compile"/>
+        <antcall target="deploy"/>
+    </target>
     
 </project>
+
