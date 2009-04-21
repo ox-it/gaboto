@@ -236,7 +236,8 @@
         <copy todir="${build.dir}">
              <fileset dir="${src.dir}" includes="**/*.xml"/>
              <fileset dir="${src.dir}" includes="**/*.properties"/>
-             <fileset dir="${src.dir}" includes="**/*.java"/>
+	     <!-- Maven is not hapy with the souces being in the jar -->
+             <!--fileset dir="${src.dir}" includes="**/*.java"/ -->
              <fileset dir="${src.dir}" includes="**/*.txt"/>
         </copy>
     </target>
