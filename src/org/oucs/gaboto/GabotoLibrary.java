@@ -37,7 +37,6 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.xml.sax.SAXException;
 
 /**
@@ -58,9 +57,6 @@ public class GabotoLibrary {
 	 */
 	public static void init(GabotoConfiguration config){
 		GabotoLibrary.config = config;
-		
-		// configure logging
-		PropertyConfigurator.configure("log4j.properties");
 		
 		logger.info("Gaboto system has been initialized.");
 	}
