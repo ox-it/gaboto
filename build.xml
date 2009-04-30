@@ -2,16 +2,18 @@
 <project default="deploy" name="gaboto" basedir=".">
     <description>The Gaboto Library</description>
     
-    <property name="src.dir"     value="src"/>
-    <property name="build.dir"   value="bin"/>
-    <property name="lib.dir"     value="lib"/>
+    
+    <property name="version"       value="0.2-beta" />
+    <property name="src.dir"       value="src/main/java"/>
+    <property name="conf.dir"      value="src/main/conf"/>
+    <property name="resources.dir" value="src/resources"/>
+    <property name="build.dir"     value="bin"/>
+    <property name="lib.dir"       value="lib"/>
     <property name="documentation.dir"     value="documentation"/>
     <property name="example-data.dir"     value="exampledata"/>
     <property name="deploy.tmp.dir"     value="deploy_tmp"/>
     <property name="deploy.dir"     value="deploy"/>
-    <property name="vocab.dir"   value="src/org/oucs/gaboto/vocabulary"/>
-    
-    <property name="web.xml" value="src/web.xml" />
+    <property name="vocab.dir"   value="src/main/java/org/oucs/gaboto/vocabulary"/>
     
 
     <!-- load ant contrib -->
@@ -112,60 +114,60 @@
           <arg value="org.oucs.gaboto.vocabulary"/>
         </java>
         
-          <!-- create time vocabulary -->
-           <java classname="jena.schemagen" classpathref="eclp" fork="yes">
-              <arg value="-i" />
-              <arg value="ontologies/time.owl" />
-              <arg value="-o" />
-              <arg value="${vocab.dir}" />
-              <arg value="--classnamesuffix" />
-              <arg value="Vocab" />
-              <arg value="--ontology" />
-              <arg value="--package" />
-              <arg value="org.oucs.gaboto.vocabulary"/>
-            </java>
+        <!-- create time vocabulary -->
+        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+          <arg value="-i" />
+          <arg value="ontologies/time.owl" />
+          <arg value="-o" />
+          <arg value="${vocab.dir}" />
+          <arg value="--classnamesuffix" />
+          <arg value="Vocab" />
+          <arg value="--ontology" />
+          <arg value="--package" />
+          <arg value="org.oucs.gaboto.vocabulary"/>
+        </java>
         
         <!-- create rdfcon vocabulary -->
-                    <java classname="jena.schemagen" classpathref="eclp" fork="yes">
-                      <arg value="-i" />
-                      <arg value="ontologies/rdfcon.owl" />
-                      <arg value="-n" />
-                      <arg value="RDFCON" />
-                      <arg value="-o" />
-                      <arg value="${vocab.dir}" />
-                      <arg value="--ontology" />
-                      <arg value="--package" />
-                      <arg value="org.oucs.gaboto.vocabulary"/>
-                    </java>
+        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+          <arg value="-i" />
+          <arg value="ontologies/rdfcon.owl" />
+          <arg value="-n" />
+          <arg value="RDFCON" />
+          <arg value="-o" />
+          <arg value="${vocab.dir}" />
+          <arg value="--ontology" />
+          <arg value="--package" />
+          <arg value="org.oucs.gaboto.vocabulary"/>
+        </java>
         
         <!-- create dc vocabulary -->
-                    <java classname="jena.schemagen" classpathref="eclp" fork="yes">
-                      <arg value="-i" />
-                      <arg value="ontologies/DC.owl" />
-                      <arg value="-n" />
-                      <arg value="DC" />
-                      <arg value="-o" />
-                      <arg value="${vocab.dir}" />
-                      <arg value="--ontology" />
-                      <arg value="--package" />
-                      <arg value="org.oucs.gaboto.vocabulary"/>
-                    </java>
+        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+          <arg value="-i" />
+          <arg value="ontologies/DC.owl" />
+          <arg value="-n" />
+          <arg value="DC" />
+          <arg value="-o" />
+          <arg value="${vocab.dir}" />
+          <arg value="--ontology" />
+          <arg value="--package" />
+          <arg value="org.oucs.gaboto.vocabulary"/>
+        </java>
         
         <!-- create rdfg vocabulary -->
-            <java classname="jena.schemagen" classpathref="eclp" fork="yes">
-              <arg value="-i" />
-              <arg value="ontologies/rdfg.rdf" />
-              <arg value="-n" />
-              <arg value="RDFG" />
-              <arg value="--rdfs" />
-              <arg value="-a" />
-              <arg value="http://www.w3.org/2004/03/trix/rdfg-1/"/>
-              <arg value="--ontology" />
-              <arg value="-o" />
-              <arg value="${vocab.dir}" />
-              <arg value="--package" />
-              <arg value="org.oucs.gaboto.vocabulary"/>
-            </java>
+        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+          <arg value="-i" />
+          <arg value="ontologies/rdfg.rdf" />
+          <arg value="-n" />
+          <arg value="RDFG" />
+          <arg value="--rdfs" />
+          <arg value="-a" />
+          <arg value="http://www.w3.org/2004/03/trix/rdfg-1/"/>
+          <arg value="--ontology" />
+          <arg value="-o" />
+          <arg value="${vocab.dir}" />
+          <arg value="--package" />
+          <arg value="org.oucs.gaboto.vocabulary"/>
+        </java>
 
         <!-- create vCard vocabulary -->
         <java classname="jena.schemagen" classpathref="eclp" fork="yes">
@@ -180,7 +182,7 @@
           <arg value="org.oucs.gaboto.vocabulary"/>
         </java>
         
-        <!-- create vCard vocabulary -->
+        <!-- create gabotoKML vocabulary -->
         <java classname="jena.schemagen" classpathref="eclp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/gabotoKML.owl" />
@@ -198,7 +200,7 @@
     <!-- The entire build //-->
     <target name="compile" depends="clean, init, make.fs.libs, make.fs.output, make.fs.sources, make.cp">
         <echo message="The output path is ${ecl1outpath}"/>
-        <echo message="The source path is ${ecl2srcpath}"/>
+        <echo message="The source path is ${ecl1srcpath}"/>
        
         <!-- makes a jar file with the content of the output directory -->
         <!-- zip destfile="${deploy.tmp.dir}/out.jar"><fileset refid="ecl1-${ecl1outpath}"/></zip -->
@@ -234,11 +236,10 @@
         <echo message="Copy source and config files" />
         <echo message="==========================================" />
         <copy todir="${build.dir}">
-             <fileset dir="${src.dir}" includes="**/*.xml"/>
-             <fileset dir="${src.dir}" includes="**/*.properties"/>
-	     <!-- Maven is not hapy with the souces being in the jar -->
+             <fileset dir="${conf.dir}" includes="**/*.*"/>
+             <fileset dir="${resources.dir}" includes="**/*.*"/>
+	     <!-- Maven is not happy with the sources being in the jar -->
              <!--fileset dir="${src.dir}" includes="**/*.java"/ -->
-             <fileset dir="${src.dir}" includes="**/*.txt"/>
         </copy>
     </target>
     
@@ -246,7 +247,7 @@
     <target name="deploy" depends="compile">
         <!-- copy properties -->
         <copy todir="${deploy.tmp.dir}">
-             <fileset dir="${src.dir}" includes="**/*.properties"/>
+             <fileset dir="${conf.dir}" includes="**/*.properties"/>
         </copy>
         
         <!-- copy documentation -->
@@ -265,7 +266,7 @@
                   <attribute name="Created-By" value="Arno Mittelbach"/>
                   
                   <attribute name="Implementation-Title" value="gaboto"/>
-                  <attribute name="Implementation-Version" value="0.1beta"/>
+                  <attribute name="Implementation-Version" value="${version}"/>
                 </manifest>
           </jar>
         
@@ -278,6 +279,10 @@
         <copy todir="${deploy.dir}">
                <fileset file="${deploy.tmp.dir}/gaboto.jar"/>
         </copy>
+        <!-- FIXME HACK Maven install -->
+        <copy tofile="/home/timp/.m2/repository/sf/net/gaboto/${version}/gaboto-${version}.jar">
+               <fileset file="${deploy.tmp.dir}/gaboto.jar"/>
+        </copy>
         
         <!-- cleanup -->
         <delete dir="${deploy.tmp.dir}"/>
@@ -285,10 +290,10 @@
     
     <target name="gabotoConfiguration" depends="compile">
          <java classname="org.oucs.gaboto.helperscripts.CreateClassesFromConfiguration" classpathref="eclp" fork="yes">
-           <arg value="src/Gaboto.xml"/>
-           <arg value="src/org/oucs/gaboto/entities"/>
-           <arg value="src/org/oucs/gaboto/beans"/>
-           <arg value="src/org/oucs/gaboto/util"/>
+           <arg value="src/main/conf/Gaboto.xml"/>
+           <arg value="src/main/java/org/oucs/gaboto/entities"/>
+           <arg value="src/main/java/org/oucs/gaboto/beans"/>
+           <arg value="src/main/java/org/oucs/gaboto/util"/>
          </java>
     </target>
     
