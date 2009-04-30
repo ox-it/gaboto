@@ -40,14 +40,21 @@ import org.oucs.gaboto.vocabulary.GabotoVocab;
 import org.oucs.gaboto.vocabulary.RDFCON;
 
 public class GabotoPredefinedQueries {
+  private static String QUERY_LOCATION = "/queries/";
 
-	private static String readQueryFile(String name) throws IOException{
-		InputStream is = GabotoPredefinedQueries.class.getResourceAsStream("/resources/queries/" + name);
-		
+	private static String readQueryFile(String name) {
+	  
+		InputStream is = GabotoPredefinedQueries.class.getResourceAsStream(QUERY_LOCATION + name);
+    if (is == null)
+      throw new NullPointerException("Cannot open classpath resource " + QUERY_LOCATION + name);
 		StringBuffer out = new StringBuffer();
 	    byte[] b = new byte[4096];
-	    for (int n; (n = is.read(b)) != -1;) 
-	        out.append(new String(b, 0, n));
+	    try {
+        for (int n; (n = is.read(b)) != -1;) 
+            out.append(new String(b, 0, n));
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
         
         return out.toString();
 	}
@@ -58,12 +65,12 @@ public class GabotoPredefinedQueries {
 			   	"PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
 			   	"PREFIX gaboto:<" + GabotoVocab.NS + ">\n" +
 			   	"PREFIX data:<" + GabotoLibrary.getConfig().getNSData() + ">\n" +
-				"PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\n" +
-				"PREFIX owl:<http://www.w3.org/2002/07/owl#>\n" +
-				"PREFIX xsd:<http://www.w3.org/2001/XMLSchema>\n" +
-				"PREFIX rdfcon:<" + RDFCON.NS + ">\n" +
-				"PREFIX owl-time:<http://www.w3.org/2006/time#>\n" +
-				"PREFIX rdfg:<http://www.w3.org/2004/03/trix/rdfg-1/>\n";
+			  	"PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\n" +
+				  "PREFIX owl:<http://www.w3.org/2002/07/owl#>\n" +
+			  	"PREFIX xsd:<http://www.w3.org/2001/XMLSchema>\n" +
+			  	"PREFIX rdfcon:<" + RDFCON.NS + ">\n" +
+			  	"PREFIX owl-time:<http://www.w3.org/2006/time#>\n" +
+			  	"PREFIX rdfg:<http://www.w3.org/2004/03/trix/rdfg-1/>\n";
 		
 		for(Entry<String, String> entry : GabotoLibrary.getConfig().getNamespacePrefixes().entrySet())
 			prefixes += "PREFIX " + entry.getKey() + ":<" + entry.getValue() + ">\n";
@@ -72,22 +79,12 @@ public class GabotoPredefinedQueries {
 	}
 	
 	public static String getTimeInformationQuery(String graph){
-		try {
-			String query = readQueryFile("gettimeinformation.txt");
-			return String.format(query, "<" + graph + ">");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return "";
+  	String query = readQueryFile("gettimeinformation.txt");
+		return String.format(query, "<" + graph + ">");
 	}
 		
 
 	public static String getTimeDimensionIndexQuery(){
-		try {
-			return readQueryFile("timeindex.txt");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return "";
+		return readQueryFile("timeindex.txt");
 	}
 }
