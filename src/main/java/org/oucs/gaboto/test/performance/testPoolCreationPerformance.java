@@ -43,7 +43,6 @@ import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.query.GabotoQuery;
-import org.oucs.gaboto.model.query.GabotoQueryImpl;
 import org.oucs.gaboto.sample.CollegesNearEntity;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.util.PerformanceAverager;
