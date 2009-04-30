@@ -1196,7 +1196,7 @@ public class Gaboto {
 		Collection<String> uris = new HashSet<String>();
 		
 		// find in named graphs
-		Iterator it = getNamedGraphSet().findQuads(
+		Iterator<?> it = getNamedGraphSet().findQuads(
 				Node.ANY, Node.ANY, Node.createURI(prop.getURI()), Node.ANY);
 		while(it.hasNext()){
 			Quad q = (Quad) it.next();
@@ -1218,7 +1218,7 @@ public class Gaboto {
 		Collection<String> uris = new HashSet<String>();
 		
 		// find in named graphs
-		Iterator it = getNamedGraphSet().findQuads(
+		Iterator<?> it = getNamedGraphSet().findQuads(
 				Node.ANY, Node.ANY, Node.createURI(prop.getURI()), Node.createLiteral(value));
 		while(it.hasNext()){
 			Quad q = (Quad) it.next();
@@ -1240,7 +1240,7 @@ public class Gaboto {
 		Collection<String> uris = new HashSet<String>();
 		
 		// find in named graphs
-		Iterator it = getNamedGraphSet().findQuads(
+		Iterator<?> it = getNamedGraphSet().findQuads(
 				Node.ANY, Node.ANY, Node.createURI(prop.getURI()), value);
 		while(it.hasNext()){
 			Quad q = (Quad) it.next();
@@ -1350,6 +1350,10 @@ public class Gaboto {
 	}
 	
 	public void read(InputStream oxpIS,InputStream cdgIS){
+    if(oxpIS == null)
+      throw new NullPointerException();
+    if(cdgIS == null)
+      throw new NullPointerException();
 		getNamedGraphSet().read(oxpIS, "TRIG", null);
 		getContextDescriptionGraph().read(cdgIS,"RDF/XML");
 	}
