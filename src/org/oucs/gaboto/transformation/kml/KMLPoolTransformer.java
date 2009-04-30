@@ -57,18 +57,24 @@ import org.w3c.dom.Element;
 public class KMLPoolTransformer implements EntityPoolTransformer {
 
 	/**
-	 * The KML namespace
+	 * The KML namespace.
 	 */
 	public static final String KML_NS = "http://www.opengis.net/kml/2.2";
 	
 	/**
-	 * The KML extension namespace
+	 * The KML extension namespace.
 	 */
 	public static final String KML_GX_NS = "http://www.google.com/kml/ext/2.2";
 	
 	private String orderBy = null;
 	private boolean displayParentName = true;
 	private Map<String, Collection<String>> entityFolderTypes = new HashMap<String, Collection<String>>();
+  /**
+   * The maximum allowed nesting level
+   */
+  public static final int MAX_NESTING = 8;
+  
+  private int nesting = 1;
 	
 	public String transform(GabotoEntityPool pool) {
 		Document kmlDoc = getKMLDocumentTemplate();
@@ -296,4 +302,21 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	public boolean isDisplayParentName() {
 		return displayParentName;
 	}
+
+  /**
+   * @param nesting the nesting level 
+   */
+  public void setNesting(int nesting) {
+    if(nesting < 1 || nesting > MAX_NESTING)
+      throw new IllegalArgumentException("Nesting has to be between 0 and " + MAX_NESTING);
+    this.nesting = nesting;
+  }
+
+  /**
+   * @return the nesting
+   */
+  public int getNesting() {
+    return nesting;
+  }
+	
 }
