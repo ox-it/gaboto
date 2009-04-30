@@ -108,7 +108,6 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 		return json.toString();
 	}
 
-	@SuppressWarnings("unchecked")
 	private void transformEntity(GabotoEntity entity, JSONStringer json, int level) throws JSONException {
 		// store basic knowledge
 		
@@ -136,6 +135,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 			levelMap.put(entity, level);
 		}
 		
+    // FIXME TPP Typo?
 		if(level > nesting){
 			json.key("nestingToDeep").value(true);
 			json.endObject();
@@ -194,6 +194,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 	}
 
 	private void transformBean(GabotoBean bean, JSONStringer json, int level) throws JSONException {
+    // FIXME TPP Typo?
 		if(level > nesting){
 			json.object();
 			json.key("nestingToDeep").value(true);
