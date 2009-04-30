@@ -45,7 +45,6 @@ import org.oucs.gaboto.model.events.GabotoRemovalEvent;
 import org.oucs.gaboto.model.listener.UpdateListener;
 import org.oucs.gaboto.timedim.index.SimpleTimeDimensionIndexer;
 import org.oucs.gaboto.util.Performance;
-import org.oucs.gaboto.vocabulary.GabotoVocab;
 import org.oucs.gaboto.vocabulary.RDFCON;
 
 import com.hp.hpl.jena.db.DBConnection;
@@ -182,15 +181,14 @@ public class GabotoFactory {
 		try {
 			Class.forName(config.getDbDriver());
 		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
+      throw new RuntimeException(e1);
 		}
 		Connection connection = null;
 		try {
-			connection = DriverManager.getConnection(URL, USER, PW);
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-			System.exit(-1);
-		}
+      connection = DriverManager.getConnection(URL, USER, PW);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
 
 		// Create a new graphset
 		Performance.start("load");
@@ -257,8 +255,7 @@ public class GabotoFactory {
 		try {
 			Class.forName(M_DBDRIVER_CLASS);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			System.exit(1);
+      throw new RuntimeException(e);
 		}
 
 		// create a database connection
