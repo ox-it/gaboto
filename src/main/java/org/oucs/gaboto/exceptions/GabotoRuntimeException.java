@@ -44,7 +44,22 @@ public class GabotoRuntimeException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = 39494612063670208L;
 
-	public GabotoRuntimeException(){
+	/**
+   * @param message
+   * @param cause
+   */
+  public GabotoRuntimeException(String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  /**
+   * @param cause
+   */
+  public GabotoRuntimeException(Throwable cause) {
+    super(cause);
+  }
+
+  public GabotoRuntimeException(){
 		super();
 	}
 	
