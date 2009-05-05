@@ -32,7 +32,7 @@
 package org.oucs.gaboto.exceptions;
 
 /**
- * Bas class for any runtime exception in the Gaboto system.
+ * Base class for any runtime exception in the Gaboto system.
  * 
  * @author Arno Mittelbach
  *
