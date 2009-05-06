@@ -37,8 +37,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.json.JSONException;
-import org.json.JSONStringer;
+import net.sf.json.JSONException;
+import net.sf.json.util.JSONStringer;
 import org.oucs.gaboto.beans.GabotoBean;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
@@ -78,13 +78,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 	private int collectProperties = COLLECT_DIRECT_PROPERTIES | COLLECT_INDIRECT_PROPERTIES | COLLECT_PASSIVE_PROPERTIES;
 	
 	public String transform(GabotoEntityPool pool) {
-		try {
 			return transfromEntities(pool.getEntities());
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		
-		return "";
 	}
 
 	private String transfromEntities(Collection<GabotoEntity> entities) throws JSONException{
@@ -97,11 +91,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 		
 		json.array();
 		for(GabotoEntity entity : entities){
-			try {
-				transformEntity(entity, json, 1);
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+			transformEntity(entity, json, 1);
 		}
 		json.endArray();
 		
