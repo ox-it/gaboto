@@ -42,6 +42,7 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.timedim.TimeSpan;
 
@@ -70,7 +71,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
  * <p>
  * {@link GabotoSnapshot}s provide one solution to this problem. They allow you to represent
  * the part of the data you are interested in in one flat RDF graph that you can then easily
- * query against. Furthermore, snapshots can be used to automatically create the in java representation of
+ * query against. Furthermore, snapshots can be used to automatically create the in-java representation of
  * Gaboto ontology objects ({@link GabotoEntity}s) using the {@link GabotoEntityPool} object.
  * </p>
  * 
@@ -160,9 +161,8 @@ public class GabotoSnapshot {
 		try {
 			return gaboto.getEntitysLifetime(uri);
 		} catch (EntityDoesNotExistException e) {
-			e.printStackTrace();
+	    return null;
 		}
-		return null;
 	}
 
 	/**
@@ -356,18 +356,22 @@ public class GabotoSnapshot {
 	
 	public GabotoEntityPool loadEntitiesWithProperty(String propURI, String value){
 		Property prop = getProperty(propURI);
-		if(null == prop)
-			return new GabotoEntityPool(this.gaboto, this);
+    if (prop == null)
+      throw new GabotoRuntimeException("Property not found: " + propURI);
+		//if(null == prop)
+		//	return new GabotoEntityPool(this.gaboto, this);
 		
-		return loadEntitiesWithProperty(getProperty(propURI), value);
+		return loadEntitiesWithProperty(prop, value);
 	}
 	
 	public GabotoEntityPool loadEntitiesWithProperty(String propURI, Object value){
 		Property prop = getProperty(propURI);
-		if(null == prop)
-			return new GabotoEntityPool(this.gaboto, this);
+    if (prop == null)
+      throw new GabotoRuntimeException("Property not found: " + propURI);
+		//if(null == prop)
+		//	return new GabotoEntityPool(this.gaboto, this);
 		
-		return loadEntitiesWithProperty(getProperty(propURI), value);
+		return loadEntitiesWithProperty(prop, value);
 	}
 	
 	
@@ -414,7 +418,7 @@ public class GabotoSnapshot {
 	 * @param resources The collection of resources
 	 * @return The entity pool
 	 */
-	private GabotoEntityPool loadEntityPoolFromResources(Collection<Resource> resources){
+	private GabotoEntityPool loadEntityPoolFromResources(Collection<Resource> resources) {
 		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(this);
 		config.setResources(resources);
 		config.setAddReferencedEntitiesToPool(false);
@@ -422,13 +426,8 @@ public class GabotoSnapshot {
 		try {
 			return GabotoEntityPool.createFrom(config);
 		} catch (EntityPoolInvalidConfigurationException e) {
-			e.printStackTrace();
+			throw new GabotoRuntimeException(e);
 		}
-		
-		// we should not be able to get to this point
-		assert(false);
-		
-		return null;
 	}
 	
 	/**
