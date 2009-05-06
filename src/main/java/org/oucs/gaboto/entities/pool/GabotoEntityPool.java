@@ -106,7 +106,7 @@ public class GabotoEntityPool {
 	private GabotoSnapshot snapshot;
 	
 	/**
-	 * Creates a new and empty entity pool.
+	 * Creates a new, empty entity pool.
 	 * 
 	 * <p>
 	 * If you want to be able to load passive properties, supply the snapshot
@@ -126,7 +126,7 @@ public class GabotoEntityPool {
 	
 	
 	/**
-	 * Creates a new and empty entity pool with a given configuration.
+	 * Creates a new, empty entity pool with a given configuration.
 	 * 
 	 * <p>
 	 * The configuration can be used to define {@link EntityFilter}s.
@@ -289,7 +289,7 @@ public class GabotoEntityPool {
 	}
 	
 	/**
-	 * Sets a new configuration object
+	 * Sets a new configuration object.
 	 * 
 	 * @param config
 	 */
@@ -734,7 +734,7 @@ public class GabotoEntityPool {
 	}
 	
 	/**
-	 * Returns all the entities registered in this pool filtered by type
+	 * Returns all the entities registered in this pool filtered by type.
 	 * @param entityType The GabotoEntity Class describing the entity
 	 * @return A filtered set of entities.
 	 */
