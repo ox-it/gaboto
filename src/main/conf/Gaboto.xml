@@ -27,9 +27,9 @@
                 <driver>org.postgresql.Driver</driver>
             -->           
             <engineName>MySQL</engineName>
-            <url>jdbc:mysql://localhost:8889/oxp</url>
+            <url>jdbc:mysql://localhost/oxp</url>
             <user>root</user>
-            <password>root</password>
+            <password></password>
             <driver>com.mysql.jdbc.Driver</driver>
         </database>
     </config>
