@@ -281,7 +281,7 @@
         </copy>
         <!-- FIXME HACK Maven install -->
 	<!-- ~/.m2/repository/sf/net/gaboto/0.2/gaboto-0.2.jar -->
-        <copy tofile="~/.m2/repository/net/sf/gaboto/gaboto/${version}/gaboto-${version}.jar">
+        <copy tofile="/home/timp/.m2/repository/net/sf/gaboto/gaboto/${version}/gaboto-${version}.jar">
                <fileset file="${deploy.tmp.dir}/gaboto.jar"/>
         </copy>
         
