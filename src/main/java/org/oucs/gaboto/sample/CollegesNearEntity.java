@@ -121,7 +121,7 @@ public class CollegesNearEntity extends GabotoQueryImpl {
 		GabotoEntityPool entities = snapshot.loadEntitiesWithProperty(DC_11.title, title);
 		Iterator<GabotoEntity> it = entities.getEntities().iterator();
 		if(! it.hasNext())
-			throw new IllegalArgumentException("There is no entity with that title.");
+			throw new IllegalArgumentException("There is no entity with title '" + title + "'");
 		GabotoEntity entity = it.next();
 		
 		// we do not know what kind of entity we have
