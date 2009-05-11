@@ -31,6 +31,8 @@
  */
 package org.oucs.gaboto.test.performance;
 
+import java.io.InputStream;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
@@ -93,11 +95,21 @@ public class testPoolCreationPerformance {
 		System.out.println(perf);
 	}
 	
-	@Test
-	public void testQuery1() throws GabotoException{
-		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+	
+	// FIXME Broken - no DB configured and will not run from rdf 
+	//@Test
+	public void brokenTestQuery1() throws Exception{
+	   // load Gaboto
+    GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+    Gaboto gaboto = GabotoFactory.getEmptyInMemoryGaboto();
+    
+    gaboto.read(getResourceOrDie("graphs.rdf"), getResourceOrDie("cdg.rdf"));
+ 
+    gaboto = GabotoFactory.getInMemoryGaboto();
 
-		CollegesNearEntity query = new CollegesNearEntity(oxp, "Somerville College", 10, TimeInstant.now());
+    gaboto.recreateTimeDimensionIndex();
+    
+		CollegesNearEntity query = new CollegesNearEntity(gaboto, "Somerville College", 10, TimeInstant.now());
 		query.prepare();
 		
 		PerformanceAverager perf = new PerformanceAverager("Test query 1");
@@ -111,4 +123,12 @@ public class testPoolCreationPerformance {
 		
 		System.out.println(perf);
 	}
+  private InputStream getResourceOrDie(String fileName) { 
+    String resourceName = "exampledata/" + fileName;
+    InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceName);
+    if (is == null) 
+      throw new NullPointerException("File " + resourceName + " cannot be loaded");
+    return is;
+  }
+	
 }
