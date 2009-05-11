@@ -61,7 +61,6 @@ import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.timedim.TimeUtils;
 import org.oucs.gaboto.timedim.index.TimeDimensionIndexer;
-import org.oucs.gaboto.vocabulary.GabotoVocab;
 import org.oucs.gaboto.vocabulary.RDFCON;
 import org.oucs.gaboto.vocabulary.RDFG;
 import org.oucs.gaboto.vocabulary.TimeVocab;
