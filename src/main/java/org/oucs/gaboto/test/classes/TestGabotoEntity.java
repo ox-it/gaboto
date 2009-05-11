@@ -31,7 +31,8 @@
  */
 package org.oucs.gaboto.test.classes;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -43,7 +44,6 @@ import org.oucs.gaboto.GabotoLibrary;
 import org.oucs.gaboto.beans.Location;
 import org.oucs.gaboto.entities.Building;
 import org.oucs.gaboto.entities.Carpark;
-import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.Unit;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
@@ -179,7 +179,6 @@ public class TestGabotoEntity {
 			}
 
 			public boolean stopProcessing() {
-				// TODO Auto-generated method stub
 				return false;
 			}
 			
