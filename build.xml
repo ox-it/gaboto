@@ -14,35 +14,15 @@
     <property name="deploy.tmp.dir"     value="deploy_tmp"/>
     <property name="deploy.dir"     value="deploy"/>
     <property name="vocab.dir"   value="src/main/java/org/oucs/gaboto/vocabulary"/>
+
+     <path id="cp" >
+      <pathelement path="${classpath}"/>
+      <fileset dir="lib" id="libs">
+        <include name="**/*.jar"/>
+      </fileset>
+    </path>
     
 
-    <!-- load ant contrib -->
-    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
-      <classpath>
-        <pathelement location="${lib.dir}/ant-contrib-0.6-bin/lib/ant-contrib-0.6.jar"/>
-      </classpath>
-    </taskdef>
-
-    <target name="make.fs.output">
-        <!-- creates a fileset including all the files from the output directory, called ecl1-bin if your binary directory is bin/ -->
-        <antclipse produce="fileset" idcontainer="ecl1" includeoutput="true" includesource="false"
-        includelibs="false" verbose="true"/>
-    </target>
-    <target name="make.fs.sources">
-        <!-- creates a fileset for each source directory, called ecl2-*source-dir-name*/ -->
-        <antclipse produce="fileset" idcontainer="ecl2" includeoutput="false" includesource="true"
-        includelibs="false" verbose="true"/>
-    </target>
-    <target name="make.fs.libs">
-        <!-- creates a fileset sontaining all your project libs called ecl3/ -->
-        <antclipse produce="fileset" idcontainer="ecl3" verbose="true"/>
-    </target>
-    <target name="make.cp">
-        <!-- creates a fileset sontaining all your project libs called eclp/ -->
-        <antclipse produce="classpath" idcontainer="eclp" verbose="true" includeoutput="true"/>
-    </target>
-    
-    
     <target name="clean">
         <tstamp>
             <format property="now" pattern="d-MM-yyyy hh:mm aa"/>
@@ -67,14 +47,15 @@
      
       <mkdir dir="${build.dir}"/>
       <mkdir dir="${deploy.tmp.dir}"/>
+
    </target>
     
     <!--
      Creates Java helper classes for various schemata.
     -->
-    <target name="schemas" depends="init, make.fs.libs, make.fs.output, make.fs.sources, make.cp">
+    <target name="schemas" depends="init">
         <!-- create Gaboto Vocabulary -->
-        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+        <java classname="jena.schemagen" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/gaboto.owl" />
           <arg value="-n" />
@@ -87,7 +68,7 @@
         </java>
         
         <!-- create OxPoints Vocabulary -->
-        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+        <java classname="jena.schemagen" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/oxpoints.owl" />
           <arg value="-n" />
@@ -100,7 +81,7 @@
         </java>
         
         <!-- create geo vocabulary -->
-        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+        <java classname="jena.schemagen" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/geo.owl" />
           <arg value="-o" />
@@ -115,7 +96,7 @@
         </java>
         
         <!-- create time vocabulary -->
-        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+        <java classname="jena.schemagen" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/time.owl" />
           <arg value="-o" />
@@ -128,7 +109,7 @@
         </java>
         
         <!-- create rdfcon vocabulary -->
-        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+        <java classname="jena.schemagen" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/rdfcon.owl" />
           <arg value="-n" />
@@ -141,7 +122,7 @@
         </java>
         
         <!-- create dc vocabulary -->
-        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+        <java classname="jena.schemagen" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/DC.owl" />
           <arg value="-n" />
@@ -154,7 +135,7 @@
         </java>
         
         <!-- create rdfg vocabulary -->
-        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+        <java classname="jena.schemagen" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/rdfg.rdf" />
           <arg value="-n" />
@@ -170,7 +151,7 @@
         </java>
 
         <!-- create vCard vocabulary -->
-        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+        <java classname="jena.schemagen" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/vCard.owl" />
           <arg value="-n" />
@@ -183,7 +164,7 @@
         </java>
         
         <!-- create gabotoKML vocabulary -->
-        <java classname="jena.schemagen" classpathref="eclp" fork="yes">
+        <java classname="jena.schemagen" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/gabotoKML.owl" />
           <arg value="-o" />
@@ -198,7 +179,7 @@
     
     
     <!-- The entire build //-->
-    <target name="compile" depends="clean, init, make.fs.libs, make.fs.output, make.fs.sources, make.cp">
+    <target name="compile" depends="clean, init">
         <echo message="The output path is ${ecl1outpath}"/>
         <echo message="The source path is ${ecl1srcpath}"/>
        
@@ -211,13 +192,13 @@
         
         <!-- copy libs to deploy dir -->
         <copy todir="${deploy.tmp.dir}/lib" flatten="true">
-            <fileset refid="ecl3"/>
+            <fileset refid="libs"/>
         </copy>
         
         
         
         <!-- imports the classpath into a property then echoes the property -->
-        <property name="cpcontent" refid="eclp"/>
+        <property name="cpcontent" refid="cp"/>
         <echo>The newly created classpath is ${cpcontent}</echo>
         
         <echo message="==========================================" />
@@ -230,7 +211,7 @@
             destdir="${build.dir}"
             nowarn="on"
             encoding="utf-8"
-            classpathref="eclp"/>
+            classpathref="cp"/>
         
         <echo message="==========================================" />
         <echo message="Copy source and config files" />
