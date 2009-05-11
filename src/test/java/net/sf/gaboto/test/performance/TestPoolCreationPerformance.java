@@ -48,7 +48,7 @@ import org.oucs.gaboto.sample.CollegesNearEntity;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.util.PerformanceAverager;
 
-public class testPoolCreationPerformance {
+public class TestPoolCreationPerformance {
 
 	private static int RUNS = 50;
 
