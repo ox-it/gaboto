@@ -305,7 +305,7 @@ public class Gaboto {
 			logger.debug("add graph to snapshot: " + g);
 			NamedGraph graph = ngs.getGraph(g);
 			if(null == graph)	
-				throw new IllegalArgumentException("Unknown graph: " + graph);
+				throw new IllegalArgumentException("Unknown graph: " + g);
 			
 			// add statements to snapshot model
 			ExtendedIterator it = graph.find(Node.ANY, Node.ANY, Node.ANY);
