@@ -35,17 +35,8 @@ import java.util.Random;
 import java.util.UUID;
 
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.exceptions.GabotoException;
-import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
-import org.oucs.gaboto.vocabulary.GabotoVocab;
-import org.oucs.gaboto.vocabulary.OxPointsVocab;
-
-import com.hp.hpl.jena.graph.Node;
-import com.hp.hpl.jena.graph.Triple;
-import com.hp.hpl.jena.vocabulary.RDF;
 
 public final class TestUtils {
 
