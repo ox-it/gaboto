@@ -31,26 +31,12 @@
  */
 package org.oucs.gaboto.helperscripts;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.beans.GabotoBean;
-import org.oucs.gaboto.util.XMLUtils;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class CreateClassesFromConfiguration {
