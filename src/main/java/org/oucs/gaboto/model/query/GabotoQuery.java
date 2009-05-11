@@ -113,7 +113,7 @@ public interface GabotoQuery {
 	public String[] getSupportedFormats();
 	
 	/**
-	 * Should be called afther the query is configured. 
+	 * Should be called after the query is configured. 
 	 * 
 	 * @throws GabotoException
 	 * @throws QueryAlreadyPreparedException
