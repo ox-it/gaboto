@@ -49,7 +49,6 @@ import org.oucs.gaboto.model.query.GabotoQueryImpl;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
-import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.DC_11;
 
 public class CollegesNearEntity extends GabotoQueryImpl {
