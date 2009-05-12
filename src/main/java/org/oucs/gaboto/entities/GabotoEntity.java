@@ -76,7 +76,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * 
  * <p>
  * These entity classes are used by the Gaboto system as an intermediate format to provide an
- * easy to use API when working with the Gaboto library. Since adding new classes to the Gaboto
+ * API when working with the Gaboto library. Since adding new classes to the Gaboto
  * ontology might happen frequently, the actual representation of its java equivalent (the GabotoEntity)
  * is a very simple JavaBean (see <a href="http://en.wikipedia.org/wiki/JavaBean">Wikipedia entry</a>),
  * that only contains get and set methods for its attributes. The generation of an entity object from
