@@ -29,10 +29,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.exceptions;
+package org.oucs.gaboto.entities.pool;
 
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 
 /**
  * Is thrown if the {@link GabotoEntityPoolConfiguration} can be used for the creation of an {@link GabotoEntityPool}, but

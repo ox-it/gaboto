@@ -48,7 +48,6 @@ import org.oucs.gaboto.entities.pool.filters.ResourceFilter;
 import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.EntityClassNotFoundException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
-import org.oucs.gaboto.exceptions.EntityPoolAmbiguousConfigurationException;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;

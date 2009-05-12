@@ -36,7 +36,6 @@ import java.util.HashSet;
 
 import org.oucs.gaboto.entities.pool.filters.EntityFilter;
 import org.oucs.gaboto.entities.pool.filters.ResourceFilter;
-import org.oucs.gaboto.exceptions.EntityPoolAmbiguousConfigurationException;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
