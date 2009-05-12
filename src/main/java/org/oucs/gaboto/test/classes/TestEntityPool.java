@@ -108,20 +108,23 @@ public class TestEntityPool {
 		Gaboto op = GabotoFactory.getInMemoryGaboto();
 		
 		// as long as there is no data for the future in the system, this should hold
-		Model m = op.getSnapshot(TimeInstant.now()).getModel();
-		GabotoEntityPool pool =  GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(op,m));
+		Model m1 = op.getSnapshot(TimeInstant.now()).getModel();
+		GabotoEntityPool pool =  GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(op,m1));
 		Model m2 = pool.createJenaModel();
 		
 		
-		StmtIterator it = m.listStatements();
+		StmtIterator it = m1.listStatements();
 		while(it.hasNext()){
 			Statement stmt = it.nextStatement();
 			if(! m2.contains(stmt))
 				System.out.println("stmt not in m2: " + stmt);
 		}
 		
-		//assertEquals(m.size(),m2.size());
-		assertTrue(Math.abs(m.size()-m2.size()) < 10);
+
+		//assertEquals(m1.size() + " not equal " + m2.size(),m1.size(),m2.size());
+		//System.err.println(m1.size() + " not less then 25 smaller than " + m2.size());
+		// FIXME TPP What is going on here? was 10 in mysql
+		assertTrue(m1.size() + " not less then 25 smaller than " + m2.size(), Math.abs(m1.size()-m2.size()) < 2);
 	}
 	
 	@Test
@@ -154,21 +157,21 @@ public class TestEntityPool {
 		
 		pool = GabotoEntityPool.createFrom(config);
 		
-		// access some properties
+		// Access some properties
 		for(College c : pool.getEntities(new College())){
-			c.getPrimaryPlace();
+			System.err.println(c.getPrimaryPlace());
 		}
 		
-		boolean foundCollage = false;
+		boolean foundCollege = false;
 		boolean foundBuilding = false;
 		for(GabotoEntity e : pool.getEntities()){
 			if(e instanceof Building)
 				foundBuilding = true;
 			if(e instanceof College)
-				foundCollage = true;
+				foundCollege = true;
 		}
 		
-		assertTrue(foundCollage);
+		assertTrue(foundCollege);
 		assertTrue(foundBuilding);
 	}
 	
@@ -308,13 +311,13 @@ public class TestEntityPool {
 		config.addAcceptedType(OxPointsVocab.College_URI);
 		config.addResourceFilter(new PropertyExistsFilter(DC_11.title));
 		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
-		assertTrue(pool.getSize() > 0);
+		assertTrue("We have an empty pool; size: " + pool.getSize(), pool.getSize() > 0);
 		
 		config = new GabotoEntityPoolConfiguration(snap);
 		config.addAcceptedType(OxPointsVocab.College_URI);
 		config.addResourceFilter(new PropertyEqualsFilter(DC_11.title, "Somerville College"));
 		pool = GabotoEntityPool.createFrom(config);
-		assertTrue(pool.getSize() == 1);
+		assertTrue("Pool size is greater than 1:" + pool.getSize(), pool.getSize() == 1);
 		
 		Resource col = snap.getResource(pool.getEntities().toArray(new GabotoEntity[1])[0].getUri());
 		config = new GabotoEntityPoolConfiguration(snap);
