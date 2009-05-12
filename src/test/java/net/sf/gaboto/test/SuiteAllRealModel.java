@@ -59,5 +59,5 @@ import org.junit.runners.Suite;
 	TestSimpleConstructSPARQLQuery.class,
 	TestGaboto.class
 })
-public class TestAllRealModel {
+public class SuiteAllRealModel {
 }
