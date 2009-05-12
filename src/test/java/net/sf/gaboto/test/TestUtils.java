@@ -29,38 +29,77 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.test.classes;
+package net.sf.gaboto.test;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.oucs.gaboto.GabotoConfiguration;
+import java.util.Random;
+import java.util.UUID;
+
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.exceptions.GabotoException;
-import org.oucs.gaboto.model.query.GabotoQuery;
-import org.oucs.gaboto.model.query.defined.SimpleConstructSPARQLQuery;
 import org.oucs.gaboto.timedim.TimeInstant;
-import org.oucs.gaboto.util.GabotoPredefinedQueries;
-import org.oucs.gaboto.vocabulary.OxPointsVocab;
+import org.oucs.gaboto.timedim.TimeSpan;
 
-public class TestSimpleConstructSPARQLQuery {
+public final class TestUtils {
 
-	@BeforeClass
-	public static void setUp() throws Exception {
-		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+	
+	public static TimeSpan getRandomTimespan(){
+		return getRandomTimespan(0.5, 0.5, 0.85, 0.95, 0.5, 0.5);
 	}
 	
-	@Test
-	public void testQuery() throws GabotoException{
-		String query = GabotoPredefinedQueries.getStandardPrefixes();
-		query += "PREFIX oxp: <" + OxPointsVocab.NS + ">\n";
-		query += "CONSTRUCT { ?a ?b ?c. } WHERE {\n" +
-		     "?a rdf:type oxp:College . \n" +
-		     "?a dc:title ?title . \n" +
-		     "FILTER regex(?title, \"^b\", \"i\") . \n" +
-		     "?a ?b ?c . \n" +
-		     "}";
-
-		SimpleConstructSPARQLQuery sparqlQuery = new SimpleConstructSPARQLQuery(TimeInstant.now(), query);
-		String result = (String) sparqlQuery.execute(GabotoQuery.FORMAT_RDF_XML);
+	/**
+	 *
+	 * @return
+	 */
+	public static TimeSpan getRandomTimespan(double prob1, double prob2, double prob3, double prob4, double prob5, double prob6){
+		Random r = new Random();
+		TimeSpan ts = new TimeSpan();
+		ts.setStartYear(r.nextInt(2009));
+		boolean month = false, day = false;
+		if(r.nextDouble() < prob1){
+			month = true;
+			ts.setStartMonth(r.nextInt(12));
+			if(r.nextDouble() < prob2){
+				day = true;
+				ts.setStartDay(r.nextInt(28));
+			}
+		}
+		
+		if(r.nextDouble() < prob3){
+			if(r.nextDouble() < prob4)
+				ts.setDurationYear(r.nextInt(2009-ts.getStartYear()));
+			if(month && r.nextDouble() < prob5)
+				ts.setDurationMonth(r.nextInt(12));
+			if(day && r.nextDouble() < prob6)
+				ts.setDurationDay(r.nextInt(30));
+		}
+		
+		return ts;
 	}
+	
+	/**
+	 *
+	 * @return
+	 */
+	public static TimeInstant getRandomTimeinstant(){
+		Random r = new Random();
+		TimeInstant ti = new TimeInstant();
+		ti.setStartYear(r.nextInt(2009));
+		if(r.nextDouble() < 0.5){
+			ti.setStartMonth(r.nextInt(12));
+			if(r.nextDouble() < 0.5){
+				ti.setStartDay(r.nextInt(28));
+			}
+		}
+		
+		return ti;
+	}
+	
+	public static String generateRandomURI(){
+		String uri = GabotoLibrary.getConfig().getNSData();
+		
+		uri += UUID.randomUUID().toString().substring(0,10);
+		
+		return uri;
+	}
+	
+
 }

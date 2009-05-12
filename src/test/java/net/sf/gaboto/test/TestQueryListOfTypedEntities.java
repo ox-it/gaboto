@@ -29,35 +29,28 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.test.classes;
+package net.sf.gaboto.test;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.oucs.gaboto.GabotoConfiguration;
+import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.exceptions.GabotoException;
+import org.oucs.gaboto.model.query.GabotoQuery;
+import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
+import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
-/**
- * A test suite containing all tests.
- * 
- * @author Arno Mittelbach
- *
- */
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-	TestTimeInstant.class,
-	TestTimeSpan.class,
-
-	TestEntityPool.class,
-	TestGabotoEntityUtils.class,
+public class TestQueryListOfTypedEntities {
 	
-	TestGabotoTimeBasedEntity.class,
+	@BeforeClass
+	public static void setUp() throws Exception {
+		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+	}
 	
-	TestGabotoEntity.class,
-
-	TestGabotoSnapshot.class,
-	TestPassiveProperties.class,
-	
-	TestQueryListOfTypedEntities.class,
-	TestSimpleConstructSPARQLQuery.class,
-	TestGaboto.class
-})
-public class TestAllRealModel {
+	@Test
+	public void testQuery() throws GabotoException{
+		GabotoQuery query = new ListOfTypedEntities(OxPointsVocab.Building_URI, TimeInstant.now() );
+		String result = (String) query.execute(GabotoQuery.FORMAT_KML);
+	}
 }

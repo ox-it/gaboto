@@ -29,77 +29,35 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.test.classes;
+package net.sf.gaboto.test;
 
-import java.util.Random;
-import java.util.UUID;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.timedim.TimeInstant;
-import org.oucs.gaboto.timedim.TimeSpan;
+/**
+ * A test suite containing all tests.
+ * 
+ * @author Arno Mittelbach
+ *
+ */
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+	TestTimeInstant.class,
+	TestTimeSpan.class,
 
-public final class TestUtils {
+	TestEntityPool.class,
+	TestGabotoEntityUtils.class,
+	
+	TestGabotoTimeBasedEntity.class,
+	
+	TestGabotoEntity.class,
 
+	TestGabotoSnapshot.class,
+	TestPassiveProperties.class,
 	
-	public static TimeSpan getRandomTimespan(){
-		return getRandomTimespan(0.5, 0.5, 0.85, 0.95, 0.5, 0.5);
-	}
-	
-	/**
-	 *
-	 * @return
-	 */
-	public static TimeSpan getRandomTimespan(double prob1, double prob2, double prob3, double prob4, double prob5, double prob6){
-		Random r = new Random();
-		TimeSpan ts = new TimeSpan();
-		ts.setStartYear(r.nextInt(2009));
-		boolean month = false, day = false;
-		if(r.nextDouble() < prob1){
-			month = true;
-			ts.setStartMonth(r.nextInt(12));
-			if(r.nextDouble() < prob2){
-				day = true;
-				ts.setStartDay(r.nextInt(28));
-			}
-		}
-		
-		if(r.nextDouble() < prob3){
-			if(r.nextDouble() < prob4)
-				ts.setDurationYear(r.nextInt(2009-ts.getStartYear()));
-			if(month && r.nextDouble() < prob5)
-				ts.setDurationMonth(r.nextInt(12));
-			if(day && r.nextDouble() < prob6)
-				ts.setDurationDay(r.nextInt(30));
-		}
-		
-		return ts;
-	}
-	
-	/**
-	 *
-	 * @return
-	 */
-	public static TimeInstant getRandomTimeinstant(){
-		Random r = new Random();
-		TimeInstant ti = new TimeInstant();
-		ti.setStartYear(r.nextInt(2009));
-		if(r.nextDouble() < 0.5){
-			ti.setStartMonth(r.nextInt(12));
-			if(r.nextDouble() < 0.5){
-				ti.setStartDay(r.nextInt(28));
-			}
-		}
-		
-		return ti;
-	}
-	
-	public static String generateRandomURI(){
-		String uri = GabotoLibrary.getConfig().getNSData();
-		
-		uri += UUID.randomUUID().toString().substring(0,10);
-		
-		return uri;
-	}
-	
-
+	TestQueryListOfTypedEntities.class,
+	TestSimpleConstructSPARQLQuery.class,
+	TestGaboto.class
+})
+public class TestAllRealModel {
 }

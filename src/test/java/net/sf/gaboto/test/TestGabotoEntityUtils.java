@@ -29,19 +29,28 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.test.classes;
+package net.sf.gaboto.test;
+
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.exceptions.GabotoException;
-import org.oucs.gaboto.model.query.GabotoQuery;
-import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
-import org.oucs.gaboto.timedim.TimeInstant;
-import org.oucs.gaboto.vocabulary.OxPointsVocab;
+import org.oucs.gaboto.entities.Building;
+import org.oucs.gaboto.entities.Unit;
+import org.oucs.gaboto.exceptions.IllegalAnnotationException;
+import org.oucs.gaboto.exceptions.UnsupportedFormatException;
+import org.oucs.gaboto.vocabulary.DC;
 
-public class TestQueryListOfTypedEntities {
+import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
+import com.hp.hpl.jena.graph.Node;
+import com.hp.hpl.jena.graph.Triple;
+
+public class TestGabotoEntityUtils {
+
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -49,8 +58,20 @@ public class TestQueryListOfTypedEntities {
 	}
 	
 	@Test
-	public void testQuery() throws GabotoException{
-		GabotoQuery query = new ListOfTypedEntities(OxPointsVocab.Building_URI, TimeInstant.now() );
-		String result = (String) query.execute(GabotoQuery.FORMAT_KML);
+	public void testEntityToTriples() throws UnsupportedFormatException, IllegalAnnotationException{
+		Unit u = new Unit();
+		u.setUri("http://exampleuri.co.uk/lala");
+		
+		Building b = new Building();
+		b.setUri("http://exampleuri.co.uk");
+		b.setName("Abcdef");
+
+		List<Triple> triples = b.getTriplesFor();
+		
+		assertTrue(triples.contains(new Triple(
+			Node.createURI(b.getUri()),
+			Node.createURI(DC.title_URI),
+			Node.createLiteral(b.getName(), null, XSDDatatype.XSDstring)
+		)));
 	}
 }

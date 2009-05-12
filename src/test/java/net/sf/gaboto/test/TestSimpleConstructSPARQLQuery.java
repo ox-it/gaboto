@@ -29,28 +29,20 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.test.classes;
-
-import static org.junit.Assert.assertTrue;
+package net.sf.gaboto.test;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.entities.College;
-import org.oucs.gaboto.entities.GabotoEntity;
-import org.oucs.gaboto.entities.Website;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
-import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
-import org.oucs.gaboto.model.GabotoSnapshot;
+import org.oucs.gaboto.exceptions.GabotoException;
+import org.oucs.gaboto.model.query.GabotoQuery;
+import org.oucs.gaboto.model.query.defined.SimpleConstructSPARQLQuery;
 import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.util.GabotoPredefinedQueries;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
-public class TestPassiveProperties {
-
+public class TestSimpleConstructSPARQLQuery {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -58,43 +50,17 @@ public class TestPassiveProperties {
 	}
 	
 	@Test
-	public void testClassicPropertyLoading() throws EntityPoolInvalidConfigurationException{
-		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
-		
-		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
-		config.addAcceptedType(OxPointsVocab.Website_URI);
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
-		
-		boolean foundPassive = false;
-		for(GabotoEntity e : pool.getEntities()){
-			Website web = (Website) e;
-			
-			if(null != web.getIsHomepageIn())
-				foundPassive = true;
-		}
-		
-		assertTrue(foundPassive);
+	public void testQuery() throws GabotoException{
+		String query = GabotoPredefinedQueries.getStandardPrefixes();
+		query += "PREFIX oxp: <" + OxPointsVocab.NS + ">\n";
+		query += "CONSTRUCT { ?a ?b ?c. } WHERE {\n" +
+		     "?a rdf:type oxp:College . \n" +
+		     "?a dc:title ?title . \n" +
+		     "FILTER regex(?title, \"^b\", \"i\") . \n" +
+		     "?a ?b ?c . \n" +
+		     "}";
+
+		SimpleConstructSPARQLQuery sparqlQuery = new SimpleConstructSPARQLQuery(TimeInstant.now(), query);
+		String result = (String) sparqlQuery.execute(GabotoQuery.FORMAT_RDF_XML);
 	}
-	
-	@Test
-	public void testClassicPropertyLoading2() throws EntityPoolInvalidConfigurationException{
-		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
-		
-		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
-		config.addAcceptedType(OxPointsVocab.College_URI);
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
-		
-		boolean foundPassive = false;
-		for(GabotoEntity e : pool.getEntities()){
-			College col = (College) e;
-			
-			if(null != col.getOccupiedBuildings())
-				foundPassive = true;
-		}
-		
-		assertTrue(foundPassive);
-	}
-	
 }

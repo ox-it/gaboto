@@ -134,13 +134,16 @@ public class GabotoFactory {
 		Iterator graphIt = po.getNamedGraphSet().listGraphs();
 		while(graphIt.hasNext())
 			graphset.createGraph(((NamedGraph)graphIt.next()).getGraphName());
+    System.err.println("here");
 		
 		Iterator it = po.getNamedGraphSet().findQuads(Node.ANY, Node.ANY, Node.ANY, Node.ANY);
 		while(it.hasNext())
 			graphset.addQuad((Quad)it.next());
+    System.err.println("here");
 		
 		inMemoryGaboto = new Gaboto(createCDG(), graphset, new SimpleTimeDimensionIndexer());
 		
+    System.err.println("here");
 		return inMemoryGaboto;
 	}
 	
@@ -167,12 +170,13 @@ public class GabotoFactory {
 	 * @see GabotoConfiguration
 	 */
 	public static Gaboto getPersistentGaboto() {
-		// does it alreay exist?
+		// does it already exist?
 		if(persistentGaboto instanceof Gaboto)
 			return persistentGaboto;
 		
 		// get config
 		GabotoConfiguration config = GabotoLibrary.getConfig();
+    System.err.println("here1");
 		
 		// create persistent gaboto
 		String URL = config.getDbURL();
@@ -184,11 +188,13 @@ public class GabotoFactory {
       throw new RuntimeException(e1);
 		}
 		Connection connection = null;
+    System.err.println("URL:"+URL + " USER:"+USER+ " PWD:"+PW);
 		try {
       connection = DriverManager.getConnection(URL, USER, PW);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
+    System.err.println("her2e");
 
 		// Create a new graphset
 		Performance.start("load");
@@ -198,6 +204,7 @@ public class GabotoFactory {
 		// if graphset is empty, create special graphs
 		if(! graphset.containsGraph(config.getGKG()))
 			createGKG(graphset);
+    System.err.println("here3");
 
 		// create object
 		persistentGaboto = new Gaboto(createCDG(), graphset, new SimpleTimeDimensionIndexer());
@@ -230,6 +237,7 @@ public class GabotoFactory {
 				}
 			}
 		});
+    System.err.println("here4");
 		
 		return persistentGaboto;
 	}
