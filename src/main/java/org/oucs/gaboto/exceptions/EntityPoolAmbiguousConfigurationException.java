@@ -43,11 +43,8 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
  * @see GabotoEntityPoolConfiguration
  */
 public class EntityPoolAmbiguousConfigurationException extends
-		GabotoException {
+		GabotoRuntimeException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8376775080480820745L;
 
 	public EntityPoolAmbiguousConfigurationException(String msg){
