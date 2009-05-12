@@ -32,7 +32,7 @@
 /**
  * 
  */
-package org.oucs.gaboto.model.test;
+package net.sf.gaboto.test;
 
 import java.util.Collection;
 
