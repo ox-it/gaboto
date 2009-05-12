@@ -150,7 +150,9 @@ public class TestGaboto {
 		
 		Collection<String> uris = oxp.getEntityURIsFor(DC_11.title);
 		assertTrue(uris.size() > 0);
+		int counter = 0;
 		for(String u : uris){
+		  if (counter++>30) continue;
 			GabotoTimeBasedEntity tb = oxp.getEntityOverTime(u);
 			Iterator<GabotoEntity> it = tb.iterator();
 			while(it.hasNext()){
