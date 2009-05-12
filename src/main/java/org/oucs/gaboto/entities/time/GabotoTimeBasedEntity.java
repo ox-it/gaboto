@@ -705,7 +705,8 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity>{
 		try{
 			returnType.cast(value);
 		} catch(ClassCastException e){
-			IllegalArgumentException iae = new IllegalArgumentException("The get method's return type and the supplied object do not work well together." );
+			IllegalArgumentException iae = new IllegalArgumentException(
+			    "The get method's return type ("+returnType+") and the supplied object ("+value.getClass()+") do not work well together." );
 			iae.initCause(e);
 			throw iae;
 		}
