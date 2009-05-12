@@ -106,8 +106,6 @@ public class ListOfTypedEntities extends GabotoQueryImpl {
 
 	@Override
 	protected void doPrepare() throws GabotoException {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }
