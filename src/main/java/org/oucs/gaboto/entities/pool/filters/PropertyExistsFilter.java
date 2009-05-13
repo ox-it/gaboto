@@ -37,45 +37,52 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- * Filter to be used in creation of entity pool to ensure that each resource this filter applies to does not have a certain property.
+ * Filter to be used in creation of entity pool to ensure that each resource
+ * this filter applies to does not have a certain property.
  * 
  * @author Arno Mittelbach
  * @version 0.1
  */
 public class PropertyExistsFilter extends ResourceFilter {
 
-	private Property property;
-	private Class<? extends GabotoEntity> appliesTo; 
-	
-	/**
-	 * Instantiates a new filter with the supplied property that applies to all entity types.
-	 * 
-	 * @param property The property to look for.
-	 */
-	public PropertyExistsFilter(Property property){
-		this.property = property;
-		this.appliesTo = GabotoEntity.class;
-	}
-	
-	/**
-	 * Instantiates a new filter with the supplied property that applies to the passed entity types.
-	 * 
-	 * @param property The property to look for.
-	 * @param appliesTo The entity type this filter applies to.
-	 */
-	public PropertyExistsFilter(Property property, Class<? extends GabotoEntity> appliesTo){
-		this.property = property;
-		this.appliesTo = appliesTo;
-	}
-	
-	@Override
-	public Class<? extends GabotoEntity> appliesTo(){
-		return appliesTo;
-	}
-	
-	@Override
-	public boolean filterResource(Resource res) {
-		return res.hasProperty(property);
-	}
+  private Property property;
+  private Class<? extends GabotoEntity> appliesTo;
+
+  /**
+   * Instantiates a new filter with the supplied property that applies to all
+   * entity types.
+   * 
+   * @param property
+   *          The property to look for.
+   */
+  public PropertyExistsFilter(Property property) {
+    this.property = property;
+    this.appliesTo = GabotoEntity.class;
+  }
+
+  /**
+   * Instantiates a new filter with the supplied property that applies to the
+   * passed entity types.
+   * 
+   * @param property
+   *          The property to look for.
+   * @param appliesTo
+   *          The entity type this filter applies to.
+   */
+  public PropertyExistsFilter(Property property,
+      Class<? extends GabotoEntity> appliesTo) {
+    this.property = property;
+    this.appliesTo = appliesTo;
+  }
+
+  @Override
+  public Class<? extends GabotoEntity> appliesTo() {
+    return appliesTo;
+  }
+
+  @Override
+  public boolean filterResource(Resource res) {
+    return res.hasProperty(property);
+  }
 
 }
