@@ -215,72 +215,72 @@ class GabotoClassGeneration {
 		lookupClass += "@SuppressWarnings(\"unchecked\")\n";
 	    lookupClass += "public class GabotoOntologyLookup{\n";
 		
-	    lookupClass += "\tprivate static Map<String,String> entityClassLookupNames;\n";
-	    lookupClass += "\tprivate static Map<String,Class<? extends GabotoEntity>> entityClassLookupClass;\n";
-	    lookupClass += "\tprivate static Map<Class<? extends GabotoEntity>, String> classToURILookup;\n";
-	    lookupClass += "\tprivate static Collection<String> entityClassNames;\n";
-		lookupClass += "\tprivate static Set<String> entityTypes;\n\n";
+	    lookupClass += "  private static Map<String,String> entityClassLookupNames;\n";
+	    lookupClass += "  private static Map<String,Class<? extends GabotoEntity>> entityClassLookupClass;\n";
+	    lookupClass += "  private static Map<Class<? extends GabotoEntity>, String> classToURILookup;\n";
+	    lookupClass += "  private static Collection<String> entityClassNames;\n";
+		lookupClass += "  private static Set<String> entityTypes;\n\n";
 
-		lookupClass += "\tstatic{\n";
-		lookupClass += "\t\tentityClassLookupNames = new HashMap<String,String>();\n\n";
+		lookupClass += "  static{\n";
+		lookupClass += "    entityClassLookupNames = new HashMap<String,String>();\n\n";
 		for(Entry<String, String>entry : entityClassLookup.entrySet()){
-			lookupClass += "\t\tentityClassLookupNames.put(\"" + entry.getKey() + "\", \"" + entry.getValue() + "\");\n";
+			lookupClass += "    entityClassLookupNames.put(\"" + entry.getKey() + "\", \"" + entry.getValue() + "\");\n";
 		}
-		lookupClass += "\t}\n\n";
+		lookupClass += "  }\n\n";
 		
-		lookupClass += "\tstatic{\n";
-		lookupClass += "\t\tentityClassLookupClass = new HashMap<String,Class<? extends GabotoEntity>>();\n\n";
-		lookupClass += "\t\ttry {\n";
+		lookupClass += "  static{\n";
+		lookupClass += "    entityClassLookupClass = new HashMap<String,Class<? extends GabotoEntity>>();\n\n";
+		lookupClass += "    try {\n";
 		for(Entry<String, String>entry : entityClassLookup.entrySet()){
-			lookupClass += "\t\t\tentityClassLookupClass.put(\"" + entry.getKey() + "\", (Class<?  extends GabotoEntity>) Class.forName(\"" +  entityPackageName + "." + entry.getValue() + "\"));\n";
+			lookupClass += "      entityClassLookupClass.put(\"" + entry.getKey() + "\", (Class<?  extends GabotoEntity>) Class.forName(\"" +  entityPackageName + "." + entry.getValue() + "\"));\n";
 		}
-		lookupClass += "\t\t} catch (ClassNotFoundException e) {\n";
-		lookupClass += "\t\t\te.printStackTrace();\n";
-		lookupClass += "\t\t}\n";
-		lookupClass += "\t}\n\n";
+		lookupClass += "    } catch (ClassNotFoundException e) {\n";
+		lookupClass += "      e.printStackTrace();\n";
+		lookupClass += "    }\n";
+		lookupClass += "  }\n\n";
 		
-		lookupClass += "\tstatic{\n";
-		lookupClass += "\t\tclassToURILookup = new HashMap<Class<? extends GabotoEntity>, String>();\n\n";
-		lookupClass += "\t\ttry {\n";
+		lookupClass += "  static{\n";
+		lookupClass += "    classToURILookup = new HashMap<Class<? extends GabotoEntity>, String>();\n\n";
+		lookupClass += "    try {\n";
 		for(Entry<String, String>entry : entityClassLookup.entrySet()){
-			lookupClass += "\t\t\tclassToURILookup.put((Class<?  extends GabotoEntity>) Class.forName(\"" +  entityPackageName + "." + entry.getValue() + "\"), \"" + entry.getKey() + "\");\n";
+			lookupClass += "      classToURILookup.put((Class<?  extends GabotoEntity>) Class.forName(\"" +  entityPackageName + "." + entry.getValue() + "\"), \"" + entry.getKey() + "\");\n";
 		}
-		lookupClass += "\t\t} catch (ClassNotFoundException e) {\n";
-		lookupClass += "\t\t\te.printStackTrace();\n";
-		lookupClass += "\t\t}\n";
-		lookupClass += "\t}\n\n";
+		lookupClass += "    } catch (ClassNotFoundException e) {\n";
+		lookupClass += "      e.printStackTrace();\n";
+		lookupClass += "    }\n";
+		lookupClass += "  }\n\n";
 
-		lookupClass += "\tstatic{\n";
-		lookupClass += "\t\tentityTypes = new HashSet<String>();\n\n";
+		lookupClass += "  static{\n";
+		lookupClass += "    entityTypes = new HashSet<String>();\n\n";
 		for(String type : entityTypes){
-			lookupClass += "\t\tentityTypes.add(\"" + type + "\");\n";
+			lookupClass += "    entityTypes.add(\"" + type + "\");\n";
 		}
-		lookupClass += "\t}\n\n";
+		lookupClass += "  }\n\n";
 		
-		lookupClass += "\tstatic{\n";
-		lookupClass += "\t\tentityClassNames = new HashSet<String>();\n\n";
+		lookupClass += "  static{\n";
+		lookupClass += "    entityClassNames = new HashSet<String>();\n\n";
 		lookupClass += entityClassNames;
-		lookupClass += "\t}\n\n";
+		lookupClass += "  }\n\n";
 		
-		lookupClass += "\tpublic static Set<String> getRegisteredClassesAsURIs(){\n";
-		lookupClass += "\t\treturn entityTypes;\n";
-		lookupClass += "\t}\n\n";
+		lookupClass += "  public static Set<String> getRegisteredClassesAsURIs(){\n";
+		lookupClass += "    return entityTypes;\n";
+		lookupClass += "  }\n\n";
 		
-		lookupClass += "\tpublic static Collection<String> getRegisteredEntityClassesAsClassNames(){\n";
-		lookupClass += "\t\treturn entityClassNames;\n";
-		lookupClass += "\t}\n\n";
+		lookupClass += "  public static Collection<String> getRegisteredEntityClassesAsClassNames(){\n";
+		lookupClass += "    return entityClassNames;\n";
+		lookupClass += "  }\n\n";
 		
-		lookupClass += "\tpublic static Class<? extends GabotoEntity> getEntityClassFor(String typeURI){\n";
-		lookupClass += "\t\treturn entityClassLookupClass.get(typeURI);\n";
-		lookupClass += "\t}\n\n";
+		lookupClass += "  public static Class<? extends GabotoEntity> getEntityClassFor(String typeURI){\n";
+		lookupClass += "    return entityClassLookupClass.get(typeURI);\n";
+		lookupClass += "  }\n\n";
 		
-		lookupClass += "\tpublic static String getLocalName(String typeURI){\n";
-		lookupClass += "\t\treturn entityClassLookupNames.get(typeURI);\n";
-		lookupClass += "\t}\n\n";
+		lookupClass += "  public static String getLocalName(String typeURI){\n";
+		lookupClass += "    return entityClassLookupNames.get(typeURI);\n";
+		lookupClass += "  }\n\n";
 		
-		lookupClass += "\tpublic static String getTypeURIForEntityClass(Class<? extends GabotoEntity> clazz){\n";
-		lookupClass += "\t\treturn classToURILookup.get(clazz);\n";
-		lookupClass += "\t}\n\n";
+		lookupClass += "  public static String getTypeURIForEntityClass(Class<? extends GabotoEntity> clazz){\n";
+		lookupClass += "    return classToURILookup.get(clazz);\n";
+		lookupClass += "  }\n\n";
 		
 		lookupClass += "}\n";
 		
@@ -335,16 +335,16 @@ class GabotoClassGeneration {
 		
 		// type definition
 		String beanType = beanEl.getAttribute("type");
-		String typeDef = "\t@Override\n";
-		typeDef += "\tpublic String getType(){\n";
-		typeDef += "\t\treturn \"" + beanType + "\";\n";
-		typeDef += "\t}\n";
+		String typeDef = "  @Override\n";
+		typeDef += "  public String getType(){\n";
+		typeDef += "    return \"" + beanType + "\";\n";
+		typeDef += "  }\n";
 		
 		// loadEntityMethod
 		boolean bBeanHasProperty = false;
-		String loadBeanMethod = "\tpublic void loadFromResource(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {\n";
-		loadBeanMethod += "\t\tsuper.loadFromResource(res, snapshot, pool);\n";
-		loadBeanMethod += "\t\tStatement stmt;\n\n";
+		String loadBeanMethod = "  public void loadFromResource(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {\n";
+		loadBeanMethod += "    super.loadFromResource(res, snapshot, pool);\n";
+		loadBeanMethod += "    Statement stmt;\n\n";
 		
 		
 		// custom methods
@@ -390,7 +390,7 @@ class GabotoClassGeneration {
 		}
 		
 		// load entity method
-		loadBeanMethod += "\t}\n";
+		loadBeanMethod += "  }\n";
 		
 		
 		String clazz = "package " + beanPackageName + ";\n\n";
@@ -435,30 +435,30 @@ class GabotoClassGeneration {
 		
 		// type definition
 		String entityType = entityEl.getAttribute("type");
-		String typeDef = "\t@Override\n";
-		typeDef += "\tpublic String getType(){\n";
-		typeDef += "\t\treturn \"" + entityType + "\";\n";
-		typeDef += "\t}\n";
+		String typeDef = "  @Override\n";
+		typeDef += "  public String getType(){\n";
+		typeDef += "    return \"" + entityType + "\";\n";
+		typeDef += "  }\n";
 		entityTypes.add(entityType);
 		
 		// add line to classname collection
-		entityClassNames += "\t\tentityClassNames.add(\"" + entityName + "\");\n";
+		entityClassNames += "    entityClassNames.add(\"" + entityName + "\");\n";
 		
 		// add line to lookup
 		entityClassLookup.put(entityType, entityName);
 		
 		// loadEntityMethod
 		boolean bEntityHasProperty = false;
-		String loadEntityMethod = "\tpublic void loadFromSnapshot(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {\n";
-		loadEntityMethod += "\t\tsuper.loadFromSnapshot(res, snapshot, pool);\n";
-		loadEntityMethod += "\t\tStatement stmt;\n\n";
+		String loadEntityMethod = "  public void loadFromSnapshot(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {\n";
+		loadEntityMethod += "    super.loadFromSnapshot(res, snapshot, pool);\n";
+		loadEntityMethod += "    Statement stmt;\n\n";
 		
 		// passive entity requests
 		boolean bEntityHasPassiveProperty = false;
-		String passiveEntityRequests = "\tpublic Collection<PassiveEntitiesRequest> getPassiveEntitiesRequest(){\n";
-		passiveEntityRequests += "\t\tCollection<PassiveEntitiesRequest> requests = super.getPassiveEntitiesRequest();\n";
-		passiveEntityRequests += "\t\tif(null == requests)\n";
-		passiveEntityRequests += "\t\t\trequests = new HashSet<PassiveEntitiesRequest>();\n";
+		String passiveEntityRequests = "  public Collection<PassiveEntitiesRequest> getPassiveEntitiesRequest(){\n";
+		passiveEntityRequests += "    Collection<PassiveEntitiesRequest> requests = super.getPassiveEntitiesRequest();\n";
+		passiveEntityRequests += "    if(requests == null)\n";
+		passiveEntityRequests += "      requests = new HashSet<PassiveEntitiesRequest>();\n";
 		
 		
 		// custom methods
@@ -542,52 +542,53 @@ class GabotoClassGeneration {
 			unstoredPropertyMethods += method;
 		
 		// indirect property position lookup
-		String indirectPropertyLookupTable = "\tprivate static Map<String, List<Method>> indirectPropertyLookupTable;\n";
-		indirectPropertyLookupTable += "\tstatic{\n";
-		indirectPropertyLookupTable += "\t\tindirectPropertyLookupTable = new HashMap<String, List<Method>>();\n";
-		indirectPropertyLookupTable += "\t\tList<Method> list;\n\n";
+		String indirectPropertyLookupTable = "  private static Map<String, List<Method>> indirectPropertyLookupTable;\n";
+		indirectPropertyLookupTable += "  static{\n";
+		indirectPropertyLookupTable += "    indirectPropertyLookupTable = new HashMap<String, List<Method>>();\n";
+		indirectPropertyLookupTable += "    List<Method> list;\n\n";
 		
-		indirectPropertyLookupTable += "\t\ttry{\n";
+		indirectPropertyLookupTable += "    try{\n";
 		for(Entry<String, List<String>> entry : indirectMethodLookup.entrySet()){
-			indirectPropertyLookupTable += "\t\t\tlist = new ArrayList<Method>();\n";
+			indirectPropertyLookupTable += "      list = new ArrayList<Method>();\n";
 			for(String property : entry.getValue()){
-				if(null != property)
-					indirectPropertyLookupTable += "\t\t\tlist.add(" + property + ");\n";
+				if(property != null )
+					indirectPropertyLookupTable += "      list.add(" + property + ");\n";
 			}
-			indirectPropertyLookupTable += "\t\t\tindirectPropertyLookupTable.put(\"" + entry.getKey() + "\", list);\n\n";
+			indirectPropertyLookupTable += "      indirectPropertyLookupTable.put(\"" + entry.getKey() + "\", list);\n\n";
 		}
-		indirectPropertyLookupTable += "\t\t} catch (Exception e) {\n";
-		indirectPropertyLookupTable += "\t\t\te.printStackTrace();\n";
-		indirectPropertyLookupTable += "\t\t}\n";
-		indirectPropertyLookupTable += "\t}\n\n";
+		indirectPropertyLookupTable += "    } catch (Exception e) {\n";
+		indirectPropertyLookupTable += "      e.printStackTrace();\n";
+		indirectPropertyLookupTable += "    }\n";
+		indirectPropertyLookupTable += "  }\n\n";
 
 		// indirect property method 
-		String indirectPropertyLoookupMethod = "\tprotected List<Method> getIndirectMethodsForProperty(String propertyURI){\n";
-		indirectPropertyLoookupMethod += "\t\tList<Method> list = super.getIndirectMethodsForProperty(propertyURI);\n";
-		indirectPropertyLoookupMethod += "\t\tif(null == list)\n";
-		indirectPropertyLoookupMethod += "\t\t\treturn indirectPropertyLookupTable.get(propertyURI);\n";
-		indirectPropertyLoookupMethod += "\t\t\n";
-		indirectPropertyLoookupMethod += "\t\telse{\n";
-		indirectPropertyLoookupMethod += "\t\t\tList<Method> tmp = indirectPropertyLookupTable.get(propertyURI);\n";
-		indirectPropertyLoookupMethod += "\t\t\tif(null != tmp)\n";
-		indirectPropertyLoookupMethod += "\t\t\t\tlist.addAll(tmp);\n";
-		indirectPropertyLoookupMethod += "\t\t}\n";
-		indirectPropertyLoookupMethod += "\t\treturn list;\n";
-		indirectPropertyLoookupMethod += "\t}\n\n";
+		String indirectPropertyLoookupMethod = "  protected List<Method> getIndirectMethodsForProperty(String propertyURI){\n";
+		indirectPropertyLoookupMethod += "    List<Method> list = super.getIndirectMethodsForProperty(propertyURI);\n";
+		indirectPropertyLoookupMethod += "    if(list == null)\n";
+		indirectPropertyLoookupMethod += "      return indirectPropertyLookupTable.get(propertyURI);\n";
+		indirectPropertyLoookupMethod += "    \n";
+		indirectPropertyLoookupMethod += "    else{\n";
+		indirectPropertyLoookupMethod += "      List<Method> tmp = indirectPropertyLookupTable.get(propertyURI);\n";
+		indirectPropertyLoookupMethod += "      if(tmp != null)\n";
+		indirectPropertyLoookupMethod += "        list.addAll(tmp);\n";
+		indirectPropertyLoookupMethod += "    }\n";
+		indirectPropertyLoookupMethod += "    return list;\n";
+		indirectPropertyLoookupMethod += "  }\n\n";
 		
 	
 
 		
 		// close class comment
-		classComment += " *<p>This class was automatically generated by Gaboto<p>\n";
+    classComment += " * Gaboto generated class.\n";
+    classComment += " * See " + this.getClass().getCanonicalName() + ".\n";
 		classComment += " */\n";
 		
 		// load entity method
-		loadEntityMethod += "\t}\n";
+		loadEntityMethod += "  }\n";
 		
 		// passive entity request
-		passiveEntityRequests += "\t\treturn requests;\n";
-		passiveEntityRequests += "\t}\n";
+		passiveEntityRequests += "    return requests;\n";
+		passiveEntityRequests += "  }\n";
 		
 		// add some newlines
 		propertyDefinitions += "\n\n";
@@ -670,7 +671,7 @@ class GabotoClassGeneration {
 		String unstoredAnnotation = getUnstoredAnnotation(property, unstoredMethods, realPropTypeImpl);
 		
 		// property definition
-		propertyDefinitionss += "\tprivate " + realPropTypeInterface + " " + propName + ";\n";
+		propertyDefinitionss += "  private " + realPropTypeInterface + " " + propName + ";\n";
 		
 		// add additional imports
 		importDefinitions += getBeanImport(propType);
@@ -678,10 +679,10 @@ class GabotoClassGeneration {
 		
 		// get method
 		if(! unstoredAnnotation.equals(""))
-			methodDefinitions += "\t" + unstoredAnnotation + "\n";
+			methodDefinitions += "  " + unstoredAnnotation + "\n";
 		if(! indirectAnnotation.equals(""))
-			methodDefinitions += "\t" + indirectAnnotation + "\n";
-		methodDefinitions += "\t" + propertyAnnotation + "\n";
+			methodDefinitions += "  " + indirectAnnotation + "\n";
+		methodDefinitions += "  " + propertyAnnotation + "\n";
 		switch(getPropertyAnnotationType(property)){
 		case BAG_URI_PROPERTY:
 		case SIMPLE_URI_PROPERTY:
@@ -695,7 +696,7 @@ class GabotoClassGeneration {
 		
 		// set method
 		String setMethodName = "set" + propNameUCFirst;
-		methodDefinitions += "\t" + propertyAnnotation + "\n";
+		methodDefinitions += "  " + propertyAnnotation + "\n";
 		switch(getPropertyAnnotationType(property)){
 		case SIMPLE_URI_PROPERTY:
 			methodDefinitions += getSetMethodForSimpleURIProperty("public", setMethodName, realPropTypeInterface, propName, propName);
@@ -753,10 +754,10 @@ class GabotoClassGeneration {
 		String propNameUCFirst = propName.substring(0,1).toUpperCase() + propName.substring(1);
 		
 		// build annotation
-		String annotation = "\t@PassiveProperty(\n" +
-							"\t\turi = \"" + uri + "\",\n" +
-							"\t\tentity = \"" + propType + "\"\n" +
-							"\t)\n";
+		String annotation = "  @PassiveProperty(\n" +
+							"    uri = \"" + uri + "\",\n" +
+							"    entity = \"" + propType + "\"\n" +
+							"  )\n";
 		
 		String getMethodName = "",
 			   setMethodName = "",
@@ -770,7 +771,7 @@ class GabotoClassGeneration {
 			String realPropTypeImpl = "HashSet<" + propType + ">";
 
 			// add member property
-			propertyDefinitionss += "\tprivate " + realPropTypeInterface + " " + propName + ";\n"; 
+			propertyDefinitionss += "  private " + realPropTypeInterface + " " + propName + ";\n"; 
 			
 			// generate get/set/add method
 			
@@ -781,13 +782,13 @@ class GabotoClassGeneration {
 			String indirectAnnotation = getIndirectAnnotation(property, indirectMethods, indirectMethodLookup, entityName, getMethodName);
 			
 			if(!"".equals(indirectAnnotation))
-				methodDefinitions += "\t" + indirectAnnotation + "\n";
+				methodDefinitions += "  " + indirectAnnotation + "\n";
 			methodDefinitions += annotation;
-			methodDefinitions += "\tpublic " + realPropTypeInterface + " " + getMethodName + "(){\n";
-			methodDefinitions += "\t\tif(! isPassiveEntitiesLoaded() )\n";
-			methodDefinitions += "\t\t\tloadPassiveEntities();\n";
-			methodDefinitions += "\t\treturn this." + propName + ";\n"; 
-			methodDefinitions += "\t}\n\n";
+			methodDefinitions += "  public " + realPropTypeInterface + " " + getMethodName + "(){\n";
+			methodDefinitions += "    if(! isPassiveEntitiesLoaded() )\n";
+			methodDefinitions += "      loadPassiveEntities();\n";
+			methodDefinitions += "    return this." + propName + ";\n"; 
+			methodDefinitions += "  }\n\n";
 			
 			
 			// set method
@@ -814,36 +815,36 @@ class GabotoClassGeneration {
 		// requests
 		if(relationshipType.equals("1:N")){
 			// request
-			passiveEntityRequests += "\t\trequests.add(new PassiveEntitiesRequest(){\n";
-			passiveEntityRequests += "\t\t\tpublic String getType() {\n";
-			passiveEntityRequests += "\t\t\t\treturn \"" + entityTypeURILookup.get(propType) + "\";\n";
-			passiveEntityRequests += "\t\t\t}\n\n";
-			passiveEntityRequests += "\t\t\tpublic String getUri() {\n";
-			passiveEntityRequests += "\t\t\t\treturn \"" + uri + "\";\n";
-			passiveEntityRequests += "\t\t\t}\n\n";
-			passiveEntityRequests += "\t\t\tpublic int getCollectionType() {\n";
-			passiveEntityRequests += "\t\t\t\treturn GabotoEntityPool.PASSIVE_PROPERTY_COLLECTION_TYPE_NONE;\n";
-			passiveEntityRequests += "\t\t\t}\n\n";
-			passiveEntityRequests += "\t\t\tpublic void passiveEntityLoaded(GabotoEntity entity) {\n";
-			passiveEntityRequests += "\t\t\t\t" + addMethodName + "((" + propType + ")entity);\n";
-			passiveEntityRequests += "\t\t\t}\n";
-			passiveEntityRequests += "\t\t});\n";
+			passiveEntityRequests += "    requests.add(new PassiveEntitiesRequest(){\n";
+			passiveEntityRequests += "      public String getType() {\n";
+			passiveEntityRequests += "        return \"" + entityTypeURILookup.get(propType) + "\";\n";
+			passiveEntityRequests += "      }\n\n";
+			passiveEntityRequests += "      public String getUri() {\n";
+			passiveEntityRequests += "        return \"" + uri + "\";\n";
+			passiveEntityRequests += "      }\n\n";
+			passiveEntityRequests += "      public int getCollectionType() {\n";
+			passiveEntityRequests += "        return GabotoEntityPool.PASSIVE_PROPERTY_COLLECTION_TYPE_NONE;\n";
+			passiveEntityRequests += "      }\n\n";
+			passiveEntityRequests += "      public void passiveEntityLoaded(GabotoEntity entity) {\n";
+			passiveEntityRequests += "        " + addMethodName + "((" + propType + ")entity);\n";
+			passiveEntityRequests += "      }\n";
+			passiveEntityRequests += "    });\n";
 		} else if(relationshipType.equals("N:M")){
 			// request
-			passiveEntityRequests += "\t\trequests.add(new PassiveEntitiesRequest(){\n";
-			passiveEntityRequests += "\t\t\tpublic String getType() {\n";
-			passiveEntityRequests += "\t\t\t\treturn \"" + entityTypeURILookup.get(propType) + "\";\n";
-			passiveEntityRequests += "\t\t\t}\n\n";
-			passiveEntityRequests += "\t\t\tpublic String getUri() {\n";
-			passiveEntityRequests += "\t\t\t\treturn \"" + uri + "\";\n";
-			passiveEntityRequests += "\t\t\t}\n\n";
-			passiveEntityRequests += "\t\t\tpublic int getCollectionType() {\n";
-			passiveEntityRequests += "\t\t\t\treturn GabotoEntityPool.PASSIVE_PROPERTY_COLLECTION_TYPE_BAG;\n";
-			passiveEntityRequests += "\t\t\t}\n\n";
-			passiveEntityRequests += "\t\t\tpublic void passiveEntityLoaded(GabotoEntity entity) {\n";
-			passiveEntityRequests += "\t\t\t\t" + addMethodName + "((" + propType + ")entity);\n";
-			passiveEntityRequests += "\t\t\t}\n";
-			passiveEntityRequests += "\t\t});\n";
+			passiveEntityRequests += "    requests.add(new PassiveEntitiesRequest(){\n";
+			passiveEntityRequests += "      public String getType() {\n";
+			passiveEntityRequests += "        return \"" + entityTypeURILookup.get(propType) + "\";\n";
+			passiveEntityRequests += "      }\n\n";
+			passiveEntityRequests += "      public String getUri() {\n";
+			passiveEntityRequests += "        return \"" + uri + "\";\n";
+			passiveEntityRequests += "      }\n\n";
+			passiveEntityRequests += "      public int getCollectionType() {\n";
+			passiveEntityRequests += "        return GabotoEntityPool.PASSIVE_PROPERTY_COLLECTION_TYPE_BAG;\n";
+			passiveEntityRequests += "      }\n\n";
+			passiveEntityRequests += "      public void passiveEntityLoaded(GabotoEntity entity) {\n";
+			passiveEntityRequests += "        " + addMethodName + "((" + propType + ")entity);\n";
+			passiveEntityRequests += "      }\n";
+			passiveEntityRequests += "    });\n";
 		}
 		
 		return new String[]{importDefinitions, propertyDefinitionss, methodDefinitions, passiveEntityRequests};
@@ -852,9 +853,9 @@ class GabotoClassGeneration {
 	private String getGetMethod(String returnType, String methodName, String memberName){
 		String methodDefinition = "";
 		
-		methodDefinition += "\tpublic " + returnType + " " + methodName + "(){\n";
-		methodDefinition += "\t\treturn this." + memberName + ";\n"; 
-		methodDefinition += "\t}\n\n";
+		methodDefinition += "  public " + returnType + " " + methodName + "(){\n";
+		methodDefinition += "    return this." + memberName + ";\n"; 
+		methodDefinition += "  }\n\n";
 
 		return methodDefinition;
 	}
@@ -862,11 +863,11 @@ class GabotoClassGeneration {
 	private String getGetMethodForDirectReference(String returnType, String methodName, String memberName){
 		String methodDefinition = "";
 		
-		methodDefinition += "\tpublic " + returnType + " " + methodName + "(){\n";
-		methodDefinition += "\t\tif(! this.isDirectReferencesResolved())\n";
-		methodDefinition += "\t\t\tthis.resolveDirectReferences();\n";
-		methodDefinition += "\t\treturn this." + memberName + ";\n"; 
-		methodDefinition += "\t}\n\n";
+		methodDefinition += "  public " + returnType + " " + methodName + "(){\n";
+		methodDefinition += "    if(! this.isDirectReferencesResolved())\n";
+		methodDefinition += "      this.resolveDirectReferences();\n";
+		methodDefinition += "    return this." + memberName + ";\n"; 
+		methodDefinition += "  }\n\n";
 
 		return methodDefinition;
 	}
@@ -878,9 +879,9 @@ class GabotoClassGeneration {
 		if(visibility.equals("package"))
 			visibility = "";
 		
-		methodDefinition += "\t" + visibility + " void " + methodName + "(" + parameterType + " " + parameterName + "){\n";
-		methodDefinition += "\t\tthis." + memberName + " = " + parameterName + ";\n"; 
-		methodDefinition += "\t}\n\n";
+		methodDefinition += "  " + visibility + " void " + methodName + "(" + parameterType + " " + parameterName + "){\n";
+		methodDefinition += "    this." + memberName + " = " + parameterName + ";\n"; 
+		methodDefinition += "  }\n\n";
 		
 		return methodDefinition;
 	}
@@ -891,11 +892,11 @@ class GabotoClassGeneration {
 		if(visibility.equals("package"))
 			visibility = "";
 		
-		methodDefinition += "\t" + visibility + " void " + methodName + "(" + parameterType + " " + parameterName + "){\n";
-		methodDefinition += "\t\tif( null != " + parameterName + ")\n";
-		methodDefinition += "\t\t\tthis.removeMissingReference( " + parameterName + ".getUri() );\n";
-		methodDefinition += "\t\tthis." + memberName + " = " + parameterName + ";\n"; 
-		methodDefinition += "\t}\n\n";
+		methodDefinition += "  " + visibility + " void " + methodName + "(" + parameterType + " " + parameterName + "){\n";
+		methodDefinition += "    if( " + parameterName + " != null )\n";
+		methodDefinition += "      this.removeMissingReference( " + parameterName + ".getUri() );\n";
+		methodDefinition += "    this." + memberName + " = " + parameterName + ";\n"; 
+		methodDefinition += "  }\n\n";
 		
 		return methodDefinition;
 	}
@@ -906,13 +907,13 @@ class GabotoClassGeneration {
 		if(visibility.equals("package"))
 			visibility = "";
 		
-		methodDefinition += "\t" + visibility + " void " + methodName + "(" + parameterType + " " + parameterName + "){\n";
-		methodDefinition += "\t\tif( null != " + parameterName + "){\n";
-		methodDefinition += "\t\t\tfor( GabotoEntity _entity : " + parameterName + ")\n";
-		methodDefinition += "\t\t\t\tthis.removeMissingReference( _entity.getUri() );\n";
-		methodDefinition += "\t\t}\n\n";
-		methodDefinition += "\t\tthis." + memberName + " = " + parameterName + ";\n"; 
-		methodDefinition += "\t}\n\n";
+		methodDefinition += "  " + visibility + " void " + methodName + "(" + parameterType + " " + parameterName + "){\n";
+		methodDefinition += "    if( " + parameterName + " != null ){\n";
+		methodDefinition += "      for( GabotoEntity _entity : " + parameterName + ")\n";
+		methodDefinition += "        this.removeMissingReference( _entity.getUri() );\n";
+		methodDefinition += "    }\n\n";
+		methodDefinition += "    this." + memberName + " = " + parameterName + ";\n"; 
+		methodDefinition += "  }\n\n";
 		
 		return methodDefinition;
 	}
@@ -923,11 +924,11 @@ class GabotoClassGeneration {
 		if(visibility.equals("package"))
 			visibility = "";
 		
-		methodDefinition += "\t" + visibility + " void " + methodName + "(" + propType + " " + parameterName + "){\n";
-		methodDefinition += "\t\tif(null == this." + memberName + ")\n";
-		methodDefinition += "\t\t\tthis." + memberName + " = new " + realPropTypeImpl + "();\n";
-		methodDefinition += "\t\tthis." + memberName + ".add(" + parameterName + ");\n";
-		methodDefinition += "\t}\n\n";
+		methodDefinition += "  " + visibility + " void " + methodName + "(" + propType + " " + parameterName + "){\n";
+		methodDefinition += "    if(this." + memberName + " == null)\n";
+		methodDefinition += "      this." + memberName + " = new " + realPropTypeImpl + "();\n";
+		methodDefinition += "    this." + memberName + ".add(" + parameterName + ");\n";
+		methodDefinition += "  }\n\n";
 		
 		return methodDefinition;
 	}
@@ -938,13 +939,13 @@ class GabotoClassGeneration {
 		if(visibility.equals("package"))
 			visibility = "";
 		
-		methodDefinition += "\t" + visibility + " void " + methodName + "(" + propType + " " + parameterName + "){\n";
-		methodDefinition += "\t\tif( null != " + parameterName + ")\n";
-		methodDefinition += "\t\t\tthis.removeMissingReference( " + parameterName + ".getUri() );\n";
-		methodDefinition += "\t\tif(null == this." + memberName + ")\n";
-		methodDefinition += "\t\t\tthis." + memberName + " = new " + realPropTypeImpl + "();\n";
-		methodDefinition += "\t\tthis." + memberName + ".add(" + parameterName + ");\n";
-		methodDefinition += "\t}\n\n";
+		methodDefinition += "  " + visibility + " void " + methodName + "(" + propType + " " + parameterName + "){\n";
+		methodDefinition += "    if( " + parameterName + " != null )\n";
+		methodDefinition += "      this.removeMissingReference( " + parameterName + ".getUri() );\n";
+		methodDefinition += "    if(this." + memberName + " == null )\n";
+		methodDefinition += "      this." + memberName + " = new " + realPropTypeImpl + "();\n";
+		methodDefinition += "    this." + memberName + ".add(" + parameterName + ");\n";
+		methodDefinition += "  }\n\n";
 		
 		return methodDefinition;
 	}
@@ -954,81 +955,81 @@ class GabotoClassGeneration {
 		
 		switch(getPropertyAnnotationType(property)){
 		case SIMPLE_URI_PROPERTY:
-			loadEntity += "\t\tstmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-			loadEntity += "\t\tif(null != stmt && stmt.getObject().isResource()){\n";
-			loadEntity += "\t\t\tResource missingReference = (Resource)stmt.getObject();\n";
+			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
+			loadEntity += "    if(stmt != null && stmt.getObject().isResource()){\n";
+			loadEntity += "      Resource missingReference = (Resource)stmt.getObject();\n";
 			
-			loadEntity += "\t\t\tEntityExistsCallback callback = new EntityExistsCallback(){\n";
-			loadEntity += "\t\t\t\tpublic void entityExists(GabotoEntityPool pool, GabotoEntity entity) {\n";
-			loadEntity += "\t\t\t\t\t" + setMethodName + "((" + realPropTypeInterface + ")entity);\n";
-			loadEntity += "\t\t\t\t}\n";
-			loadEntity += "\t\t\t};\n";
+			loadEntity += "      EntityExistsCallback callback = new EntityExistsCallback(){\n";
+			loadEntity += "        public void entityExists(GabotoEntityPool pool, GabotoEntity entity) {\n";
+			loadEntity += "          " + setMethodName + "((" + realPropTypeInterface + ")entity);\n";
+			loadEntity += "        }\n";
+			loadEntity += "      };\n";
 			
-			loadEntity += "\t\t\tthis.addMissingReference(missingReference, callback);\n";
-			loadEntity += "\t\t}\n";
+			loadEntity += "      this.addMissingReference(missingReference, callback);\n";
+			loadEntity += "    }\n";
 			break;
 		case SIMPLE_LITERAL_PROPERTY:
-			loadEntity += "\t\tstmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-			loadEntity += "\t\tif(null != stmt && stmt.getObject().isLiteral())\n";
-			loadEntity += "\t\t\tthis." + setMethodName + "(((Literal)stmt.getObject())." + getLiteralGetMethod(property) + ");\n";
+			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
+			loadEntity += "    if(stmt != null && stmt.getObject().isLiteral())\n";
+			loadEntity += "      this." + setMethodName + "(((Literal)stmt.getObject())." + getLiteralGetMethod(property) + ");\n";
 			break;
 		case SIMPLE_COMPLEX_PROPERTY:
-			loadEntity += "\t\tstmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-			loadEntity += "\t\tif(null != stmt && stmt.getObject().isAnon()){\n";
-			loadEntity += "\t\t\t" + realPropTypeInterface + " " + propertyName + " = new " + realPropTypeInterface + "();\n";
-			loadEntity += "\t\t\t" + propertyName + ".loadFromResource((Resource)stmt.getObject(), snapshot, pool);\n";
-			loadEntity += "\t\t\t" + setMethodName + "(" + propertyName + ");\n";
-			loadEntity += "\t\t}\n";
+			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
+			loadEntity += "    if(stmt != null && stmt.getObject().isAnon()){\n";
+			loadEntity += "      " + realPropTypeInterface + " " + propertyName + " = new " + realPropTypeInterface + "();\n";
+			loadEntity += "      " + propertyName + ".loadFromResource((Resource)stmt.getObject(), snapshot, pool);\n";
+			loadEntity += "      " + setMethodName + "(" + propertyName + ");\n";
+			loadEntity += "    }\n";
 			break;
 		case BAG_URI_PROPERTY:
-			loadEntity += "\t\tstmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-			loadEntity += "\t\tif(null != stmt && stmt.getObject().isResource() && null != stmt.getBag()){\n";
-			loadEntity += "\t\t\tBag bag = stmt.getBag();\n";
-			loadEntity += "\t\t\tNodeIterator nodeIt = bag.iterator();\n";
-			loadEntity += "\t\t\twhile(nodeIt.hasNext()){\n";
-			loadEntity += "\t\t\t\tRDFNode node = nodeIt.nextNode();\n";
-			loadEntity += "\t\t\t\tif(! node.isResource())\n";
-			loadEntity += "\t\t\t\t\tthrow new IllegalArgumentException(\"node should be a resource\");\n\n";
+			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
+			loadEntity += "    if(stmt != null && stmt.getObject().isResource() && null != stmt.getBag()){\n";
+			loadEntity += "      Bag bag = stmt.getBag();\n";
+			loadEntity += "      NodeIterator nodeIt = bag.iterator();\n";
+			loadEntity += "      while(nodeIt.hasNext()){\n";
+			loadEntity += "        RDFNode node = nodeIt.nextNode();\n";
+			loadEntity += "        if(! node.isResource())\n";
+			loadEntity += "          throw new IllegalArgumentException(\"node should be a resource\");\n\n";
 			
-			loadEntity += "\t\t\t\tResource missingReference = (Resource)node;\n";
+			loadEntity += "        Resource missingReference = (Resource)node;\n";
 			
-			loadEntity += "\t\t\t\tEntityExistsCallback callback = new EntityExistsCallback(){\n";
-			loadEntity += "\t\t\t\t\tpublic void entityExists(GabotoEntityPool pool, GabotoEntity entity) {\n";
-			loadEntity += "\t\t\t\t\t\t" + addMethodName + "((" + propType + ") entity);\n";
-			loadEntity += "\t\t\t\t\t}\n";
-			loadEntity += "\t\t\t\t};\n";
+			loadEntity += "        EntityExistsCallback callback = new EntityExistsCallback(){\n";
+			loadEntity += "          public void entityExists(GabotoEntityPool pool, GabotoEntity entity) {\n";
+			loadEntity += "            " + addMethodName + "((" + propType + ") entity);\n";
+			loadEntity += "          }\n";
+			loadEntity += "        };\n";
 			
-			loadEntity += "\t\t\t\tthis.addMissingReference(missingReference, callback);\n";
-			loadEntity += "\t\t\t}\n";
-			loadEntity += "\t\t}\n";
+			loadEntity += "        this.addMissingReference(missingReference, callback);\n";
+			loadEntity += "      }\n";
+			loadEntity += "    }\n";
 			break;
 		case BAG_LITERAL_PROPERTY:
-			loadEntity += "\t\tstmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-			loadEntity += "\t\tif(null != stmt && stmt.getObject().isResource() && null != stmt.getBag()){\n";
-			loadEntity += "\t\t\tBag bag = stmt.getBag();\n";
-			loadEntity += "\t\t\tNodeIterator nodeIt = bag.iterator();\n";
-			loadEntity += "\t\t\twhile(nodeIt.hasNext()){\n";
-			loadEntity += "\t\t\t\tRDFNode node = nodeIt.nextNode();\n";
-			loadEntity += "\t\t\t\tif(! node.isLiteral())\n";
-			loadEntity += "\t\t\t\t\tthrow new IllegalArgumentException(\"node should be a literal\");\n\n";
-			loadEntity += "\t\t\t\t" + addMethodName + "(((Literal)node)." + getLiteralGetMethod(property) + ");\n";
-			loadEntity += "\t\t\t}\n\n";
-			loadEntity += "\t\t}\n";
+			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
+			loadEntity += "    if(stmt != null && stmt.getObject().isResource() && null != stmt.getBag()){\n";
+			loadEntity += "      Bag bag = stmt.getBag();\n";
+			loadEntity += "      NodeIterator nodeIt = bag.iterator();\n";
+			loadEntity += "      while(nodeIt.hasNext()){\n";
+			loadEntity += "        RDFNode node = nodeIt.nextNode();\n";
+			loadEntity += "        if(! node.isLiteral())\n";
+			loadEntity += "          throw new IllegalArgumentException(\"node should be a literal\");\n\n";
+			loadEntity += "        " + addMethodName + "(((Literal)node)." + getLiteralGetMethod(property) + ");\n";
+			loadEntity += "      }\n\n";
+			loadEntity += "    }\n";
 			break;
 		case BAG_COMPLEX_PROPERTY:
-			loadEntity += "\t\tstmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-			loadEntity += "\t\tif(null != stmt && stmt.getObject().isResource() && null != stmt.getBag()){\n";
-			loadEntity += "\t\t\tBag bag = stmt.getBag();\n";
-			loadEntity += "\t\t\tNodeIterator nodeIt = bag.iterator();\n";
-			loadEntity += "\t\t\twhile(nodeIt.hasNext()){\n";
-			loadEntity += "\t\t\t\tRDFNode node = nodeIt.nextNode();\n";
-			loadEntity += "\t\t\t\tif(! node.isAnon())\n";
-			loadEntity += "\t\t\t\t\tthrow new IllegalArgumentException(\"node should be a blank node\");\n\n";
-			loadEntity += "\t\t\t\t" + realPropTypeInterface + " " + propertyName + " = new " + realPropTypeInterface + "();\n";
-			loadEntity += "\t\t\t\t" + propertyName + ".loadFromResource((Resource)node, snapshot, pool);\n";
-			loadEntity += "\t\t\t\t\t\t" + addMethodName + "(" + propertyName + ");\n";
-			loadEntity += "\t\t\t}\n\n";
-			loadEntity += "\t\t}\n";
+			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
+			loadEntity += "    if(stmt != null  && stmt.getObject().isResource() && null != stmt.getBag()){\n";
+			loadEntity += "      Bag bag = stmt.getBag();\n";
+			loadEntity += "      NodeIterator nodeIt = bag.iterator();\n";
+			loadEntity += "      while(nodeIt.hasNext()){\n";
+			loadEntity += "        RDFNode node = nodeIt.nextNode();\n";
+			loadEntity += "        if(! node.isAnon())\n";
+			loadEntity += "          throw new IllegalArgumentException(\"node should be a blank node\");\n\n";
+			loadEntity += "        " + realPropTypeInterface + " " + propertyName + " = new " + realPropTypeInterface + "();\n";
+			loadEntity += "        " + propertyName + ".loadFromResource((Resource)node, snapshot, pool);\n";
+			loadEntity += "            " + addMethodName + "(" + propertyName + ");\n";
+			loadEntity += "      }\n\n";
+			loadEntity += "    }\n";
 			break;
 		}
 		
@@ -1089,9 +1090,9 @@ class GabotoClassGeneration {
 				String propName = propEl.getAttribute("name").substring(0,1).toLowerCase() + propEl.getAttribute("name").substring(1);
 				String propNameUCFirst = propName.substring(0,1).toUpperCase() + propName.substring(1);
 				
-				String method = "\tpublic Object get" + propNameUCFirst + "(){\n";
-				method += "\t\treturn this.getPropertyValue(\"" + uri + "\", false, true);\n";
-				method += "\t}\n\n";
+				String method = "  public Object get" + propNameUCFirst + "(){\n";
+				method += "    return this.getPropertyValue(\"" + uri + "\", false, true);\n";
+				method += "  }\n\n";
 				
 				indirectMethods.put(uri, method);
 			}
@@ -1126,9 +1127,9 @@ class GabotoClassGeneration {
 				String propName = propEl.getAttribute("name").substring(0,1).toLowerCase() + propEl.getAttribute("name").substring(1);
 				String propNameUCFirst = propName.substring(0,1).toUpperCase() + propName.substring(1);
 				
-				String method = "\tpublic " + parentPropTypeImpl + " get" + propNameUCFirst + "(){\n";
-				method += "\t\treturn (" + parentPropTypeImpl + ") this.getPropertyValue(\"" + uri + "\", false, true);\n";
-				method += "\t}\n\n";
+				String method = "  public " + parentPropTypeImpl + " get" + propNameUCFirst + "(){\n";
+				method += "    return (" + parentPropTypeImpl + ") this.getPropertyValue(\"" + uri + "\", false, true);\n";
+				method += "  }\n\n";
 				
 				unstoredMethods.put(uri, method);
 			}
@@ -1147,20 +1148,20 @@ class GabotoClassGeneration {
 			return "@SimpleURIProperty(\"" + uri + "\")";
 		case SIMPLE_LITERAL_PROPERTY:
 			return "@SimpleLiteralProperty(\n" +
-					"\t\tvalue = \"" + uri + "\",\n" +
-					"\t\tdatatypeType = \"" + "javaprimitive" + "\",\n" +
-					"\t\tjavaType = \"" + propType + "\"\n" +
-					"\t)";
+					"    value = \"" + uri + "\",\n" +
+					"    datatypeType = \"" + "javaprimitive" + "\",\n" +
+					"    javaType = \"" + propType + "\"\n" +
+					"  )";
 		case SIMPLE_COMPLEX_PROPERTY:
 			return "@ComplexProperty(\"" + uri + "\")";
 		case BAG_URI_PROPERTY:
 			return "@BagURIProperty(\"" + uri + "\")";
 		case BAG_LITERAL_PROPERTY:
 			return "@BagLiteralProperty(\n" +
-					"\t\tvalue = \"" + uri + "\",\n" +
-					"\t\tdatatypeType = \"" + "javaprimitive" + "\",\n" +
-					"\t\tjavaType = \"" + propType + "\"\n" +
-					"\t)";
+					"    value = \"" + uri + "\",\n" +
+					"    datatypeType = \"" + "javaprimitive" + "\",\n" +
+					"    javaType = \"" + propType + "\"\n" +
+					"  )";
 		case BAG_COMPLEX_PROPERTY:
 			return "@BagComplexProperty(\"" + uri + "\")";
 		}
