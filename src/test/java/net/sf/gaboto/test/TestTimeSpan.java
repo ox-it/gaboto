@@ -211,8 +211,8 @@ public class TestTimeSpan {
 	public void brokenTestCreateByInstants(){
 		// since we are working with random time instants .. give it some extra tries to fail.
 		for(int i = 0; i < 200000; i++){
-			TimeInstant ti1 = TestUtils.getRandomTimeinstant();
-			TimeInstant ti2 = TestUtils.getRandomTimeinstant();
+			TimeInstant ti1 = Utils.getRandomTimeinstant();
+			TimeInstant ti2 = Utils.getRandomTimeinstant();
 			TimeInstant early, late;
 			
 			if(ti1.equals(ti2)){

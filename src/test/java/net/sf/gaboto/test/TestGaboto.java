@@ -68,7 +68,7 @@ public class TestGaboto {
 		Gaboto oxp = GabotoFactory.getPersistentGaboto();
 		
 		Unit u = new Unit();
-		u.setUri(TestUtils.generateRandomURI());
+		u.setUri(Utils.generateRandomURI());
 		
 		oxp.add(u);
 		oxp.add(u);
@@ -81,10 +81,10 @@ public class TestGaboto {
 		Gaboto oxp_m = GabotoFactory.getInMemoryGaboto();
 		
 		Unit u = new Unit();
-		u.setUri(TestUtils.generateRandomURI());
+		u.setUri(Utils.generateRandomURI());
 		
 		Building b = new Building();
-		b.setUri(TestUtils.generateRandomURI());
+		b.setUri(Utils.generateRandomURI());
 		b.setName("Abcdef");
 		
 		// add entities
@@ -109,7 +109,7 @@ public class TestGaboto {
 		Gaboto oxp = GabotoFactory.getPersistentGaboto();
 		Gaboto oxp_m = GabotoFactory.getInMemoryGaboto();
 		
-		String uri = TestUtils.generateRandomURI();
+		String uri = Utils.generateRandomURI();
 		Building b = new Building();
 		b.setUri(uri);
 		b.setTimeSpan(new TimeSpan(500,0,0,200,10,10));
@@ -128,7 +128,7 @@ public class TestGaboto {
 		Gaboto oxp = GabotoFactory.getPersistentGaboto();
 		
 		Unit u = new Unit();
-		u.setUri(TestUtils.generateRandomURI());
+		u.setUri(Utils.generateRandomURI());
 		
 		// add entity
 		oxp.add(u);
