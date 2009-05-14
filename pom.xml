@@ -196,13 +196,21 @@
             <exclude>**/**4*</exclude>
             <exclude>**/**5*</exclude>
             <exclude>**/**6*</exclude>
-            <exclude>**/**</exclude>
 	  <!-- Too slow -->
             <exclude>**/TestPoolCreationPerformance.java</exclude>
-            <exclude>**/TestEntityPool.java</exclude>
-            <exclude>**/TestGabotoSnapshot.java</exclude>
-	    <exclude>**/TestSimpleConstructSPARQLQuery.java</exclude>
-	    <exclude>**/BuildingsOccupiedByCollegeTest.java</exclude>
+            <exclude>**/TestEntityPool*</exclude>
+            <exclude>**/TestGabotoSnapshot*</exclude>
+	    <exclude>**/TestSimpleConstructSPARQLQuery*</exclude>
+	    <exclude>**/BuildingsOccupiedByCollegeTest*</exclude>
+	    <exclude>**/TestGabotoEntity*</exclude>
+	    <exclude>**/TestGabotoTimeBasedEntity*</exclude>
+	    <exclude>**/TestPassiveProperties*</exclude>
+	    <exclude>**/GabotoTest*</exclude>
+	    <exclude>**/TestQueryListOfTypedEntities*</exclude>
+	    
+	    
+
+	    
 	   </excludes>
         </configuration>
       </plugin>
