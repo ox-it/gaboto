@@ -134,16 +134,16 @@ public class GabotoFactory {
 		Iterator graphIt = po.getNamedGraphSet().listGraphs();
 		while(graphIt.hasNext())
 			graphset.createGraph(((NamedGraph)graphIt.next()).getGraphName());
-    System.err.println("here");
+    System.err.println("getInMemoryGaboto: have created graphs");
 		
 		Iterator it = po.getNamedGraphSet().findQuads(Node.ANY, Node.ANY, Node.ANY, Node.ANY);
 		while(it.hasNext())
 			graphset.addQuad((Quad)it.next());
-    System.err.println("here");
+    System.err.println("getInMemoryGaboto: have added quads");
 		
 		inMemoryGaboto = new Gaboto(createCDG(), graphset, new SimpleTimeDimensionIndexer());
 		
-    System.err.println("here");
+    System.err.println("getInMemoryGaboto: returning");
 		return inMemoryGaboto;
 	}
 	
