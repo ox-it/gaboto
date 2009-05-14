@@ -120,10 +120,6 @@ public class TEIImporter {
 				gaboto.add(e);
 			} catch (EntityAlreadyExistsException e1) {
 				System.out.println(e.getUri() + " has already been added to the system."); 
-			} catch (NullPointerException e2){
-				e2.printStackTrace();
-				System.out.println("Something went terribly wrong.");
-				System.exit(-1);
 			} 
 		}
 	}
