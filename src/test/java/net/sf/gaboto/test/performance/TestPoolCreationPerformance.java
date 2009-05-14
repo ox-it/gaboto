@@ -31,7 +31,6 @@
  */
 package net.sf.gaboto.test.performance;
 
-import java.io.InputStream;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -50,7 +49,7 @@ import org.oucs.gaboto.util.PerformanceAverager;
 
 public class TestPoolCreationPerformance {
 
-	private static int RUNS = 50;
+	private static int RUNS = 5;
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -59,11 +58,14 @@ public class TestPoolCreationPerformance {
 	
 	@Test
 	public void testSimplePoolCreation() throws EntityPoolInvalidConfigurationException{
+    System.out.println("testSimplePoolCreation");
 		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+    System.out.println("Got gaboto");
 
 		PerformanceAverager perf = new PerformanceAverager("Simple Pool Creation");
 		for(int i = 0; i < RUNS; i++){
 			perf.start("creation");
+      System.out.println("Starting");
 			
 			GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 			GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snap);
@@ -72,7 +74,7 @@ public class TestPoolCreationPerformance {
 			perf.stop();
 		}
 		
-		System.out.println(perf);
+    System.out.println(perf);
 	}
 	
 	@Test
@@ -94,21 +96,11 @@ public class TestPoolCreationPerformance {
 		System.out.println(perf);
 	}
 	
-	
-	// FIXME Broken - no DB configured and will not run from rdf 
-	//@Test
-	public void brokenTestQuery1() throws Exception{
-	   // load Gaboto
-    GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
-    Gaboto gaboto = GabotoFactory.getEmptyInMemoryGaboto();
-    
-    gaboto.read(getResourceOrDie("graphs.rdf"), getResourceOrDie("cdg.rdf"));
- 
-    gaboto = GabotoFactory.getInMemoryGaboto();
+	@Test
+	public void testQuery1() throws Exception{
+		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
 
-    gaboto.recreateTimeDimensionIndex();
-    
-		CollegesNearEntity query = new CollegesNearEntity(gaboto, "Somerville College", 10, TimeInstant.now());
+		CollegesNearEntity query = new CollegesNearEntity(oxp, "Somerville College", 10, TimeInstant.now());
 		query.prepare();
 		
 		PerformanceAverager perf = new PerformanceAverager("Test query 1");
@@ -122,12 +114,4 @@ public class TestPoolCreationPerformance {
 		
 		System.out.println(perf);
 	}
-  private InputStream getResourceOrDie(String fileName) { 
-    String resourceName = "exampledata/" + fileName;
-    InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(resourceName);
-    if (is == null) 
-      throw new NullPointerException("File " + resourceName + " cannot be loaded");
-    return is;
-  }
-	
 }
