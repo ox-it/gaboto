@@ -196,6 +196,7 @@
             <exclude>**/**4*</exclude>
             <exclude>**/**5*</exclude>
             <exclude>**/**6*</exclude>
+            <exclude>**/**</exclude>
 	  <!-- Too slow -->
             <exclude>**/TestPoolCreationPerformance.java</exclude>
             <exclude>**/TestEntityPool.java</exclude>
