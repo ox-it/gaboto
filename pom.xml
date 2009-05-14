@@ -188,10 +188,21 @@
            <include>**/*Test.java</include>
            <include>**/Test*.java</include>
           </includes>
-          <!-- excludes -->
-            <!-- Old example test -->
-            <!--exclude>**/HTMLMarkupLanguage*Test.java</exclude-->
-          <!-- /excludes -->
+          <excludes>
+	  <!-- Odd HACK-->
+            <exclude>**/**1*</exclude>
+            <exclude>**/**2*</exclude>
+            <exclude>**/**3*</exclude>
+            <exclude>**/**4*</exclude>
+            <exclude>**/**5*</exclude>
+            <exclude>**/**6*</exclude>
+	  <!-- Too slow -->
+            <exclude>**/TestPoolCreationPerformance.java</exclude>
+            <exclude>**/TestEntityPool.java</exclude>
+            <exclude>**/TestGabotoSnapshot.java</exclude>
+	    <exclude>**/TestSimpleConstructSPARQLQuery.java</exclude>
+	    <exclude>**/BuildingsOccupiedByCollegeTest.java</exclude>
+	   </excludes>
         </configuration>
       </plugin>
       <plugin>
