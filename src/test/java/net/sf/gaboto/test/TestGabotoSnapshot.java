@@ -31,8 +31,7 @@
  */
 package net.sf.gaboto.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import junit.framework.TestCase;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -57,11 +56,11 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC_11;
 
-public class TestGabotoSnapshot {
+public class TestGabotoSnapshot extends TestCase {
 
 
 	@BeforeClass
-	public static void setUp() throws Exception {
+  protected void setUp() throws Exception {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
 	}
 	
