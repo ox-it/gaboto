@@ -49,7 +49,8 @@ import org.oucs.gaboto.transformation.kml.KMLPoolTransformer;
 import com.hp.hpl.jena.rdf.model.Model;
 
 /**
- * Provides a base class to easily write queries agains the Gaboto system that can then be transformed into different output foramts.
+ * Provides a base class to easily write queries agains the Gaboto system 
+ * that can then be transformed into different output foramts.
  * 
  * 
  * @author Arno Mittelbach
@@ -72,7 +73,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 	protected final static int RESULT_TYPE_ENTITY_POOL = 2;
 	
 	/**
-	 * stores a reference to the Gaboto system that is to be used
+	 * stores a reference to the Gaboto system that is to be used.
 	 */
 	private Gaboto gaboto;
 	
@@ -86,7 +87,8 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 	}
 	
 	/**
-	 * Constructor that allows to specifically set the Gaboto object this query object is working with.
+	 * Constructor that allows to specifically set the Gaboto object this query object 
+	 * is working with.
 	 * 
 	 * @param gaboto
 	 */
