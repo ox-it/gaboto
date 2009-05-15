@@ -2,87 +2,10 @@
 <kml xmlns="http://www.opengis.net/kml/2.2">
 <Document>
 <Placemark>
-<name>University Library Services</name>
-<description><![CDATA[Website: <a href="http://www.ouls.ox.ac.uk">http://www.ouls.ox.ac.uk</a><br/>]]></description>
-<Point>
-<coordinates>-1.254023,51.754104</coordinates>
-</Point>
-</Placemark>
-<Placemark>
 <name>Oxford University Press</name>
 <description><![CDATA[Website: <a href="http://www.oup.co.uk/">http://www.oup.co.uk/</a><br/>]]></description>
 <Point>
 <coordinates>-1.264647,51.758902</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Rhodes House</name>
-<description><![CDATA[Website: <a href="http://www.rhodeshouse.ox.ac.uk">http://www.rhodeshouse.ox.ac.uk</a><br/>]]></description>
-<Point>
-<coordinates>-1.255212,51.75806</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Oxford University Club</name>
-<description><![CDATA[Website: <a href="http://www.club.ox.ac.uk/">http://www.club.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.2513148784637451,51.756783709900965</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>The University Church of St Mary the Virgin</name>
-<description><![CDATA[Website: <a href="http://www.university-church.ox.ac.uk/">http://www.university-church.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.25371,51.75276</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Systems and Electronic Resources Service</name>
-<description><![CDATA[Website: <a href="http://www.lib.ox.ac.uk/">http://www.lib.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.26943588256835,51.74682751390124</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Christ Church Cathedral, Christ Church</name>
-<description><![CDATA[Website: <a href="http://www.chch.ox.ac.uk/index.php?option=com_content&task=view&id=245&Itemid=300">http://www.chch.ox.ac.uk/index.php?option=com_content&task=view&id=245&Itemid=300</a><br/>]]></description>
-<Point>
-<coordinates>-1.25498,51.75004</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Faculty of History</name>
-<description><![CDATA[Website: <a href="http://www.history.ox.ac.uk/">http://www.history.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.26317,51.753656</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Faculty of Classics</name>
-<description><![CDATA[Website: <a href="http://www.classics.ox.ac.uk/">http://www.classics.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.260252,51.756923</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Faculty of English Language and Literature</name>
-<description><![CDATA[Website: <a href="http://www.english.ox.ac.uk/">http://www.english.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.248376,51.756936</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Sheldonian Theatre</name>
-<description><![CDATA[Website: <a href="http://www.sheldon.ox.ac.uk">http://www.sheldon.ox.ac.uk</a><br/>]]></description>
-<Point>
-<coordinates>-1.25503,51.75437</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>Oriental Institute</name>
-<description><![CDATA[Website: <a href="http://www.orinst.ox.ac.uk/">http://www.orinst.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.26092,51.75592</coordinates>
 </Point>
 </Placemark>
 <Placemark>
@@ -93,24 +16,17 @@
 </Point>
 </Placemark>
 <Placemark>
-<name>Faculty of Medieval and Modern Languages</name>
-<description><![CDATA[Website: <a href="http://www.mod-langs.ox.ac.uk/">http://www.mod-langs.ox.ac.uk/</a><br/>]]></description>
+<name>Christ Church Cathedral, Christ Church</name>
+<description><![CDATA[Website: <a href="http://www.chch.ox.ac.uk/index.php?option=com_content&task=view&id=245&Itemid=300">http://www.chch.ox.ac.uk/index.php?option=com_content&task=view&id=245&Itemid=300</a><br/>]]></description>
 <Point>
-<coordinates>-1.262727,51.757231</coordinates>
+<coordinates>-1.25498,51.75004</coordinates>
 </Point>
 </Placemark>
 <Placemark>
-<name>Faculty of Philosophy</name>
-<description><![CDATA[Website: <a href="http://www.philosophy.ox.ac.uk/">http://www.philosophy.ox.ac.uk/</a><br/>]]></description>
+<name>Oxford University Club</name>
+<description><![CDATA[Website: <a href="http://www.club.ox.ac.uk/">http://www.club.ox.ac.uk/</a><br/>]]></description>
 <Point>
-<coordinates>-1.259438,51.750202</coordinates>
-</Point>
-</Placemark>
-<Placemark>
-<name>University Parks</name>
-<description><![CDATA[Website: <a href="http://www.parks.ox.ac.uk/">http://www.parks.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.25945806503295,51.76169126035423</coordinates>
+<coordinates>-1.2513148784637451,51.756783709900965</coordinates>
 </Point>
 </Placemark>
 <Placemark>
@@ -121,10 +37,101 @@
 </Point>
 </Placemark>
 <Placemark>
+<name>Oriental Institute</name>
+<description><![CDATA[Website: <a href="http://www.orinst.ox.ac.uk/">http://www.orinst.ox.ac.uk/</a><br/>]]></description>
+<Point>
+<coordinates>-1.26092,51.75592</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>University Library Services</name>
+<description><![CDATA[Website: <a href="http://www.ouls.ox.ac.uk">http://www.ouls.ox.ac.uk</a><br/>]]></description>
+<Point>
+<coordinates>-1.254023,51.754104</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Faculty of Classics</name>
+<description><![CDATA[Website: <a href="http://www.classics.ox.ac.uk/">http://www.classics.ox.ac.uk/</a><br/>]]></description>
+<Point>
+<coordinates>-1.260252,51.756923</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>The University Church of St Mary the Virgin</name>
+<description><![CDATA[Website: <a href="http://www.university-church.ox.ac.uk/">http://www.university-church.ox.ac.uk/</a><br/>]]></description>
+<Point>
+<coordinates>-1.25371,51.75276</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>University Parks</name>
+<description><![CDATA[Website: <a href="http://www.parks.ox.ac.uk/">http://www.parks.ox.ac.uk/</a><br/>]]></description>
+<Point>
+<coordinates>-1.25945806503295,51.76169126035423</coordinates>
+</Point>
+</Placemark>
+<Placemark>
 <name>Faculty of Music</name>
 <description><![CDATA[Website: <a href="http://www.music.ox.ac.uk/">http://www.music.ox.ac.uk/</a><br/>]]></description>
 <Point>
 <coordinates>-1.255102,51.750069</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Faculty of English Language and Literature</name>
+<description><![CDATA[Website: <a href="http://www.english.ox.ac.uk/">http://www.english.ox.ac.uk/</a><br/>]]></description>
+<Point>
+<coordinates>-1.248376,51.756936</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Faculty of Philosophy</name>
+<description><![CDATA[Website: <a href="http://www.philosophy.ox.ac.uk/">http://www.philosophy.ox.ac.uk/</a><br/>]]></description>
+<Point>
+<coordinates>-1.259438,51.750202</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Sheldonian Theatre</name>
+<description><![CDATA[Website: <a href="http://www.sheldon.ox.ac.uk">http://www.sheldon.ox.ac.uk</a><br/>]]></description>
+<Point>
+<coordinates>-1.25503,51.75437</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Faculty of Medieval and Modern Languages</name>
+<description><![CDATA[Website: <a href="http://www.mod-langs.ox.ac.uk/">http://www.mod-langs.ox.ac.uk/</a><br/>]]></description>
+<Point>
+<coordinates>-1.262727,51.757231</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Faculty of History</name>
+<description><![CDATA[Website: <a href="http://www.history.ox.ac.uk/">http://www.history.ox.ac.uk/</a><br/>]]></description>
+<Point>
+<coordinates>-1.26317,51.753656</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Equality and Diversity Unit</name>
+<description/>
+<Point>
+<coordinates>-1.26327,51.75423</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Systems and Electronic Resources Service</name>
+<description><![CDATA[Website: <a href="http://www.lib.ox.ac.uk/">http://www.lib.ox.ac.uk/</a><br/>]]></description>
+<Point>
+<coordinates>-1.26943588256835,51.74682751390124</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<name>Rhodes House</name>
+<description><![CDATA[Website: <a href="http://www.rhodeshouse.ox.ac.uk">http://www.rhodeshouse.ox.ac.uk</a><br/>]]></description>
+<Point>
+<coordinates>-1.255212,51.75806</coordinates>
 </Point>
 </Placemark>
 </Document>
