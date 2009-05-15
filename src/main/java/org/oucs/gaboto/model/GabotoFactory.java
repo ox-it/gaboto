@@ -176,7 +176,6 @@ public class GabotoFactory {
 		
 		// get config
 		GabotoConfiguration config = GabotoLibrary.getConfig();
-    System.err.println("here1");
 		
 		// create persistent gaboto
 		String URL = config.getDbURL();
@@ -194,21 +193,22 @@ public class GabotoFactory {
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
-    System.err.println("her2e");
 
 		// Create a new graphset
-		Performance.start("load");
+    Performance.start("GabotoFactory new NamedGraphSetDB");
 		NamedGraphSet graphset = new NamedGraphSetDB(connection);
-		Performance.stop();
+    Performance.stop();
 		
 		// if graphset is empty, create special graphs
 		if(! graphset.containsGraph(config.getGKG()))
 			createGKG(graphset);
-    System.err.println("here3");
 
 		// create object
+    Performance.start("GabotoFactory new Gaboto");
 		persistentGaboto = new Gaboto(createCDG(), graphset, new SimpleTimeDimensionIndexer());
+    Performance.stop();
 		
+    Performance.start("GabotoFactory update listener");
 		// attach update listener
 		persistentGaboto.attachUpdateListener(new UpdateListener(){
 			public void updateOccured(GabotoEvent e) {
@@ -237,8 +237,8 @@ public class GabotoFactory {
 				}
 			}
 		});
-    System.err.println("here4");
 		
+    Performance.stop();
 		return persistentGaboto;
 	}
 
