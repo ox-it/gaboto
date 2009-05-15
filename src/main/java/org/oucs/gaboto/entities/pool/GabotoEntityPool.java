@@ -150,14 +150,13 @@ public class GabotoEntityPool {
 	 * 
 	 * @throws EntityPoolInvalidConfigurationException
 	 */
-	public static GabotoEntityPool createFrom(GabotoEntityPoolConfiguration config) throws EntityPoolInvalidConfigurationException{
-		try {
-			config.testConfiguration();
-		} catch (EntityPoolAmbiguousConfigurationException e) {}
+	public static GabotoEntityPool createFrom(GabotoEntityPoolConfiguration config) 
+	    throws EntityPoolInvalidConfigurationException{
+		config.testConfiguration();
 		
 		// get snapshot
 		GabotoSnapshot snapshot = config.getSnapshot();
-		if(null == snapshot)
+		if(snapshot == null)
 			snapshot = new GabotoSnapshot(config.getModel(), config.getGaboto());
 		
 		if(config.isUseResourceCollection())
