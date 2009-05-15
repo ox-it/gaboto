@@ -251,7 +251,7 @@ public class Gaboto {
 	 * @throws CorruptTimeIndexException 
 	 */
 	public GabotoSnapshot getSnapshot(TimeInstant ti) throws NoTimeIndexSetException{
-		logger.debug("craete snapshot for time instant " + ti);
+		logger.debug("create snapshot for time instant " + ti);
 		Collection<String> graphURIs = getTimeDimensionIndexer().getGraphsForInstant(ti);
 		
 		return getSnapshot(graphURIs);
