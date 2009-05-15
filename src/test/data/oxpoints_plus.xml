@@ -334,11 +334,6 @@
               <ptr target="http://www.lib.ox.ac.uk/libraries/guides/BNC.html"/>
             </desc>
           </trait>
-          <trait type="url">
-            <desc>
-              <ptr target="http://www.bnc.ox.ac.uk/"/>
-            </desc>
-          </trait>
         </place>
         <place type="library" olisCode="BNC Latham" xml:id="O_lib_bnc_1">
           <placeName>Latham Room</placeName>
@@ -525,6 +520,9 @@
 
         <place type="library" olisCode="BOD Nuneham" xml:id="bodlib_13">
           <placeName>Nuneham Repository</placeName>
+            <location>
+              <geo>-1.215363 51.680219</geo>
+	    </location>
         </place>
 
         <place type="library" olisCode="BOD OffPapers" xml:id="bodlib_14">
@@ -595,7 +593,16 @@
               <note> recorded by Janet McKnight</note>
             </location>
           </place>
-	<relation name="occupies" active="#O_lib_cai" passive="#b_0036"/>
+
+	  <place subtype="uas" type="unit" xml:id="O_equality">
+	    <placeName>Equality and Diversity Unit</placeName>
+	    <location type="address">
+	      <address>
+		<addrLine>5-6 Worcester Street, Oxford</addrLine>
+		<postCode>OX1 2BX</postCode>
+            </address>
+          </location>
+	</place>
 
 	<place type="poi" xml:id="O_ous">
 	  <placeName>Oxford Union Society</placeName>
@@ -607,10 +614,6 @@
               <geo>-1.259032 51.752976</geo>
             </location>
           </place>
-	<relation name="occupies" active="#O_ous" passive="#b_0037"/>
-
-	<relation name="occupies" active="#O_lib_ous" passive="#b_0037"/>
-
         <place type="library" olisCode="CAI Churchill" xml:id="O_lib_cai_1">
           <placeName>Churchill Hospital</placeName>
         </place>
@@ -1349,11 +1352,6 @@
               <ptr target="http://www.lib.ox.ac.uk/libraries/guides/HER.html"/>
             </desc>
           </trait>
-          <trait type="url">
-            <desc>
-              <ptr target="http://www.hertford.ox.ac.uk/"/>
-            </desc>
-          </trait>
         </place>
         <place type="library" olisCode="HER Holdings" xml:id="O_lib_her_1">
           <placeName>Hertford holdings on OLIS</placeName>
@@ -1544,6 +1542,10 @@
 
         <place type="library" olisCode="IND Nuneham" xml:id="O_lib_ind_3">
           <placeName>Nuneham Repository</placeName>
+            <location>
+              <geo>-1.215363 51.680219</geo>
+	    </location>
+
         </place>
 
         <place type="library" olisCode="IND Offsite" xml:id="O_lib_ind_4">
@@ -1800,6 +1802,10 @@
 
         <place type="library" olisCode="LAW Nuneham" xml:id="lawlib_3">
           <placeName>Nuneham Repository</placeName>
+            <location>
+              <geo>-1.215363 51.680219</geo>
+	    </location>
+
         </place>
 
         <place type="library" olisCode="LAW OIPRC" xml:id="lawlib_4">
@@ -2669,7 +2675,6 @@
         <place type="library" olisCode="PHY Sherring." xml:id="O_lib_phy_2">
           <placeName>Sherrington Library</placeName>
         </place>
-	<relation name="occupies" active="#O_lib_soc" passive="#b_0020"/>
 
         <place type="library" olisCode="SOC" xml:id="O_lib_soc">
           <placeName>Politics, International Relations and Sociology Library</placeName>
@@ -2868,6 +2873,10 @@
 
         <place type="library" olisCode="RSL Nuneham" xml:id="radlib_11">
           <placeName>Nuneham Repository</placeName>
+            <location>
+              <geo>-1.215363 51.680219</geo>
+	    </location>
+
         </place>
 
         <place type="library" olisCode="RSL Offsite" xml:id="radlib_12">
@@ -2959,6 +2968,10 @@
         </place>
         <place type="library" olisCode="RHO Nuneham" xml:id="O_lib_rho_1">
           <placeName>Nuneham Repository</placeName>
+            <location>
+              <geo>-1.215363 51.680219</geo>
+	    </location>
+
         </place>
 
         <place type="library" olisCode="RHO Offsite" xml:id="O_lib_rho_2">
@@ -3004,7 +3017,6 @@
 	    <geo>-1.2614 51.75544</geo>
 	  </location>	  
 	</place>
-	<relation name="occupies" active="#ashlib" passive="#b_0034"/>
 
         <place type="library" olisCode="SAC" xml:id="ashlib">
           <placeName>Sackler Library</placeName>
@@ -3069,6 +3081,10 @@
 
         <place type="library" olisCode="SAC Nuneham" xml:id="ashlib_13">
           <placeName>Nuneham Repository</placeName>
+            <location>
+              <geo>-1.215363 51.680219</geo>
+	    </location>
+
         </place>
 
         <place type="library" olisCode="SAC Rare Book" xml:id="ashlib_14">
@@ -3444,7 +3460,7 @@
           </trait>
           <trait type="url">
             <desc>
-              <ptr target="http://www.stx.ox.ac.uk/"/>
+              <ptr target="http://www.stx.ox.ac.uk/members/library/college_library"/>
             </desc>
           </trait>
         </place>
@@ -3461,7 +3477,7 @@
           </trait>
           <trait type="url">
             <desc>
-              <ptr target="http://www.st-hughs.ox.ac.uk/"/>
+              <ptr target="http://www.st-hughs.ox.ac.uk/about-sthughs/college-life/library"/>
             </desc>
           </trait>
         </place>
@@ -3536,6 +3552,10 @@
 
         <place type="library" olisCode="TAS Nuneham" xml:id="O_lib_tas_8">
           <placeName>Nuneham Repository</placeName>
+            <location>
+              <geo>-1.215363 51.680219</geo>
+	    </location>
+
         </place>
 
         <place type="library" olisCode="TAS Pers" xml:id="O_lib_tas_9">
@@ -3587,7 +3607,6 @@
               <note> recorded by Janet McKnight</note>
             </location>
           </place>
-	<relation name="occupies" active="#taylor" passive="#b_0035"/>
 
         <place type="library" olisCode="TAY Base Celt" xml:id="taylor_1">
           <placeName>Basement Celtic LC Classification Sequence</placeName>
@@ -3647,6 +3666,10 @@
 
         <place type="library" olisCode="TAY Nuneham" xml:id="taylor_15">
           <placeName>Nuneham Repository</placeName>
+            <location>
+              <geo>-1.215363 51.680219</geo>
+	    </location>
+
         </place>
 
         <place type="library" olisCode="TAY Reference" xml:id="taylor_16">
@@ -3662,11 +3685,6 @@
           <trait type="liburl">
             <desc>
               <ptr target="http://www.lib.ox.ac.uk/libraries/guides/TEM.html"/>
-            </desc>
-          </trait>
-          <trait type="url">
-            <desc>
-              <ptr target="http://www.templeton.ox.ac.uk/"/>
             </desc>
           </trait>
         </place>
@@ -3972,11 +3990,9 @@
         <place type="library" olisCode="WOR Store" xml:id="O_lib_wor_8">
           <placeName>Bookstore</placeName>
         </place>
-        <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_8"/>
         <place type="library" olisCode="WOR Upper Lib" xml:id="O_lib_wor_9">
           <placeName>Upper Library</placeName>
         </place>
-        <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_9"/>
         <place type="library" olisCode="ZOO" xml:id="O_lib_zoo">
           <placeName>Zoology Library</placeName>
           <trait type="liburl">
@@ -3993,19 +4009,19 @@
         <place type="library" olisCode="ZOO Alexander" xml:id="O_lib_zoo_1">
           <placeName>Alexander (Reference)</placeName>
         </place>
-        <relation name="controls" active="#O_lib_zoo" passive="#O_lib_zoo_1"/>
+
         <place type="library" olisCode="ZOO Elton" xml:id="O_lib_zoo_2">
           <placeName>Elton</placeName>
         </place>
-        <relation name="controls" active="#O_lib_zoo" passive="#O_lib_zoo_2"/>
+
         <place type="library" olisCode="ZOO Main" xml:id="O_lib_zoo_3">
           <placeName>Main </placeName>
         </place>
-        <relation name="controls" active="#O_lib_zoo" passive="#O_lib_zoo_3"/>
+
         <place type="library" olisCode="ZOO Main Ref." xml:id="O_lib_zoo_4">
           <placeName>Main Ref.</placeName>
         </place>
-        <relation name="controls" active="#O_lib_zoo" passive="#O_lib_zoo_4"/>
+
 
         <!-- end olis libraries -->
 
@@ -4329,7 +4345,6 @@
               <postCode>OX1 1QS</postCode>
             </address>
           </location>
-
           <trait type="url">
             <desc>
               <ptr target="http://www.campion.ox.ac.uk/"/>
@@ -6076,7 +6091,6 @@ data, and if so, how? -->
           <event when="2008" type="ended">
             <label>Merged with Green Templeton</label>
           </event>
-
           <location type="address">
             <address>
               <addrLine>Oxford</addrLine>
@@ -6114,6 +6128,13 @@ data, and if so, how? -->
             </address>
           </location>
 
+          <trait type="figure">
+            <desc>
+              <ref target="http://www.gtc.ox.ac.uk/">
+                <graphic url="http://www.gtc.ox.ac.uk/images/stories/right/about/aboutussection.jpg"/>
+              </ref>
+            </desc>
+          </trait>
 
           <trait type="url">
             <desc>
@@ -8781,6 +8802,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
               <ptr target="http://www.ssho.ox.ac.uk/"/>
             </desc>
           </trait>
+
+
           <place subtype="primary" type="building">
             <placeName>Lodge</placeName>
             <location when="2007-05-22T12:35:49.627+01:00">
@@ -9122,7 +9145,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
               </desc>
             </trait>
 	</place>
-	<relation name="occupies" type="geo primary" active="#counsel" passive="#b_0033"/>
+
         <place type="uas" xml:id="survey">
           <placeName>University Estates Directorate</placeName>
           <location type="address">
@@ -9452,6 +9475,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
               <ptr target="http://www.wycliffe.ox.ac.uk/"/>
             </desc>
           </trait>
+
           <trait type="weblearn">
             <desc>
               <ptr target="http://weblearn.ox.ac.uk/site/colleges/wycliffe/"/>
@@ -10359,13 +10383,13 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           </place>
         </place>
       </listPlace>
+      
       <listPlace>
-        <place type="centre">
           <location>
             <geo>-1.26035 51.76001</geo>
           </location>
-        </place>
       </listPlace>
+
       <listPlace>
         <place type="building" xml:id="b_0001">
           <placeName>10 Parks Road</placeName>
@@ -10685,6 +10709,31 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           </location>
         </place>
 
+        <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_9"/>
+        <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_8"/>
+	<relation name="occupies" active="#O_lib_soc" passive="#b_0020"/>
+	<relation name="occupies" type="geo primary" active="#O_equality"
+		  passive="#b_0007" />
+	<relation name="occupies" type="geo primary" active="#offices" passive="#b_0007" />
+	<relation name="occupies" active="#O_lib_cai" passive="#b_0036"/>
+	
+	
+	<relation name="occupies" active="#O_ous" passive="#b_0037"/>
+
+	<relation name="occupies" active="#O_lib_ous" passive="#b_0037"/>
+
+	<relation name="occupies" active="#ashlib" passive="#b_0034"/>
+
+	<relation name="occupies" active="#taylor" passive="#b_0035"/>
+        <relation name="controls" active="#O_lib_zoo" passive="#O_lib_zoo_1"/>
+        <relation name="controls" active="#O_lib_zoo"
+        passive="#O_lib_zoo_2"/>
+        <relation name="controls" active="#O_lib_zoo"
+        passive="#O_lib_zoo_3"/>
+        <relation name="controls" active="#O_lib_zoo"
+        passive="#O_lib_zoo_4"/>
+	<relation name="occupies" type="geo primary" active="#counsel"
+        passive="#b_0033"/>
         <relation name="controls" type="political" active="#plant" passive="#plantlib"/>
         <relation name="controls" type="political" active="#offices" passive="#O_asuc"/>
         <relation name="controls" type="political" active="#offices" passive="#O_alumni"/>
@@ -10713,7 +10762,6 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
         <relation name="controls" type="political" active="#offices" passive="#O_acdivcomms"/>
         <relation name="controls" type="political" active="#offices" passive="#O_dma"/>
         <relation name="controls" type="political" active="#offices" passive="#ohs"/>
-        <relation name="controls" type="political" active="#offices" passive="#O_equality"/>
         <relation name="controls" type="political" active="#offices" passive="#O_mpu"/>
         <relation name="controls" type="political" active="#offices" passive="#O_personnel"/>
         <relation name="controls" type="political" active="#offices" passive="#O_rso"/>
@@ -10774,25 +10822,28 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
         <relation name="occupies" type="geo primary" active="#ohs" passive="#b_0001"/>
         <relation name="occupies" type="geo primary" active="#online" passive="#b_0015"/>
         <relation name="occupies" type="geo primary" active="#ageing" passive="#b_0020"/>
-        <relation name="uses" type="room" active="#ageing" passive="#b_0020r1"/>
         <relation name="occupies" type="geo primary" active="#sbsltd" passive="#b_0019"/>
         <relation name="occupies" type="geo primary" active="#archive" passive="#b_0011"/>
         <relation name="occupies" type="geo primary" active="#ouce" passive="#b_0023"/>
+<!--
+        <relation name="uses" type="room" active="#ageing" passive="#b_0020r1"/>
         <relation name="uses" type="room" active="#ouce" passive="#b_0023r1"/>
+        <relation name="uses" type="room" active="#politics" passive="#b_0020r1"/>
+        <relation name="uses" type="room" active="#econlib"
+		  passive="#b_0020r2"/>
+-->
         <relation name="occupies" type="geo primary" active="#consult" passive="#b_0015"/>
         <relation name="occupies" type="geo primary" active="#devoff" passive="#b_0022"/>
         <relation name="occupies" type="geo primary" active="#ousoc" passive="#b_0022"/>
         <relation name="occupies" type="geo primary" active="#particle" passive="#b_0014"/>
         <relation name="occupies" type="geo primary" active="#phillib" passive="#b_0002"/>
         <relation name="occupies" type="geo primary" active="#politics" passive="#b_0020"/>
-        <relation name="uses" type="room" active="#politics" passive="#b_0020r1"/>
         <relation name="occupies" type="geo primary" active="#rob" passive="#b_0017"/>
         <relation name="occupies" type="geo primary" active="#retired" passive="#b_0005"/>
         <relation name="occupies" type="geo primary" active="#safety" passive="#b_0001"/>
         <relation name="occupies" type="geo" active="#manstud" passive="#b_0019"/>
         <relation name="occupies" type="geo primary" active="#geog" passive="#b_0023"/>
         <relation name="occupies" type="geo primary" active="#econlib" passive="#b_0020"/>
-        <relation name="uses" type="room" active="#econlib" passive="#b_0020r2"/>
         <relation name="occupies" type="geo primary" active="#learn" passive="#b_0030"/>
         <relation name="occupies" type="geo" active="#molmed" passive="#b_0018"/>
         <relation name="occupies" type="geo primary" active="#theolib" passive="#b_0006"/>
@@ -11556,6 +11607,15 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
       </listPlace>
 
       <div>
+	<!--
+	<figure corresp="#camp"/>
+        <figure corresp="#gree"/>
+        <figure corresp="#grey"/>
+        <figure corresp="#shil"/>
+        <figure corresp="#sste"/>
+        <figure corresp="#temp"/>
+        <figure corresp="#wycl"/>
+	-->
         <figure corresp="#alls">
           <graphic width="167px" height="125px" url="images/collegepictures/alls.jpg"/>
           <figDesc>http://en.wikipedia.org/wiki/Image:All_souls_college_oxford_university.jpg</figDesc>
@@ -11579,7 +11639,6 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           <note>from
             http://upload.wikimedia.org/wikipedia/commons/8/81/Oxford_Brasenose_College.jpg</note>
         </figure>
-        <figure corresp="#camp"/>
         <figure corresp="#chri">
           <graphic width="225px" height="125px" url="images/collegepictures/chri.jpg"/>
           <figDesc>http://en.wikipedia.org/wiki/Image:Tom_Quad%2C_Christ_Church_2004-01-21.jpg</figDesc>
@@ -11597,8 +11656,6 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           <note>from
             http://upload.wikimedia.org/wikipedia/commons/0/0a/Exeter_College%2C_Oxford.JPG</note>
         </figure>
-        <figure corresp="#gree"/>
-        <figure corresp="#grey"/>
         <figure corresp="#manc">
           <graphic width="202px" height="125px" url="images/collegepictures/manc.jpg"/>
           <figDesc>http://en.wikipedia.org/wiki/Image:HarrisManchesterDusk.jpg</figDesc>
@@ -11733,7 +11790,6 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           <figDesc>http://en.wikipedia.org/wiki/Image:SEHQuad.jpg</figDesc>
           <note>from http://upload.wikimedia.org/wikipedia/en/4/40/SEHQuad.jpg</note>
         </figure>
-        <figure corresp="#shil"/>
         <figure corresp="#shug">
           <graphic width="92px" height="125px" url="images/collegepictures/shug.jpg"/>
           <figDesc>http://en.wikipedia.org/wiki/Image:St_Hugh%27s_Front.jpg</figDesc>
@@ -11751,8 +11807,6 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           <note>from
             http://upload.wikimedia.org/wikipedia/commons/2/23/St_Peter%27s_College%2C_Oxford.JPG</note>
         </figure>
-        <figure corresp="#sste"/>
-        <figure corresp="#temp"/>
         <figure corresp="#trin">
           <graphic width="85px" height="125px" url="images/collegepictures/trin.jpg"/>
           <figDesc>http://en.wikipedia.org/wiki/Image:Trinity_college_by_longlong.jpg</figDesc>
@@ -11780,7 +11834,6 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           <figDesc>http://en.wikipedia.org/wiki/Image:MKung_WorcQuad.JPG</figDesc>
           <note>from http://upload.wikimedia.org/wikipedia/en/3/3c/MKung_WorcQuad.JPG</note>
         </figure>
-        <figure corresp="#wycl"/>
       </div>
     </body>
   </text>
