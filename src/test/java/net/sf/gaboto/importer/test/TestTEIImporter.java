@@ -48,7 +48,7 @@ import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 import org.xml.sax.SAXException;
 
-public class TestGaboto {
+public class TestTEIImporter {
 
 	/**
 	 * @param args
