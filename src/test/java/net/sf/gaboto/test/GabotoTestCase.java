@@ -53,7 +53,7 @@ import junit.framework.TestCase;
 public class GabotoTestCase extends TestCase {
   
   protected static String referenceOutputDir = "src/test/reference";
-  protected static String generatedOutputDir = "target";
+  protected static String actualOutputDir = "target";
 
   /**
    * Default constructor.
@@ -74,10 +74,10 @@ public class GabotoTestCase extends TestCase {
     return false;
   }
   protected void assertXmlEqual(String actual, String fileName) throws Exception { 
-    File actualFile = new File(generatedOutputDir, fileName);
-    FileOutputStream generatedOutput = new FileOutputStream(actualFile);
-    generatedOutput.write(actual.getBytes());
-    generatedOutput.close();
+    File actualFile = new File(actualOutputDir, fileName);
+    FileOutputStream actualOutputStream = new FileOutputStream(actualFile);
+    actualOutputStream.write(actual.getBytes());
+    actualOutputStream.close();
     
     File referenceFile = new File(referenceOutputDir, fileName);
     if (referenceFile.exists() && ! generateReferenceCopy()) {
@@ -96,7 +96,7 @@ public class GabotoTestCase extends TestCase {
   
   protected void assertPageJsonEqual(String actual, String referenceFileName) throws Exception { 
     JSONObject actualJson = JSONObject.fromObject(tidy(actual));
-    File generatedFile = new File(generatedOutputDir, referenceFileName);
+    File generatedFile = new File(actualOutputDir, referenceFileName);
     FileOutputStream generatedOutput = new FileOutputStream(generatedFile);
     generatedOutput.write(actual.getBytes());
     generatedOutput.close();
