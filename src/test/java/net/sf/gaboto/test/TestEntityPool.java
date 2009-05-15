@@ -31,8 +31,8 @@
  */
 package net.sf.gaboto.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.io.File;
+
 import junit.framework.TestCase;
 
 import org.junit.BeforeClass;
@@ -51,6 +51,7 @@ import org.oucs.gaboto.entities.pool.filters.PropertyExistsFilter;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
+import org.oucs.gaboto.helperscripts.importing.TEIImporter;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.GabotoSnapshot;
@@ -66,268 +67,290 @@ import com.hp.hpl.jena.vocabulary.DC_11;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 public class TestEntityPool extends TestCase {
+  Gaboto op = null;
+  static String filename = "src/test/data/oxpoints_plus.xml";
 
-	@BeforeClass
-	public  void setUp() throws Exception {
-		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
-	}
-	
-	@Test
-	public void testEntityPoolCreation() throws GabotoException{
-		Gaboto op = GabotoFactory.getInMemoryGaboto();
-		
-		GabotoSnapshot snap = op.getSnapshot(new TimeInstant(2000,0,0));
-		
-		Model m = snap.getModel();
-		
-		// count buildings
-		int nrOfBuildings = 0;
-		ResIterator it = m.listResourcesWithProperty(RDF.type, OxPointsVocab.Building);
-		while(it.hasNext()){
-			nrOfBuildings++;
-			it.next();
-		}
-		
-		// count colleges
-		int nrOfColleges = 0;
-		it = m.listResourcesWithProperty(RDF.type, OxPointsVocab.College);
-		while(it.hasNext()){
-			nrOfColleges++;
-			it.next();
-		}
+  @BeforeClass
+  public void setUp() throws Exception {
+    if (op == null) {
+      GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+      // op = GabotoFactory.getInMemoryGaboto();
+      File file = new File(filename);
+      if (!file.exists())
+        throw new RuntimeException("Cannot open file " + filename);
 
-		// create entitypool
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(snap));
-		
-		// go through buildings & colleges in pool
-		assertEquals(nrOfBuildings, pool.getEntities(new Building()).size());
-		assertEquals(nrOfColleges, pool.getEntities(new College()).size());
-	}
-	
-	@Test
-	public void testModelSizeEquality() throws GabotoException{
-		Gaboto op = GabotoFactory.getInMemoryGaboto();
-		
-		// as long as there is no data for the future in the system, this should hold
-		Model m1 = op.getSnapshot(TimeInstant.now()).getModel();
-		GabotoEntityPool pool =  GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(op,m1));
-		Model m2 = pool.createJenaModel();
-		
-		
-		StmtIterator it = m1.listStatements();
-		while(it.hasNext()){
-			Statement stmt = it.nextStatement();
-			if(! m2.contains(stmt))
-				System.out.println("stmt not in m2: " + stmt);
-		}
-		
+      GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+      op = GabotoFactory.getEmptyInMemoryGaboto();
+      new TEIImporter(op, file).run();
+    }
+  }
 
-		//assertEquals(m1.size() + " not equal " + m2.size(),m1.size(),m2.size());
-		//System.err.println(m1.size() + " not less then 25 smaller than " + m2.size());
-		// FIXME TPP What is going on here? was 10 in mysql
-		//assertTrue(m1.size() + " not less then 25 smaller than " + m2.size(), Math.abs(m1.size()-m2.size()) < 25);
-	}
-	
-	@Test
-	public void testEntityAddReferencedEntities() throws GabotoException{
-		Gaboto op = GabotoFactory.getInMemoryGaboto();
-		
-		GabotoSnapshot snap = op.getSnapshot(new TimeInstant(2000,0,0));
-		
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snap);
-		config.setAddReferencedEntitiesToPool(false);
-		config.addAcceptedType(OxPointsVocab.College_URI);
-		
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
-		
-		for(GabotoEntity e : pool.getEntities())
-			assertTrue(e instanceof College);
-		
-		config = new GabotoEntityPoolConfiguration(snap);
-		config.addAcceptedType(OxPointsVocab.Building_URI);
-		config.setAddReferencedEntitiesToPool(false);
-		pool = GabotoEntityPool.createFrom(config);
-		
-		for(GabotoEntity e : pool.getEntities())
-			assertTrue(e instanceof Building);
-		
-		
-		config = new GabotoEntityPoolConfiguration(snap);
-		config.addAcceptedType(OxPointsVocab.College_URI);
-		config.setAddReferencedEntitiesToPool(true);
-		
-		pool = GabotoEntityPool.createFrom(config);
-		
-		// Access some properties
-		for(College c : pool.getEntities(new College())){
-			System.err.println(c.getPrimaryPlace());
-		}
-		
-		boolean foundCollege = false;
-		boolean foundBuilding = false;
-		for(GabotoEntity e : pool.getEntities()){
-			if(e instanceof Building)
-				foundBuilding = true;
-			if(e instanceof College)
-				foundCollege = true;
-		}
-		
-		assertTrue(foundCollege);
-		assertTrue(foundBuilding);
-	}
-	
-	@Test
-	public void testEntityFilter() throws GabotoException{
-		Gaboto op = GabotoFactory.getInMemoryGaboto();
-		GabotoSnapshot snap = op.getSnapshot(new TimeInstant(2000,0,0));
-		
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snap);
-		config.addEntityFilter(new EntityFilter(){
+  @Test
+  public void testEntityPoolCreation() throws GabotoException {
 
-			@Override
-			public Class<? extends GabotoEntity> appliesTo(){
-				return College.class;
-			}
-			
-			@Override
-			public boolean filterEntity(GabotoEntity entity) {
-				return false;
-			}
-		});
-		
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
-		
-		assertTrue(pool.getEntities(new College()).isEmpty());
-		
-		config = new GabotoEntityPoolConfiguration(snap);
-		config.addEntityFilter(new EntityFilter(){
+    GabotoSnapshot snap = op.getSnapshot(new TimeInstant(2000, 0, 0));
 
-			@Override
-			public boolean filterEntity(GabotoEntity entity) {
-				if(!(entity instanceof College))
-					return false;
-				return true;
-			}
-		});
-		
-		pool = GabotoEntityPool.createFrom(config);
-		
-		for(GabotoEntity e : pool.getEntities())
-			assertTrue(e instanceof College);
-	}
-	
-	
-	@Test
-	public void testEntityFilter2() throws GabotoException{
-		Gaboto op = GabotoFactory.getInMemoryGaboto();
-		GabotoSnapshot snap = op.getSnapshot(TimeInstant.now());
-		
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snap);
-		config.addEntityFilter(new EntityFilter(){
+    Model m = snap.getModel();
 
-			@Override
-			public boolean filterEntity(GabotoEntity entity) {
-				if(!(entity instanceof College))
-					return false;
-				return true;
-			}
-		});
-		
-		config.addEntityFilter(new EntityFilter(){
-			
-			@Override
-			public Class<? extends GabotoEntity> appliesTo(){
-				return College.class;
-			}
-			
-			@Override
-			public boolean filterEntity(GabotoEntity entity) {
-				College col = (College) entity;
-		    	
-		    	// reject if no primary place is set
-		    	if(null == col.getPrimaryPlace())
-		    		return false;
-		    	
-		    	// load location
-		    	Location loc = col.getPrimaryPlace().getLocation();
-		    	
-		    	// reject if no location is set
-		    	if(null == loc)
-		    		return false;
-		    	
-				double lat_oucs = 51.760010;
-				double long_oucs = -1.260350;
-	
-				double lat_diff = Double.valueOf(loc.getPos().split(" ")[0]) - lat_oucs;
-				double long_diff = Double.valueOf(loc.getPos().split(" ")[1]) - long_oucs;
-				double distance = Math.sqrt(lat_diff*lat_diff + long_diff*long_diff);
+    // count buildings
+    int nrOfBuildings = 0;
+    ResIterator it = m.listResourcesWithProperty(RDF.type,
+        OxPointsVocab.Building);
+    while (it.hasNext()) {
+      nrOfBuildings++;
+      it.next();
+    }
 
-		    	// if distance is small enough, allow entity to pass.
-		    	if(distance < 0.002)
-		    		return true;
-		    	
-		    	// reject by default
-		    	return false;
-  
-			}
-		});
-		
-		GabotoEntityPool.createFrom(config);
-	}
-	
-	@Test
-	public void testEntityTypeFilter() throws EntityPoolInvalidConfigurationException{
-		Gaboto op = GabotoFactory.getInMemoryGaboto();
-		GabotoSnapshot snap = op.getSnapshot(TimeInstant.now());
-		
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snap);
-		config.addAcceptedType(OxPointsVocab.College_URI);
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
-		for(GabotoEntity e : pool.getEntities())
-			assertEquals(OxPointsVocab.College_URI, e.getType());
+    // count colleges
+    int nrOfColleges = 0;
+    it = m.listResourcesWithProperty(RDF.type, OxPointsVocab.College);
+    while (it.hasNext()) {
+      nrOfColleges++;
+      it.next();
+    }
 
-		config = new GabotoEntityPoolConfiguration(snap);
-		config.addUnacceptedType(OxPointsVocab.College_URI);
-		pool = GabotoEntityPool.createFrom(config);
-		
-		boolean bCollege = false;
-		boolean bBuilding = false;
-		for(GabotoEntity e : pool.getEntities()){
-			if(OxPointsVocab.College_URI.equals(e.getType()))
-				bCollege = true;
-			if(OxPointsVocab.Building_URI.equals(e.getType()))
-				bBuilding = true;
-		}
-		
-		assertTrue(bBuilding);
-		assertTrue(!bCollege);
-	}
-	
-	@Test
-	public void testResourceFilter() throws EntityPoolInvalidConfigurationException, ResourceDoesNotExistException{
-		Gaboto op = GabotoFactory.getInMemoryGaboto();
-		GabotoSnapshot snap = op.getSnapshot(TimeInstant.now());
-		
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snap);
-		config.addAcceptedType(OxPointsVocab.College_URI);
-		config.addResourceFilter(new PropertyExistsFilter(DC_11.title));
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
-		assertTrue("We have an empty pool; size: " + pool.getSize(), pool.getSize() > 0);
-		
-		config = new GabotoEntityPoolConfiguration(snap);
-		config.addAcceptedType(OxPointsVocab.College_URI);
-		config.addResourceFilter(new PropertyEqualsFilter(DC_11.title, "Somerville College"));
-		pool = GabotoEntityPool.createFrom(config);
-		assertTrue("Pool size is greater than 1:" + pool.getSize(), pool.getSize() == 1);
-		
-		Resource col = snap.getResource(pool.getEntities().toArray(new GabotoEntity[1])[0].getUri());
-		config = new GabotoEntityPoolConfiguration(snap);
-		config.addAcceptedType(OxPointsVocab.College_URI);
-		config.addResource(col);
-		config.addResourceFilter(new PropertyEqualsFilter(DC_11.title, "Somerville College"));
-		pool = GabotoEntityPool.createFrom(config);
-		assertTrue(pool.getSize() == 1);
+    // create entitypool
+    GabotoEntityPool pool = GabotoEntityPool
+        .createFrom(new GabotoEntityPoolConfiguration(snap));
 
-		
-	}
+    // go through buildings & colleges in pool
+    assertEquals(nrOfBuildings, pool.getEntities(new Building()).size());
+    assertEquals(nrOfColleges, pool.getEntities(new College()).size());
+  }
+
+  @Test
+  public void testModelSizeEquality() throws GabotoException {
+
+    // as long as there is no data for the future in the system, this should
+    // hold
+    Model m1 = op.getSnapshot(TimeInstant.now()).getModel();
+    GabotoEntityPool pool = GabotoEntityPool
+        .createFrom(new GabotoEntityPoolConfiguration(op, m1));
+    Model m2 = pool.createJenaModel();
+
+    StmtIterator it = m1.listStatements();
+    while (it.hasNext()) {
+      Statement stmt = it.nextStatement();
+      if (!m2.contains(stmt))
+        System.out.println("stmt not in m2: " + stmt);
+    }
+
+    // Still one out
+    //assertEquals(m1.size() + " not equal " + m2.size(),m1.size(),m2.size());
+    // System.err.println(m1.size() + " not less then 25 smaller than " +
+    // m2.size());
+    // FIXME TPP What is going on here? was 10 in mysql
+    // assertTrue(m1.size() + " not less then 25 smaller than " + m2.size(),
+    // Math.abs(m1.size()-m2.size()) < 25);
+  }
+
+  @Test
+  public void testEntityAddReferencedEntities() throws GabotoException {
+
+    GabotoSnapshot snap = op.getSnapshot(new TimeInstant(2000, 0, 0));
+
+    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+        snap);
+    config.setAddReferencedEntitiesToPool(false);
+    config.addAcceptedType(OxPointsVocab.College_URI);
+
+    GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+
+    for (GabotoEntity e : pool.getEntities())
+      assertTrue(e instanceof College);
+
+    config = new GabotoEntityPoolConfiguration(snap);
+    config.addAcceptedType(OxPointsVocab.Building_URI);
+    config.setAddReferencedEntitiesToPool(false);
+    pool = GabotoEntityPool.createFrom(config);
+
+    for (GabotoEntity e : pool.getEntities())
+      assertTrue(e instanceof Building);
+
+    config = new GabotoEntityPoolConfiguration(snap);
+    config.addAcceptedType(OxPointsVocab.College_URI);
+    config.setAddReferencedEntitiesToPool(true);
+
+    pool = GabotoEntityPool.createFrom(config);
+
+    // Access some properties
+    for (College c : pool.getEntities(new College())) {
+      System.err.println(c.getPrimaryPlace());
+    }
+
+    boolean foundCollege = false;
+    boolean foundBuilding = false;
+    for (GabotoEntity e : pool.getEntities()) {
+      if (e instanceof Building)
+        foundBuilding = true;
+      if (e instanceof College)
+        foundCollege = true;
+    }
+
+    assertTrue(foundCollege);
+    assertTrue(foundBuilding);
+  }
+
+  @Test
+  public void testEntityFilter() throws GabotoException {
+    GabotoSnapshot snap = op.getSnapshot(new TimeInstant(2000, 0, 0));
+
+    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+        snap);
+    config.addEntityFilter(new EntityFilter() {
+
+      @Override
+      public Class<? extends GabotoEntity> appliesTo() {
+        return College.class;
+      }
+
+      @Override
+      public boolean filterEntity(GabotoEntity entity) {
+        return false;
+      }
+    });
+
+    GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+
+    assertTrue(pool.getEntities(new College()).isEmpty());
+
+    config = new GabotoEntityPoolConfiguration(snap);
+    config.addEntityFilter(new EntityFilter() {
+
+      @Override
+      public boolean filterEntity(GabotoEntity entity) {
+        if (!(entity instanceof College))
+          return false;
+        return true;
+      }
+    });
+
+    pool = GabotoEntityPool.createFrom(config);
+
+    for (GabotoEntity e : pool.getEntities())
+      assertTrue(e instanceof College);
+  }
+
+  @Test
+  public void testEntityFilter2() throws GabotoException {
+    GabotoSnapshot snap = op.getSnapshot(TimeInstant.now());
+
+    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+        snap);
+    config.addEntityFilter(new EntityFilter() {
+
+      @Override
+      public boolean filterEntity(GabotoEntity entity) {
+        if (!(entity instanceof College))
+          return false;
+        return true;
+      }
+    });
+
+    config.addEntityFilter(new EntityFilter() {
+
+      @Override
+      public Class<? extends GabotoEntity> appliesTo() {
+        return College.class;
+      }
+
+      @Override
+      public boolean filterEntity(GabotoEntity entity) {
+        College col = (College) entity;
+
+        // reject if no primary place is set
+        if (null == col.getPrimaryPlace())
+          return false;
+
+        // load location
+        Location loc = col.getPrimaryPlace().getLocation();
+
+        // reject if no location is set
+        if (null == loc)
+          return false;
+
+        double lat_oucs = 51.760010;
+        double long_oucs = -1.260350;
+
+        double lat_diff = Double.valueOf(loc.getPos().split(" ")[0]) - lat_oucs;
+        double long_diff = Double.valueOf(loc.getPos().split(" ")[1])
+            - long_oucs;
+        double distance = Math
+            .sqrt(lat_diff * lat_diff + long_diff * long_diff);
+
+        // if distance is small enough, allow entity to pass.
+        if (distance < 0.002)
+          return true;
+
+        // reject by default
+        return false;
+
+      }
+    });
+
+    GabotoEntityPool.createFrom(config);
+  }
+
+  @Test
+  public void testEntityTypeFilter()
+      throws EntityPoolInvalidConfigurationException {
+    GabotoSnapshot snap = op.getSnapshot(TimeInstant.now());
+
+    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+        snap);
+    config.addAcceptedType(OxPointsVocab.College_URI);
+    GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+    for (GabotoEntity e : pool.getEntities())
+      assertEquals(OxPointsVocab.College_URI, e.getType());
+
+    config = new GabotoEntityPoolConfiguration(snap);
+    config.addUnacceptedType(OxPointsVocab.College_URI);
+    pool = GabotoEntityPool.createFrom(config);
+
+    boolean bCollege = false;
+    boolean bBuilding = false;
+    for (GabotoEntity e : pool.getEntities()) {
+      if (OxPointsVocab.College_URI.equals(e.getType()))
+        bCollege = true;
+      if (OxPointsVocab.Building_URI.equals(e.getType()))
+        bBuilding = true;
+    }
+
+    assertTrue(bBuilding);
+    assertTrue(!bCollege);
+  }
+
+  @Test
+  public void testResourceFilter()
+      throws EntityPoolInvalidConfigurationException,
+      ResourceDoesNotExistException {
+    GabotoSnapshot snap = op.getSnapshot(TimeInstant.now());
+
+    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+        snap);
+    config.addAcceptedType(OxPointsVocab.College_URI);
+    config.addResourceFilter(new PropertyExistsFilter(DC_11.title));
+    GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+    assertTrue("We have an empty pool; size: " + pool.getSize(),
+        pool.getSize() > 0);
+
+    config = new GabotoEntityPoolConfiguration(snap);
+    config.addAcceptedType(OxPointsVocab.College_URI);
+    config.addResourceFilter(new PropertyEqualsFilter(DC_11.title,
+        "Somerville College"));
+    pool = GabotoEntityPool.createFrom(config);
+    assertTrue("Pool size is greater than 1:" + pool.getSize(),
+        pool.getSize() == 1);
+
+    Resource col = snap.getResource(pool.getEntities().toArray(
+        new GabotoEntity[1])[0].getUri());
+    config = new GabotoEntityPoolConfiguration(snap);
+    config.addAcceptedType(OxPointsVocab.College_URI);
+    config.addResource(col);
+    config.addResourceFilter(new PropertyEqualsFilter(DC_11.title,
+        "Somerville College"));
+    pool = GabotoEntityPool.createFrom(config);
+    assertTrue(pool.getSize() == 1);
+
+  }
 }
