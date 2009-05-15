@@ -119,7 +119,7 @@ public class TEIImporter {
 			try {
 				gaboto.add(e);
 			} catch (EntityAlreadyExistsException e1) {
-				System.out.println(e.getUri() + " has already been added to the system."); 
+				System.err.println(e.getUri() + " has already been added to the system."); 
 			} 
 		}
 	}
@@ -151,11 +151,11 @@ public class TEIImporter {
 				} else if(type.equals("carpark")){
 					processCarpark(el);
 				} else {
-					System.out.println("Unknown place type: " + type);
+					System.err.println("Unknown place type: " + type);
 				}
 			} catch(NullPointerException e){
 				e.printStackTrace();
-				System.out.println("No type defined for place");
+				System.err.println("No type defined for place");
 			}
 		} else if(name.equals("relation") && relations){
 			String relName = el.getAttribute("name");
@@ -165,10 +165,10 @@ public class TEIImporter {
 				} else if(relName.equals("controls")){
 					processControls(el);
 				} else {
-					System.out.println("Unkown relation: " + relName);
+					System.err.println("Unkown relation: " + relName);
 				}
 			}catch(NullPointerException e){
-				System.out.println("No name defined for relation");
+				System.err.println("No name defined for relation");
 			}
 		}
 	}
@@ -177,7 +177,7 @@ public class TEIImporter {
 	private void processFigure(Element figureEl) {
 		// try to find corresponding entity
 		if(! figureEl.hasAttribute("corresp")){
-			System.out.println("ambiguous figure element");
+			System.err.println("Ambiguous figure element");
 			return;
 		}
 			
@@ -189,7 +189,7 @@ public class TEIImporter {
 			// try to find a graphic element
 			NodeList graphics = figureEl.getElementsByTagName("graphic");
 			if(graphics.getLength() < 1){
-				System.out.println("empty figure element for: " + id);
+				System.err.println("Empty figure element for: " + id);
 				return;
 			}
 			
@@ -208,7 +208,7 @@ public class TEIImporter {
 			entities.add(img);
 			
 		} catch(NullPointerException e){
-			System.out.println("could not load entity from id: " + id );
+			System.err.println("Could not load entity from id: " + id );
 		}
 	}
 	
@@ -225,7 +225,7 @@ public class TEIImporter {
 			
 			passive.setSubsetOf(active);
 		} catch(NullPointerException e){
-			System.out.println("could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
+			System.err.println("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
 		}
 	}
 	
@@ -249,7 +249,7 @@ public class TEIImporter {
 			
 			u.addOccupiedBuilding(b);
 		} catch(NullPointerException e){
-			System.out.println("could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
+			System.err.println("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
 		}
 	}
 	
@@ -273,7 +273,7 @@ public class TEIImporter {
 				int size = Integer.parseInt(labelContent);
 				cp.setCapacity(size);
 			} catch(NumberFormatException e){
-				System.out.println("Could not ascertain carpark size.");
+				System.err.println("Could not ascertain carpark size.");
 			}
 		}
 		
@@ -358,13 +358,13 @@ public class TEIImporter {
 					try{
 						start = new TimeInstant(Integer.parseInt(event.getAttribute("when")), null, null);
 					}catch(NumberFormatException e){
-						System.out.println("Could not parse date: " + event.getAttribute("when")  + " for " + unit.getName() );
+						System.err.println("Could not parse date: " + event.getAttribute("when")  + " for " + unit.getName() );
 					}
 				} else if(event.hasAttribute("type") && event.getAttribute("type").equals("ended")){
 					try{
 						end = new TimeInstant(Integer.parseInt(event.getAttribute("when")), null, null);
 					}catch(NumberFormatException e){
-						System.out.println("Could not parse date: " + event.getAttribute("when")  + " for " + unit.getName() );
+						System.err.println("Could not parse date: " + event.getAttribute("when")  + " for " + unit.getName() );
 					}
 				}
 			}
@@ -535,7 +535,7 @@ public class TEIImporter {
 					
 					return hp;
 				} else{
-					System.out.println("missed ptr for " + type + ".");
+					System.err.println("Missed pointer for " + type + ".");
 				}
 			}
 		}
