@@ -41,7 +41,7 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
  * @see GabotoEntityPool
  * @see GabotoEntityPoolConfiguration
  */
-public class EntityPoolInvalidConfigurationException extends GabotoException {
+public class EntityPoolInvalidConfigurationException extends GabotoRuntimeException {
 
 	/**
 	 * 
