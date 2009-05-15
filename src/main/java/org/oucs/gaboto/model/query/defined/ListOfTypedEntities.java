@@ -90,18 +90,14 @@ public class ListOfTypedEntities extends GabotoQueryImpl {
 	}
 
 	@Override
-	public Object execute() throws NoTimeIndexSetException, CorruptDataException {
+	public Object execute() {
 		// create snapshot
 		GabotoSnapshot snapshot = getGaboto().getSnapshot(timeInstant);
 		// create config
 		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
 		config.addAcceptedType(type);
 		
-		try {
-			return GabotoEntityPool.createFrom(config);
-		} catch (EntityPoolInvalidConfigurationException e) {}
-		
-		return null;
+  	return GabotoEntityPool.createFrom(config);
 	}
 
 	@Override
