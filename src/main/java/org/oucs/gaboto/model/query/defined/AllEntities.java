@@ -37,6 +37,7 @@ package org.oucs.gaboto.model.query.defined;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.GabotoException;
+import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.query.GabotoQueryImpl;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -56,6 +57,17 @@ public class AllEntities extends GabotoQueryImpl {
   public AllEntities() throws GabotoException {
     super();
   }
+  
+  
+
+  /**
+   * @param gaboto
+   */
+  public AllEntities(Gaboto gaboto) {
+    super(gaboto);
+  }
+
+
 
   @Override
   protected void doPrepare() throws GabotoException {
