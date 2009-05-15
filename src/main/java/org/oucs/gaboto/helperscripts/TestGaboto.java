@@ -58,12 +58,13 @@ public class TestGaboto {
 	 * @throws ParserConfigurationException 
 	 */
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, GabotoException {
-		if(args.length != 1)
-			showHelp();
-		String filename = args[0];
+    String filename = "src/test/data/oxpoints_plus.xml"; 
+      
+		if(args.length == 1)
+		  filename = args[0];
 		File file = new File(filename);
 		if(! file.exists())
-			showHelp();
+			throw new RuntimeException ("Cannot open file " + filename);
 		
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
 		Gaboto oxp = GabotoFactory.getEmptyInMemoryGaboto();
@@ -73,11 +74,6 @@ public class TestGaboto {
 		String result = (String) query.execute(GabotoQuery.FORMAT_KML);
 		
 		System.out.println(result);
-	}
-
-	private static void showHelp() {
-		System.out.println("Argument one needs to be a file");
-		System.exit(1);
 	}
 
 }
