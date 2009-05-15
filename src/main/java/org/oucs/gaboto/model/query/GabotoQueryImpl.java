@@ -330,7 +330,8 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 			GabotoQuery.FORMAT_RDF_N_TRIPLE,
 			GabotoQuery.FORMAT_RDF_TURTLE,
 		
-			GabotoQuery.FORMAT_KML,
+      GabotoQuery.FORMAT_TEI_XML,
+      GabotoQuery.FORMAT_KML,
 			GabotoQuery.FORMAT_JSON
 		};
 	}
