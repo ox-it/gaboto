@@ -204,7 +204,7 @@ public class TestGabotoTimeBasedEntity {
 	
 	
 	@Test
-	public void testAddEntitySimple() throws GabotoException{
+	public void tooSlowtestAddEntitySimple() throws GabotoException{
 		Gaboto oxp = GabotoFactory.getPersistentGaboto();
 		Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 		
