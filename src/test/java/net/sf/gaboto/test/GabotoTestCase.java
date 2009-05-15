@@ -103,10 +103,10 @@ public class GabotoTestCase extends TestCase {
     
     File referenceFile = new File(referenceOutputDir, referenceFileName);
     if (referenceFile.exists() && ! generateReferenceCopy()) {
-      FileInputStream file = new FileInputStream (referenceFile);
-      byte[] b = new byte[file.available()];
-      file.read(b);
-      file.close ();
+      FileInputStream expectedFileinputStream = new FileInputStream (referenceFile);
+      byte[] b = new byte[expectedFileinputStream.available()];
+      expectedFileinputStream.read(b);
+      expectedFileinputStream.close ();
       String cached = new String(b);
       JSONObject expectedJson = JSONObject.fromObject(tidy(cached));
       JSONAssert.assertEquals(expectedJson, actualJson);
