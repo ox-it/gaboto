@@ -1,0 +1,434 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://nwalsh.com/rdf/vCard#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:j.1="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#" > 
+  <rdf:Description rdf:nodeID="A0">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/a69b56da"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/eda3c13e">
+    <j.1:inImage rdf:nodeID="A3"/>
+    <j.1:hasWeblearn rdf:resource="http://weblearn.ox.ac.uk/site/human/english/"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">engfac</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.english.ox.ac.uk/"/>
+    <j.1:occupies rdf:nodeID="A0"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/a69b56da"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of English Language and Literature</dc:title>
+    <j.0:adr rdf:nodeID="A4"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A5">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">41 Wellington Square, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 2JF</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A6">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/304ee01c">
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oriental Institute</dc:title>
+    <j.0:adr rdf:nodeID="A7"/>
+    <j.1:hasITHomepage rdf:resource="http://www.orinst.ox.ac.uk/general/it.shtml"/>
+    <j.1:hasWeblearn rdf:resource="http://weblearn.ox.ac.uk/site/human/orient/"/>
+    <j.1:hasHomepage rdf:resource="http://www.orinst.ox.ac.uk/"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">orient</j.1:hasOUCSCode>
+    <j.1:inImage rdf:nodeID="A8"/>
+    <j.1:occupies rdf:nodeID="A9"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/84743dfc"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/6ceac37e">
+    <j.1:inImage rdf:nodeID="A11"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">O_univchurch</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.university-church.ox.ac.uk/"/>
+    <j.1:occupies rdf:nodeID="A12"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/bc9e5552"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The University Church of St Mary the Virgin</dc:title>
+    <j.0:adr rdf:nodeID="A13"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A14">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/da853598"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/28c77a19">
+    <j.1:inImage rdf:nodeID="A6"/>
+    <j.1:hasWeblearn rdf:resource="http://weblearn.ox.ac.uk/site/human/phone/"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">phone</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.phon.ox.ac.uk/"/>
+    <j.1:occupies rdf:nodeID="A15"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/670764af"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Phonetics Laboratory</dc:title>
+    <j.0:adr rdf:nodeID="A5"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Manor Road, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 3UQ</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/1da412d3"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A17">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <rdf:_2 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/ea1fc546"/>
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/947da6f1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A19">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/cc8193a9">
+    <j.1:inImage rdf:nodeID="A17"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">univclub</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.club.ox.ac.uk/"/>
+    <j.1:occupies rdf:nodeID="A20"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/50d8655c"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oxford University Club</dc:title>
+    <j.0:adr rdf:nodeID="A21"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/d9f01c51"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/d958e087">
+    <j.1:inImage rdf:nodeID="A23"/>
+    <j.1:hasWeblearn rdf:resource="http://weblearn.ox.ac.uk/site/human/modhist/"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">histfac</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.history.ox.ac.uk/"/>
+    <j.1:occupies rdf:nodeID="A24"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/4684c061"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of History</dc:title>
+    <j.0:adr rdf:nodeID="A25"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/1b37564a">
+    <j.1:inImage rdf:nodeID="A19"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">libsys</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.lib.ox.ac.uk/"/>
+    <j.1:occupies rdf:nodeID="A26"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/20bb7161"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Systems and Electronic Resources Service</dc:title>
+    <j.0:adr rdf:nodeID="A27"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A28">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/965fd8db"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/84743dfc"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A29">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A30">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/0dddeeb3">
+    <j.1:inImage rdf:nodeID="A31"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">O_equality</j.1:hasOUCSCode>
+    <j.1:occupies rdf:nodeID="A32"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/7ec97176"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Equality and Diversity Unit</dc:title>
+    <j.0:adr rdf:nodeID="A33"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/76cbc342">
+    <j.1:hasWeblearn rdf:resource="http://weblearn.ox.ac.uk/site/human/modlang/"/>
+    <j.1:hasITHomepage rdf:resource="http://www.mod-langs.ox.ac.uk/computing/"/>
+    <j.1:inImage rdf:nodeID="A34"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/1da412d3"/>
+    <j.1:occupies rdf:nodeID="A16"/>
+    <j.0:adr rdf:nodeID="A35"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of Medieval and Modern Languages</dc:title>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+    <j.1:hasHomepage rdf:resource="http://www.mod-langs.ox.ac.uk/"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">modlang</j.1:hasOUCSCode>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/5b6e7c1a">
+    <j.1:inImage rdf:nodeID="A36"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oup</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.oup.co.uk/"/>
+    <j.1:occupies rdf:nodeID="A37"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/f0989bd9"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oxford University Press</dc:title>
+    <j.0:adr rdf:nodeID="A38"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/b8d3b32c">
+    <j.1:hasWeblearn rdf:resource="http://weblearn.ox.ac.uk/site/human/classics/"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">classics</j.1:hasOUCSCode>
+    <j.1:occupies rdf:nodeID="A39"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of Classics</dc:title>
+    <j.1:hasHomepage rdf:resource="http://www.classics.ox.ac.uk/"/>
+    <j.0:adr rdf:nodeID="A40"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/2843a298"/>
+    <j.1:hasITHomepage rdf:resource="http://weblearn.ox.ac.uk/site/human/classics/itinfo/"/>
+    <j.1:inImage rdf:nodeID="A30"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A41">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/abe840dc"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A42">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/499ec1d9"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A32">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/7ec97176"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A43">
+    <rdf:_4 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/5455675a"/>
+    <rdf:_3 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/a78a8c5e"/>
+    <rdf:_2 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/c1faec27"/>
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/edb4cbf1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A44">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A25">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Old Boys' High School, George Street, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 2RL</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/50d8655c"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A37">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/f0989bd9"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/670764af"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/6e6190ef">
+    <j.1:inImage rdf:nodeID="A2"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">O_ous</j.1:hasOUCSCode>
+    <j.1:occupies rdf:nodeID="A45"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/6bb7f3b4"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oxford Union Society</dc:title>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A46">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10 Merton Street, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 4JJ</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High Street, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 4AH</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/2a20c366">
+    <j.1:inImage rdf:nodeID="A47"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sheld</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.sheldon.ox.ac.uk"/>
+    <j.1:occupies rdf:nodeID="A42"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/499ec1d9"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sheldonian Theatre</dc:title>
+    <j.0:adr rdf:nodeID="A48"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A21">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11 Mansfield Road, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 3SZ</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A26">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/20bb7161"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A49">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">St Aldate's, Oxford</j.0:street_address>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A50">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">South Parks Road, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 3RG</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A38">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Great Clarendon Street, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX2 6DP</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A33">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5-6 Worcester Street, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 2BX</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A24">
+    <rdf:_2 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/3cfd0937"/>
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/4684c061"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/c378e706">
+    <j.1:inImage rdf:nodeID="A44"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ulib</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.ouls.ox.ac.uk"/>
+    <j.1:occupies rdf:nodeID="A14"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/da853598"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University Library Services</dc:title>
+    <j.0:adr rdf:nodeID="A51"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A34">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/450ea489">
+    <j.1:inImage rdf:nodeID="A52"/>
+    <j.1:hasWeblearn rdf:resource="http://weblearn.ox.ac.uk/site/human/philosophy/"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">philfac</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.philosophy.ox.ac.uk/"/>
+    <j.1:occupies rdf:nodeID="A18"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/947da6f1"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of Philosophy</dc:title>
+    <j.0:adr rdf:nodeID="A46"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A47">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A12">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/bc9e5552"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A52">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/7b0eb479">
+    <j.1:inImage rdf:nodeID="A1"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">O_cathedral</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.chch.ox.ac.uk/index.php?option=com_content&amp;task=view&amp;id=245&amp;Itemid=300"/>
+    <j.1:occupies rdf:nodeID="A28"/>
+    <j.1:subsetOf rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/4ef81d0f"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/965fd8db"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christ Church Cathedral</dc:title>
+    <j.0:adr rdf:nodeID="A49"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A51">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bodleian Library, Broad Street, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 3BG</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A27">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oxford University Library Services, Osney One Building,
+ Osney Mead, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX2 0EW</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A11">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A36">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A35">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">41 &amp; 47 Wellington Square, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 2JF</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A31">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A48">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Broad Street, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 3AZ</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/9b9a7a9d">
+    <j.1:inImage rdf:nodeID="A29"/>
+    <j.1:hasWeblearn rdf:resource="http://weblearn.ox.ac.uk/site/human/music/"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">music</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.music.ox.ac.uk/"/>
+    <j.1:occupies rdf:nodeID="A41"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/abe840dc"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Faculty of Music</dc:title>
+    <j.0:adr rdf:nodeID="A53"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/10f003db">
+    <j.1:inImage rdf:nodeID="A10"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parks</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.parks.ox.ac.uk/"/>
+    <j.1:occupies rdf:nodeID="A43"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/edb4cbf1"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">University Parks</dc:title>
+    <j.0:adr rdf:nodeID="A54"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ns.ox.ac.uk/namespaces/oxpoints/data/unit/c8769e92">
+    <j.1:inImage rdf:nodeID="A55"/>
+    <j.1:hasOUCSCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rho</j.1:hasOUCSCode>
+    <j.1:hasHomepage rdf:resource="http://www.rhodeshouse.ox.ac.uk"/>
+    <j.1:occupies rdf:nodeID="A22"/>
+    <j.1:primaryPlace rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/d9f01c51"/>
+    <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rhodes House</dc:title>
+    <j.0:adr rdf:nodeID="A50"/>
+    <rdf:type rdf:resource="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A45">
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/6bb7f3b4"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A55">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A53">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">St Aldate's, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 1DB</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A39">
+    <rdf:_2 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/bfb072da"/>
+    <rdf:_1 rdf:resource="http://ns.ox.ac.uk/namespaces/oxpoints/data/building/2843a298"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A7">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pusey Lane, Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 2LE</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A40">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oxford</j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OX1 3LU</j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A54">
+    <j.0:street_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></j.0:street_address>
+    <j.0:postal_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></j.0:postal_code>
+    <rdf:type rdf:resource="http://nwalsh.com/rdf/vCard#Address"/>
+  </rdf:Description>
+</rdf:RDF>
