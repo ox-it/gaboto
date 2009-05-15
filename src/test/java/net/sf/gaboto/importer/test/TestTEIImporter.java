@@ -38,14 +38,14 @@ import java.io.FileReader;
 
 import net.sf.gaboto.test.GabotoTestCase;
 
-import org.custommonkey.xmlunit.XMLAssert;
+//import org.custommonkey.xmlunit.XMLAssert;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
 import org.oucs.gaboto.helperscripts.importing.TEIImporter;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.query.GabotoQuery;
-import org.oucs.gaboto.model.query.defined.AllEntities;
+//import org.oucs.gaboto.model.query.defined.AllEntities;
 import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
@@ -53,13 +53,12 @@ import org.oucs.gaboto.vocabulary.OxPointsVocab;
 public class TestTEIImporter  extends GabotoTestCase {
 
   static String filename = "src/test/data/oxpoints_plus.xml"; 
-  static File file = null;
   static  Gaboto oxp = null;
   
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    file = new File(filename);
+    File file = new File(filename);
     if(! file.exists())
       throw new RuntimeException ("Cannot open file " + filename);
     
@@ -75,13 +74,13 @@ public class TestTEIImporter  extends GabotoTestCase {
   }
 
   public void testTypedEntitiesOutputToKML() throws Exception { 
-    GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
+    //GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
     
     // Fails as not same ordering
    // assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_KML), "UnitsKML.kml");    
   }
   public void testTypedEntitiesOutputToRDF() throws Exception { 
-    GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
+    //GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
     
     // Fails as not same ordering
    // assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "UnitsRDF.xml");    
