@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<document>
+
+  <properties>
+    <title>Gaboto - Installation</title>
+  </properties>
+
+  <body>
+
+
+<!--
+  <p align="center">
+   <font size="-1"><i>
+This page last updated: $Date: 2008/02/22 13:16:34 $ $Author: timp $
+   </i></font>
+  </p>
+-->
+  
+<!-- menu -->
+
+<section name=" Installation ">
+<p>
+Steps required to install and build Gaboto.
+</p>
+<subsection name="Prerequisites">
+<ul>
+<li>
+sun java 6
+</li>
+<li>
+maven2
+</li>
+<li>
+postgresql 
+</li>
+<li>
+Mysql
+</li>
+</ul>
+</subsection>
+<subsection name="Configuration">
+<p>
+install postgresql, 
+edit /etc/postgresql/8.3/main/pg_hba.conf
+add trust as ipv4 mechanism for localhost.
+</p>p>
+<pre>
+su postgres
+
+createdb oxpoints
+
+su root
+/etc/init.d.postgresql restart
+
+</pre>pre>
+</subsection>
+<subsection name="Installation">
+<p>
+Run tests and install to local Maven repository:
+</p>
+<pre>
+svn checkout gaboto
+
+mvn install deploy site site:deploy
+</pre>
+</subsection>
+</section>
+</body>
+</document>
+
+
+
+
+
+
