@@ -61,7 +61,7 @@
     <dependency>
      <groupId>de.fuberlin.wiwss.ng4j</groupId>
      <artifactId>ng4j</artifactId>
-     <version>0.6</version>
+     <version>0.9</version>
     </dependency>
 
       <dependency>
@@ -298,6 +298,7 @@
           <xrefLocation>xref</xrefLocation>
         </configuration>
       </plugin>
+<!-- java vrsion issues
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
@@ -314,6 +315,7 @@
           <targetJdk>1.6</targetJdk>
         </configuration>
       </plugin>
+-->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
