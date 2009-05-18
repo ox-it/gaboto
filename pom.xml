@@ -208,12 +208,12 @@
             <exclude>**/TestGabotoSnapshot*</exclude>
 	    <exclude>**/TestSimpleConstructSPARQLQuery*</exclude>
 	    <exclude>**/BuildingsOccupiedByCollegeTest*</exclude>
+	    <exclude>**/TestGaboto*</exclude>
 	    <exclude>**/TestGabotoEntity*</exclude>
 	    <exclude>**/TestGabotoTimeBasedEntity*</exclude>
 	    <exclude>**/TestPassiveProperties*</exclude>
 	    <exclude>**/GabotoTest*</exclude>
 	    <exclude>**/TestQueryListOfTypedEntities*</exclude>
-	    
 	    
 
 	    
