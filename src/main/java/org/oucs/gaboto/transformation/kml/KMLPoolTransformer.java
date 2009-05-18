@@ -130,7 +130,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	}
 
 	/**
-	 * Turns an entity into a placemark
+	 * Turns an entity into a placemark.
 	 * @param kmlDoc
 	 * @param parentEl
 	 * @param entity
@@ -138,15 +138,15 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	private void addPlacemark(Document kmlDoc, Element parentEl,
 			GabotoEntity entity) {
 		Element placemark = kmlDoc.createElementNS(KML_NS, "Placemark");
+    placemark.setAttribute("id", entity.getUri());
 		parentEl.appendChild(placemark);
-		
 		addNameToElement(kmlDoc, placemark, entity);
 		addDescriptionToElement(kmlDoc, placemark, entity);
 		addPointToElement(kmlDoc, placemark, entity);
 	}
 
 	/**
-	 * Tries to find the location that should be added to the placemark
+	 * Tries to find the location that should be added to the placemark.
 	 * @param kmlDoc
 	 * @param parentEl
 	 * @param entity
