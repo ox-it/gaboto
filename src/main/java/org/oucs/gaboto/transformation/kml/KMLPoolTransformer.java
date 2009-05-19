@@ -39,6 +39,7 @@ import java.util.Map;
 import org.oucs.gaboto.beans.Location;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.transformation.EntityPoolTransformer;
 import org.oucs.gaboto.util.XMLUtils;
 import org.oucs.gaboto.vocabulary.DC;
@@ -138,6 +139,13 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	private void addPlacemark(Document kmlDoc, Element parentEl,
 			GabotoEntity entity) {
 		Element placemark = kmlDoc.createElementNS(KML_NS, "Placemark");
+		
+		Object idName = entity.getPropertyValue(OxPointsVocab.hasOUCSCode);
+    if (idName != null)
+      placemark.setAttribute("OUCSCode", idName.toString());
+    idName = entity.getPropertyValue(OxPointsVocab.hasOLISCode);
+    if (idName != null)
+      placemark.setAttribute("OLISCode", idName.toString());
     placemark.setAttribute("id", entity.getUri());
 		parentEl.appendChild(placemark);
 		addNameToElement(kmlDoc, placemark, entity);
