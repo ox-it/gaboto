@@ -57,138 +57,147 @@ import org.xml.sax.SAXException;
  * Provides various helper functions to work with XML.
  * 
  * @author Arno Mittelbach
- *
+ * 
  */
 public class XMLUtils {
-	
-	/**
-	 * Reads a file into a JAXP XML document.
-	 * 
-	 * @param file The input file.
-	 * @return The JAXP XML document.
-	 * @throws ParserConfigurationException
-	 * @throws SAXException
-	 * @throws IOException
-	 */
-	public static Document readInputFileIntoJAXPDoc(File file) throws ParserConfigurationException, SAXException, IOException {
-		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-		docBuilderFactory.setNamespaceAware(true);
-		DocumentBuilder docBuilder;
-    Document doc = null;
-       
-		docBuilder = docBuilderFactory.newDocumentBuilder();
-		
-		doc = docBuilder.parse(file);
-	    
-    return doc;
-	}
-	
-	/**
-	 * Reads an InputStream into a JAXP XML document.
-	 * 
-	 * @param in The input stream.
-	 * @return The JAXP XML document.
-	 * @throws ParserConfigurationException
-	 * @throws SAXException
-	 * @throws IOException
-	 */
-	public static Document readInputStreamIntoJAXPDoc(InputStream in) throws ParserConfigurationException, SAXException, IOException {
-		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+
+  /**
+   * Reads a file into a JAXP XML document.
+   * 
+   * @param file
+   *          The input file.
+   * @return The JAXP XML document.
+   * @throws ParserConfigurationException
+   * @throws SAXException
+   * @throws IOException
+   */
+  public static Document readInputFileIntoJAXPDoc(File file)
+      throws ParserConfigurationException, SAXException, IOException {
+    DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory
+        .newInstance();
     docBuilderFactory.setNamespaceAware(true);
-		DocumentBuilder docBuilder;
+    DocumentBuilder docBuilder;
     Document doc = null;
-       
-		docBuilder = docBuilderFactory.newDocumentBuilder();
-		doc = docBuilder.parse(in);
-	    
+
+    docBuilder = docBuilderFactory.newDocumentBuilder();
+
+    doc = docBuilder.parse(file);
+
     return doc;
-	}
-	
-	/**
-	 * Creates an empty JAXP XML document.
-	 * 
-	 * @return An empty JAXP XML document.
-	 */
-	public static Document getNewEmptyJAXPDoc(){
-		DocumentBuilderFactory documentBuilderFactory =	DocumentBuilderFactory.newInstance();
-		documentBuilderFactory.setNamespaceAware(true);
-		documentBuilderFactory.setCoalescing(false);
-		DocumentBuilder documentBuilder;
+  }
 
-		try {
-			documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			return documentBuilder.newDocument();
-		} catch (ParserConfigurationException e) {
-			new GabotoRuntimeException(e);
-		}
-		
-		return null;
-	}
-	
-	public static String getXMLNodeAsString(Node node){
-		return getXMLNodeAsString(node, "");
-	}
-	
-	/**
-	 * Transforms an XML node (from a JAXP XML document) into a formatted string.
-	 * 
-	 * @param node The node to transform.
-	 * @return A string representation of the node. 
-	 */
-	public static String getXMLNodeAsString(Node node, String cdataElements){
-		StringWriter writer = new StringWriter();
-		
-		Transformer serializer;
+  /**
+   * Reads an InputStream into a JAXP XML document.
+   * 
+   * @param in
+   *          The input stream.
+   * @return The JAXP XML document.
+   * @throws ParserConfigurationException
+   * @throws SAXException
+   * @throws IOException
+   */
+  public static Document readInputStreamIntoJAXPDoc(InputStream in)
+      throws ParserConfigurationException, SAXException, IOException {
+    DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory
+        .newInstance();
+    docBuilderFactory.setNamespaceAware(true);
+    DocumentBuilder docBuilder;
+    Document doc = null;
 
-		try {
-			serializer = TransformerFactory.newInstance().newTransformer();
-			if(cdataElements != "")
-				serializer.setOutputProperty(OutputKeys.CDATA_SECTION_ELEMENTS, cdataElements);
-			serializer.setOutputProperty(OutputKeys.METHOD, "xml");
-			serializer.setOutputProperty(OutputKeys.ENCODING, "utf-8");
-			serializer.setOutputProperty(OutputKeys.INDENT, "yes");
-			serializer.setOutputProperty(OutputKeys.STANDALONE, "yes");
-			serializer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
-			serializer.transform(new DOMSource(node), new StreamResult(writer));
-		} catch (TransformerException e) {
-			throw new GabotoRuntimeException(e);
-		} 
-		return writer.toString();
-	}
-	
-	/**
-	 * Creates a NamespaceContext object with the following list of namespaces:
-	 * 
-	 * <dl>
-	 *  <dt>tei</dt>
-	 *  <dd>http://www.tei-c.org/ns/1.0</dd>
-	 * </dl>
-	 * 
-	 * @return A NamespaceContext object
-	 */
-	public static NamespaceContext getTEINamespaceContext(){
-		NamespaceContext ctx = new NamespaceContext() {
-	        public String getNamespaceURI(String prefix) {
-	            String uri;
-	            if (prefix.equals("tei"))
-	                uri = "http://www.tei-c.org/ns/1.0";
-	            else
-	                uri = null;
-	            
-	            return uri ;
-	        }
-	       
-	        // Dummy implementation - not used!
-	        public Iterator<String> getPrefixes(String val) {
-	            return null;
-	        }
-	       
-	        // Dummy implemenation - not used!
-	        public String getPrefix(String uri) {
-	            return null;
-	        }
-	    };
-	    
-	  return ctx;
-	}
+    docBuilder = docBuilderFactory.newDocumentBuilder();
+    doc = docBuilder.parse(in);
+
+    return doc;
+  }
+
+  /**
+   * Creates an empty JAXP XML document.
+   * 
+   * @return An empty JAXP XML document.
+   */
+  public static Document getNewEmptyJAXPDoc() {
+    DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
+        .newInstance();
+    documentBuilderFactory.setNamespaceAware(true);
+    documentBuilderFactory.setCoalescing(false);
+    DocumentBuilder documentBuilder;
+
+    try {
+      documentBuilder = documentBuilderFactory.newDocumentBuilder();
+      return documentBuilder.newDocument();
+    } catch (ParserConfigurationException e) {
+      new GabotoRuntimeException(e);
+    }
+
+    return null;
+  }
+
+  public static String getXMLNodeAsString(Node node) {
+    return getXMLNodeAsString(node, "");
+  }
+
+  /**
+   * Transforms an XML node (from a JAXP XML document) into a formatted string.
+   * 
+   * @param node
+   *          The node to transform.
+   * @return A string representation of the node.
+   */
+  public static String getXMLNodeAsString(Node node, String cdataElements) {
+    StringWriter writer = new StringWriter();
+
+    Transformer serializer;
+
+    try {
+      serializer = TransformerFactory.newInstance().newTransformer();
+      if (cdataElements != "")
+        serializer.setOutputProperty(OutputKeys.CDATA_SECTION_ELEMENTS,
+            cdataElements);
+      serializer.setOutputProperty(OutputKeys.METHOD, "xml");
+      serializer.setOutputProperty(OutputKeys.ENCODING, "utf-8");
+      serializer.setOutputProperty(OutputKeys.INDENT, "yes");
+      serializer.setOutputProperty(OutputKeys.STANDALONE, "yes");
+      serializer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+      serializer.transform(new DOMSource(node), new StreamResult(writer));
+    } catch (TransformerException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    return writer.toString();
+  }
+
+  /**
+   * Creates a NamespaceContext object with the following list of namespaces:
+   * 
+   * <dl>
+   * <dt>tei</dt>
+   * <dd>http://www.tei-c.org/ns/1.0</dd>
+   * </dl>
+   * 
+   * @return A NamespaceContext object
+   */
+  public static NamespaceContext getTEINamespaceContext() {
+    NamespaceContext ctx = new NamespaceContext() {
+      public String getNamespaceURI(String prefix) {
+        String uri;
+        if (prefix.equals("tei"))
+          uri = "http://www.tei-c.org/ns/1.0";
+        else
+          uri = null;
+
+        return uri;
+      }
+
+      // Dummy implementation - not used!
+      public Iterator<String> getPrefixes(String val) {
+        return null;
+      }
+
+      // Dummy implemenation - not used!
+      public String getPrefix(String uri) {
+        return null;
+      }
+    };
+
+    return ctx;
+  }
 }
