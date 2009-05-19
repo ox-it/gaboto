@@ -970,7 +970,7 @@
         </place>
 
         <place type="library" olisCode="ECO Main Lib." xml:id="O_lib_eco_3">
-          <placeName>*Main Library</placeName>
+          <placeName>Main Library</placeName>
         </place>
 
         <place type="library" olisCode="ECO Main Libr" xml:id="O_lib_eco_4">
