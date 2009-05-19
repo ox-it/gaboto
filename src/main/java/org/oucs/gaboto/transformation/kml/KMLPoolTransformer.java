@@ -154,7 +154,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	private void addPointToElement(Document kmlDoc, Element parentEl, GabotoEntity entity) {
 		Location location = (Location) entity.getPropertyValue(OxPointsVocab.hasLocation);
 		
-		if(null != location){
+		if(location != null){
 			// add Point to placemark
 			Element pointEl = kmlDoc.createElementNS(KML_NS, "Point");
 			parentEl.appendChild(pointEl);
@@ -176,7 +176,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	private void addNameToElement(Document kmlDoc, Element parentEl, GabotoEntity entity) {
 		String name = (String) entity.getPropertyValue(DC.title);
 		
-		if(null != name){
+		if(name != null){
 			// traverse to parent
 			if(isDisplayParentName()){
 				name += getParentsNameRecursive(entity);
@@ -198,7 +198,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 			
 			String name = (String) parent.getPropertyValue(DC.title);
 			
-			if(null != name){
+			if(name != null){
 				return ", " + name + getParentsNameRecursive(parent);
 			}
 		}
@@ -209,7 +209,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	private void addDescriptionToElement(Document kmlDoc, Element parentEl, GabotoEntity entity) {
 		String description = (String) entity.getPropertyValue(DC.description);
 		
-		if(null != description){
+		if(description != null){
 			// add description to placemark
 			Element descriptionEl = kmlDoc.createElementNS(KML_NS, "description");
 			CDATASection cdata = kmlDoc.createCDATASection(description);
