@@ -611,6 +611,11 @@
 		<postCode>OX1 2BX</postCode>
             </address>
           </location>
+	  <trait type="url">
+            <desc>
+              <ptr target="http://www.admin.ox.ac.uk/eop/"/>
+	    </desc>
+	  </trait>
 	</place>
 
 	<place type="poi" xml:id="O_ous">
