@@ -81,7 +81,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 		Element documentEl = (Element) kmlDoc.getElementsByTagName("Document").item(0);
 		
 		Collection<GabotoEntity> entities = null;
-		if(null == orderBy)
+		if(orderBy == null)
 			entities = pool.getEntities();
 		else
 			entities = pool.getEntitiesSorted(orderBy);
