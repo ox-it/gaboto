@@ -8111,7 +8111,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
 
         </place>
         <place type="department" xml:id="manstud">
-          <placeName>Saïd Business School</placeName>
+          <placeName>Said Business School</placeName>
           <location type="address">
             <address>
               <addrLine>Park End Street, Oxford</addrLine>
@@ -9732,7 +9732,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
 
         </place>
         <place type="department" xml:id="O_clpic">
-          <placeName>Instituto Camões Centre for Portuguese Language</placeName>
+          <placeName>Instituto Camoes Centre for Portuguese Language</placeName>
           <location type="address">
             <address>
               <addrLine>11 Bevington Road, Oxford</addrLine>
