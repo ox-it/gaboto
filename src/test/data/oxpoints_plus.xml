@@ -1551,10 +1551,6 @@
 
         <place type="library" olisCode="IND Nuneham" xml:id="O_lib_ind_3">
           <placeName>Nuneham Repository</placeName>
-            <location>
-              <geo>-1.215363 51.680219</geo>
-	    </location>
-
         </place>
 
         <place type="library" olisCode="IND Offsite" xml:id="O_lib_ind_4">
@@ -1810,11 +1806,7 @@
         </place>
 
         <place type="library" olisCode="LAW Nuneham" xml:id="lawlib_3">
-          <placeName>Nuneham Repository</placeName>
-            <location>
-              <geo>-1.215363 51.680219</geo>
-	    </location>
-
+          <placeName>Law Nuneham Repository</placeName>
         </place>
 
         <place type="library" olisCode="LAW OIPRC" xml:id="lawlib_4">
@@ -2881,11 +2873,7 @@
         </place>
 
         <place type="library" olisCode="RSL Nuneham" xml:id="radlib_11">
-          <placeName>Nuneham Repository</placeName>
-            <location>
-              <geo>-1.215363 51.680219</geo>
-	    </location>
-
+          <placeName>RSL Nuneham Repository</placeName>
         </place>
 
         <place type="library" olisCode="RSL Offsite" xml:id="radlib_12">
@@ -2976,11 +2964,7 @@
           </trait>
         </place>
         <place type="library" olisCode="RHO Nuneham" xml:id="O_lib_rho_1">
-          <placeName>Nuneham Repository</placeName>
-            <location>
-              <geo>-1.215363 51.680219</geo>
-	    </location>
-
+          <placeName>RHO Nuneham Repository</placeName>
         </place>
 
         <place type="library" olisCode="RHO Offsite" xml:id="O_lib_rho_2">
@@ -3089,11 +3073,7 @@
         </place>
 
         <place type="library" olisCode="SAC Nuneham" xml:id="ashlib_13">
-          <placeName>Nuneham Repository</placeName>
-            <location>
-              <geo>-1.215363 51.680219</geo>
-	    </location>
-
+          <placeName>SAC Nuneham Repository</placeName>
         </place>
 
         <place type="library" olisCode="SAC Rare Book" xml:id="ashlib_14">
@@ -3560,11 +3540,7 @@
         </place>
 
         <place type="library" olisCode="TAS Nuneham" xml:id="O_lib_tas_8">
-          <placeName>Nuneham Repository</placeName>
-            <location>
-              <geo>-1.215363 51.680219</geo>
-	    </location>
-
+          <placeName>TAS Nuneham Repository</placeName>
         </place>
 
         <place type="library" olisCode="TAS Pers" xml:id="O_lib_tas_9">
@@ -3674,10 +3650,7 @@
         </place>
 
         <place type="library" olisCode="TAY Nuneham" xml:id="taylor_15">
-          <placeName>Nuneham Repository</placeName>
-            <location>
-              <geo>-1.215363 51.680219</geo>
-	    </location>
+          <placeName>Taylorian Nuneham Repository</placeName>
 
         </place>
 
@@ -10529,6 +10502,13 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           </location>
         </place>
 
+        <place type="building" xml:id="b_0038">
+          <placeName>Nuneham Courtenay Repository</placeName>
+            <location>
+	      <geo>-1.215363 51.680219</geo>
+	    </location>
+        </place>
+
         <place type="building" xml:id="b_0011">
           <placeName>Old Bodleian Library</placeName>
           <location>
@@ -10900,7 +10880,28 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
         <relation name="occupies" type="geo primary" active="#O_mpu" passive="#b_0007"/>
         <relation name="occupies" type="geo primary" active="#O_personnel" passive="#b_0007"/>
         <relation name="occupies" type="geo primary" active="#O_rso" passive="#b_0007"/>
-        <relation name="occupies" type="geo primary" active="#radlib" passive="#b_0032"/>
+        <relation name="occupies" type="geo primary" active="#radlib"
+		  passive="#b_0032"/>
+
+        <relation name="occupies" type="geo primary"
+        active="#rothlib_1" passive="#b_0038"/>
+        <relation name="occupies" type="geo primary"
+        active="#bodlib_13" passive="#b_0038"/>
+        <relation name="occupies" type="geo primary"
+        active="#O_lib_ind_3" passive="#b_0038"/>
+        <relation name="occupies" type="geo primary"
+        active="#lawlib_3" passive="#b_0038"/>
+        <relation name="occupies" type="geo primary"
+        active="#radlib_11" passive="#b_0038"/>
+        <relation name="occupies" type="geo primary"
+        active="#O_lib_rho_1" passive="#b_0038"/>
+        <relation name="occupies" type="geo primary"
+        active="#ashlib_13" passive="#b_0038"/>
+        <relation name="occupies" type="geo primary"
+        active="#O_lib_tas_8" passive="#b_0038"/>
+        <relation name="occupies" type="geo primary"
+        active="#taylor_15" passive="#b_0038"/>
+
         <relation name="controls" active="#radlib" passive="#O_lib_hke"/>
         <relation name="controls" active="#alls" passive="#O_lib_asc"/>
         <relation name="controls" active="#ashmus" passive="#O_lib_ash"/>
