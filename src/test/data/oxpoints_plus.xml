@@ -615,6 +615,12 @@
 
 	<place type="poi" xml:id="O_ous">
 	  <placeName>Oxford Union Society</placeName>
+          <trait type="url">
+            <desc>
+              <ptr target="http://www.oxford-union.org/"/>
+            </desc>
+          </trait>
+
 	</place>
 
 	<place type="building" xml:id="b_0037">
