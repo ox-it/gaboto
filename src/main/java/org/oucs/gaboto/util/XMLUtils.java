@@ -43,13 +43,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
@@ -75,13 +74,13 @@ public class XMLUtils {
 		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
 		docBuilderFactory.setNamespaceAware(true);
 		DocumentBuilder docBuilder;
-        Document doc = null;
+    Document doc = null;
        
 		docBuilder = docBuilderFactory.newDocumentBuilder();
 		
 		doc = docBuilder.parse(file);
 	    
-        return doc;
+    return doc;
 	}
 	
 	/**
@@ -95,14 +94,14 @@ public class XMLUtils {
 	 */
 	public static Document readInputStreamIntoJAXPDoc(InputStream in) throws ParserConfigurationException, SAXException, IOException {
 		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-        docBuilderFactory.setNamespaceAware(true);
+    docBuilderFactory.setNamespaceAware(true);
 		DocumentBuilder docBuilder;
-        Document doc = null;
+    Document doc = null;
        
 		docBuilder = docBuilderFactory.newDocumentBuilder();
 		doc = docBuilder.parse(in);
 	    
-        return doc;
+    return doc;
 	}
 	
 	/**
@@ -120,7 +119,7 @@ public class XMLUtils {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			return documentBuilder.newDocument();
 		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
+			new GabotoRuntimeException(e);
 		}
 		
 		return null;
@@ -151,14 +150,9 @@ public class XMLUtils {
 			serializer.setOutputProperty(OutputKeys.STANDALONE, "yes");
 			serializer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
 			serializer.transform(new DOMSource(node), new StreamResult(writer));
-		} catch (TransformerConfigurationException e) {
-			e.printStackTrace();
-		} catch (TransformerFactoryConfigurationError e) {
-			e.printStackTrace();
 		} catch (TransformerException e) {
-			e.printStackTrace();
-		}
-		
+			throw new GabotoRuntimeException(e);
+		} 
 		return writer.toString();
 	}
 	
@@ -195,6 +189,6 @@ public class XMLUtils {
 	        }
 	    };
 	    
-	    return ctx;
+	  return ctx;
 	}
 }
