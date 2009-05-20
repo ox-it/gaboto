@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<faqs title="Frequently Asked Questions" id="General FAQ">
+  <part id="gaboto">
+    <title>Gaboto</title>
+    <faq id="name">
+      <question>Why is the project called Gaboto?</question>
+      <answer>
+<p>
+Gaboto was named after Sebastian Cabot.
+</p>
+<p>
+To quote James:
+</p>
+<blockquote>
+Just to note that Cabot was chosen as a cartographer who explored and  
+mapped some of Argentina (where Arno went while developing the  
+system), and there is a town there named Gabato (the Spanish for  
+Cabato) in his honour.  That he is thought to have been born in  
+Bristol, even though he grew up in Italy, and his name is commonly  
+referred to as Sebastian (though originally 'John'), is just a  
+coincidence.
+<br /><br />
+A cartographer was chosen because the basic function of the system is  
+mapping of one thing onto another.
+<br /><br />
+
+Just in case you wanted the thought process behind it.  That, and Arno  
+didn't really like 'Romweg'.
+<br /><br />
+
+-James
+        </blockquote>
+      </answer>
+    </faq>
+  </part>
+  <part id="refs">
+    <title>References</title>
+    <faq id="RDF">
+      <question>More About RDF?</question>
+      <answer>
+        <p>
+	<a href="http://www.google.com/search?q=rdf">Google</a>
+        </p>
+      </answer>
+    </faq>
+    <faq id="jena">
+      <question>What is jenna?</question>
+      <answer>
+        <p>
+	<a href="http://jena.sourceforge.net/">jena</a>
+        </p>
+      </answer>
+    </faq>
+    
+  </part>
+</faqs>
