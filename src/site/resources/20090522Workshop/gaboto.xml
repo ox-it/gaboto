@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Gaboto</title>
+	<author>Tim Pizey</author>
+      </titleStmt>
+      <publicationStmt>
+        <p>Erewhon workshop</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Created from scratch</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <change> <date>$LastChangedDate: 2008-12-07 17:33:10 +0000 (Sun, 07 Dec 2008) $</date>
+      <respStmt>
+	<name>$LastChangedBy: rahtz $</name> 
+      </respStmt>
+      <item>$LastChangedRevision: 273 $</item>
+      </change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+
+<!--
+      <div>
+	<head>Erewhon</head>
+	<p><graphic url="erewhon-logo.jpg"/></p>
+	<p> A <graphic width="1in" url="jisc.png"/> Institutional Innovation project</p>
+      </div>
+-->      
+      <div>
+	<head>Other JISC Institutional Innovation projects at
+	Oxford</head>
+	<list type="gloss">
+	  <label>Steeple</label>
+	  <item>(Peter Robinson at OUCS, with Cambridge and Open
+	  University): infrastructural implications of
+	  podcasting</item>
+	  <label>BRII</label>
+	  <item>(Anne Bowtell, Sally Rumsey, Ben O'Steen): sharing of
+	  research information using semantic web technologies</item>
+	</list>
+      </div>
+      <div>
+	<head>In summary…</head>
+	<p>The aim of the Erewhon project is to develop
+	geolocation services and improve mobile access, providing
+	a dramatic increase in the range and types of access to
+	information in the University of Oxford for students,
+	researchers, administrative staff and teachers. </p>
+      </div>
+      
+      <div>
+	<head>Core deliverables</head>
+	<p>
+	  <list>
+	    <item>Implementation of a geolocation data model, syndication interface, and API for organisational resources.</item>
+	    <item>Provision of demonstration location-aware applications.</item>
+	    <item>Adaptation of selected Sakai tools for use on relevant mobile devices.</item>
+	    <item>Guidelines on effective use of mobile devices in UK HE/FE.</item>
+	  </list>
+	  These will be applicable to any further or higher
+	  education institution within the JISC community.
+	</p>
+      </div>
+
+      <div>
+	<head>Timetable and resources</head>
+	<p>We'll have two and a half people until March 2010</p>
+	<table>
+	  <row><cell>October 2008 </cell><cell> Start of project</cell></row>
+	  <row><cell>December 2008 </cell><cell> First consultation workshop</cell></row>
+	  <row><cell>January 2009 </cell><cell> Report on state of the nation</cell></row>
+	  <row><cell>January 2009</cell><cell> Evaluation of Sakai problems</cell></row>
+	  <row><cell>February 2009– </cell><cell> Demo services using geolocation data</cell></row>
+	  <row><cell>March 2009 </cell><cell> Completion of geolocation infrastructure</cell></row>
+	  <row><cell>April 2009 </cell><cell> Second consultation workshop</cell></row>
+	  <row><cell>April 2009–December 2009</cell><cell>Mobilizing Sakai</cell></row>
+	  <row><cell>November 2009</cell><cell> National workshop</cell></row>
+	</table>
+      </div>
+
+      <div>
+	<head>Assumption 1: geodata and free mapping</head>
+	
+	<p>Mapping things using geographic metadata (latitude &amp;
+	longitude) is becoming ubiquitous with Google Earth, Google
+	Maps, Microsoft Live etc
+	<list>
+	  <item>tagging photos in Flickr with their coordinates</item>
+	  <item>showing addresses in car satnav systems</item>
+	  <item>making maps of archaeological remains</item>
+	  <item>online displays of flood plains, pubs, wifi zones...</item>
+	</list>
+	(and not just maps but aerial and satellite views)
+       </p>
+      </div>
+      
+      
+      <div>
+	<head>The frightening detail</head>
+	<p><graphic  width="4in" url="locallive.jpg"/></p>
+      </div>
+
+      <div>
+	<head>Assumption 2: smart phones</head>
+	<p><graphic width="4in" url="googlephone.jpg"/></p>
+      </div>
+
+      <div>
+	<head>Assumption 3: personalised access</head>
+	<p>The groupware, Weblearn, and CUD projects should provide
+	<list>
+	  <item>universal compatible calendaring</item>
+	  <item>meaningful data per person</item>
+	  <item>common authentication</item>
+	</list>
+	</p>
+      </div>
+
+      <div>
+	<head>Assumption 4: we know where you are</head>
+	<list>
+	  <item>Your smartphone has a GPS, cellphone mast or wireless
+	  triangulation</item>
+	  <item>The wireless network rollout in the university will
+	  enable us to locate your
+	  laptop</item>
+	</list>
+      </div>
+
+      <div>
+	<head>What we want to do today</head>
+	<list>
+	  <item>Give you background on what we think we can achieve</item>
+	  <item>Show you what others are doing, or that you can
+	  already do</item>
+	  <item>Get <hi>your</hi> idea on what we can, and should, do
+	  in the next year</item>
+	</list>
+      </div>
+   </body>
+  </text>
+</TEI>
