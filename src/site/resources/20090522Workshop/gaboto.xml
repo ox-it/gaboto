@@ -35,40 +35,20 @@
       </div>
 -->      
       <div>
-	<head>Other JISC Institutional Innovation projects at
-	Oxford</head>
+	<head>Gaboto</head>
+	<p><graphic  url="HudsonDashboard.png"/></p>
 	<list type="gloss">
-	  <label>Steeple</label>
-	  <item>(Peter Robinson at OUCS, with Cambridge and Open
-	  University): infrastructural implications of
-	  podcasting</item>
-	  <label>BRII</label>
-	  <item>(Anne Bowtell, Sally Rumsey, Ben O'Steen): sharing of
-	  research information using semantic web technologies</item>
+	  <label>What is Gaboto?</label>
+	  <item>A tool kit for using Jena with a time dimension</item>
+	  <label>Adoption</label>
+	  <item>Conversion of faithware to software</item>
+	  <label>Use</label>
+	  <item>The Oxpoints Servlet</item>
+	  <label>Extension</label>
+	  <item>Further work</item>
 	</list>
       </div>
-      <div>
-	<head>In summary…</head>
-	<p>The aim of the Erewhon project is to develop
-	geolocation services and improve mobile access, providing
-	a dramatic increase in the range and types of access to
-	information in the University of Oxford for students,
-	researchers, administrative staff and teachers. </p>
-      </div>
-      
-      <div>
-	<head>Core deliverables</head>
-	<p>
-	  <list>
-	    <item>Implementation of a geolocation data model, syndication interface, and API for organisational resources.</item>
-	    <item>Provision of demonstration location-aware applications.</item>
-	    <item>Adaptation of selected Sakai tools for use on relevant mobile devices.</item>
-	    <item>Guidelines on effective use of mobile devices in UK HE/FE.</item>
-	  </list>
-	  These will be applicable to any further or higher
-	  education institution within the JISC community.
-	</p>
-      </div>
+
 
       <div>
 	<head>Timetable and resources</head>
@@ -86,73 +66,58 @@
 	</table>
       </div>
 
-      <div>
-	<head>Assumption 1: geodata and free mapping</head>
-	
-	<p>Mapping things using geographic metadata (latitude &amp;
-	longitude) is becoming ubiquitous with Google Earth, Google
-	Maps, Microsoft Live etc
-	<list>
-	  <item>tagging photos in Flickr with their coordinates</item>
-	  <item>showing addresses in car satnav systems</item>
-	  <item>making maps of archaeological remains</item>
-	  <item>online displays of flood plains, pubs, wifi zones...</item>
-	</list>
-	(and not just maps but aerial and satellite views)
-       </p>
-      </div>
       
+      <div>
+	<head>Maven Site</head>
+	<p><graphic  url="MavenSite.png"/></p>
+      </div>
+
+      <div>
+	<head>Maven Reports</head>
+	<p><graphic  url="MavenReports.png"/></p>
+      </div>
+
+      <div>
+	<head>Coverage</head>
+	<p><graphic  url="OxpointsCoverage.png"/></p>
+      </div>
+
+      <div>
+	<head>Coverage Exceptions</head>
+	<p><graphic  url="OxpointsCoverageExceptions.png"/></p>
+      </div>
+
+      <div>
+	<head>Current Gaboto Coverage</head>
+	<p><graphic  url="GabotoCoverage.png"/></p>
+      </div>
+
       
       <div>
 	<head>Hudson Dashboard</head>
-	<p><graphic  width="4in" url="HudsonDashboard.png"/></p>
+	<p><graphic  url="HudsonDashboard.png"/></p>
       </div>
 
       <div>
 	<head>Hudson Gaboto Project</head>
-	<p><graphic  width="4in" url="HudsonGaboto.png"/></p>
+	<p><graphic  url="HudsonGaboto.png"/></p>
       </div>
 
       <div>
 	<head>Hudson Gaboto Build</head>
-	<p><graphic  width="4in" url="HudsonGabotoBuild65.png"/></p>
+	<p><graphic  url="HudsonGabotoBuild65.png"/></p>
       </div>
 
       <div>
 	<head>Hudson Gaboto Build Console</head>
-	<p><graphic  width="4in" url="HudsonGabotoBuild65Console.png"/></p>
+	<p><graphic  url="HudsonGabotoBuild65Console.png"/></p>
       </div>
 
-      <div>
-	<head>Assumption 3: personalised access</head>
-	<p>The groupware, Weblearn, and CUD projects should provide
-	<list>
-	  <item>universal compatible calendaring</item>
-	  <item>meaningful data per person</item>
-	  <item>common authentication</item>
-	</list>
-	</p>
-      </div>
 
       <div>
-	<head>Assumption 4: we know where you are</head>
+	<head>More to do</head>
 	<list>
-	  <item>Your smartphone has a GPS, cellphone mast or wireless
-	  triangulation</item>
-	  <item>The wireless network rollout in the university will
-	  enable us to locate your
-	  laptop</item>
-	</list>
-      </div>
-
-      <div>
-	<head>What we want to do today</head>
-	<list>
-	  <item>Give you background on what we think we can achieve</item>
-	  <item>Show you what others are doing, or that you can
-	  already do</item>
-	  <item>Get <hi>your</hi> idea on what we can, and should, do
-	  in the next year</item>
+	  <item>As per Arno's list</item>
 	</list>
       </div>
    </body>
