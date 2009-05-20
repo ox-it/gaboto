@@ -104,13 +104,23 @@
       
       
       <div>
-	<head>The frightening detail</head>
-	<p><graphic  width="4in" url="locallive.jpg"/></p>
+	<head>Hudson Dashboard</head>
+	<p><graphic  width="4in" url="HudsonDashboard.png"/></p>
       </div>
 
       <div>
-	<head>Assumption 2: smart phones</head>
-	<p><graphic width="4in" url="googlephone.jpg"/></p>
+	<head>Hudson Gaboto Project</head>
+	<p><graphic  width="4in" url="HudsonGaboto.png"/></p>
+      </div>
+
+      <div>
+	<head>Hudson Gaboto Build</head>
+	<p><graphic  width="4in" url="HudsonGabotoBuild65.png"/></p>
+      </div>
+
+      <div>
+	<head>Hudson Gaboto Build Console</head>
+	<p><graphic  width="4in" url="HudsonGabotoBuild65Console.png"/></p>
       </div>
 
       <div>
