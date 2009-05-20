@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="URI Interface">
+<project name="${project.name}">
   <bannerLeft>
-    <name>GPSTracker</name>
+    <name>${project.name}</name>
     <src>http://erewhon.oucs.ox.ac.uk/images/logo.png</src> 
     <href>http://erewhon.oucs.ox.ac.uk/</href>
   </bannerLeft>
 
   <body>
     <links>
-      <item name="Repository"        href="../maven2/"/>
+      <item name="Hudson"            href="http://oucs-timp.oucs.ox.ac.uk:8080/hudson/job/${project.artifactId}/" />
+      <item name="Repository"        href="../maven2/net/sf/gaboto/${project.artifactId}/${project.version}"/>
+      <item name="SF"                href="http://gaboto.sourceforge.net/"/>
+      
     </links>
     <menu name="Erewhon">
       <item name="Parent"            href="../index.html"/>
     </menu>
-    <menu name="URI Interface" >
-        <item name="Arguments"       href="arguments.html"/>
-        <item name="Rewrites"        href="rewrites.html"/>
+    <menu name="Gaboto">
+      <item name="About"             href="index.html"/>
+      <item name="FAQ"               href="FAQ.html"/>
     </menu>
     ${reports}
   </body>
