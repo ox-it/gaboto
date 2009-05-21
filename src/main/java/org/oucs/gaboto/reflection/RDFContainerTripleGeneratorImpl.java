@@ -48,6 +48,7 @@ import org.oucs.gaboto.entities.utils.GabotoEntityUtils;
 import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
 import org.oucs.gaboto.entities.utils.SimpleURIProperty;
 import org.oucs.gaboto.exceptions.CorruptDataException;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.IllegalAnnotationException;
 
 import com.hp.hpl.jena.datatypes.RDFDatatype;
@@ -419,8 +420,12 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 		));
 		
 		// fill bag
-		try {
-			Object object = method.invoke(rdfContainerObject, (Object[])null);
+			Object object;
+      try {
+        object = method.invoke(rdfContainerObject, (Object[])null);
+      } catch (Exception e) {
+        throw new GabotoRuntimeException(e);
+      }
 			
 			if(null == object)
 				return;
@@ -457,13 +462,6 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 				count++;
 			}
 			
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**
