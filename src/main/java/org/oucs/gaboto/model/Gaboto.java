@@ -116,7 +116,10 @@ import de.fuberlin.wiwiss.ng4j.Quad;
 public class Gaboto {
 
 	private static Logger logger = Logger.getLogger(Gaboto.class.getName());
-	
+	/**
+   * The next entity id.
+	 */
+  long id = 23232322;
 	/**
 	 * Stores update listeners.
 	 */
@@ -223,18 +226,26 @@ public class Gaboto {
 	/**
 	 * Generates a new unique id with the given prefix.
 	 * 
-	 * @param prefix The id's prefix
+	 * @param prefix The id's prefix (No longer used)
 	 * 
 	 * @return A new unique new.
 	 */
 	public String generateID(String prefix){
-		String id = config.getNSData() + prefix + "/" + UUID.randomUUID().toString().substring(0, 8);
-		
-		while(containsResource(config.getNSData() + id))
-			id = config.getNSData() + prefix + "/" + UUID.randomUUID().toString().substring(0, 8);
-		
+		String id = generateId();
+		while(containsResource(id))
+			id = generateId();
 		return id;
 	}
+
+	/* 
+  private String oldGenerateId() { 
+    return config.getNSData() + UUID.randomUUID().toString().substring(0, 8);
+  }
+  */
+  private String generateId() { 
+    return config.getNSData() + new Long(id++).toString();
+  }
+
 	
 	/**
 	 * Creates a {@link GabotoSnapshot} that only contains flat RDF.
