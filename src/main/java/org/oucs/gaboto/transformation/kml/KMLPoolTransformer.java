@@ -86,7 +86,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 		else
 			entities = pool.getEntitiesSorted(orderBy);
 		
-		addEntitiesToDocument(kmlDoc, documentEl,entities);
+		addEntitiesToDocument(kmlDoc, documentEl, entities);
 		
 		return XMLUtils.getXMLNodeAsString(kmlDoc, "{" + KML_NS + "}description");
 	}
@@ -96,11 +96,11 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 			transformEntity(kmlDoc, documentEl, entity);
 	}
 	
-	private void transformEntity(Document kmlDoc, Element documentEl,GabotoEntity entity){
+	private void transformEntity(Document kmlDoc, Element documentEl, GabotoEntity entity){
 		if(! getEntityFolderTypes().containsKey(entity.getType()))
 			addPlacemark(kmlDoc,documentEl, entity);
 		else
-			addFolder(kmlDoc,documentEl,entity);	
+			addFolder(kmlDoc, documentEl, entity);	
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -119,12 +119,10 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 			if(obj instanceof GabotoEntity){
 				addPlacemark(kmlDoc, folder, (GabotoEntity)obj);
 			} else if(obj instanceof Collection){
-				try{
-					Collection<GabotoEntity> entityCollection = (Collection<GabotoEntity>) obj;
-					for(GabotoEntity entityFromCollection : entityCollection){
-						transformEntity(kmlDoc, folder, entityFromCollection);
-					}
-				} catch(ClassCastException e){}
+        Collection<GabotoEntity> entityCollection = (Collection<GabotoEntity>) obj;
+				for(GabotoEntity entityFromCollection : entityCollection){
+					transformEntity(kmlDoc, folder, entityFromCollection);
+				}
 			}
 		}
 	}
