@@ -41,13 +41,10 @@ import com.hp.hpl.jena.rdf.model.Resource;
  */
 public class ResourceDoesNotExistException extends GabotoException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4330686588081577142L;
 
 	public ResourceDoesNotExistException(String uri){
-		super("No resource with the uri " + uri + " does exist.");
+		super("No resource with the uri " + uri + " exists.");
 	}
 	
 	public ResourceDoesNotExistException(Resource res){
