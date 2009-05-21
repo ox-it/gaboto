@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TEI
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
       <titleStmt>
         <title>Gaboto</title>
-	<author>Tim Pizey</author>
+        <author>Tim Pizey</author>
       </titleStmt>
       <publicationStmt>
         <p>Erewhon workshop</p>
@@ -16,11 +14,12 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
-      <change> <date>$LastChangedDate: 2008-12-07 17:33:10 +0000 (Sun, 07 Dec 2008) $</date>
-      <respStmt>
-	<name>$LastChangedBy: rahtz $</name> 
-      </respStmt>
-      <item>$LastChangedRevision: 273 $</item>
+      <change>
+        <date>$LastChangedDate: 2008-12-07 17:33:10 +0000 (Sun, 07 Dec 2008) $</date>
+        <respStmt>
+          <name>$LastChangedBy: rahtz $</name>
+        </respStmt>
+        <item>$LastChangedRevision: 273 $</item>
       </change>
     </revisionDesc>
   </teiHeader>
@@ -29,97 +28,111 @@
 
 <!--
       <div>
-	<head>Erewhon</head>
-	<p><graphic url="erewhon-logo.jpg"/></p>
-	<p> A <graphic width="1in" url="jisc.png"/> Institutional Innovation project</p>
+  <head>Erewhon</head>
+  <p><graphic url="erewhon-logo.jpg"/></p>
+  <p> A <graphic width="1in" url="jisc.png"/> Institutional Innovation project</p>
       </div>
--->      
-      <div>
-	<head>Gaboto</head>
-	<p><graphic  url="HudsonDashboard.png"/></p>
-	<list type="gloss">
-	  <label>What is Gaboto?</label>
-	  <item>A tool kit for using Jena with a time dimension</item>
-	  <label>Adoption</label>
-	  <item>Conversion of faithware to software</item>
-	  <label>Use</label>
-	  <item>The Oxpoints Servlet</item>
-	  <label>Extension</label>
-	  <item>Further work</item>
-	</list>
-      </div>
+-->
+      <div type="div1">
+        <head>Gaboto</head>
+        <list type="gloss">
+          <label>What is Gaboto?</label>
+          <item>A tool kit for using Jena with a time dimension</item>
+          <label>Adoption</label>
+          <item>Conversion of faithware to software</item>
+          <label>Use</label>
+          <item>The Oxpoints Servlet</item>
+          <label>Extension</label>
+          <item>Further work</item>
+        </list>
 
 
-      <div>
-	<head>Timetable and resources</head>
-	<p>We'll have two and a half people until March 2010</p>
-	<table>
-	  <row><cell>October 2008 </cell><cell> Start of project</cell></row>
-	  <row><cell>December 2008 </cell><cell> First consultation workshop</cell></row>
-	  <row><cell>January 2009 </cell><cell> Report on state of the nation</cell></row>
-	  <row><cell>January 2009</cell><cell> Evaluation of Sakai problems</cell></row>
-	  <row><cell>February 2009– </cell><cell> Demo services using geolocation data</cell></row>
-	  <row><cell>March 2009 </cell><cell> Completion of geolocation infrastructure</cell></row>
-	  <row><cell>April 2009 </cell><cell> Second consultation workshop</cell></row>
-	  <row><cell>April 2009–December 2009</cell><cell>Mobilizing Sakai</cell></row>
-	  <row><cell>November 2009</cell><cell> National workshop</cell></row>
-	</table>
-      </div>
+        <div>
+          <head>A tool kit for using Jena</head>
+          <p>
+    Jena is a Java framework for building Semantic Web applications. It provides a programmatic environment for RDF, RDFS and OWL, SPARQL and includes a rule-based inference engine.
 
-      
-      <div>
-	<head>Maven Site</head>
-	<p><graphic  url="MavenSite.png"/></p>
-      </div>
-
-      <div>
-	<head>Maven Reports</head>
-	<p><graphic  url="MavenReports.png"/></p>
-      </div>
-
-      <div>
-	<head>Coverage</head>
-	<p><graphic  url="OxpointsCoverage.png"/></p>
-      </div>
-
-      <div>
-	<head>Coverage Exceptions</head>
-	<p><graphic  url="OxpointsCoverageExceptions.png"/></p>
-      </div>
-
-      <div>
-	<head>Current Gaboto Coverage</head>
-	<p><graphic  url="GabotoCoverage.png"/></p>
-      </div>
-
-      
-      <div>
-	<head>Hudson Dashboard</head>
-	<p><graphic  url="HudsonDashboard.png"/></p>
-      </div>
-
-      <div>
-	<head>Hudson Gaboto Project</head>
-	<p><graphic  url="HudsonGaboto.png"/></p>
-      </div>
-
-      <div>
-	<head>Hudson Gaboto Build</head>
-	<p><graphic  url="HudsonGabotoBuild65.png"/></p>
-      </div>
-
-      <div>
-	<head>Hudson Gaboto Build Console</head>
-	<p><graphic  url="HudsonGabotoBuild65Console.png"/></p>
-      </div>
+</p>
+        </div>
 
 
-      <div>
-	<head>More to do</head>
-	<list>
-	  <item>As per Arno's list</item>
-	</list>
       </div>
-   </body>
+      <div type="div1">
+        <head>Conversion of Faithware</head>
+        <p>You should be able to change software without risk</p>
+        <div>
+          <head>Maven Site</head>
+          <p>
+            <graphic url="MavenSite.png"/>
+          </p>
+        </div>
+
+        <div>
+          <head>Maven Reports</head>
+          <p>
+            <graphic url="MavenReports.png"/>
+          </p>
+        </div>
+
+        <div>
+          <head>Coverage</head>
+          <p>
+            <graphic url="OxpointsCoverage.png"/>
+          </p>
+        </div>
+
+        <div>
+          <head>Coverage Exceptions</head>
+          <p>
+            <graphic url="OxpointsCoverageExceptions.png"/>
+          </p>
+        </div>
+
+        <div>
+          <head>Current Gaboto Coverage</head>
+          <p>
+            <graphic url="GabotoCoverage.png"/>
+          </p>
+        </div>
+
+
+        <div>
+          <head>Hudson Dashboard</head>
+          <p>
+            <graphic url="HudsonDashboard.png"/>
+          </p>
+        </div>
+
+        <div>
+          <head>Hudson Gaboto Project</head>
+          <p>
+            <graphic url="HudsonGaboto.png"/>
+          </p>
+        </div>
+
+        <div>
+          <head>Hudson Gaboto Build</head>
+          <p>
+            <graphic url="HudsonGabotoBuild65.png"/>
+          </p>
+        </div>
+
+        <div>
+          <head>Hudson Gaboto Build Console</head>
+          <p>
+            <graphic url="HudsonGabotoBuild65Console.png"/>
+          </p>
+        </div>
+      </div>
+      <div type="div1"></div>
+      <div type="div1">
+        <div>
+          <head>More to do</head>
+          <list>
+            <item>As per Arno's list</item>
+          </list>
+        </div>
+      </div>
+    </body>
   </text>
 </TEI>
