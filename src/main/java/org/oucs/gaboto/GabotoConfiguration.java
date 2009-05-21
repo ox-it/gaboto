@@ -59,8 +59,8 @@ public class GabotoConfiguration {
 	private String dbEngineName;
 	private String dbDriver;
 	
-	private String NSGraphs = "http://gaboto.net/graphs/";
-	private String NSData = "http://gaboto.net/graphs/";
+	private String NSGraphs = "http://gaboto.sf.net/graphs/";
+	private String NSData   = "http://gaboto.sf.net/data/";
 	
 	private Map<String, String> namespacePrefixes = new HashMap<String, String>();
 	
