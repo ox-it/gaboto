@@ -11,7 +11,7 @@
     <config>
         <namespaces
             graphs="http://ns.ox.ac.uk/namespaces/oxpoints/graphs#"
-            data="http://m.ox.ac.uk/oxpoints/data/"
+            data="http://m.ox.ac.uk/oxpoints/id/"
         />
         
         <namespacePrefixes>
