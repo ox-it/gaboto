@@ -44,13 +44,23 @@ didn't really like 'Romweg'.
       </answer>
     </faq>
     <faq id="jena">
-      <question>What is jenna?</question>
+      <question>What is jena?</question>
       <answer>
         <p>
 	<a href="http://jena.sourceforge.net/">jena</a>
         </p>
       </answer>
     </faq>
+    <faq id="jena">
+      <question>Where is RDF defined?</question>
+      <answer>
+        <p>
+	<a href="http://www.w3.org/RDF/">http://www.w3.org/RDF/</a>
+        </p>
+      </answer>
+    </faq>
     
   </part>
 </faqs>
+
+
