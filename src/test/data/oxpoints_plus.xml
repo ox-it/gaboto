@@ -4075,7 +4075,7 @@
           </location>
           <trait type="url">
             <desc>
-              <ptr target="http://www.ashmol.ox.ac.uk/"/>
+              <ptr target="http://www.ashmolean.org"/
             </desc>
           </trait>
           <place subtype="primary" type="building">
@@ -10982,8 +10982,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
         <relation name="controls" active="#orie" passive="#O_lib_orl"/>
         <relation name="controls" active="#orient" passive="#orinstlib"/>
         <relation name="controls" active="#internet" passive="#O_lib_oii"/>
-        <relation name="controls" active="#sbs" passive="#O_lib_sbs"/>
-        <relation name="controls" active="#sbs" passive="#O_lib_sms"/>
+        <relation name="controls" active="#manstud" passive="#O_lib_sbs"/>
+        <relation name="controls" active="#manstud" passive="#O_lib_sms"/>
         <relation name="controls" active="#ouce" passive="#O_lib_ees"/>
         <relation name="controls" active="#pemb" passive="#O_lib_pem"/>
         <relation name="controls" active="#ptchem" passive="#O_lib_pch"/>
