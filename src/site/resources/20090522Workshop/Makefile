@@ -11,7 +11,7 @@ endif
 	for i in $(TALKS); do \
 		xsltproc \
 		--xinclude \
-		--stringparam cssFile ../teislides.css \
+		--stringparam cssFile teislides.css \
 		--stringparam showNamespaceDecls false \
 		--stringparam masterFile $$i- \
 		/usr/share/xml/tei/stylesheet/slides/teihtml-slides.xsl \
