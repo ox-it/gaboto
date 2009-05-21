@@ -224,24 +224,16 @@ public class Gaboto {
 	}
 	
 	/**
-	 * Generates a new unique id with the given prefix.
-	 * 
-	 * @param prefix The id's prefix (No longer used)
+	 * Generates a new id unique within this Gaboto.
 	 * 
 	 * @return A new unique new.
 	 */
-	public String generateID(String prefix){
+	public String generateID(){
 		String id = generateId();
 		while(containsResource(id))
 			id = generateId();
 		return id;
 	}
-
-	/* 
-  private String oldGenerateId() { 
-    return config.getNSData() + UUID.randomUUID().toString().substring(0, 8);
-  }
-  */
   private String generateId() { 
     return config.getNSData() + new Long(id++).toString();
   }

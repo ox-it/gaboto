@@ -85,19 +85,19 @@ public class TestGabotoEntity {
 		b2.setLocation(loc2);
 		
 		Unit u = new Unit();
-		u.setUri(oxp.generateID("unit"));
+		u.setUri(oxp.generateID());
 		u.setTimeSpan(new TimeSpan(1900,null,null));
 		u.setName("Test Unit");
 		u.setPrimaryPlace(b);
 		
 		Unit u2 = new Unit();
-		u2.setUri(oxp.generateID("unit"));
+		u2.setUri(oxp.generateID());
 		u2.setTimeSpan(new TimeSpan(1900,null,null));
 		u2.setName("Test Unit");
 		u2.setPrimaryPlace(b2);
 		
 		Unit u3 = new Unit();
-		u3.setUri(oxp.generateID("unit"));
+		u3.setUri(oxp.generateID());
 		u3.setTimeSpan(new TimeSpan(1900,null,null));
 		u3.setName("Test Unit");
 		u3.setSubsetOf(u2);
@@ -114,7 +114,7 @@ public class TestGabotoEntity {
 		Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 		
 		Building b = new Building();
-		b.setUri(oxp.generateID("building"));
+		b.setUri(oxp.generateID());
 		b.setTimeSpan(new TimeSpan(1900,null,null));
 		b.setName("Test Building");
 		Location loc = new Location();
@@ -122,7 +122,7 @@ public class TestGabotoEntity {
 		b.setLocation(loc);
 		
 		Unit u = new Unit();
-		u.setUri(oxp.generateID("unit"));
+		u.setUri(oxp.generateID());
 		u.setTimeSpan(new TimeSpan(1900,null,null));
 		u.setName("Test Unit");
 		u.addOccupiedBuilding(b);
@@ -144,13 +144,13 @@ public class TestGabotoEntity {
 		Gaboto gaboto = GabotoFactory.getPersistentGaboto();
 		Gaboto gaboto_mem = GabotoFactory.getInMemoryGaboto();
 		
-		String uri1 = gaboto.generateID("carpark");
+		String uri1 = gaboto.generateID();
 		Carpark cp1 = new Carpark();
 		cp1.setUri(uri1);
 		cp1.setName("small carpark");
 		cp1.setCapacity(30);
 		
-		final String uri2 = gaboto.generateID("carpark");
+		final String uri2 = gaboto.generateID();
 		Carpark cp2 = new Carpark();
 		cp2.setUri(uri2);
 		cp2.setName("big carpark");

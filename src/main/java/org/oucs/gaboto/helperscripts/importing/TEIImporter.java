@@ -259,7 +259,7 @@ public class TEIImporter {
 	private void processCarpark(Element el) {
 		Carpark cp = new Carpark();
 
-		cp.setUri(gaboto.generateID("carpark"));
+		cp.setUri(gaboto.generateID());
 		cp.setName(findName(el));
 		cp.setLocation(findLocation(el));
 		
@@ -333,7 +333,7 @@ public class TEIImporter {
 	 */
 	private void _processUnit(Unit unit, Element unitEl){
 		// get ID
-		unit.setUri(gaboto.generateID("unit"));
+		unit.setUri(gaboto.generateID());
 		
 		// get name
 		unit.setName(findName(unitEl));
@@ -440,7 +440,7 @@ public class TEIImporter {
 		Room room = new Room();
 		
 		// get uri
-		room.setUri(gaboto.generateID("room"));
+		room.setUri(gaboto.generateID());
 		
 		// building
 		room.setParent(building);
@@ -462,7 +462,7 @@ public class TEIImporter {
 		Building building = new Building();
 
 		// get uri
-		building.setUri(gaboto.generateID("building"));
+		building.setUri(gaboto.generateID());
 		
 		// time span
 		building.setTimeSpan(ts);

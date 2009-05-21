@@ -344,7 +344,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	}
 	
 	final static public <T extends GabotoEntity> T createNew(Gaboto gaboto, T newEntity){
-		newEntity.setUri(gaboto.generateID(newEntity.getClass().getSimpleName().toLowerCase()));
+		newEntity.setUri(gaboto.generateID());
 		return newEntity;
 	}
 	
