@@ -49,6 +49,6 @@ public interface EntityPoolTransformer {
 	 * @param pool
 	 * @return Some output format.
 	 */
-	public Object transform(GabotoEntityPool pool);
+	public String transform(GabotoEntityPool pool);
 	
 }

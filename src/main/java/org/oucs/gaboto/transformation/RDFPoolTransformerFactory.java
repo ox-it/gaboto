@@ -70,7 +70,7 @@ public class RDFPoolTransformerFactory {
 
 			// create transformer object
 			return new EntityPoolTransformer(){
-				public Object transform(GabotoEntityPool pool) {
+				public String transform(GabotoEntityPool pool) {
 					Model model = pool.createJenaModel();
 					
 					StringWriter sWriter = new StringWriter();
