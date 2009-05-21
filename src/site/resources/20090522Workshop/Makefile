@@ -1,5 +1,5 @@
 TALKS=gaboto
-default: pdfslides
+default: clean pdfslides slides 
 
 
 
