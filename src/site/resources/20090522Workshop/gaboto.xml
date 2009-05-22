@@ -34,32 +34,97 @@
       </div>
 -->
       <div type="div1">
-        <head>Gaboto</head>
-        <list type="gloss">
-          <label>What is Gaboto?</label>
-          <item>A tool kit for using Jena with a time dimension</item>
-          <label>Adoption</label>
-          <item>Conversion of faithware to software</item>
-          <label>Use</label>
-          <item>The Oxpoints Servlet</item>
-          <label>Extension</label>
-          <item>Further work</item>
-        </list>
-
+        <head>Gaboto the Ideal</head>
+        <p>
+           Gaboto is designed to answer queries of the form "Which department occupied this building in 1952".  
+        </p>
+        <p>
+           Temporal Logics - here be dragons
+        </p>
+        <p>
+          <a href="http://en.wikipedia.org/wiki/Non-monotonic_logic">Non-Monotonic Logics</a> are not Monotonic. 
+        </p>
+        <p>
+        This means that true sentences cannot be relied upon to remain true when new axioms are added.
+        </p>
+        <p>
+          How to reason about the following story 
+          </p>
+        <p>
+          An man pulled the trigger of a gun and shot himself.
+          </p>
+        <p>
+          A monotonic reasoning system would be required to store <hi>Man is dead</hi> and <hi>Man is alive</hi>
+        </p>
 
         <div>
-          <head>A tool kit for using Jena</head>
+          <head>Yale Shooting Problem</head>
           <p>
-    Jena is a Java framework for building Semantic Web applications. It provides a programmatic environment for RDF, RDFS and OWL, SPARQL and includes a rule-based inference engine.
-
-</p>
+          Steve Hanks and Drew McDermott (1987) Nonmonotonic logic and temporal projection. Artificial Intelligence 33, no.3, pp. 379–412
+          </p>
+          <p>
+          An early critique of naive frame based temporal logics which relie upon a minimisation of change rule. 
+          </p>
+          <p>
+          It is now considered a solved problem: situation calculus, fluent calculus and action description languages.
+          </p>
+        </div>
+        
+        <div>
+          <head>Further Reading</head>
+          <p>
+            <list>
+              <item>
+                <a href="http://www.stanford.edu/~laurik/fsmbook/examples/YaleShooting.html">http://www.stanford.edu/~laurik/fsmbook/examples/YaleShooting.html</a>
+              </item>
+              <item>
+                <a href="http://www.cs.tcd.ie/Tim.Fernando/i6.pdf">Tim Fernando, Entailments in finite state temporality</a>
+              </item>
+            </list>
+          </p>
         </div>
 
 
       </div>
       <div type="div1">
-        <head>Conversion of Faithware</head>
+        <head>Gaboto as Implemented</head>
+        <p>
+           Gaboto was implemented in a very short time by Arno Mittelbach.
+        </p>
+        <p>
+           Arno chose to implement Gaboto using Named Graphs for Jena.
+        </p>
+        <p>
+           Gaboto also provides a number of domain specific utilities.
+        </p>
+
+        <div>
+          <head>Jena</head>
+          <p>
+            Jena provides a programmatic environment for RDF, RDFS and OWL, SPARQL and includes a rule-based inference engine.
+          </p>
+          <p>
+          Jena allows for the addition of new types and new properties without the overhead of traditional RDBMSen.
+          </p>
+        </div>
+        <div>
+          <head>Named Graphs for Jena</head>
+          <p>
+          Jena stores all tripples within a single graph. This makes Jena only useful to store sentences of Monotonic logics.  
+          </p>
+          <p>
+            NG4J enables multiple, named graphs to be stored within a single store. 
+          </p>
+        </div>
+
+      </div>
+      <div type="div1">
+        <head>Converting Faithware to Software</head>
         <p>You should be able to change software without risk</p>
+        <p>Unchangeable software is not Software</p>
+        <p>
+        Tame change with repeatable build process, then repeat.
+        </p>
         <div>
           <head>Maven Site</head>
           <p>
@@ -123,16 +188,14 @@
             <graphic url="HudsonGabotoBuild65Console.png"/>
           </p>
         </div>
-      </div>
-      <div type="div1"></div>
-      <div type="div1">
         <div>
-          <head>More to do</head>
-          <list>
-            <item>As per Arno's list</item>
-          </list>
+          <head>A reiified contract</head>
+          <p>
+          Gaboto keeps its promises
+          </p>
         </div>
       </div>
+
     </body>
   </text>
 </TEI>
