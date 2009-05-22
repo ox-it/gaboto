@@ -19,6 +19,7 @@
     <menu name="Gaboto">
       <item name="About"             href="index.html"/>
       <item name="FAQ"               href="FAQ.html"/>
+      <item name="Workshop"          href="20090522Workshop/gaboto-0.xhtml" />
     </menu>
     ${reports}
   </body>
