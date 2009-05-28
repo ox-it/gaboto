@@ -51,27 +51,35 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
 	 */
 	public TimeInstant(){}
 	
-	/**
-	 * Create a fully specified time instant.
-	 * 
-	 * @param year The year.
-	 * @param month The month.
-	 * @param day The day.
-	 */
-	public TimeInstant(Integer year, Integer month, Integer day){
-		setStartYear(year);
-		setStartMonth(month);
-		setStartDay(day);
-	}
-	
+  /**
+   * Create a fully specified time instant.
+   * 
+   * @param year The year.
+   * @param month The month.
+   * @param day The day.
+   */
+  public TimeInstant(Integer year, Integer month, Integer day){
+    setStartYear(year);
+    setStartMonth(month);
+    setStartDay(day);
+  }
+  
+  /**
+   * Create an instance from a Calendar..
+   * 
+   * @param calendar
+   */
+  public static TimeInstant from(Calendar calendar){ 
+    return new TimeInstant(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+  }
+  
 	/**
 	 * Creates a time instant representing now.
 	 * 
 	 * @return A time instant representing now.
 	 */
 	public static TimeInstant now(){
-		Calendar currentDate = Calendar.getInstance();
-		return new TimeInstant(currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DAY_OF_MONTH));
+	  return from(Calendar.getInstance());
 	}
 	
 	@Override
