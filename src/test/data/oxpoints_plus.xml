@@ -4822,6 +4822,8 @@
             </desc>
           </trait>
           <place type="building">
+            <!-- JR says add placename RT 1342382 -->
+            <placeName>New Biochemistry Building</placeName>
             <location when="2009-01-09T17:20:00.000">
               <geo>-1.255121 51.759091</geo>
               <note> submitted by Jeremy Rowntree</note>
@@ -4831,6 +4833,10 @@
             </place>
             <place type="room">
               <placeName>Lower Ground Meeting Room</placeName>
+            </place>
+            <!-- JR says add room RT 1342382 -->
+            <place type="room">
+              <placeName>Lower Ground Floor Atrium</placeName>
             </place>
             <place type="room">
               <placeName>Level 1 Meeting Room</placeName>
@@ -4852,6 +4858,10 @@ data, and if so, how? -->
               <note> recorded by Jeremy Rowntree</note>
             </location>
           </place> -->
+          <!-- JR says remove 2009-05-26 RT 1342382
+               Again, do you want to keep as historical data, and if so, how?
+               I think the building got demolished to make way for the
+               New Biochemistry Building [sic]
           <place type="building">
             <placeName>Walter Bodmer Building</placeName>
             <location when="2007-06-18T10:14:53.000">
@@ -4859,6 +4869,7 @@ data, and if so, how? -->
               <note> recorded by Janet McKnight</note>
             </location>
           </place>
+          -->
           <place type="building">
             <placeName>Rex Richards Building</placeName>
             <location when="2007-06-18T10:09:17.000">
@@ -4866,6 +4877,10 @@ data, and if so, how? -->
               <note> recorded by Janet McKnight</note>
             </location>
           </place>
+          <!-- JR says remove 2009-05-26 RT 1342382
+               Again, do you want to keep as historical data, and if so, how?
+               I think the building got demolished to make way for the
+               New Biochemistry Building [sic]
           <place type="building">
             <placeName>Donald Woods Building</placeName>
             <location when="2007-06-18T09:48:29.000">
@@ -4873,6 +4888,7 @@ data, and if so, how? -->
               <note> recorded by Janet McKnight</note>
             </location>
           </place>
+          -->
           <place type="building">
             <placeName>Rodney Porter Building</placeName>
             <location when="2007-06-18T09:53:10.000">
