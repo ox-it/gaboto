@@ -173,7 +173,7 @@ public class GabotoEntityPool {
 	 * @param snapshot 
 	 * @return The created entity pool.
 	 */
-	private static GabotoEntityPool createFrom(GabotoEntityPoolConfiguration config, GabotoSnapshot snapshot) {
+	public static GabotoEntityPool createFrom(GabotoEntityPoolConfiguration config, GabotoSnapshot snapshot) {
 		GabotoEntityPool pool = new GabotoEntityPool(snapshot.getGaboto());
 		pool.config = config;
 		pool.snapshot = snapshot;
