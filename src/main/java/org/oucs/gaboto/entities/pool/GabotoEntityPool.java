@@ -144,7 +144,7 @@ public class GabotoEntityPool {
 	}
 	
 	/**
-	 * Creates a new entity pool from a given configuration.
+   * Creates a new entity pool from a given configuration.
 	 * 
 	 * @param config The configuration
 	 * @return a new entity pool created from a given configuration. 
@@ -167,13 +167,22 @@ public class GabotoEntityPool {
 	}
 
 	/**
+   * Creates a new entity pool from a given snapshot.
+   * 
+	 * @param snapshot snapshot to use
+	 * @return a GabotoEntityPool
+	 */
+	public static GabotoEntityPool createFrom(GabotoSnapshot snapshot) { 
+	  return createFrom(new GabotoEntityPoolConfiguration(snapshot), snapshot);
+	}
+	/**
 	 * Creates an entity pool from a snapshot and a given configuration.
 	 * 
 	 * @param config
 	 * @param snapshot 
 	 * @return The created entity pool.
 	 */
-	public static GabotoEntityPool createFrom(GabotoEntityPoolConfiguration config, GabotoSnapshot snapshot) {
+	private static GabotoEntityPool createFrom(GabotoEntityPoolConfiguration config, GabotoSnapshot snapshot) {
 		GabotoEntityPool pool = new GabotoEntityPool(snapshot.getGaboto());
 		pool.config = config;
 		pool.snapshot = snapshot;
@@ -192,6 +201,7 @@ public class GabotoEntityPool {
 				continue;
 			
 			try {
+			  logger.debug("Loading type " + type);
 				Class<?> entityClass = GabotoOntologyLookup.getEntityClassFor(type);
 				
 				// get everything in the model of that type
@@ -222,6 +232,8 @@ public class GabotoEntityPool {
 					
 					// add entity
 					pool.addEntity(entity);
+					logger.debug("  Added " + entity);
+					
 				}
 			} catch (InstantiationException e) {
         throw new GabotoRuntimeException(e);
