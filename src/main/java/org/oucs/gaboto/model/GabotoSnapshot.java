@@ -71,8 +71,8 @@ import com.hp.hpl.jena.vocabulary.RDF;
  * <p>
  * {@link GabotoSnapshot}s provide one solution to this problem. They allow you to represent
  * the part of the data you are interested in in one flat RDF graph that you can then easily
- * query against. Furthermore, snapshots can be used to automatically create the in-java representation of
- * Gaboto ontology objects ({@link GabotoEntity}s) using the {@link GabotoEntityPool} object.
+ * query against. Furthermore, snapshots can be used to automatically create the java representation of
+ * {@link GabotoEntity}s using a {@link GabotoEntityPool}.
  * </p>
  * 
  * @author Arno Mittelbach
