@@ -49,6 +49,7 @@ import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.EntityClassNotFoundException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
@@ -223,9 +224,9 @@ public class GabotoEntityPool {
 					pool.addEntity(entity);
 				}
 			} catch (InstantiationException e) {
-				e.printStackTrace();
+        throw new GabotoRuntimeException(e);
 			} catch (IllegalAccessException e) {
-				e.printStackTrace();
+        throw new GabotoRuntimeException(e);
 			}
 		}
 		
