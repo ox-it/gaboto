@@ -132,7 +132,7 @@ public class GabotoEntityPool {
 	 * The configuration can be used to define {@link EntityFilter}s.
 	 * </p>
 	 * 
-	 * @param config The connfiguration.
+	 * @param config The configuration.
 	 * @throws EntityPoolInvalidConfigurationException 
 	 */
 	public GabotoEntityPool(GabotoEntityPoolConfiguration config) throws EntityPoolInvalidConfigurationException{
