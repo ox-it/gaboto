@@ -423,18 +423,10 @@ public class GabotoEntityPool {
 					else if(referencedEntities.containsKey(nodesURI))
 						request.passiveEntityLoaded(referencedEntities.get(nodesURI));
 					else {
-						try {
-							Resource res = snapshot.getResource(nodesURI);
-							addEntity(res, snapshot, direct, true);
+						Resource res = snapshot.getResource(nodesURI);
+						addEntity(res, snapshot, direct, true);
 							
-							request.passiveEntityLoaded(referencedEntities.get(nodesURI));
-						} catch (ResourceDoesNotExistException e) {
-							e.printStackTrace();
-						} catch (EntityClassNotFoundException e) {
-							e.printStackTrace();
-						} catch (EntityDoesNotExistException e) {
-							e.printStackTrace();
-						}
+						request.passiveEntityLoaded(referencedEntities.get(nodesURI));
 					}
 				}
 			} else if(request.getCollectionType() == PASSIVE_PROPERTY_COLLECTION_TYPE_BAG){
