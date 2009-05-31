@@ -240,7 +240,7 @@ public class GabotoEntityPool {
 		}
 		
 		if(config.isCreatePassiveEntities())
-			pool.addPassiveEntitiesFrom(snapshot);
+			pool.addPassiveEntities();
 		
 		// filter entities
 		pool.filterEntities(config.getEntityFilters());
@@ -279,7 +279,7 @@ public class GabotoEntityPool {
 
 		//
 		if(config.isCreatePassiveEntities())
-			pool.addPassiveEntitiesFrom(snapshot);
+			pool.addPassiveEntities();
 		
 		// filter entities
 		pool.filterEntities(config.getEntityFilters());
@@ -382,12 +382,12 @@ public class GabotoEntityPool {
 		}
 	}
 	
-	public void addPassiveEntitiesFrom(final GabotoSnapshot snapshot) {
+	public void addPassiveEntities() {
 		for(GabotoEntity entity : entities.values())
-			addPassiveEntitiesFromFor(entity);
+			addPassiveEntitiesFor(entity);
 	}
 	
-	public void addPassiveEntitiesFromFor(GabotoEntity entity) {
+	public void addPassiveEntitiesFor(GabotoEntity entity) {
 		if(this.snapshot == null){
 			logger.debug("Cannot load passive entities if no snapshot is provided.");
 			return;

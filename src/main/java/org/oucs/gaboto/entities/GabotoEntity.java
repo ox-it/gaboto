@@ -425,6 +425,9 @@ abstract public class GabotoEntity implements RDFContainer {
 	 */
 	abstract public String getType();
 
+	/**
+   * @param propertyURI unused, overridden 
+   */
 	protected List<Method> getIndirectMethodsForProperty(String propertyURI){
 		return null;
 	}
@@ -499,7 +502,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	/**
 	 * Is overridden by subclasses to ask for passive entities that they claim belong to them.
 	 *  
-	 * @return
+	 * @return null
 	 */
 	public Collection<PassiveEntitiesRequest> getPassiveEntitiesRequest(){
 		return null;
@@ -534,7 +537,6 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * @param prop The property
 	 * @param searchInPassiveProperties Search in passive properties
 	 * @param searchInIndirectProperties Search in indirect properties
-	 * @return
 	 */
 	public Object getPropertyValue(Property prop, boolean searchInPassiveProperties, boolean searchInIndirectProperties){
 		return getPropertyValue(prop.getURI(), searchInPassiveProperties, searchInIndirectProperties);
@@ -544,7 +546,6 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * Returns the value of a property via reflection (searching in direct and indirect properties, but not in passive properties)
 	 * 
 	 * @param propURI The property's URI
-	 * @return
 	 */
 	public Object getPropertyValue(String propURI){
 		return getPropertyValue(propURI, false, true);
@@ -556,7 +557,6 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * @param propURI The property's URI.
 	 * @param searchInPassiveProperties True to search in passive properties.
 	 * @param searchInIndirectProperties True to search in indirect properties.
-	 * @return
 	 */
 	public Object getPropertyValue(String propURI, boolean searchInPassiveProperties, boolean searchInIndirectProperties){
 		Method directMethod = GabotoEntityUtils.getGetMethodFor(this, propURI);
@@ -669,7 +669,6 @@ abstract public class GabotoEntity implements RDFContainer {
 	
 	/**
 	 * Creates a map with all properties: direct (including static and unstored), indirect and passive
-	 * @return
 	 */
 	public Map<String, Object> getAllProperties(){
 		Map<String, Object> properties = getAllDirectProperties();
