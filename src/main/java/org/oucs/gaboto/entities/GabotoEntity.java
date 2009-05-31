@@ -493,7 +493,7 @@ abstract public class GabotoEntity implements RDFContainer {
 		if(null == pool)
 			throw new IllegalStateException("The GabotoEntity was not provided with a pool object to load the passive properties from.");
 
-		pool.addPassiveEntitiesFromFor(this);
+		pool.addPassiveEntitiesFor(this);
 	}
 
 	/**
