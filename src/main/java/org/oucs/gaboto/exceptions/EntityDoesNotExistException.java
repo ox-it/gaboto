@@ -39,7 +39,7 @@ import org.oucs.gaboto.entities.GabotoEntity;
  * @author Arno Mittelbach
  *
  */
-public class EntityDoesNotExistException extends GabotoException {
+public class EntityDoesNotExistException extends GabotoRuntimeException {
 
 	/**
 	 * 
