@@ -42,7 +42,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * @author Arno Mittelbach
  * @see GabotoEntity
  */
-public class EntityClassNotFoundException extends GabotoException {
+public class EntityClassNotFoundException extends GabotoRuntimeException {
 
 	/**
 	 * 
