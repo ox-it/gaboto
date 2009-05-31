@@ -136,9 +136,6 @@ public class GabotoEntityPool {
 	 * @throws EntityPoolInvalidConfigurationException 
 	 */
 	public GabotoEntityPool(GabotoEntityPoolConfiguration config) throws EntityPoolInvalidConfigurationException{
-		if(! (config.getGaboto() instanceof Gaboto))
-			throw new EntityPoolInvalidConfigurationException("Configuration did not contain an Gaboto object.");
-		
 		this.gaboto = config.getGaboto();
 		this.config = config;
 	}
