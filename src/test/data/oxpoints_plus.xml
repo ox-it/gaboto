@@ -7296,7 +7296,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
 
         </place>
         <place type="department" xml:id="ortho">
-          <placeName>Nuffield Department of Orthopaedic Surgery</placeName>
+          <placeName>uffield Department of Orthopaedics, Rheumatology and Musculoskeletal Sciences</placeName>
           <location type="address">
             <address>
               <addrLine>Nuffield Orthopaedic Centre, Old Road, Headington,
@@ -7306,13 +7306,12 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           </location>
           <trait type="url">
             <desc>
-              <ptr target="http://www.ox.ac.uk"/>
+              <ptr target="http://www.ndorms.ox.ac.uk"/>
             </desc>
           </trait>
           <place subtype="primary" type="building">
-            <location when="2008-01-09T16:00:00">
-              <geo>-1.21078 51.7537</geo>
-              <note>Submitted by Stephen Sangar</note>
+            <location when="2009-06-01">
+              <geo>-1.2085 51.75425</geo>
             </location>
           </place>
         </place>
