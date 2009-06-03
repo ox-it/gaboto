@@ -410,10 +410,8 @@ public class GabotoEntityPool {
   }
 
   public void addPassiveEntitiesFor(GabotoEntity entity) {
-    if (this.snapshot == null) {
-      logger.debug("Cannot load passive entities if no snapshot is provided.");
-      return;
-    }
+    if (this.snapshot == null) 
+      throw new GabotoRuntimeException("Cannot load passive entities if no snapshot is provided.");
 
     Model model = snapshot.getModel();
     Graph graph = model.getGraph();
