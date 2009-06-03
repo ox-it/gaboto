@@ -267,7 +267,7 @@ public class TEIImporter {
 		NodeList nl = el.getElementsByTagName("label");
 		if(nl.getLength() > 0){
 			Element label = (Element) nl.item(0);
-			String labelContent = label.getTextContent();
+			String labelContent = label.getNodeValue();
 			labelContent = labelContent.replaceAll("[a-zA-Z\\s]", "");
 			try{
 				int size = Integer.parseInt(labelContent);
@@ -567,9 +567,9 @@ public class TEIImporter {
 					Element addressPart = (Element) addressChildren.item(j);
 					
 					if(addressPart.getNodeName().equals("addrLine"))
-						address.setStreetAddress(addressPart.getTextContent());
+						address.setStreetAddress(addressPart.getNodeValue());
 					else if(addressPart.getNodeName().equals("postCode"))
-						address.setPostCode(addressPart.getTextContent());
+						address.setPostCode(addressPart.getNodeValue());
 				}
 				
 				return address;
@@ -591,7 +591,7 @@ public class TEIImporter {
 				Element location = (Element) children.item(i);
 				NodeList geos = location.getElementsByTagName("geo");
 				if(geos.getLength() > 0){
-					String geo = geos.item(0).getTextContent();
+					String geo = geos.item(0).getNodeValue();
 					
 					Location loc = new Location();
 					loc.setPos(geo);
@@ -609,7 +609,7 @@ public class TEIImporter {
 		NodeList placeNames = el.getChildNodes();
 		for(int i = 0; i < placeNames.getLength(); i++){
 			if(placeNames.item(i).getNodeName().equals("placeName")){
-				return placeNames.item(i).getTextContent();
+				return placeNames.item(i).getNodeValue();
 			}
 		}
 		return null;
