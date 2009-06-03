@@ -70,7 +70,7 @@ public class GabotoEntityPoolConfiguration {
 	
 	private boolean useResourceCollection = false;
 	
-	private boolean addReferencedEntitiesToPool = true;
+	private boolean addReferencedEntitiesToPool = false;
 	private boolean createPassiveEntities = false;
 	
 	private Collection<Resource> resources = new HashSet<Resource>();
