@@ -92,15 +92,15 @@ public class GabotoConfiguration {
 					Element databaseProp = (Element) databaseChildren.item(j);
 					
 					if(databaseProp.getNodeName().equals("engineName")){
-						config.dbEngineName = databaseProp.getTextContent();
+						config.dbEngineName = databaseProp.getNodeValue();
 					} else if(databaseProp.getNodeName().equals("url")){
-						config.dbURL = databaseProp.getTextContent();
+						config.dbURL = databaseProp.getNodeValue();
 					} else if(databaseProp.getNodeName().equals("user")){
-						config.dbUser = databaseProp.getTextContent();
+						config.dbUser = databaseProp.getNodeValue();
 					} else if(databaseProp.getNodeName().equals("password")){
-						config.dbPassword = databaseProp.getTextContent();
+						config.dbPassword = databaseProp.getNodeValue();
 					} else if(databaseProp.getNodeName().equals("driver")){
-						config.dbDriver = databaseProp.getTextContent();
+						config.dbDriver = databaseProp.getNodeValue();
 					}
 				}
 			} else if(configSection.getNodeName().equals("namespaces")){
