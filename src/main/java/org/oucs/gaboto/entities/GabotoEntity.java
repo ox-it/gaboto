@@ -47,6 +47,7 @@ import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
 import org.oucs.gaboto.entities.utils.GabotoEntityUtils;
 import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
 import org.oucs.gaboto.entities.utils.SimpleURIProperty;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.IllegalAnnotationException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
@@ -558,7 +559,8 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * @param searchInPassiveProperties True to search in passive properties.
 	 * @param searchInIndirectProperties True to search in indirect properties.
 	 */
-	public Object getPropertyValue(String propURI, boolean searchInPassiveProperties, boolean searchInIndirectProperties){
+	@SuppressWarnings("unchecked")
+  public Object getPropertyValue(String propURI, boolean searchInPassiveProperties, boolean searchInIndirectProperties){
 		Method directMethod = GabotoEntityUtils.getGetMethodFor(this, propURI);
 		
 		if(null != directMethod){
@@ -566,12 +568,8 @@ abstract public class GabotoEntity implements RDFContainer {
 				Object value = directMethod.invoke(this, (Object[])null);
 				if(null != value)
 					return value;
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				throw new GabotoRuntimeException(e);
 			}
 		}
 		
@@ -582,7 +580,7 @@ abstract public class GabotoEntity implements RDFContainer {
 				return value;
 		}
 
-		// search in indirect propperties?
+		// search in indirect properties?
 		if(! searchInIndirectProperties)
 			return null;
 		
