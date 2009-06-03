@@ -383,7 +383,7 @@ class GabotoClassGeneration {
 						continue;
 					
 					if(methods.item(j).getNodeName().equals("method")){
-						customMethods += ((Element)methods.item(j)).getTextContent();
+						customMethods += ((Element)methods.item(j)).getNodeValue();
 					}
 				}		
 			}
@@ -525,7 +525,7 @@ class GabotoClassGeneration {
 						continue;
 					
 					if(methods.item(j).getNodeName().equals("method")){
-						customMethods += ((Element)methods.item(j)).getTextContent();
+						customMethods += ((Element)methods.item(j)).getNodeValue();
 					}
 				}		
 			}
