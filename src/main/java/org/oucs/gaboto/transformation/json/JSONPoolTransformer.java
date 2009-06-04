@@ -81,12 +81,21 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 			return transfromEntities(pool.getEntities());
 	}
 
+    private String simplifyKey(String k) { 
+	k = k.replaceAll("http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#", "oxp_");
+	k = k.replaceAll("http://ns.ox.ac.uk/namespace/gaboto/kml/2009/03/owl#", "gab_");
+	k = k.replaceAll("http://purl.org/dc/elements/1.1/", "dc_");
+	k = k.replaceAll("http://nwalsh.com/rdf/vCard#", "vCard_");
+	k = k.replaceAll("http://www.opengis.net/gml/", "geo_");
+	return k;
+    }
+
 	private String transfromEntities(Collection<GabotoEntity> entities) throws JSONException{
 		// initialize level map
 		for(GabotoEntity entity : entities){
 			levelMap.put(entity, 1);
 		}
-		
+	
 		JSONStringer json = new JSONStringer();
 		
 		json.array();
@@ -162,24 +171,24 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 	@SuppressWarnings("unchecked")
   private void processEntityEntry(Entry<String, Object> entry, JSONStringer json, int level) throws JSONException{
 		if(entry.getValue() instanceof String){
-			json.key(entry.getKey());
+		    json.key(simplifyKey(entry.getKey()));
 			json.value(entry.getValue());
 		} else if(entry.getValue() instanceof GabotoEntity) {
-			json.key(entry.getKey());
+		    json.key(simplifyKey(entry.getKey()));
 			transformEntity((GabotoEntity) entry.getValue(), json, level + 1);
 		} else if(entry.getValue() instanceof Collection){
-			json.key(entry.getKey());
+		    json.key(simplifyKey(entry.getKey()));
 			json.array();
 			for(GabotoEntity innerEntity : (Collection<GabotoEntity>) entry.getValue()){
 				transformEntity(innerEntity, json, level + 1);
 			}
 			json.endArray();
 		} else if(entry.getValue() instanceof GabotoBean){
-			json.key(entry.getKey());
+		    json.key(simplifyKey(entry.getKey()));
 			// beans should be put into the same level ..
 			transformBean((GabotoBean) entry.getValue(), json, level);
 		} else if(null == entry.getValue()){
-			json.key(entry.getKey());
+		    json.key(simplifyKey(entry.getKey()));
 			json.value(null);
 		}
 	}
@@ -200,20 +209,20 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 		
 		for(Entry<String, Object> entry : bean.getAllProperties().entrySet()){
 			if(entry.getValue() instanceof String){
-				json.key(entry.getKey());
+			    json.key(simplifyKey(entry.getKey()));
 				json.value(entry.getValue());
 			} else if(entry.getValue() instanceof GabotoEntity) {
-				json.key(entry.getKey());
+			    json.key(simplifyKey(entry.getKey()));
 				transformEntity((GabotoEntity) entry.getValue(), json, level + 1);
 			} else if(entry.getValue() instanceof Collection){
-				json.key(entry.getKey());
+			    json.key(simplifyKey(entry.getKey()));
 				json.array();
 				for(GabotoEntity innerEntity : (Collection<GabotoEntity>) entry.getValue()){
 					transformEntity(innerEntity, json, level + 1);
 				}
 				json.endArray();
 			} else if(entry.getValue() instanceof GabotoBean){
-				json.key(entry.getKey());
+			    json.key(simplifyKey(entry.getKey()));
 				transformBean((GabotoBean) entry.getValue(), json, level + 1);
 			}
 		}
