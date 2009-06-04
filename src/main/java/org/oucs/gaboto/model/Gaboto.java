@@ -295,7 +295,7 @@ public class Gaboto {
 	 */
 	public GabotoSnapshot getSnapshot(Collection<String> graphURIs) {
 		// create model
-		Model model = ModelFactory.createDefaultModel();
+		Model model = ModelFactory.createOntologyModel();
 		Graph newModelsDefaultGraph = model.getGraph();
 		
 		// create snapshot
