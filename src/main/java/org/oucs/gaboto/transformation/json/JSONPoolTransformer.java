@@ -136,7 +136,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 		
     // FIXME TPP Typo?
 		if(level > nesting){
-			json.key("nestingToDeep").value(true);
+			json.key("nestingLimitReached").value(true);
 			json.endObject();
 			return;
 		}
@@ -198,7 +198,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     // FIXME TPP Typo?
 		if(level > nesting){
 			json.object();
-			json.key("nestingToDeep").value(true);
+			json.key("nestingLimitReached").value(true);
 			json.endObject();
 			return;
 		}
