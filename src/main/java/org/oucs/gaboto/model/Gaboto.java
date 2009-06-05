@@ -295,7 +295,7 @@ public class Gaboto {
 	 */
 	public GabotoSnapshot getSnapshot(Collection<String> graphURIs) {
 		// create model
-		Model model = ModelFactory.createOntologyModel();
+		Model model = ModelFactory.createDefaultModel();
 		Graph newModelsDefaultGraph = model.getGraph();
 		
 		// create snapshot
@@ -309,7 +309,7 @@ public class Gaboto {
 				throw new IllegalArgumentException("Unknown graph: " + g);
 			
 			// add statements to snapshot model
-			ExtendedIterator it = graph.find(Node.ANY, Node.ANY, Node.ANY);
+			ExtendedIterator<Triple> it = graph.find(Node.ANY, Node.ANY, Node.ANY);
 			while(it.hasNext()){
 				Triple t = (Triple)it.next();
 				
@@ -320,7 +320,7 @@ public class Gaboto {
 		
 		// add gdg
 		Graph gkg = getGlobalKnowledgeGraph();
-		ExtendedIterator it = gkg.find(Node.ANY, Node.ANY, Node.ANY);
+		ExtendedIterator<Triple> it = gkg.find(Node.ANY, Node.ANY, Node.ANY);
 		while(it.hasNext())
 			newModelsDefaultGraph.add((Triple)it.next());
 		
