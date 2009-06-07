@@ -31,7 +31,6 @@
  */
 package org.oucs.gaboto.beans;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
@@ -51,14 +50,17 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- * GabotoBeans are used to allow the storage of <a href="http://www.w3.org/TR/REC-rdf-syntax/#structuredproperties">complex properties</a> in {@link GabotoEntity}s. 
- *
- *  <p>
- *  GabotoBeans should generally be simple classes following the principles of JavaBeans (see 
- *  <a href="http://en.wikipedia.org/wiki/JavaBeans">Wikipedia article</a>). The only two a bit
- *  more complex methods an GabotoBean has to provide is one method to generate RDF Triples 
- *  ({@link #getCorrespondingRDFTriples(Node)} and one to load itself from an RDF resource
- *  ({@link #loadFromResource(Resource)}).
+ * GabotoBeans are used to allow the storage of <a
+ * href="http://www.w3.org/TR/REC-rdf-syntax/#structuredproperties">complex
+ * properties</a> in {@link GabotoEntity}s.
+ * 
+ * <p>
+ * GabotoBeans should generally be simple classes following the principles of
+ * JavaBeans (see <a href="http://en.wikipedia.org/wiki/JavaBeans">Wikipedia
+ * article</a>). The only two a bit more complex methods an GabotoBean has to
+ * provide is one method to generate RDF Triples (
+ * {@link #getCorrespondingRDFTriples(Node)} and one to load itself from an RDF
+ * resource ({@link #loadFromResource(Resource)}).
  * </p>
  * 
  * 
@@ -66,85 +68,96 @@ import com.hp.hpl.jena.rdf.model.Resource;
  */
 public abstract class GabotoBean implements RDFContainer {
 
-	/**
-	 * 
-	 * @return the Type 
-	 */
-	abstract public String getType();
-	
-	/**
-	 * Create RDF triples that contain all the information stored in this object.
-	 * 
-	 * <p>
-	 * RDF triples for {@link GabotoBean}s will always be of the form:
-	 * <pre>
-	 *  oxpdata:subject		somevocab:definedPredicate		_blankNode .
-	 *  _blankNode			somevocab:predicate1		 	"some value";
-	 *  					somevocab:predicate2		 	someReference;
-	 *  						...								...		 .
-	 * </pre>
-	 * The first triple is created automatically. It is the beans obligation
-	 * to create all other necessary "information triples".
-	 * </p>
-	 * 
-	 * @param blankNode The blank node to attach information to.
-	 * @return A list of RDF triples.
-	 */
-	public List<Triple> getCorrespondingRDFTriples(Node blankNode){
-		List<Triple> triples = RDFContainerTripleGeneratorImpl.getInstance().getTriplesFor(this, blankNode);
-		return triples;
-	}
-	
-	/**
-	 * Load all information necessary for this {@link GabotoBean} from an RDF resource.
-	 * 
-	 * <p>
-	 *  In order to automatically load {@link GabotoEntity}s beans have to know how their
-	 *  information is stored in RDF and be able to load this information into its fields.
-	 * </p>
-	 * 
+  /**
+   * 
+   * @return the Type
+   */
+  abstract public String getType();
+
+  /**
+   * Create RDF triples that contain all the information stored in this object.
+   * 
+   * <p>
+   * RDF triples for {@link GabotoBean}s will always be of the form:
+   * 
+   * <pre>
+   *  oxpdata:subject		somevocab:definedPredicate		_blankNode .
+   *  _blankNode			somevocab:predicate1		 	&quot;some value&quot;;
+   *  					somevocab:predicate2		 	someReference;
+   *  						...								...		 .
+   * </pre>
+   * 
+   * The first triple is created automatically. It is the beans obligation to
+   * create all other necessary "information triples".
+   * </p>
+   * 
+   * @param blankNode
+   *          The blank node to attach information to.
+   * @return A list of RDF triples.
+   */
+  public List<Triple> getCorrespondingRDFTriples(Node blankNode) {
+    List<Triple> triples = RDFContainerTripleGeneratorImpl.getInstance()
+        .getTriplesFor(this, blankNode);
+    return triples;
+  }
+
+  /**
+   * Load all information necessary for this {@link GabotoBean} from an RDF
+   * resource.
+   * 
+   * <p>
+   * In order to automatically load {@link GabotoEntity}s beans have to know how
+   * their information is stored in RDF and be able to load this information
+   * into its fields.
+   * </p>
+   * 
    * @param snapshot
    * @param pool
-	 * @param res The RDF resource containing the information to load this {@link GabotoBean}.
-	 */
-	public void loadFromResource(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {
-		// load bean
-	  // FIXME Why commented out?
-	  //throw new RuntimeException("Not yet implemented");
-		//RDFContainerLoaderImpl.getInstance().loadFromSnapshot(this, res, snapshot, pool);
-	}
-	
-	/**
-	 * Returns the value of a property via reflection
-	 * 
-	 * @param prop The property
-	 * @return The property's value (or null).
-	 */
-	public Object getPropertyValue(Property prop){
-		return getPropertyValue(prop.getURI());
-	}
-	
-	public Object getPropertyValue(String propURI){
-		Method method = GabotoEntityUtils.getBeanGetMethodFor(this.getClass(), propURI);
-		if(null != method){
-			try {
-				return method.invoke(this, (Object[])null);
-			} catch (Exception e) {
-				throw new GabotoRuntimeException(e);
-			}
-		}
-		
-		return null;
-	}
-	
-	
-	public Map<String, Object> getAllProperties(){
-		Map<String, Object> properties = new HashMap<String, Object>();
-		
-		for(String prop : GabotoEntityUtils.getAllBeanProperties(this.getClass())){
-			properties.put(prop, getPropertyValue(prop));
-		}
-		
-		return properties;
-	}
+   * @param res
+   *          The RDF resource containing the information to load this
+   *          {@link GabotoBean}.
+   */
+  public void loadFromResource(Resource res, GabotoSnapshot snapshot,
+      GabotoEntityPool pool) {
+    // load bean
+    // FIXME Why commented out?
+    // throw new RuntimeException("Not yet implemented");
+    // RDFContainerLoaderImpl.getInstance().loadFromSnapshot(this, res,
+    // snapshot, pool);
+  }
+
+  /**
+   * Returns the value of a property via reflection
+   * 
+   * @param prop
+   *          The property
+   * @return The property's value (or null).
+   */
+  public Object getPropertyValue(Property prop) {
+    return getPropertyValue(prop.getURI());
+  }
+
+  public Object getPropertyValue(String propURI) {
+    Method method = GabotoEntityUtils.getBeanGetMethodFor(this.getClass(),
+        propURI);
+    if (null != method) {
+      try {
+        return method.invoke(this, (Object[]) null);
+      } catch (Exception e) {
+        throw new GabotoRuntimeException(e);
+      }
+    }
+
+    return null;
+  }
+
+  public Map<String, Object> getAllProperties() {
+    Map<String, Object> properties = new HashMap<String, Object>();
+
+    for (String prop : GabotoEntityUtils.getAllBeanProperties(this.getClass())) {
+      properties.put(prop, getPropertyValue(prop));
+    }
+
+    return properties;
+  }
 }
