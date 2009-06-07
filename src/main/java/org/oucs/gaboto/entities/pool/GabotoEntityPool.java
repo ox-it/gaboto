@@ -285,12 +285,8 @@ public class GabotoEntityPool {
     for (Resource res : resources) {
       try {
         pool.addEntity(res, snapshot);
-      } catch (EntityClassNotFoundException e) {
-        logger.info(e.getMessage());
-      } catch (ResourceDoesNotExistException e) {
-        e.printStackTrace();
-      } catch (EntityDoesNotExistException e) {
-        e.printStackTrace();
+      } catch (Exception e) {
+        throw new GabotoRuntimeException(e);
       }
     }
 
@@ -382,12 +378,8 @@ public class GabotoEntityPool {
 
         try {
           entity = this.addEntity(res, snapshot, direct, true);
-        } catch (EntityClassNotFoundException e) {
-          logger.info(e.getMessage());
-        } catch (ResourceDoesNotExistException e) {
-          e.printStackTrace();
-        } catch (EntityDoesNotExistException e) {
-          e.printStackTrace();
+        } catch (Exception e) {
+          throw new GabotoRuntimeException(e);
         }
       }
 
@@ -478,12 +470,8 @@ public class GabotoEntityPool {
 
                   request.passiveEntityLoaded(referencedEntities.get(res
                       .getURI()));
-                } catch (ResourceDoesNotExistException e) {
-                  e.printStackTrace();
-                } catch (EntityClassNotFoundException e) {
-                  e.printStackTrace();
-                } catch (EntityDoesNotExistException e) {
-                  e.printStackTrace();
+                } catch (Exception e) {
+                  throw new GabotoRuntimeException(e);
                 }
               }
             }
@@ -583,13 +571,9 @@ public class GabotoEntityPool {
 
       // add entity
       return this.addEntity(entity, direct);
-    } catch (InstantiationException e) {
-      e.printStackTrace();
-    } catch (IllegalAccessException e) {
-      e.printStackTrace();
+    } catch (Exception e) {
+      throw new GabotoRuntimeException(e);
     }
-
-    return null;
   }
 
   /**
@@ -639,7 +623,7 @@ public class GabotoEntityPool {
     entity.setCreatedFromInformation(this);
 
     // add entity
-    if (direct || (null != config && config.isAddReferencedEntitiesToPool()))
+    if (direct || (config != null && config.isAddReferencedEntitiesToPool()))
       entities.put(entity.getUri(), entity);
     else
       referencedEntities.put(entity.getUri(), entity);
