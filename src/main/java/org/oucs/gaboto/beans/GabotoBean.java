@@ -40,6 +40,7 @@ import java.util.Map;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.utils.GabotoEntityUtils;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.reflection.RDFContainer;
 import org.oucs.gaboto.reflection.RDFContainerTripleGeneratorImpl;
@@ -108,7 +109,8 @@ public abstract class GabotoBean implements RDFContainer {
 	 */
 	public void loadFromResource(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {
 		// load bean
-	  throw new RuntimeException("Not yet implemented");
+	  // FIXME Why commented out?
+	  //throw new RuntimeException("Not yet implemented");
 		//RDFContainerLoaderImpl.getInstance().loadFromSnapshot(this, res, snapshot, pool);
 	}
 	
@@ -127,12 +129,8 @@ public abstract class GabotoBean implements RDFContainer {
 		if(null != method){
 			try {
 				return method.invoke(this, (Object[])null);
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				throw new GabotoRuntimeException(e);
 			}
 		}
 		
