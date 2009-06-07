@@ -67,7 +67,7 @@ public abstract class GabotoBean implements RDFContainer {
 
 	/**
 	 * 
-	 * @return
+	 * @return the Type 
 	 */
 	abstract public String getType();
 	
@@ -102,10 +102,13 @@ public abstract class GabotoBean implements RDFContainer {
 	 *  information is stored in RDF and be able to load this information into its fields.
 	 * </p>
 	 * 
+   * @param snapshot
+   * @param pool
 	 * @param res The RDF resource containing the information to load this {@link GabotoBean}.
 	 */
 	public void loadFromResource(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {
 		// load bean
+	  throw new RuntimeException("Not yet implemented");
 		//RDFContainerLoaderImpl.getInstance().loadFromSnapshot(this, res, snapshot, pool);
 	}
 	
