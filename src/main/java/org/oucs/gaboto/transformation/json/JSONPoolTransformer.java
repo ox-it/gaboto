@@ -93,7 +93,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 	private String transfromEntities(Collection<GabotoEntity> entities) throws JSONException{
 		// initialize level map
 		for(GabotoEntity entity : entities){
-			levelMap.put(entity, 1);
+			levelMap.put(entity, new Integer(1));
 		}
 	
 		JSONStringer json = new JSONStringer();
@@ -122,7 +122,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 		    .value(entity.getType());
 		
 		if(levelMap.containsKey(entity)){
-			int storedLevel = levelMap.get(entity);
+			int storedLevel = levelMap.get(entity).intValue();
 			
 			if(storedLevel < level){
 				json.key("referenced").value(true);
@@ -131,10 +131,9 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 			}
 			
 			// store level in map
-			levelMap.put(entity, level);
+			levelMap.put(entity, new Integer(level));
 		}
 		
-    // FIXME TPP Typo?
 		if(level > nesting){
 			json.key("nestingLimitReached").value(true);
 			json.endObject();
@@ -195,7 +194,6 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 
 	@SuppressWarnings("unchecked")
   private void transformBean(GabotoBean bean, JSONStringer json, int level) throws JSONException {
-    // FIXME TPP Typo?
 		if(level > nesting){
 			json.object();
 			json.key("nestingLimitReached").value(true);
