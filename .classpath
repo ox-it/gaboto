@@ -58,6 +58,6 @@
 	<classpathentry kind="var" path="M2_REPO/xmlunit/xmlunit/1.2/xmlunit-1.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/xom/xom/1.1/xom-1.1.jar" sourcepath="M2_REPO/xom/xom/1.1/xom-1.1-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jena2"/>
+	<classpathentry kind="lib" path="lib/jena-2.5.7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
