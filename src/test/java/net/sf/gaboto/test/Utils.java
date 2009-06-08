@@ -46,7 +46,7 @@ public final class Utils {
 
   /**
    * 
-   * @return
+   * @return a random timespan
    */
   public static TimeSpan getRandomTimespan(double prob1, double prob2,
       double prob3, double prob4, double prob5, double prob6) {
@@ -77,7 +77,7 @@ public final class Utils {
 
   /**
    * 
-   * @return
+   * @return a random time instant
    */
   public static TimeInstant getRandomTimeinstant() {
     Random r = new Random();
