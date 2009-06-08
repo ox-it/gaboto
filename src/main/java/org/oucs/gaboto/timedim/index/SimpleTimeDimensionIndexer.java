@@ -57,7 +57,7 @@ import de.fuberlin.wiwiss.ng4j.NamedGraph;
 /**
  * This class does not use any proper data structure to do the task.
  * 
- * @todo: think of a proper tree to do the indexing!
+ * TODO think of a proper tree to do the indexing!
  * 
  * @author Arno Mittelbach
  *
