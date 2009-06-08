@@ -555,7 +555,7 @@ public class GabotoSnapshot {
 	}
 	
 	/**
-	 * Searialize the model
+	 * Serialise the model.
 	 * 
 	 * @param os
 	 */
@@ -564,7 +564,7 @@ public class GabotoSnapshot {
 	}
 	
 	/**
-	 * Searialize the model
+	 * Serialise the model.
 	 * 
 	 * @param os
 	 * @param format
