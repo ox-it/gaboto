@@ -60,6 +60,7 @@ import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 import com.hp.hpl.jena.graph.Node;
 
+@SuppressWarnings("boxing")
 public class TestGabotoTimeBasedEntity {
 
 	@BeforeClass
@@ -67,32 +68,33 @@ public class TestGabotoTimeBasedEntity {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
 	}
 	
-	@Test (expected=IllegalArgumentException.class)
+  @Test (expected=IllegalArgumentException.class)
 	public void testGetEntityException(){
-		GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class, Utils.generateRandomURI(), new TimeSpan(100,10,2,10,10,10));
+		GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class, 
+		    Utils.generateRandomURI(), new TimeSpan(100,10,2,10,10,10));
 		entity.getEntity(new TimeInstant(500,0,0));
 	}
 	
 	@Test (expected=IllegalArgumentException.class)
-	public void testAddPropertyException1() throws SecurityException, NoSuchMethodException{
+	public void testAddPropertyException1() throws Exception{
 		GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class, Utils.generateRandomURI(), new TimeSpan(100,10,2,10,10,10));
 		entity.addProperty(new TimeSpan(600,0,0), "abc", "lila");
 	}
 
 	@Test (expected=IllegalArgumentException.class)
-	public void testAddPropertyException2() throws SecurityException, NoSuchMethodException{
+	public void testAddPropertyException2() throws Exception{
 		GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class, Utils.generateRandomURI(), new TimeSpan(100,10,2,10,10,10));
 		entity.addProperty(new TimeSpan(600,0,0), DC.title, "lila");
 	}
 	
 	@Test (expected=IllegalArgumentException.class)
-	public void testAddPropertyException3() throws SecurityException, NoSuchMethodException{
+	public void testAddPropertyException3() throws Exception { 
 		GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class, Utils.generateRandomURI(), new TimeSpan(100,10,2,10,10,10));
 		entity.addProperty(new TimeSpan(100,11,2), "abc", "lila");
 	}
 
 	@Test (expected=IllegalArgumentException.class)
-	public void testAddPropertyException4() throws SecurityException, NoSuchMethodException{
+	public void testAddPropertyException4() throws Exception { 
 		GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class, Utils.generateRandomURI(), new TimeSpan(100,10,2,10,10,10));
 		entity.addProperty("abc", "lila");
 	}
@@ -173,7 +175,7 @@ public class TestGabotoTimeBasedEntity {
 	}
 	
 	@Test
-	public void testIterator2() throws EntityAlreadyExistsException, ResourceDoesNotExistException{
+	public void testIterator2() throws Exception{
 		
 		TimeSpan ts = new TimeSpan(0,4, 2, 1637,9,28);
 		GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(Building.class, Utils.generateRandomURI(),ts);
@@ -188,7 +190,7 @@ public class TestGabotoTimeBasedEntity {
 	}
 	
 	@Test
-	public void testIterator3() throws EntityAlreadyExistsException, ResourceDoesNotExistException{
+	public void testIterator3() throws Exception{
 		for(int i = 0; i < 10000; i++){
 			GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(Building.class, Utils.generateRandomURI(),Utils.getRandomTimespan());
 	
