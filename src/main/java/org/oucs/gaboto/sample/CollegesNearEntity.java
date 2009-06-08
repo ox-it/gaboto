@@ -68,7 +68,7 @@ public class CollegesNearEntity extends GabotoQueryImpl {
 		this.number = number;
 	}
 	
-	public CollegesNearEntity(Gaboto gaboto, String title, int number, TimeInstant ti) throws GabotoException {
+	public CollegesNearEntity(Gaboto gaboto, String title, int number, TimeInstant ti) {
 		super(gaboto);
 		this.title = title;
 		this.timeInstant = ti;
@@ -114,6 +114,7 @@ public class CollegesNearEntity extends GabotoQueryImpl {
 		return GabotoQueryImpl.RESULT_TYPE_ENTITY_POOL;
 	}
 
+  @SuppressWarnings("boxing")
 	@Override
 	protected Object execute() throws GabotoException {
 		// find entity with name
@@ -138,7 +139,7 @@ public class CollegesNearEntity extends GabotoQueryImpl {
 		// sort results
 		Collections.sort(listOfColleges, new Comparator<College>(){
 
-			public int compare(College c1, College c2) {
+      public int compare(College c1, College c2) {
 				// distance of college 1
 				Location loc = (Location) c1.getPropertyValue(OxPointsVocab.hasLocation);
 				double distX = Math.abs(lat - loc.getLatitude());
