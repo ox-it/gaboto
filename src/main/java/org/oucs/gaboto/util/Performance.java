@@ -39,6 +39,7 @@ import java.util.Stack;
  * @author Arno Mittelbach
  * @version 0.1
  */
+@SuppressWarnings("boxing")
 public class Performance {
 	
 	private static Stack<Double> time = new Stack<Double>();
@@ -58,7 +59,7 @@ public class Performance {
 	/**
 	 * Stop the current section and print the information to System.out.
 	 */
-	public static void stop(){
+  public static void stop(){
 		Double t = System.currentTimeMillis() - time.pop();
 		String n = names.pop();
 		
