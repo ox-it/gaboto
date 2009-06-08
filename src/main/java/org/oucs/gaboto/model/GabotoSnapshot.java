@@ -513,8 +513,6 @@ public class GabotoSnapshot {
 	 * Executes a Select SPARQL Query.
 	 * 
 	 * @param query The query to execute.
-	 * 
-	 * @return The resulting snapshot.
 	 */
 	public void execSPARQLSelect(String query, QuerySolutionProcessor processor){
 		QueryExecution qexec = QueryExecutionFactory.create( query, getModel() );
