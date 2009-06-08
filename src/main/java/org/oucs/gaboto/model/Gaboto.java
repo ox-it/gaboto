@@ -330,9 +330,9 @@ public class Gaboto {
         throw new IllegalArgumentException("Unknown graph: " + g);
 
       // add statements to snapshot model
-      ExtendedIterator<Triple> it = graph.find(Node.ANY, Node.ANY, Node.ANY);
+      ExtendedIterator it = graph.find(Node.ANY, Node.ANY, Node.ANY);
       while (it.hasNext()) {
-        Triple t = it.next();
+        Triple t = (Triple)it.next();
 
         // add triple to model's graph
         newModelsDefaultGraph.add(t);
@@ -341,9 +341,9 @@ public class Gaboto {
 
     // add gdg
     Graph gkg = getGlobalKnowledgeGraph();
-    ExtendedIterator<Triple> it = gkg.find(Node.ANY, Node.ANY, Node.ANY);
+    ExtendedIterator it = gkg.find(Node.ANY, Node.ANY, Node.ANY);
     while (it.hasNext())
-      newModelsDefaultGraph.add(it.next());
+      newModelsDefaultGraph.add((Triple)it.next());
 
     return snapshot;
   }
