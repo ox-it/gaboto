@@ -58,7 +58,7 @@ public @interface IndirectProperty {
 	
 	/**
 	 * 
-	 * @return
+	 * @return the value
 	 */
 	public String[] value();
 }
