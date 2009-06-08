@@ -171,7 +171,7 @@ public class GabotoFactory {
 	 */
 	public static Gaboto getPersistentGaboto() {
 		// does it already exist?
-		if(persistentGaboto instanceof Gaboto)
+		if(persistentGaboto != null)
 			return persistentGaboto;
 		
 		// get config
