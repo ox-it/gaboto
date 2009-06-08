@@ -56,7 +56,7 @@ public @interface UnstoredProperty {
 	
 	/**
 	 * 
-	 * @return
+	 * @return the value
 	 */
 	public String[] value();
 }
