@@ -1,20 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>gaboto</name>
-	<comment></comment>
-	<projects>
-	</projects>
-	<buildSpec>
-
-<buildCommand>
-			<name>org.eclipse.jdt.core.javabuilder</name>
-		</buildCommand>
-
-
-	</buildSpec>
-	<natures>
-
-<nature>org.eclipse.jdt.core.javanature</nature>
-
-	</natures>
+  <name>gaboto</name>
+  <comment>Gaboto maps java objects onto RDF.</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
 </projectDescription>
