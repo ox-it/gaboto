@@ -199,7 +199,7 @@ public class GabotoEntityUtils {
 		if(getAllPropertiesCache.containsKey(entityClass.getName()))
 			return getAllPropertiesCache.get(entityClass.getName());
 		
-		// annotations to seach In
+		// annotations to search In
 		Collection<Class<?>> annotationsToSearchIn = new HashSet<Class<?>>();
 		for(Class<?> annoClass : PROPERTY_ANNOTATIONS)
 			annotationsToSearchIn.add(annoClass);
@@ -215,15 +215,12 @@ public class GabotoEntityUtils {
 					try {
 						if(anno instanceof UnstoredProperty){
 							String[] values = ((UnstoredProperty)anno).value();
-							
-							if(! (values instanceof String[]))
-								throw new IllegalAnnotationException(entityClass);
-							
+														
 							if(! IsGETMethod(method))
 								throw new IllegalAnnotationException(entityClass);
 								
 							for(String value : values)
-								properties.add((String)value);
+								properties.add(value);
 						} else {
 							valueMethod = anno.getClass().getMethod("value", (Class<?>[]) null);
 							Object value = valueMethod.invoke(anno, (Object[])null);
@@ -266,9 +263,6 @@ public class GabotoEntityUtils {
 				PassiveProperty anno = method.getAnnotation(PASSIVE_PROPERTY_ANNOTATION);
 				String value = anno.uri();
 					
-				if(! (value instanceof String))
-					throw new IllegalAnnotationException(PASSIVE_PROPERTY_ANNOTATION);
-				
 				if(IsGETMethod(method))
 					properties.add(value);
 			}
@@ -291,9 +285,6 @@ public class GabotoEntityUtils {
 				IndirectProperty anno = method.getAnnotation(INDIRECT_PROPERTY_ANNOTATION);
 				String[] values = anno.value();
 					
-				if(! (values instanceof String[]))
-					throw new IllegalAnnotationException(INDIRECT_PROPERTY_ANNOTATION);
-				
 				if(IsGETMethod(method))
 					for(String value : values)
 						properties.add(value);
