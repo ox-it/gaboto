@@ -408,7 +408,7 @@ public class GabotoEntityPool {
     Model model = snapshot.getModel();
     Graph graph = model.getGraph();
 
-    // tell entity that its passive things are to be loaded
+    // tell entity that its passive things have been loaded
     entity.setPassiveEntitiesLoaded();
 
     // load passive entities
