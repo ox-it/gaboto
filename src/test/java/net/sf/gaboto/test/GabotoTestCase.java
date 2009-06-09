@@ -38,8 +38,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import net.sf.json.JSONObject;
-import net.sf.json.test.JSONAssert;
+//import net.sf.json.JSONObject;
+//import net.sf.json.test.JSONAssert;
 
 import org.custommonkey.xmlunit.XMLAssert;
 
@@ -93,7 +93,7 @@ public class GabotoTestCase extends TestCase {
     }
   }
 
-  
+  /*
   protected void assertPageJsonEqual(String actual, String referenceFileName) throws Exception { 
     JSONObject actualJson = JSONObject.fromObject(tidy(actual));
     File generatedFile = new File(actualOutputDir, referenceFileName);
@@ -115,6 +115,7 @@ public class GabotoTestCase extends TestCase {
       fail("Reference output file generated: " + referenceFile.getCanonicalPath() + " modify generateCached and rerun");
     }
   }
+  */
   protected static String tidy(String json) { 
     json = json.trim();
     if (json.startsWith("[")) { 

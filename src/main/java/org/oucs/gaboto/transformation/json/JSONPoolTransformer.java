@@ -37,11 +37,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import net.sf.json.JSONException;
-import net.sf.json.util.JSONStringer;
+import org.json.JSONException;
+import org.json.JSONStringer;
 import org.oucs.gaboto.beans.GabotoBean;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.transformation.EntityPoolTransformer;
 
 /**
@@ -90,7 +91,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 	return k;
     }
 
-	private String transfromEntities(Collection<GabotoEntity> entities) throws JSONException{
+	private String transfromEntities(Collection<GabotoEntity> entities) {
 		// initialize level map
 		for(GabotoEntity entity : entities){
 			levelMap.put(entity, new Integer(1));
@@ -98,11 +99,15 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 	
 		JSONStringer json = new JSONStringer();
 		
-		json.array();
-		for(GabotoEntity entity : entities){
-			transformEntity(entity, json, 1);
-		}
-		json.endArray();
+    try {
+ 	    json.array();
+		  for(GabotoEntity entity : entities){
+	  		transformEntity(entity, json, 1);
+	    }
+      json.endArray();
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
+    }
 		
 		return json.toString();
 	}

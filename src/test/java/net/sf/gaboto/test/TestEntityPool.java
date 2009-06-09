@@ -259,9 +259,9 @@ public class TestEntityPool extends TestCase {
         College col = (College) entity;
 
         // reject if no primary place is set
-        if (null == col.getPrimaryPlace())
+        if (col.getPrimaryPlace() == null)
           return false;
-
+        System.err.println(col.getPrimaryPlace());
         // load location
         Location loc = col.getPrimaryPlace().getLocation();
 
