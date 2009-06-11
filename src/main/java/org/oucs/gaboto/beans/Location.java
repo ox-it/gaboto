@@ -27,6 +27,9 @@ public class Location extends GabotoBean {
   }
 
   public Double getLatitude() {
+    String pos = getPos();
+    if (pos == null) 
+      return null;
     try {
       return Double.valueOf(getPos().split(" ")[1]);
     } catch (NumberFormatException e) {
@@ -35,8 +38,11 @@ public class Location extends GabotoBean {
   }
 
   public Double getLongitude() {
+    String pos = getPos();
+    if (pos == null) 
+      return null;
     try {
-      return Double.valueOf(getPos().split(" ")[0]);
+      return Double.valueOf(pos.split(" ")[0]);
     } catch (NumberFormatException e) {
       return null;
     }
