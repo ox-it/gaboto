@@ -36,13 +36,17 @@ import java.io.FileOutputStream;
 
 import net.sf.gaboto.test.GabotoTestCase;
 
-//import org.custommonkey.xmlunit.XMLAssert;
+import org.custommonkey.xmlunit.XMLAssert;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
 import org.oucs.gaboto.helperscripts.importing.TEIImporter;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoFactory;
-//import org.oucs.gaboto.model.query.defined.AllEntities;
+import org.oucs.gaboto.model.query.GabotoQuery;
+import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
+import org.oucs.gaboto.model.query.defined.AllEntities;
+import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 public class TestTEIImporter  extends GabotoTestCase {
 
@@ -68,16 +72,13 @@ public class TestTEIImporter  extends GabotoTestCase {
   }
 
   public void testTypedEntitiesOutputToKML() throws Exception { 
-    //GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
+    GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
     
-    // Fails as not same ordering
-   // assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_KML), "UnitsKML.kml");    
+    assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_KML), "UnitsKML.kml");    
   }
   public void testTypedEntitiesOutputToRDF() throws Exception { 
-    //GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
-    
-    // Fails as not same ordering
-   // assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "UnitsRDF.xml");    
+    GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
+    assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "UnitsRDF.xml");    
   }
   public void testAllToRdf() throws Exception { 
     File graphsFile = new File(actualOutputDir, "graphs.rdf");
