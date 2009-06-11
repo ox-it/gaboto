@@ -47,6 +47,12 @@
      <groupId>de.fuberlin.wiwss.ng4j</groupId>
      <artifactId>ng4j</artifactId>
      <version>0.9-SNAPSHOT</version>
+     <exclusions>
+      <exclusion>
+        <groupId>xerces</groupId>
+        <artifactId>xmlParserAPIs</artifactId>
+       </exclusion>
+      </exclusions>
     </dependency>
 
 
