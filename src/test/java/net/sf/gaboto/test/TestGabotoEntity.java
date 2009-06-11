@@ -37,6 +37,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.Collection;
 import java.util.HashSet;
 
+import junit.framework.TestCase;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
@@ -58,17 +60,17 @@ import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 import com.hp.hpl.jena.query.QuerySolution;
 
-public class TestGabotoEntity {
-
+public class TestGabotoEntity extends TestCase {
+  static Gaboto oxp = null;
 	@BeforeClass
-	public static void setUp() throws Exception {
+	public  void setUp() throws Exception {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+    //oxp = GabotoFactory.getPersistentGaboto();
+    oxp = GabotoFactory.getInMemoryGaboto();
 	}
 	
 	@Test
 	public void testGetPropertyValue(){
-		Gaboto oxp = GabotoFactory.getPersistentGaboto();
-		Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 		
 		Building b = new Building();
 		b.setTimeSpan(new TimeSpan(1900,null,null));
@@ -110,7 +112,7 @@ public class TestGabotoEntity {
 	
 	@Test
 	public void testGetPropertyValue2() throws EntityAlreadyExistsException{
-		Gaboto oxp = GabotoFactory.getPersistentGaboto();
+		oxp = GabotoFactory.getPersistentGaboto();
 		Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 		
 		Building b = new Building();
@@ -141,27 +143,25 @@ public class TestGabotoEntity {
 	
 	@Test
 	public void testTypedLiteral1() throws EntityAlreadyExistsException{
-		Gaboto gaboto = GabotoFactory.getPersistentGaboto();
-		Gaboto gaboto_mem = GabotoFactory.getInMemoryGaboto();
 		
-		String uri1 = gaboto.generateID();
+		String uri1 = oxp.generateID();
 		Carpark cp1 = new Carpark();
 		cp1.setUri(uri1);
 		cp1.setName("small carpark");
 		cp1.setCapacity(30);
 		
-		final String uri2 = gaboto.generateID();
+		final String uri2 = oxp.generateID();
 		Carpark cp2 = new Carpark();
 		cp2.setUri(uri2);
 		cp2.setName("big carpark");
 		cp2.setCapacity(80);
 		
 		// add carparks
-		gaboto.add(cp1);
-		gaboto.add(cp2);
+		oxp.add(cp1);
+		oxp.add(cp2);
 		
 		// snapshot
-		GabotoSnapshot snap = gaboto.getSnapshot(TimeInstant.now());
+		GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
 		// ask for small
 		String query = GabotoPredefinedQueries.getStandardPrefixes();
