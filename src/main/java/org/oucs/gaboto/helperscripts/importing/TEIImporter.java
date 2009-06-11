@@ -119,7 +119,7 @@ public class TEIImporter {
 			try {
 				gaboto.add(e);
 			} catch (EntityAlreadyExistsException e1) {
-				System.err.println(e.getUri() + " has already been added to the system."); 
+				throw new RuntimeException(e.getUri() + " has already been added to the system."); 
 			} 
 		}
 	}
@@ -151,11 +151,11 @@ public class TEIImporter {
 				} else if(type.equals("carpark")){
 					processCarpark(el);
 				} else {
-					System.err.println("Unknown place type: " + type);
+					throw new RuntimeException("Unknown place type: " + type);
 				}
 			} catch(NullPointerException e){
 				e.printStackTrace();
-				System.err.println("No type defined for place");
+				throw new RuntimeException("No type defined for place");
 			}
 		} else if(name.equals("relation") && relations){
 			String relName = el.getAttribute("name");
@@ -165,10 +165,10 @@ public class TEIImporter {
 				} else if(relName.equals("controls")){
 					processControls(el);
 				} else {
-					System.err.println("Unkown relation: " + relName);
+					throw new RuntimeException("Unkown relation: " + relName);
 				}
 			}catch(NullPointerException e){
-				System.err.println("No name defined for relation");
+				throw new RuntimeException("No name defined for relation");
 			}
 		}
 	}
@@ -177,8 +177,7 @@ public class TEIImporter {
 	private void processFigure(Element figureEl) {
 		// try to find corresponding entity
 		if(! figureEl.hasAttribute("corresp")){
-			System.err.println("Ambiguous figure element");
-			return;
+			throw new RuntimeException("Ambiguous figure element");
 		}
 			
 		String id = figureEl.getAttribute("corresp");
@@ -189,8 +188,7 @@ public class TEIImporter {
 			// try to find a graphic element
 			NodeList graphics = figureEl.getElementsByTagName("graphic");
 			if(graphics.getLength() < 1){
-				System.err.println("Empty figure element for: " + id);
-				return;
+				throw new RuntimeException("Empty figure element for: " + id);
 			}
 			
 			Element graphic = (Element) graphics.item(0);
@@ -208,7 +206,7 @@ public class TEIImporter {
 			entities.add(img);
 			
 		} catch(NullPointerException e){
-			System.err.println("Could not load entity from id: " + id );
+			throw new RuntimeException("Could not load entity from id: " + id );
 		}
 	}
 	
@@ -225,7 +223,7 @@ public class TEIImporter {
 			
 			passive.setSubsetOf(active);
 		} catch(NullPointerException e){
-			System.err.println("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
+			throw new RuntimeException("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
 		}
 	}
 	
@@ -249,7 +247,7 @@ public class TEIImporter {
 			
 			u.addOccupiedBuilding(b);
 		} catch(NullPointerException e){
-			System.err.println("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
+			throw new RuntimeException("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
 		}
 	}
 	
@@ -267,13 +265,13 @@ public class TEIImporter {
 		NodeList nl = el.getElementsByTagName("label");
 		if(nl.getLength() > 0){
 			Element label = (Element) nl.item(0);
-			String labelContent = label.getNodeValue();
+			String labelContent = label.getTextContent();
 			labelContent = labelContent.replaceAll("[a-zA-Z\\s]", "");
 			try{
 				int size = Integer.parseInt(labelContent);
 				cp.setCapacity(size);
 			} catch(NumberFormatException e){
-				System.err.println("Could not ascertain carpark size.");
+				throw new RuntimeException("Could not ascertain carpark size.");
 			}
 		}
 		
@@ -358,13 +356,13 @@ public class TEIImporter {
 					try{
 						start = new TimeInstant(Integer.parseInt(event.getAttribute("when")), null, null);
 					}catch(NumberFormatException e){
-						System.err.println("Could not parse date: " + event.getAttribute("when")  + " for " + unit.getName() );
+						throw new RuntimeException("Could not parse date: " + event.getAttribute("when")  + " for " + unit.getName() );
 					}
 				} else if(event.hasAttribute("type") && event.getAttribute("type").equals("ended")){
 					try{
 						end = new TimeInstant(Integer.parseInt(event.getAttribute("when")), null, null);
 					}catch(NumberFormatException e){
-						System.err.println("Could not parse date: " + event.getAttribute("when")  + " for " + unit.getName() );
+						throw new RuntimeException("Could not parse date: " + event.getAttribute("when")  + " for " + unit.getName() );
 					}
 				}
 			}
@@ -535,7 +533,7 @@ public class TEIImporter {
 					
 					return hp;
 				} else{
-					System.err.println("Missed pointer for " + type + ".");
+					throw new RuntimeException("Missed pointer for " + type + ".");
 				}
 			}
 		}
@@ -567,9 +565,9 @@ public class TEIImporter {
 					Element addressPart = (Element) addressChildren.item(j);
 					
 					if(addressPart.getNodeName().equals("addrLine"))
-						address.setStreetAddress(addressPart.getNodeValue());
+						address.setStreetAddress(addressPart.getTextContent());
 					else if(addressPart.getNodeName().equals("postCode"))
-						address.setPostCode(addressPart.getNodeValue());
+						address.setPostCode(addressPart.getTextContent());
 				}
 				
 				return address;
@@ -591,7 +589,7 @@ public class TEIImporter {
 				Element location = (Element) children.item(i);
 				NodeList geos = location.getElementsByTagName("geo");
 				if(geos.getLength() > 0){
-					String geo = geos.item(0).getNodeValue();
+					String geo = geos.item(0).getTextContent();
 					
 					Location loc = new Location();
 					loc.setPos(geo);
@@ -609,7 +607,7 @@ public class TEIImporter {
 		NodeList placeNames = el.getChildNodes();
 		for(int i = 0; i < placeNames.getLength(); i++){
 			if(placeNames.item(i).getNodeName().equals("placeName")){
-				return placeNames.item(i).getNodeValue();
+				return placeNames.item(i).getTextContent();
 			}
 		}
 		return null;
