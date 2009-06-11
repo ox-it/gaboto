@@ -248,7 +248,7 @@ public class Gaboto {
   }
 
   private String generateId() {
-    return config.getNSData() + new Long(id++).toString();
+    return config.getNSData() + new Long(++id).toString();
   }
 
   /**
