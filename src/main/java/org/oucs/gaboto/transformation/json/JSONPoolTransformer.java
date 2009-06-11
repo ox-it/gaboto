@@ -92,25 +92,24 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     }
 
 	private String transfromEntities(Collection<GabotoEntity> entities) {
-		// initialize level map
-		for(GabotoEntity entity : entities){
-			levelMap.put(entity, new Integer(1));
-		}
+      // initialize level map
+      for(GabotoEntity entity : entities){
+        levelMap.put(entity, new Integer(1));
+      }
 	
-		JSONStringer json = new JSONStringer();
+      JSONStringer json = new JSONStringer();
 		
-    try {
- 	    json.array();
-		  for(GabotoEntity entity : entities){
-	  		transformEntity(entity, json, 1);
-	    }
-      json.endArray();
-    } catch (JSONException e) {
-      throw new GabotoRuntimeException(e);
+      try {
+        json.array();
+        for(GabotoEntity entity : entities){
+          transformEntity(entity, json, 1);
+        }
+        json.endArray();
+      } catch (JSONException e) {
+        throw new GabotoRuntimeException(e);
+      }
+      return json.toString();
     }
-		
-		return json.toString();
-	}
 
 	private void transformEntity(GabotoEntity entity, JSONStringer json, int level) throws JSONException {
 		// store basic knowledge
@@ -188,12 +187,20 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 			}
 			json.endArray();
 		} else if(entry.getValue() instanceof GabotoBean){
-		    json.key(simplifyKey(entry.getKey()));
-			// beans should be put into the same level ..
-			transformBean((GabotoBean) entry.getValue(), json, level);
-		} else if(null == entry.getValue()){
-		    json.key(simplifyKey(entry.getKey()));
-			json.value(null);
+          try { 
+            json.key(simplifyKey(entry.getKey()));
+            // beans should be put into the same level ..
+            transformBean((GabotoBean)entry.getValue(), json, level);
+           } catch (JSONException e) { 
+             System.err.println("Already added " + simplifyKey(entry.getKey()));
+           }
+		} else if(entry.getValue() == null){
+          try { 
+            json.key(simplifyKey(entry.getKey()));
+            json.value(null);
+           } catch (JSONException e) { 
+             System.err.println("Already added " + simplifyKey(entry.getKey()));
+           }
 		}
 	}
 
