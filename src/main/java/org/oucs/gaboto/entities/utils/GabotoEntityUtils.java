@@ -42,6 +42,7 @@ import java.util.Map;
 import org.apache.commons.lang.ArrayUtils;
 import org.oucs.gaboto.beans.GabotoBean;
 import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.IllegalAnnotationException;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
@@ -60,12 +61,11 @@ import com.hp.hpl.jena.rdf.model.AnonId;
 public class GabotoEntityUtils {
 
 	/**
-	 * Used for a simple caching mechanism
+	 * Used for a simple caching mechanism.
 	 */
 	private static Map<String, Method> getMethodCache = new HashMap<String, Method>();
 	private static Map<String, Method> setMethodCache = new HashMap<String, Method>();
 	
-	// tells whether something is cached or not
 	private static Collection<String> getMethodInCache = new HashSet<String>();
 	
 	private static Map<String, Method> getBeanMethodCache = new HashMap<String, Method>();
@@ -134,7 +134,6 @@ public class GabotoEntityUtils {
 	 * 
 	 * @see OxPointsVocab
 	 * @see GabotoEntity
-	 * @see #getTypeFor(Class)
 	 */
 	@SuppressWarnings("unchecked")
 	public static Class<? extends GabotoEntity> getEntityClassFor(OntClass type){
@@ -171,18 +170,9 @@ public class GabotoEntityUtils {
 						
 						if(IsGETMethod(method))
 							properties.add((String)value);
-					} catch (SecurityException e) {
-						e.printStackTrace();
-					} catch (NoSuchMethodException e) {
-						e.printStackTrace();
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
-					//
+                    } catch (Exception e) {
+                      throw new GabotoRuntimeException(e);
+                  }
 					break;
 				}
 			}
@@ -231,17 +221,9 @@ public class GabotoEntityUtils {
 							if(IsGETMethod(method))
 								properties.add((String)value);
 						}
-					} catch (SecurityException e) {
-						e.printStackTrace();
-					} catch (NoSuchMethodException e) {
-						e.printStackTrace();
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
+                    } catch (Exception e) {
+                      throw new GabotoRuntimeException(e);
+                  }
 				}
 			}
 		}
@@ -336,18 +318,9 @@ public class GabotoEntityUtils {
 						
 						setMethodCache.put(key, setter);
 						return setter;
-					} catch (SecurityException e) {
-						e.printStackTrace();
-					} catch (NoSuchMethodException e) {
-						e.printStackTrace();
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
-					
+                    } catch (Exception e) {
+                      throw new GabotoRuntimeException(e);
+                  }					
 				}
 			}
 		}
@@ -529,18 +502,9 @@ public class GabotoEntityUtils {
 						getMethodCache.put(key, getter);
 						
 						return getter;
-					} catch (SecurityException e) {
-						e.printStackTrace();
-					} catch (NoSuchMethodException e) {
-						e.printStackTrace();
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
-					
+                    } catch (Exception e) {
+                      throw new GabotoRuntimeException(e);
+                  }
 				}
 			}
 		}
@@ -582,18 +546,9 @@ public class GabotoEntityUtils {
 						getBeanMethodCache.put(key, getter);
 						
 						return getter;
-					} catch (SecurityException e) {
-						e.printStackTrace();
-					} catch (NoSuchMethodException e) {
-						e.printStackTrace();
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
-					
+                    } catch (Exception e) {
+                      throw new GabotoRuntimeException(e);
+                  }
 				}
 			}
 		}
