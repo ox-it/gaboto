@@ -33,6 +33,7 @@ package net.sf.gaboto.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -114,11 +115,22 @@ public class TestTimeSpan {
 		assertTrue(ts2_test.contains(ti0_contained));
 	}
 	
-	@Test
+    @Test
+	public void testNegativeMonth() { 
+      try{ 
+        new TimeInstant(101,-1,1);
+        fail("Should have bombed");
+      } catch (IllegalArgumentException e) { 
+        e = null;
+    }
+      
+	  
+	}
+    @Test
 	public void testContainsInstantsOverflow(){
 		TimeSpan ts0_test = new TimeSpan(100,7,28,0,6,3);
 		
-		TimeInstant ti0_contained = new TimeInstant(101,0,1);
+        TimeInstant ti0_contained = new TimeInstant(101,0,1);
 		assertTrue(ts0_test.contains(ti0_contained));
 
 		TimeInstant ti1_contained = new TimeInstant(101,2,1);
