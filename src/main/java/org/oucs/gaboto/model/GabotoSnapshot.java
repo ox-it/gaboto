@@ -358,9 +358,6 @@ public class GabotoSnapshot {
 		Property prop = getProperty(propURI);
     if (prop == null)
       throw new GabotoRuntimeException("Property not found: " + propURI);
-		//if(prop == null)
-		//	return new GabotoEntityPool(this.gaboto, this);
-		
 		return loadEntitiesWithProperty(prop, value);
 	}
 	
@@ -368,15 +365,12 @@ public class GabotoSnapshot {
 		Property prop = getProperty(propURI);
     if (prop == null)
       throw new GabotoRuntimeException("Property not found: " + propURI);
-		//if(prop == null)
-		//	return new GabotoEntityPool(this.gaboto, this);
-		
 		return loadEntitiesWithProperty(prop, value);
 	}
 	
 	
 	public GabotoEntityPool loadEntitiesWithProperty(Property prop, String value){
-		return loadEntitiesWithProperty(prop, (Object) value);
+   return loadEntitiesWithProperty(prop, (Object)value);
 	}
 	
 	/**
@@ -437,10 +431,8 @@ public class GabotoSnapshot {
 	 * 
 	 * @return The entity.
 	 * 
-	 * @throws ResourceDoesNotExistException Thrown if the snapshot does not contain any information about then entity.
-	 * @throws CorruptDataException
 	 */
-	public GabotoEntity loadEntity(String uri) throws ResourceDoesNotExistException {
+	public GabotoEntity loadEntity(String uri) {
 		Collection<Resource> resCol = new HashSet<Resource>();
 		
 		Resource res = this.getResource(uri);
@@ -450,11 +442,7 @@ public class GabotoSnapshot {
 		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(this);
 		config.setResources(resCol);
 
-		//
-		GabotoEntityPool pool = null;
-		try {
-			pool = GabotoEntityPool.createFrom(config);
-		} catch (EntityPoolInvalidConfigurationException e) {}
+		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
 		
 		return pool.getEntity(uri);
 	}
