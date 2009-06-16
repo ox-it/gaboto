@@ -75,6 +75,7 @@ public class GabotoFactory {
 	
 	private static Gaboto inMemoryGaboto = null;
 	
+	/* Context Dependent Graph */
 	private static Model cdg = null;
 	
 	
@@ -124,7 +125,7 @@ public class GabotoFactory {
 	 */
 	@SuppressWarnings("unchecked")
 	public static Gaboto getInMemoryGaboto() {
-		if(null != inMemoryGaboto)
+		if(inMemoryGaboto != null)
 			return inMemoryGaboto;
 		
 		Gaboto po = getPersistentGaboto();
@@ -217,7 +218,7 @@ public class GabotoFactory {
 					// try to cast event to insertion
 					if(e instanceof GabotoInsertionEvent){
 						GabotoInsertionEvent event = (GabotoInsertionEvent) e;
-						if(null != event.getTimespan())
+						if(event.getTimespan() != null)
 							inMemoryGaboto.add(event.getTimespan(), event.getTriple());
 						else
 							inMemoryGaboto.add(event.getTriple());
@@ -226,11 +227,11 @@ public class GabotoFactory {
 					else if(e instanceof GabotoRemovalEvent){
 						GabotoRemovalEvent event = (GabotoRemovalEvent) e;
 						
-						if(null != event.getQuad())
+						if(event.getQuad() != null)
 							inMemoryGaboto.remove(event.getQuad());
-						else if(null != event.getTimespan() && null != event.getTriple())
+						else if(event.getTimespan() != null && event.getTriple() != null )
 							inMemoryGaboto.remove(event.getTimespan(), event.getTriple());
-						else if(null != event.getTriple())
+						else if(event.getTriple() != null)
 							inMemoryGaboto.remove(event.getTriple());
 					}
 
@@ -243,11 +244,10 @@ public class GabotoFactory {
 	}
 
 	/**
-	 * adds the cdg to the graphset
-	 * @param graphset
+	 * Adds the cdg to the graphset.
 	 */
 	private static Model createCDG() {
-		if(null != cdg)
+		if(cdg != null)
 			return cdg;
 		
 		// get config
@@ -256,7 +256,7 @@ public class GabotoFactory {
 		String M_DB_URL         = config.getDbURL();
 		String M_DB_USER        = config.getDbUser();
 		String M_DB_PASSWD      = config.getDbPassword();
-		String M_DB = config.getDbEngineName();
+		String M_DB             = config.getDbEngineName();
 		String M_DBDRIVER_CLASS = config.getDbDriver();
 
 		// load the the driver class
