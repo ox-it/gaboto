@@ -19,6 +19,13 @@
         </namespacePrefixes>
         
         <database>
+            <!--
+            <engineName>HSQLDB</engineName>
+            <url>jdbc:hsqldb:/dist/gaboto/db/oxpoints</url>
+            <user>sa</user>
+            <password></password>    
+            <driver>org.hsqldb.jdbcDriver</driver>
+            -->           
             <engineName>PostgreSQL</engineName>
             <url>jdbc:postgresql:oxpoints</url>
             <user>postgres</user>
@@ -40,6 +47,7 @@
             -->           
         </database>
     </config>
+
 
     <GabotoBeans>
         <GabotoBean name="Address" type="&v;Address">
@@ -85,7 +93,7 @@
 
     <GabotoEntities>
 
-        <!-- Common bas class -->
+        <!-- Common base class -->
         <GabotoEntity name="OxpEntity" type="&oxp;OxpEntity" abstract="true">
 
             <properties>
@@ -110,8 +118,7 @@
                     <properties>
                         <property name="name" type="String" uri="&dc;title"/>
 
-                        <property name="parent" type="Place"
-                            uri="&oxp;physicallyContainedWithin">
+                        <property name="parent" type="Place" uri="&oxp;physicallyContainedWithin">
                             <indirectProperty uri="&oxp;hasLocation"/>
                             <unstoredProperty uri="&gabotoKML;parent"/>
                         </property>
