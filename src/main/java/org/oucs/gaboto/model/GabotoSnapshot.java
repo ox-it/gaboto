@@ -235,7 +235,7 @@ public class GabotoSnapshot {
 	
 	public GabotoEntityPool loadEntitiesWithProperty(String propURI, boolean value){
 		Property prop = getProperty(propURI);
-		if(null == prop)
+    if(prop == null)
 			return new GabotoEntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
@@ -260,7 +260,7 @@ public class GabotoSnapshot {
 	
 	public GabotoEntityPool loadEntitiesWithProperty(String propURI, char value){
 		Property prop = getProperty(propURI);
-		if(null == prop)
+    if(prop == null)
 			return new GabotoEntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
@@ -284,7 +284,7 @@ public class GabotoSnapshot {
 	
 	public GabotoEntityPool loadEntitiesWithProperty(String propURI, double value){
 		Property prop = getProperty(propURI);
-		if(null == prop)
+    if(prop == null)
 			return new GabotoEntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
@@ -308,7 +308,7 @@ public class GabotoSnapshot {
 	
 	public GabotoEntityPool loadEntitiesWithProperty(String propURI, float value){
 		Property prop = getProperty(propURI);
-		if(null == prop)
+    if(prop == null)
 			return new GabotoEntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
@@ -332,7 +332,7 @@ public class GabotoSnapshot {
 	
 	public GabotoEntityPool loadEntitiesWithProperty(String propURI, long value){
 		Property prop = getProperty(propURI);
-		if(null == prop)
+    if(prop == null)
 			return new GabotoEntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
@@ -358,7 +358,7 @@ public class GabotoSnapshot {
 		Property prop = getProperty(propURI);
     if (prop == null)
       throw new GabotoRuntimeException("Property not found: " + propURI);
-		//if(null == prop)
+		//if(prop == null)
 		//	return new GabotoEntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(prop, value);
@@ -368,7 +368,7 @@ public class GabotoSnapshot {
 		Property prop = getProperty(propURI);
     if (prop == null)
       throw new GabotoRuntimeException("Property not found: " + propURI);
-		//if(null == prop)
+		//if(prop == null)
 		//	return new GabotoEntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(prop, value);
@@ -542,14 +542,7 @@ public class GabotoSnapshot {
 	 * @throws CorruptDataException 
 	 */
 	public GabotoEntityPool buildEntityPool() throws CorruptDataException{
-		try {
-			 return GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(this));
-		} catch(EntityPoolInvalidConfigurationException e){}
-		
-		// we should never reach this point
-		assert(false);
-		
-		return null;
+    return GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(this));
 	}
 	
 	/**
