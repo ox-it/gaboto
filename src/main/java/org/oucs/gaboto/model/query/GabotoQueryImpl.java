@@ -83,7 +83,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 	 * @throws GabotoException 
 	 */
 	public GabotoQueryImpl() throws GabotoException{
-		this.gaboto = GabotoFactory.getEmptyInMemoryGaboto();
+		this.gaboto = GabotoFactory.getInMemoryGaboto();
 	}
 	
 	/**
