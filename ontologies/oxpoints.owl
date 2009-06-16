@@ -16,18 +16,18 @@
     <owl:Ontology rdf:about="">
         <owl:versionInfo>0.1</owl:versionInfo>
     </owl:Ontology>
-		
-		
-		<owl:Class rdf:ID="OxpEntity"/>
-		
+    
+    
+    <owl:Class rdf:ID="OxpEntity"/>
+    
     <!-- 
         Build class hierarchy for places
         -->
-		<owl:Class rdf:ID="Place">
-			<rdfs:subClassOf rdf:resource="#OxpEntity"/>
-		</owl:Class>
-		
-		<owl:Class rdf:ID="Building">
+    <owl:Class rdf:ID="Place">
+      <rdfs:subClassOf rdf:resource="#OxpEntity"/>
+    </owl:Class>
+    
+    <owl:Class rdf:ID="Building">
         <rdfs:subClassOf rdf:resource="#Place"/>
     </owl:Class>
 
@@ -80,25 +80,25 @@
         Dublin Core metadata like dc:title should be used when possible.
     -->
     
-		<owl:ObjectProperty rdf:ID="hasLocation">
-		  <rdfs:comment>Describes that an entity has a specific location</rdfs:comment>
-		</owl:ObjectProperty>
-		
+    <owl:ObjectProperty rdf:ID="hasLocation">
+      <rdfs:comment>Describes that an entity has a specific location</rdfs:comment>
+    </owl:ObjectProperty>
+    
 
 
-		<owl:ObjectProperty rdf:ID="physicallyContainedWithin">
-			<rdfs:comment>Describes that a place is physically located within another place</rdfs:comment>
-			<rdfs:range rdf:resource="#Place"/>
-			<rdfs:domain rdf:resource="#Place"/>
-		</owl:ObjectProperty>
-		
+    <owl:ObjectProperty rdf:ID="physicallyContainedWithin">
+      <rdfs:comment>Describes that a place is physically located within another place</rdfs:comment>
+      <rdfs:range rdf:resource="#Place"/>
+      <rdfs:domain rdf:resource="#Place"/>
+    </owl:ObjectProperty>
+    
     
     <!-- 
         Build class hierarchy for units
     -->
     <owl:Class rdf:ID="Unit">
-			<rdfs:subClassOf rdf:resource="#OxpEntity"/>
-		</owl:Class>
+      <rdfs:subClassOf rdf:resource="#OxpEntity"/>
+    </owl:Class>
 
     
     <owl:Class rdf:ID="College">
@@ -120,22 +120,22 @@
         <!-- a department is a unit -->
         <rdfs:subClassOf rdf:resource="#Unit"/>
     </owl:Class>
-		
-		<owl:Class rdf:ID="ServiceDepartment">
-			<rdfs:subClassOf rdf:resource="#Unit"/>
-		</owl:Class>
     
-		<owl:Class rdf:ID="Museum">
-			<rdfs:comment>Describes any kind of museum.</rdfs:comment>
-			<rdfs:subClassOf rdf:resource="#Unit"/>
-		</owl:Class>
+    <owl:Class rdf:ID="ServiceDepartment">
+      <rdfs:subClassOf rdf:resource="#Unit"/>
+    </owl:Class>
+    
+    <owl:Class rdf:ID="Museum">
+      <rdfs:comment>Describes any kind of museum.</rdfs:comment>
+      <rdfs:subClassOf rdf:resource="#Unit"/>
+    </owl:Class>
 
-		<owl:Class rdf:ID="Library">
-			<rdfs:comment>Describes any kind of library.</rdfs:comment>
-			<rdfs:subClassOf rdf:resource="#Unit"/>
-		</owl:Class>
+    <owl:Class rdf:ID="Library">
+      <rdfs:comment>Describes any kind of library.</rdfs:comment>
+      <rdfs:subClassOf rdf:resource="#Unit"/>
+    </owl:Class>
 
-				
+        
     <owl:Class rdf:ID="Group">
         <!-- a group is a unit -->
         <rdfs:subClassOf rdf:resource="#Unit"/>
@@ -147,85 +147,85 @@
         Dublin Core metadata like dc:title should be used when possible.
     -->
     <owl:ObjectProperty rdf:ID="hasPrimaryPlace">
-		  <rdfs:comment>Defines the primary place for an entity</rdfs:comment>
-			<rdfs:range rdf:resource="#Place"/>
-			<rdfs:domain rdf:resource="#Unit"/>
-		</owl:ObjectProperty>
+      <rdfs:comment>Defines the primary place for an entity</rdfs:comment>
+      <rdfs:range rdf:resource="#Place"/>
+      <rdfs:domain rdf:resource="#Unit"/>
+    </owl:ObjectProperty>
     
-		<owl:ObjectProperty rdf:ID="occupies">
-			<rdfs:comment>Describes that a unit occupies a place</rdfs:comment>
-			<rdfs:range>#Place</rdfs:range>
-			<rdfs:domain>#Unit</rdfs:domain>
-		</owl:ObjectProperty>
+    <owl:ObjectProperty rdf:ID="occupies">
+      <rdfs:comment>Describes that a unit occupies a place</rdfs:comment>
+      <rdfs:range>#Place</rdfs:range>
+      <rdfs:domain>#Unit</rdfs:domain>
+    </owl:ObjectProperty>
                     
-		<owl:ObjectProperty rdf:ID="uses"/>
+    <owl:ObjectProperty rdf:ID="uses"/>
     
 
-		
-		
-		<!--
-		   Other entities.
-		-->
-		<owl:Class rdf:ID="Website">
-			<rdfs:subClassOf rdf:resource="#OxpEntity"/>
-		</owl:Class>
+    
+    
+    <!--
+       Other entities.
+    -->
+    <owl:Class rdf:ID="Website">
+      <rdfs:subClassOf rdf:resource="#OxpEntity"/>
+    </owl:Class>
 
-		
-		<owl:Class rdf:ID="Image">
-			<rdfs:subClassOf rdf:resource="#OxpEntity"/>
-		</owl:Class>
-		
-		<!--
-		  General properties
-		 -->
-		<owl:ObjectProperty rdf:ID="hasHomepage">
-			<rdfs:comment>Describes that an entity has a homepage</rdfs:comment>
-		</owl:ObjectProperty>
-		
-		<owl:ObjectProperty rdf:ID="hasITHomepage">
-			<rdfs:comment>Describes that an entity has a homepage for its it people</rdfs:comment>
-		</owl:ObjectProperty>
-		
-		<owl:ObjectProperty rdf:ID="hasLibraryHomepage">
-			<rdfs:comment>Library Homepage</rdfs:comment>
-		</owl:ObjectProperty>
-		
-		<owl:ObjectProperty rdf:ID="hasWeblearn">
-			<rdfs:comment>Describes that an entity has a weblearn</rdfs:comment>
-		</owl:ObjectProperty>
+    
+    <owl:Class rdf:ID="Image">
+      <rdfs:subClassOf rdf:resource="#OxpEntity"/>
+    </owl:Class>
+    
+    <!--
+      General properties
+     -->
+    <owl:ObjectProperty rdf:ID="hasHomepage">
+      <rdfs:comment>Describes that an entity has a homepage</rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="hasITHomepage">
+      <rdfs:comment>Describes that an entity has a homepage for its it people</rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="hasLibraryHomepage">
+      <rdfs:comment>Library Homepage</rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="hasWeblearn">
+      <rdfs:comment>Describes that an entity has a weblearn</rdfs:comment>
+    </owl:ObjectProperty>
 
-		<owl:ObjectProperty rdf:ID="subsetOf">
-			<rdfs:comment>Defines that an entity is a subset of another entity (1:N)</rdfs:comment>
-		</owl:ObjectProperty>
+    <owl:ObjectProperty rdf:ID="subsetOf">
+      <rdfs:comment>Defines that an entity is a subset of another entity (1:N)</rdfs:comment>
+    </owl:ObjectProperty>
 
-		<owl:ObjectProperty rdf:ID="associatedWith">
-			<rdfs:comment>Defines that two entities are associated with one another (N:M)</rdfs:comment>
-		</owl:ObjectProperty>
-		
-		<owl:ObjectProperty rdf:ID="capacity">
-		  <rdfs:comment>Can for example be used to describe the capacity of carparks</rdfs:comment>
-		</owl:ObjectProperty>
-		
-		
-		<owl:ObjectProperty rdf:ID="hasWidth">
-			<rdfs:comment>describe the width of an entity</rdfs:comment>
-		</owl:ObjectProperty>
+    <owl:ObjectProperty rdf:ID="associatedWith">
+      <rdfs:comment>Defines that two entities are associated with one another (N:M)</rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="capacity">
+      <rdfs:comment>Can for example be used to describe the capacity of carparks</rdfs:comment>
+    </owl:ObjectProperty>
+    
+    
+    <owl:ObjectProperty rdf:ID="hasWidth">
+      <rdfs:comment>Describe the width of an entity</rdfs:comment>
+    </owl:ObjectProperty>
 
-		<owl:ObjectProperty rdf:ID="hasHeight">
-			<rdfs:comment>describe the width of an entity</rdfs:comment>
-		</owl:ObjectProperty>
-		
-		<owl:ObjectProperty rdf:ID="inImage">
-			<rdfs:comment></rdfs:comment>
-		</owl:ObjectProperty>
-		
-		<owl:ObjectProperty rdf:ID="hasOUCSCode">
-		  <rdfs:comment>The naming scheme of entities introduced by OUCS</rdfs:comment>
-		</owl:ObjectProperty>
-		
-		<owl:ObjectProperty rdf:ID="hasOLISCode">
-			<rdfs:comment>The naming scheme of entities introduced by OLIS</rdfs:comment>
-		</owl:ObjectProperty>
+    <owl:ObjectProperty rdf:ID="hasHeight">
+      <rdfs:comment>Describe the width of an entity</rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="inImage">
+      <rdfs:comment></rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="hasOUCSCode">
+      <rdfs:comment>The naming scheme of entities introduced by OUCS</rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:ID="hasOLISCode">
+      <rdfs:comment>The naming scheme of entities introduced by OLIS</rdfs:comment>
+    </owl:ObjectProperty>
 
-		        
+            
 </rdf:RDF>
