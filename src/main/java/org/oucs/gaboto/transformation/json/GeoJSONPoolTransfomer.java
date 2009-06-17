@@ -31,10 +31,10 @@
  */
 package org.oucs.gaboto.transformation.json;
 
-import net.sf.json.JSON;
-import net.sf.json.xml.XMLSerializer;
-
+import org.json.JSONException;
+import org.json.XML;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+import org.oucs.gaboto.exceptions.PoolTransformationException;
 import org.oucs.gaboto.transformation.kml.KMLPoolTransformer;
 
 /**
@@ -45,13 +45,9 @@ import org.oucs.gaboto.transformation.kml.KMLPoolTransformer;
  */
 public class GeoJSONPoolTransfomer extends KMLPoolTransformer {
   
-  private static XMLSerializer toJson;
-  
 	public String transform(GabotoEntityPool pool) {
 	  String transformed = super.transform(pool);
-		JSON j = getSerializer().read(transformed.trim()); 	
-    return j.toString(1);
-    /*
+			
 		try{
 			return XML.toJSONObject(transformed.trim()).toString();
 		} catch(JSONException e){
@@ -59,11 +55,5 @@ public class GeoJSONPoolTransfomer extends KMLPoolTransformer {
 			pte.initCause(e);
 			throw pte;
 		}
-		*/
-	}
-	private XMLSerializer getSerializer() { 
-	  if (toJson == null)
-	    toJson = new XMLSerializer();
-	  return toJson;
 	}
 }

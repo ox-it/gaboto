@@ -38,13 +38,12 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 
-// FIXME This fails with duplicate keys if json.org library is used!!!!
-
-import net.sf.json.JSONException;
-import net.sf.json.util.JSONStringer;
+import org.json.JSONException;
+import org.json.JSONStringer;
 import org.oucs.gaboto.beans.GabotoBean;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.transformation.EntityPoolTransformer;
 
 /**
@@ -90,15 +89,20 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     }
 
     JSONStringer json = new JSONStringer();
-    json.array();
-    for (GabotoEntity entity : entities) {
-      addEntity(json, entity, 1);
+    
+    try {
+      json.array();
+      for (GabotoEntity entity : entities) {
+        addEntity(json, entity, 1);
+      }
+      json.endArray();
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
     }
-    json.endArray();
     return  json.toString();
   }
 
-  private void addEntity(JSONStringer json, GabotoEntity entity, int level) {
+  private void addEntity(JSONStringer json, GabotoEntity entity, int level) throws JSONException {
     System.err.println("addEntity:" + entity.getUri());
     // begin new object
     json.object();
