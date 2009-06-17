@@ -46,7 +46,7 @@
     <dependency>
      <groupId>de.fuberlin.wiwss.ng4j</groupId>
      <artifactId>ng4j</artifactId>
-     <version>0.9-SNAPSHOT</version>
+     <version>0.9.1</version>
      <exclusions>
       <exclusion>
         <groupId>xerces</groupId>
@@ -62,19 +62,21 @@
      <version>2.4</version>
     </dependency>
 <!-- in Jena actually -->
+<!--
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20090211</version>
     </dependency>
-<!--
+-->
+
     <dependency>
      <groupId>net.sf.json-lib</groupId>
      <artifactId>json-lib</artifactId>
      <version>2.2.3</version>
      <classifier>jdk15</classifier>
     </dependency>
--->
+
     <!-- Only declared as optional in json-lib: Grrr -->
     <!-- dependency>
       <groupId>xom</groupId>
