@@ -51,28 +51,28 @@ public final class Utils {
   public static TimeSpan getRandomTimespan(double prob1, double prob2,
       double prob3, double prob4, double prob5, double prob6) {
     Random r = new Random();
-    TimeSpan ts = new TimeSpan();
-    ts.setStartYear(r.nextInt(2009));
+    TimeSpan timeSpan = new TimeSpan();
+    timeSpan.setStartYear(r.nextInt(2009));
     boolean month = false, day = false;
     if (r.nextDouble() < prob1) {
       month = true;
-      ts.setStartMonth(r.nextInt(12));
+      timeSpan.setStartMonth(r.nextInt(12));
       if (r.nextDouble() < prob2) {
         day = true;
-        ts.setStartDay(r.nextInt(28));
+        timeSpan.setStartDay(r.nextInt(28));
       }
     }
 
     if (r.nextDouble() < prob3) {
       if (r.nextDouble() < prob4)
-        ts.setDurationYear(r.nextInt(2009 - ts.getStartYear()));
+        timeSpan.setDurationYear(r.nextInt(2009 - timeSpan.getStartYear()));
       if (month && r.nextDouble() < prob5)
-        ts.setDurationMonth(r.nextInt(12));
+        timeSpan.setDurationMonth(r.nextInt(12));
       if (day && r.nextDouble() < prob6)
-        ts.setDurationDay(r.nextInt(30));
+        timeSpan.setDurationDay(r.nextInt(30));
     }
 
-    return ts;
+    return timeSpan;
   }
 
   /**
