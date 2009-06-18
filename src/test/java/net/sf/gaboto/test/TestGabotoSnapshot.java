@@ -31,8 +31,6 @@
  */
 package net.sf.gaboto.test;
 
-import junit.framework.TestCase;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
@@ -56,7 +54,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC_11;
 
-public class TestGabotoSnapshot extends TestCase {
+public class TestGabotoSnapshot extends GabotoTestCase {
 
 
 	@BeforeClass
@@ -125,13 +123,14 @@ public class TestGabotoSnapshot extends TestCase {
 	
 	@Test
 	public void testSPARQLDescribe() throws EntityPoolInvalidConfigurationException {
-		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+    Gaboto oxp = getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
 		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(nowSnap);
 		config.addAcceptedType(OxPointsVocab.College_URI);
 	
 		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+    assertTrue("it is " + pool.getSize(), pool.getSize() != 0);
 		GabotoSnapshot collegeSnap = pool.createSnapshot();
 		
 		
@@ -155,10 +154,10 @@ public class TestGabotoSnapshot extends TestCase {
 	
 	@Test
 	public void testLoadEntities(){
-		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+    Gaboto oxp = getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
 		GabotoEntityPool pool = nowSnap.loadEntitiesWithProperty(DC_11.title, "Somerville College");
-		assertTrue(pool.getSize() == 1);
+    assertTrue("it is " + pool.getSize(), pool.getSize() == 1);
 	}
 }
