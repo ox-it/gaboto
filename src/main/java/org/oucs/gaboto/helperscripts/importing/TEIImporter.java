@@ -32,14 +32,11 @@
 package org.oucs.gaboto.helperscripts.importing;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.oucs.gaboto.beans.Address;
 import org.oucs.gaboto.beans.Location;
@@ -56,6 +53,7 @@ import org.oucs.gaboto.entities.Room;
 import org.oucs.gaboto.entities.Unit;
 import org.oucs.gaboto.entities.Website;
 import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
@@ -63,7 +61,6 @@ import org.oucs.gaboto.util.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 /**
  * 
@@ -80,8 +77,12 @@ public class TEIImporter {
 	private Map<String, OxpEntity> entityLookup = new HashMap<String, OxpEntity>();
 	
 	
-	public TEIImporter(Gaboto gaboto, File file) throws ParserConfigurationException, SAXException, IOException{
-		this.document = XMLUtils.readInputFileIntoJAXPDoc(file);
+	public TEIImporter(Gaboto gaboto, File file) {
+		try {
+      this.document = XMLUtils.readInputFileIntoJAXPDoc(file);
+    } catch (Exception e) {
+      throw new GabotoRuntimeException(e);
+    }
 		this.gaboto = gaboto;
 	}
 	
