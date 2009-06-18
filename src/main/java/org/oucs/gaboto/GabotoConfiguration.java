@@ -38,6 +38,7 @@ import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.util.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -65,11 +66,16 @@ public class GabotoConfiguration {
 	private Map<String, String> namespacePrefixes = new HashMap<String, String>();
 	
 	
-	public static GabotoConfiguration fromConfigFile() throws ParserConfigurationException, SAXException, IOException{
-		return fromConfigFile("Gaboto.xml");
+	public static GabotoConfiguration fromConfigFile() {
+		try {
+      return fromConfigFile("Gaboto.xml");
+    } catch (Exception e) {
+      throw new GabotoRuntimeException(e);
+    }
 	}
 	
-	public static GabotoConfiguration fromConfigFile(String name) throws ParserConfigurationException, SAXException, IOException{
+	public static GabotoConfiguration fromConfigFile(String name) 
+	    throws ParserConfigurationException, SAXException, IOException{
 		GabotoConfiguration config = new GabotoConfiguration();
 		
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
