@@ -36,7 +36,6 @@ import java.io.FileOutputStream;
 
 import net.sf.gaboto.test.GabotoTestCase;
 
-import org.custommonkey.xmlunit.XMLAssert;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
 import org.oucs.gaboto.helperscripts.importing.TEIImporter;
@@ -44,7 +43,6 @@ import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
-import org.oucs.gaboto.model.query.defined.AllEntities;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
