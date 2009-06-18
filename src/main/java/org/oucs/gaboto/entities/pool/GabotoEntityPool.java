@@ -97,8 +97,8 @@ public class GabotoEntityPool {
   public static final int PASSIVE_PROPERTY_COLLECTION_TYPE_NONE = 1;
   public static final int PASSIVE_PROPERTY_COLLECTION_TYPE_BAG = 2;
 
-  private Map<String, GabotoEntity> entities = new HashMap<String, GabotoEntity>();
-  private Map<String, GabotoEntity> referencedEntities = new HashMap<String, GabotoEntity>();
+  Map<String, GabotoEntity> entityMap = new HashMap<String, GabotoEntity>();
+  Map<String, GabotoEntity> referencedEntityMap = new HashMap<String, GabotoEntity>();
 
   private HashSet<String> directEntities = new HashSet<String>();
 
@@ -106,7 +106,7 @@ public class GabotoEntityPool {
 
   private Gaboto gaboto;
 
-  private GabotoSnapshot snapshot;
+  GabotoSnapshot snapshot;
 
   /**
    * Creates a new, empty entity pool.
@@ -214,7 +214,7 @@ public class GabotoEntityPool {
         Class<?> entityClass = GabotoOntologyLookup.getEntityClassFor(type);
 
         // get everything in the model of that type
-        // @todo (should be careful here if we have an inferencing model)
+        // TODO Be careful here if we have an inferencing model
 
         ResIterator it = model.listSubjectsWithProperty(RDF.type, snapshot
             .getProperty(type));
@@ -234,6 +234,7 @@ public class GabotoEntityPool {
                 break;
               }
             } catch (ClassCastException e) {
+              // On to the next one
             }
           }
           if (!passedFilter)
@@ -340,6 +341,7 @@ public class GabotoEntityPool {
           if (!filter.filterEntity(entity))
             entitiesToRemove.add(entity);
         } catch (ClassCastException e) {
+          // On to the next one
         }
       }
     }
@@ -367,10 +369,10 @@ public class GabotoEntityPool {
       // do we have the entity already loaded
       String uri = res.getURI();
       GabotoEntity entity = null;
-      if (entities.containsKey(uri))
-        entity = entities.get(uri);
-      else if (referencedEntities.containsKey(uri))
-        entity = referencedEntities.get(uri);
+      if (entityMap.containsKey(uri))
+        entity = entityMap.get(uri);
+      else if (referencedEntityMap.containsKey(uri))
+        entity = referencedEntityMap.get(uri);
 
       if (null == entity) {
         if (!snapshot.containsResource(res))
@@ -397,7 +399,7 @@ public class GabotoEntityPool {
   }
 
   public void addPassiveEntities() {
-    for (GabotoEntity entity : entities.values())
+    for (GabotoEntity entity : entityMap.values())
       addPassiveEntitiesFor(entity);
   }
 
@@ -433,15 +435,15 @@ public class GabotoEntityPool {
             throw new CorruptDataException("The node should really be a uri!");
 
           String nodesURI = t.getSubject().getURI();
-          if (entities.containsKey(nodesURI))
-            request.passiveEntityLoaded(entities.get(nodesURI));
-          else if (referencedEntities.containsKey(nodesURI))
-            request.passiveEntityLoaded(referencedEntities.get(nodesURI));
+          if (entityMap.containsKey(nodesURI))
+            request.passiveEntityLoaded(entityMap.get(nodesURI));
+          else if (referencedEntityMap.containsKey(nodesURI))
+            request.passiveEntityLoaded(referencedEntityMap.get(nodesURI));
           else {
             Resource res = snapshot.getResource(nodesURI);
             addEntity(res, snapshot, direct, true);
 
-            request.passiveEntityLoaded(referencedEntities.get(nodesURI));
+            request.passiveEntityLoaded(referencedEntityMap.get(nodesURI));
           }
         }
       } else if (request.getCollectionType() == PASSIVE_PROPERTY_COLLECTION_TYPE_BAG) {
@@ -459,16 +461,16 @@ public class GabotoEntityPool {
           public void processSolution(QuerySolution solution) {
             Resource res = solution.getResource("res");
             if (null != res) {
-              if (entities.containsKey(res.getURI()))
-                request.passiveEntityLoaded(entities.get(res.getURI()));
-              else if (referencedEntities.containsKey(res.getURI()))
-                request.passiveEntityLoaded(referencedEntities
+              if (entityMap.containsKey(res.getURI()))
+                request.passiveEntityLoaded(entityMap.get(res.getURI()));
+              else if (referencedEntityMap.containsKey(res.getURI()))
+                request.passiveEntityLoaded(referencedEntityMap
                     .get(res.getURI()));
               else {
                 try {
                   addEntity(res, snapshot, direct, true);
 
-                  request.passiveEntityLoaded(referencedEntities.get(res
+                  request.passiveEntityLoaded(referencedEntityMap.get(res
                       .getURI()));
                 } catch (Exception e) {
                   throw new GabotoRuntimeException(e);
@@ -506,7 +508,7 @@ public class GabotoEntityPool {
    * @throws ResourceDoesNotExistException
    * @throws EntityDoesNotExistException
    */
-  private GabotoEntity addEntity(Resource res, GabotoSnapshot snapshot,
+  GabotoEntity addEntity(Resource res, GabotoSnapshot snapshot,
       boolean direct, boolean bypassTests) throws EntityClassNotFoundException,
       ResourceDoesNotExistException, EntityDoesNotExistException {
     if (!snapshot.containsResource(res))
@@ -560,6 +562,7 @@ public class GabotoEntityPool {
               break;
             }
           } catch (ClassCastException e) {
+            // On to the next one
           }
         }
         if (!passedFilter)
@@ -589,7 +592,7 @@ public class GabotoEntityPool {
    *          The entity that is to be deleted.
    */
   public void removeEntity(GabotoEntity entity) {
-    entities.remove(entity.getUri());
+    entityMap.remove(entity.getUri());
   }
 
   /**
@@ -614,8 +617,8 @@ public class GabotoEntityPool {
   private GabotoEntity addEntity(GabotoEntity entity, boolean direct) {
     // add entity to list of directly added entities
     if (direct) {
-      if (referencedEntities.containsKey(entity.getUri()))
-        referencedEntities.remove(entity.getUri());
+      if (referencedEntityMap.containsKey(entity.getUri()))
+        referencedEntityMap.remove(entity.getUri());
       directEntities.add(entity.getUri());
     }
 
@@ -624,9 +627,9 @@ public class GabotoEntityPool {
 
     // add entity
     if (direct || (config != null && config.isAddReferencedEntitiesToPool()))
-      entities.put(entity.getUri(), entity);
+      entityMap.put(entity.getUri(), entity);
     else
-      referencedEntities.put(entity.getUri(), entity);
+      referencedEntityMap.put(entity.getUri(), entity);
 
     // lazy initialization?
     if (config != null && !config.isEnableLazyDereferencing())
@@ -644,7 +647,7 @@ public class GabotoEntityPool {
   public Model createJenaModel() {
     Model model = ModelFactory.createDefaultModel();
 
-    for (GabotoEntity e : entities.values()) {
+    for (GabotoEntity e : entityMap.values()) {
       e.addToModel(model);
     }
 
@@ -664,7 +667,7 @@ public class GabotoEntityPool {
     Model model = ModelFactory.createDefaultModel();
 
     for (GabotoEntity e : entities) {
-      if (this.entities.containsKey(e.getUri())) {
+      if (this.entityMap.containsKey(e.getUri())) {
         e.addToModel(model);
       }
     }
@@ -687,7 +690,7 @@ public class GabotoEntityPool {
    * @return The number of entities in this pool.
    */
   public int getSize() {
-    return entities.size();
+    return entityMap.size();
   }
 
   /**
@@ -699,7 +702,7 @@ public class GabotoEntityPool {
    * @return The entity or null.
    */
   public GabotoEntity getEntity(String uri) {
-    return entities.get(uri);
+    return entityMap.get(uri);
   }
 
   /**
@@ -711,7 +714,7 @@ public class GabotoEntityPool {
    * @return Whether or not this pool contains the specified entity.
    */
   public boolean containsEntity(String uri) {
-    return entities.containsKey(uri);
+    return entityMap.containsKey(uri);
   }
 
   /**
@@ -720,7 +723,7 @@ public class GabotoEntityPool {
    * @return This pool's entities.
    */
   public Collection<GabotoEntity> getEntities() {
-    return entities.values();
+    return entityMap.values();
   }
 
   /**
@@ -730,7 +733,7 @@ public class GabotoEntityPool {
    */
   public List<GabotoEntity> getEntitiesSorted(final String propertyURI) {
     List<GabotoEntity> list = new ArrayList<GabotoEntity>();
-    list.addAll(entities.values());
+    list.addAll(entityMap.values());
 
     Collections.sort(list, new Comparator<GabotoEntity>() {
 
@@ -772,11 +775,12 @@ public class GabotoEntityPool {
   public <T extends GabotoEntity> Collection<T> getEntities(T entityType) {
     Set<T> filteredEntities = new HashSet<T>();
 
-    for (GabotoEntity e : entities.values()) {
+    for (GabotoEntity e : entityMap.values()) {
       try {
         T castedEntity = (T) entityType.getClass().cast(e);
         filteredEntities.add(castedEntity);
       } catch (ClassCastException ex) {
+        // On to the next one
       }
     }
 
