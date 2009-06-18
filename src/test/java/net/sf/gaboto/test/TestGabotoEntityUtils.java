@@ -41,8 +41,6 @@ import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
 import org.oucs.gaboto.entities.Building;
 import org.oucs.gaboto.entities.Unit;
-import org.oucs.gaboto.exceptions.IllegalAnnotationException;
-import org.oucs.gaboto.exceptions.UnsupportedFormatException;
 import org.oucs.gaboto.vocabulary.DC;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
