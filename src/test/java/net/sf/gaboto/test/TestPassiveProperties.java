@@ -31,8 +31,6 @@
  */
 package net.sf.gaboto.test;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
@@ -44,22 +42,21 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
-public class TestPassiveProperties {
+public class TestPassiveProperties extends GabotoTestCase {
 
 
 	@BeforeClass
-	public static void setUp() throws Exception {
+	public void setUp() throws Exception {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
 	}
 	
 	@Test
 	public void testClassicPropertyLoading() throws EntityPoolInvalidConfigurationException{
-		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+    Gaboto oxp = getOxpointsFromXML();
 		
 		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
 		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
@@ -79,7 +76,7 @@ public class TestPassiveProperties {
 	
 	@Test
 	public void testClassicPropertyLoading2() throws EntityPoolInvalidConfigurationException{
-		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+    Gaboto oxp = getOxpointsFromXML();
 		
 		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
 		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
