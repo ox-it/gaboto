@@ -117,15 +117,15 @@ public class GabotoTestCase extends TestCase {
   }
   */
   protected static String tidy(String json) { 
-    json = json.trim();
-    if (json.startsWith("[")) { 
-      json = json.substring(1);
-      if (json.endsWith("]")) 
-        json = json.substring(0, json.length() -1);
+    String out = json.trim();
+    if (out.startsWith("[")) { 
+      out = out.substring(1);
+      if (out.endsWith("]")) 
+        out = out.substring(0, out.length() -1);
       else
-        throw new RuntimeException("Unbalanced square brackets");
+        throw new RuntimeException("Unbalanced square brackets:" + json);
     }
-    return json;
+    return out;
   }
   
 }
