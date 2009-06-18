@@ -477,12 +477,8 @@ public class Gaboto {
     logger.debug("Adding entity to gaboto: " + entity);
 
     TimeSpan ts = entity.getTimeSpan().canonicalize();
-    try {
-      for (Triple t : entity.getTriplesFor(includeType))
-        add(ts, t);
-    } catch (IllegalAnnotationException e) {
-      e.printStackTrace();
-    }
+    for (Triple t : entity.getTriplesFor(includeType))
+      add(ts, t);
   }
 
   /**
