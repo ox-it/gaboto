@@ -99,6 +99,9 @@ public class ListOfTypedEntities extends GabotoQueryImpl {
 
 	@Override
 	protected void doPrepare() throws GabotoException {
+	  // Fool Eclipse
+	  if (forceCreation) 
+	    forceCreation = true;
 	}
 	
 }
