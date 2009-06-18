@@ -37,11 +37,8 @@ package org.oucs.gaboto.exceptions;
  * @author Arno Mittelbach
  *
  */
-public class UnsupportedFormatException extends GabotoException {
+public class UnsupportedFormatException extends GabotoRuntimeException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4854482856761719696L;
 
 	public UnsupportedFormatException(String format){
