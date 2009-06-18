@@ -126,10 +126,9 @@ public interface GabotoQuery {
 	 * @param format The output format.
 	 * @return The query results transformed into the specified output format.
 	 * 
-	 * @throws UnsupportedFormatException
 	 * @throws GabotoException
 	 */
-	public Object execute(String format) throws UnsupportedFormatException, GabotoException;
+	public Object execute(String format) throws GabotoException;
 	
 	/**
 	 * Sets the Gaboto model the query should work with.
