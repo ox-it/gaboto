@@ -31,7 +31,7 @@
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.5/junit-4.5.jar" sourcepath="M2_REPO/junit/junit/4.5/junit-4.5-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.12/log4j-1.2.12.jar"/>
   <classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/5.1.6/mysql-connector-java-5.1.6.jar"/>
-  <classpathentry kind="var" path="M2_REPO/de/fuberlin/wiwss/ng4j/ng4j/0.9-SNAPSHOT/ng4j-0.9-SNAPSHOT.jar" sourcepath="M2_REPO/de/fuberlin/wiwss/ng4j/ng4j/0.9-SNAPSHOT/ng4j-0.9-SNAPSHOT-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/de/fuberlin/wiwss/ng4j/ng4j/0.9.1/ng4j-0.9.1.jar" sourcepath="M2_REPO/de/fuberlin/wiwss/ng4j/ng4j/0.9.1/ng4j-0.9.1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/postgresql/postgresql/8.3-603.jdbc4/postgresql-8.3-603.jdbc4.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/ccil/cowan/tagsoup/tagsoup/1.2/tagsoup-1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/xerces/xercesImpl/2.7.1/xercesImpl-2.7.1.jar"/>

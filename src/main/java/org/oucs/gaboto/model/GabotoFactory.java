@@ -259,7 +259,7 @@ public class GabotoFactory {
 		String M_DB             = config.getDbEngineName();
 		String M_DBDRIVER_CLASS = config.getDbDriver();
 
-		// load the the driver class
+		// load the driver class just to provoke error
 		try {
 			Class.forName(M_DBDRIVER_CLASS);
 		} catch (ClassNotFoundException e) {
@@ -271,7 +271,7 @@ public class GabotoFactory {
 
 		// create a model maker with the given connection parameters
 		ModelMaker maker = ModelFactory.createModelRDBMaker(conn);
-		
+    System.err.println("GF.type:" + conn.getDatabaseType());
 		// create cdg
 		if(maker.hasModel("cdg"))
 			cdg = maker.openModel("cdg");

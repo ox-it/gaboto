@@ -13,6 +13,6 @@ public class Driver_HSQLDB_GABOTO extends com.hp.hpl.jena.db.impl.Driver_HSQL
     public Driver_HSQLDB_GABOTO()
     {
         super() ;
-        DATABASE_TYPE = "HSQLDB";
+        DATABASE_TYPE = "HSQLDB_GABOTO";
     }
 }

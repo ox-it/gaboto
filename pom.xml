@@ -142,19 +142,19 @@
             <exclude>**/**5*</exclude>
             <exclude>**/**6*</exclude>
 	  <!-- Too slow -->
+          <!-- 
             <exclude>**/TestPoolCreationPerformance.java</exclude>
             <exclude>**/TestEntityPool*</exclude>
             <exclude>**/TestGabotoSnapshot*</exclude>
 	    <exclude>**/TestSimpleConstructSPARQLQuery*</exclude>
 	    <exclude>**/BuildingsOccupiedByCollegeTest*</exclude>
-	    <exclude>**/TestGaboto*</exclude>
 	    <exclude>**/TestGabotoEntity*</exclude>
 	    <exclude>**/TestGabotoTimeBasedEntity*</exclude>
 	    <exclude>**/TestPassiveProperties*</exclude>
 	    <exclude>**/GabotoTest*</exclude>
 	    <exclude>**/TestQueryListOfTypedEntities*</exclude>
 	    
-
+          -->
 	    
 	   </excludes>
         </configuration>

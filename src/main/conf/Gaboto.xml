@@ -19,18 +19,22 @@
         </namespacePrefixes>
         
         <database>
-            <!--
-            <engineName>HSQLDB</engineName>
-            <url>jdbc:hsqldb:/dist/gaboto/db/oxpoints</url>
+            <!-- We have our own copy of the driver, ther is a bug in the jena one -->
+            <engineName>HSQLDB_GABOTO</engineName>
+            <!-- 
+                <url>jdbc:hsqldb:/dist/gaboto/db/oxpoints</url>
+            -->
+            <url>jdbc:hsqldb:mem:oxpoints</url>
             <user>sa</user>
             <password></password>    
             <driver>org.hsqldb.jdbcDriver</driver>
-            -->           
+            <!--
             <engineName>PostgreSQL</engineName>
             <url>jdbc:postgresql:oxpoints</url>
             <user>postgres</user>
             <password></password>    
             <driver>org.postgresql.Driver</driver>
+            -->           
             <!--
                 <engineName>PostgreSQL</engineName>
                 <url>jdbc:postgresql://sysdev-db1.oucs.ox.ac.uk:5432/oxpoints?ssl=true</url>
@@ -39,7 +43,7 @@
                 <driver>org.postgresql.Driver</driver>
             -->           
             <!--
-                <engineName>MySQL</engineName>
+            <engineName>MySQL</engineName>
             <url>jdbc:mysql://localhost/oxp</url>
             <user>root</user>
             <password></password>

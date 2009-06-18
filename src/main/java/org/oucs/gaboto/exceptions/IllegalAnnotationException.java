@@ -34,16 +34,13 @@ package org.oucs.gaboto.exceptions;
 import org.oucs.gaboto.entities.GabotoEntity;
 
 /**
- * Is thrown if an {@link GabotoEntity} class is using annotations wrongly.
+ * Is thrown if an {@link GabotoEntity} class uses annotation incorrectly.
  * 
  * @author Arno Mittelbach
  * @see GabotoEntity
  */
 public class IllegalAnnotationException extends GabotoRuntimeException{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6390552659060182857L;
 
 	public IllegalAnnotationException(Class<?> clazz){

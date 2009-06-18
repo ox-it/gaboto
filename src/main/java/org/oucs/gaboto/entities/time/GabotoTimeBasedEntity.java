@@ -553,7 +553,8 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity>{
 		testAddPropertyParameters(propertyURI, value);
 		
 		if(lifespan != null && ! lifespan.contains(ts))
-			throw new IllegalArgumentException("The supplied time span is not in the range of this entity's lifetime.");
+			throw new IllegalArgumentException(
+			    "The supplied time span (" + ts + ") is not in the range of this entity's lifetime (" + lifespan + ").");
 		
 		// do we have to adjust timespans?
 		if(getTimeSpan().getBegin().aboutTheSame(ts.getBegin()) && ! getTimeSpan().getBegin().equals(ts.getBegin())){

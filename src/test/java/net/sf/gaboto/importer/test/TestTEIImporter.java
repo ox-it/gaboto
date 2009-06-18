@@ -36,11 +36,7 @@ import java.io.FileOutputStream;
 
 import net.sf.gaboto.test.GabotoTestCase;
 
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.helperscripts.importing.TEIImporter;
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -48,25 +44,18 @@ import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 public class TestTEIImporter  extends GabotoTestCase {
 
-  static String filename = "src/test/data/oxpoints_plus.xml"; 
-  static  Gaboto oxp = null;
+  Gaboto oxp = null;
   
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    File file = new File(filename);
-    if(! file.exists())
-      throw new RuntimeException ("Cannot open file " + filename);
-    
-    GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
-    oxp = GabotoFactory.getEmptyInMemoryGaboto();
-    new TEIImporter(oxp, file).run();
-    
+    oxp = getOxpointsFromXML();    
   }
 
   @Override
   protected void tearDown() throws Exception {
     super.tearDown();
+    oxp = null;
   }
 
   public void testTypedEntitiesOutputToKML() throws Exception { 

@@ -38,10 +38,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-//import net.sf.json.JSONObject;
-//import net.sf.json.test.JSONAssert;
-
 import org.custommonkey.xmlunit.XMLAssert;
+import org.oucs.gaboto.GabotoConfiguration;
+import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.helperscripts.importing.TEIImporter;
+import org.oucs.gaboto.model.Gaboto;
+import org.oucs.gaboto.model.GabotoFactory;
 
 import junit.framework.TestCase;
 
@@ -54,6 +56,7 @@ public class GabotoTestCase extends TestCase {
   
   protected static String referenceOutputDir = "src/test/reference";
   protected static String actualOutputDir = "target";
+  static String filename = "src/test/data/oxpoints_plus.xml"; 
 
   /**
    * Default constructor.
@@ -93,6 +96,17 @@ public class GabotoTestCase extends TestCase {
     }
   }
 
+  protected Gaboto getOxpointsFromXML() { 
+    File file = new File(filename);
+    if(! file.exists())
+      throw new RuntimeException ("Cannot open file " + filename);
+    
+    GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+    Gaboto oxp = GabotoFactory.getEmptyInMemoryGaboto();
+    //oxp = GabotoFactory.getInMemoryGaboto();
+    new TEIImporter(oxp, file).run();
+    return oxp;
+  }
   /*
   protected void assertPageJsonEqual(String actual, String referenceFileName) throws Exception { 
     JSONObject actualJson = JSONObject.fromObject(tidy(actual));

@@ -127,22 +127,22 @@ public class TimeSpan implements Serializable {
   /**
    * Creates a time span from a graph name.
    * 
-   * @param graph
+   * @param graphName
    *          The graph's name
    * @param gaboto
    *          The Gaboto system that contains the graph
    * 
    * @return The new TimeSpan
    */
-  public static TimeSpan createFromGraphName(String graph, Gaboto gaboto) {
-    if (graph.equals(gaboto.getGlobalKnowledgeGraph().getGraphName().getURI()))
+  public static TimeSpan createFromGraphName(String graphName, Gaboto gaboto) {
+    if (graphName.equals(gaboto.getGlobalKnowledgeGraph().getGraphName().getURI()))
       return TimeUtils.EXISTANCE;
 
     try {
-      return gaboto.getTimeDimensionIndexer().getTimeSpanFor(graph);
+      return gaboto.getTimeDimensionIndexer().getTimeSpanFor(graphName);
     } catch (NoTimeIndexSetException e) {
 
-      String query = GabotoPredefinedQueries.getTimeInformationQuery(graph);
+      String query = GabotoPredefinedQueries.getTimeInformationQuery(graphName);
 
       QueryExecution qe = QueryExecutionFactory.create(query, gaboto
           .getContextDescriptionGraph());

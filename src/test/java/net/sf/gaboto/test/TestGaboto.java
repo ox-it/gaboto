@@ -32,6 +32,7 @@
 package net.sf.gaboto.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
@@ -118,6 +119,7 @@ public class TestGaboto {
 		oxp.add(b);
 		
 		Building b_loaded = (Building) oxp_m.getEntity(uri, new TimeInstant(600,0,0));
+		assertNotNull("Should have found something", b_loaded);
 		assertEquals(b_loaded.getName(), b.getName());
 		assertEquals(b_loaded.getTimeSpan(), b.getTimeSpan());
 	}

@@ -41,7 +41,14 @@ import org.oucs.gaboto.timedim.TimeSpan;
 public final class Utils {
 
   public static TimeSpan getRandomTimespan() {
-    return getRandomTimespan(0.5, 0.5, 0.85, 0.95, 0.5, 0.5);
+    TimeInstant t1 = getRandomTimeinstant();
+    TimeInstant t2 = getRandomTimeinstant();
+    if (t1.compareTo(t2) == -1)
+      return TimeSpan.createFromInstants(t1, t2);
+    else 
+      return TimeSpan.createFromInstants(t2, t1);
+      
+//    return getRandomTimespan(0.5, 0.5, 0.85, 0.95, 0.5, 0.5);
   }
 
   /**
