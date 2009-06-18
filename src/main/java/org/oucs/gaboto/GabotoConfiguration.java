@@ -53,7 +53,7 @@ import org.xml.sax.SAXException;
  */
 public class GabotoConfiguration {
 
-	private String dbURL;
+  private String dbURL;
 	private String dbUser;
 	private String dbPassword;
 	private String dbEngineName;
@@ -94,8 +94,8 @@ public class GabotoConfiguration {
 					if(databaseProp.getNodeName().equals("engineName")){
 						config.dbEngineName = databaseProp.getTextContent();
 					} else if(databaseProp.getNodeName().equals("url")){
-						config.dbURL = databaseProp.getTextContent();
-					} else if(databaseProp.getNodeName().equals("user")){
+            config.dbURL = databaseProp.getTextContent();
+          } else if(databaseProp.getNodeName().equals("user")){
 						config.dbUser = databaseProp.getTextContent();
 					} else if(databaseProp.getNodeName().equals("password")){
 						config.dbPassword = databaseProp.getTextContent();
