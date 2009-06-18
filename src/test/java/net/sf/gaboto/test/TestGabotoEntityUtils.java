@@ -58,7 +58,7 @@ public class TestGabotoEntityUtils {
 	}
 	
 	@Test
-	public void testEntityToTriples() throws UnsupportedFormatException, IllegalAnnotationException{
+	public void testEntityToTriples()  {
 		Unit u = new Unit();
 		u.setUri("http://exampleuri.co.uk/lala");
 		
