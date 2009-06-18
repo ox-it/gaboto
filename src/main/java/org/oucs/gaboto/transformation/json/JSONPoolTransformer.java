@@ -279,14 +279,15 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 
 
   private String simplifyKey(String k) {
-    k = k.replaceAll("http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#",
+    String s = k;
+    s = s.replaceAll("http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#",
         "oxp_");
-    k = k.replaceAll("http://ns.ox.ac.uk/namespace/gaboto/kml/2009/03/owl#",
+    s = s.replaceAll("http://ns.ox.ac.uk/namespace/gaboto/kml/2009/03/owl#",
         "gab_");
-    k = k.replaceAll("http://purl.org/dc/elements/1.1/", "dc_");
-    k = k.replaceAll("http://nwalsh.com/rdf/vCard#", "vCard_");
-    k = k.replaceAll("http://www.opengis.net/gml/", "geo_");
-    return k;
+    s = s.replaceAll("http://purl.org/dc/elements/1.1/", "dc_");
+    s = s.replaceAll("http://nwalsh.com/rdf/vCard#", "vCard_");
+    s = s.replaceAll("http://www.opengis.net/gml/", "geo_");
+    return s;
   }
 
 
