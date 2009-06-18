@@ -34,7 +34,6 @@ package org.oucs.gaboto.model.query;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.QueryAlreadyPreparedException;
-import org.oucs.gaboto.exceptions.UnsupportedFormatException;
 import org.oucs.gaboto.model.Gaboto;
 
 import com.hp.hpl.jena.rdf.model.Model;
