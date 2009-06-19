@@ -32,7 +32,7 @@
 package net.sf.gaboto.test.performance;
 
 
-import net.sf.gaboto.test.GabotoTestCase;
+import net.sf.gaboto.test.Utils;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -49,12 +49,12 @@ import org.oucs.gaboto.sample.CollegesNearEntity;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.util.PerformanceAverager;
 
-public class TestPoolCreationPerformance extends GabotoTestCase {
+public class TestPoolCreationPerformance {
 
 	private static int RUNS = 5;
 
 	@BeforeClass
-	public void setUp() throws Exception {
+	public static void setUp() throws Exception {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
 	}
 	
@@ -100,7 +100,7 @@ public class TestPoolCreationPerformance extends GabotoTestCase {
 	
 	@Test
 	public void testQuery1() throws Exception{
-	  Gaboto oxp = getOxpointsFromXML();
+	  Gaboto oxp = Utils.getOxpointsFromXML();
 
 		CollegesNearEntity query = new CollegesNearEntity(oxp, "Somerville College", 10, TimeInstant.now());
 		query.prepare();

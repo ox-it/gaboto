@@ -34,52 +34,57 @@ package net.sf.gaboto.importer.test;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import net.sf.gaboto.test.GabotoTestCase;
+import net.sf.gaboto.test.Utils;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
-public class TestTEIImporter  extends GabotoTestCase {
+public class TestTEIImporter {
 
-  Gaboto oxp = null;
+  public static Gaboto oxp = null;
   
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
-    oxp = getOxpointsFromXML();    
+  @Before
+  public void setUp() throws Exception {
+    oxp = Utils.getOxpointsFromXML();    
   }
 
-  @Override
-  protected void tearDown() throws Exception {
-    super.tearDown();
+  @After
+  public void tearDown() throws Exception {
     oxp = null;
   }
 
+  @Test
   public void testTypedEntitiesOutputToKML() throws Exception { 
     GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
     
-    assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_KML), "UnitsKML.kml");    
+    Utils.assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_KML), "UnitsKML.kml");    
   }
+  @Test
   public void testTypedEntitiesOutputToRDF() throws Exception { 
     GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
-    assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "UnitsRDF.xml");    
+    Utils.assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "UnitsRDF.xml");    
   }
+  @Test
   public void testAllToRdf() throws Exception { 
-    File graphsFile = new File(actualOutputDir, "graphs.rdf");
+    File graphsFile = new File(Utils.actualOutputDir, "graphs.rdf");
     FileOutputStream actualOutputStream = new FileOutputStream(graphsFile);
     oxp.write(actualOutputStream);
     actualOutputStream.close();
     
-    File contextFile = new File(actualOutputDir, "cdg.rdf");
+    File contextFile = new File(Utils.actualOutputDir, "cdg.rdf");
     FileOutputStream contextOutputStream = new FileOutputStream(contextFile);
     oxp.writeCDG(contextOutputStream);
     contextOutputStream.close();
     
     
   }
+  @Test
   public void testAllToTEI() throws Exception { 
     //GabotoQuery query = new AllEntities(oxp);
     

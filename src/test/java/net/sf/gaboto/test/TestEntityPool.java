@@ -31,14 +31,8 @@
  */
 package net.sf.gaboto.test;
 
-import java.io.File;
-
-import junit.framework.TestCase;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
 import org.oucs.gaboto.beans.Location;
 import org.oucs.gaboto.entities.Building;
 import org.oucs.gaboto.entities.College;
@@ -51,9 +45,7 @@ import org.oucs.gaboto.entities.pool.filters.PropertyExistsFilter;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
-import org.oucs.gaboto.helperscripts.importing.TEIImporter;
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
@@ -66,29 +58,22 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC_11;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-public class TestEntityPool extends TestCase {
-  Gaboto op = null;
-  static String filename = "src/test/data/oxpoints_plus.xml";
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+
+
+public class TestEntityPool {
+  static Gaboto oxp = null;
 
   @BeforeClass
-  public void setUp() throws Exception {
-    if (op == null) {
-      GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
-      // op = GabotoFactory.getInMemoryGaboto();
-      File file = new File(filename);
-      if (!file.exists())
-        throw new RuntimeException("Cannot open file " + filename);
-
-      GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
-      op = GabotoFactory.getEmptyInMemoryGaboto();
-      new TEIImporter(op, file).run();
-    }
+  public static void setUp() throws Exception {
+    oxp = Utils.getOxpointsFromXML();
   }
 
   @Test
   public void testEntityPoolCreation() throws GabotoException {
 
-    GabotoSnapshot snap = op.getSnapshot(new TimeInstant(2000, 0, 0));
+    GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 0, 0));
 
     Model m = snap.getModel();
 
@@ -123,9 +108,9 @@ public class TestEntityPool extends TestCase {
 
     // as long as there is no data for the future in the system, this should
     // hold
-    Model m1 = op.getSnapshot(TimeInstant.now()).getModel();
+    Model m1 = oxp.getSnapshot(TimeInstant.now()).getModel();
     GabotoEntityPool pool = GabotoEntityPool
-        .createFrom(new GabotoEntityPoolConfiguration(op, m1));
+        .createFrom(new GabotoEntityPoolConfiguration(oxp, m1));
     Model m2 = pool.createJenaModel();
 
     StmtIterator it = m1.listStatements();
@@ -137,17 +122,17 @@ public class TestEntityPool extends TestCase {
 
     // Still one out
     //assertEquals(m1.size() + " not equal " + m2.size(),m1.size(),m2.size());
-    // System.err.println(m1.size() + " not less then 25 smaller than " +
-    // m2.size());
+     System.err.println(m1.size() + " not less then 25 smaller than " +
+     m2.size());
     // FIXME TPP What is going on here? was 10 in mysql
-    // assertTrue(m1.size() + " not less then 25 smaller than " + m2.size(),
-    // Math.abs(m1.size()-m2.size()) < 25);
+     assertTrue(m1.size() + " not less then 25 smaller than " + m2.size(),
+     Math.abs(m1.size()-m2.size()) < 25);
   }
 
   @Test
   public void testEntityAddReferencedEntities() throws GabotoException {
 
-    GabotoSnapshot snap = op.getSnapshot(new TimeInstant(2000, 0, 0));
+    GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 0, 0));
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
         snap);
@@ -193,7 +178,7 @@ public class TestEntityPool extends TestCase {
 
   @Test
   public void testEntityFilter() throws GabotoException {
-    GabotoSnapshot snap = op.getSnapshot(new TimeInstant(2000, 0, 0));
+    GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 0, 0));
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
         snap);
@@ -233,7 +218,7 @@ public class TestEntityPool extends TestCase {
 
   @Test
   public void testEntityFilter2() throws GabotoException {
-    GabotoSnapshot snap = op.getSnapshot(TimeInstant.now());
+    GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
         snap);
@@ -294,7 +279,7 @@ public class TestEntityPool extends TestCase {
   @Test
   public void testEntityTypeFilter()
       throws EntityPoolInvalidConfigurationException {
-    GabotoSnapshot snap = op.getSnapshot(TimeInstant.now());
+    GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
         snap);
@@ -324,7 +309,7 @@ public class TestEntityPool extends TestCase {
   public void testResourceFilter()
       throws EntityPoolInvalidConfigurationException,
       ResourceDoesNotExistException {
-    GabotoSnapshot snap = op.getSnapshot(TimeInstant.now());
+    GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
         snap);

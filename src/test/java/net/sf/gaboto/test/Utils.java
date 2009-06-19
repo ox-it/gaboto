@@ -31,10 +31,20 @@
  */
 package net.sf.gaboto.test;
 
+import static org.junit.Assert.fail;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Random;
 import java.util.UUID;
 
+import org.custommonkey.xmlunit.XMLAssert;
+import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.helperscripts.importing.TEIImporter;
+import org.oucs.gaboto.model.Gaboto;
+import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 
@@ -107,5 +117,76 @@ public final class Utils {
 
     return uri;
   }
+  public static String referenceOutputDir = "src/test/reference";
+  public static String actualOutputDir = "target";
+  public static String filename = "src/test/data/oxpoints_plus.xml"; 
+
+
+  public static void assertXmlEqual(String actual, String fileName) throws Exception { 
+    File actualFile = new File(actualOutputDir, fileName);
+    FileOutputStream actualOutputStream = new FileOutputStream(actualFile);
+    actualOutputStream.write(actual.getBytes());
+    actualOutputStream.close();
+    
+    File referenceFile = new File(referenceOutputDir, fileName);
+    if (referenceFile.exists()) {
+      FileInputStream file = new FileInputStream (referenceFile);
+      byte[] b = new byte[file.available()];
+      file.read(b);
+      file.close ();
+      String cached = new String(b);
+      XMLAssert.assertXMLEqual("Cached not equal to generated", cached, actual);
+    } else { 
+      actualFile.renameTo(referenceFile);
+      fail("Reference output file generated: " + referenceFile.getCanonicalPath() + " modify generateCached and rerun");
+    }
+  }
+
+  public static Gaboto getOxpointsFromXML() { 
+    File file = new File(filename);
+    if(! file.exists())
+      throw new RuntimeException ("Cannot open file " + filename);
+    
+    GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+    Gaboto oxp = GabotoFactory.getEmptyInMemoryGaboto();
+    //oxp = GabotoFactory.getInMemoryGaboto();
+    new TEIImporter(oxp, file).run();
+    return oxp;
+  }
+  /*
+  protected void assertPageJsonEqual(String actual, String referenceFileName) throws Exception { 
+    JSONObject actualJson = JSONObject.fromObject(tidy(actual));
+    File generatedFile = new File(actualOutputDir, referenceFileName);
+    FileOutputStream generatedOutput = new FileOutputStream(generatedFile);
+    generatedOutput.write(actual.getBytes());
+    generatedOutput.close();
+    
+    File referenceFile = new File(referenceOutputDir, referenceFileName);
+    if (referenceFile.exists() && ! generateReferenceCopy()) {
+      FileInputStream expectedFileinputStream = new FileInputStream (referenceFile);
+      byte[] b = new byte[expectedFileinputStream.available()];
+      expectedFileinputStream.read(b);
+      expectedFileinputStream.close ();
+      String cached = new String(b);
+      JSONObject expectedJson = JSONObject.fromObject(tidy(cached));
+      JSONAssert.assertEquals(expectedJson, actualJson);
+    } else { 
+      generatedFile.renameTo(referenceFile);
+      fail("Reference output file generated: " + referenceFile.getCanonicalPath() + " modify generateCached and rerun");
+    }
+  }
+  */
+  public static String tidy(String json) { 
+    String out = json.trim();
+    if (out.startsWith("[")) { 
+      out = out.substring(1);
+      if (out.endsWith("]")) 
+        out = out.substring(0, out.length() -1);
+      else
+        throw new RuntimeException("Unbalanced square brackets:" + json);
+    }
+    return out;
+  }
+  
 
 }

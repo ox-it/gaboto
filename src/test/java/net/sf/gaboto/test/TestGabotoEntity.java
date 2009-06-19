@@ -35,8 +35,6 @@ package net.sf.gaboto.test;
 import java.util.Collection;
 import java.util.HashSet;
 
-import junit.framework.TestCase;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
@@ -56,12 +54,17 @@ import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+
 import com.hp.hpl.jena.query.QuerySolution;
 
-public class TestGabotoEntity extends TestCase {
+public class TestGabotoEntity  {
+
   static Gaboto oxp = null;
-	@BeforeClass
-	public  void setUp() throws Exception {
+
+  @BeforeClass
+	public  static void setUp() throws Exception {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
     //oxp = GabotoFactory.getPersistentGaboto();
     oxp = GabotoFactory.getInMemoryGaboto();

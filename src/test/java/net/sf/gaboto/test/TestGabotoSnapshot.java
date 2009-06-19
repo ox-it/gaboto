@@ -54,11 +54,14 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC_11;
 
-public class TestGabotoSnapshot extends GabotoTestCase {
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+
+public class TestGabotoSnapshot {
 
 
 	@BeforeClass
-  protected void setUp() throws Exception {
+  public static void setUp() throws Exception {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
 	}
 	
@@ -123,7 +126,7 @@ public class TestGabotoSnapshot extends GabotoTestCase {
 	
 	@Test
 	public void testSPARQLDescribe() throws EntityPoolInvalidConfigurationException {
-    Gaboto oxp = getOxpointsFromXML();
+    Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
 		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(nowSnap);
@@ -154,7 +157,7 @@ public class TestGabotoSnapshot extends GabotoTestCase {
 	
 	@Test
 	public void testLoadEntities(){
-    Gaboto oxp = getOxpointsFromXML();
+    Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
 		GabotoEntityPool pool = nowSnap.loadEntitiesWithProperty(DC_11.title, "Somerville College");
