@@ -236,7 +236,7 @@ public class GabotoSnapshot {
 	public GabotoEntityPool loadEntitiesWithProperty(String propURI, boolean value){
 		Property prop = getProperty(propURI);
     if(prop == null)
-			return new GabotoEntityPool(this.gaboto, this);
+			throw new GabotoRuntimeException("Property not found"); 
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
 	}
