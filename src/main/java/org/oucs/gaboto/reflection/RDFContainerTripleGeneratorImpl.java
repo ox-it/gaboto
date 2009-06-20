@@ -31,7 +31,6 @@
  */
 package org.oucs.gaboto.reflection;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -66,7 +65,7 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 	protected RDFContainerTripleGeneratorImpl(){}
 	
 	public static RDFContainerTripleGenerator getInstance(){
-		if(null == instance)
+		if(instance == null)
 			instance = new RDFContainerTripleGeneratorImpl();
 		
 		return instance;
@@ -83,7 +82,8 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 	 * @return a list of triples that represent this entity.
 	 * @throws IllegalAnnotationException 
 	 */
-	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode) throws IllegalAnnotationException{
+	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode) 
+	    throws IllegalAnnotationException{
 		return getTriplesFor(rdfContainerObject, subjectNode, true);
 	}
 	
@@ -97,7 +97,8 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 	 * 
 	 * @throws IllegalAnnotationException 
 	 */
-	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode, boolean includeType) throws IllegalAnnotationException{
+	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode, boolean includeType) 
+	    throws IllegalAnnotationException{
 		List<Triple> triples = new ArrayList<Triple>();
 		
 		// add the entities type
@@ -202,10 +203,11 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 	 * @param propertyURI
 	 * @param method
 	 */
-	private void getTriplesFor_SimpleURIProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples, String propertyURI, Method method) {
+	private void getTriplesFor_SimpleURIProperty(
+	    Object rdfContainerObject, Node subjectNode, List<Triple> triples, String propertyURI, Method method) {
 		try {
 			Object object = method.invoke(rdfContainerObject, (Object[])null);
-			if(null == object)
+			if(object == null )
 				return;
 			
 			String objectURI = "";
@@ -222,16 +224,9 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 				Node.createURI(objectURI)
 			));
 			
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("entity class " + rdfContainerObject.getClass().getName() + " contains wrongly annotated methods");
-		}
+    } catch (Exception e) {
+      throw new GabotoRuntimeException(e);
+    } 
 	}
 	
 	/**
@@ -247,7 +242,7 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 	private void getTriplesFor_SimpleLiteralProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples, String propertyURI, Method method) {
 		try {
 			Object object = method.invoke(rdfContainerObject, (Object[])null);
-			if(null == object)
+			if(object == null)
 				return;
 			
 			// find datatype
@@ -273,13 +268,9 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 				Node.createURI(propertyURI),
 				Node.createLiteral(String.valueOf(object), null, datatype)
 			));
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} 
+    } catch (Exception e) {
+      throw new GabotoRuntimeException(e);
+    } 
 	
 	}
 	
@@ -298,7 +289,7 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 		try {
 			Object object = method.invoke(rdfContainerObject, (Object[])null);
 			
-			if( null == object )
+			if( object == null)
 				return;
 			
 			if(! (object instanceof GabotoBean))
@@ -314,15 +305,9 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 				));
 			
 			triples.addAll(bean.getCorrespondingRDFTriples(blankBeanNode));
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			logger.error("entity class " + rdfContainerObject.getClass().getName() + " contains wrongly annotated methods. A complex property must return an GabotoBean.");
-		}
+    } catch (Exception e) {
+      throw new GabotoRuntimeException(e);
+    } 
 	}
 
 	/**
@@ -357,7 +342,7 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 		try {
 			Object object = method.invoke(rdfContainerObject, (Object[])null);
 			
-			if(null == object)
+      if(object == null)
 				return;
 			
 			if(! (object instanceof Collection) )
@@ -382,13 +367,9 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 				count++;
 			}
 			
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
+    } catch (Exception e) {
+      throw new GabotoRuntimeException(e);
+    } 
 	}
 
 	/**
@@ -427,7 +408,7 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
         throw new GabotoRuntimeException(e);
       }
 			
-			if(null == object)
+      if(object == null)
 				return;
 			
 			if(! (object instanceof Collection) )
@@ -496,7 +477,7 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 		try {
 			Object object = method.invoke(rdfContainerObject, (Object[])null);
 			
-			if(null == object)
+      if(object == null)
 				return;
 			
 			if(! (object instanceof Collection) )
@@ -505,7 +486,7 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 			// loop over collection
 			int count = 1;
 			for(Object o : (Collection) object){
-				if(null == o)
+				if(o == null)
 					throw new CorruptDataException("Bag properties may not contain null values.");
 				triples.add(new Triple(
 					bag,
@@ -515,13 +496,9 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 				count++;
 			}
 			
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
+    } catch (Exception e) {
+      throw new GabotoRuntimeException(e);
+    } 
 	}
 	
 }
