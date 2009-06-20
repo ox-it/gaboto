@@ -43,7 +43,6 @@ import org.oucs.gaboto.entities.pool.filters.EntityFilter;
 import org.oucs.gaboto.entities.pool.filters.PropertyEqualsFilter;
 import org.oucs.gaboto.entities.pool.filters.PropertyExistsFilter;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
@@ -71,7 +70,7 @@ public class TestEntityPool {
   }
 
   @Test
-  public void testEntityPoolCreation() throws GabotoException {
+  public void testEntityPoolCreation()  {
 
     GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 0, 0));
 
@@ -104,7 +103,7 @@ public class TestEntityPool {
   }
 
   @Test
-  public void testModelSizeEquality() throws GabotoException {
+  public void testModelSizeEquality()  {
 
     // as long as there is no data for the future in the system, this should
     // hold
@@ -130,7 +129,7 @@ public class TestEntityPool {
   }
 
   @Test
-  public void testEntityAddReferencedEntities() throws GabotoException {
+  public void testEntityAddReferencedEntities() {
 
     GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 0, 0));
 
@@ -177,7 +176,7 @@ public class TestEntityPool {
   }
 
   @Test
-  public void testEntityFilter() throws GabotoException {
+  public void testEntityFilter()  {
     GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 0, 0));
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
@@ -217,7 +216,7 @@ public class TestEntityPool {
   }
 
   @Test
-  public void testEntityFilter2() throws GabotoException {
+  public void testEntityFilter2()  {
     GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
