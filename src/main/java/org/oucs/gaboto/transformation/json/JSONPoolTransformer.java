@@ -158,41 +158,39 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   }
 
   @SuppressWarnings("unchecked")
-  private void addMember(JSONStringer json, String memberName, Object memberValue,  int level) 
+  private void addMember(JSONStringer jsonStringer, String memberName, Object memberValue,  int level) 
       throws JSONException {
+    if (memberValue == null)
+      return; // No need to define null values
     String key = simplifyKey(memberName); 
     if (memberValue instanceof String) {
-      json.key(key);
-      json.value(memberValue);
+      jsonStringer.key(key);
+      jsonStringer.value(memberValue);
     } else if (memberValue instanceof GabotoEntity) {
-      json.key(key);
-      addEntity(json, (GabotoEntity) memberValue, level + 1);
+      jsonStringer.key(key);
+      addEntity(jsonStringer, (GabotoEntity) memberValue, level + 1);
     } else if (memberValue instanceof Collection) {
-      json.key(key);
-      json.array();
+      jsonStringer.key(key);
+      jsonStringer.array();
       for (GabotoEntity innerEntity : (Collection<GabotoEntity>) memberValue) {
-        addEntity(json, innerEntity, level + 1);
+        addEntity(jsonStringer, innerEntity, level + 1);
       }
-      json.endArray();
+      jsonStringer.endArray();
     } else if (memberValue instanceof GabotoBean) {
       try {
-        json.key(key);
+        jsonStringer.key(key);
       } catch (JSONException e) {
+        // NOTE This is why we need our own JSONWriter
+        // As the comma has already been written when the error is thrown
         e.printStackTrace();
         System.err.println();
         System.err.println("Bean already added " + key);
         return;
       }
       // beans should be put into the same level ..
-      addBean(json, (GabotoBean) memberValue, level);
-    } else if (memberValue == null) {
-      try {
-        json.key(key);
-        json.value(null);
-      } catch (JSONException e) {
-        System.err.println("Null value, already added " + key);
-      }
-    }
+      addBean(jsonStringer, (GabotoBean) memberValue, level);
+    } else 
+      throw new GabotoRuntimeException("Uncatered for condiditon");
   }
   @SuppressWarnings("unchecked")
   private void addBean(JSONStringer json, GabotoBean bean, int level)
