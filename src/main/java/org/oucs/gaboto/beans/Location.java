@@ -59,4 +59,7 @@ public class Location extends GabotoBean {
       this.setPos(((Literal) stmt.getObject()).getString());
 
   }
+  public String toString() { 
+    return pos;
+  }
 }

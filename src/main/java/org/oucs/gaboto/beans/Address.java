@@ -40,7 +40,7 @@ public class Address extends GabotoBean {
 		javaType = "String"
 	)
 	public String getStreetAddress(){
-		return this.streetAddress;
+    return this.streetAddress;
 	}
 
 	@SimpleLiteralProperty(
@@ -68,5 +68,9 @@ public class Address extends GabotoBean {
 		if(null != stmt && stmt.getObject().isLiteral())
 			this.setStreetAddress(((Literal)stmt.getObject()).getString());
 
+	}
+	
+	public String toString() { 
+    return this.streetAddress + ", " + this.postCode;
 	}
 }
