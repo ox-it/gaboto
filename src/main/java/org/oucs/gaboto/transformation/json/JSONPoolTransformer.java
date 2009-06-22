@@ -166,6 +166,9 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     if (memberValue instanceof String) {
       jsonStringer.key(key);
       jsonStringer.value(memberValue);
+    } else if (memberValue instanceof Integer) {
+      jsonStringer.key(key);
+      jsonStringer.value(memberValue);
     } else if (memberValue instanceof GabotoEntity) {
       jsonStringer.key(key);
       addEntity(jsonStringer, (GabotoEntity) memberValue, level + 1);
@@ -182,15 +185,26 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
       } catch (JSONException e) {
         // NOTE This is why we need our own JSONWriter
         // As the comma has already been written when the error is thrown
-        e.printStackTrace();
-        System.err.println();
+        // However it would be cooler if the problem was not caused
         System.err.println("Bean already added " + key);
         return;
       }
       // beans should be put into the same level ..
       addBean(jsonStringer, (GabotoBean) memberValue, level);
-    } else 
-      throw new GabotoRuntimeException("Uncatered for condiditon");
+    }  
+      /*
+       * If It is decided that null are needed after all 
+      else  if (memberValue == null) {
+      try {
+        json.key(key);
+        json.value(null);
+      } catch (JSONException e) {
+        System.err.println("Null value, already added " + key);
+      }
+      */    
+    else
+      throw new GabotoRuntimeException("Uncatered for condiditon." + 
+          memberValue + "( Class " + memberValue.getClass() + ")");
   }
   @SuppressWarnings("unchecked")
   private void addBean(JSONStringer json, GabotoBean bean, int level)
