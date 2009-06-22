@@ -273,8 +273,7 @@ public class GabotoEntityUtils {
     for (Method method : entityClass.getMethods()) {
 
       if (method.isAnnotationPresent(INDIRECT_PROPERTY_ANNOTATION)) {
-        IndirectProperty anno = method
-            .getAnnotation(INDIRECT_PROPERTY_ANNOTATION);
+        IndirectProperty anno = method.getAnnotation(INDIRECT_PROPERTY_ANNOTATION);
         String[] values = anno.value();
 
         if (IsGETMethod(method))
