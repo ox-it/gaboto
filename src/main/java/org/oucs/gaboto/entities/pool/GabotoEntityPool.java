@@ -37,6 +37,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -70,12 +71,12 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 /**
- * A collection of {@link GabotoEntity}s that for some reason belong together.
+ * A collection of {@link GabotoEntity}s.
  * 
  * <p>
  * An {@link GabotoEntityPool} can be seen as a collection of
- * {@link GabotoEntity}s that have something in common. {@link GabotoEntityPool}
- * s can be created by simply adding entities "by hand" or they can be
+ * {@link GabotoEntity}s that have something in common. {@link GabotoEntityPool}s 
+ * can be created by simply adding entities "by hand" or they can be
  * automatically created from an {@link GabotoSnapshot} or a Jena {@link Model}.
  * </p>
  * 
@@ -89,7 +90,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
  * 
  * @see GabotoEntityPoolConfiguration
  */
-public class GabotoEntityPool {
+public class GabotoEntityPool implements Collection<GabotoEntity> {
 
   private static Logger logger = Logger.getLogger(GabotoEntityPool.class
       .getName());
@@ -352,9 +353,7 @@ public class GabotoEntityPool {
   public void addMissingReferencesForEntity(Collection<Resource> resources,
       Map<String, Collection<EntityExistsCallback>> callbacks) {
     if (this.snapshot == null) {
-      logger
-          .debug("Cannot load referenced entities if no snapshot is provided.");
-      return;
+      throw new GabotoRuntimeException("Cannot load referenced entities as snapshot is null.");
     }
 
     // copy resource collection and map
@@ -374,7 +373,7 @@ public class GabotoEntityPool {
       else if (referencedEntityMap.containsKey(uri))
         entity = referencedEntityMap.get(uri);
 
-      if (null == entity) {
+      if (entity == null) {
         if (!snapshot.containsResource(res))
           continue;
 
@@ -385,10 +384,8 @@ public class GabotoEntityPool {
         }
       }
 
-      // callback
-      if (null != entity) {
-        Collection<EntityExistsCallback> callbacksForEntity = callbacks
-            .get(entity.getUri());
+      if (entity != null) {
+        Collection<EntityExistsCallback> callbacksForEntity = callbacks.get(entity.getUri());
         // copy
         Collection<EntityExistsCallback> myCallbacks = new HashSet<EntityExistsCallback>();
         myCallbacks.addAll(callbacksForEntity);
@@ -405,7 +402,7 @@ public class GabotoEntityPool {
 
   public void addPassiveEntitiesFor(GabotoEntity entity) {
     if (this.snapshot == null) 
-      throw new GabotoRuntimeException("Cannot load passive entities if no snapshot is provided.");
+      throw new GabotoRuntimeException("Cannot load passive entities as snapshot is null.");
 
     Model model = snapshot.getModel();
     Graph graph = model.getGraph();
@@ -488,9 +485,7 @@ public class GabotoEntityPool {
     }
   }
 
-  public GabotoEntity addEntity(Resource res, GabotoSnapshot snapshot)
-      throws EntityClassNotFoundException, CorruptDataException,
-      ResourceDoesNotExistException, EntityDoesNotExistException {
+  public GabotoEntity addEntity(Resource res, GabotoSnapshot snapshot) {
     return addEntity(res, snapshot, true, false);
   }
 
@@ -509,8 +504,7 @@ public class GabotoEntityPool {
    * @throws EntityDoesNotExistException
    */
   GabotoEntity addEntity(Resource res, GabotoSnapshot snapshot,
-      boolean direct, boolean bypassTests) throws EntityClassNotFoundException,
-      ResourceDoesNotExistException, EntityDoesNotExistException {
+      boolean direct, boolean bypassTests) {
     if (!snapshot.containsResource(res))
       throw new ResourceDoesNotExistException(res);
 
@@ -685,15 +679,6 @@ public class GabotoEntityPool {
   }
 
   /**
-   * Returns the size of this entity pool.
-   * 
-   * @return The number of entities in this pool.
-   */
-  public int getSize() {
-    return entityMap.size();
-  }
-
-  /**
    * Returns an {@link GabotoEntity} or null if the entity is not in this pool.
    * 
    * @param uri
@@ -786,5 +771,93 @@ public class GabotoEntityPool {
 
     return filteredEntities;
   }
+
+
+  @Override
+  public boolean add(GabotoEntity entity) {
+    if (contains(entity))
+      return false;
+    else 
+      addEntity(entity,true);
+    return true;
+  }
+
+  @Override
+  public boolean addAll(Collection<? extends GabotoEntity> c) {
+    boolean changed = false;
+    for (GabotoEntity e : c) 
+      if(add(e)) changed = true;
+    return changed;
+  }
+
+  @Override
+  public void clear() {
+    entityMap = new HashMap<String, GabotoEntity>();
+    referencedEntityMap = new HashMap<String, GabotoEntity>();
+    directEntities = new HashSet<String>();
+  }
+
+  @Override
+  public boolean contains(Object o) {
+    return entityMap.containsValue(o);
+  }
+
+  @Override
+  public boolean containsAll(Collection<?> c) {
+    boolean contained = false;
+    for (Object e : c) 
+      if(contains(e)) contained = true;
+    return contained;
+  }
+
+  @Override
+  public boolean isEmpty() {
+    return entityMap.isEmpty();
+  }
+
+  @Override
+  public Iterator<GabotoEntity> iterator() {
+    return entityMap.values().iterator();
+  }
+
+  @Override
+  public boolean remove(Object o) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public boolean removeAll(Collection<?> c) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public boolean retainAll(Collection<?> c) {
+    throw new UnsupportedOperationException();
+  }
+
+  /**
+   * Returns the size of this entity pool.
+   * 
+   * @return The number of entities in this pool.
+   */
+  public int getSize() {
+    return entityMap.size();
+  }
+
+  @Override
+  public int size() {
+    return entityMap.size();
+  }
+
+  @Override
+  public Object[] toArray() {
+    return entityMap.values().toArray();
+  }
+
+  @Override
+  public <T> T[] toArray(T[] a) {
+    return entityMap.values().toArray(a);
+  }
+
 
 }
