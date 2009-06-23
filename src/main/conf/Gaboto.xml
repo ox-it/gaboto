@@ -7,17 +7,15 @@
     <!ENTITY gabotoKML "http://ns.ox.ac.uk/namespace/gaboto/kml/2009/03/owl#" >
 ]>
 <Gaboto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    
+
     <config>
-        <namespaces
-            graphs="http://ns.ox.ac.uk/namespaces/oxpoints/graphs#"
-            data="http://m.ox.ac.uk/oxpoints/id/"
-        />
-        
+        <namespaces graphs="http://ns.ox.ac.uk/namespaces/oxpoints/graphs#"
+            data="http://m.ox.ac.uk/oxpoints/id/"/>
+
         <namespacePrefixes>
             <namespacePrefix prefix="oxp" ns="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#"/>
         </namespacePrefixes>
-        
+
         <database>
             <!-- We have our own copy of the driver, there is a bug in the jena one -->
             <engineName>HSQLDB_GABOTO</engineName>
@@ -26,7 +24,7 @@
             -->
             <url>jdbc:hsqldb:mem:oxpoints</url>
             <user>sa</user>
-            <password></password>    
+            <password/>
             <driver>org.hsqldb.jdbcDriver</driver>
             <!--
             <engineName>PostgreSQL</engineName>
@@ -34,21 +32,21 @@
             <user>postgres</user>
             <password></password>    
             <driver>org.postgresql.Driver</driver>
-            -->           
+            -->
             <!--
                 <engineName>PostgreSQL</engineName>
                 <url>jdbc:postgresql://sysdev-db1.oucs.ox.ac.uk:5432/oxpoints?ssl=true</url>
                 <user>oxpoints_web</user>
                 <password>2iBRosz=arg.T</password>
                 <driver>org.postgresql.Driver</driver>
-            -->           
+            -->
             <!--
             <engineName>MySQL</engineName>
             <url>jdbc:mysql://localhost/oxp</url>
             <user>root</user>
             <password></password>
             <driver>com.mysql.jdbc.Driver</driver>
-            -->           
+            -->
         </database>
     </config>
 
@@ -67,7 +65,7 @@
                 <property name="pos" type="String" uri="&geo;pos"/>
             </properties>
             <customMethods>
-                <method> 
+                <method>
                     <![CDATA[
                     public Double getLatitude(){ 
                         try{ 
@@ -78,7 +76,7 @@
                      } 
                      ]]>
                 </method>
-                <method> 
+                <method>
                     <![CDATA[
                     public Double getLongitude(){ 
                         try{ 
@@ -122,7 +120,8 @@
                     <properties>
                         <property name="name" type="String" uri="&dc;title"/>
 
-                        <property name="parent" type="Place" uri="&oxp;physicallyContainedWithin">
+                        <property name="parent" type="Place"
+                            uri="&oxp;physicallyContainedWithin">
                             <indirectProperty uri="&oxp;hasLocation"/>
                             <unstoredProperty uri="&gabotoKML;parent"/>
                         </property>
@@ -246,14 +245,14 @@
 
                 <GabotoEntity name="Website" type="&oxp;Website">
                     <properties>
-                        <passiveProperty name="isWeblearnIn" type="OxpEntity"
-                            relationshipType="1:N" uri="&oxp;hasWeblearn"/>
+                        <passiveProperty name="isWeblearnIn" type="OxpEntity" relationshipType="1:N"
+                            uri="&oxp;hasWeblearn"/>
 
                         <passiveProperty name="isITHomepageIn" type="OxpEntity"
                             relationshipType="1:N" uri="&oxp;hasITHomepage"/>
 
-                        <passiveProperty name="isHomepageIn" type="OxpEntity"
-                            relationshipType="1:N" uri="&oxp;hasHomepage"/>
+                        <passiveProperty name="isHomepageIn" type="OxpEntity" relationshipType="1:N"
+                            uri="&oxp;hasHomepage"/>
 
                         <passiveProperty name="isLibraryHomepageIn" type="OxpEntity"
                             relationshipType="1:N" uri="&oxp;hasLibraryHomepage"/>
