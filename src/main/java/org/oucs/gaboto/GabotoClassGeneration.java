@@ -63,7 +63,7 @@ import org.xml.sax.SAXException;
  * @author Arno Mittelbach
  *
  */
-class GabotoClassGeneration {
+public class GabotoClassGeneration {
 
 	private File config = null;
 	private File entityOutputDir;
@@ -71,8 +71,8 @@ class GabotoClassGeneration {
 	private File miscOutputDir;
 	
 	private String entityPackageName = "org.oucs.gaboto.entities";
-	private String beanPackageName = "org.oucs.gaboto.beans";
-	private String miscPackageName = "org.oucs.gaboto.util";
+	private String beanPackageName   = "org.oucs.gaboto.beans";
+	private String miscPackageName   = "org.oucs.gaboto.util";
 	
 	private String entityClassNames = "";
 	
@@ -80,22 +80,22 @@ class GabotoClassGeneration {
 	private Collection<String> entityTypes = new HashSet<String>();
 	private Map<String, String> entityClassLookup = new HashMap<String,String>();
 	
-	// type 2 uri
+	// Type 2 uri
 	private Map<String, String> entityTypeURILookup = new HashMap<String,String>();
 	
-	public final static int LITERAL_TYPE_STRING = 1;
+	public final static int LITERAL_TYPE_STRING  = 1;
 	public final static int LITERAL_TYPE_INTEGER = 2;
-	public final static int LITERAL_TYPE_FLOAT = 3;
-	public final static int LITERAL_TYPE_DOUBLE = 4;
+	public final static int LITERAL_TYPE_FLOAT   = 3;
+	public final static int LITERAL_TYPE_DOUBLE  = 4;
 	public final static int LITERAL_TYPE_BOOLEAN = 5;
 	
 	
 	public final static int SIMPLE_LITERAL_PROPERTY = 1;
-	public final static int SIMPLE_URI_PROPERTY = 2;
+	public final static int SIMPLE_URI_PROPERTY     = 2;
 	public final static int SIMPLE_COMPLEX_PROPERTY = 3;
-	public final static int BAG_LITERAL_PROPERTY = 4;
-	public final static int BAG_URI_PROPERTY = 5;
-	public final static int BAG_COMPLEX_PROPERTY = 6;
+	public final static int BAG_LITERAL_PROPERTY    = 4;
+	public final static int BAG_URI_PROPERTY        = 5;
+	public final static int BAG_COMPLEX_PROPERTY    = 6;
 	
 	public final static String IMPORT_STMTS = 
 									"import java.util.HashMap;\n" + 
@@ -235,7 +235,7 @@ class GabotoClassGeneration {
 			lookupClass += "      entityClassLookupClass.put(\"" + entry.getKey() + "\", (Class<?  extends GabotoEntity>) Class.forName(\"" +  entityPackageName + "." + entry.getValue() + "\"));\n";
 		}
 		lookupClass += "    } catch (ClassNotFoundException e) {\n";
-		lookupClass += "      e.printStackTrace();\n";
+    lookupClass += "      throw new GabotoRuntimeException(e);\n";
 		lookupClass += "    }\n";
 		lookupClass += "  }\n\n";
 		
@@ -246,7 +246,7 @@ class GabotoClassGeneration {
 			lookupClass += "      classToURILookup.put((Class<?  extends GabotoEntity>) Class.forName(\"" +  entityPackageName + "." + entry.getValue() + "\"), \"" + entry.getKey() + "\");\n";
 		}
 		lookupClass += "    } catch (ClassNotFoundException e) {\n";
-		lookupClass += "      e.printStackTrace();\n";
+    lookupClass += "      throw new GabotoRuntimeException(e);\n";
 		lookupClass += "    }\n";
 		lookupClass += "  }\n\n";
 
@@ -294,7 +294,7 @@ class GabotoClassGeneration {
 			out.write(lookupClass);
 			out.close();
 		} catch (IOException e){
-			e.printStackTrace();
+      throw new RuntimeException(e);
 		}
 	}
 	
@@ -413,7 +413,7 @@ class GabotoClassGeneration {
 			out.write(clazz);
 			out.close();
 		} catch (IOException e){
-			e.printStackTrace();
+      throw new RuntimeException(e);
 		}
 	}
 	
@@ -557,7 +557,7 @@ class GabotoClassGeneration {
 			indirectPropertyLookupTable += "      indirectPropertyLookupTable.put(\"" + entry.getKey() + "\", list);\n\n";
 		}
 		indirectPropertyLookupTable += "    } catch (Exception e) {\n";
-		indirectPropertyLookupTable += "      e.printStackTrace();\n";
+		indirectPropertyLookupTable += "      throw new RuntimeException(e);\n";
 		indirectPropertyLookupTable += "    }\n";
 		indirectPropertyLookupTable += "  }\n\n";
 
@@ -629,7 +629,7 @@ class GabotoClassGeneration {
 			out.write(clazz);
 			out.close();
 		} catch (IOException e){
-			e.printStackTrace();
+      throw new RuntimeException(e);
 		}
 	}
 
@@ -1005,7 +1005,7 @@ class GabotoClassGeneration {
 			break;
 		case BAG_LITERAL_PROPERTY:
 			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-			loadEntity += "    if(stmt != null && stmt.getObject().isResource() && null != stmt.getBag()){\n";
+			loadEntity += "    if(stmt != null && stmt.getObject().isResource() && stmt.getBag() != null){\n";
 			loadEntity += "      Bag bag = stmt.getBag();\n";
 			loadEntity += "      NodeIterator nodeIt = bag.iterator();\n";
 			loadEntity += "      while(nodeIt.hasNext()){\n";
@@ -1018,7 +1018,7 @@ class GabotoClassGeneration {
 			break;
 		case BAG_COMPLEX_PROPERTY:
 			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-			loadEntity += "    if(stmt != null  && stmt.getObject().isResource() && null != stmt.getBag()){\n";
+			loadEntity += "    if(stmt != null  && stmt.getObject().isResource() && stmt.getBag() != null){\n";
 			loadEntity += "      Bag bag = stmt.getBag();\n";
 			loadEntity += "      NodeIterator nodeIt = bag.iterator();\n";
 			loadEntity += "      while(nodeIt.hasNext()){\n";
@@ -1043,11 +1043,8 @@ class GabotoClassGeneration {
 			Class<?> clazz = Class.forName(beansPackage + "." + propType);
 			if(clazz.newInstance() instanceof GabotoBean)
 				return "import " + beansPackage + "." + propType + ";\n";
-		} catch (ClassNotFoundException e) {
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+      throw new RuntimeException(e);
 		}
 		
 		return "";
@@ -1070,7 +1067,7 @@ class GabotoClassGeneration {
 				anno += ",\"" + uri + "\"";
 
 			// store position
-			if(null != indirectMethodLookup){
+			if(indirectMethodLookup != null){
 				int position = propEl.hasAttribute("n") ? Integer.valueOf(propEl.getAttribute("n")) - 1 : 0;
 				if(! indirectMethodLookup.containsKey(uri))
 					indirectMethodLookup.put(uri, new ArrayList<String>());
@@ -1223,7 +1220,7 @@ class GabotoClassGeneration {
 	}
 	
 	private int getPropertyAnnotationType(String propType, String uri, String collection ){
-		if(null != collection){
+		if(collection != null){
 			if(collection.equals(""))
 				collection = null;
 			else
@@ -1231,7 +1228,7 @@ class GabotoClassGeneration {
 		}
 		
 		if(entityNames.contains(propType) || propType.equals("GabotoEntity")){
-			if(null == collection)
+			if(collection == null)
 				return SIMPLE_URI_PROPERTY;
 			else if(collection.equals("bag"))
 				return BAG_URI_PROPERTY;
@@ -1241,18 +1238,15 @@ class GabotoClassGeneration {
 			String beansPackage = GabotoBean.class.getPackage().getName();
 			Class<?> clazz = Class.forName(beansPackage + "." + propType);
 			if(clazz.newInstance() instanceof GabotoBean)
-				if(null == collection)
+				if(collection == null)
 					return SIMPLE_COMPLEX_PROPERTY;
 				else if(collection.equals("bag"))
 					return BAG_COMPLEX_PROPERTY;
-		} catch (ClassNotFoundException e) {
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
+		} catch (Exception e) {
+		  throw new RuntimeException(e);
+		} 
 		
-		if(null == collection)
+		if(collection == null)
 			return SIMPLE_LITERAL_PROPERTY;
 		else if(collection.equals("bag"))
 			return BAG_LITERAL_PROPERTY;
