@@ -408,7 +408,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
     // load passive entities
     Collection<PassiveEntitiesRequest> requests = entity
         .getPassiveEntitiesRequest();
-    if (null == requests)
+    if (requests == null)
       return;
 
     // add stuff direct?
