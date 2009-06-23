@@ -376,12 +376,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       if (entity == null) {
         if (!snapshot.containsResource(res))
           continue;
-
-        try {
-          entity = this.addEntity(res, snapshot, direct, true);
-        } catch (Exception e) {
-          throw new GabotoRuntimeException(e);
-        }
+        entity = this.addEntity(res, snapshot, direct, true);
       }
 
       if (entity != null) {
