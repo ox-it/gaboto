@@ -31,13 +31,7 @@
  */
 package org.oucs.gaboto;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.xml.parsers.ParserConfigurationException;
-
 import org.apache.log4j.Logger;
-import org.xml.sax.SAXException;
 
 /**
  * Needed to initialize gaboto. 
@@ -52,7 +46,7 @@ public class GabotoLibrary {
 	private static Logger logger = Logger.getLogger(GabotoLibrary.class.getName());
 	
 	/**
-	 * Initializes the Gaboto system (this has to be done before Gaboto can be used).
+	 * Initialises the Gaboto system (this has to be done before Gaboto can be used).
 	 * @param config
 	 */
 	public static void init(GabotoConfiguration config){
@@ -72,17 +66,4 @@ public class GabotoLibrary {
 		return config;
 	}
 	
-	/**
-	 * 
-	 * @param config
-	 * @param entityOutputDir
-	 * @param beanOutputDir
-	 * @param miscOutputDir
-	 * @throws ParserConfigurationException
-	 * @throws SAXException
-	 * @throws IOException
-	 */
-	public static void generateClassesFromConfig(File config, File entityOutputDir, File beanOutputDir, File miscOutputDir) throws ParserConfigurationException, SAXException, IOException{
-		new GabotoClassGeneration(config, entityOutputDir, beanOutputDir, miscOutputDir).run();
-	}
 }
