@@ -77,12 +77,11 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   public static final int MAX_NESTING = 8;
 
   private int nesting = 1;
-  private int collectProperties = COLLECT_DIRECT_PROPERTIES
+  private int collectProperties = COLLECT_DIRECT_PROPERTIES 
       | COLLECT_INDIRECT_PROPERTIES | COLLECT_PASSIVE_PROPERTIES;
 
   public String transform(GabotoEntityPool pool) {
     Collection<GabotoEntity> entities = pool.getEntities();
-    
     // Initialize level map
     for (GabotoEntity entity : entities) {
       levelMap.put(entity, new Integer(1));
@@ -90,45 +89,48 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 
     JSONStringer json = new JSONStringer();
     
-    try {
-      json.array();
-      for (GabotoEntity entity : entities) {
-        addEntity(json, entity, 1);
-      }
-      json.endArray();
-    } catch (JSONException e) {
-      throw new GabotoRuntimeException(e);
+    startArray(json);
+    for (GabotoEntity entity : entities) {
+      addEntity(json, entity, 1);
     }
+    endArray(json);
     return  json.toString();
   }
 
-  private void addEntity(JSONStringer json, GabotoEntity entity, int level) throws JSONException {
-    System.err.println("addEntity:" + entity.getUri());
+  private void addEntity(JSONStringer json, GabotoEntity entity, int level) {
+    //System.err.println("JSONPoolTransformer.addEntity:" + entity.getUri());
     // begin new object
-    json.object();
+    startObject(json);
+    
 
-    json.key("uri").value(entity.getUri());
+    addKey(json, "uri");
+    addValue(json, entity.getUri());
 
-    json.key("type").value(entity.getType());
+    addKey(json, "type");
+    addValue(json, entity.getType());
 
     if (levelMap.containsKey(entity)) {
       int storedLevel = levelMap.get(entity).intValue();
 
       if (storedLevel < level) {
-        json.key("referenced").value(true);
-        json.endObject();
+        addKey(json, "referenced");
+        addValue(json, true);
+        endObject(json);
         return;
-      }
+      } 
 
       // store level in map
       levelMap.put(entity, new Integer(level));
     }
 
     if (level > nesting) {
-      json.key("nestingLimitReached").value(true);
-      json.endObject();
+      addKey(json, "nestingLimitReached");
+      addValue(json, true);
+      endObject(json);
       return;
     }
+    
+    System.err.println("DIRECT PROPERTIES");
 
     if ((getCollectProperties() & COLLECT_DIRECT_PROPERTIES) == COLLECT_DIRECT_PROPERTIES) {
       for (Entry<String, Object> entry : entity.getAllDirectProperties().entrySet()) {
@@ -136,68 +138,162 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
       }
     }
 
+    System.err.println("INDIRECT PROPERTIES");
+    
     if ((getCollectProperties() & COLLECT_INDIRECT_PROPERTIES) == COLLECT_INDIRECT_PROPERTIES) {
       for (Entry<String, Object> entry : entity.getAllIndirectProperties().entrySet()) {
-        addMember(json, entry.getKey(), entry.getValue(), level);
+        // For Rooms, for example, it is possible for a property to exist in 
+        // direct and indirect properties
+        if (!entity.getAllDirectProperties().containsKey(entry.getKey()))
+          addMember(json, entry.getKey(), entry.getValue(), level);
       }
     }
+
+    System.err.println("PASSIVE PROPERTIES");
 
     if ((getCollectProperties() & COLLECT_PASSIVE_PROPERTIES) == COLLECT_PASSIVE_PROPERTIES) {
       Set<Entry<String, Object>> passiveProperties = entity.getAllPassiveProperties().entrySet();
       if (passiveProperties.size() > 0) {
-        json.key("passiveProperties");
-        json.object();
+        boolean propertiesDefined = false;
         for (Entry<String, Object> entry : passiveProperties) {
-          addMember(json, entry.getKey(), entry.getValue(), level);
+          if (entry.getValue() != null)
+            propertiesDefined = true;
+        }        
+        if (propertiesDefined) { 
+          System.err.println(passiveProperties.size());
+          addKey(json, "passiveProperties");
+          startObject(json);
+          for (Entry<String, Object> entry : passiveProperties) {
+            System.err.println("passive entry" + entry.getKey() + "=" + entry.getValue());
+            addMember(json, entry.getKey(), entry.getValue(), level);
+          }
+          endObject(json);
         }
-        json.endObject();
       }
     }
-    // end object
-    json.endObject();
+    endObject(json);
   }
 
+  HashMap<String, Object> contents = null;
+  String indent = "";
+  private JSONStringer startObject(JSONStringer jsonStringer) { 
+    System.err.println(indent + "Start Object");
+    try {
+      jsonStringer.object();
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    contents = new HashMap<String, Object>();
+    indent = indent + " ";
+    return jsonStringer;
+  }
+  private JSONStringer endObject(JSONStringer jsonStringer) { 
+    try {
+      jsonStringer.endObject();
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    indent = indent.substring(0, indent.length() -1);
+    System.err.println(indent + "End Object");
+    return jsonStringer;
+  }
+  
+  private JSONStringer startArray(JSONStringer jsonStringer)  { 
+    try {
+      jsonStringer.array();
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    return jsonStringer;
+  }
+  private JSONStringer endArray(JSONStringer jsonStringer) { 
+    try {
+      jsonStringer.endArray();
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    return jsonStringer;
+  }
+
+  private JSONStringer addKey(JSONStringer jsonStringer, String key) {
+    System.err.println(indent + "Adding key " + key);
+    try {
+      jsonStringer.key(key);
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    return jsonStringer;
+  }
+  private JSONStringer addValue(JSONStringer jsonStringer, String value)  {
+    System.err.println(indent + "Adding value " + value);
+    try {
+      jsonStringer.value(value);
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    return jsonStringer;
+  }
+  private JSONStringer addValue(JSONStringer jsonStringer, boolean value) {
+    System.err.println(indent + "Adding value " + value);
+    try {
+      jsonStringer.value(value);
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    return jsonStringer;
+  }
+  private JSONStringer addValue(JSONStringer jsonStringer, Object value){
+    System.err.println(indent + "Adding value " + value);
+    try {
+      jsonStringer.value(value);
+    } catch (JSONException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    return jsonStringer;
+  }
+  
   @SuppressWarnings("unchecked")
-  private void addMember(JSONStringer jsonStringer, String memberName, Object memberValue,  int level) 
-      throws JSONException {
+  private void addMember(JSONStringer jsonStringer, String memberName, Object memberValue,  int level) {
     if (memberValue == null)
       return; // No need to define null values
-    String key = simplifyKey(memberName); 
+    String key = simplifyKey(memberName);
+    if(contents.containsKey(key))
+      throw new RuntimeException("Already in" + key);
     if (memberValue instanceof String) {
-      jsonStringer.key(key);
-      jsonStringer.value(memberValue);
+      addKey(jsonStringer, key);
+      addValue(jsonStringer, memberValue);
     } else if (memberValue instanceof Integer) {
-      jsonStringer.key(key);
-      jsonStringer.value(memberValue);
+      addKey(jsonStringer, key);
+      addValue(jsonStringer, memberValue);
     } else if (memberValue instanceof GabotoEntity) {
-      jsonStringer.key(key);
+      addKey(jsonStringer, key);
       addEntity(jsonStringer, (GabotoEntity) memberValue, level + 1);
     } else if (memberValue instanceof Collection) {
-      jsonStringer.key(key);
-      jsonStringer.array();
+      addKey(jsonStringer, key);
+      startArray(jsonStringer);
       for (GabotoEntity innerEntity : (Collection<GabotoEntity>) memberValue) {
         addEntity(jsonStringer, innerEntity, level + 1);
       }
-      jsonStringer.endArray();
+      endArray(jsonStringer);
     } else if (memberValue instanceof GabotoBean) {
       try {
-        jsonStringer.key(key);
-      } catch (JSONException e) {
+        addKey(jsonStringer, key);
+      } catch (GabotoRuntimeException e) {
         // NOTE This is why we need our own JSONWriter
         // As the comma has already been written when the error is thrown
         // However it would be cooler if the problem was not caused
-        System.err.println("Bean already added " + key);
-        return;
+        throw new GabotoRuntimeException("Bean already added " + key + "(" + memberValue + ")", e);
+        //return;
       }
       // beans should be put into the same level ..
       addBean(jsonStringer, (GabotoBean) memberValue, level);
     }  
       /*
-       * If It is decided that null are needed after all 
+       * If it is decided that null are needed after all 
       else  if (memberValue == null) {
       try {
-        json.key(key);
-        json.value(null);
+        addKey(json, key);
+        addValue(jsonStringer, null);
       } catch (JSONException e) {
         System.err.println("Null value, already added " + key);
       }
@@ -207,40 +303,43 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
           memberValue + "( Class " + memberValue.getClass() + ")");
   }
   @SuppressWarnings("unchecked")
-  private void addBean(JSONStringer json, GabotoBean bean, int level)
-      throws JSONException {
+  private void addBean(JSONStringer json, GabotoBean bean, int level) {
     if (level > nesting) {
-      json.object();
-      json.key("nestingLimitReached").value(true);
-      json.endObject();
+      startObject(json);
+      addKey(json,"nestingLimitReached");
+      addValue(json, true);
+      endObject(json);
       return;
     }
 
-    // begin new object
-    json.object();
+    startObject(json);
 
     for (Entry<String, Object> entry : bean.getAllProperties().entrySet()) {
-      if (entry.getValue() instanceof String) {
-        json.key(simplifyKey(entry.getKey()));
-        json.value(entry.getValue());
-      } else if (entry.getValue() instanceof GabotoEntity) {
-        json.key(simplifyKey(entry.getKey()));
-        addEntity(json, (GabotoEntity) entry.getValue(), level + 1);
-      } else if (entry.getValue() instanceof Collection) {
-        json.key(simplifyKey(entry.getKey()));
-        json.array();
-        for (GabotoEntity innerEntity : (Collection<GabotoEntity>) entry
-            .getValue()) {
+      String  key = simplifyKey(entry.getKey()); 
+      Object value = entry.getValue(); 
+      if (value == null) {  
+        // Do nothing, this is javascript
+      } else if (value instanceof String) {
+        addKey(json, key);
+        addValue(json, value);
+      } else if (value instanceof GabotoEntity) {
+        addKey(json, key);
+        addEntity(json, (GabotoEntity)value, level + 1);
+      } else if (value instanceof Collection) {
+        addKey(json, key);
+        startArray(json);
+        for (GabotoEntity innerEntity : (Collection<GabotoEntity>)value) {
           addEntity(json, innerEntity, level + 1);
         }
-        json.endArray();
-      } else if (entry.getValue() instanceof GabotoBean) {
-        json.key(simplifyKey(entry.getKey()));
-        addBean(json, (GabotoBean) entry.getValue(), level + 1);
-      }
+        endArray(json);
+      } else if (value instanceof GabotoBean) {
+        addKey(json, key);
+        addBean(json, (GabotoBean)value, level + 1);
+      } else
+        throw new RuntimeException("Unanticipated type: " + key + "(" + value + ")" ); 
     }
 
-    json.endObject();
+    endObject(json);
   }
 
   /**
