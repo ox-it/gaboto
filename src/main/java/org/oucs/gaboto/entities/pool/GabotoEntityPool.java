@@ -488,32 +488,33 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * Creates an entity from a resource and adds it to this pool.
    * 
    * 
-   * @param res
+   * @param resource
    *          The source the entity is created from
    * @param snapshot
    *          The snapshot the resource was taken from.
    * @param direct
+   * @param bypassTests whether to check entity validity
    * 
    * @throws EntityClassNotFoundException
    * @throws ResourceDoesNotExistException
    * @throws EntityDoesNotExistException
    */
-  GabotoEntity addEntity(Resource res, GabotoSnapshot snapshot,
+  GabotoEntity addEntity(Resource resource, GabotoSnapshot snapshot,
       boolean direct, boolean bypassTests) {
-    if (!snapshot.containsResource(res))
-      throw new ResourceDoesNotExistException(res);
+    if (!snapshot.containsResource(resource))
+      throw new ResourceDoesNotExistException(resource);
 
     // find type
     String type = null;
 
-    Statement typeStmt = res.getProperty(RDF.type);
+    Statement typeStmt = resource.getProperty(RDF.type);
 
     if (typeStmt == null)
-      type = gaboto.getTypeOf(res.getURI());
+      type = gaboto.getTypeOf(resource.getURI());
 
     if (type == null
         && (typeStmt == null || !typeStmt.getObject().isResource())) {
-      logger.debug("Found an untyped resource: " + res.getURI());
+      logger.debug("Found an untyped resource: " + resource.getURI());
       return null;
     } else if (type == null && typeStmt != null)
       type = ((Resource) typeStmt.getObject()).getURI();
@@ -528,7 +529,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       // test type
       // is entity of allowed type or is it an indirect add
       if (!bypassTests) {
-        if (direct && null != config && !config.getAcceptedTypes().isEmpty()
+        if (direct && config != null && !config.getAcceptedTypes().isEmpty()
             && !config.getAcceptedTypes().contains(entity.getType())) {
           return null;
         }
@@ -546,7 +547,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
         for (ResourceFilter filter : config.getResourceFilters()) {
           try {
             filter.appliesTo().cast(entity);
-            if (!filter.filterResource(res)) {
+            if (!filter.filterResource(resource)) {
               passedFilter = false;
               break;
             }
@@ -559,7 +560,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       }
 
       // load entity
-      entity.loadFromSnapshot(res, snapshot, this);
+      entity.loadFromSnapshot(resource, snapshot, this);
 
       // add entity
       return this.addEntity(entity, direct);
