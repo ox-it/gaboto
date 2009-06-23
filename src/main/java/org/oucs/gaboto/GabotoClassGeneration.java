@@ -54,7 +54,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * Generates specialized classes from the Gaboto config file.
+ * Generates specialised classes from the Gaboto config file.
  * 
  * <p>
  * This class is very scripty and should be redone in an orderly fashion.
