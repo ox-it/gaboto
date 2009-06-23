@@ -205,9 +205,9 @@
     public String getDescription(){
         String description = "";
         
-        if(null != getHomepage())
+        if(getHomepage() != null)
             description += "Website: <a href=\"" + getHomepage().getUri() + "\">" + getHomepage().getUri() + "</a><br/>";
-        if(null != getImages() && getImages().size() > 0){
+        if(getImages() != null && getImages().size() > 0){
         	Image img = getImages().iterator().next();
         	description += "<img src=\"" + img.getUri() + "\" width=\"" + img.getWidth() + "\" height=\"" + img.getHeight() + "\"/>";
         }
