@@ -30,7 +30,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.oucs.gaboto;
+package net.sf.gaboto.generation;
 
 import java.io.BufferedWriter;
 import java.io.File;

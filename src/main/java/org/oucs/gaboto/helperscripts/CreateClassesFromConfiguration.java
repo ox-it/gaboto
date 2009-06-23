@@ -36,9 +36,19 @@ import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.oucs.gaboto.GabotoLibrary;
+import net.sf.gaboto.generation.GabotoClassGeneration;
+
 import org.xml.sax.SAXException;
 
+/**
+ * Called from Ant with the following arguments: 
+           <arg value="src/main/conf/Gaboto.xml"/>
+           <arg value="src/main/java/org/oucs/gaboto/entities"/>
+           <arg value="src/main/java/org/oucs/gaboto/beans"/>
+           <arg value="src/main/java/org/oucs/gaboto/util"/>
+ *
+ *
+ */
 public class CreateClassesFromConfiguration {
 
 	
@@ -72,7 +82,7 @@ public class CreateClassesFromConfiguration {
 		if(! miscOutputDir.exists() || ! miscOutputDir.isDirectory())
 			showHelp();
 
-		GabotoLibrary.generateClassesFromConfig(config,entityOutputDir, beanOutputDir, miscOutputDir);
+		generateClassesFromConfig(config,entityOutputDir, beanOutputDir, miscOutputDir);
 	}
 	
 
@@ -80,4 +90,19 @@ public class CreateClassesFromConfiguration {
 		System.out.println("Argument one must be a xml config file and two, three and four need to be a directories.");
 		System.exit(1);
 	}
+	
+  /**
+   * 
+   * @param config
+   * @param entityOutputDir
+   * @param beanOutputDir
+   * @param miscOutputDir
+   * @throws ParserConfigurationException
+   * @throws SAXException
+   * @throws IOException
+   */
+  public static void generateClassesFromConfig(File config, File entityOutputDir, File beanOutputDir, File miscOutputDir) throws ParserConfigurationException, SAXException, IOException{
+    new GabotoClassGeneration(config, entityOutputDir, beanOutputDir, miscOutputDir).run();
+  }
+	
 }
