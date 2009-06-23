@@ -117,6 +117,9 @@ public class JSONWriter {
             try {
                 if (this.comma && this.mode == 'a') {
                     this.writer.write(',');
+                      this.writer.write(",\n");
+                    for (int i = 0; i < this.top; i++)
+                      this.writer.write(" ");
                 }
                 this.writer.write(s);
             } catch (IOException e) {
@@ -209,8 +212,10 @@ public class JSONWriter {
               // NOTE TPP Change here
                 stack[top - 1].putOnce(s, Boolean.TRUE);
                 if (this.comma) {
-                  this.writer.write(',');
+                  this.writer.write(",\n");
                 }
+                for (int i = 0; i < this.top; i++)
+                  this.writer.write(" ");
                 this.writer.write(JSONObject.quote(s));
                 this.writer.write(':');
                 this.comma = false;
@@ -238,7 +243,7 @@ public class JSONWriter {
             this.mode = 'o';
         }
         if (this.mode == 'o' || this.mode == 'a') {
-            this.append("{");
+            this.append("{\n");
             this.push(new JSONObject());
             this.comma = false;
             return this;
