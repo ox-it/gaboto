@@ -4220,7 +4220,7 @@
             <address>
               <addrLine>Ioannou Centre for Classical and Byzantine
 	      Studies</addrLine>
-	      <addrLine>66 St Giles'</addrLine>
+	      <addrLine>66 St Giles</addrLine>
 	      <addrLine>Oxford</addrLine>
 	      <postCode>OX1 3LU</postCode>
             </address>
@@ -5856,7 +5856,7 @@ data, and if so, how? -->
             <address>
               <addrLine>Ioannou Centre for Classical and Byzantine
 	      Studies</addrLine>
-	      <addrLine>66 St Giles'</addrLine>
+	      <addrLine>66 St Giles</addrLine>
 	      <addrLine>Oxford</addrLine>
 	      <postCode>OX1 3LU</postCode>
             </address>
@@ -6071,7 +6071,7 @@ data, and if so, how? -->
           <placeName>Faculty of Theology</placeName>
           <location type="address">
             <address>
-              <addrLine>41 St Giles', Oxford</addrLine>
+              <addrLine>41 St Giles, Oxford</addrLine>
               <postCode>OX1 3LW</postCode>
             </address>
           </location>
@@ -6282,7 +6282,7 @@ data, and if so, how? -->
           <placeName>Humanities Division</placeName>
           <location type="address">
             <address>
-              <addrLine>34 St Giles', Oxford</addrLine>
+              <addrLine>34 St Giles, Oxford</addrLine>
               <postCode>OX1 3LH</postCode>
             </address>
           </location>
@@ -6935,7 +6935,7 @@ data, and if so, how? -->
           <placeName>Mathematical Institute</placeName>
           <location type="address">
             <address>
-              <addrLine>24-29 St Giles', Oxford</addrLine>
+              <addrLine>24-29 St Giles, Oxford</addrLine>
               <postCode>OX1 3LB</postCode>
             </address>
           </location>
@@ -6950,7 +6950,7 @@ data, and if so, how? -->
             </desc>
           </trait>
           <place subtype="primary" type="building">
-            <placeName>24-29 St Giles'</placeName>
+            <placeName>24-29 St Giles</placeName>
             <location when="2008-01-09T16:00:00">
               <geo>-1.25959 51.75891</geo>
               <note>Submitted by Stephen Sangar</note>
@@ -6962,7 +6962,7 @@ data, and if so, how? -->
           <placeName>Mathematical, Physical &amp; Life Sciences Division</placeName>
           <location type="address">
             <address>
-              <addrLine>24-29 St Giles', Oxford</addrLine>
+              <addrLine>24-29 St Giles, Oxford</addrLine>
               <postCode>OX1 3LB</postCode>
             </address>
           </location>
@@ -7469,7 +7469,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           <placeName>Oxford Internet Institute</placeName>
           <location type="address">
             <address>
-              <addrLine>1 St Giles', Oxford</addrLine>
+              <addrLine>1 St Giles, Oxford</addrLine>
               <postCode>OX1 3JS</postCode>
             </address>
           </location>
@@ -8458,7 +8458,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
           </event>
           <location type="address">
             <address>
-              <addrLine>38 St Giles', Oxford</addrLine>
+              <addrLine>38 St Giles, Oxford</addrLine>
               <postCode>OX1 3LN</postCode>
             </address>
           </location>
@@ -10485,7 +10485,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
         <place type="building" xml:id="b_0006">
           <location type="address">
             <address>
-            <addrLine>41 St Giles', Oxford</addrLine>
+            <addrLine>41 St Giles, Oxford</addrLine>
       </address>
           </location>
           <location>
