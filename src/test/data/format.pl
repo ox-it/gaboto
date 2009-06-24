@@ -15,11 +15,12 @@ while(<>) {
 		if (m/^([0-9]+),"([^"]+)",([0-9]*),([0-9]*)\n$/) { 
 			$bn=$1;
 			$desc=camelCaps($2);
+      $desc = hack($desc);
 			$y1=$3;
 			$y2=$4;
 			
       print "<obn>$bn</obn>";
-	    print "<desc>$desc</desc>";
+	    print "<placeName>$desc</placeName>";
 			if ($y1 ne "") { 
 				print "<construction>$y1</construction>";
 			}
@@ -50,3 +51,8 @@ sub camelCaps {
 	return $ret;
 }
 
+sub hack {
+	my $s = shift;
+  $s =~ s/ Sq / Square /;
+  return $s;  
+}
