@@ -193,7 +193,7 @@ public class Gaboto {
    */
   public TimeDimensionIndexer getTimeDimensionIndexer()
       throws NoTimeIndexSetException {
-    if (null == timeIdx)
+    if (timeIdx == null)
       throw new NoTimeIndexSetException();
     return timeIdx;
   }
@@ -326,7 +326,7 @@ public class Gaboto {
     for (String g : graphURIs) {
       logger.debug("add graph to snapshot: " + g);
       NamedGraph graph = ngs.getGraph(g);
-      if (null == graph)
+      if (graph == null)
         throw new IllegalArgumentException("Unknown graph: " + g);
 
       // add statements to snapshot model
@@ -659,7 +659,7 @@ public class Gaboto {
    * @see GabotoInsertionEvent
    */
   synchronized public NamedGraph add(TimeSpan ts, Triple triple) {
-    if (null == ts || ts.equals(TimeUtils.EXISTANCE)) {
+    if (ts == null || ts.equals(TimeUtils.EXISTANCE)) {
       add(triple);
       return null;
     }
@@ -709,7 +709,7 @@ public class Gaboto {
    * @see GabotoRemovalEvent
    */
   synchronized public void remove(TimeSpan ts, Triple triple) {
-    if (null == ts || ts.equals(TimeUtils.EXISTANCE)) {
+    if (ts == null || ts.equals(TimeUtils.EXISTANCE)) {
       remove(triple);
       return;
     }
@@ -837,18 +837,18 @@ public class Gaboto {
       cdgGraph.add(new Triple(durationDesc, Node.createURI(RDF.type.getURI()),
           Node.createURI(TimeVocab.DurationDescription.getURI())));
 
-      if (null != ts.getDurationYear()) {
+      if (ts.getDurationYear() != null) {
         cdgGraph
             .add(new Triple(durationDesc, Node.createURI(TimeVocab.years
                 .getURI()), Node.createLiteral(String.valueOf(ts
                 .getDurationYear()), null, XSDDatatype.XSDinteger)));
       }
-      if (null != ts.getDurationMonth()) {
+      if (ts.getDurationMonth() != null) {
         cdgGraph.add(new Triple(durationDesc, Node.createURI(TimeVocab.months
             .getURI()), Node.createLiteral(String
             .valueOf(ts.getDurationMonth()), null, XSDDatatype.XSDinteger)));
       }
-      if (null != ts.getDurationDay()) {
+      if (ts.getDurationDay() != null) {
         cdgGraph.add(new Triple(durationDesc, Node.createURI(TimeVocab.days
             .getURI()), Node.createLiteral(String.valueOf(ts.getDurationDay()),
             null, XSDDatatype.XSDinteger)));
@@ -1006,7 +1006,7 @@ public class Gaboto {
    *         system.
    */
   public boolean containsEntity(String uri) {
-    if (null == uri)
+    if (uri == null)
       throw new IllegalArgumentException("URI may not be null.");
     return getNamedGraphSet().containsQuad(
         new Quad(Node.ANY, Node.createURI(uri), Node.createURI(RDF.type
