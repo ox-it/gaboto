@@ -4219,7 +4219,7 @@
             <address>
               <addrLine>Ioannou Centre for Classical and Byzantine
 	      Studies</addrLine>
-	      <addrLine>66 St Giles</addrLine>
+	      <addrLine>66 St Giles'</addrLine>
 	      <addrLine>Oxford</addrLine>
 	      <postCode>OX1 3LU</postCode>
             </address>
@@ -5855,7 +5855,7 @@ data, and if so, how? -->
             <address>
               <addrLine>Ioannou Centre for Classical and Byzantine
 	      Studies</addrLine>
-	      <addrLine>66 St Giles</addrLine>
+	      <addrLine>66 St Giles'</addrLine>
 	      <addrLine>Oxford</addrLine>
 	      <postCode>OX1 3LU</postCode>
             </address>
@@ -6949,7 +6949,7 @@ data, and if so, how? -->
             </desc>
           </trait>
           <place subtype="primary" type="building">
-            <placeName>24-29 St Giles</placeName>
+            <placeName>24-29 St Giles'</placeName>
             <location when="2008-01-09T16:00:00">
               <geo>-1.25959 51.75891</geo>
               <note>Submitted by Stephen Sangar</note>
@@ -10484,7 +10484,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
         <place type="building" xml:id="b_0006">
           <location type="address">
             <address>
-	<addrLine>41 St Giles', Oxford</addrLine>
+            <addrLine>41 St Giles', Oxford</addrLine>
       </address>
           </location>
           <location>
