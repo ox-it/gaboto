@@ -159,7 +159,7 @@
         </place>
 
         <place type="library" olisCode="ASC Gallery" xml:id="O_lib_asc_5">
-          <placeName>Great Lib. Gallery</placeName>
+          <placeName>Great Library Gallery</placeName>
         </place>
 
         <place type="library" olisCode="ASC Great Lib" xml:id="O_lib_asc_6">
@@ -281,7 +281,7 @@
           </trait>
         </place>
         <place type="library" olisCode="ARC Holdings" xml:id="O_lib_arc_1">
-          <placeName>Inst. of Archaeology holdings on OLIS</placeName>
+          <placeName>Institute of Archaeology holdings on OLIS</placeName>
         </place>
 
         <place type="library" olisCode="ASH" xml:id="O_lib_ash">
@@ -492,7 +492,7 @@
         </place>
 
         <place type="library" olisCode="BOD Conservat" xml:id="bodlib_4">
-          <placeName>Conservation Sect.</placeName>
+          <placeName>Conservation Section</placeName>
         </place>
 
         <place type="library" olisCode="BOD D.Humfrey" xml:id="bodlib_5">
@@ -535,8 +535,8 @@
         </place>
 
         <place type="library" olisCode="BOD OffPapers" xml:id="bodlib_14">
-          <placeName>Official Papers(considered to be a separate library: Official Papers
-            Collection)</placeName>
+          <!-- considered to be a separate library -->
+          <placeName>Official Papers Collection</placeName>
         </place>
 
         <place type="library" olisCode="BOD Offsite" xml:id="bodlib_15">
@@ -572,7 +572,7 @@
         </place>
 
         <place type="library" olisCode="BOD Turkish" xml:id="bodlib_23">
-          <placeName>Turkish at Or.Inst.</placeName>
+          <placeName>Turkish at Oriental Institute</placeName>
         </place>
 
         <place type="library" olisCode="BOD U. Camera" xml:id="bodlib_24">
@@ -595,7 +595,7 @@
             </desc>
           </trait>
         </place>
-	<place type="building" xml:id="b_0036">
+        <place type="building" xml:id="b_0036">
             <placeName>Cairns Library</placeName>
             <location when="2007-06-14T10:41:32.151+01:00">
               <geo>-1.2196969985961914 51.76390911220752</geo>
@@ -967,7 +967,7 @@
           </trait>
         </place>
         <place type="library" olisCode="ECO AfrEcon" xml:id="O_lib_eco_1">
-          <placeName>Centre ft Study of African Economy</placeName>
+          <placeName>Centre for the Study of African Economy</placeName>
         </place>
 
         <place type="library" olisCode="ECO LibOffice" xml:id="O_lib_eco_2">
@@ -1956,8 +1956,8 @@
           </trait>
         </place>
         <place type="library" olisCode="MAG Chantry" xml:id="O_lib_mag_1">
-          <placeName>Chantry Library(considered to be a separate library: Chantry
-            Library)</placeName>
+          <!-- considered to be a separate library -->
+          <placeName>Chantry Library</placeName>
         </place>
 
         <place type="library" olisCode="MAG Daubeny" xml:id="O_lib_mag_2">
@@ -3283,8 +3283,9 @@
         </place>
 
         <place type="library" olisCode="ANT RussianEE" xml:id="O_lib_ant_2">
-          <placeName>Russian and E. Eur. Library(considered to be a separate library: Russian and
-            Eurasian Studies Centre)</placeName>
+           <!-- considered to be a separate library -->
+          <placeName>Russian and Eastern European Library: Russian and
+            Eurasian Studies Centre</placeName>
         </place>
 
         <place type="library" olisCode="STB" xml:id="O_lib_stb">
@@ -4896,7 +4897,7 @@ data, and if so, how? -->
               <note> recorded by Janet McKnight</note>
             </location>
           </place>
-          <!-- JR says remove 2209-01-13
+          <!-- JR says remove 2009-01-13
           <place type="building">
             <placeName>Hans Krebs Building</placeName>
             <place type="room">
@@ -6961,7 +6962,7 @@ data, and if so, how? -->
           <placeName>Mathematical, Physical &amp; Life Sciences Division</placeName>
           <location type="address">
             <address>
-              <addrLine>24-29 St. Giles', Oxford</addrLine>
+              <addrLine>24-29 St Giles', Oxford</addrLine>
               <postCode>OX1 3LB</postCode>
             </address>
           </location>
