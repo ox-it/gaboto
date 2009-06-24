@@ -1,19 +1,19 @@
 <obn>101</obn><placeName>Dartington House</placeName><construction>1970</construction><acquisition>1970</acquisition>
 <obn>104</obn><placeName>Ashmolean Museum</placeName><construction>1845</construction>
 <obn>105</obn><placeName>Old Observatory</placeName><construction>1875</construction>
-<obn>106</obn><placeName>07 - 09 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition>
-<obn>107</obn><placeName>11 - 13 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition>
-<obn>108</obn><placeName>15 - 19 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition>
-<obn>109</obn><placeName>07 - 19 Banbury Road</placeName><construction>1969</construction>
+<obn>106</obn><placeName>7-9 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition>
+<obn>107</obn><placeName>11-13 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition>
+<obn>108</obn><placeName>15-19 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition>
+<obn>109</obn><placeName>7-19 Banbury Road</placeName><construction>1969</construction>
 <obn>110</obn><placeName>21 Banbury Road</placeName><construction>1879</construction><acquisition>1957</acquisition>
 <obn>111</obn><placeName>43 Banbury Road</placeName><construction>1885</construction><acquisition>1966</acquisition>
 <obn>113</obn><placeName>45 Banbury Road</placeName><construction>1885</construction><acquisition>1966</acquisition>
 <obn>114</obn><placeName>47 Banbury Road</placeName><construction>1880</construction><acquisition>1966</acquisition>
-<obn>115</obn><placeName>51 - 53 Banbury Road</placeName><construction>1869</construction><acquisition>1966</acquisition>
+<obn>115</obn><placeName>51-53 Banbury Road</placeName><construction>1869</construction><acquisition>1966</acquisition>
 <obn>116</obn><placeName>56 Banbury Road</placeName><construction>1866</construction><acquisition>1967</acquisition>
 <obn>117</obn><placeName>Human Sciences Centre, 58 Banbury Road</placeName><construction>1873</construction><acquisition>1967</acquisition>
 <obn>119</obn><placeName>61 Banbury Road</placeName><construction>1868</construction><acquisition>1966</acquisition>
-<obn>122</obn><placeName>34 - 36 Beaumont Street</placeName><construction>1837</construction><acquisition>1940</acquisition>
+<obn>122</obn><placeName>34-36 Beaumont Street</placeName><construction>1837</construction><acquisition>1940</acquisition>
 <obn>123</obn><placeName>37 Beaumont Street</placeName><construction>1837</construction><acquisition>1940</acquisition>
 <obn>124</obn><placeName>11 Bevington Road</placeName><construction>1868</construction><acquisition>1966</acquisition>
 <obn>125</obn><placeName>12 Bevington Road</placeName><construction>1868</construction><acquisition>1966</acquisition>
@@ -35,7 +35,7 @@
 <obn>153</obn><placeName>Thom Building</placeName><construction>1963</construction>
 <obn>154</obn><placeName>Holder (Engineering/Materials)</placeName><construction>1976</construction>
 <obn>155</obn><placeName>Examination Schools</placeName><construction>1878</construction>
-<obn>156</obn><placeName>Rewley House, 01 - 07 Wellington Square</placeName><construction>1875</construction>
+<obn>156</obn><placeName>Rewley House, 1-7 Wellington Square</placeName><construction>1875</construction>
 <obn>157</obn><placeName>Sadler House</placeName><construction>1875</construction>
 <obn>158</obn><placeName>Plant Sciences South (ex Forestry)</placeName><construction>1946</construction>
 <obn>159</obn><placeName>Mansfield Road 3 (ex Geography)</placeName><construction>1898</construction>
@@ -47,10 +47,10 @@
 <obn>166</obn><placeName>Le Gros Clark Building (ex Anatomy)</placeName><construction>1892</construction>
 <obn>167</obn><placeName>Institute Of Human Sciences, Pauling Centre</placeName><construction>1981</construction>
 <obn>168</obn><placeName>Inorganic Chemistry</placeName><construction>1860</construction>
-<obn>170</obn><placeName>01 - 04 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>171</obn><placeName>05 - 06 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>172</obn><placeName>07 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>173</obn><placeName>08 - 11 (and extension) Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
+<obn>170</obn><placeName>1-4 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
+<obn>171</obn><placeName>5-6 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
+<obn>172</obn><placeName>7 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
+<obn>173</obn><placeName>8-11 (and extension) Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
 <obn>174</obn><placeName>Malthouse</placeName><construction>1850</construction><acquisition>1957</acquisition>
 <obn>177</obn><placeName>Mathematical Institute</placeName><construction>1966</construction>
 <obn>178</obn><placeName>10 Merton Street</placeName><construction>1956</construction>
@@ -67,8 +67,8 @@
 <obn>191</obn><placeName>Oriental Institute</placeName><construction>1962</construction>
 <obn>193</obn><placeName>9 Parks Road</placeName><construction>1913</construction>
 <obn>194</obn><placeName>10 Parks Road</placeName><construction>1880</construction><acquisition>1912</acquisition>
-<obn>195</obn><placeName>12 - 13 Parks Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>196</obn><placeName>14 - 15 Parks Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
+<obn>195</obn><placeName>12-13 Parks Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
+<obn>196</obn><placeName>14-15 Parks Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
 <obn>197</obn><placeName>Jenkin Building (Engineering Annex)</placeName><construction>1914</construction>
 <obn>214</obn><placeName>Pathology</placeName><construction>1927</construction>
 <obn>216</obn><placeName>Physical Chemistry</placeName><construction>1940</construction>
@@ -80,8 +80,8 @@
 <obn>228</obn><placeName>St Cross Building</placeName><construction>1962</construction>
 <obn>231</obn><placeName>39a St Giles</placeName><construction>1850</construction><acquisition>1927</acquisition>
 <obn>232</obn><placeName>41 St Giles</placeName><construction>1700</construction><acquisition>1927</acquisition>
-<obn>233</obn><placeName>66 (Formerly 65 - 67) St Giles</placeName><construction>1869</construction><acquisition>1944</acquisition>
-<obn>234</obn><placeName>2 - 4 St Johns Street</placeName><construction>1837</construction>
+<obn>233</obn><placeName>66 (Formerly 65-67) St Giles</placeName><construction>1869</construction><acquisition>1944</acquisition>
+<obn>234</obn><placeName>2-4 St Johns Street</placeName><construction>1837</construction>
 <obn>236</obn><placeName>Sheldonian Theatre</placeName><construction>1669</construction>
 <obn>237</obn><placeName>Old Boys High School</placeName><construction>1880</construction><acquisition>1977</acquisition>
 <obn>238</obn><placeName>1 South Parks Road</placeName><construction>1868</construction><acquisition>1964</acquisition>
@@ -101,8 +101,8 @@
 <obn>260</obn><placeName>8 Wellington Square</placeName><construction>1875</construction>
 <obn>261</obn><placeName>11 Wellington Square</placeName><construction>1875</construction>
 <obn>262</obn><placeName>16 Wellington Square</placeName><construction>1875</construction>
-<obn>264</obn><placeName>Barnett House, 32 - 42 Wellington Square</placeName><construction>1875</construction>
-<obn>265</obn><placeName>43 - 48 Wellington Square</placeName><construction>1875</construction>
+<obn>264</obn><placeName>Barnett House, 32-42 Wellington Square</placeName><construction>1875</construction>
+<obn>265</obn><placeName>43-48 Wellington Square</placeName><construction>1875</construction>
 <obn>267</obn><placeName>Wytham - John Krebs Field Station</placeName><construction>1952</construction>
 <obn>268</obn><placeName>Wytham - Technician</placeName><construction>1952</construction>
 <obn>269</obn><placeName>Tinbergen Building</placeName><construction>1971</construction>
@@ -126,7 +126,7 @@
 <obn>302</obn><placeName>Voltaire Foundation, 99 Banbury Road</placeName><construction>1880</construction><acquisition>1993</acquisition>
 <obn>304</obn><placeName>Pathology Support Building</placeName><construction>1997</construction>
 <obn>305</obn><placeName>Medawar Building</placeName><construction>1999</construction>
-<obn>306</obn><placeName>09 Wellington Square</placeName><construction>1875</construction>
+<obn>306</obn><placeName>9 Wellington Square</placeName><construction>1875</construction>
 <obn>307</obn><placeName>Sackler Library</placeName><construction>2001</construction>
 <obn>308</obn><placeName>Rothermere American Ins</placeName><construction>2001</construction>
 <obn>309</obn><placeName>Manor Road Building</placeName><construction>1999</construction>
@@ -173,7 +173,7 @@
 <obn>391</obn><placeName>Tubney House</placeName><construction>1811</construction><acquisition>2003</acquisition>
 <obn>393</obn><placeName>Tubney - Barn  - Includes 394</placeName><construction>1811</construction><acquisition>2003</acquisition>
 <obn>502</obn><placeName>6 Worcester Street</placeName><construction>1988</construction><acquisition>2006</acquisition>
-<obn>506</obn><placeName>Beaver House, 23 - 38 Hythe Bridge Street</placeName><construction>1970</construction><acquisition>2006</acquisition>
+<obn>506</obn><placeName>Beaver House, 23-38 Hythe Bridge Street</placeName><construction>1970</construction><acquisition>2006</acquisition>
 <obn>514</obn><placeName>Waste Collection Store</placeName>
 <obn>541</obn><placeName>2 Worcester Street</placeName><construction>1988</construction><acquisition>2009</acquisition>
 <obn>621</obn><placeName>John Radcliffe Women's Centre</placeName><construction>1970</construction>
