@@ -54,5 +54,10 @@ sub camelCaps {
 sub hack {
 	my $s = shift;
   $s =~ s/ Sq / Square /;
+  $s =~ s/ Sq^/ Square /;
+  $s =~ s/ Rd / Road /;
+  $s =~ s/ Rd^/ Road/;
+  $s =~ s/\&/and/;
+  $s =~ s/\((\S)/\(\U$1\E/;
   return $s;  
 }
