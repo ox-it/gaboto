@@ -33,9 +33,9 @@ while(<FILE>) {
 }
 close FILE;
 
-print "Found $c\n";
-
+my $unique = 0;
 foreach my $key (keys %found) {
+  $unique++;
   if ($found{$key} > 1) { 
     print "$found{$key} $lines{$key}\n";
   }
@@ -53,4 +53,6 @@ sub searchLine {
   }
 }
 
+print "Found $c\n";
+print "Unique $unique\n";
 
