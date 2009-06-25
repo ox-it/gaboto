@@ -1,219 +1,221 @@
-<obn>101</obn><placeName>Dartington House</placeName><construction>1970</construction><acquisition>1970</acquisition>
-<obn>104</obn><placeName>Ashmolean Museum</placeName><construction>1845</construction>
-<obn>105</obn><placeName>Old Observatory</placeName><construction>1875</construction>
-<obn>106</obn><placeName>7-9 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition>
-<obn>107</obn><placeName>11-13 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition>
-<obn>108</obn><placeName>15-19 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition>
-<obn>109</obn><placeName>7-19 Banbury Road</placeName><construction>1969</construction>
-<obn>110</obn><placeName>21 Banbury Road</placeName><construction>1879</construction><acquisition>1957</acquisition>
-<obn>111</obn><placeName>43 Banbury Road</placeName><construction>1885</construction><acquisition>1966</acquisition>
-<obn>113</obn><placeName>45 Banbury Road</placeName><construction>1885</construction><acquisition>1966</acquisition>
-<obn>114</obn><placeName>47 Banbury Road</placeName><construction>1880</construction><acquisition>1966</acquisition>
-<obn>115</obn><placeName>51-53 Banbury Road</placeName><construction>1869</construction><acquisition>1966</acquisition>
-<obn>116</obn><placeName>56 Banbury Road</placeName><construction>1866</construction><acquisition>1967</acquisition>
-<obn>117</obn><placeName>58 Banbury Road</placeName><construction>1873</construction><acquisition>1967</acquisition>
-<obn>119</obn><placeName>61 Banbury Road</placeName><construction>1868</construction><acquisition>1966</acquisition>
-<obn>122</obn><placeName>34-36 Beaumont Street</placeName><construction>1837</construction><acquisition>1940</acquisition>
-<obn>123</obn><placeName>37 Beaumont Street</placeName><construction>1837</construction><acquisition>1940</acquisition>
-<obn>124</obn><placeName>11 Bevington Road</placeName><construction>1868</construction><acquisition>1966</acquisition>
-<obn>125</obn><placeName>12 Bevington Road</placeName><construction>1868</construction><acquisition>1966</acquisition>
-<obn>126</obn><placeName>13 Bevington Road</placeName><construction>1868</construction><acquisition>1966</acquisition>
-<obn>130</obn><placeName>Bodleian Library</placeName><construction>1939</construction>
-<obn>131</obn><placeName>Old Bodleian Library</placeName><construction>1424</construction>
-<obn>136</obn><placeName>Nuneham Book Repository</placeName><construction>1975</construction>
-<obn>137</obn><placeName>Botanic Garden</placeName><construction>1632</construction><acquisition>1632</acquisition>
-<obn>138</obn><placeName>Botanic Garden Cottage</placeName><construction>1880</construction><acquisition>1880</acquisition>
-<obn>139</obn><placeName>Plant Sciences North</placeName><construction>1946</construction>
-<obn>141</obn><placeName>Nuneham - Old Sawmill</placeName><construction>1945</construction><acquisition>1948</acquisition>
-<obn>143</obn><placeName>Central Cycle Shelter</placeName><construction>1962</construction>
-<obn>144</obn><placeName>Clarendon Institute Building</placeName><construction>1713</construction>
-<obn>145</obn><placeName>Clarendon Laboratory - Lindemann</placeName><construction>1939</construction>
-<obn>146</obn><placeName>Clarendon Laboratory - Simon</placeName><construction>1949</construction>
-<obn>147</obn><placeName>Clarendon Laboratory - Townsend</placeName><construction>1910</construction>
-<obn>148</obn><placeName>Clarendon Lodge</placeName><construction>1939</construction>
-<obn>152</obn><placeName>Dyson Perrins</placeName><construction>1913</construction>
-<obn>153</obn><placeName>Thom Building</placeName><construction>1963</construction>
-<obn>154</obn><placeName>Holder</placeName><construction>1976</construction>
-<obn>155</obn><placeName>Examination Schools</placeName><construction>1878</construction>
-<obn>156</obn><placeName>Rewley House, 1-7 Wellington Square</placeName><construction>1875</construction>
-<obn>157</obn><placeName>Sadler House</placeName><construction>1875</construction>
-<obn>158</obn><placeName>Plant Sciences South</placeName><construction>1946</construction>
-<obn>159</obn><placeName>3 Mansfield Road</placeName><construction>1898</construction>
-<obn>160</obn><placeName>Earth Sciences</placeName><construction>1910</construction>
-<obn>162</obn><placeName>2 South Parks Road</placeName><construction>1866</construction><acquisition>1963</acquisition>
-<obn>163</obn><placeName>Ruskin School, 74 High Street</placeName><construction>1887</construction>
-<obn>164</obn><placeName>Old Indian Institute Building</placeName><construction>1896</construction>
-<obn>165</obn><placeName>History Science Museum</placeName><construction>1683</construction>
-<obn>166</obn><placeName>Le Gros Clark Building</placeName><construction>1892</construction>
-<obn>167</obn><placeName>The Pauling Centre, 58a Banbury Road, Oxford</placeName><construction>1981</construction>
-<obn>168</obn><placeName>Inorganic Chemistry</placeName><construction>1860</construction>
-<obn>170</obn><placeName>1-4 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>171</obn><placeName>5-6 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>172</obn><placeName>7 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>173</obn><placeName>8-11 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>174</obn><placeName>The Malthouse</placeName><construction>1850</construction><acquisition>1957</acquisition>
-<obn>177</obn><placeName>Mathematical Institute</placeName><construction>1966</construction>
-<obn>178</obn><placeName>10 Merton Street</placeName><construction>1956</construction>
-<obn>179</obn><placeName>Hume-Rothery Building</placeName><construction>1959</construction>
-<obn>180</obn><placeName>Donald Woods Building</placeName><construction>1961</construction>
-<obn>181</obn><placeName>Music Faculty</placeName><construction>1936</construction>
-<obn>182</obn><placeName>New Barnett House</placeName><construction>1971</construction>
-<obn>183</obn><placeName>15 Norham Gardens</placeName><construction>1871</construction><acquisition>1924</acquisition>
-<obn>184</obn><placeName>Bruner Building, 28 Norham Gardens</placeName><construction>1875</construction><acquisition>1972</acquisition>
-<obn>185</obn><placeName>Bruner Building, 30 Norham Gardens</placeName><construction>1875</construction><acquisition>1972</acquisition>
-<obn>186</obn><placeName>Denys Wilkinson Building</placeName><construction>1964</construction>
-<obn>187</obn><placeName>Nuneham - Church</placeName><construction>1850</construction><acquisition>1979</acquisition>
-<obn>189</obn><placeName>Southwell Building (Old Power Station)</placeName><construction>1892</construction><acquisition>1968</acquisition>
-<obn>191</obn><placeName>Oriental Institute</placeName><construction>1962</construction>
-<obn>193</obn><placeName>9 Parks Road</placeName><construction>1913</construction>
-<obn>194</obn><placeName>10 Parks Road</placeName><construction>1880</construction><acquisition>1912</acquisition>
-<obn>195</obn><placeName>12-13 Parks Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>196</obn><placeName>14-15 Parks Road</placeName><construction>1880</construction><acquisition>1934</acquisition>
-<obn>197</obn><placeName>Jenkin Building</placeName><construction>1914</construction>
-<obn>214</obn><placeName>Pathology</placeName><construction>1927</construction>
-<obn>216</obn><placeName>Physical Chemistry</placeName><construction>1940</construction>
-<obn>217</obn><placeName>Sherrington Building</placeName><construction>1953</construction>
-<obn>220</obn><placeName>Pitt-Rivers Museum</placeName><construction>1885</construction>
-<obn>224</obn><placeName>Radcliffe Camera</placeName><construction>1747</construction>
-<obn>225</obn><placeName>Radcliffe Science Library</placeName><construction>1901</construction>
-<obn>227</obn><placeName>Richard Burton Building</placeName><construction>1974</construction><acquisition>1974</acquisition>
-<obn>228</obn><placeName>St Cross Building</placeName><construction>1962</construction>
-<obn>231</obn><placeName>39a St Giles</placeName><construction>1850</construction><acquisition>1927</acquisition>
-<obn>232</obn><placeName>41 St Giles</placeName><construction>1700</construction><acquisition>1927</acquisition>
-<obn>233</obn><placeName>66 St Giles</placeName><construction>1869</construction><acquisition>1944</acquisition>
-<obn>234</obn><placeName>2-4 St Johns Street</placeName><construction>1837</construction>
-<obn>236</obn><placeName>Sheldonian Theatre</placeName><construction>1669</construction>
-<obn>237</obn><placeName>Old Boys High School</placeName><construction>1880</construction><acquisition>1977</acquisition>
-<obn>238</obn><placeName>1 South Parks Road</placeName><construction>1868</construction><acquisition>1964</acquisition>
-<obn>240</obn><placeName>Sports Centre Caretaker</placeName><construction>1965</construction>
-<obn>241</obn><placeName>Sports Centre Cricket</placeName><construction>1980</construction>
-<obn>242</obn><placeName>Sports Centre Gymnasium</placeName><construction>1965</construction>
-<obn>244</obn><placeName>Sports Centre Squash</placeName><construction>1975</construction>
-<obn>245</obn><placeName>University Parks - Pavilion</placeName><construction>1880</construction>
-<obn>246</obn><placeName>University Parks - Rhodes Pavilion</placeName><construction>1965</construction>
-<obn>248</obn><placeName>Summertown House Mansion</placeName><construction>1880</construction><acquisition>1947</acquisition>
-<obn>250</obn><placeName>Taylor Institution</placeName><construction>1845</construction>
-<obn>252</obn><placeName>University Museum of Natural History</placeName><construction>1860</construction>
-<obn>253</obn><placeName>University Museum Lodge</placeName><construction>1888</construction>
-<obn>254</obn><placeName>University Offices</placeName><construction>1974</construction>
-<obn>256</obn><placeName>South Lodge, University Parks</placeName><construction>1880</construction>
-<obn>258</obn><placeName>Tentorium, University Parks</placeName><construction>1963</construction>
-<obn>260</obn><placeName>8 Wellington Square</placeName><construction>1875</construction>
-<obn>261</obn><placeName>11 Wellington Square</placeName><construction>1875</construction>
-<obn>262</obn><placeName>16 Wellington Square</placeName><construction>1875</construction>
-<obn>264</obn><placeName>Barnett House, 32-42 Wellington Square</placeName><construction>1875</construction>
-<obn>265</obn><placeName>43-48 Wellington Square</placeName><construction>1875</construction>
-<obn>267</obn><placeName>John Krebs Field Station, Wytham</placeName><construction>1952</construction>
-<obn>268</obn><placeName>Technician, Wytham</placeName><construction>1952</construction>
-<obn>269</obn><placeName>Tinbergen Building</placeName><construction>1971</construction>
-<obn>270</obn><placeName>Atmospheric Physics</placeName><construction>1898</construction>
-<obn>271</obn><placeName>Rex Richards Building</placeName><construction>1986</construction>
-<obn>273</obn><placeName>Ruskin Annex, 128 Bullingdon Road</placeName><construction>1930</construction>
-<obn>275</obn><placeName>64 Banbury Road</placeName><construction>1865</construction><acquisition>2008</acquisition>
-<obn>276</obn><placeName>Engineering And Technology Building</placeName><construction>1989</construction>
-<obn>280</obn><placeName>Pharmacology</placeName><construction>1991</construction>
-<obn>281</obn><placeName>Rodney Porter Building</placeName><construction>1991</construction>
-<obn>282</obn><placeName>75 Banbury Road</placeName><construction>1840</construction><acquisition>2003</acquisition>
-<obn>284</obn><placeName>Sports Centre Rugby Fives</placeName><construction>1989</construction>
-<obn>286</obn><placeName>92 Woodstock Road</placeName><construction>1900</construction><acquisition>1990</acquisition>
-<obn>288</obn><placeName>Sports Centre Rowing Tank</placeName><construction>1992</construction>
-<obn>292</obn><placeName>Sports Centre Tennis</placeName><construction>1987</construction>
-<obn>293</obn><placeName>Red Barn</placeName><construction>1890</construction>
-<obn>294</obn><placeName>Red Barn Cottage</placeName><construction>1890</construction>
-<obn>297</obn><placeName>Museum Telephone Exchange</placeName><construction>1985</construction>
-<obn>298</obn><placeName>Bradmore Road Creche</placeName><construction>1994</construction>
-<obn>300</obn><placeName>Clarendon Institute</placeName><construction>1900</construction>
-<obn>302</obn><placeName>Voltaire Foundation, 99 Banbury Road</placeName><construction>1880</construction><acquisition>1993</acquisition>
-<obn>304</obn><placeName>Pathology Support Building</placeName><construction>1997</construction>
-<obn>305</obn><placeName>Medawar Building</placeName><construction>1999</construction>
-<obn>306</obn><placeName>9 Wellington Square</placeName><construction>1875</construction>
-<obn>307</obn><placeName>Sackler Library</placeName><construction>2001</construction>
-<obn>308</obn><placeName>Rothermere American Ins</placeName><construction>2001</construction>
-<obn>309</obn><placeName>Manor Road Building</placeName><construction>1999</construction>
-<obn>310</obn><placeName>Osney Mead Warehouse</placeName><construction>1955</construction><acquisition>1997</acquisition>
-<obn>311</obn><placeName>Pathology Epa Building</placeName><construction>2000</construction>
-<obn>312</obn><placeName>Littlegate House</placeName><construction>1970</construction><acquisition>1998</acquisition>
-<obn>317</obn><placeName>Hirsch Building, Begbroke Science Park</placeName><construction>1955</construction><acquisition>1998</acquisition>
-<obn>318</obn><placeName>Unit 10, Begbroke Science Park</placeName><construction>1955</construction><acquisition>1998</acquisition>
-<obn>319</obn><placeName>HI-Bay, Begbroke Science Park</placeName><construction>1955</construction><acquisition>1998</acquisition>
-<obn>321</obn><placeName>Christian Building, Begbroke Science Park</placeName><construction>1820</construction><acquisition>1998</acquisition>
-<obn>322</obn><placeName>Manor House, Begbroke Science Park</placeName><construction>1604</construction><acquisition>1998</acquisition>
-<obn>327</obn><placeName>Said Business School</placeName><construction>2001</construction>
-<obn>328</obn><placeName>34 St Giles</placeName><construction>1828</construction>
-<obn>332</obn><placeName>Chemistry Research Laboratory</placeName><construction>2003</construction>
-<obn>333</obn><placeName>Pathology Leslie Martin</placeName><construction>1968</construction>
-<obn>334</obn><placeName>Pathology Warren Building</placeName><construction>1927</construction>
-<obn>336</obn><placeName>Medical Science Teaching Centre</placeName><construction>2002</construction>
-<obn>337</obn><placeName>HWB Of Gene Function</placeName><construction>2003</construction>
-<obn>338</obn><placeName>Cast Gallery, Ashmolean Museum</placeName><construction>1961</construction>
-<obn>341</obn><placeName>SERS</placeName><construction>1965</construction><acquisition>2001</acquisition>
-<obn>342</obn><placeName>Osney 1 Building - (Blackwells Scientific)</placeName><construction>1970</construction><acquisition>2001</acquisition>
-<obn>343</obn><placeName>Holywell Music Room</placeName><construction>1748</construction><acquisition>1945</acquisition>
-<obn>344</obn><placeName>Thomas Hull House</placeName><construction>1979</construction><acquisition>2002</acquisition>
-<obn>346</obn><placeName>Wolsey Hall, 66 Banbury Road</placeName><construction>1869</construction><acquisition>2002</acquisition>
-<obn>347</obn><placeName>Marston Field Sports Pavilion</placeName><construction>2001</construction>
-<obn>348</obn><placeName>Ancient Bio-Molecules</placeName><construction>2003</construction>
-<obn>352</obn><placeName>IAT Building, Begbroke Science Park</placeName><construction>2006</construction>
-<obn>353</obn><placeName>APL, Begbroke Science Park</placeName><construction>2006</construction>
-<obn>354</obn><placeName>15a Norham Gardens</placeName><construction>2006</construction>
-<obn>360</obn><placeName>Ewert House</placeName><construction>1965</construction>
-<obn>361</obn><placeName>Information Engineering</placeName><construction>2004</construction>
-<obn>363</obn><placeName>Axis Point</placeName><construction>2001</construction><acquisition>2003</acquisition>
-<obn>364</obn><placeName>University Club, Mansfield Road</placeName><construction>2004</construction>
-<obn>367</obn><placeName>3 Worcester Street</placeName><construction>1981</construction><acquisition>1998</acquisition>
-<obn>368</obn><placeName>5 Worcester Street</placeName><construction>1989</construction><acquisition>2005</acquisition>
-<obn>371</obn><placeName>1 St Giles</placeName><construction>1800</construction><acquisition>2001</acquisition>
-<obn>372</obn><placeName>42 St Giles</placeName><construction>1820</construction>
-<obn>375</obn><placeName>Wolfson College Annexe</placeName><construction>1960</construction>
-<obn>376</obn><placeName>Nissan Institute</placeName><construction>1992</construction>
-<obn>378</obn><placeName>Jack Straws Lane Nursery</placeName><construction>2003</construction><acquisition>2003</acquisition>
-<obn>379</obn><placeName>E-Science Laboratory</placeName><construction>2006</construction>
-<obn>387</obn><placeName>New Biochemistry Building</placeName><construction>2008</construction>
-<obn>389</obn><placeName>Oxford-Man Institute Of Quantitative Finance</placeName><construction>1850</construction><acquisition>2007</acquisition>
-<obn>391</obn><placeName>Tubney House</placeName><construction>1811</construction><acquisition>2003</acquisition>
-<obn>393</obn><placeName>Tubney - Barn</placeName><construction>1811</construction><acquisition>2003</acquisition>
-<obn>502</obn><placeName>6 Worcester Street</placeName><construction>1988</construction><acquisition>2006</acquisition>
-<obn>506</obn><placeName>Beaver House, 23-38 Hythe Bridge Street</placeName><construction>1970</construction><acquisition>2006</acquisition>
-<obn>514</obn><placeName>Waste Collection Store</placeName>
-<obn>541</obn><placeName>2 Worcester Street</placeName><construction>1988</construction><acquisition>2009</acquisition>
-<obn>621</obn><placeName>John Radcliffe Women's Centre</placeName><construction>1970</construction>
-<obn>622</obn><placeName>John Radcliffe Hospital Main</placeName><construction>1975</construction>
-<obn>623</obn><placeName>John Radcliffe Academic</placeName><construction>1975</construction>
-<obn>624</obn><placeName>John Radcliffe Industrial</placeName><construction>1975</construction>
-<obn>625</obn><placeName>Weatherall Inst Of Molecular Medicine (WIMM)</placeName><construction>1970</construction><acquisition>1972</acquisition>
-<obn>627</obn><placeName>John Radcliffe FMRIB</placeName><construction>1997</construction>
-<obn>628</obn><placeName>Botnar Research Centre</placeName><construction>2002</construction><acquisition>2005</acquisition>
-<obn>629</obn><placeName>John Radcliffe OCMR Building (MRS)</placeName><construction>2003</construction>
-<obn>630</obn><placeName>Ocdem 1, Churchill</placeName><construction>2003</construction>
-<obn>631</obn><placeName>Ocdem 2, Churchill</placeName><construction>2003</construction>
-<obn>632</obn><placeName>Research Institute, Churchill</placeName><construction>1970</construction>
-<obn>634</obn><placeName>Clinical Bio-Manufacturing Facility, Churchill</placeName><construction>1995</construction><acquisition>1994</acquisition>
-<obn>639</obn><placeName>NOC - MRC Bone Unit</placeName><construction>1935</construction><acquisition>2005</acquisition>
-<obn>643</obn><placeName>Neurosciences, Warneford</placeName><construction>1998</construction>
-<obn>644</obn><placeName>Wellcome, Warneford</placeName><construction>1995</construction>
-<obn>645</obn><placeName>Main, Warneford</placeName><construction>1975</construction>
-<obn>646</obn><placeName>Lab, Warneford</placeName><construction>1960</construction>
-<obn>653</obn><placeName>WTC Clinical Vaccinology and Tropical Medicine</placeName><construction>2003</construction><acquisition>2000</acquisition>
-<obn>654</obn><placeName>MEG Scanner Facility, Warneford</placeName><construction>2006</construction><acquisition>2007</acquisition>
-<obn>660</obn><placeName>Rosemary Rue Building</placeName><construction>1960</construction><acquisition>1996</acquisition>
-<obn>661</obn><placeName>Conference, Old Road Campus</placeName><construction>1960</construction><acquisition>1996</acquisition>
-<obn>662</obn><placeName>Badenoch, Old Road Campus</placeName><construction>1960</construction><acquisition>2007</acquisition>
-<obn>665</obn><placeName>Richards Building, Old Road Campus</placeName><construction>1960</construction><acquisition>2008</acquisition>
-<obn>669</obn><placeName>Management, Old Road Campus</placeName><construction>1960</construction><acquisition>1996</acquisition>
-<obn>671</obn><placeName>Terrapin (OPPF), Old Road Campus</placeName><construction>2002</construction>
-<obn>672</obn><placeName>The Triangle, PGMDE</placeName><construction>1997</construction>
-<obn>673</obn><placeName>HWB Genomic Medicine</placeName><construction>1999</construction>
-<obn>674</obn><placeName>Richard Doll Building</placeName><construction>2003</construction><acquisition>2005</acquisition>
-<obn>675</obn><placeName>HWB Of Cellular And Molecular Physiology</placeName><construction>2004</construction>
-<obn>676</obn><placeName>HWB For Particle Imaging (Opic)</placeName><construction>2004</construction>
-<obn>678</obn><placeName>Old Road Campus - Research Building</placeName><construction>2007</construction><acquisition>2007</acquisition>
-<obn>679</obn><placeName>John Radcliffe Cardiac Centre</placeName><construction>1992</construction>
-<obn>680</obn><placeName>John Radcliffe Anaesthetic Modular Building</placeName><construction>1998</construction>
-<obn>681</obn><placeName>John Radcliffe West Wing And Children's Hospital</placeName><construction>2006</construction><acquisition>2007</acquisition>
-<obn>682</obn><placeName>John Radcliffe Manor House</placeName><construction>1776</construction><acquisition>2005</acquisition>
-<obn>683</obn><placeName>Link Building</placeName>
-<obn>685</obn><placeName>Eagle House</placeName><construction>2009</construction><acquisition>2009</acquisition>
-<obn>686</obn><placeName>Hayes House, 75 George Street</placeName><construction>2008</construction><acquisition>2008</acquisition>
-<obn>687</obn><placeName>Cancer Hospital, Churchill</placeName><construction>2009</construction>
-<obn>688</obn><placeName>SKOPE - Warwick</placeName>
-<obn>691</obn><placeName>Old Road Campus Estates Annexe</placeName><construction>2007</construction>
+<obns>
+<obn><code>101</code><placeName>Dartington House</placeName><construction>1970</construction><acquisition>1970</acquisition></obn>
+<obn><code>104</code><placeName>Ashmolean Museum</placeName><construction>1845</construction></obn>
+<obn><code>105</code><placeName>Old Observatory</placeName><construction>1875</construction></obn>
+<obn><code>106</code><placeName>7-9 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition></obn>
+<obn><code>107</code><placeName>11-13 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition></obn>
+<obn><code>108</code><placeName>15-19 Banbury Road</placeName><construction>1855</construction><acquisition>1968</acquisition></obn>
+<obn><code>109</code><placeName>7-19 Banbury Road</placeName><construction>1969</construction></obn>
+<obn><code>110</code><placeName>21 Banbury Road</placeName><construction>1879</construction><acquisition>1957</acquisition></obn>
+<obn><code>111</code><placeName>43 Banbury Road</placeName><construction>1885</construction><acquisition>1966</acquisition></obn>
+<obn><code>113</code><placeName>45 Banbury Road</placeName><construction>1885</construction><acquisition>1966</acquisition></obn>
+<obn><code>114</code><placeName>47 Banbury Road</placeName><construction>1880</construction><acquisition>1966</acquisition></obn>
+<obn><code>115</code><placeName>51-53 Banbury Road</placeName><construction>1869</construction><acquisition>1966</acquisition></obn>
+<obn><code>116</code><placeName>56 Banbury Road</placeName><construction>1866</construction><acquisition>1967</acquisition></obn>
+<obn><code>117</code><placeName>58 Banbury Road</placeName><construction>1873</construction><acquisition>1967</acquisition></obn>
+<obn><code>119</code><placeName>61 Banbury Road</placeName><construction>1868</construction><acquisition>1966</acquisition></obn>
+<obn><code>122</code><placeName>34-36 Beaumont Street</placeName><construction>1837</construction><acquisition>1940</acquisition></obn>
+<obn><code>123</code><placeName>37 Beaumont Street</placeName><construction>1837</construction><acquisition>1940</acquisition></obn>
+<obn><code>124</code><placeName>11 Bevington Road</placeName><construction>1868</construction><acquisition>1966</acquisition></obn>
+<obn><code>125</code><placeName>12 Bevington Road</placeName><construction>1868</construction><acquisition>1966</acquisition></obn>
+<obn><code>126</code><placeName>13 Bevington Road</placeName><construction>1868</construction><acquisition>1966</acquisition></obn>
+<obn><code>130</code><placeName>Bodleian Library</placeName><construction>1939</construction></obn>
+<obn><code>131</code><placeName>Old Bodleian Library</placeName><construction>1424</construction></obn>
+<obn><code>136</code><placeName>Nuneham Book Repository</placeName><construction>1975</construction></obn>
+<obn><code>137</code><placeName>Botanic Garden</placeName><construction>1632</construction><acquisition>1632</acquisition></obn>
+<obn><code>138</code><placeName>Botanic Garden Cottage</placeName><construction>1880</construction><acquisition>1880</acquisition></obn>
+<obn><code>139</code><placeName>Plant Sciences North</placeName><construction>1946</construction></obn>
+<obn><code>141</code><placeName>Nuneham - Old Sawmill</placeName><construction>1945</construction><acquisition>1948</acquisition></obn>
+<obn><code>143</code><placeName>Central Cycle Shelter</placeName><construction>1962</construction></obn>
+<obn><code>144</code><placeName>Clarendon Institute Building</placeName><construction>1713</construction></obn>
+<obn><code>145</code><placeName>Clarendon Laboratory - Lindemann</placeName><construction>1939</construction></obn>
+<obn><code>146</code><placeName>Clarendon Laboratory - Simon</placeName><construction>1949</construction></obn>
+<obn><code>147</code><placeName>Clarendon Laboratory - Townsend</placeName><construction>1910</construction></obn>
+<obn><code>148</code><placeName>Clarendon Lodge</placeName><construction>1939</construction></obn>
+<obn><code>152</code><placeName>Dyson Perrins</placeName><construction>1913</construction></obn>
+<obn><code>153</code><placeName>Thom Building</placeName><construction>1963</construction></obn>
+<obn><code>154</code><placeName>Holder</placeName><construction>1976</construction></obn>
+<obn><code>155</code><placeName>Examination Schools</placeName><construction>1878</construction></obn>
+<obn><code>156</code><placeName>Rewley House</placeName><construction>1875</construction></obn>
+<obn><code>157</code><placeName>Sadler House</placeName><construction>1875</construction></obn>
+<obn><code>158</code><placeName>Plant Sciences South</placeName><construction>1946</construction></obn>
+<obn><code>159</code><placeName>3 Mansfield Road</placeName><construction>1898</construction></obn>
+<obn><code>160</code><placeName>Earth Sciences</placeName><construction>1910</construction></obn>
+<obn><code>162</code><placeName>2 South Parks Road</placeName><construction>1866</construction><acquisition>1963</acquisition></obn>
+<obn><code>163</code><placeName>Ruskin School, 74 High Street</placeName><construction>1887</construction></obn>
+<obn><code>164</code><placeName>Old Indian Institute Building</placeName><construction>1896</construction></obn>
+<obn><code>165</code><placeName>History Science Museum</placeName><construction>1683</construction></obn>
+<obn><code>166</code><placeName>Le Gros Clark Building</placeName><construction>1892</construction></obn>
+<obn><code>167</code><placeName>The Pauling Centre, 58a Banbury Road, Oxford</placeName><construction>1981</construction></obn>
+<obn><code>168</code><placeName>Inorganic Chemistry</placeName><construction>1860</construction></obn>
+<obn><code>170</code><placeName>1-4 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
+<obn><code>171</code><placeName>5-6 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
+<obn><code>172</code><placeName>7 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
+<obn><code>173</code><placeName>8-11 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
+<obn><code>174</code><placeName>The Malthouse</placeName><construction>1850</construction><acquisition>1957</acquisition></obn>
+<obn><code>177</code><placeName>Mathematical Institute</placeName><construction>1966</construction></obn>
+<obn><code>178</code><placeName>10 Merton Street</placeName><construction>1956</construction></obn>
+<obn><code>179</code><placeName>Hume-Rothery Building</placeName><construction>1959</construction></obn>
+<obn><code>180</code><placeName>Donald Woods Building</placeName><construction>1961</construction></obn>
+<obn><code>181</code><placeName>Music Faculty</placeName><construction>1936</construction></obn>
+<obn><code>182</code><placeName>New Barnett House</placeName><construction>1971</construction></obn>
+<obn><code>183</code><placeName>15 Norham Gardens</placeName><construction>1871</construction><acquisition>1924</acquisition></obn>
+<obn><code>184</code><placeName>Bruner Building, 28 Norham Gardens</placeName><construction>1875</construction><acquisition>1972</acquisition></obn>
+<obn><code>185</code><placeName>Bruner Building, 30 Norham Gardens</placeName><construction>1875</construction><acquisition>1972</acquisition></obn>
+<obn><code>186</code><placeName>Denys Wilkinson Building</placeName><construction>1964</construction></obn>
+<obn><code>187</code><placeName>Nuneham - Church</placeName><construction>1850</construction><acquisition>1979</acquisition></obn>
+<obn><code>189</code><placeName>Southwell Building (Old Power Station)</placeName><construction>1892</construction><acquisition>1968</acquisition></obn>
+<obn><code>191</code><placeName>Oriental Institute</placeName><construction>1962</construction></obn>
+<obn><code>193</code><placeName>9 Parks Road</placeName><construction>1913</construction></obn>
+<obn><code>194</code><placeName>10 Parks Road</placeName><construction>1880</construction><acquisition>1912</acquisition></obn>
+<obn><code>195</code><placeName>12-13 Parks Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
+<obn><code>196</code><placeName>14-15 Parks Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
+<obn><code>197</code><placeName>Jenkin Building</placeName><construction>1914</construction></obn>
+<obn><code>214</code><placeName>Pathology</placeName><construction>1927</construction></obn>
+<obn><code>216</code><placeName>Physical Chemistry</placeName><construction>1940</construction></obn>
+<obn><code>217</code><placeName>Sherrington Building</placeName><construction>1953</construction></obn>
+<obn><code>220</code><placeName>Pitt-Rivers Museum</placeName><construction>1885</construction></obn>
+<obn><code>224</code><placeName>Radcliffe Camera</placeName><construction>1747</construction></obn>
+<obn><code>225</code><placeName>Radcliffe Science Library</placeName><construction>1901</construction></obn>
+<obn><code>227</code><placeName>Richard Burton Building</placeName><construction>1974</construction><acquisition>1974</acquisition></obn>
+<obn><code>228</code><placeName>St Cross Building</placeName><construction>1962</construction></obn>
+<obn><code>231</code><placeName>39a St Giles</placeName><construction>1850</construction><acquisition>1927</acquisition></obn>
+<obn><code>232</code><placeName>41 St Giles</placeName><construction>1700</construction><acquisition>1927</acquisition></obn>
+<obn><code>233</code><placeName>66 St Giles</placeName><construction>1869</construction><acquisition>1944</acquisition></obn>
+<obn><code>234</code><placeName>2-4 St Johns Street</placeName><construction>1837</construction></obn>
+<obn><code>236</code><placeName>Sheldonian Theatre</placeName><construction>1669</construction></obn>
+<obn><code>237</code><placeName>Old Boys High School</placeName><construction>1880</construction><acquisition>1977</acquisition></obn>
+<obn><code>238</code><placeName>1 South Parks Road</placeName><construction>1868</construction><acquisition>1964</acquisition></obn>
+<obn><code>240</code><placeName>Sports Centre Caretaker</placeName><construction>1965</construction></obn>
+<obn><code>241</code><placeName>Sports Centre Cricket</placeName><construction>1980</construction></obn>
+<obn><code>242</code><placeName>Sports Centre Gymnasium</placeName><construction>1965</construction></obn>
+<obn><code>244</code><placeName>Sports Centre Squash</placeName><construction>1975</construction></obn>
+<obn><code>245</code><placeName>University Parks - Pavilion</placeName><construction>1880</construction></obn>
+<obn><code>246</code><placeName>University Parks - Rhodes Pavilion</placeName><construction>1965</construction></obn>
+<obn><code>248</code><placeName>Summertown House Mansion</placeName><construction>1880</construction><acquisition>1947</acquisition></obn>
+<obn><code>250</code><placeName>Taylor Institution</placeName><construction>1845</construction></obn>
+<obn><code>252</code><placeName>University Museum of Natural History</placeName><construction>1860</construction></obn>
+<obn><code>253</code><placeName>University Museum Lodge</placeName><construction>1888</construction></obn>
+<obn><code>254</code><placeName>University Offices</placeName><construction>1974</construction></obn>
+<obn><code>256</code><placeName>South Lodge, University Parks</placeName><construction>1880</construction></obn>
+<obn><code>258</code><placeName>Tentorium, University Parks</placeName><construction>1963</construction></obn>
+<obn><code>260</code><placeName>8 Wellington Square</placeName><construction>1875</construction></obn>
+<obn><code>261</code><placeName>11 Wellington Square</placeName><construction>1875</construction></obn>
+<obn><code>262</code><placeName>16 Wellington Square</placeName><construction>1875</construction></obn>
+<obn><code>264</code><placeName>Barnett House, 32-42 Wellington Square</placeName><construction>1875</construction></obn>
+<obn><code>265</code><placeName>43-48 Wellington Square</placeName><construction>1875</construction></obn>
+<obn><code>267</code><placeName>John Krebs Field Station, Wytham</placeName><construction>1952</construction></obn>
+<obn><code>268</code><placeName>Technician, Wytham</placeName><construction>1952</construction></obn>
+<obn><code>269</code><placeName>Tinbergen Building</placeName><construction>1971</construction></obn>
+<obn><code>270</code><placeName>Atmospheric Physics</placeName><construction>1898</construction></obn>
+<obn><code>271</code><placeName>Rex Richards Building</placeName><construction>1986</construction></obn>
+<obn><code>273</code><placeName>Ruskin Annex, 128 Bullingdon Road</placeName><construction>1930</construction></obn>
+<obn><code>275</code><placeName>64 Banbury Road</placeName><construction>1865</construction><acquisition>2008</acquisition></obn>
+<obn><code>276</code><placeName>Engineering And Technology Building</placeName><construction>1989</construction></obn>
+<obn><code>280</code><placeName>Pharmacology</placeName><construction>1991</construction></obn>
+<obn><code>281</code><placeName>Rodney Porter Building</placeName><construction>1991</construction></obn>
+<obn><code>282</code><placeName>75 Banbury Road</placeName><construction>1840</construction><acquisition>2003</acquisition></obn>
+<obn><code>284</code><placeName>Sports Centre Rugby Fives</placeName><construction>1989</construction></obn>
+<obn><code>286</code><placeName>92 Woodstock Road</placeName><construction>1900</construction><acquisition>1990</acquisition></obn>
+<obn><code>288</code><placeName>Sports Centre Rowing Tank</placeName><construction>1992</construction></obn>
+<obn><code>292</code><placeName>Sports Centre Tennis</placeName><construction>1987</construction></obn>
+<obn><code>293</code><placeName>Red Barn</placeName><construction>1890</construction></obn>
+<obn><code>294</code><placeName>Red Barn Cottage</placeName><construction>1890</construction></obn>
+<obn><code>297</code><placeName>Museum Telephone Exchange</placeName><construction>1985</construction></obn>
+<obn><code>298</code><placeName>Bradmore Road Creche</placeName><construction>1994</construction></obn>
+<obn><code>300</code><placeName>Clarendon Institute</placeName><construction>1900</construction></obn>
+<obn><code>302</code><placeName>Voltaire Foundation, 99 Banbury Road</placeName><construction>1880</construction><acquisition>1993</acquisition></obn>
+<obn><code>304</code><placeName>Pathology Support Building</placeName><construction>1997</construction></obn>
+<obn><code>305</code><placeName>Medawar Building</placeName><construction>1999</construction></obn>
+<obn><code>306</code><placeName>9 Wellington Square</placeName><construction>1875</construction></obn>
+<obn><code>307</code><placeName>Sackler Library</placeName><construction>2001</construction></obn>
+<obn><code>308</code><placeName>Rothermere American Ins</placeName><construction>2001</construction></obn>
+<obn><code>309</code><placeName>Manor Road Building</placeName><construction>1999</construction></obn>
+<obn><code>310</code><placeName>Osney Mead Warehouse</placeName><construction>1955</construction><acquisition>1997</acquisition></obn>
+<obn><code>311</code><placeName>Pathology Epa Building</placeName><construction>2000</construction></obn>
+<obn><code>312</code><placeName>Littlegate House</placeName><construction>1970</construction><acquisition>1998</acquisition></obn>
+<obn><code>317</code><placeName>Hirsch Building, Begbroke Science Park</placeName><construction>1955</construction><acquisition>1998</acquisition></obn>
+<obn><code>318</code><placeName>Unit 10, Begbroke Science Park</placeName><construction>1955</construction><acquisition>1998</acquisition></obn>
+<obn><code>319</code><placeName>HI-Bay, Begbroke Science Park</placeName><construction>1955</construction><acquisition>1998</acquisition></obn>
+<obn><code>321</code><placeName>Christian Building, Begbroke Science Park</placeName><construction>1820</construction><acquisition>1998</acquisition></obn>
+<obn><code>322</code><placeName>Manor House, Begbroke Science Park</placeName><construction>1604</construction><acquisition>1998</acquisition></obn>
+<obn><code>327</code><placeName>Said Business School</placeName><construction>2001</construction></obn>
+<obn><code>328</code><placeName>34 St Giles</placeName><construction>1828</construction></obn>
+<obn><code>332</code><placeName>Chemistry Research Laboratory</placeName><construction>2003</construction></obn>
+<obn><code>333</code><placeName>Pathology Leslie Martin</placeName><construction>1968</construction></obn>
+<obn><code>334</code><placeName>Pathology Warren Building</placeName><construction>1927</construction></obn>
+<obn><code>336</code><placeName>Medical Science Teaching Centre</placeName><construction>2002</construction></obn>
+<obn><code>337</code><placeName>HWB Of Gene Function</placeName><construction>2003</construction></obn>
+<obn><code>338</code><placeName>Cast Gallery, Ashmolean Museum</placeName><construction>1961</construction></obn>
+<obn><code>341</code><placeName>SERS</placeName><construction>1965</construction><acquisition>2001</acquisition></obn>
+<obn><code>342</code><placeName>Osney 1 Building - (Blackwells Scientific)</placeName><construction>1970</construction><acquisition>2001</acquisition></obn>
+<obn><code>343</code><placeName>Holywell Music Room</placeName><construction>1748</construction><acquisition>1945</acquisition></obn>
+<obn><code>344</code><placeName>Thomas Hull House</placeName><construction>1979</construction><acquisition>2002</acquisition></obn>
+<obn><code>346</code><placeName>Wolsey Hall, 66 Banbury Road</placeName><construction>1869</construction><acquisition>2002</acquisition></obn>
+<obn><code>347</code><placeName>Marston Field Sports Pavilion</placeName><construction>2001</construction></obn>
+<obn><code>348</code><placeName>Ancient Bio-Molecules</placeName><construction>2003</construction></obn>
+<obn><code>352</code><placeName>IAT Building, Begbroke Science Park</placeName><construction>2006</construction></obn>
+<obn><code>353</code><placeName>APL, Begbroke Science Park</placeName><construction>2006</construction></obn>
+<obn><code>354</code><placeName>15a Norham Gardens</placeName><construction>2006</construction></obn>
+<obn><code>360</code><placeName>Ewert House</placeName><construction>1965</construction></obn>
+<obn><code>361</code><placeName>Information Engineering</placeName><construction>2004</construction></obn>
+<obn><code>363</code><placeName>Axis Point</placeName><construction>2001</construction><acquisition>2003</acquisition></obn>
+<obn><code>364</code><placeName>University Club, Mansfield Road</placeName><construction>2004</construction></obn>
+<obn><code>367</code><placeName>3 Worcester Street</placeName><construction>1981</construction><acquisition>1998</acquisition></obn>
+<obn><code>368</code><placeName>5 Worcester Street</placeName><construction>1989</construction><acquisition>2005</acquisition></obn>
+<obn><code>371</code><placeName>1 St Giles</placeName><construction>1800</construction><acquisition>2001</acquisition></obn>
+<obn><code>372</code><placeName>42 St Giles</placeName><construction>1820</construction></obn>
+<obn><code>375</code><placeName>Wolfson College Annexe</placeName><construction>1960</construction></obn>
+<obn><code>376</code><placeName>Nissan Institute</placeName><construction>1992</construction></obn>
+<obn><code>378</code><placeName>Jack Straws Lane Nursery</placeName><construction>2003</construction><acquisition>2003</acquisition></obn>
+<obn><code>379</code><placeName>E-Science Laboratory</placeName><construction>2006</construction></obn>
+<obn><code>387</code><placeName>New Biochemistry Building</placeName><construction>2008</construction></obn>
+<obn><code>389</code><placeName>Oxford-Man Institute Of Quantitative Finance</placeName><construction>1850</construction><acquisition>2007</acquisition></obn>
+<obn><code>391</code><placeName>Tubney House</placeName><construction>1811</construction><acquisition>2003</acquisition></obn>
+<obn><code>393</code><placeName>Tubney - Barn</placeName><construction>1811</construction><acquisition>2003</acquisition></obn>
+<obn><code>502</code><placeName>6 Worcester Street</placeName><construction>1988</construction><acquisition>2006</acquisition></obn>
+<obn><code>506</code><placeName>Beaver House, 23-38 Hythe Bridge Street</placeName><construction>1970</construction><acquisition>2006</acquisition></obn>
+<obn><code>514</code><placeName>Waste Collection Store</placeName></obn>
+<obn><code>541</code><placeName>2 Worcester Street</placeName><construction>1988</construction><acquisition>2009</acquisition></obn>
+<obn><code>621</code><placeName>John Radcliffe Women's Centre</placeName><construction>1970</construction></obn>
+<obn><code>622</code><placeName>John Radcliffe Hospital Main</placeName><construction>1975</construction></obn>
+<obn><code>623</code><placeName>John Radcliffe Academic</placeName><construction>1975</construction></obn>
+<obn><code>624</code><placeName>John Radcliffe Industrial</placeName><construction>1975</construction></obn>
+<obn><code>625</code><placeName>Weatherall Inst Of Molecular Medicine (WIMM)</placeName><construction>1970</construction><acquisition>1972</acquisition></obn>
+<obn><code>627</code><placeName>John Radcliffe FMRIB</placeName><construction>1997</construction></obn>
+<obn><code>628</code><placeName>Botnar Research Centre</placeName><construction>2002</construction><acquisition>2005</acquisition></obn>
+<obn><code>629</code><placeName>John Radcliffe OCMR Building (MRS)</placeName><construction>2003</construction></obn>
+<obn><code>630</code><placeName>Ocdem 1, Churchill</placeName><construction>2003</construction></obn>
+<obn><code>631</code><placeName>Ocdem 2, Churchill</placeName><construction>2003</construction></obn>
+<obn><code>632</code><placeName>Research Institute, Churchill</placeName><construction>1970</construction></obn>
+<obn><code>634</code><placeName>Clinical Bio-Manufacturing Facility, Churchill</placeName><construction>1995</construction><acquisition>1994</acquisition></obn>
+<obn><code>639</code><placeName>NOC - MRC Bone Unit</placeName><construction>1935</construction><acquisition>2005</acquisition></obn>
+<obn><code>643</code><placeName>Neurosciences, Warneford</placeName><construction>1998</construction></obn>
+<obn><code>644</code><placeName>Wellcome, Warneford</placeName><construction>1995</construction></obn>
+<obn><code>645</code><placeName>Main, Warneford</placeName><construction>1975</construction></obn>
+<obn><code>646</code><placeName>Lab, Warneford</placeName><construction>1960</construction></obn>
+<obn><code>653</code><placeName>WTC Clinical Vaccinology and Tropical Medicine</placeName><construction>2003</construction><acquisition>2000</acquisition></obn>
+<obn><code>654</code><placeName>MEG Scanner Facility, Warneford</placeName><construction>2006</construction><acquisition>2007</acquisition></obn>
+<obn><code>660</code><placeName>Rosemary Rue Building</placeName><construction>1960</construction><acquisition>1996</acquisition></obn>
+<obn><code>661</code><placeName>Conference, Old Road Campus</placeName><construction>1960</construction><acquisition>1996</acquisition></obn>
+<obn><code>662</code><placeName>Badenoch, Old Road Campus</placeName><construction>1960</construction><acquisition>2007</acquisition></obn>
+<obn><code>665</code><placeName>Richards Building, Old Road Campus</placeName><construction>1960</construction><acquisition>2008</acquisition></obn>
+<obn><code>669</code><placeName>Management, Old Road Campus</placeName><construction>1960</construction><acquisition>1996</acquisition></obn>
+<obn><code>671</code><placeName>Terrapin (OPPF), Old Road Campus</placeName><construction>2002</construction></obn>
+<obn><code>672</code><placeName>The Triangle, PGMDE</placeName><construction>1997</construction></obn>
+<obn><code>673</code><placeName>HWB Genomic Medicine</placeName><construction>1999</construction></obn>
+<obn><code>674</code><placeName>Richard Doll Building</placeName><construction>2003</construction><acquisition>2005</acquisition></obn>
+<obn><code>675</code><placeName>HWB Of Cellular And Molecular Physiology</placeName><construction>2004</construction></obn>
+<obn><code>676</code><placeName>HWB For Particle Imaging (Opic)</placeName><construction>2004</construction></obn>
+<obn><code>678</code><placeName>Old Road Campus - Research Building</placeName><construction>2007</construction><acquisition>2007</acquisition></obn>
+<obn><code>679</code><placeName>John Radcliffe Cardiac Centre</placeName><construction>1992</construction></obn>
+<obn><code>680</code><placeName>John Radcliffe Anaesthetic Modular Building</placeName><construction>1998</construction></obn>
+<obn><code>681</code><placeName>John Radcliffe West Wing And Children's Hospital</placeName><construction>2006</construction><acquisition>2007</acquisition></obn>
+<obn><code>682</code><placeName>John Radcliffe Manor House</placeName><construction>1776</construction><acquisition>2005</acquisition></obn>
+<obn><code>683</code><placeName>Link Building</placeName></obn>
+<obn><code>685</code><placeName>Eagle House</placeName><construction>2009</construction><acquisition>2009</acquisition></obn>
+<obn><code>686</code><placeName>Hayes House, 75 George Street</placeName><construction>2008</construction><acquisition>2008</acquisition></obn>
+<obn><code>687</code><placeName>Cancer Hospital, Churchill</placeName><construction>2009</construction></obn>
+<obn><code>688</code><placeName>SKOPE - Warwick</placeName></obn>
+<obn><code>691</code><placeName>Old Road Campus Estates Annexe</placeName><construction>2007</construction></obn>
+</obns>
