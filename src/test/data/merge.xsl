@@ -34,6 +34,7 @@
     <xsl:variable name="parentname">
       <xsl:value-of select="ancestor::tei:place[1]/tei:placeName"/>
     </xsl:variable>
+    <xsl:if test="not(@obnCode)">
     <xsl:for-each select="document('BuildingList.xml')">
       <xsl:choose>
 	<xsl:when test="count(key('N',$name))=1">
@@ -54,6 +55,19 @@
 	  <xsl:message>Found MULTIPLE matches for  <xsl:value-of
 	  select="$name"/></xsl:message>
 	</xsl:when>
+	<xsl:when test="$name='Oxford Union Society'"/>
+	<xsl:when test="$name='57 Woodstock Road'"/>
+	<xsl:when test="$parentname='Blackfriars'"/>
+	<xsl:when test="$parentname='Christ Church'"/>
+	<xsl:when test="$parentname='Christ Church'"/>
+	<xsl:when test="contains($parentname,'Greyfriar')"/>
+	<xsl:when test="contains($parentname,'St Stephen')"/>
+	<xsl:when test="$parentname='Christ Church Cathedral'"/>
+	<xsl:when test="$parentname='Christ Church Picture Gallery'"/>
+	<xsl:when test="$parentname='The University Church of St Mary the Virgin'"/>
+	<xsl:when test="contains($name,' College') or
+			contains($parentname,' College')"/>
+	<xsl:when test="contains($name,' Hall') or contains($parentname,' Hall')"/>
 	<xsl:when test="$name=''">
 	  <xsl:message>NO MATCH. <xsl:value-of select="$id"/>. Empty name. Parent is <xsl:value-of select="$parentname"/></xsl:message>
 	</xsl:when>
@@ -63,6 +77,7 @@
 	</xsl:otherwise>
       </xsl:choose>
 	</xsl:for-each>
+    </xsl:if>
     <xsl:apply-templates 
 	select="*|processing-instruction()|comment()|text()"/>
   </xsl:copy>
