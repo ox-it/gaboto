@@ -595,7 +595,7 @@
                   </desc>
                </trait>
             </place>
-            <place type="building" xml:id="b_0036">
+            <place type="building" xml:id="b_0036" obn="623">
                <placeName>Cairns Library</placeName>
                <location when="2007-06-14T10:41:32.151+01:00">
                   <geo>-1.2196969985961914 51.76390911220752</geo>
@@ -3596,12 +3596,12 @@
                </trait>
             </place>
 
-	           <place type="building" xml:id="b_0035">
-	              <placeName>Taylor Institution Library</placeName>
-               <location when="2007-05-22T16:44:14.527+01:00">
-                  <geo>-1.260467 51.7578</geo>
-                  <note> recorded by Janet McKnight</note>
-               </location>
+	    <place type="building" xml:id="b_0035">
+	      <placeName>Taylor Institution</placeName>
+	      <location when="2007-05-22T16:44:14.527+01:00">
+		<geo>-1.260467 51.7578</geo>
+		<note> recorded by Janet McKnight</note>
+	      </location>
             </place>
 
             <place type="library" olisCode="TAY Base Celt" xml:id="taylor_1">
@@ -4079,20 +4079,12 @@
                   </desc>
                </trait>
                <place subtype="primary" type="building">
-                  <placeName>Museum</placeName>
+                  <placeName>Ashmolean Museum</placeName>
                   <location when="2007-01-23T10:21:44.462Z">
                      <geo>-1.26018762588500 51.75536912069192</geo>
                      <note> recorded by Ian Miller</note>
                   </location>
                </place>
-               <place type="building">
-                  <placeName>RI Offices</placeName>
-                  <location when="2007-01-23T10:22:11.743Z">
-                     <geo>-1.26405000686645 51.76084127627535</geo>
-                     <note> recorded by Ian Miller</note>
-                  </location>
-               </place>
-
             </place>
             <place type="department" xml:id="astro">
                <placeName>Astrophysics</placeName>
@@ -4275,7 +4267,7 @@
                   </desc>
                </trait>
                <place subtype="primary" type="building">
-                  <placeName>Entrance</placeName>
+                  <placeName>Botanic Garden Entrance</placeName>
                   <location when="2007-01-29T20:41:51.786Z">
                      <geo>-1.2471520900726 51.75136419826960</geo>
                      <note> recorded by Sebastian Rahtz</note>
@@ -4388,7 +4380,7 @@
                   </desc>
                </trait>
                <place subtype="primary" type="building">
-                  <placeName>Centre</placeName>
+                  <placeName>92 Woodstock Road</placeName>
                   <location when="2007-01-24T10:25:22.617Z">
                      <geo>-1.26119613647460 51.76287324286575</geo>
                      <note> recorded by Natasha Heaton</note>
@@ -4432,12 +4424,6 @@
                      <ptr target="http://www.cogneuro.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.2563 51.76</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
             </place>
             <place type="department" xml:id="crim">
                <placeName>Centre for Criminology</placeName>
@@ -4510,7 +4496,7 @@
                   </desc>
                </trait>
                <place subtype="primary" type="building">
-                  <placeName>centre</placeName>
+                  <placeName>58 Banbury Road</placeName>
                   <location when="2007-01-24T10:30:07.229Z">
                      <geo>-1.26038074493408 51.76321853528716</geo>
                      <note> recorded by Natasha Heaton</note>
@@ -5184,7 +5170,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place type="building">
-                  <placeName>Southwell Laboratory</placeName>
+                  <placeName>Southwell Building</placeName>
                   <location when="2007-05-22T15:17:50.834+01:00">
                      <geo>-1.2713134288787842 51.75179592340317</geo>
                      <note> recorded by Janet McKnight</note>
@@ -5287,6 +5273,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place subtype="primary" type="building">
+		 <placeName>Churchill Hospital</placeName>
                   <location when="2008-07-30T16:59:00">
                      <geo>-1.219807 51.763823</geo>
                      <note> recorded by Janet McKnight (from GEarth / postcode)</note>
@@ -5431,21 +5418,23 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place subtype="primary" type="building">
-                  <placeName>Le Gros Clarke Building</placeName>
+                  <placeName>Le Gros Clark Building</placeName>
                   <location when="2007-06-18T10:17:04.000">
                      <geo>-1.25412 51.758835</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
                </place>
-               <place type="building" obnCode="217">
-                  <event  when="1953" type="construction"/>
-                  <placeName>Sherrington Building</placeName>
-                  <location when="2007-06-18T09:46:41.000">
-                     <geo>-1.254883 51.759662</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
             </place>
+	    
+	    <place type="building" obnCode="217" xml:id="b_0039">
+	      <event  when="1953" type="construction"/>
+	      <placeName>Sherrington Building</placeName>
+	      <location when="2007-06-18T09:46:41.000">
+		<geo>-1.254883 51.759662</geo>
+		<note> recorded by Janet McKnight</note>
+	      </location>
+	    </place>
+
             <place type="department" xml:id="plant">
                <placeName>Department of Plant Sciences</placeName>
                <location type="address">
@@ -5675,7 +5664,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place subtype="primary" type="building">
-                  <placeName>The Churchill Hospital</placeName>
+                  <placeName>OCDEM 1, Churchill Hospital</placeName>
                   <location when="2007-06-14T10:25:08.332+01:00">
                      <geo>-1.2148261070251465 51.750334683220736</geo>
                      <note> recorded by Janet McKnight</note>
@@ -8026,6 +8015,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
                <place subtype="primary" type="building">
+		 <placeName>Churchill Hospital</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.21471 51.75033</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -10707,7 +10697,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             <!-- <addrLine>Walton Street, Oxford</addrLine> -->
 
         <place type="building" xml:id="b_0027">
-               <placeName>Wellington Square</placeName>
+               <placeName>University Offices</placeName>
                <location>
                   <geo>-1.262242 51.758145</geo>
                </location>
@@ -10866,6 +10856,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             <relation name="occupies" type="geo primary" active="#sbsltd" passive="#b_0019"/>
             <relation name="occupies" type="geo primary" active="#archive" passive="#b_0011"/>
             <relation name="occupies" type="geo primary" active="#ouce" passive="#b_0023"/>
+            <relation name="occupies" type="geo primary" active="#mdcp" passive="#b_0039"/>
+            <relation name="occupies" type="geo primary" active="#dpag" passive="#b_0039"/>
             <!--
         <relation name="uses" type="room" active="#ageing" passive="#b_0020r1"/>
         <relation name="uses" type="room" active="#ouce" passive="#b_0023r1"/>

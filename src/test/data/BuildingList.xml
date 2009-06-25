@@ -22,7 +22,7 @@
 <obn><code>130</code><placeName>Bodleian Library</placeName><construction>1939</construction></obn>
 <obn><code>131</code><placeName>Old Bodleian Library</placeName><construction>1424</construction></obn>
 <obn><code>136</code><placeName>Nuneham Book Repository</placeName><construction>1975</construction></obn>
-<obn><code>137</code><placeName>Botanic Garden</placeName><construction>1632</construction><acquisition>1632</acquisition></obn>
+<obn><code>137</code><placeName>Botanic Garden Entrance</placeName><construction>1632</construction><acquisition>1632</acquisition></obn>
 <obn><code>138</code><placeName>Botanic Garden Cottage</placeName><construction>1880</construction><acquisition>1880</acquisition></obn>
 <obn><code>139</code><placeName>Plant Sciences North</placeName><construction>1946</construction></obn>
 <obn><code>141</code><placeName>Nuneham - Old Sawmill</placeName><construction>1945</construction><acquisition>1948</acquisition></obn>
@@ -34,7 +34,7 @@
 <obn><code>148</code><placeName>Clarendon Lodge</placeName><construction>1939</construction></obn>
 <obn><code>152</code><placeName>Dyson Perrins</placeName><construction>1913</construction></obn>
 <obn><code>153</code><placeName>Thom Building</placeName><construction>1963</construction></obn>
-<obn><code>154</code><placeName>Holder</placeName><construction>1976</construction></obn>
+<obn><code>154</code><placeName>Holder Building</placeName><construction>1976</construction></obn>
 <obn><code>155</code><placeName>Examination Schools</placeName><construction>1878</construction></obn>
 <obn><code>156</code><placeName>Rewley House</placeName><construction>1875</construction></obn>
 <obn><code>157</code><placeName>Sadler House</placeName><construction>1875</construction></obn>
@@ -123,7 +123,7 @@
 <obn><code>294</code><placeName>Red Barn Cottage</placeName><construction>1890</construction></obn>
 <obn><code>297</code><placeName>Museum Telephone Exchange</placeName><construction>1985</construction></obn>
 <obn><code>298</code><placeName>Bradmore Road Creche</placeName><construction>1994</construction></obn>
-<obn><code>300</code><placeName>Clarendon Institute</placeName><construction>1900</construction></obn>
+<obn><code>300</code><placeName>Centre for Linguistics &amp; Philology</placeName><construction>1900</construction></obn>
 <obn><code>302</code><placeName>Voltaire Foundation, 99 Banbury Road</placeName><construction>1880</construction><acquisition>1993</acquisition></obn>
 <obn><code>304</code><placeName>Pathology Support Building</placeName><construction>1997</construction></obn>
 <obn><code>305</code><placeName>Medawar Building</placeName><construction>1999</construction></obn>
@@ -182,23 +182,23 @@
 <obn><code>623</code><placeName>John Radcliffe Academic</placeName><construction>1975</construction></obn>
 <obn><code>624</code><placeName>John Radcliffe Industrial</placeName><construction>1975</construction></obn>
 <obn><code>625</code><placeName>Weatherall Inst Of Molecular Medicine (WIMM)</placeName><construction>1970</construction><acquisition>1972</acquisition></obn>
-<obn><code>627</code><placeName>John Radcliffe FMRIB</placeName><construction>1997</construction></obn>
+<obn><code>627</code><placeName>FMRIB Centre</placeName><construction>1997</construction></obn>
 <obn><code>628</code><placeName>Botnar Research Centre</placeName><construction>2002</construction><acquisition>2005</acquisition></obn>
 <obn><code>629</code><placeName>John Radcliffe OCMR Building (MRS)</placeName><construction>2003</construction></obn>
-<obn><code>630</code><placeName>Ocdem 1, Churchill</placeName><construction>2003</construction></obn>
-<obn><code>631</code><placeName>Ocdem 2, Churchill</placeName><construction>2003</construction></obn>
-<obn><code>632</code><placeName>Research Institute, Churchill</placeName><construction>1970</construction></obn>
+<obn><code>630</code><placeName>OCDEM 1, Churchill Hospital</placeName><construction>2003</construction></obn>
+<obn><code>631</code><placeName>OCDEM 2, Churchill Hospital</placeName><construction>2003</construction></obn>
+<obn><code>632</code><placeName>Churchill Hospital</placeName><construction>1970</construction></obn>
 <obn><code>634</code><placeName>Clinical Bio-Manufacturing Facility, Churchill</placeName><construction>1995</construction><acquisition>1994</acquisition></obn>
 <obn><code>639</code><placeName>NOC - MRC Bone Unit</placeName><construction>1935</construction><acquisition>2005</acquisition></obn>
 <obn><code>643</code><placeName>Neurosciences, Warneford</placeName><construction>1998</construction></obn>
 <obn><code>644</code><placeName>Wellcome, Warneford</placeName><construction>1995</construction></obn>
-<obn><code>645</code><placeName>Main, Warneford</placeName><construction>1975</construction></obn>
+<obn><code>645</code><placeName>Warneford Hospital</placeName><construction>1975</construction></obn>
 <obn><code>646</code><placeName>Lab, Warneford</placeName><construction>1960</construction></obn>
 <obn><code>653</code><placeName>WTC Clinical Vaccinology and Tropical Medicine</placeName><construction>2003</construction><acquisition>2000</acquisition></obn>
 <obn><code>654</code><placeName>MEG Scanner Facility, Warneford</placeName><construction>2006</construction><acquisition>2007</acquisition></obn>
 <obn><code>660</code><placeName>Rosemary Rue Building</placeName><construction>1960</construction><acquisition>1996</acquisition></obn>
 <obn><code>661</code><placeName>Conference, Old Road Campus</placeName><construction>1960</construction><acquisition>1996</acquisition></obn>
-<obn><code>662</code><placeName>Badenoch, Old Road Campus</placeName><construction>1960</construction><acquisition>2007</acquisition></obn>
+<obn><code>662</code><placeName>Badenoch Building</placeName><construction>1960</construction><acquisition>2007</acquisition></obn>
 <obn><code>665</code><placeName>Richards Building, Old Road Campus</placeName><construction>1960</construction><acquisition>2008</acquisition></obn>
 <obn><code>669</code><placeName>Management, Old Road Campus</placeName><construction>1960</construction><acquisition>1996</acquisition></obn>
 <obn><code>671</code><placeName>Terrapin (OPPF), Old Road Campus</placeName><construction>2002</construction></obn>
