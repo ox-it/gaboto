@@ -79,7 +79,7 @@
         </place>
 
         <place type="carpark" xml:id="O_carpark7">
-          <placeName>University Museum, Parks Road</placeName>
+          <placeName>University Museum of Natural History Carpark</placeName>
           <label>approx 30 spaces</label>
           <location>
             <geo>-1.256809937315634 51.75876149108313</geo>
@@ -4776,8 +4776,7 @@
           <placeName>Department for Continuing Education</placeName>
           <location type="address">
             <address>
-              <addrLine>Student Registry - Rewley House, 1 Wellington Square,
- Oxford</addrLine>
+              <addrLine>Rewley House, 1-7 Wellington Square, Oxford</addrLine>
               <postCode>OX1 2JA</postCode>
             </address>
           </location>
