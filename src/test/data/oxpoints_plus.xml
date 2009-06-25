@@ -3014,7 +3014,7 @@
             </place>
 
 	           <place type="building" xml:id="b_0034" obnCode="307">
-               <event xmlns="" when="2001" type="construction"/>
+               <event  when="2001" type="construction"/>
 	              <placeName>Sackler Library</placeName>
 	              <location when="2008-01-09T16:00:00">
 	                 <geo>-1.2614 51.75544</geo>
@@ -4365,8 +4365,8 @@
                   </desc>
                </trait>
                <place subtype="primary" type="building" obnCode="116">
-                  <event xmlns="" when="1866" type="construction"/>
-                  <event xmlns="" when="1967" type="acquisition"/>
+                  <event  when="1866" type="construction"/>
+                  <event  when="1967" type="acquisition"/>
                   <placeName>56 Banbury Road</placeName>
                   <location when="2007-05-22T14:35:01.251+01:00">
                      <geo>-1.261184 51.767531</geo>
@@ -4409,8 +4409,8 @@
                   </desc>
                </trait>
                <place subtype="primary" type="building" obnCode="286">
-                  <event xmlns="" when="1900" type="construction"/>
-                  <event xmlns="" when="1990" type="acquisition"/>
+                  <event  when="1900" type="construction"/>
+                  <event  when="1990" type="acquisition"/>
                   <placeName>92 Woodstock Road</placeName>
                   <location when="2007-05-22T14:33:29.586+01:00">
                      <geo>-1.264586 51.769194</geo>
@@ -4825,7 +4825,7 @@
                   </desc>
                </trait>
                <place type="building" obnCode="387">
-                  <event xmlns="" when="2008" type="construction"/>
+                  <event  when="2008" type="construction"/>
                   <!-- JR says add placename RT 1342382 -->
             <placeName>New Biochemistry Building</placeName>
                   <location when="2009-01-09T17:20:00.000">
@@ -4875,7 +4875,7 @@ data, and if so, how? -->
           </place>
           -->
           <place type="building" obnCode="271">
-                  <event xmlns="" when="1986" type="construction"/>
+                  <event  when="1986" type="construction"/>
                   <placeName>Rex Richards Building</placeName>
                   <location when="2007-06-18T10:09:17.000">
                      <geo>-1.253818 51.759658</geo>
@@ -4895,7 +4895,7 @@ data, and if so, how? -->
           </place>
           -->
           <place type="building" obnCode="281">
-                  <event xmlns="" when="1991" type="construction"/>
+                  <event  when="1991" type="construction"/>
                   <placeName>Rodney Porter Building</placeName>
                   <location when="2007-06-18T09:53:10.000">
                      <geo>-1.253343 51.759602</geo>
@@ -4996,7 +4996,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place type="building" obnCode="332">
-                  <event xmlns="" when="2003" type="construction"/>
+                  <event  when="2003" type="construction"/>
                   <placeName>Chemistry Research Laboratory</placeName>
                   <location when="2007-06-18T10:27:50.000">
                      <geo>-1.253125 51.757892</geo>
@@ -5142,8 +5142,8 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place subtype="primary" type="building" obnCode="183">
-                  <event xmlns="" when="1871" type="construction"/>
-                  <event xmlns="" when="1924" type="acquisition"/>
+                  <event  when="1871" type="construction"/>
+                  <event  when="1924" type="acquisition"/>
                   <placeName>15 Norham Gardens</placeName>
                   <location when="2007-01-30T14:51:00.941Z">
                      <geo>-1.2554562091827392 51.763875911635765</geo>
@@ -5176,7 +5176,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place subtype="primary" type="building" obnCode="153">
-                  <event xmlns="" when="1963" type="construction"/>
+                  <event  when="1963" type="construction"/>
                   <placeName>Thom Building</placeName>
                   <location when="2007-06-18T10:51:19.000">
                      <geo>-1.259203 51.760258</geo>
@@ -5264,7 +5264,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place subtype="primary" type="building" obnCode="179">
-                  <event xmlns="" when="1959" type="construction"/>
+                  <event  when="1959" type="construction"/>
                   <placeName>Hume-Rothery Building</placeName>
                   <location when="2007-01-29T16:26:25.607Z">
                      <geo>-1.2593078613281 51.76060885596784</geo>
@@ -5438,7 +5438,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place type="building" obnCode="217">
-                  <event xmlns="" when="1953" type="construction"/>
+                  <event  when="1953" type="construction"/>
                   <placeName>Sherrington Building</placeName>
                   <location when="2007-06-18T09:46:41.000">
                      <geo>-1.254883 51.759662</geo>
@@ -5621,7 +5621,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place type="building" obnCode="269">
-                  <event xmlns="" when="1971" type="construction"/>
+                  <event  when="1971" type="construction"/>
                   <placeName>Tinbergen Building</placeName>
                   <place type="room">
                      <placeName>D38</placeName>
@@ -6361,7 +6361,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place subtype="primary" type="building" obnCode="168">
-                  <event xmlns="" when="1860" type="construction"/>
+                  <event  when="1860" type="construction"/>
                   <placeName>Inorganic Chemistry</placeName>
                   <location when="2007-06-18T10:33:09.000">
                      <geo>-1.254655 51.758228</geo>
@@ -6403,7 +6403,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place type="building" obnCode="144">
-                  <event xmlns="" when="1713" type="construction"/>
+                  <event  when="1713" type="construction"/>
                   <placeName>Clarendon Institute Building</placeName>
                   <location when="2007-05-22T14:36:44.634+01:00">
                      <geo>-1.263041 51.761359</geo>
@@ -7219,7 +7219,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place subtype="primary" type="building" obnCode="376">
-                  <event xmlns="" when="1992" type="construction"/>
+                  <event  when="1992" type="construction"/>
                   <placeName>Nissan Institute</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.26229 51.76416</geo>
@@ -7734,8 +7734,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
                <place subtype="primary" type="building" obnCode="172">
-                  <event xmlns="" when="1880" type="construction"/>
-                  <event xmlns="" when="1934" type="acquisition"/>
+                  <event  when="1880" type="construction"/>
+                  <event  when="1934" type="acquisition"/>
                   <placeName>7 Keble Road</placeName>
                   <location when="2007-06-14T11:16:23.961+01:00">
                      <geo>-1.2584173679351807 51.75987174365013</geo>
@@ -7963,7 +7963,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
 
 
             <place type="building" xml:id="b_0032" obnCode="225">
-               <event xmlns="" when="1901" type="construction"/>
+               <event  when="1901" type="construction"/>
                <placeName>Radcliffe Science Library</placeName>
                <location when="2007-05-22T17:06:16.818+01:00">
                   <geo>-1.2553811073303222 51.75866311903413</geo>
@@ -9222,7 +9222,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
                <place subtype="primary" type="building" obnCode="252">
-                  <event xmlns="" when="1860" type="construction"/>
+                  <event  when="1860" type="construction"/>
                   <placeName>University Museum of Natural History</placeName>
                   <location when="2007-05-22T16:52:48.282+01:00">
                      <geo>-1.256297 51.758522</geo>
@@ -10411,8 +10411,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
 
          <listPlace>
             <place type="building" xml:id="b_0001" obnCode="194">
-               <event xmlns="" when="1880" type="construction"/>
-               <event xmlns="" when="1912" type="acquisition"/>
+               <event  when="1880" type="construction"/>
+               <event  when="1912" type="acquisition"/>
                <placeName>10 Parks Road</placeName>
                <location>
                   <geo>-1.256872398790064 51.75835645044408</geo>
@@ -10420,7 +10420,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0002" obnCode="178">
-               <event xmlns="" when="1956" type="construction"/>
+               <event  when="1956" type="construction"/>
                <placeName>10 Merton Street</placeName>
                <location>
                   <geo>-1.250844 51.751636</geo>
@@ -10428,8 +10428,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0003" obnCode="124">
-               <event xmlns="" when="1868" type="construction"/>
-               <event xmlns="" when="1966" type="acquisition"/>
+               <event  when="1868" type="construction"/>
+               <event  when="1966" type="acquisition"/>
                <placeName>11 Bevington Road</placeName>
                <location>
                   <geo>-1.261920 51.762570</geo>
@@ -10437,8 +10437,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0004" obnCode="122">
-               <event xmlns="" when="1837" type="construction"/>
-               <event xmlns="" when="1940" type="acquisition"/>
+               <event  when="1837" type="construction"/>
+               <event  when="1940" type="acquisition"/>
                <placeName>34-36 Beaumont Street</placeName>
                <location>
                   <geo>-1.260917 51.755117</geo>
@@ -10547,7 +10547,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0038" obnCode="136">
-               <event xmlns="" when="1975" type="construction"/>
+               <event  when="1975" type="construction"/>
                <placeName>Nuneham Book Repository</placeName>
                <location>
 	                 <geo>-1.199 51.686</geo>
@@ -10555,7 +10555,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0011" obnCode="131">
-               <event xmlns="" when="1424" type="construction"/>
+               <event  when="1424" type="construction"/>
                <placeName>Old Bodleian Library</placeName>
                <location>
                   <geo>-1.254023 51.754104</geo>
@@ -10576,7 +10576,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0014" obnCode="186">
-               <event xmlns="" when="1964" type="construction"/>
+               <event  when="1964" type="construction"/>
                <placeName>Denys Wilkinson Building</placeName>
                <location>
                   <geo>-1.259313 51.759450</geo>
@@ -10584,7 +10584,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0015" obnCode="360">
-               <event xmlns="" when="1965" type="construction"/>
+               <event  when="1965" type="construction"/>
                <placeName>Ewert House</placeName>
                <location>
                   <geo>-1.263363 51.776683</geo>
@@ -10592,7 +10592,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0016" obnCode="155">
-               <event xmlns="" when="1878" type="construction"/>
+               <event  when="1878" type="construction"/>
                <placeName>Examination Schools</placeName>
                <location>
                   <geo>-1.250550 51.752460</geo>
@@ -10609,7 +10609,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0018" obnCode="622">
-               <event xmlns="" when="1975" type="construction"/>
+               <event  when="1975" type="construction"/>
                <placeName>John Radcliffe Hospital Main</placeName>
                <location>
                   <geo>-1.219807 51.763823</geo>
@@ -10624,7 +10624,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0020" obnCode="309">
-               <event xmlns="" when="1999" type="construction"/>
+               <event  when="1999" type="construction"/>
                <placeName>Manor Road Building</placeName>
                <location>
                   <geo>-1.248354 51.756941</geo>
@@ -10642,7 +10642,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0021" obnCode="182">
-               <event xmlns="" when="1971" type="construction"/>
+               <event  when="1971" type="construction"/>
                <placeName>New Barnett House</placeName>
                <location>
                   <geo>-1.263040 51.758070</geo>
@@ -10688,7 +10688,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
         <!-- <addrLine>St Aldate's, Oxford</addrLine> -->
 
         <place type="building" xml:id="b_0025" obnCode="228">
-               <event xmlns="" when="1962" type="construction"/>
+               <event  when="1962" type="construction"/>
                <placeName>St Cross Building</placeName>
                <location>
                   <geo>-1.248376 51.756936</geo>
@@ -10696,8 +10696,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0026" obnCode="174">
-               <event xmlns="" when="1850" type="construction"/>
-               <event xmlns="" when="1957" type="acquisition"/>
+               <event  when="1850" type="construction"/>
+               <event  when="1957" type="acquisition"/>
                <placeName>The Malthouse</placeName>
                <location>
                   <geo>-1.263835 51.752434</geo>
@@ -10728,7 +10728,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0029" obnCode="193">
-               <event xmlns="" when="1913" type="construction"/>
+               <event  when="1913" type="construction"/>
                <placeName>9 Parks Road</placeName>
                <location>
                   <geo>-1.255277 51.756899</geo>
@@ -10736,8 +10736,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0030" obnCode="312">
-               <event xmlns="" when="1970" type="construction"/>
-               <event xmlns="" when="1998" type="acquisition"/>
+               <event  when="1970" type="construction"/>
+               <event  when="1998" type="acquisition"/>
                <placeName>Littlegate House</placeName>
                <location>
                   <geo>-1.259438 51.750202</geo>
@@ -10748,7 +10748,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0031" obnCode="156">
-               <event xmlns="" when="1875" type="construction"/>
+               <event  when="1875" type="construction"/>
                <placeName>Rewley House</placeName>
                <location>
                   <geo>-1.262190 51.757191</geo>

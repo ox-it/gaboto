@@ -43,10 +43,10 @@
 	      <xsl:value-of select="code"/>
 	    </xsl:attribute>
 	    <xsl:for-each select="construction">
-	      <event when="{.}" type="construction"/>
+	      <tei:event when="{.}" type="construction"/>
 	    </xsl:for-each>
 	    <xsl:for-each select="acquisition">
-	      <event when="{.}" type="acquisition"/>
+	      <tei:event when="{.}" type="acquisition"/>
 	    </xsl:for-each>
 	  </xsl:for-each>
 	</xsl:when>
