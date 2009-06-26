@@ -5689,8 +5689,7 @@ data, and if so, how? -->
                <placeName>Environmental Change Institute</placeName>
                <location type="address">
                   <address>
-                     <addrLine>Oxford University Centre for the Environment, South Parks
- Road, Oxford</addrLine>
+                     <addrLine>Oxford University Centre for the Environment, South Parks Road, Oxford</addrLine>
                      <postCode>OX1 3QY</postCode>
                   </address>
                </location>
@@ -10478,6 +10477,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0006">
+	      <placeName>41 St Giles</placeName>
                <location type="address">
                   <address>
                      <addrLine>41 St Giles, Oxford</addrLine>
@@ -10489,6 +10489,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0007">
+	      <placeName>5 Worcester Street</placeName>
                <location type="address">
                   <address>
 	                    <addrLine>5-6 Worcester Street, Oxford</addrLine>
@@ -10528,9 +10529,10 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             </place>
 
             <place type="building" xml:id="b_0010">
+	      <placeName>9 Alfred Street</placeName>
                <location type="address">
                   <address>
-	                    <addrLine>Blue Boar Court, 9 Alfred Street, Oxford</addrLine>
+		    <addrLine>Blue Boar Court, 9 Alfred Street, Oxford</addrLine>
                   </address>
                </location>
                <location>
@@ -10651,8 +10653,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             <place type="building" xml:id="b_0023">
                <location type="address">
                   <address>
-	                    <addrLine>Oxford University Centre for the
-	Environment</addrLine>
+		    <addrLine>Oxford University Centre for the Environment</addrLine>
                   </address>
                </location>
                <location>
