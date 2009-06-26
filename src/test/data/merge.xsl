@@ -31,6 +31,9 @@
     <xsl:variable name="id">
       <xsl:value-of select="@xml:id"/>
     </xsl:variable>
+    <xsl:variable name="address">
+      <xsl:value-of select="normalize-space(tei:location[@type='address'])"/>
+    </xsl:variable>
     <xsl:variable name="parentname">
       <xsl:value-of select="ancestor::tei:place[1]/tei:placeName"/>
     </xsl:variable>
@@ -70,6 +73,10 @@
 	<xsl:when test="contains($name,' Hall') or contains($parentname,' Hall')"/>
 	<xsl:when test="$name=''">
 	  <xsl:message>NO MATCH. <xsl:value-of select="$id"/>. Empty name. Parent is <xsl:value-of select="$parentname"/></xsl:message>
+	</xsl:when>
+	<xsl:when test="key('N',$address)">
+	  <xsl:message>PARTIAL MATCH. <xsl:value-of select="$id"/>.Parent is <xsl:value-of select="$parentname"/> BUT
+	  see <xsl:value-of select="$address"/> ie <xsl:value-of select="key('N',$address)/obn"/></xsl:message>
 	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:message>NO MATCH. <xsl:value-of

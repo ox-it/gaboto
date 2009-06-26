@@ -5053,8 +5053,10 @@ data, and if so, how? -->
                      <ptr target="http://www.earth.ox.ac.uk/computing/facilities.htm"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
-                  <location when="2008-07-30T16:46:00">
+               <place subtype="primary" type="building" obnCode="160">
+                  <tei:event when="1910" type="construction"/>
+                  <placeName>Earth Sciences</placeName>
+	                 <location when="2008-07-30T16:46:00">
                      <geo>-1.256670 51.757831</geo>
                      <note> recorded by Janet McKnight (from GEarth / postcode)</note>
                   </location>
@@ -5315,7 +5317,9 @@ data, and if so, how? -->
                      <ptr target="http://www.imsu.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="280">
+                  <tei:event when="1991" type="construction"/>
+                  <placeName>Pharmacology</placeName>
                   <location when="2007-06-14T14:05:38.825+01:00">
                      <geo>-1.251389980316162 51.75820821622494</geo>
                      <note> recorded by Janet McKnight</note>
@@ -5432,7 +5436,9 @@ data, and if so, how? -->
                      <ptr target="http://www.plants.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="158">
+                  <tei:event when="1946" type="construction"/>
+		                <placeName>Plant Sciences South</placeName>
                   <location when="2007-06-18T10:06:29.000">
                      <geo>-1.253135 51.759335</geo>
                      <note> recorded by Janet McKnight</note>
@@ -5567,6 +5573,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place subtype="primary" type="building">
+		                <placeName>S South Parks Road</placeName>
                   <location when="2007-06-18T10:30:46.000">
                      <geo>-1.254262 51.758078</geo>
                      <note> recorded by Janet McKnight</note>
@@ -5887,7 +5894,10 @@ data, and if so, how? -->
                      <ptr target="http://www.history.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="237">
+                  <tei:event when="1880" type="construction"/>
+                  <tei:event when="1977" type="acquisition"/>
+		                <placeName>Old Boys High School</placeName>
                   <location when="2007-06-14T10:38:15.348+01:00">
                      <geo>-1.26317 51.753656</geo>
                      <note> recorded by Janet McKnight</note>
@@ -6007,7 +6017,9 @@ data, and if so, how? -->
                   </desc>
                </trait>
 
-               <place type="building">
+               <place type="building" obnCode="178">
+                  <tei:event when="1956" type="construction"/>
+		                <placeName>10 Merton Street</placeName>
                   <location when="2007-05-22T16:32:45.881+01:00">
                      <geo>-1.255445 51.757428</geo>
                      <note> recorded by Janet McKnight</note>
@@ -6047,7 +6059,10 @@ data, and if so, how? -->
                   </desc>
                </trait>
 
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="232">
+                  <tei:event when="1700" type="construction"/>
+                  <tei:event when="1927" type="acquisition"/>
+		                <placeName>41 St Giles</placeName>
                   <location when="2007-05-22T16:46:37.433+01:00">
                      <geo>-1.259866 51.759128</geo>
                      <note> recorded by Janet McKnight</note>
@@ -6345,7 +6360,9 @@ data, and if so, how? -->
                      <ptr target="http://www.orinst.ox.ac.uk/html/ea/chinese/chinese.html"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="144">
+                  <tei:event when="1713" type="construction"/>
+		                <placeName>Clarendon Institute Building</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.26354 51.75674</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -7076,7 +7093,9 @@ data, and if so, how? -->
                      <ptr target="http://www.mhs.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="165">
+                  <tei:event when="1683" type="construction"/>
+		                <placeName>Museum of the History of Science</placeName>
                   <location when="2007-05-22T16:59:14.311+01:00">
                      <geo>-1.255488 51.754187</geo>
                      <note> recorded by Janet McKnight</note>
@@ -7249,7 +7268,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
 
             </place>
             <place type="department" xml:id="ortho">
-               <placeName>uffield Department of Orthopaedics, Rheumatology and Musculoskeletal Sciences</placeName>
+               <placeName>Nuffield Department of Orthopaedics, Rheumatology and Musculoskeletal Sciences</placeName>
                <location type="address">
                   <address>
                      <addrLine>Nuffield Orthopaedic Centre, Old Road, Headington,
@@ -7367,7 +7386,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://www.orinst.ox.ac.uk/general/it.shtml"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="191">
+                  <tei:event when="1962" type="construction"/>
+		                <placeName>Oriental Institute</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.26092 51.75592</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -7430,8 +7451,10 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://weblearn.ox.ac.uk/site/socsci/oii/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
-		 <placeName>1 St Giles</placeName>
+               <place subtype="primary" type="building" obnCode="371">
+                  <tei:event when="1800" type="construction"/>
+                  <tei:event when="2001" type="acquisition"/>
+		                <placeName>1 St Giles</placeName>
                   <location when="2007-01-29T12:58:29.078Z">
                      <geo>-1.25899672508239 51.75582737275274</geo>
                      <note> recorded by Tom King</note>
@@ -7571,7 +7594,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://www.club.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="364">
+                  <tei:event when="2004" type="construction"/>
                   <placeName>University Club</placeName>
                   <location when="2007-06-14T11:09:43.166+01:00">
                      <geo>-1.2513148784637451 51.756783709900965</geo>
@@ -7657,10 +7681,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://www.oerc.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building" obnCode="172">
-                  <event when="1880" type="construction"/>
-                  <event when="1934" type="acquisition"/>
-                  <placeName>7 Keble Road</placeName>
+               <place subtype="primary" type="building" obnCode="379">
+                  <tei:event when="2006" type="construction"/>
+                  <placeName>E-Science Laboratory</placeName>
                   <location when="2007-06-14T11:16:23.961+01:00">
                      <geo>-1.2584173679351807 51.75987174365013</geo>
                      <note> recorded by Janet McKnight</note>
@@ -7803,7 +7826,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://www.prm.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="220">
+                  <tei:event when="1885" type="construction"/>
+		                <placeName>Pitt Rivers Museum</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.2564 51.75903</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -7959,12 +7984,24 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </place>
 
             </place>
+	           <place type="building" xml:id="b_0053">
+	              <placeName>Dyson Perrins Building</placeName>
+		             <location>
+                     <geo>-1.25392 51.75898</geo>
+		             </location>
+               <place type="room" xml:id="b_0023r1">
+                  <placeName>Boardroom</placeName>
+               </place>
+
+	           </place>
+	    
             <place type="department" xml:id="archres">
                <placeName>Research Laboratory for Archaeology and the History of Art</placeName>
                <location type="address">
                   <address>
-                     <addrLine>6 Keble Road, Oxford</addrLine>
-                     <postCode>OX1 3QJ</postCode>
+                     <addrLine>Dyson Perrins Building, South Parks
+		     Road, Oxford</addrLine>
+		                   <postCode>OX1 3QY</postCode>
                   </address>
                </location>
                <trait type="url">
@@ -7972,13 +8009,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://www.rlaha.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.25392 51.75898</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
-            </place>
+	           </place>
             <place type="uas" xml:id="retired">
                <placeName>Retired Staff</placeName>
                <location type="address">
@@ -8007,6 +8038,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
                <place subtype="primary" type="building">
+		                <placeName>Rhodes House</placeName>
                   <location when="2007-05-22T16:58:28.068+01:00">
                      <geo>-1.255212 51.75806</geo>
                      <note> recorded by Janet McKnight</note>
@@ -8030,7 +8062,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://www.rai.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="308">
+                  <tei:event when="2001" type="construction"/>
+		                <placeName>Rothermere American Institute</placeName>
                   <location when="2007-05-22T16:35:37.534+01:00">
                      <geo>-1.253428 51.759447</geo>
                      <note> recorded by Janet McKnight</note>
@@ -8058,7 +8092,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://www.ruskin-sch.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
+               <place subtype="primary" type="building" obnCode="163">
+                  <tei:event when="1887" type="construction"/>
+		                <placeName>Ruskin School, 74 High Street</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25054 51.75246</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -8099,8 +8135,10 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://weblearn.ox.ac.uk/site/socsci/sbs/"/>
                   </desc>
                </trait>
-               <place subtype="primary" type="building">
-                  <location when="2007-01-29T12:44:33.353Z">
+               <place subtype="primary" type="building" obnCode="327">
+                  <tei:event when="2001" type="construction"/>
+		                <placeName>Said Business School</placeName>
+		                <location when="2007-01-29T12:44:33.353Z">
                      <geo>-1.26849174499511 51.75338994968635</geo>
                      <note> recorded by Jerome Hickey</note>
                   </location>
@@ -8114,7 +8152,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
 
             </place>
             <place type="department" xml:id="geog">
-               <placeName>School of Geography</placeName>
+               <placeName>School of Geography and the Environment</placeName>
                <location type="address">
                   <address>
                      <addrLine>Oxford University Centre for the Environment, South Parks
@@ -8169,8 +8207,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
 
-               <place subtype="primary" type="building">
-		 <placeName>Sheldonian Theatre</placeName>
+               <place subtype="primary" type="building" obnCode="236">
+                  <tei:event when="1669" type="construction"/>
+		                <placeName>Sheldonian Theatre</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25503 51.75437</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -8296,14 +8335,16 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <note> recorded by Janet McKnight</note>
                   </location>
                </place>
-               <place type="building">
+               <place type="building" obnCode="246">
+                  <tei:event when="1965" type="construction"/>
                   <placeName>University Parks - Rhodes Pavilion</placeName>
                   <location when="2007-06-14T15:02:03.642+01:00">
                      <geo>-1.2516045570373535 51.75978873475237</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
                </place>
-               <place type="building">
+               <place type="building" obnCode="347">
+                  <tei:event when="2001" type="construction"/>
                   <placeName>Marston Field Sports Pavilion</placeName>
                   <location when="2007-06-14T15:04:17.757+01:00">
                      <geo>-1.245253086090088 51.76511095646553</geo>
@@ -9118,7 +9159,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
 
-               <place type="building">
+               <place type="building" obnCode="174">
+                  <tei:event when="1850" type="construction"/>
+                  <tei:event when="1957" type="acquisition"/>
                   <placeName>The Malthouse</placeName>
                   <location when="2007-06-18T09:50:57.000">
                      <geo>-1.253703 51.759753</geo>
@@ -10478,8 +10521,10 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </place>
             </place>
 
-            <place type="building" xml:id="b_0006">
-	      <placeName>41 St Giles</placeName>
+            <place type="building" xml:id="b_0006" obnCode="232">
+               <tei:event when="1700" type="construction"/>
+               <tei:event when="1927" type="acquisition"/>
+	              <placeName>41 St Giles</placeName>
                <location type="address">
                   <address>
                      <addrLine>41 St Giles, Oxford</addrLine>
@@ -10490,8 +10535,10 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </location>
             </place>
 
-            <place type="building" xml:id="b_0007">
-	      <placeName>5 Worcester Street</placeName>
+            <place type="building" xml:id="b_0007" obnCode="368">
+               <tei:event when="1989" type="construction"/>
+               <tei:event when="2005" type="acquisition"/>
+	              <placeName>5 Worcester Street</placeName>
                <location type="address">
                   <address>
 	                    <addrLine>5-6 Worcester Street, Oxford</addrLine>
@@ -10530,11 +10577,13 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </location>
             </place>
 
-            <place type="building" xml:id="b_0010">
-	      <placeName>9 Alfred Street</placeName>
+            <place type="building" xml:id="b_0010" obnCode="389">
+               <tei:event when="1850" type="construction"/>
+               <tei:event when="2007" type="acquisition"/>
+	              <placeName>Oxford-Man Institute Of Quantitative Finance</placeName>
                <location type="address">
                   <address>
-		    <addrLine>Blue Boar Court, 9 Alfred Street, Oxford</addrLine>
+		                   <addrLine>Blue Boar Court, 9 Alfred Street, Oxford</addrLine>
                   </address>
                </location>
                <location>
@@ -10652,19 +10701,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </location>
             </place>
 
-            <place type="building" xml:id="b_0023">
-               <location type="address">
-                  <address>
-		    <addrLine>Oxford University Centre for the Environment</addrLine>
-                  </address>
-               </location>
-               <location>
-                  <geo>-1.253836 51.758969</geo>
-               </location>
-               <place type="room" xml:id="b_0023r1">
-                  <placeName>Boardroom</placeName>
-               </place>
-            </place>
+
 
             <!-- got here -->
         <!-- <addrLine>Parks Road, Oxford</addrLine> -->
@@ -10900,7 +10937,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             <relation name="occupies" type="geo primary" active="#sociology" passive="#b_0020"/>
             <relation name="occupies" type="geo primary" active="#arthist" passive="#b_0030"/>
             <relation name="occupies" type="geo primary" active="#englib" passive="#b_0025"/>
-            <relation name="occupies" type="geo primary" active="#envch" passive="#b_0023"/>
+	           <relation name="occupies" active="#archres" passive="#b_0053"/>
+	           <relation name="occupies" active="#geog" passive="#b_0053"/>
+            <relation name="occupies" type="geo primary" active="#envch" passive="#b_0053"/>
             <relation name="occupies" type="geo primary" active="#euro" passive="#b_0009"/>
             <relation name="occupies" type="geo primary" active="#exams" passive="#b_0016"/>
             <relation name="occupies" type="geo primary" active="#classics" passive="#b_0008"/>
