@@ -7431,6 +7431,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
                <place subtype="primary" type="building">
+		 <placeName>1 St Giles</placeName>
                   <location when="2007-01-29T12:58:29.078Z">
                      <geo>-1.25899672508239 51.75582737275274</geo>
                      <note> recorded by Tom King</note>
@@ -7571,7 +7572,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
                <place subtype="primary" type="building">
-                  <placeName>11 Mansfield Road</placeName>
+                  <placeName>University Club</placeName>
                   <location when="2007-06-14T11:09:43.166+01:00">
                      <geo>-1.2513148784637451 51.756783709900965</geo>
                      <note> recorded by Janet McKnight</note>
@@ -8169,6 +8170,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </trait>
 
                <place subtype="primary" type="building">
+		 <placeName>Sheldonian Theatre</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25503 51.75437</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -8295,14 +8297,14 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </location>
                </place>
                <place type="building">
-                  <placeName>University Park Sports Ground</placeName>
+                  <placeName>University Parks - Rhodes Pavilion</placeName>
                   <location when="2007-06-14T15:02:03.642+01:00">
                      <geo>-1.2516045570373535 51.75978873475237</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
                </place>
                <place type="building">
-                  <placeName>Marston Road Sports Ground</placeName>
+                  <placeName>Marston Field Sports Pavilion</placeName>
                   <location when="2007-06-14T15:04:17.757+01:00">
                      <geo>-1.245253086090088 51.76511095646553</geo>
                      <note> recorded by Janet McKnight</note>
@@ -9117,7 +9119,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </trait>
 
                <place type="building">
-                  <placeName>Estates Directorate</placeName>
+                  <placeName>The Malthouse</placeName>
                   <location when="2007-06-18T09:50:57.000">
                      <geo>-1.253703 51.759753</geo>
                      <note> recorded by Janet McKnight</note>
