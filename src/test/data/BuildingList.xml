@@ -48,7 +48,7 @@
 <obn><code>166</code><placeName>Le Gros Clark Building</placeName><construction>1892</construction></obn>
 <obn><code>167</code><placeName>The Pauling Centre, 58a Banbury Road, Oxford</placeName><construction>1981</construction></obn>
 <obn><code>168</code><placeName>Inorganic Chemistry</placeName><construction>1860</construction></obn>
-<obn><code>170</code><placeName>1-4 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
+<obn><code>170</code><placeName>Rudolf Peierls Centre</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
 <obn><code>171</code><placeName>5-6 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
 <obn><code>172</code><placeName>7 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
 <obn><code>173</code><placeName>8-11 Keble Road</placeName><construction>1880</construction><acquisition>1934</acquisition></obn>
@@ -90,15 +90,15 @@
 <obn><code>241</code><placeName>Sports Centre Cricket</placeName><construction>1980</construction></obn>
 <obn><code>242</code><placeName>Sports Centre Gymnasium</placeName><construction>1965</construction></obn>
 <obn><code>244</code><placeName>Sports Centre Squash</placeName><construction>1975</construction></obn>
-<obn><code>245</code><placeName>University Parks - Pavilion</placeName><construction>1880</construction></obn>
+<obn><code>245</code><placeName>Cricket Pavilion</placeName><construction>1880</construction></obn>
 <obn><code>246</code><placeName>University Parks - Rhodes Pavilion</placeName><construction>1965</construction></obn>
 <obn><code>248</code><placeName>Summertown House Mansion</placeName><construction>1880</construction><acquisition>1947</acquisition></obn>
 <obn><code>250</code><placeName>Taylor Institution</placeName><construction>1845</construction></obn>
 <obn><code>252</code><placeName>University Museum of Natural History</placeName><construction>1860</construction></obn>
 <obn><code>253</code><placeName>University Museum Lodge</placeName><construction>1888</construction></obn>
 <obn><code>254</code><placeName>University Offices</placeName><construction>1974</construction></obn>
-<obn><code>256</code><placeName>South Lodge, University Parks</placeName><construction>1880</construction></obn>
-<obn><code>258</code><placeName>Tentorium, University Parks</placeName><construction>1963</construction></obn>
+<obn><code>256</code><placeName>South Lodge</placeName><construction>1880</construction></obn>
+<obn><code>258</code><placeName>Tentorium</placeName><construction>1963</construction></obn>
 <obn><code>260</code><placeName>8 Wellington Square</placeName><construction>1875</construction></obn>
 <obn><code>261</code><placeName>11 Wellington Square</placeName><construction>1875</construction></obn>
 <obn><code>262</code><placeName>16 Wellington Square</placeName><construction>1875</construction></obn>
@@ -148,7 +148,7 @@
 <obn><code>337</code><placeName>HWB Of Gene Function</placeName><construction>2003</construction></obn>
 <obn><code>338</code><placeName>Cast Gallery, Ashmolean Museum</placeName><construction>1961</construction></obn>
 <obn><code>341</code><placeName>SERS</placeName><construction>1965</construction><acquisition>2001</acquisition></obn>
-<obn><code>342</code><placeName>Osney 1 Building - (Blackwells Scientific)</placeName><construction>1970</construction><acquisition>2001</acquisition></obn>
+<obn><code>342</code><placeName>Osney 1 Building</placeName><construction>1970</construction><acquisition>2001</acquisition></obn>
 <obn><code>343</code><placeName>Holywell Music Room</placeName><construction>1748</construction><acquisition>1945</acquisition></obn>
 <obn><code>344</code><placeName>Thomas Hull House</placeName><construction>1979</construction><acquisition>2002</acquisition></obn>
 <obn><code>346</code><placeName>Wolsey Hall, 66 Banbury Road</placeName><construction>1869</construction><acquisition>2002</acquisition></obn>
@@ -181,7 +181,7 @@
 <obn><code>622</code><placeName>John Radcliffe Hospital Main</placeName><construction>1975</construction></obn>
 <obn><code>623</code><placeName>John Radcliffe Academic</placeName><construction>1975</construction></obn>
 <obn><code>624</code><placeName>John Radcliffe Industrial</placeName><construction>1975</construction></obn>
-<obn><code>625</code><placeName>Weatherall Inst Of Molecular Medicine (WIMM)</placeName><construction>1970</construction><acquisition>1972</acquisition></obn>
+<obn><code>625</code><placeName>Weatherall Institute Of Molecular Medicine</placeName><construction>1970</construction><acquisition>1972</acquisition></obn>
 <obn><code>627</code><placeName>FMRIB Centre</placeName><construction>1997</construction></obn>
 <obn><code>628</code><placeName>Botnar Research Centre</placeName><construction>2002</construction><acquisition>2005</acquisition></obn>
 <obn><code>629</code><placeName>John Radcliffe OCMR Building (MRS)</placeName><construction>2003</construction></obn>
