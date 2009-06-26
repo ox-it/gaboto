@@ -480,8 +480,8 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
     }
   }
 
-  public GabotoEntity addEntity(Resource res, GabotoSnapshot snapshot) {
-    return addEntity(res, snapshot, true, false);
+  public GabotoEntity addEntity(Resource res, GabotoSnapshot snapshotP) {
+    return addEntity(res, snapshotP, true, false);
   }
 
   /**
@@ -490,7 +490,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * 
    * @param resource
    *          The source the entity is created from
-   * @param snapshot
+   * @param snapshotFrom
    *          The snapshot the resource was taken from.
    * @param direct
    * @param bypassTests whether to check entity validity
@@ -499,9 +499,9 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * @throws ResourceDoesNotExistException
    * @throws EntityDoesNotExistException
    */
-  GabotoEntity addEntity(Resource resource, GabotoSnapshot snapshot,
+  GabotoEntity addEntity(Resource resource, GabotoSnapshot snapshotFrom,
       boolean direct, boolean bypassTests) {
-    if (!snapshot.containsResource(resource))
+    if (!snapshotFrom.containsResource(resource))
       throw new ResourceDoesNotExistException(resource);
 
     // find type
@@ -560,7 +560,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       }
 
       // load entity
-      entity.loadFromSnapshot(resource, snapshot, this);
+      entity.loadFromSnapshot(resource, snapshotFrom, this);
 
       // add entity
       return this.addEntity(entity, direct);
