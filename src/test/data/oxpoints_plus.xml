@@ -10134,7 +10134,8 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </trait>
 	           </place>
 	           <relation name="occupies" active="#O_bsp" passive="#b_0046"/>
-	           <relation name="occupies" active="#O_bsp" passive="#r_0001"/>
+		   <!-- FIXME tpp -->
+	           <!-- relation name="occupies" active="#O_bsp" passive="#r_0001"/ -->
 
 	           <place type="building" xml:id="b_0046" obnCode="506">
                <tei:event when="1970" type="construction"/>
@@ -10967,9 +10968,10 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             <relation name="occupies" type="geo primary" active="#ageing" passive="#b_0020"/>
             <relation name="occupies" type="geo primary" active="#sbsltd" passive="#b_0019"/>
             <relation name="occupies" type="geo primary" active="#archive" passive="#b_0011"/>
-            <relation name="occupies" type="geo primary" active="#ouce" passive="#b_0023"/>
-            <relation name="occupies" type="geo primary" active="#mdcp" passive="#b_0039"/>
-            <relation name="occupies" type="geo primary" active="#dpag" passive="#b_0039"/>
+	    <!-- FIXME TPP -->
+            <!-- relation name="occupies" type="geo primary" active="#ouce" passive="#b_0023"/ -->
+            <!-- relation name="occupies" type="geo primary" active="#mdcp" passive="#b_0039"/  -->
+            <!-- relation name="occupies" type="geo primary" active="#dpag" passive="#b_0039"/ -->
             <!--
         <relation name="uses" type="room" active="#ageing" passive="#b_0020r1"/>
         <relation name="uses" type="room" active="#ouce" passive="#b_0023r1"/>
@@ -10987,12 +10989,14 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             <relation name="occupies" type="geo primary" active="#retired" passive="#b_0005"/>
             <relation name="occupies" type="geo primary" active="#safety" passive="#b_0001"/>
             <relation name="occupies" type="geo" active="#manstud" passive="#b_0019"/>
-            <relation name="occupies" type="geo primary" active="#geog" passive="#b_0023"/>
+	    <!-- FIXME TPP -->
+            <!-- relation name="occupies" type="geo primary" active="#geog" passive="#b_0023"/ -->
             <relation name="occupies" type="geo primary" active="#econlib" passive="#b_0020"/>
             <relation name="occupies" type="geo primary" active="#learn" passive="#b_0030"/>
             <relation name="occupies" type="geo" active="#molmed" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#theolib" passive="#b_0006"/>
-            <relation name="occupies" type="geo primary" active="#trans" passive="#b_0023"/>
+	    <!-- FIXME TPP -->
+            <!-- relation name="occupies" type="geo primary" active="#trans" passive="#b_0023"/ -->
             <relation name="occupies" type="geo primary" active="#epidem" passive="#b_0017"/>
             <relation name="occupies" type="geo primary" active="#survey" passive="#b_0026"/>
             <relation name="occupies" type="geo primary" active="#ulib" passive="#b_0011"/>
