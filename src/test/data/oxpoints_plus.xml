@@ -10395,8 +10395,36 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </location>
             </place>
 
-            <place type="building" xml:id="b_0005">
-               <placeName>13 Banbury Road</placeName>
+            <place type="building" xml:id="b_0049" obnCode="108">
+               <tei:event when="1855" type="construction"/>
+               <tei:event when="1968" type="acquisition"/>
+               <placeName>15-19 Banbury Road</placeName>
+               <location>
+                  <geo>-1.260350 51.760010</geo>
+               </location>
+	           </place>
+
+            <place type="building" xml:id="b_0050" obnCode="106">
+               <tei:event when="1855" type="construction"/>
+               <tei:event when="1968" type="acquisition"/>
+               <placeName>7-9 Banbury Road</placeName>
+               <location>
+                  <geo>-1.260350 51.760010</geo>
+               </location>
+	           </place>
+
+            <place type="building" xml:id="b_0051" obnCode="107">
+               <tei:event when="1855" type="construction"/>
+               <tei:event when="1968" type="acquisition"/>
+               <placeName>11-13 Banbury Road</placeName>
+               <location>
+                  <geo>-1.260350 51.760010</geo>
+               </location>
+	           </place>
+
+            <place type="building" xml:id="b_0005" obnCode="109">
+               <tei:event when="1969" type="construction"/>
+               <placeName>7-19 Banbury Road</placeName>
                <location>
                   <geo>-1.260350 51.760010</geo>
                </location>
@@ -10852,6 +10880,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             <relation name="occupies" type="geo primary" active="#archfac" passive="#b_0004"/>
             <relation name="occupies" type="geo primary" active="#comlab" passive="#b_0028"/>
             <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0005"/>
+            <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0049"/>
+            <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0050"/>
+            <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0051"/>
             <relation name="occupies" type="geo primary" active="#oxman" passive="#b_0010"/>
             <relation name="occupies" type="geo primary" active="#conden" passive="#b_0013"/>
             <relation name="occupies" type="geo primary" active="#conted" passive="#b_0031"/>
