@@ -234,7 +234,7 @@ public class TEIImporter {
 		String passiveID = relation.getAttribute("passive");
 		
 		try{
-			Building b = (Building) entityLookup.get(passiveID.substring(1));
+	    Building b = (Building) entityLookup.get(passiveID.substring(1));
 			Unit u = (Unit) entityLookup.get(activeID.substring(1));
 	
 			if(u == null || b == null)
@@ -247,8 +247,8 @@ public class TEIImporter {
 				u.setPrimaryPlace(b);
 			
 			u.addOccupiedBuilding(b);
-		} catch(NullPointerException e){
-			throw new RuntimeException("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
+		} catch(Exception e){
+			throw new RuntimeException("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)", e);
 		}
 	}
 	
