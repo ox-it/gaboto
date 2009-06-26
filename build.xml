@@ -16,8 +16,11 @@
     <property name="vocab.dir"   value="src/main/java/org/oucs/gaboto/vocabulary"/>
 
      <path id="cp" >
-      <pathelement path="${classpath}"/>
+      <pathelement path=""/>
       <fileset dir="lib" id="libs">
+        <include name="**/*.jar"/>
+      </fileset>
+      <fileset dir="deploy" id="deploy">
         <include name="**/*.jar"/>
       </fileset>
     </path>
@@ -53,9 +56,9 @@
     <!--
      Creates Java helper classes for various schemata.
     -->
-    <target name="schemas" depends="init">
+    <target name="schemas" depends="deploy">
         <!-- create Gaboto Vocabulary -->
-        <java classname="jena.schemagen" classpathref="cp" fork="yes">
+        <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/gaboto.owl" />
           <arg value="-n" />
@@ -68,7 +71,7 @@
         </java>
         
         <!-- create OxPoints Vocabulary -->
-        <java classname="jena.schemagen" classpathref="cp" fork="yes">
+        <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/oxpoints.owl" />
           <arg value="-n" />
@@ -81,7 +84,7 @@
         </java>
         
         <!-- create geo vocabulary -->
-        <java classname="jena.schemagen" classpathref="cp" fork="yes">
+        <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/geo.owl" />
           <arg value="-o" />
@@ -96,7 +99,7 @@
         </java>
         
         <!-- create time vocabulary -->
-        <java classname="jena.schemagen" classpathref="cp" fork="yes">
+        <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/time.owl" />
           <arg value="-o" />
@@ -109,7 +112,7 @@
         </java>
         
         <!-- create rdfcon vocabulary -->
-        <java classname="jena.schemagen" classpathref="cp" fork="yes">
+        <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/rdfcon.owl" />
           <arg value="-n" />
@@ -122,7 +125,7 @@
         </java>
         
         <!-- create dc vocabulary -->
-        <java classname="jena.schemagen" classpathref="cp" fork="yes">
+        <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/DC.owl" />
           <arg value="-n" />
@@ -135,7 +138,7 @@
         </java>
         
         <!-- create rdfg vocabulary -->
-        <java classname="jena.schemagen" classpathref="cp" fork="yes">
+        <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/rdfg.rdf" />
           <arg value="-n" />
@@ -151,7 +154,7 @@
         </java>
 
         <!-- create vCard vocabulary -->
-        <java classname="jena.schemagen" classpathref="cp" fork="yes">
+        <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/vCard.owl" />
           <arg value="-n" />
@@ -164,7 +167,7 @@
         </java>
         
         <!-- create gabotoKML vocabulary -->
-        <java classname="jena.schemagen" classpathref="cp" fork="yes">
+        <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/gabotoKML.owl" />
           <arg value="-o" />
@@ -173,16 +176,15 @@
           <arg value="--package" />
           <arg value="org.oucs.gaboto.vocabulary"/>
         </java>        
-    </target>
+            <property name="cpcontent" refid="cp"/>
+        <echo>The newly created classpath is ${cpcontent}</echo>
+</target>
     
 
     
     
     <!-- The entire build //-->
     <target name="compile" depends="clean, init">
-        <echo message="The output path is ${ecl1outpath}"/>
-        <echo message="The source path is ${ecl1srcpath}"/>
-       
         <!-- makes a jar file with the content of the output directory -->
         <!-- zip destfile="${deploy.tmp.dir}/out.jar"><fileset refid="ecl1-${ecl1outpath}"/></zip -->
         <!-- makes a zip file with all your sources (supposing you have only source directory) -->
@@ -271,7 +273,7 @@
     </target>
     
     <target name="gabotoConfiguration" depends="compile">
-         <java classname="org.oucs.gaboto.helperscripts.CreateClassesFromConfiguration" classpathref="eclp" fork="yes">
+         <java classname="org.oucs.gaboto.helperscripts.CreateClassesFromConfiguration" classpathref="cp" fork="yes">
            <arg value="src/main/conf/Gaboto.xml"/>
            <arg value="src/main/java/org/oucs/gaboto/entities"/>
            <arg value="src/main/java/org/oucs/gaboto/beans"/>
