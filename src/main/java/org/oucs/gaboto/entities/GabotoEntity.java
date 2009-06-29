@@ -70,17 +70,15 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * 
  * <p>
  * OxPointEntities represent a defined class from the Gaboto ontology at a given point in time. That is, it
- * contains all the attribute values that this object had at a specified time. A representation of an Gaboto
+ * contains all the attribute values that this object had at a specified time. A representation of a Gaboto
  * object throughout its lifespan can be generated using the {@link GabotoTimeBasedEntity} class.
  * </p>
  * 
  * <p>
- * These entity classes are used by the Gaboto system as an intermediate format to provide an
- * API when working with the Gaboto library. Since adding new classes to the Gaboto
- * ontology might happen frequently, the actual representation of its java equivalent (the GabotoEntity)
- * is a very simple JavaBean (see <a href="http://en.wikipedia.org/wiki/JavaBean">Wikipedia entry</a>),
- * that only contains get and set methods for its attributes. The generation of an entity object from
- * RDF or the creation of RDF from an entity object is entirely handled by the Gaboto system
+ * Adding new classes to the Gaboto ontology might happen frequently so a GabotoEntity is 
+ * a JavaBean (see <a href="http://en.wikipedia.org/wiki/JavaBean">Wikipedia entry</a>).
+ * The generation of an entity object from
+ * RDF or the creation of RDF from an entity object is  handled by the Gaboto system
  * using Java's <a href="http://java.sun.com/docs/books/tutorial/reflect/index.html">reflection API</a>.
  * In order to be able to achieve this a set of annotations has been defined that have to be used
  * to mark up the various get and set methods.
@@ -95,24 +93,18 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * <h2>Creating new GabotoEntities</h2>
  * 
  * <p>
- * Adding new entities to the Gaboto system is easy and we want to show the usual procedure
- * by adding a fictional entity: Computer Monitors.
- * </p>
- * 
- * <p>
  * The first step when adding a new entity to the system is to adjust Gaboto' ontology and
- * add the corresponding owl:class. In this case we could add the following:
+ * add the corresponding owl:class. For example add the following:
  * <code>
  *  &lt;owl:Class rdf:ID="ComputerMonitor"/&gt;
  * </code>
- * Next we should rebuild the {@link OxPointsVocab} helper class by running the provided
- * ant script (build.xml target: schemas).
+ * Next we regenerate the {@link OxPointsVocab} helper class by running the ant script (build.xml target: schemas).
  * </p>
  * 
  * <p>
- * Now we can start writing the new {@link GabotoEntity}. We therefor create a new class with
+ * Now we can start writing the new {@link GabotoEntity}. We create a new class with
  * the same name as our ontology class and make it a subclass of {@link GabotoEntity}. We have
- * to override the getType method to return the correct ontology class. The basic scheleton would
+ * to override the getType method to return the correct ontology class. The basic skeleton would
  * look like this:
  * <pre>
  * public class ComputerMonitor extends GabotoEntity {
@@ -171,14 +163,14 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * for. This is done using predefined Annotations.
  * </p>
  *  
- * <h3>Adding annotations to guide the dynamic generation/serialization</h3>
+ * <h3>Adding annotations to guide dynamic generation and serialisation</h3>
  * 
  * <p>
  * In order to automatically create RDF from entities or load entities from RDF Gaboto relies
  * upon clues in form of predefined annotations (we call them PropertyAnnotation). All PropertyAnnotations
  * are defined in the package org.oucs.gaboto.entities.utils. For our ComputerMonitor
  * example we need the two annotations {@link SimpleLiteralProperty} and {@link SimpleURIProperty}.
- * These tell Gaboto that the marked up method return/store either a literal ({@link SimpleLiteralProperty})
+ * These tell Gaboto that the marked up method returns or stores either a literal ({@link SimpleLiteralProperty})
  * or an GabotoEntity ({@link SimpleURIProperty}).
  * </p>
  * 
@@ -360,8 +352,8 @@ abstract public class GabotoEntity implements RDFContainer {
 		missingEntityReferenceCallbacks.get(res.getURI()).add(callback);
 	}
 	
-	final protected void removeMissingReference(String uri){
-		missingEntityReferences.remove(uri);
+	final protected void removeMissingReference(String uriToRemove){
+		missingEntityReferences.remove(uriToRemove);
 		//missingEntityReferenceCallbacks.remove(uri);
 	}
 	
