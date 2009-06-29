@@ -296,7 +296,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	private static Logger logger = Logger.getLogger(GabotoEntity.class.getName());
 	
 	/**
-	 * Stores the timespan in which this entity is valid. If it is null, then the entity is valid indefinately. 
+	 * Stores the timespan in which this entity is valid. If it is null, then the entity is valid indefinitely. 
 	 */
 	private TimeSpan timespan = TimeUtils.EXISTANCE;
 	
