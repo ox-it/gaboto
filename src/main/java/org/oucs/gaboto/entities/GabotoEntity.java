@@ -31,7 +31,6 @@
  */
 package org.oucs.gaboto.entities;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
@@ -622,13 +621,9 @@ abstract public class GabotoEntity implements RDFContainer {
 					}
 					
 				}
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			}
+      } catch (Exception e) {
+        throw new GabotoRuntimeException(e);
+      } 
 		}
 		
 		return null;
@@ -653,13 +648,9 @@ abstract public class GabotoEntity implements RDFContainer {
 		if(null != m){
 			try {
 				return m.invoke(this, (Object[])null);
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			}
+      } catch (Exception e) {
+        throw new GabotoRuntimeException(e);
+      } 
 		}
 		
 		return null;
