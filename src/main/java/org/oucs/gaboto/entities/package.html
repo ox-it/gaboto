@@ -2,16 +2,14 @@
 <body>
 <p>
 {@link org.oucs.gaboto.entities.GabotoEntity}s are java representations of objects from the Gaboto ontology. For each
-class in the OxPoinits ontology there has to be a corresponding java representation. These
+class in the OxPoints ontology there has to be a corresponding java representation. These
 {@link org.oucs.gaboto.entities.GabotoEntity}s follow the convention of JavaBeans (see 
 <a href="http://en.wikipedia.org/wiki/JavaBeans">JavaBeans on Wikipedia</a>) and can be 
 dynamically generated from the corresponding RDF or used to create RDF.
 </p>
 <p>
-Since adding new entities to the system should be a simple task, {@link org.oucs.gaboto.entities.GabotoEntity}s are
-kept very simple. They only consist of get and set methods for each attribute that can be stored
-for that particular entity and additional annotations. These annotations are then used
-by the Gaboto system to either generate the entities from the RDF, to generate RDF from
+Beans consist of get and set methods for each attribute  and additional annotations. 
+The annotations are then used by Gaboto to either generate entities from the RDF, RDF from
 entities or to transform entities into a different output format (e.g. 
 <a href="http://code.google.com/apis/kml/documentation/">KML</a>).
 </p>
