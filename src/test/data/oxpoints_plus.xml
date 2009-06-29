@@ -11765,15 +11765,16 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
             <relation name="occupies" type="geo" active="#molmed" passive="#b_0018"/>
             <relation name="occupies" type="geo" active="#mpls" passive="#b_0029"/>
 
+            <relation name="occupies" type="geo primary" active="#mcdp" passive="#b_0039"/>
+            <relation name="occupies" type="geo primary" active="#dpag" passive="#b_0039"/>
+            <relation name="occupies" type="geo primary" active="#dpag" passive="#b_0043"/>
+<!--
             <relation name="uses" type="room" active="#ouce" passive="#b_0023r1"/>
             <relation name="uses" type="room" active="#O_bsp" passive="#r_0001"/>
             <relation name="uses" type="room" active="#ageing" passive="#b_0020r1"/>
             <relation name="uses" type="room" active="#politics" passive="#b_0020r1"/>
             <relation name="uses" type="room" active="#econlib" passive="#b_0020r2"/>
-
-            <relation name="occupies" type="geo primary" active="#mcdp" passive="#b_0039"/>
-            <relation name="occupies" type="geo primary" active="#dpag" passive="#b_0039"/>
-            <relation name="occupies" type="geo primary" active="#dpag" passive="#b_0043"/>
+-->
 
 
          </listPlace>
