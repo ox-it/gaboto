@@ -66,14 +66,14 @@ public class ListOfTypedEntities extends GabotoQueryImpl {
 		this.forceCreation = forceCreation;
 	}
 	
-	public ListOfTypedEntities(Gaboto gaboto, String type, TimeInstant ti) throws GabotoException{
+	public ListOfTypedEntities(Gaboto gaboto, String type, TimeInstant ti) {
 		super(gaboto);
 		this.type = type;
 		this.timeInstant = ti;
 		this.forceCreation = true;
 	}
 
-	public ListOfTypedEntities(Gaboto gaboto, String type, TimeInstant ti, boolean forceCreation) throws GabotoException{
+	public ListOfTypedEntities(Gaboto gaboto, String type, TimeInstant ti, boolean forceCreation) {
 		super(gaboto);
 		this.type = type;
 		this.timeInstant = ti;
