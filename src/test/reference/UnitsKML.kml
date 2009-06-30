@@ -39,9 +39,6 @@
 <Placemark OUCSCode="music" id="http://m.ox.ac.uk/oxpoints/id/23233237">
 <name>Faculty of Music</name>
 <description><![CDATA[Website: <a href="http://www.music.ox.ac.uk/">http://www.music.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.25579,51.74859</coordinates>
-</Point>
 </Placemark>
 <Placemark OUCSCode="orient" id="http://m.ox.ac.uk/oxpoints/id/23233352">
 <name>Oriental Institute</name>
@@ -116,9 +113,6 @@
 <Placemark OUCSCode="libsys" id="http://m.ox.ac.uk/oxpoints/id/23233615">
 <name>Systems and Electronic Resources Service</name>
 <description><![CDATA[Website: <a href="http://www.lib.ox.ac.uk/">http://www.lib.ox.ac.uk/</a><br/>]]></description>
-<Point>
-<coordinates>-1.26943588256835,51.74682751390124</coordinates>
-</Point>
 </Placemark>
 <Placemark OUCSCode="histfac" id="http://m.ox.ac.uk/oxpoints/id/23233230">
 <name>Faculty of History</name>
