@@ -397,11 +397,14 @@ public class GabotoSnapshot {
 	 * @return An entity pool with all entities that have this property.
 	 */
 	public GabotoEntityPool loadEntitiesWithProperty(Property prop, RDFNode value){
+    System.err.println("Value " + value);
 		Collection<Resource> resources = new HashSet<Resource>();
 		ResIterator it = model.listResourcesWithProperty(prop, value);
-		while(it.hasNext())
-			resources.add(it.nextResource());
-
+		while(it.hasNext()) {
+		  Resource r = it.nextResource();
+      System.err.println("Adding " + r);
+			resources.add(r);
+		}
 		return loadEntityPoolFromResources(resources);
 	}	
 	
@@ -456,12 +459,12 @@ public class GabotoSnapshot {
 	 */
 	public GabotoSnapshot execSPARQLConstruct(String query){
 		QueryExecution qexec = QueryExecutionFactory.create( query, getModel() );
-		Model model = null;
+		Model m = null;
 		try{
-			 model = qexec.execConstruct();
+			 m = qexec.execConstruct();
 		} finally { qexec.close(); }
 		
-		return new GabotoSnapshot(model, gaboto);
+		return new GabotoSnapshot(m, gaboto);
 	}
 	
 	/**
@@ -473,12 +476,12 @@ public class GabotoSnapshot {
 	 */
 	public GabotoSnapshot execSPARQLDescribe(String query){
 		QueryExecution qexec = QueryExecutionFactory.create( query, getModel() );
-		Model model = null;
+		Model m = null;
 		try{
-			 model = qexec.execDescribe();
+			 m = qexec.execDescribe();
 		} finally { qexec.close(); }
 		
-		return new GabotoSnapshot(model, gaboto);
+		return new GabotoSnapshot(m, gaboto);
 	}
 	
 	/**
