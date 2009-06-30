@@ -67,24 +67,30 @@
             <customMethods>
                 <method>
                     <![CDATA[
-                    public Double getLatitude(){ 
-                        try{ 
-                            return Double.valueOf(getPos().split(" ")[1]); 
-                        }catch(NumberFormatException e){ 
-                            return null; 
-                        } 
-                     } 
+  public Double getLatitude() {
+    String pos = getPos();
+    if (pos == null) 
+      return null;
+    try {
+      return Double.valueOf(getPos().split(" ")[1]);
+    } catch (NumberFormatException e) {
+      return null;
+    }
+  }
                      ]]>
                 </method>
                 <method>
                     <![CDATA[
-                    public Double getLongitude(){ 
-                        try{ 
-                            return Double.valueOf(getPos().split(" ")[0]); 
-                        }catch(NumberFormatException e){ 
-                            return null; 
-                        } 
-                    } 
+  public Double getLongitude() {
+    String pos = getPos();
+    if (pos == null) 
+      return null;
+    try {
+      return Double.valueOf(pos.split(" ")[0]);
+    } catch (NumberFormatException e) {
+      return null;
+    }
+  }
                     ]]>
                 </method>
             </customMethods>
