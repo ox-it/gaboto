@@ -273,7 +273,7 @@
     </target>
     
     <target name="gabotoConfiguration" depends="compile">
-         <java classname="org.oucs.gaboto.helperscripts.CreateClassesFromConfiguration" classpathref="cp" fork="yes">
+         <java classname="net.sf.gaboto.generation.GabotoGenerator" classpathref="cp" fork="yes">
            <arg value="src/main/conf/Gaboto.xml"/>
            <arg value="src/main/java/org/oucs/gaboto/entities"/>
            <arg value="src/main/java/org/oucs/gaboto/beans"/>
