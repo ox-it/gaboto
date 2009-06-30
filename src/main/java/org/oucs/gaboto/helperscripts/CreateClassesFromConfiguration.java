@@ -36,7 +36,7 @@ import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import net.sf.gaboto.generation.GabotoClassGeneration;
+import net.sf.gaboto.generation.GabotoGenerator;
 
 import org.xml.sax.SAXException;
 
@@ -102,7 +102,7 @@ public class CreateClassesFromConfiguration {
    * @throws IOException
    */
   public static void generateClassesFromConfig(File config, File entityOutputDir, File beanOutputDir, File miscOutputDir) throws ParserConfigurationException, SAXException, IOException{
-    new GabotoClassGeneration(config, entityOutputDir, beanOutputDir, miscOutputDir).run();
+    new GabotoGenerator(config, entityOutputDir, beanOutputDir, miscOutputDir).run();
   }
 	
 }

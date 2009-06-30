@@ -63,7 +63,7 @@ import org.xml.sax.SAXException;
  * @author Arno Mittelbach
  * 
  */
-public class GabotoClassGeneration {
+public class GabotoGenerator {
 
   private File config = null;
   private File entityOutputDir;
@@ -129,7 +129,7 @@ public class GabotoClassGeneration {
 
           "import com.hp.hpl.jena.ontology.OntClass;\n";
 
-  public GabotoClassGeneration(File config, File entityOutputDir, File beanOutputDir, File miscOutputDir) {
+  public GabotoGenerator(File config, File entityOutputDir, File beanOutputDir, File miscOutputDir) {
     this.config = config;
     this.entityOutputDir = entityOutputDir;
     this.beanOutputDir = beanOutputDir;
