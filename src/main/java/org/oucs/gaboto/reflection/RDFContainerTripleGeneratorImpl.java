@@ -58,8 +58,6 @@ import com.hp.hpl.jena.vocabulary.RDF;
 
 public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenerator {
 
-	private static Logger logger = Logger.getLogger(RDFContainerTripleGeneratorImpl.class.getName());
-	
 	private static RDFContainerTripleGenerator instance;
 	
 	protected RDFContainerTripleGeneratorImpl(){}
