@@ -155,8 +155,7 @@ public class TEIImporter {
 					throw new RuntimeException("Unknown place type: " + type);
 				}
 			} catch(NullPointerException e){
-				e.printStackTrace();
-				throw new RuntimeException("No type defined for place");
+				throw new RuntimeException("No type defined for place", e);
 			}
 		} else if(name.equals("relation") && relations){
 			String relName = el.getAttribute("name");
@@ -166,10 +165,10 @@ public class TEIImporter {
 				} else if(relName.equals("controls")){
 					processControls(el);
 				} else {
-					throw new RuntimeException("Unkown relation: " + relName);
+					throw new RuntimeException("Unknown relation: " + relName);
 				}
 			}catch(NullPointerException e){
-				throw new RuntimeException("No name defined for relation");
+				throw new RuntimeException("No name defined for relation", e);
 			}
 		}
 	}
@@ -211,39 +210,41 @@ public class TEIImporter {
 		}
 	}
 	
-	private void processControls(Element relation){
-		String activeID = relation.getAttribute("active");
-		String passiveID = relation.getAttribute("passive");
-		
-		try{
-			Unit passive = (Unit) entityLookup.get(passiveID.substring(1));
-			Unit active = (Unit) entityLookup.get(activeID.substring(1));
-	
-			if(passive == null || active == null)
-				throw new NullPointerException();
-			
-			passive.setSubsetOf(active);
-		} catch(NullPointerException e){
-			throw new RuntimeException("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
-		}
-	}
-	
+  private void processControls(Element relation){
+    String activeID = relation.getAttribute("active");
+    String passiveID = relation.getAttribute("passive");
+    
+    try{
+      Unit passive = (Unit) entityLookup.get(passiveID.substring(1));
+      Unit active = (Unit) entityLookup.get(activeID.substring(1));
+  
+      if(passive == null || active == null)
+        throw new NullPointerException();
+      
+      passive.setSubsetOf(active);
+    } catch(NullPointerException e){
+      throw new RuntimeException("Could not load entity from id: " + activeID + " / " + passiveID + " (active/passive)");
+    }
+  }
+  
+  
 	private void processOccupies(Element relation){
 		String type = relation.getAttribute("type");
 		String activeID = relation.getAttribute("active");
 		String passiveID = relation.getAttribute("passive");
 		
 		try{
-	    Building b = (Building) entityLookup.get(passiveID.substring(1));
 			Unit u = (Unit) entityLookup.get(activeID.substring(1));
+      Building b = (Building) entityLookup.get(passiveID.substring(1));
 	
 			if(u == null || b == null)
 				throw new NullPointerException();
 			
 			if(type.equals("geo primary")){
-				u.setPrimaryPlace(b);
+        u.setPrimaryPlace(b);
 			} 
-			if(null == u.getPrimaryPlace())
+			// If this is not a primary, but it has no other 
+      if(u.getPrimaryPlace() == null)
 				u.setPrimaryPlace(b);
 			
 			u.addOccupiedBuilding(b);
@@ -252,8 +253,6 @@ public class TEIImporter {
 		}
 	}
 	
-
-
 
 	private void processCarpark(Element el) {
 		Carpark cp = new Carpark();
