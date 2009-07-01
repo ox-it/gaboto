@@ -49,6 +49,7 @@ import org.oucs.gaboto.exceptions.CorruptTimeIndexException;
 import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.GabotoException;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.IllegalAnnotationException;
 import org.oucs.gaboto.exceptions.NoTimeIndexSetException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
@@ -241,10 +242,10 @@ public class Gaboto {
    * @return A new unique new.
    */
   public String generateID() {
-    String id = generateId();
-    while (containsResource(id))
-      id = generateId();
-    return id;
+    String tmpId = generateId();
+    while (containsResource(tmpId))
+      tmpId = generateId();
+    return tmpId;
   }
 
   private String generateId() {
@@ -575,7 +576,7 @@ public class Gaboto {
       for (Triple t : entity.getTriplesFor(true))
         remove(ts, t);
     } catch (IllegalAnnotationException e) {
-      e.printStackTrace();
+      throw new GabotoRuntimeException(e);
     }
   }
 
@@ -1036,13 +1037,8 @@ public class Gaboto {
     try {
       return snap.loadEntity(uri);
     } catch (ResourceDoesNotExistException e) {
-      e.printStackTrace();
+      throw new GabotoRuntimeException(e);
     }
-
-    // this point should not be reached
-    assert (false);
-
-    return null;
   }
 
   /**
@@ -1061,13 +1057,8 @@ public class Gaboto {
     try {
       return GabotoTimeBasedEntity.loadEntity(uri, this);
     } catch (ResourceDoesNotExistException e) {
-      e.printStackTrace();
+      throw new GabotoRuntimeException(e);
     }
-
-    // this point should never be reached
-    assert (false);
-
-    return null;
   }
 
   /**
@@ -1126,13 +1117,12 @@ public class Gaboto {
     if (it.hasNext()) {
       Quad quad = (Quad)it.next();
       if (it.hasNext())
-        logger.error("Corrupted data. " + uri
-            + " has to triples defining its type");
+        throw new CorruptDataException("Corrupted data. " + uri
+            + " has two triples defining its type");
 
       if (!quad.getObject().isURI()) {
-        logger.error("Corrupted data. " + uri + " has has not a valid type.");
         throw new CorruptDataException("Corrupted data. " + uri
-            + " has has not a valid type.");
+            + " has an invalid type.");
       }
 
       String name = quad.getObject().getLocalName();
@@ -1152,26 +1142,19 @@ public class Gaboto {
         // return type
         return entity.getType();
       } catch (ClassNotFoundException e) {
-        logger.error("Could not find associated type for uri: " + uri
-            + ". Tried to load class " + packageName + "." + name);
+        throw new GabotoRuntimeException("Could not find associated type for uri: " + uri
+                + ". Tried to load class " + packageName + "." + name, e);
       } catch (InstantiationException e) {
-        CorruptDataException e1 = new CorruptDataException(
-            "Could not instantiate class " + packageName + "." + name);
-        e1.initCause(e);
-        throw e1;
+        throw  new CorruptDataException("Could not instantiate class " + packageName + "." + name, e);
       } catch (IllegalAccessException e) {
-        CorruptDataException e1 = new CorruptDataException(
-            "Could not instantiate class " + packageName + "." + name);
-        e1.initCause(e);
-        throw e1;
+        throw new CorruptDataException(
+            "Could not instantiate class " + packageName + "." + name, e);
+      } catch (Exception e) { 
+        throw new GabotoRuntimeException("Could not find associated type for uri: " + uri
+              + ". Tried to load class " + packageName + "." + name, e);
       }
-    }
-
-    // let's hope we will never come here
-    logger.fatal("We should never have reached this point.");
-    assert (false);
-
-    return null;
+    } else 
+      throw new GabotoRuntimeException("No quad found");
   }
 
   /**
@@ -1212,13 +1195,8 @@ public class Gaboto {
       }
 
       return TimeSpan.createFromGraphName(quad.getGraphName().getURI(), this);
-    }
-
-    // let's hope we will never come here
-    logger.fatal("We should never have reached this point.");
-    assert (false);
-
-    return null;
+    } else 
+      throw new RuntimeException("No quad found");
   }
 
   /**
@@ -1306,7 +1284,7 @@ public class Gaboto {
       try {
         entities.add(getEntityOverTime(uri));
       } catch (EntityDoesNotExistException e) {
-        e.printStackTrace();
+        throw new GabotoRuntimeException(e);
       }
     }
 
@@ -1332,7 +1310,7 @@ public class Gaboto {
       try {
         entities.add(getEntityOverTime(uri));
       } catch (EntityDoesNotExistException e) {
-        e.printStackTrace();
+        throw new GabotoRuntimeException(e);
       }
     }
 
@@ -1358,7 +1336,7 @@ public class Gaboto {
       try {
         entities.add(getEntityOverTime(uri));
       } catch (EntityDoesNotExistException e) {
-        e.printStackTrace();
+        throw new GabotoRuntimeException(e);
       }
     }
 
