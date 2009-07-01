@@ -40,10 +40,11 @@ package org.oucs.gaboto.exceptions;
  */
 public class CorruptDataException extends GabotoRuntimeException {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2814228062630437713L;
+	public CorruptDataException(String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  private static final long serialVersionUID = -2814228062630437713L;
 
 	public CorruptDataException(String msg){
 		super(msg);
