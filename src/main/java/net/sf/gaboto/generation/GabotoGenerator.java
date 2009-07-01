@@ -182,7 +182,7 @@ public class GabotoGenerator {
     lookupClass += "\n\n";
     lookupClass +=     // class comment
       "/**\n"
-    + " * Gaboto generated class.\n"
+    + " * Gaboto generated ontology lookup utility.\n"
     + " * @see " + this.getClass().getCanonicalName() + ".\n"
     + " */\n";
     lookupClass += "@SuppressWarnings(\"unchecked\")\n";
@@ -380,7 +380,7 @@ public class GabotoGenerator {
     clazz += importDefinitions + "\n\n";
     clazz +=     // class comment
       "/**\n"
-    + " * Gaboto generated class.\n"
+    + " * Gaboto generated bean.\n"
     + " * @see " + this.getClass().getCanonicalName() + "#generateBean.\n"
     + " */\n";
     clazz += "public class ";
@@ -632,7 +632,7 @@ public class GabotoGenerator {
     clazz += importDefinitions + "\n\n";
     clazz +=     // class comment
       "/**\n"
-    + " * Gaboto generated class.\n"
+    + " * Gaboto generated Entity.\n"
     + " * @see " + this.getClass().getCanonicalName() + "#generateEntity.\n"
     + " */\n";
 
