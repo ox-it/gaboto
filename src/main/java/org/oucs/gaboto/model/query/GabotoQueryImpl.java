@@ -36,8 +36,8 @@ import java.io.StringWriter;
 import org.apache.log4j.Logger;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.exceptions.GabotoException;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.QueryAlreadyPreparedException;
 import org.oucs.gaboto.exceptions.UnsupportedFormatException;
 import org.oucs.gaboto.model.Gaboto;
@@ -204,7 +204,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 				try {
 					return RDFPoolTransformerFactory.getRDFPoolTransformer(format).transform(pool);
 				} catch (UnsupportedFormatException e) {
-					e.printStackTrace();
+          new GabotoRuntimeException(e);
 				}
 		}
 		
@@ -245,11 +245,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 			return model;
 		
 		if(format.equals(GabotoQuery.FORMAT_ENTITY_POOL)){
-			try {
-				return GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(getGaboto(), model));
-			} catch (EntityPoolInvalidConfigurationException e) {
-				e.printStackTrace();
-			}
+			return GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(getGaboto(), model));
 		}
 
 		if(format.equals(GabotoQuery.FORMAT_RDF_XML) ||
@@ -263,23 +259,13 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 		}
 		
 		if(format.equals(GabotoQuery.FORMAT_KML)){
-			try{
-				return new KMLPoolTransformer().transform(
-					GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(getGaboto(), model))		
-				);
-			} catch (EntityPoolInvalidConfigurationException e) {
-				e.printStackTrace();
-			}
-		}
+      return new KMLPoolTransformer().transform(
+              GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(getGaboto(), model)));
+    }
 		
 		if(format.equals(GabotoQuery.FORMAT_JSON)){
-			try {
-				return new JSONPoolTransformer().transform(
-					GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(getGaboto(), model))
-				);
-			} catch (EntityPoolInvalidConfigurationException e) {
-				e.printStackTrace();
-			}
+      return new JSONPoolTransformer().transform(
+              GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(getGaboto(), model)));
 		}
 		
 		return formatResult_customFormat(model, format);
