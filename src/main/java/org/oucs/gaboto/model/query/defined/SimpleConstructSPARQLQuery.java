@@ -39,6 +39,7 @@ import java.io.IOException;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.GabotoException;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.NoTimeIndexSetException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
@@ -53,87 +54,83 @@ import org.oucs.gaboto.timedim.TimeInstant;
  */
 public class SimpleConstructSPARQLQuery extends GabotoQueryImpl {
 
-	private TimeInstant timeInstant;
-	private String query;
+  private TimeInstant timeInstant;
+  private String query;
 
-	public SimpleConstructSPARQLQuery(TimeInstant ti, File query) throws GabotoException {
-		super();
-		this.timeInstant = ti;
-		
-		readFile(query);
-	}
-	
-	public SimpleConstructSPARQLQuery(TimeInstant ti, String query) throws GabotoException {
-		super();
-		this.timeInstant = ti;
-		this.query = query;
-	}
-	
-	public SimpleConstructSPARQLQuery(Gaboto gaboto, TimeInstant ti, File query){
-		super(gaboto);
-		this.timeInstant = ti;
-		
-		readFile(query);
-	}
-	
-	public SimpleConstructSPARQLQuery(Gaboto gaboto, TimeInstant ti, String query){
-		super(gaboto);
-		this.timeInstant = ti;
-		this.query = query;
-	}
-	
-	private void readFile(File queryFile) {
-		if(! queryFile.exists())
-			throw new IllegalArgumentException(queryFile.getAbsolutePath() + " does not exist");
-		
-		StringBuilder contents = new StringBuilder();
-		try {
-			BufferedReader input = new BufferedReader(new FileReader(queryFile));
-		    try {
-		        String line = null; 
-		        while (( line = input.readLine()) != null){
-		            contents.append(line);
-		            contents.append(System.getProperty("line.separator"));
-		        }
-		    } catch (IOException e) {
-				e.printStackTrace();
-			}
-		    finally {
-		       input.close();
-		    }
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		this.query = contents.toString();
-	}
+  public SimpleConstructSPARQLQuery(TimeInstant ti, File query) throws GabotoException {
+    super();
+    this.timeInstant = ti;
 
-	@Override
-	public int getResultType() {
-		return GabotoQueryImpl.RESULT_TYPE_ENTITY_POOL;
-	}
+    readFile(query);
+  }
 
-	@Override
-	protected Object execute() throws NoTimeIndexSetException, CorruptDataException {
-		GabotoSnapshot snapshot = getGaboto().getSnapshot(timeInstant);
-		
-		GabotoSnapshot intermediateSnap = snapshot.execSPARQLConstruct(query);
-		
-		// create resultPool from model
-		GabotoEntityPool resultPool = intermediateSnap.buildEntityPool();
- 
-		// set snapshot
-		resultPool.setSnapshot(snapshot);
-		
-		return resultPool;
-	}
+  public SimpleConstructSPARQLQuery(TimeInstant ti, String query) throws GabotoException {
+    super();
+    this.timeInstant = ti;
+    this.query = query;
+  }
 
-	@Override
-	protected void doPrepare() throws GabotoException {
-		// TODO Auto-generated method stub
-		
-	}
+  public SimpleConstructSPARQLQuery(Gaboto gaboto, TimeInstant ti, File query) {
+    super(gaboto);
+    this.timeInstant = ti;
 
+    readFile(query);
+  }
 
+  public SimpleConstructSPARQLQuery(Gaboto gaboto, TimeInstant ti, String query) {
+    super(gaboto);
+    this.timeInstant = ti;
+    this.query = query;
+  }
 
+  private void readFile(File queryFile) {
+    if (!queryFile.exists())
+      throw new IllegalArgumentException(queryFile.getAbsolutePath() + " does not exist");
+
+    StringBuilder contents = new StringBuilder();
+    try {
+      BufferedReader input = new BufferedReader(new FileReader(queryFile));
+      try {
+        String line = null;
+        while ((line = input.readLine()) != null) {
+          contents.append(line);
+          contents.append(System.getProperty("line.separator"));
+        }
+      } catch (IOException e) {
+        throw new GabotoRuntimeException(e);
+      } finally {
+        input.close();
+      }
+    } catch (IOException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    this.query = contents.toString();
+  }
+
+  @Override
+  public int getResultType() {
+    return GabotoQueryImpl.RESULT_TYPE_ENTITY_POOL;
+  }
+
+  @Override
+  protected Object execute() throws NoTimeIndexSetException, CorruptDataException {
+    GabotoSnapshot snapshot = getGaboto().getSnapshot(timeInstant);
+
+    GabotoSnapshot intermediateSnap = snapshot.execSPARQLConstruct(query);
+
+    // create resultPool from model
+    GabotoEntityPool resultPool = intermediateSnap.buildEntityPool();
+
+    // set snapshot
+    resultPool.setSnapshot(snapshot);
+
+    return resultPool;
+  }
+
+  @Override
+  protected void doPrepare() throws GabotoException {
+    // TODO Auto-generated method stub
+
+  }
 
 }
