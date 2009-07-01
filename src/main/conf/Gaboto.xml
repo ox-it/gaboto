@@ -68,11 +68,11 @@
                 <method>
                     <![CDATA[
   public Double getLatitude() {
-    String pos = getPos();
-    if (pos == null) 
+    String p = getPos();
+    if (p == null) 
       return null;
     try {
-      return Double.valueOf(getPos().split(" ")[1]);
+      return Double.valueOf(p.split(" ")[1]);
     } catch (NumberFormatException e) {
       return null;
     }
@@ -82,11 +82,11 @@
                 <method>
                     <![CDATA[
   public Double getLongitude() {
-    String pos = getPos();
-    if (pos == null) 
+    String p = getPos();
+    if (p == null) 
       return null;
     try {
-      return Double.valueOf(pos.split(" ")[0]);
+      return Double.valueOf(p.split(" ")[0]);
     } catch (NumberFormatException e) {
       return null;
     }
