@@ -2495,9 +2495,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                <placeName>Department of Biochemistry</placeName>
                <location type="address">
                   <address>
-		                   <addrLine>South Parks Road, Oxford</addrLine>
-		                   <postCode>OX1 3QU</postCode>
-		                </address>
+		    <addrLine>South Parks Road, Oxford</addrLine>
+		    <postCode>OX1 3QU</postCode>
+		  </address>
                </location>
                <trait type="url">
                   <desc>
@@ -2522,21 +2522,6 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <geo>-1.253343 51.759602</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
-               </place>
-
-               <place oxpID="23232536" type="building">
-                  <placeName>Scripps-Oxford Laboratory</placeName>
-                  <location when="2007-06-18T09:54:33.000">
-                     <geo>-1.25294 51.759562</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
-
-               <place oxpID="23232537" type="building">
-                  <placeName>Oxford Glycobiology Institute</placeName>
-                  <place oxpID="23232538" type="room">
-                     <placeName>The Howard Schneiderman Room</placeName>
-                  </place>
                </place>
 
                <!-- old main entrance removed - do we want to keep as historical
@@ -2691,7 +2676,9 @@ data, and if so, how? -->
                      <ptr target="http://www.chem.ox.ac.uk/help/"/>
                   </desc>
                </trait>
-               <place oxpID="23232547" type="building" subtype="primary">
+               <place oxpID="23232547" type="building"
+		      subtype="primary">
+		 <placeName>Physical Chemistry</placeName>
                   <location when="2007-06-18T10:18:23.000">
                      <geo>-1.254183 51.758737</geo>
                      <note> recorded by Janet McKnight</note>
@@ -2869,6 +2856,7 @@ data, and if so, how? -->
                </trait>
 
                <place oxpID="23232562" type="building">
+		 <placeName>8-11 Keble Road</placeName>
                   <place oxpID="23232563" type="room">
                      <placeName>Lecture Theatre</placeName>
                   </place>
@@ -9382,17 +9370,9 @@ data, and if so, how? -->
                      <ptr target="http://www.mod-langs.ox.ac.uk/computing/"/>
                   </desc>
                </trait>
-               <place oxpID="23233585" type="building" subtype="primary" obnCode="264">
-                  <tei:event when="1875" type="construction"/>
-                  <placeName>Barnett House, 32-42 Wellington Square</placeName>
-                  <location when="2008-07-30T17:01:00">
-                     <geo>-1.262727 51.757231</geo>
-                     <note> recorded by Janet McKnight (from GEarth / postcode)</note>
-                  </location>
-               </place>
+	    </place>
 
-            </place>
-            <place oucsCode="music" oxpID="23233586" type="unit">
+	    <place oucsCode="music" oxpID="23233586" type="unit">
                <placeName>Faculty of Music</placeName>
                <location type="address">
                   <address>
@@ -9504,13 +9484,6 @@ data, and if so, how? -->
                      <ptr target="http://www.phon.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23233594" type="building" subtype="primary">
-                  <placeName>41 Wellington Square</placeName>
-                  <location when="2008-07-30T17:20:00">
-                     <geo>-1.262727 51.757231</geo>
-                     <note> recorded by Janet McKnight (from GEarth / postcode)</note>
-                  </location>
-               </place>
             </place>
             <place oucsCode="rho" oxpID="23233595" type="unit">
                <placeName>Rhodes House</placeName>
@@ -9957,9 +9930,24 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0041" oxpID="23233655" type="building" obnCode="387">
-               <event when="2008" type="construction"/>
-               <!-- JR says add placename RT 1342382 -->
                <placeName>New Biochemistry Building</placeName>
+               <event when="2008" type="construction"/>
+               <place oxpID="23232536" type="lab">
+                  <placeName>Scripps-Oxford Laboratory</placeName>
+                  <location when="2007-06-18T09:54:33.000">
+                     <geo>-1.25294 51.759562</geo>
+                     <note> recorded by Janet McKnight</note>
+                  </location>
+               </place>
+               <place oxpID="23232537" type="lab">
+                  <placeName>Oxford Glycobiology Institute</placeName>
+                  <place oxpID="23232538" type="room">
+                     <placeName>The Howard Schneiderman Room</placeName>
+                  </place>
+               </place>
+
+
+               <!-- JR says add placename RT 1342382 -->
                <location when="2009-01-09T17:20:00.000">
                   <geo>-1.255121 51.759091</geo>
                   <note> submitted by Jeremy Rowntree</note>
@@ -10100,6 +10088,16 @@ data, and if so, how? -->
 		   <note> recorded by Sebastian Rahtz</note>
                   </location>
 	       </place>
+
+	       <place oxpID="23233585" type="building"
+		      subtype="primary" obnCode="264" oucsCode="b_0056">
+                  <tei:event when="1875" type="construction"/>
+                  <placeName>Barnett House, 32-42 Wellington Square</placeName>
+                  <location when="2008-07-30T17:01:00">
+                     <geo>-1.262727 51.757231</geo>
+                     <note> recorded by Janet McKnight (from GEarth / postcode)</note>
+                  </location>
+               </place>
 
             <relation name="controls" active="#O_ceu" passive="#O_lib_ceu"/>
             <relation name="controls" active="#O_clpic" passive="#O_lib_icl"/>
@@ -10967,7 +10965,10 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#mcdp" passive="#b_0039"/>
             <relation name="occupies" type="geo primary" active="#medsci" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#metres" passive="#b_0040"/>
-            <relation name="occupies" type="geo primary" active="#molbiol" passive="#b_0042"/>
+            <relation name="occupies" type="geo primary"
+		      active="#molbiol" passive="#b_0042"/>
+            <relation name="occupies" type="geo primary" active="#modlang" passive="#b_0056"/>
+            <relation name="occupies" type="geo primary" active="#phone" passive="#b_0056"/>
             <relation name="occupies" type="geo primary" active="#npeu" passive="#b_0017"/>
             <relation name="occupies" type="geo primary" active="#obst" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#ocdem" passive="#b_0040"/>
