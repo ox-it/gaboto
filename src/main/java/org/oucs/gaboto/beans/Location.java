@@ -8,58 +8,78 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 
+
+/**
+ * Gaboto generated bean.
+ * @see net.sf.gaboto.generation.GabotoGenerator#generateBean.
+ */
 public class Location extends GabotoBean {
   private String pos;
 
   @Override
-  public String getType() {
+  public String getType(){
     return "http://www.opengis.net/gml/Point";
   }
 
-  @SimpleLiteralProperty(value = "http://www.opengis.net/gml/pos", datatypeType = "javaprimitive", javaType = "String")
-  public String getPos() {
+  @SimpleLiteralProperty(
+    value = "http://www.opengis.net/gml/pos",
+    datatypeType = "javaprimitive",
+    javaType = "String"
+  )
+  public String getPos(){
     return this.pos;
   }
 
-  @SimpleLiteralProperty(value = "http://www.opengis.net/gml/pos", datatypeType = "javaprimitive", javaType = "String")
-  public void setPos(String pos) {
+  @SimpleLiteralProperty(
+    value = "http://www.opengis.net/gml/pos",
+    datatypeType = "javaprimitive",
+    javaType = "String"
+  )
+  public void setPos(String pos){
     this.pos = pos;
   }
 
+
+
+
+                    
   public Double getLatitude() {
-    String pos = getPos();
-    if (pos == null) 
+    String p = getPos();
+    if (p == null) 
       return null;
     try {
-      return Double.valueOf(getPos().split(" ")[1]);
+      return Double.valueOf(p.split(" ")[1]);
     } catch (NumberFormatException e) {
       return null;
     }
   }
-
+                     
+                
+                    
   public Double getLongitude() {
-    String pos = getPos();
-    if (pos == null) 
+    String p = getPos();
+    if (p == null) 
       return null;
     try {
-      return Double.valueOf(pos.split(" ")[0]);
+      return Double.valueOf(p.split(" ")[0]);
     } catch (NumberFormatException e) {
       return null;
     }
   }
+                    
+                
 
-  public void loadFromResource(Resource res, GabotoSnapshot snapshot,
-      GabotoEntityPool pool) {
+  public void loadFromResource(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {
     super.loadFromResource(res, snapshot, pool);
     Statement stmt;
 
-    stmt = res.getProperty(snapshot
-        .getProperty("http://www.opengis.net/gml/pos"));
-    if (null != stmt && stmt.getObject().isLiteral())
-      this.setPos(((Literal) stmt.getObject()).getString());
+    // Load SIMPLE_LITERAL_PROPERTY pos
+    stmt = res.getProperty(snapshot.getProperty("http://www.opengis.net/gml/pos"));
+    if(stmt != null && stmt.getObject().isLiteral())
+      this.setPos(((Literal)stmt.getObject()).getString());
 
   }
-  public String toString() { 
-    return pos;
+  public String toString() {
+    return "[" + this.pos + "]";
   }
 }
