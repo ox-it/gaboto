@@ -1235,6 +1235,7 @@ public class VocabularyGenerator {
   }
 
   /** Write any object properties in the vocabulary */
+  @SuppressWarnings("unchecked")
   protected void writeObjectProperties() {
     write(1, "// see VocabularyGenerator#writeObjectProperties()\n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
@@ -1248,6 +1249,7 @@ public class VocabularyGenerator {
   }
 
   /** Write any datatype properties in the vocabulary */
+  @SuppressWarnings("unchecked")
   protected void writeDatatypeProperties() {
     write(1, "// see VocabularyGenerator#writeDatatypeProperties()\n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
@@ -1261,6 +1263,7 @@ public class VocabularyGenerator {
   }
 
   /** Write any annotation properties in the vocabulary */
+  @SuppressWarnings("unchecked")
   protected void writeAnnotationProperties() {
     write(1, "// see VocabularyGenerator#writeAnnotationProperties()\n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
@@ -1274,6 +1277,7 @@ public class VocabularyGenerator {
   }
 
   /** Write any vanilla RDF properties in the vocabulary */
+  @SuppressWarnings("unchecked")
   protected void writeRDFProperties(boolean useOntProperty) {
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
     String propType = useOntProperty ? "OntProperty" : "Property";
@@ -1320,6 +1324,7 @@ public class VocabularyGenerator {
   }
 
   /** Write classes as ontology terms */
+  @SuppressWarnings("unchecked")
   protected void writeOntClasses() {
     write(1, "// see VocabularyGenerator#writeOntClasses()\n");
     String template = hasValue(OPT_CLASS_TEMPLATE) ? getValue(OPT_CLASS_TEMPLATE) : DEFAULT_CLASS_TEMPLATE;
@@ -1374,6 +1379,7 @@ public class VocabularyGenerator {
   }
 
   /** Write individuals as ontology terms */
+  @SuppressWarnings("unchecked")
   protected void writeOntIndividuals() {
     write(1, "// see VocabularyGenerator#writeOntIndividuals()\n");
     String template = hasValue(OPT_INDIVIDUAL_TEMPLATE) ? getValue(OPT_INDIVIDUAL_TEMPLATE)
@@ -1401,6 +1407,7 @@ public class VocabularyGenerator {
   }
 
   /** Write individuals as vanilla RDF terms */
+  @SuppressWarnings("unchecked")
   protected void writeRDFIndividuals() {
     String template = hasValue(OPT_INDIVIDUAL_TEMPLATE) ? getValue(OPT_INDIVIDUAL_TEMPLATE) : DEFAULT_TEMPLATE;
 
@@ -1710,6 +1717,7 @@ public class VocabularyGenerator {
    * Answer an iterator that contains the elements of the given list, but sorted
    * by URI
    */
+  @SuppressWarnings("unchecked")
   protected ExtendedIterator sorted(ExtendedIterator i) {
     return sorted(i.toList());
   }
