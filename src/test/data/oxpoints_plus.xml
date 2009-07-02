@@ -4369,7 +4369,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232688" type="building" subtype="primary">
-                  <placeName>Front Entrance</placeName>
+		 <placeName>Physical and Theoretical Chemistry Laboratory</placeName>
                   <location when="2007-01-23T10:51:52.852Z">
                      <geo>-1.25291347503662 51.75919438658645</geo>
                      <note> recorded by Pete Biggs</note>
@@ -4421,13 +4421,6 @@ data, and if so, how? -->
                      <ptr target="http://www.qeh.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232692" type="building">
-                  <place oxpID="23232693" type="room">
-                     <placeName>Seminar Room 2</placeName>
-                  </place>
-               </place>
-
-
             </place>
             <place oucsCode="resinst" oxpID="23232696" type="department">
                <placeName>Research Institute</placeName>
@@ -9017,13 +9010,8 @@ data, and if so, how? -->
                      <ptr target="http://www.jr2.ox.ac.uk/imsu/"/>
                   </desc>
                </trait>
-               <place oxpID="23233555" type="building" subtype="primary">
-                  <location when="2007-01-23T14:26:03.164Z">
-                     <geo>-1.21920347213745 51.76449343827409</geo>
-                     <note> recorded by Sylvain Phaneuf</note>
-                  </location>
-               </place>
             </place>
+
             <place oucsCode="isis" oxpID="23233556" type="uas">
                <placeName>Isis Innovation</placeName>
                <location type="address">
@@ -9926,11 +9914,18 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0036" oxpID="23233650" type="building" obnCode="623">
-               <placeName>Cairns Library</placeName>
+               <placeName>Radcliffe Academic</placeName>
                <location when="2007-06-14T10:41:32.151+01:00">
                   <geo>-1.2196969985961914 51.76390911220752</geo>
                   <note> recorded by Janet McKnight</note>
                </location>
+               <place oxpID="23233555" type="room" >
+		 <placeName>IMSU</placeName>
+                  <location when="2007-01-23T14:26:03.164Z">
+                     <geo>-1.21920347213745 51.76449343827409</geo>
+                     <note> recorded by Sylvain Phaneuf</note>
+                  </location>
+               </place>
             </place>
             <place oucsCode="b_0037" oxpID="23233651" type="building">
                <placeName>Oxford Union Society</placeName>
@@ -10079,7 +10074,7 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0053" oxpID="23233673" type="building">
-               <placeName>Dyson Perrins Building</placeName>
+               <placeName>Dyson Perrins</placeName>
                <location>
                   <geo>-1.25392 51.75898</geo>
                </location>
@@ -10093,6 +10088,9 @@ data, and if so, how? -->
 		  <location when="2007-01-30T12:42:28.587Z">
 		    <geo>-1.251540184020996 51.75572111181941</geo>
 		  </location>
+		  <place oxpID="23232693" type="room">
+		    <placeName>Seminar Room 2</placeName>
+		  </place>
 	    </place>
 	    
 	    <place oxpID="23232569" type="building" oucsCode="b_0055">
@@ -10890,6 +10888,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#O_intstrat" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_landagent" passive="#b_0015"/>
             <relation name="occupies" type="geo primary" active="#O_lib_cai" passive="#b_0036"/>
+            <relation name="occupies" type="geo primary" active="#imsu" passive="#b_0036"/>
             <relation name="occupies" type="geo primary" active="#O_lib_ind_3" passive="#b_0038"/>
             <relation name="occupies" type="geo primary" active="#O_lib_ous" passive="#b_0037"/>
             <relation name="occupies" type="geo primary" active="#O_lib_rho_1" passive="#b_0038"/>
