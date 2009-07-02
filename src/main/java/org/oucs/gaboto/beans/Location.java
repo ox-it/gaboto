@@ -1,12 +1,15 @@
 package org.oucs.gaboto.beans;
 
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
-import org.oucs.gaboto.model.GabotoSnapshot;
 
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
+
+import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+
+import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
+
+import org.oucs.gaboto.model.GabotoSnapshot;
 
 
 /**
