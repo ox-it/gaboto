@@ -1,5 +1,13 @@
 package org.oucs.gaboto.entities;
 
+
+import com.hp.hpl.jena.rdf.model.Bag;
+import com.hp.hpl.jena.rdf.model.Literal;
+import com.hp.hpl.jena.rdf.model.NodeIterator;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+
 import java.lang.reflect.Method;
 
 import java.util.ArrayList;
@@ -9,34 +17,26 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import org.oucs.gaboto.beans.Address;
+
+import org.oucs.gaboto.entities.OxpEntity;
+
+import org.oucs.gaboto.entities.pool.EntityExistsCallback;
+import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+import org.oucs.gaboto.entities.pool.PassiveEntitiesRequest;
+
+import org.oucs.gaboto.entities.utils.BagURIProperty;
+import org.oucs.gaboto.entities.utils.ComplexProperty;
+import org.oucs.gaboto.entities.utils.IndirectProperty;
+import org.oucs.gaboto.entities.utils.PassiveProperty;
 import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
 import org.oucs.gaboto.entities.utils.SimpleURIProperty;
-import org.oucs.gaboto.entities.utils.ComplexProperty;
-import org.oucs.gaboto.entities.utils.BagURIProperty;
-import org.oucs.gaboto.entities.utils.IndirectProperty;
-import org.oucs.gaboto.entities.utils.UnstoredProperty;
-import org.oucs.gaboto.entities.utils.PassiveProperty;
 import org.oucs.gaboto.entities.utils.StaticProperty;
-
-import org.oucs.gaboto.entities.GabotoEntity;
-
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.EntityExistsCallback;
-import org.oucs.gaboto.entities.pool.PassiveEntitiesRequest;
+import org.oucs.gaboto.entities.utils.UnstoredProperty;
 
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 
 import org.oucs.gaboto.model.GabotoSnapshot;
-
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.Literal;
-import com.hp.hpl.jena.rdf.model.Bag;
-import com.hp.hpl.jena.rdf.model.NodeIterator;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-
-import org.oucs.gaboto.entities.OxpEntity;
-import org.oucs.gaboto.beans.Address;
 
 
 /**
@@ -241,10 +241,10 @@ public class Unit extends OxpEntity {
     this.hasSubsets = hasSubsets;
   }
 
-  private void addHasSubset(Unit hasSubset){
+  private void addHasSubset(Unit hasSubsetP){
     if(this.hasSubsets == null)
-      this.hasSubsets = new HashSet<Unit>();
-    this.hasSubsets.add(hasSubset);
+      setHasSubsets( new HashSet<Unit>() );
+    this.hasSubsets.add(hasSubsetP);
   }
 
 

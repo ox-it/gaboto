@@ -1,41 +1,27 @@
 package org.oucs.gaboto.entities;
 
+
+import com.hp.hpl.jena.rdf.model.Literal;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+
 import java.lang.reflect.Method;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
-import org.oucs.gaboto.entities.utils.SimpleURIProperty;
-import org.oucs.gaboto.entities.utils.ComplexProperty;
-import org.oucs.gaboto.entities.utils.BagURIProperty;
-import org.oucs.gaboto.entities.utils.IndirectProperty;
-import org.oucs.gaboto.entities.utils.UnstoredProperty;
-import org.oucs.gaboto.entities.utils.PassiveProperty;
-import org.oucs.gaboto.entities.utils.StaticProperty;
-
-import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.entities.OxpEntity;
 
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.EntityExistsCallback;
 import org.oucs.gaboto.entities.pool.PassiveEntitiesRequest;
 
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
+import org.oucs.gaboto.entities.utils.PassiveProperty;
+import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
 
 import org.oucs.gaboto.model.GabotoSnapshot;
-
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.Literal;
-import com.hp.hpl.jena.rdf.model.Bag;
-import com.hp.hpl.jena.rdf.model.NodeIterator;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-
-import org.oucs.gaboto.entities.OxpEntity;
 
 
 /**
@@ -114,10 +100,10 @@ public class Image extends OxpEntity {
     this.imageContents = imageContents;
   }
 
-  private void addImageContent(OxpEntity imageContent){
+  private void addImageContent(OxpEntity imageContentP){
     if(this.imageContents == null)
-      this.imageContents = new HashSet<OxpEntity>();
-    this.imageContents.add(imageContent);
+      setImageContents( new HashSet<OxpEntity>() );
+    this.imageContents.add(imageContentP);
   }
 
 

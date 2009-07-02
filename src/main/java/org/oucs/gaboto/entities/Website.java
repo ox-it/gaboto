@@ -1,41 +1,20 @@
 package org.oucs.gaboto.entities;
 
+
 import java.lang.reflect.Method;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
-import org.oucs.gaboto.entities.utils.SimpleURIProperty;
-import org.oucs.gaboto.entities.utils.ComplexProperty;
-import org.oucs.gaboto.entities.utils.BagURIProperty;
-import org.oucs.gaboto.entities.utils.IndirectProperty;
-import org.oucs.gaboto.entities.utils.UnstoredProperty;
-import org.oucs.gaboto.entities.utils.PassiveProperty;
-import org.oucs.gaboto.entities.utils.StaticProperty;
-
-import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.entities.OxpEntity;
 
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.EntityExistsCallback;
 import org.oucs.gaboto.entities.pool.PassiveEntitiesRequest;
 
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
-
-import org.oucs.gaboto.model.GabotoSnapshot;
-
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.Literal;
-import com.hp.hpl.jena.rdf.model.Bag;
-import com.hp.hpl.jena.rdf.model.NodeIterator;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-
-import org.oucs.gaboto.entities.OxpEntity;
+import org.oucs.gaboto.entities.utils.PassiveProperty;
 
 
 /**
@@ -79,10 +58,10 @@ public class Website extends OxpEntity {
     this.isWeblearnIn = isWeblearnIn;
   }
 
-  private void addIsWeblearnIn(OxpEntity isWeblearnIn){
+  private void addIsWeblearnIn(OxpEntity isWeblearnInP){
     if(this.isWeblearnIn == null)
-      this.isWeblearnIn = new HashSet<OxpEntity>();
-    this.isWeblearnIn.add(isWeblearnIn);
+      setIsWeblearnIn( new HashSet<OxpEntity>() );
+    this.isWeblearnIn.add(isWeblearnInP);
   }
 
   @PassiveProperty(
@@ -103,10 +82,10 @@ public class Website extends OxpEntity {
     this.isITHomepageIn = isITHomepageIn;
   }
 
-  private void addIsITHomepageIn(OxpEntity isITHomepageIn){
+  private void addIsITHomepageIn(OxpEntity isITHomepageInP){
     if(this.isITHomepageIn == null)
-      this.isITHomepageIn = new HashSet<OxpEntity>();
-    this.isITHomepageIn.add(isITHomepageIn);
+      setIsITHomepageIn( new HashSet<OxpEntity>() );
+    this.isITHomepageIn.add(isITHomepageInP);
   }
 
   @PassiveProperty(
@@ -127,10 +106,10 @@ public class Website extends OxpEntity {
     this.isHomepageIn = isHomepageIn;
   }
 
-  private void addIsHomepageIn(OxpEntity isHomepageIn){
+  private void addIsHomepageIn(OxpEntity isHomepageInP){
     if(this.isHomepageIn == null)
-      this.isHomepageIn = new HashSet<OxpEntity>();
-    this.isHomepageIn.add(isHomepageIn);
+      setIsHomepageIn( new HashSet<OxpEntity>() );
+    this.isHomepageIn.add(isHomepageInP);
   }
 
   @PassiveProperty(
@@ -151,10 +130,10 @@ public class Website extends OxpEntity {
     this.isLibraryHomepageIn = isLibraryHomepageIn;
   }
 
-  private void addIsLibraryHomepageIn(OxpEntity isLibraryHomepageIn){
+  private void addIsLibraryHomepageIn(OxpEntity isLibraryHomepageInP){
     if(this.isLibraryHomepageIn == null)
-      this.isLibraryHomepageIn = new HashSet<OxpEntity>();
-    this.isLibraryHomepageIn.add(isLibraryHomepageIn);
+      setIsLibraryHomepageIn( new HashSet<OxpEntity>() );
+    this.isLibraryHomepageIn.add(isLibraryHomepageInP);
   }
 
 
