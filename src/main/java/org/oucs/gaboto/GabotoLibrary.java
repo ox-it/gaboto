@@ -49,8 +49,8 @@ public class GabotoLibrary {
 	 * Initialises the Gaboto system (this has to be done before Gaboto can be used).
 	 * @param config
 	 */
-	public static void init(GabotoConfiguration config){
-		GabotoLibrary.config = config;
+	public static void init(GabotoConfiguration configP){
+		GabotoLibrary.config = configP;
 		
 		logger.info("Gaboto system has been initialized.");
 	}
