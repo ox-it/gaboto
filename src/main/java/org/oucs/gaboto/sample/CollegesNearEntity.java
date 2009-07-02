@@ -141,15 +141,15 @@ public class CollegesNearEntity extends GabotoQueryImpl {
 
       public int compare(College c1, College c2) {
 				// distance of college 1
-				Location loc = (Location) c1.getPropertyValue(OxPointsVocab.hasLocation);
-				double distX = Math.abs(lat - loc.getLatitude());
-				double distY = Math.abs(_long - loc.getLongitude());
+				Location l = (Location) c1.getPropertyValue(OxPointsVocab.hasLocation);
+				double distX = Math.abs(lat - l.getLatitude());
+				double distY = Math.abs(_long - l.getLongitude());
 				double dis1 = Math.sqrt(distX*distX + distY*distY);
 				
 				// distance of college 2
-				loc = (Location) c2.getPropertyValue(OxPointsVocab.hasLocation);
-				distX = Math.abs(lat - loc.getLatitude());
-				distY = Math.abs(_long - loc.getLongitude());
+				l = (Location) c2.getPropertyValue(OxPointsVocab.hasLocation);
+				distX = Math.abs(lat - l.getLatitude());
+				distY = Math.abs(_long - l.getLongitude());
 				double dis2 = Math.sqrt(distX*distX + distY*distY);
 				
 				if(dis1 < dis2)
