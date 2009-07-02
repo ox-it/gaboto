@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 import java.util.Map.Entry;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -112,7 +113,6 @@ public class GabotoGenerator {
     // load document
     Document doc = XMLUtils.readInputFileIntoJAXPDoc(config);
 
-    // generate entities
     Element root = doc.getDocumentElement();
     NodeList children = root.getChildNodes();
 
@@ -166,114 +166,8 @@ public class GabotoGenerator {
       }
     }
 
-    // generate lookup class
-    // FIXME This should perhaps be generated for each ontology and then aggregated
-
-    String lookupClass = "package " + miscPackageName + ";\n\n";
-    lookupClass += "import java.util.Collection;\n" + 
-                   "import java.util.HashMap;\n" + 
-                   "import java.util.HashSet;\n" + 
-                   "import java.util.Map;\n" + 
-                   "import java.util.Set;\n" + 
-                   "\n"  + 
-                   "import org.oucs.gaboto.entities.GabotoEntity;\n" + 
-                   "import org.oucs.gaboto.exceptions.GabotoRuntimeException;\n";
-
-    lookupClass += "\n\n";
-    lookupClass +=     // class comment
-      "/**\n"
-    + " * Gaboto generated ontology lookup utility.\n"
-    + " * @see " + this.getClass().getCanonicalName() + ".\n"
-    + " */\n";
-    lookupClass += "@SuppressWarnings(\"unchecked\")\n";
-    lookupClass += "public class GabotoOntologyLookup{\n";
-
-    lookupClass += "  private static Map<String,String> entityClassLookupNames;\n";
-    lookupClass += "  private static Map<String,Class<? extends GabotoEntity>> entityClassLookupClass;\n";
-    lookupClass += "  private static Map<Class<? extends GabotoEntity>, String> classToURILookup;\n";
-    lookupClass += "  private static Collection<String> entityClassNames;\n";
-    lookupClass += "  private static Set<String> entityTypes;\n\n";
-
-    lookupClass += "  static{\n";
-    lookupClass += "    entityClassLookupNames = new HashMap<String,String>();\n\n";
-    for (Entry<String, String> entry : entityClassLookup.entrySet()) {
-      lookupClass += "    entityClassLookupNames.put(\"" + entry.getKey() + "\", \"" + entry.getValue() + "\");\n";
-    }
-    lookupClass += "  }\n\n";
-
-    lookupClass += "  static{\n";
-    lookupClass += "    entityClassLookupClass = new HashMap<String,Class<? extends GabotoEntity>>();\n\n";
-    lookupClass += "    try {\n";
-    for (Entry<String, String> entry : entityClassLookup.entrySet()) {
-      lookupClass += "      entityClassLookupClass.put(\"" + entry.getKey()
-              + "\", (Class<?  extends GabotoEntity>) Class.forName(\"" + entityPackageName + "." + entry.getValue()
-              + "\"));\n";
-    }
-    lookupClass += "    } catch (ClassNotFoundException e) {\n";
-    lookupClass += "      throw new GabotoRuntimeException(e);\n";
-    lookupClass += "    }\n";
-    lookupClass += "  }\n\n";
-
-    lookupClass += "  static{\n";
-    lookupClass += "    classToURILookup = new HashMap<Class<? extends GabotoEntity>, String>();\n\n";
-    lookupClass += "    try {\n";
-    for (Entry<String, String> entry : entityClassLookup.entrySet()) {
-      lookupClass += "      classToURILookup.put((Class<?  extends GabotoEntity>) Class.forName(\"" + entityPackageName
-              + "." + entry.getValue() + "\"), \"" + entry.getKey() + "\");\n";
-    }
-    lookupClass += "    } catch (ClassNotFoundException e) {\n";
-    lookupClass += "      throw new GabotoRuntimeException(e);\n";
-    lookupClass += "    }\n";
-    lookupClass += "  }\n\n";
-
-    lookupClass += "  static{\n";
-    lookupClass += "    entityTypes = new HashSet<String>();\n\n";
-    for (String type : entityTypes) {
-      lookupClass += "    entityTypes.add(\"" + type + "\");\n";
-    }
-    lookupClass += "  }\n\n";
-
-    lookupClass += "  static{\n";
-    lookupClass += "    entityClassNames = new HashSet<String>();\n\n";
-    lookupClass += entityClassNames;
-    lookupClass += "  }\n\n";
-
-    lookupClass += "  public static Set<String> getRegisteredClassesAsURIs(){\n";
-    lookupClass += "    return entityTypes;\n";
-    lookupClass += "  }\n\n";
-
-    lookupClass += "  public static Collection<String> getRegisteredEntityClassesAsClassNames(){\n";
-    lookupClass += "    return entityClassNames;\n";
-    lookupClass += "  }\n\n";
-
-    lookupClass += "  public static Class<? extends GabotoEntity> getEntityClassFor(String typeURI){\n";
-    lookupClass += "    return entityClassLookupClass.get(typeURI);\n";
-    lookupClass += "  }\n\n";
-
-    lookupClass += "  public static String getLocalName(String typeURI){\n";
-    lookupClass += "    return entityClassLookupNames.get(typeURI);\n";
-    lookupClass += "  }\n\n";
-
-    lookupClass += "public static boolean isValidName(String name) {\n";
-    lookupClass += "  return entityClassNames.contains(name);\n";
-    lookupClass += "  }\n\n";
-
-    lookupClass += "  public static String getTypeURIForEntityClass(Class<? extends GabotoEntity> clazz){\n";
-    lookupClass += "    return classToURILookup.get(clazz);\n";
-    lookupClass += "  }\n\n";
-
-    lookupClass += "}\n";
-
-    // write file
-    try {
-      File outputFile = new File(miscOutputDir.getAbsolutePath() + File.separator + "GabotoOntologyLookup.java");
-      System.out.println("Write java class to: " + outputFile.getAbsolutePath());
-      BufferedWriter out = new BufferedWriter(new FileWriter(outputFile));
-      out.write(lookupClass);
-      out.close();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    generateLookup();
+    
   }
 
   private void loadEntityInformation(Element entityEl) {
@@ -304,14 +198,13 @@ public class GabotoGenerator {
     if (!beanEl.getNodeName().equals("GabotoBean"))
       return;
 
-    String importDefinitions = 
-      "import org.oucs.gaboto.entities.pool.GabotoEntityPool;\n" +
-      "import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;\n" +
-      "import org.oucs.gaboto.model.GabotoSnapshot;\n" + 
-      "\n" + 
-      "import com.hp.hpl.jena.rdf.model.Literal;\n" + 
-      "import com.hp.hpl.jena.rdf.model.Resource;\n" + 
-      "import com.hp.hpl.jena.rdf.model.Statement;\n";
+    JavaText classText = new JavaText();
+    classText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
+    classText.addImport("org.oucs.gaboto.entities.utils.SimpleLiteralProperty");
+    classText.addImport("org.oucs.gaboto.model.GabotoSnapshot");
+    classText.addImport("com.hp.hpl.jena.rdf.model.Literal"); 
+    classText.addImport("com.hp.hpl.jena.rdf.model.Resource"); 
+    classText.addImport("com.hp.hpl.jena.rdf.model.Statement");
 
     // get name
     String name = beanEl.getAttribute("name");
@@ -351,11 +244,11 @@ public class GabotoGenerator {
             // cast property
             Element property = (Element) properties.item(j);
 
-            String[] processedProperty = processProperty(property, null, null, null, null);
-            importDefinitions += processedProperty[0];
-            propertyDefinitions += processedProperty[1];
-            methodDefinitions += processedProperty[2];
-            loadBeanMethod += processedProperty[3];
+            PropertyJavaText text = createEntityJavaText(property, classText, null, null, null, null);
+            
+            propertyDefinitions += text.getPropertyDefinitions();
+            methodDefinitions += text.getMethodDefinitions();
+            loadBeanMethod += text.getLoadMethod();
 
             propertyNames.add(property.getAttribute("name"));
           }
@@ -377,7 +270,7 @@ public class GabotoGenerator {
 
     // load entity method
     String clazz = "package " + beanPackageName + ";\n\n";
-    clazz += importDefinitions + "\n\n";
+    clazz += classText.getImports() + "\n\n";
     clazz +=     // class comment
       "/**\n"
     + " * Gaboto generated bean.\n"
@@ -420,46 +313,19 @@ public class GabotoGenerator {
     if (!entityEl.getNodeName().equals("GabotoEntity"))
       return;
 
-    // import
-    String importDefinitions = "import java.lang.reflect.Method;\n"
-            + "\n"
-            + "import java.util.ArrayList;\n"
-            + "import java.util.Collection;\n"
-            + "import java.util.HashMap;\n"
-            + "import java.util.HashSet;\n"
-            + "import java.util.List;\n"
-            + "import java.util.Map;\n"
-            + "\n"
-            + "import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;\n"
-            + "import org.oucs.gaboto.entities.utils.SimpleURIProperty;\n"
-            + "import org.oucs.gaboto.entities.utils.ComplexProperty;\n"
-            + "import org.oucs.gaboto.entities.utils.BagURIProperty;\n"
-            +
-            // "import org.oucs.gaboto.entities.utils.BagLiteralProperty;\n" +
-            // "import org.oucs.gaboto.entities.utils.BagComplexProperty;\n" +
-            "import org.oucs.gaboto.entities.utils.IndirectProperty;\n"
-            + "import org.oucs.gaboto.entities.utils.UnstoredProperty;\n"
-            + "import org.oucs.gaboto.entities.utils.PassiveProperty;\n"
-            + "import org.oucs.gaboto.entities.utils.StaticProperty;\n" + "\n"
-            + "import org.oucs.gaboto.entities.GabotoEntity;\n" + "\n"
-            + "import org.oucs.gaboto.entities.pool.GabotoEntityPool;\n"
-            + "import org.oucs.gaboto.entities.pool.EntityExistsCallback;\n"
-            + "import org.oucs.gaboto.entities.pool.PassiveEntitiesRequest;\n" + "\n"
-            + "import org.oucs.gaboto.exceptions.GabotoRuntimeException;\n" + "\n"
-            + "import org.oucs.gaboto.model.GabotoSnapshot;\n" + 
-              "\n" +
-              "import com.hp.hpl.jena.rdf.model.Resource;\n" +
-              "import com.hp.hpl.jena.rdf.model.Statement;\n" +
-            // "import com.hp.hpl.jena.rdf.model.StmtIterator;\n" +
-            // "import com.hp.hpl.jena.rdf.model.Property;\n" +
-            "import com.hp.hpl.jena.rdf.model.Literal;\n" + 
-            "import com.hp.hpl.jena.rdf.model.Bag;\n" +
-            "import com.hp.hpl.jena.rdf.model.NodeIterator;\n" + 
-            "import com.hp.hpl.jena.rdf.model.RDFNode;\n" +
-
-            // "import com.hp.hpl.jena.ontology.OntClass;\n" +
-            "\n";
-    importDefinitions += "import org.oucs.gaboto.entities." + extendsClassName + ";\n";
+    JavaText cText = new JavaText();
+    cText.addImport("java.lang.reflect.Method");
+    cText.addImport("java.util.HashMap");
+    cText.addImport("java.util.List");
+    cText.addImport("java.util.Map");
+    
+    
+    if (extendsClassName.equals("GabotoEntity"))
+      cText.addImport("org.oucs.gaboto.entities." + extendsClassName);
+    else 
+      cText.addImport(entityPackageName + "." + extendsClassName);
+    
+    
 
     // get name
     String entityName = entityEl.getAttribute("name");
@@ -481,17 +347,19 @@ public class GabotoGenerator {
     entityClassLookup.put(entityType, entityName);
 
     // loadEntityMethod
-    boolean bEntityHasProperty = false;
-    String loadEntityMethod = "  public void loadFromSnapshot(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {\n";
-    loadEntityMethod += "    super.loadFromSnapshot(res, snapshot, pool);\n";
-    loadEntityMethod += "    Statement stmt;\n\n";
+    boolean entityHasProperty = false;
+    String loadEntityMethod = 
+      "  public void loadFromSnapshot(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {\n" + 
+      "    super.loadFromSnapshot(res, snapshot, pool);\n" + 
+      "    Statement stmt;\n\n";
 
     // passive entity requests
-    boolean bEntityHasPassiveProperty = false;
-    String passiveEntityRequests = "  public Collection<PassiveEntitiesRequest> getPassiveEntitiesRequest(){\n";
-    passiveEntityRequests += "    Collection<PassiveEntitiesRequest> requests = super.getPassiveEntitiesRequest();\n";
-    passiveEntityRequests += "    if(requests == null)\n";
-    passiveEntityRequests += "      requests = new HashSet<PassiveEntitiesRequest>();\n";
+    boolean entityHasPassiveProperty = false;
+    String passiveEntityRequests = 
+      "  public Collection<PassiveEntitiesRequest> getPassiveEntitiesRequest(){\n" + 
+      "    Collection<PassiveEntitiesRequest> requests = super.getPassiveEntitiesRequest();\n" + 
+      "    if(requests == null)\n" +
+      "      requests = new HashSet<PassiveEntitiesRequest>();\n";
 
     // custom methods
     String customMethods = "";
@@ -517,26 +385,28 @@ public class GabotoGenerator {
             continue;
 
           if (properties.item(j).getNodeName().equals("property")) {
-            bEntityHasProperty = true;
-
+            entityHasProperty = true;
+            cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
+            cText.addImport("com.hp.hpl.jena.rdf.model.Statement");
+            cText.addImport("org.oucs.gaboto.model.GabotoSnapshot");
             // cast property
             Element property = (Element) properties.item(j);
 
-            String[] processedProperty = processProperty(property, unstoredMethods, indirectMethods,
+            PropertyJavaText text = createEntityJavaText(property, cText, unstoredMethods, indirectMethods,
                     indirectMethodLookup, entityName);
-            importDefinitions += processedProperty[0];
-            propertyDefinitions += processedProperty[1];
-            methodDefinitions += processedProperty[2];
-            loadEntityMethod += processedProperty[3];
+            propertyDefinitions += text.getPropertyDefinitions();
+            methodDefinitions += text.getMethodDefinitions();
+            loadEntityMethod += text.getLoadMethod();
           } else if (properties.item(j).getNodeName().equals("passiveProperty")) {
-            bEntityHasPassiveProperty = true;
+            entityHasPassiveProperty = true;
+            cText.addImport("org.oucs.gaboto.entities.pool.PassiveEntitiesRequest");
+            cText.addImport("org.oucs.gaboto.entities.utils.PassiveProperty");
 
             // cast property
             Element property = (Element) properties.item(j);
 
-            String[] processedProperty = processPassiveProperty(property, indirectMethods, indirectMethodLookup,
+            String[] processedProperty = processPassiveProperty(property, cText, indirectMethods, indirectMethodLookup,
                     entityName);
-            importDefinitions += processedProperty[0];
             propertyDefinitions += processedProperty[1];
             methodDefinitions += processedProperty[2];
             passiveEntityRequests += processedProperty[3];
@@ -574,6 +444,7 @@ public class GabotoGenerator {
     String unstoredPropertyMethods = "";
     for (String method : unstoredMethods.values())
       unstoredPropertyMethods += method;
+      
 
     // indirect property position lookup
     String indirectPropertyLookupTable = "  private static Map<String, List<Method>> indirectPropertyLookupTable;\n";
@@ -582,6 +453,8 @@ public class GabotoGenerator {
     indirectPropertyLookupTable += "    List<Method> list;\n\n";
 
     if (indirectMethodLookup.size() > 0) {
+      cText.addImport("java.util.ArrayList");
+      cText.addImport("org.oucs.gaboto.exceptions.GabotoRuntimeException");
       indirectPropertyLookupTable += "    try{\n";
       for (Entry<String, List<String>> entry : indirectMethodLookup.entrySet()) {
         indirectPropertyLookupTable += "      list = new ArrayList<Method>();\n";
@@ -627,9 +500,15 @@ public class GabotoGenerator {
     boolean abstractClass = entityEl.hasAttribute("abstract") ? entityEl.getAttribute("abstract").equals("true")
             : false;
 
+    if (customMethods.contains("StaticProperty"))
+      cText.addImport("org.oucs.gaboto.entities.utils.StaticProperty");
+      
+    if (entityHasPassiveProperty)
+      cText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
+    
     // build it all together
     String clazz = "package " + entityPackageName + ";\n\n";
-    clazz += importDefinitions + "\n\n";
+    clazz += cText.getImports() + "\n\n";
     clazz +=     // class comment
       "/**\n"
     + " * Gaboto generated Entity.\n"
@@ -648,9 +527,9 @@ public class GabotoGenerator {
     clazz += indirectPropertyMethods;
     clazz += unstoredPropertyMethods;
     clazz += customMethods + "\n\n";
-    if (bEntityHasPassiveProperty)
+    if (entityHasPassiveProperty)
       clazz += passiveEntityRequests + "\n\n";
-    if (bEntityHasProperty)
+    if (entityHasProperty)
       clazz += loadEntityMethod;
     clazz += indirectPropertyLoookupMethod;
 
@@ -668,119 +547,127 @@ public class GabotoGenerator {
     }
   }
 
-  /**
-   * 
-   * @param property
-   * @param indirectMethodLookup
-   * @param entityName
-   * @return {importDefinitions, propertyDefinitionss, methodDefinitions}
-   */
-  private String[] processProperty(Element property, Map<String, String> unstoredMethods,
+  private PropertyJavaText createEntityJavaText(Element property, JavaText classText, Map<String, String> unstoredMethods,
           Map<String, String> indirectMethods, Map<String, List<String>> indirectMethodLookup, String entityName) {
-    String importDefinitions = "";
-    String propertyDefinitionss = "";
-    String methodDefinitions = ""; 
-    String loadEntitySnippet = "";
-
-    String propName = property.getAttribute("name").substring(0, 1).toLowerCase()
+    PropertyJavaText pt = new PropertyJavaText();
+    
+    pt.propName = property.getAttribute("name").substring(0, 1).toLowerCase()
             + property.getAttribute("name").substring(1);
-    String propNameUCFirst = propName.substring(0, 1).toUpperCase() + propName.substring(1);
-    String propType = property.getAttribute("type");
-    String collection = property.getAttribute("collection").toLowerCase();
-    String uri = property.getAttribute("uri");
+    pt.propNameUCFirst = pt.propName.substring(0, 1).toUpperCase() + pt.propName.substring(1);
+    pt.propType = property.getAttribute("type");
+    pt.collection = property.getAttribute("collection").toLowerCase();
+    pt.uri = property.getAttribute("uri");
 
     // real prop type
-    String realPropTypeInterface = propType;
-    String realPropTypeImpl = propType;
-    if (collection.equals("bag")) {
-      realPropTypeInterface = "Collection<" + propType + ">";
-      realPropTypeImpl = "HashSet<" + propType + ">";
+    pt.realPropTypeInterface = pt.propType;
+    pt.realPropTypeImpl = pt.propType;
+    if (pt.collection.equals("bag")) {
+      pt.realPropTypeInterface = "Collection<" + pt.propType + ">";
+      pt.realPropTypeImpl = "HashSet<" + pt.propType + ">";
     }
 
-    String getMethodName = "get" + propNameUCFirst;
+    pt.getMethodName = "get" + pt.propNameUCFirst;
 
     // annotations
-    String propertyAnnotation = getPropertyAnnotation(propType, uri, collection);
-    String indirectAnnotation = getIndirectAnnotation(property, indirectMethods, indirectMethodLookup, entityName,
-            getMethodName);
-    String unstoredAnnotation = getUnstoredAnnotation(property, unstoredMethods, realPropTypeImpl);
+    pt.propertyAnnotation = getPropertyAnnotation(pt.propType, pt.uri, pt.collection);
+    pt.indirectAnnotation = getIndirectAnnotation(property, indirectMethods, indirectMethodLookup, entityName,
+            pt.getMethodName);
+    if (!pt.indirectAnnotation.equals("")) { 
+      classText.addImport("org.oucs.gaboto.entities.utils.IndirectProperty");      
+    }
+    pt.unstoredAnnotation = getUnstoredAnnotation(property, unstoredMethods, pt.realPropTypeImpl);
+    if (!pt.unstoredAnnotation.equals(""))
+      classText.addImport("org.oucs.gaboto.entities.utils.UnstoredProperty");
 
     // property definition
-    propertyDefinitionss += "  private " + realPropTypeInterface + " " + propName + ";\n";
+    pt.propertyDefinitions += "  private " + pt.realPropTypeInterface + " " + pt.propName + ";\n";
 
     // add additional imports
-    importDefinitions += getBeanImport(propType);
+    //pt.importDefinitions += addBeanImport(pt.propType, classText);
 
-    // get method
-    if (!unstoredAnnotation.equals(""))
-      methodDefinitions += "  " + unstoredAnnotation + "\n";
-    if (!indirectAnnotation.equals(""))
-      methodDefinitions += "  " + indirectAnnotation + "\n";
-    methodDefinitions += "  " + propertyAnnotation + "\n";
+    addBeanImport(pt.propType, classText);
     
-    System.err.println("Prop:" + property + " type:" + getPropertyAnnotationType(property));
+    // get method
+    if (!pt.unstoredAnnotation.equals(""))
+      pt.methodDefinitions += "  " + pt.unstoredAnnotation + "\n";
+    if (!pt.indirectAnnotation.equals(""))
+      pt.methodDefinitions += "  " + pt.indirectAnnotation + "\n";
+    pt.methodDefinitions += "  " + pt.propertyAnnotation + "\n";
+    
     switch (getPropertyAnnotationType(property)) {
     case BAG_URI_PROPERTY:
+      
     case SIMPLE_URI_PROPERTY:
-      methodDefinitions += getGetMethodForDirectReference(realPropTypeInterface, getMethodName, propName);
+      pt.methodDefinitions += 
+        getGetMethodForDirectReference(pt.realPropTypeInterface, pt.getMethodName, pt.propName);
       break;
     default:
-      methodDefinitions += getGetMethod(realPropTypeInterface, getMethodName, propName);
+      pt.methodDefinitions += 
+        getGetMethod(pt.realPropTypeInterface, pt.getMethodName, pt.propName);
       break;
     }
 
     // set method
-    String setMethodName = "set" + propNameUCFirst;
-    methodDefinitions += "  " + propertyAnnotation + "\n";
+    String setMethodName = "set" + pt.propNameUCFirst;
+    pt.methodDefinitions += "  " + pt.propertyAnnotation + "\n";
     switch (getPropertyAnnotationType(property)) {
     case SIMPLE_URI_PROPERTY:
-      methodDefinitions += getSetMethodForSimpleURIProperty("public", setMethodName, realPropTypeInterface, propName,
-              propName);
+      pt.methodDefinitions += 
+        getSetMethodForSimpleURIProperty("public", setMethodName, pt.realPropTypeInterface, pt.propName,
+                pt.propName);
       break;
     case BAG_URI_PROPERTY:
-      methodDefinitions += getSetMethodForBagURIProperty("public", setMethodName, realPropTypeInterface, propName,
-              propName);
+      pt.methodDefinitions += 
+        getSetMethodForBagURIProperty("public", setMethodName, pt.realPropTypeInterface, pt.propName,
+              pt.propName);
       break;
     default:
-      methodDefinitions += getSetMethod("public", setMethodName, realPropTypeInterface, propName, propName);
+      pt.methodDefinitions += 
+        getSetMethod("public", setMethodName, pt.realPropTypeInterface, pt.propName, pt.propName);
       break;
     }
 
     // add method
     String addMethodName = "add";
-    if (collection.equals("bag")) {
+    if (pt.collection.equals("bag")) {
       String parameterName = "";
-      if (propNameUCFirst.endsWith("s")) {
-        addMethodName += propNameUCFirst.substring(0, propNameUCFirst.length() - 1);
-        parameterName = propName.substring(0, propName.length() - 1);
+      if (pt.propNameUCFirst.endsWith("s")) {
+        addMethodName += pt.propNameUCFirst.substring(0, pt.propNameUCFirst.length() - 1);
+        parameterName = pt.propName.substring(0, pt.propName.length() - 1);
       } else {
-        addMethodName += propNameUCFirst;
-        parameterName = propName;
+        addMethodName += pt.propNameUCFirst;
+        parameterName = pt.propName;
       }
 
       switch (getPropertyAnnotationType(property)) {
       case BAG_URI_PROPERTY:
-        methodDefinitions += getAddMethodForBagURI("public", addMethodName, propType, realPropTypeInterface,
-                realPropTypeImpl, parameterName, propName);
+        pt.methodDefinitions += getAddMethodForBagURI("public", addMethodName, pt.propType, 
+                pt.realPropTypeInterface,
+                pt.realPropTypeImpl, parameterName, pt.propName);
         break;
       default:
-        methodDefinitions += getAddMethod("public", addMethodName, propType, realPropTypeInterface, realPropTypeImpl,
-                parameterName, propName);
+        pt.methodDefinitions += 
+          getAddMethod("public", addMethodName, pt.propType, pt.realPropTypeInterface, pt.realPropTypeImpl,
+                parameterName, pt.propName);
         break;
       }
 
     }
 
     // load entity snippet
-    loadEntitySnippet = getLoadEntitySnippet(property, uri, propType, realPropTypeInterface, realPropTypeImpl,
-            propName, setMethodName, addMethodName);
+    pt.loadMethod = 
+      getLoadPropertySnippet(classText, property, pt.uri, pt.propType, pt.realPropTypeInterface, pt.realPropTypeImpl,
+            pt.propName, setMethodName, addMethodName);
 
-    return new String[] { importDefinitions, propertyDefinitionss, methodDefinitions, loadEntitySnippet };
+    return pt;
   }
 
-  private String[] processPassiveProperty(Element property, Map<String, String> indirectMethods,
+  private String[] processPassiveProperty(Element property, JavaText cText, Map<String, String> indirectMethods,
           Map<String, List<String>> indirectMethodLookup, String entityName) {
-    String importDefinitions = "", propertyDefinitionss = "", methodDefinitions = "", passiveEntityRequests = "";
+    String importDefinitions = "";
+    String propertyDefinitionss = "";
+    String methodDefinitions = "";
+    String passiveEntityRequests = "";
 
     String relationshipType = property.getAttribute("relationshipType");
     String propType = property.getAttribute("type");
@@ -799,6 +686,8 @@ public class GabotoGenerator {
 
     // what relationship type do we have
     if (relationshipType.equals("1:N") || relationshipType.equals("N:M")) {
+      cText.addImport("java.util.Collection");
+      cText.addImport("java.util.HashSet");
       // we can have N propTypes
       String realPropTypeInterface = "Collection<" + propType + ">";
       String realPropTypeImpl = "HashSet<" + propType + ">";
@@ -832,7 +721,7 @@ public class GabotoGenerator {
       // add method
       addMethodName = "add";
       String parameterName = "";
-      if (propNameUCFirst.endsWith("s")) {
+      if (propNameUCFirst.endsWith("s")) { // FIXME Hack
         addMethodName += propNameUCFirst.substring(0, propNameUCFirst.length() - 1);
         parameterName = propName.substring(0, propName.length() - 1);
       } else {
@@ -879,7 +768,7 @@ public class GabotoGenerator {
       passiveEntityRequests += "        " + addMethodName + "((" + propType + ")entity);\n";
       passiveEntityRequests += "      }\n";
       passiveEntityRequests += "    });\n";
-    }
+    } else throw new RuntimeException("Unrecognised relationship type" + relationshipType);
 
     return new String[] { importDefinitions, propertyDefinitionss, methodDefinitions, passiveEntityRequests };
   }
@@ -961,15 +850,18 @@ public class GabotoGenerator {
     if (visibility.equals("package"))
       visibility = "";
 
-    methodDefinition += "  " + visibility + " void " + methodName + "(" + propType + " " + parameterName + "){\n";
+    methodDefinition += "  " + visibility + " void " + methodName + "(" + propType + " " + parameterName + "P){\n";
     methodDefinition += "    if(this." + memberName + " == null)\n";
-    methodDefinition += "      this." + memberName + " = new " + realPropTypeImpl + "();\n";
-    methodDefinition += "    this." + memberName + ".add(" + parameterName + ");\n";
+    methodDefinition += "      set" + ucFirstLetter(memberName) + "( new " + realPropTypeImpl + "() );\n";
+    methodDefinition += "    this." + memberName + ".add(" + parameterName + "P);\n";
     methodDefinition += "  }\n\n";
 
     return methodDefinition;
   }
 
+  String ucFirstLetter(String s) { 
+    return s.substring(0, 1).toUpperCase() + s.substring(1);
+  }
   private String getAddMethodForBagURI(String visibility, String methodName, String propType,
           String realPropTypeInterface, String realPropTypeImpl, String parameterName, String memberName) {
     String methodDefinition = "";
@@ -988,12 +880,15 @@ public class GabotoGenerator {
     return methodDefinition;
   }
 
-  private String getLoadEntitySnippet(Element property, String uri, String propType, String realPropTypeInterface,
+  private String getLoadPropertySnippet(JavaText cText, Element property, String uri, String propType, String realPropTypeInterface,
           String realPropTypeImpl, String propertyName, String setMethodName, String addMethodName) {
     String loadEntity = "";
 
     switch (getPropertyAnnotationType(property)) {
     case SIMPLE_URI_PROPERTY:
+      cText.addImport("org.oucs.gaboto.entities.utils.SimpleURIProperty");
+      cText.addImport("org.oucs.gaboto.entities.pool.EntityExistsCallback");
+      cText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
       loadEntity += "    // Load SIMPLE_URI_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isResource()){\n";
@@ -1009,6 +904,9 @@ public class GabotoGenerator {
       loadEntity += "    }\n";
       break;
     case SIMPLE_LITERAL_PROPERTY:
+      cText.addImport("com.hp.hpl.jena.rdf.model.Literal");
+      cText.addImport("org.oucs.gaboto.entities.utils.SimpleLiteralProperty");
+      cText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
       loadEntity += "    // Load SIMPLE_LITERAL_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isLiteral())\n";
@@ -1016,6 +914,8 @@ public class GabotoGenerator {
               + ");\n";
       break;
     case SIMPLE_COMPLEX_PROPERTY:
+      cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
+      cText.addImport("org.oucs.gaboto.entities.utils.ComplexProperty");
       loadEntity += "    // Load SIMPLE_COMPLEX_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isAnon()){\n";
@@ -1025,6 +925,15 @@ public class GabotoGenerator {
       loadEntity += "    }\n";
       break;
     case BAG_URI_PROPERTY:
+      cText.addImport("java.util.Collection");
+      cText.addImport("java.util.HashSet");
+      cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
+      cText.addImport("com.hp.hpl.jena.rdf.model.Bag");
+      cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
+      cText.addImport("com.hp.hpl.jena.rdf.model.NodeIterator");
+      cText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
+      cText.addImport("org.oucs.gaboto.entities.pool.EntityExistsCallback");
+      cText.addImport("org.oucs.gaboto.entities.utils.BagURIProperty");
       loadEntity += "    // Load BAG_URI_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isResource() && null != stmt.getBag()){\n";
@@ -1048,6 +957,12 @@ public class GabotoGenerator {
       loadEntity += "    }\n";
       break;
     case BAG_LITERAL_PROPERTY:
+      cText.addImport("java.util.Collection");
+      cText.addImport("java.util.HashSet");
+      cText.addImport("com.hp.hpl.jena.rdf.model.Bag");
+      cText.addImport("com.hp.hpl.jena.rdf.model.NodeIterator");
+      cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
+      cText.addImport("org.oucs.gaboto.entities.utils.BagLiteralProperty");
       loadEntity += "    // Load BAG_LITERAL_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isResource() && stmt.getBag() != null){\n";
@@ -1062,6 +977,12 @@ public class GabotoGenerator {
       loadEntity += "    }\n";
       break;
     case BAG_COMPLEX_PROPERTY:
+      cText.addImport("java.util.Collection");
+      cText.addImport("java.util.HashSet");
+      cText.addImport("org.oucs.gaboto.entities.utils.BagComplexProperty");
+      cText.addImport("com.hp.hpl.jena.rdf.model.Bag");
+      cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
+      cText.addImport("com.hp.hpl.jena.rdf.model.NodeIterator");
       loadEntity += "    // Load BAG_COMPLEX_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null  && stmt.getObject().isResource() && stmt.getBag() != null){\n";
@@ -1083,19 +1004,18 @@ public class GabotoGenerator {
     return loadEntity + "\n";
   }
 
-  private String getBeanImport(String propType) {
+  private void addBeanImport(String propType, JavaText classText) {
     try {
       String beansPackage = GabotoBean.class.getPackage().getName();
       Class<?> clazz = Class.forName(beansPackage + "." + propType);
       if (clazz.newInstance() instanceof GabotoBean)
-        return "import " + beansPackage + "." + propType + ";\n";
+        classText.addImport(beansPackage + "." + propType );
     } catch (ClassNotFoundException e) {
       // Simple types eg String
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
 
-    return "";
   }
 
   private String getIndirectAnnotation(Element property, Map<String, String> indirectMethods,
@@ -1298,6 +1218,120 @@ public class GabotoGenerator {
     throw new RuntimeException("No property annotation found for: " + propType);
   }
 
+  
+  private void generateLookup() { 
+    // generate lookup class
+    // FIXME This should perhaps be generated for each ontology and then aggregated
+
+    String lookupClass = "package " + miscPackageName + ";\n\n";
+    lookupClass += "import java.util.Collection;\n" + 
+                   "import java.util.HashMap;\n" + 
+                   "import java.util.HashSet;\n" + 
+                   "import java.util.Map;\n" + 
+                   "import java.util.Set;\n" + 
+                   "\n"  + 
+                   "import org.oucs.gaboto.entities.GabotoEntity;\n" + 
+                   "import org.oucs.gaboto.exceptions.GabotoRuntimeException;\n";
+
+    lookupClass += "\n\n";
+    lookupClass +=     // class comment
+      "/**\n"
+    + " * Gaboto generated ontology lookup utility.\n"
+    + " * @see " + this.getClass().getCanonicalName() + ".\n"
+    + " */\n";
+    lookupClass += "@SuppressWarnings(\"unchecked\")\n";
+    lookupClass += "public class GabotoOntologyLookup{\n";
+
+    lookupClass += "  private static Map<String,String> entityClassLookupNames;\n";
+    lookupClass += "  private static Map<String,Class<? extends GabotoEntity>> entityClassLookupClass;\n";
+    lookupClass += "  private static Map<Class<? extends GabotoEntity>, String> classToURILookup;\n";
+    lookupClass += "  private static Collection<String> entityClassNames;\n";
+    lookupClass += "  private static Set<String> entityTypes;\n\n";
+
+    lookupClass += "  static{\n";
+    lookupClass += "    entityClassLookupNames = new HashMap<String,String>();\n\n";
+    for (Entry<String, String> entry : entityClassLookup.entrySet()) {
+      lookupClass += "    entityClassLookupNames.put(\"" + entry.getKey() + "\", \"" + entry.getValue() + "\");\n";
+    }
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  static{\n";
+    lookupClass += "    entityClassLookupClass = new HashMap<String,Class<? extends GabotoEntity>>();\n\n";
+    lookupClass += "    try {\n";
+    for (Entry<String, String> entry : entityClassLookup.entrySet()) {
+      lookupClass += "      entityClassLookupClass.put(\"" + entry.getKey()
+              + "\", (Class<?  extends GabotoEntity>) Class.forName(\"" + entityPackageName + "." + entry.getValue()
+              + "\"));\n";
+    }
+    lookupClass += "    } catch (ClassNotFoundException e) {\n";
+    lookupClass += "      throw new GabotoRuntimeException(e);\n";
+    lookupClass += "    }\n";
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  static{\n";
+    lookupClass += "    classToURILookup = new HashMap<Class<? extends GabotoEntity>, String>();\n\n";
+    lookupClass += "    try {\n";
+    for (Entry<String, String> entry : entityClassLookup.entrySet()) {
+      lookupClass += "      classToURILookup.put((Class<?  extends GabotoEntity>) Class.forName(\"" + entityPackageName
+              + "." + entry.getValue() + "\"), \"" + entry.getKey() + "\");\n";
+    }
+    lookupClass += "    } catch (ClassNotFoundException e) {\n";
+    lookupClass += "      throw new GabotoRuntimeException(e);\n";
+    lookupClass += "    }\n";
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  static{\n";
+    lookupClass += "    entityTypes = new HashSet<String>();\n\n";
+    for (String type : entityTypes) {
+      lookupClass += "    entityTypes.add(\"" + type + "\");\n";
+    }
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  static{\n";
+    lookupClass += "    entityClassNames = new HashSet<String>();\n\n";
+    lookupClass += entityClassNames;
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  public static Set<String> getRegisteredClassesAsURIs(){\n";
+    lookupClass += "    return entityTypes;\n";
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  public static Collection<String> getRegisteredEntityClassesAsClassNames(){\n";
+    lookupClass += "    return entityClassNames;\n";
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  public static Class<? extends GabotoEntity> getEntityClassFor(String typeURI){\n";
+    lookupClass += "    return entityClassLookupClass.get(typeURI);\n";
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  public static String getLocalName(String typeURI){\n";
+    lookupClass += "    return entityClassLookupNames.get(typeURI);\n";
+    lookupClass += "  }\n\n";
+
+    lookupClass += "public static boolean isValidName(String name) {\n";
+    lookupClass += "  return entityClassNames.contains(name);\n";
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  public static String getTypeURIForEntityClass(Class<? extends GabotoEntity> clazz){\n";
+    lookupClass += "    return classToURILookup.get(clazz);\n";
+    lookupClass += "  }\n\n";
+
+    lookupClass += "}\n";
+
+    // write file
+    try {
+      File outputFile = new File(miscOutputDir.getAbsolutePath() + File.separator + "GabotoOntologyLookup.java");
+      System.out.println("Write java class to: " + outputFile.getAbsolutePath());
+      BufferedWriter out = new BufferedWriter(new FileWriter(outputFile));
+      out.write(lookupClass);
+      out.close();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+
+    
+  }
+  
   /**
    * @param args
    */
@@ -1308,5 +1342,80 @@ public class GabotoGenerator {
   public static void generate(File config, File outputDir, String packageName) throws ParserConfigurationException,
           SAXException, IOException {
     new GabotoGenerator(config, outputDir, packageName).run();
+  }
+
+  class JavaText { 
+    TreeSet<String> imports = new TreeSet<String>();
+    boolean addImport(String imp) { 
+      return imports.add(imp);
+    }
+    
+    String getImports() { 
+      String importsString = "";
+      String packageString= "";
+      String thisPackageString= "";
+      for (String imp : imports) { 
+        thisPackageString = imp.substring(0, imp.lastIndexOf('.'));
+        if (!thisPackageString.equals(packageString)) { 
+          importsString += "\n";
+          packageString = thisPackageString;
+        }
+        importsString += "import " + imp + ";\n";
+      }
+      return importsString;
+    }
+  }
+
+  class PropertyJavaText { 
+    String importDefinitions = "";
+    String propertyDefinitions = "";
+    String methodDefinitions = ""; 
+    String loadMethod = "";
+
+    String propName = "";
+    String propNameUCFirst = "";
+    String propType = "";
+    String collection = "";
+    String uri = "";
+
+    String realPropTypeInterface = "";
+    String realPropTypeImpl = "";
+
+    String getMethodName = "";
+
+    String propertyAnnotation = "";
+    String indirectAnnotation = "";
+    String unstoredAnnotation = "";
+
+    String setMethodName = "";
+
+    String addMethodName = "";
+    String parameterName = "";
+    
+    
+    /**
+     * @return the importDefinitions
+     */
+    public String getImportDefinitions() {
+      return importDefinitions;
+    }
+    /**
+     * @return the propertyDefinitionss
+     */
+    public String getPropertyDefinitions() {
+      return propertyDefinitions;
+    }
+    /**
+     * @return the methodDefinitions
+     */
+    public String getMethodDefinitions() {
+      return methodDefinitions;
+    }
+    /**
+     * @return the loadEntitySnippet
+     */
+    public String getLoadMethod() {
+      return loadMethod;
+    }
   }
 }
