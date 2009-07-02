@@ -39,9 +39,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.entities.Building;
-import org.oucs.gaboto.entities.Unit;
 import org.oucs.gaboto.vocabulary.DC;
+
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Building;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Unit;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.graph.Node;

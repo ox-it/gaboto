@@ -42,9 +42,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.entities.Building;
 import org.oucs.gaboto.entities.GabotoEntity;
-import org.oucs.gaboto.entities.Unit;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
 import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
@@ -53,6 +51,9 @@ import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
+
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Building;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Unit;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.vocabulary.DC_11;

@@ -35,7 +35,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.entities.College;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
@@ -47,6 +46,8 @@ import org.oucs.gaboto.model.QuerySolutionProcessorImpl;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
+
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.College;
 
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.rdf.model.Model;

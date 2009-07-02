@@ -40,8 +40,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.entities.Building;
-import org.oucs.gaboto.entities.College;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
@@ -57,6 +55,9 @@ import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.vocabulary.DC;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
+
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Building;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.College;
 
 import com.hp.hpl.jena.graph.Node;
 

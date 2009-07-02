@@ -33,9 +33,6 @@ package net.sf.gaboto.test;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.beans.Location;
-import org.oucs.gaboto.entities.Building;
-import org.oucs.gaboto.entities.College;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
@@ -48,6 +45,10 @@ import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
+
+import uk.ac.ox.oucs.oxpoints.gaboto.beans.generated.Location;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Building;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.College;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ResIterator;
