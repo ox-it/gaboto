@@ -29,7 +29,7 @@
       <xsl:value-of select="tei:placeName"/>
     </xsl:variable>
     <xsl:variable name="id">
-      <xsl:value-of select="@xml:id"/>
+      <xsl:value-of select="oucsCode"/>
     </xsl:variable>
     <xsl:variable name="address">
       <xsl:value-of select="normalize-space(tei:location[@type='address'])"/>

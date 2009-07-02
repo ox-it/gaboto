@@ -2179,7 +2179,9 @@
                      <ptr target="http://www.wildcru.org/"/>
                   </desc>
                </trait>
-               <place oxpID="23232512" type="building" subtype="primary">
+               <place oxpID="23232512" type="building"
+		      subtype="primary">
+		 <placeName>Tubney House</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.37443 51.6851</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -2875,6 +2877,7 @@ data, and if so, how? -->
                   </place>
                </place>
             </place>
+
             <place oucsCode="compas" oxpID="23232565" type="department">
                <placeName>Centre on Migration, Policy and Society</placeName>
                <location type="address">
@@ -2921,24 +2924,13 @@ data, and if so, how? -->
                      <postCode>OX1 2JA</postCode>
                   </address>
                </location>
-
-
                <trait type="url">
                   <desc>
                      <ptr target="http://www.conted.ox.ac.uk/"/>
                   </desc>
                </trait>
-
-
-
-               <place oxpID="23232569" type="building">
-                  <placeName>Continuing Education International Programmes</placeName>
-                  <location when="2007-06-14T08:00:00.634+01:00">
-                     <geo>-1.261717 51.757542</geo>
-                     <note> recorded by Sebastian Rahtz</note>
-                  </location>
-               </place>
             </place>
+
             <place oucsCode="crim" oxpID="23232570" type="department">
                <placeName>Centre for Criminology</placeName>
                <location type="address">
@@ -3671,13 +3663,18 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232628" type="building" subtype="primary">
-                  <placeName>24-29 St Giles</placeName>
+                  <placeName>Mathematical Institute</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25959 51.75891</geo>
                      <note>Submitted by Stephen Sangar</note>
                   </location>
                </place>
-
+               <place oxpID="23232696" type="building">
+                  <placeName>Dartington House</placeName>
+               </place>
+               <place oxpID="23232697" type="building">
+		 <placeName>3 Worcester Street</placeName>
+	       </place>
             </place>
             <place oucsCode="mcdp" oxpID="23232629" type="department">
                <placeName>Centre for Cognitive Neuroscience</placeName>
@@ -3764,7 +3761,9 @@ data, and if so, how? -->
                      <ptr target="http://www.molbiol.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232635" type="building" subtype="primary">
+               <place oxpID="23232635" type="building"
+		      subtype="primary">
+		 <placeName>Pathology</placeName>
                   <location when="2007-06-18T09:58:32.000">
                      <geo>-1.251368 51.759377</geo>
                      <note> recorded by Janet McKnight</note>
@@ -3792,7 +3791,7 @@ data, and if so, how? -->
                </trait>
 
                <place oxpID="23232637" type="building" subtype="primary">
-                  <placeName>The Weatherall Institute of Molecular Medicine</placeName>
+                  <placeName>Weatherall Institute of Molecular Medicine</placeName>
                   <location when="2007-01-23T11:00:15.462Z">
                      <geo>-1.21682167053222 51.76360366602635</geo>
                      <note> recorded by Andrew Foulsham</note>
@@ -3825,21 +3824,6 @@ data, and if so, how? -->
                      <note>Submitted by Stephen Sangar</note>
                   </location>
                </place>
-
-            </place>
-            <place oucsCode="mps" oxpID="23232641" type="department">
-               <placeName>Maths and Physical Sciences Division</placeName>
-               <location type="address">
-                  <address>
-                     <addrLine>9 Parks Road, Oxford</addrLine>
-                     <postCode>OX1 3PD</postCode>
-                  </address>
-               </location>
-               <trait type="url">
-                  <desc>
-                     <ptr target="http://www.mps.ox.ac.uk/"/>
-                  </desc>
-               </trait>
 
             </place>
             <place oucsCode="nissan" oxpID="23232642" type="department">
@@ -4143,9 +4127,10 @@ data, and if so, how? -->
                      <ptr target="http://www.path.ox.ac.uk/help/"/>
                   </desc>
                </trait>
-               <place oxpID="23232666" type="building" subtype="primary">
-                  <location when="2007-06-18T09:58:32.000">
-                     <geo>-1.251368 51.759377</geo>
+               <place oxpID="23232669" type="building">
+                  <placeName>Pathology EPA Building</placeName>
+                  <location when="2007-06-18T10:00:57.000">
+                     <geo>-1.251537 51.759878</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
                   <place oxpID="23232667" type="room">
@@ -4154,16 +4139,8 @@ data, and if so, how? -->
                   <place oxpID="23232668" type="room">
                      <placeName>EPA Seminar Room</placeName>
                   </place>
-               </place>
-               <place oxpID="23232669" type="building">
-                  <placeName>Edward Abraham Building</placeName>
-                  <location when="2007-06-18T10:00:57.000">
-                     <geo>-1.251537 51.759878</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
-
-            </place>
+	       </place>
+	    </place>
             <place oucsCode="pharm" oxpID="23232670" type="department">
                <placeName>Department of Pharmacology</placeName>
                <location type="address">
@@ -4421,6 +4398,16 @@ data, and if so, how? -->
                   </location>
                </place>
             </place>
+
+            <place oucsCode="O_rsc" oxpID="23232691" type="department">
+               <placeName>Refugee Studies Centre</placeName>	
+	       <trait type="url">
+		 <desc>
+		   <ptr target="http://www.qeh.ox.ac.uk/centres/rsc"/>
+		 </desc>
+                  </trait>
+	    </place>
+
             <place oucsCode="qeh" oxpID="23232691" type="department">
                <placeName>Queen Elizabeth House</placeName>
                <location type="address">
@@ -4438,25 +4425,6 @@ data, and if so, how? -->
                   <place oxpID="23232693" type="room">
                      <placeName>Seminar Room 2</placeName>
                   </place>
-               </place>
-               <place oxpID="23232694" type="building" subtype="primary">
-                  <placeName>Department of International Development</placeName>
-                  <location when="2007-01-20T22:30:20.727Z">
-                     <geo>-1.251540184020996 51.75572111181941</geo>
-                     <note> recorded by James Cummings</note>
-                  </location>
-               </place>
-               <place oxpID="23232695" type="building">
-                  <placeName>Refugee Studies Centre</placeName>
-                  <location when="2007-01-30T12:42:28.587Z">
-                     <geo>-1.262955 51.754406</geo>
-                     <note> recorded by John Pilbeam</note>
-                  </location>
-                  <trait type="url">
-                     <desc>
-                        <ptr target="http://www.qeh.ox.ac.uk/centres/rsc"/>
-                     </desc>
-                  </trait>
                </place>
 
 
@@ -4514,15 +4482,14 @@ data, and if so, how? -->
                      <geo>-1.253428 51.759447</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
-               </place>
-               <place oxpID="23232701" type="building">
-                  <placeName>Vere Harmsworth Library</placeName>
-                  <location when="2007-06-18T10:28:37.000">
-                     <geo>-1.253598 51.757612</geo>
+		  <place oxpID="23232701" type="room">
+		    <placeName>Vere Harmsworth Library</placeName>
+		    <location when="2007-06-18T10:28:37.000">
+		      <geo>-1.253598 51.757612</geo>
                      <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
-
+		    </location>
+		  </place>
+	       </place>
             </place>
             <place oucsCode="rusksch" oxpID="23232702" type="department">
                <placeName>Ruskin School of Drawing and Fine Art</placeName>
@@ -9085,8 +9052,10 @@ data, and if so, how? -->
                      <ptr target="http://www.lang.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23233558" type="building" subtype="primary">
-                  <location when="2007-01-29T12:43:29.455Z">
+               <place oxpID="23233558" type="building"
+		      subtype="primary">
+		 <placeName>Red Barn</placeName>
+		 <location when="2007-01-29T12:43:29.455Z">
                      <geo>-1.261115 51.759538</geo>
                      <note> recorded by Mike Sloane</note>
                   </location>
@@ -9196,19 +9165,13 @@ data, and if so, how? -->
             </place>
             <place oucsCode="ousoc" oxpID="23233568" type="uas">
                <placeName>Oxford University Society</placeName>
-               <location type="address">
-                  <address>
-                     <addrLine>Oxenford House, Magdalen Street, Oxford</addrLine>
-                     <postCode>OX1 3AB</postCode>
-                  </address>
-               </location>
                <trait type="url">
                   <desc>
                      <ptr target="http://www.ox.ac.uk"/>
                   </desc>
                </trait>
-
             </place>
+
             <place oucsCode="retired" oxpID="23233569" type="uas">
                <placeName>Retired Staff</placeName>
                <location type="address">
@@ -9842,12 +9805,6 @@ data, and if so, how? -->
                   <geo>-1.263040 51.758070</geo>
                </location>
             </place>
-            <place oucsCode="b_0022" oxpID="23233632" type="building">
-               <placeName>Oxenford House</placeName>
-               <location>
-                  <geo>-1.259512 51.754652</geo>
-               </location>
-            </place>
             <place oucsCode="b_0024" oxpID="23233633" type="building">
                <placeName>Roosevelt Drive</placeName>
                <location>
@@ -10130,6 +10087,22 @@ data, and if so, how? -->
                   <placeName>Boardroom</placeName>
                </place>
             </place>
+
+	    <place oxpID="23232695" type="building" oucsCode="b_0054">
+                  <placeName>3 Mansfield Road</placeName>
+		  <location when="2007-01-30T12:42:28.587Z">
+		    <geo>-1.251540184020996 51.75572111181941</geo>
+		  </location>
+	    </place>
+	    
+	    <place oxpID="23232569" type="building" oucsCode="b_0055">
+		 <placeName>8 Wellington Square</placeName>
+		 <location when="2007-06-14T08:00:00.634+01:00">
+		   <geo>-1.261717 51.757542</geo>
+		   <note> recorded by Sebastian Rahtz</note>
+                  </location>
+	       </place>
+
             <relation name="controls" active="#O_ceu" passive="#O_lib_ceu"/>
             <relation name="controls" active="#O_clpic" passive="#O_lib_icl"/>
             <relation name="controls" active="#O_krc" passive="#O_lib_mec"/>
@@ -10883,8 +10856,12 @@ data, and if so, how? -->
             <relation name="controls" type="political" active="#offices" passive="#survey"/>
             <relation name="controls" type="political" active="#oucs" passive="#O_telecom"/>
             <relation name="controls" type="political" active="#plant" passive="#plantlib"/>
+            <relation name="occupies" type="geo" active="#qeh" passive="#b_0054"/>
+            <relation name="occupies" type="geo" active="#rsc" passive="#b_0054"/>
             <relation name="occupies" type="geo" active="#conted" passive="#b_0015"/>
             <relation name="occupies" type="geo" active="#conted" passive="#b_0030"/>
+            <relation name="occupies" type="geo" active="#conted" passive="#b_0055"/>
+            <relation name="occupies" type="geo" active="#conted"  passive="#b_0031"/>
             <relation name="occupies" type="geo" active="#hclu" passive="#b_0018"/>
             <relation name="occupies" type="geo" active="#kell" passive="#b_0031"/>
             <relation name="occupies" type="geo" active="#manstud" passive="#b_0019"/>
@@ -10893,6 +10870,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo" active="#mpls" passive="#b_0029"/>
             <relation name="occupies" type="geo primary" active="#O_acdivcomms" passive="#b_0021"/>
             <relation name="occupies" type="geo primary" active="#O_alumni" passive="#b_0027"/>
+            <relation name="occupies" type="geo primary" active="#ousoc" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_asuc" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_card" passive="#b_0016"/>
             <relation name="occupies" type="geo primary" active="#O_ccmp" passive="#b_0024"/>
@@ -10964,7 +10942,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#conted" passive="#b_0031"/>
             <relation name="occupies" type="geo primary" active="#counsel" passive="#b_0033"/>
             <relation name="occupies" type="geo primary" active="#crim" passive="#b_0020"/>
-            <relation name="occupies" type="geo primary" active="#devoff" passive="#b_0022"/>
+            <relation name="occupies" type="geo primary" active="#devoff" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#diabres" passive="#b_0040"/>
             <relation name="occupies" type="geo primary" active="#dpag" passive="#b_0039"/>
             <relation name="occupies" type="geo primary" active="#dpag" passive="#b_0043"/>
@@ -10991,7 +10969,6 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#medsci" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#metres" passive="#b_0040"/>
             <relation name="occupies" type="geo primary" active="#molbiol" passive="#b_0042"/>
-            <relation name="occupies" type="geo primary" active="#mps" passive="#b_0029"/>
             <relation name="occupies" type="geo primary" active="#npeu" passive="#b_0017"/>
             <relation name="occupies" type="geo primary" active="#obst" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#ocdem" passive="#b_0040"/>
@@ -11005,7 +10982,6 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0049"/>
             <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0050"/>
             <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0051"/>
-            <relation name="occupies" type="geo primary" active="#ousoc" passive="#b_0022"/>
             <relation name="occupies" type="geo primary" active="#oxman" passive="#b_0010"/>
             <relation name="occupies" type="geo primary" active="#paed" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#particle" passive="#b_0014"/>
