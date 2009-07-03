@@ -128,7 +128,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    * @version 0.1
    */
   private class Property {
-    private String uri;
+    private String uriL;
     private Object value;
 
     /**
@@ -138,16 +138,16 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
      */
     public Property(String uri, Object value) {
       super();
-      this.uri = uri;
+      this.uriL = uri;
       this.value = value;
     }
 
     public String getPropertyUri() {
-      return uri;
+      return uriL;
     }
 
     public void setUri(String uri) {
-      this.uri = uri;
+      this.uriL = uri;
     }
 
     public Object getValue() {
