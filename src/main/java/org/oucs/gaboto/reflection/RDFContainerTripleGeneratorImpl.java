@@ -411,6 +411,7 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 			if(! (object instanceof Collection) )
 				throw new IllegalAnnotationException(rdfContainerObject.getClass());
 			
+			/*
 			// find datatype
 			RDFDatatype datatype = null;
 			BagLiteralProperty annotation = method.getAnnotation(BagLiteralProperty.class);
@@ -426,9 +427,9 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
 			else if(annotation.javaType().toLowerCase().equals("boolean"))
 				datatype = XSDDatatype.XSDboolean;
 			else {
-				throw new IllegalArgumentException("Unrecognized literal type: " + annotation.javaType());
+				throw new IllegalArgumentException("Unrecognised literal type: " + annotation.javaType());
 			}
-			
+			*/
 			// loop over collection
 			int count = 1;
 			for(Object o : (Collection) object){
