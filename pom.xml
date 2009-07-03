@@ -310,6 +310,7 @@
    <downloadUrl>http://bogof.nsms.ox.ac.uk/maven2/</downloadUrl>
 -->
 
+<!--
     <repository>
       <id>melati</id>
       <name>melati</name>
@@ -319,7 +320,7 @@
       <id>melati</id>
       <url>scp://melati.org/data/www/uriinterface/</url>
     </site>
-<!--
+-->
   <repository>
    <id>bogof</id>
    <name>bogof</name>
@@ -329,7 +330,6 @@
    <id>bogof</id>
    <url>scp://bogof.nsms.ox.ac.uk:/home/maven2/project/${pom.artifactId}</url>
   </site>
--->
 
  </distributionManagement>
 
@@ -337,6 +337,7 @@
 
   <repositories>
 
+  <!--
     <repository>
       <releases />
       <snapshots>
@@ -346,7 +347,7 @@
       <name>Melati Repository</name>
       <url>http://melati.org/maven2/</url>
     </repository>
-  <!--
+
     <repository>
       <releases />
       <snapshots>

@@ -115,8 +115,8 @@
         <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/rdfcon.owl" />
-          <arg value="-n" />
-          <arg value="RDFCON" />
+          <!--arg value="-n" />
+          <arg value="RDFCON" /-->
           <arg value="-o" />
           <arg value="${vocab.dir}" />
           <arg value="--ontology" />
@@ -146,9 +146,9 @@
           <arg value="--rdfs" />
           <arg value="-a" />
           <arg value="http://www.w3.org/2004/03/trix/rdfg-1/"/>
-          <arg value="--ontology" />
           <arg value="-o" />
           <arg value="${vocab.dir}" />
+          <arg value="--ontology" />
           <arg value="--package" />
           <arg value="org.oucs.gaboto.vocabulary"/>
         </java>
