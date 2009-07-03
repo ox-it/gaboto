@@ -132,7 +132,6 @@ public class GabotoEntityUtils {
    * @return The {@link GabotoEntity} that represents the ontology class in
    *         java.
    * 
-   * @see OxPointsVocab
    * @see GabotoEntity
    */
   @SuppressWarnings("unchecked")
