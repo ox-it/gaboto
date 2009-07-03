@@ -55,8 +55,9 @@ import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.QuerySolutionProcessor;
-import org.oucs.gaboto.util.GabotoOntologyLookup;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
+
+import uk.ac.ox.oucs.oxpoints.gaboto.GabotoOntologyLookup;
 
 import com.hp.hpl.jena.graph.Graph;
 import com.hp.hpl.jena.graph.Node;

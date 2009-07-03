@@ -55,7 +55,8 @@ import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.timedim.TimeUtils;
-import org.oucs.gaboto.util.GabotoOntologyLookup;
+
+import uk.ac.ox.oucs.oxpoints.gaboto.GabotoOntologyLookup;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;

@@ -36,7 +36,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import org.oucs.gaboto.beans.Location;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.transformation.EntityPoolTransformer;
@@ -47,6 +46,8 @@ import org.oucs.gaboto.vocabulary.OxPointsVocab;
 import org.w3c.dom.CDATASection;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import uk.ac.ox.oucs.oxpoints.gaboto.beans.generated.Location;
 
 /**
  * Generic transformer to KML.
