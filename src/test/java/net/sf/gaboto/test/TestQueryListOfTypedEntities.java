@@ -52,5 +52,6 @@ public class TestQueryListOfTypedEntities {
 	public void testQuery() throws GabotoException{
 		GabotoQuery query = new ListOfTypedEntities(OxPointsVocab.Building_URI, TimeInstant.now() );
 		String result = (String) query.execute(GabotoQuery.FORMAT_KML);
+		System.err.println(result);
 	}
 }
