@@ -213,29 +213,24 @@ public class GabotoFactory {
 		// attach update listener
 		persistentGaboto.attachUpdateListener(new UpdateListener(){
 			public void updateOccured(GabotoEvent e) {
-				if(inMemoryGaboto instanceof Gaboto){
-					
-					// try to cast event to insertion
-					if(e instanceof GabotoInsertionEvent){
-						GabotoInsertionEvent event = (GabotoInsertionEvent) e;
-						if(event.getTimespan() != null)
-							inMemoryGaboto.add(event.getTimespan(), event.getTriple());
-						else
-							inMemoryGaboto.add(event.getTriple());
-					}
-					// try to cast event to removal
-					else if(e instanceof GabotoRemovalEvent){
-						GabotoRemovalEvent event = (GabotoRemovalEvent) e;
-						
-						if(event.getQuad() != null)
-							inMemoryGaboto.remove(event.getQuad());
-						else if(event.getTimespan() != null && event.getTriple() != null )
-							inMemoryGaboto.remove(event.getTimespan(), event.getTriple());
-						else if(event.getTriple() != null)
-							inMemoryGaboto.remove(event.getTriple());
-					}
-
-				}
+        // try to cast event to insertion
+        if(e instanceof GabotoInsertionEvent){
+          GabotoInsertionEvent event = (GabotoInsertionEvent) e;
+          if(event.getTimespan() != null)
+            inMemoryGaboto.add(event.getTimespan(), event.getTriple());
+          else
+            inMemoryGaboto.add(event.getTriple());
+        }
+        // try to cast event to removal
+        else if(e instanceof GabotoRemovalEvent){
+          GabotoRemovalEvent event = (GabotoRemovalEvent) e;
+          if(event.getQuad() != null)
+            inMemoryGaboto.remove(event.getQuad());
+          else if(event.getTimespan() != null && event.getTriple() != null )
+            inMemoryGaboto.remove(event.getTimespan(), event.getTriple());
+          else if(event.getTriple() != null)
+            inMemoryGaboto.remove(event.getTriple());
+        }
 			}
 		});
 		
