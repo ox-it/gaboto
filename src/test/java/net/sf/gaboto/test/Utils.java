@@ -42,11 +42,12 @@ import java.util.UUID;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.helperscripts.importing.TEIImporter;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
+
+import uk.ac.ox.oucs.oxpoints.gaboto.TEIImporter;
 
 public final class Utils {
 
