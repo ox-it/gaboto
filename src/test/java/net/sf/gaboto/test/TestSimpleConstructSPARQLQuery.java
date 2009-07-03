@@ -62,5 +62,6 @@ public class TestSimpleConstructSPARQLQuery {
 
 		SimpleConstructSPARQLQuery sparqlQuery = new SimpleConstructSPARQLQuery(TimeInstant.now(), query);
 		String result = (String) sparqlQuery.execute(GabotoQuery.FORMAT_RDF_XML);
+		System.err.println(result);
 	}
 }
