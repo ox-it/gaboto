@@ -3660,9 +3660,11 @@ data, and if so, how? -->
                      <note>Submitted by Stephen Sangar</note>
                   </location>
                </place>
+               <!-- FIXME 
                <place oxpID="23232696" type="building">
                   <placeName>Dartington House</placeName>
                </place>
+               --> 
                <place oxpID="23232697" type="building">
 		 <placeName>3 Worcester Street</placeName>
 	       </place>
@@ -4389,8 +4391,8 @@ data, and if so, how? -->
                   </location>
                </place>
             </place>
-
-            <place oucsCode="O_rsc" oxpID="23232691" type="department">
+<!--FIXME  Changed from O_rsc -->
+            <place oucsCode="rsc" oxpID="23232691" type="department">
                <placeName>Refugee Studies Centre</placeName>	
 	       <trait type="url">
 		 <desc>
@@ -10871,7 +10873,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#O_ccmp" passive="#b_0024"/>
             <relation name="occupies" type="geo primary" active="#O_cebm" passive="#b_0017"/>
             <relation name="occupies" type="geo primary" active="#O_centraladmin" passive="#b_0027"/>
-            <relation name="occupies" type="geo primary" active="#O_ceu" passive="#b_0024"/>
+            <!-- relation name="occupies" type="geo primary" active="#O_ceu" passive="#b_0024"/ -->
             <relation name="occupies" type="geo primary" active="#O_clpic" passive="#b_0003"/>
             <relation name="occupies" type="geo primary" active="#O_councilsec" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_dma" passive="#b_0021"/>
@@ -10964,8 +10966,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#mcdp" passive="#b_0039"/>
             <relation name="occupies" type="geo primary" active="#medsci" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#metres" passive="#b_0040"/>
-            <relation name="occupies" type="geo primary"
-		      active="#molbiol" passive="#b_0042"/>
+            <relation name="occupies" type="geo primary" active="#molbiol" passive="#b_0042"/>
             <relation name="occupies" type="geo primary" active="#modlang" passive="#b_0056"/>
             <relation name="occupies" type="geo primary" active="#phone" passive="#b_0056"/>
             <relation name="occupies" type="geo primary" active="#npeu" passive="#b_0017"/>
