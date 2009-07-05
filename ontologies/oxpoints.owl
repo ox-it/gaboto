@@ -220,11 +220,11 @@
     </owl:ObjectProperty>
     
     <owl:ObjectProperty rdf:ID="hasOUCSCode">
-      <rdfs:comment>The naming scheme of entities introduced by OUCS</rdfs:comment>
+      <rdfs:comment>The naming scheme for entities introduced by OUCS</rdfs:comment>
     </owl:ObjectProperty>
     
     <owl:ObjectProperty rdf:ID="hasOLISCode">
-      <rdfs:comment>The naming scheme of entities introduced by OLIS</rdfs:comment>
+      <rdfs:comment>The naming scheme for entities introduced by OLIS</rdfs:comment>
     </owl:ObjectProperty>
 
             
