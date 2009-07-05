@@ -128,6 +128,7 @@
                         <property name="name" type="String" uri="&dc;title"/>
 
                         <property name="OUCSCode" type="String" uri="&oxp;hasOUCSCode"/>
+                        <property name="OBNCode"  type="String" uri="&oxp;hasOBNCode"/>
                         <property name="parent" type="Place"
                             uri="&oxp;physicallyContainedWithin">
                             <indirectProperty uri="&oxp;hasLocation"/>
