@@ -47,7 +47,6 @@ import org.w3c.dom.CDATASection;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import uk.ac.ox.oucs.oxpoints.gaboto.beans.generated.Location;
 
 /**
  * Generic transformer to KML.
@@ -158,9 +157,10 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	 * @param entity
 	 */
 	private void addPointToElement(Document kmlDoc, Element parentEl, GabotoEntity entity) {
-		Location location = (Location) entity.getPropertyValue(OxPointsVocab.hasLocation);
+    Object o = entity.getPropertyValue(OxPointsVocab.hasLocation);
 		
-		if(location != null){
+		if(o != null){
+	    String location = entity.getPropertyValue(OxPointsVocab.hasLocation).toString();
 			// add Point to placemark
 			Element pointEl = kmlDoc.createElementNS(KML_NS, "Point");
 			parentEl.appendChild(pointEl);
@@ -168,8 +168,9 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 			Element coordinatesEl = kmlDoc.createElementNS(KML_NS, "coordinates");
 			pointEl.appendChild(coordinatesEl);
 			
+			String latlong = location.split(" ")[0] + "," + location.split(" ")[1];  
 			//add coordinates @todo .. take care of number format
-			coordinatesEl.appendChild(kmlDoc.createTextNode(location.getLongitude() + "," + location.getLatitude()));
+			coordinatesEl.appendChild(kmlDoc.createTextNode(latlong));
 		}
 	}
 

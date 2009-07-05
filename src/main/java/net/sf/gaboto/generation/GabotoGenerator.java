@@ -67,13 +67,14 @@ import org.xml.sax.SAXException;
 public class GabotoGenerator {
 
   private File config = null;
+  private File outputDir;
   private File entityOutputDir;
   private File beanOutputDir;
-  private File miscOutputDir;
 
-  private String entityPackageName = null;
-  private String beanPackageName = null;
-  private String miscPackageName = null;
+  private String packageName = null;
+  private String entitiesPackageName = null;
+  private String beansPackageName = null;
+  private String lookupClassName = null;
 
   private String entityClassNames = "";
 
@@ -102,11 +103,11 @@ public class GabotoGenerator {
     this.config = config;
     this.entityOutputDir = new File(outputDir, packageRelativeDirectoryName + "/entities");
     this.beanOutputDir = new File(outputDir, packageRelativeDirectoryName + "/beans");
-    this.miscOutputDir = new File(outputDir, packageRelativeDirectoryName + "/util");
+    this.outputDir = new File(outputDir, packageRelativeDirectoryName + "/");
 
-    this.entityPackageName = packageName + ".entities";
-    this.beanPackageName = packageName + ".beans";
-    this.miscPackageName = packageName + ".util";
+    this.entitiesPackageName = packageName + ".entities";
+    this.beansPackageName = packageName + ".beans";
+    this.packageName = packageName ;
   }
 
   public void run() throws ParserConfigurationException, SAXException, IOException {
@@ -121,7 +122,7 @@ public class GabotoGenerator {
       if (!(children.item(i) instanceof Element))
         continue;
       Element el = (Element)children.item(i);
-
+      System.err.println("Name " + el.getNodeName());
       if (el.getNodeName().equals("GabotoEntities")) {
         NodeList entities = el.getChildNodes();
 
@@ -131,7 +132,20 @@ public class GabotoGenerator {
             continue;
           Element entityEl = (Element) entities.item(j);
 
-          loadEntityInformation(entityEl);
+          readConfigFile(entityEl);
+        }
+      } else if (el.getNodeName().equals("config")) {
+        NodeList entities = el.getChildNodes();
+
+        // now generate the entities
+        for (int j = 0; j < entities.getLength(); j++) {
+          if (!(entities.item(j) instanceof Element))
+            continue;
+          Element entityEl = (Element) entities.item(j);
+          if (entityEl.getNodeName().equals("lookupClass")) {
+            String fullClassName = entityEl.getAttribute("class"); 
+              this.lookupClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
+          }
         }
       }
     }
@@ -161,7 +175,7 @@ public class GabotoGenerator {
           if (!(beans.item(j) instanceof Element))
             continue;
           Element beanEl = (Element) beans.item(j);
-          generateBean(beanEl, "GabotoBean");
+          generateBean(beanEl);
         }
       }
     }
@@ -170,7 +184,7 @@ public class GabotoGenerator {
     
   }
 
-  private void loadEntityInformation(Element entityEl) {
+  private void readConfigFile(Element entityEl) {
     entityNames.add(entityEl.getAttribute("name"));
     entityTypeURILookup.put(entityEl.getAttribute("name"), entityEl.getAttribute("type"));
 
@@ -187,14 +201,14 @@ public class GabotoGenerator {
             continue;
 
           if (entities.item(j).getNodeName().equals("GabotoEntity")) {
-            loadEntityInformation((Element) entities.item(j));
+            readConfigFile((Element) entities.item(j));
           }
         }
       }
     }
   }
 
-  private void generateBean(Element beanEl, String extendsDef) {
+  private void generateBean(Element beanEl) {
     if (!beanEl.getNodeName().equals("GabotoBean"))
       return;
 
@@ -202,6 +216,7 @@ public class GabotoGenerator {
     classText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
     classText.addImport("org.oucs.gaboto.entities.utils.SimpleLiteralProperty");
     classText.addImport("org.oucs.gaboto.model.GabotoSnapshot");
+    classText.addImport("org.oucs.gaboto.beans.GabotoBean");
     classText.addImport("com.hp.hpl.jena.rdf.model.Literal"); 
     classText.addImport("com.hp.hpl.jena.rdf.model.Resource"); 
     classText.addImport("com.hp.hpl.jena.rdf.model.Statement");
@@ -269,12 +284,12 @@ public class GabotoGenerator {
     loadBeanMethod += "  }\n";
 
     // load entity method
-    String clazz = "package " + beanPackageName + ";\n\n";
+    String clazz = "package " + beansPackageName + ";\n\n";
     clazz += classText.getImports() + "\n\n";
     clazz +=     // class comment
       "/**\n"
     + " * Gaboto generated bean.\n"
-    + " * @see " + this.getClass().getCanonicalName() + "#generateBean.\n"
+    + " * @see " + this.getClass().getCanonicalName() + "\n"
     + " */\n";
     clazz += "public class ";
     clazz += name + " extends GabotoBean {\n";
@@ -284,7 +299,7 @@ public class GabotoGenerator {
     clazz += customMethods + "\n\n";
     if (bBeanHasProperty)
       clazz += loadBeanMethod;
-    clazz += "  public String toString() {\n" + "    return \"[\" + ";
+    clazz += "  public String toString() {\n" + "    return ";
     boolean seenOne = false;
     for (String pName : propertyNames) {
       if (seenOne)
@@ -293,7 +308,7 @@ public class GabotoGenerator {
       clazz += "this." + pName;
     }
     // this.streetAddress + \", \" + this.postCode;\n" +
-    clazz += " + \"]\";\n" + "  }\n";
+    clazz += " ;\n" + "  }\n";
 
     clazz += "}";
 
@@ -323,7 +338,7 @@ public class GabotoGenerator {
     if (extendsClassName.equals("GabotoEntity"))
       cText.addImport("org.oucs.gaboto.entities." + extendsClassName);
     else 
-      cText.addImport(entityPackageName + "." + extendsClassName);
+      cText.addImport(entitiesPackageName + "." + extendsClassName);
     
     
 
@@ -346,15 +361,16 @@ public class GabotoGenerator {
     // add line to lookup
     entityClassLookup.put(entityType, entityName);
 
-    // loadEntityMethod
+    boolean entityHasEntity = false;
     boolean entityHasProperty = false;
+    boolean entityHasPassiveProperty = false;
+
     String loadEntityMethod = 
       "  public void loadFromSnapshot(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {\n" + 
       "    super.loadFromSnapshot(res, snapshot, pool);\n" + 
       "    Statement stmt;\n\n";
 
     // passive entity requests
-    boolean entityHasPassiveProperty = false;
     String passiveEntityRequests = 
       "  public Collection<PassiveEntitiesRequest> getPassiveEntitiesRequest(){\n" + 
       "    Collection<PassiveEntitiesRequest> requests = super.getPassiveEntitiesRequest();\n" + 
@@ -413,6 +429,7 @@ public class GabotoGenerator {
           }
         }
       } else if (children.item(i).getNodeName().equals("GabotoEntities")) {
+        entityHasEntity = true;
         NodeList entities = children.item(i).getChildNodes();
         for (int j = 0; j < entities.getLength(); j++) {
           if (!(entities.item(j) instanceof Element))
@@ -450,11 +467,11 @@ public class GabotoGenerator {
     String indirectPropertyLookupTable = "  private static Map<String, List<Method>> indirectPropertyLookupTable;\n";
     indirectPropertyLookupTable += "  static{\n";
     indirectPropertyLookupTable += "    indirectPropertyLookupTable = new HashMap<String, List<Method>>();\n";
-    indirectPropertyLookupTable += "    List<Method> list;\n\n";
 
     if (indirectMethodLookup.size() > 0) {
       cText.addImport("java.util.ArrayList");
       cText.addImport("org.oucs.gaboto.exceptions.GabotoRuntimeException");
+      indirectPropertyLookupTable += "    List<Method> list;\n\n";
       indirectPropertyLookupTable += "    try{\n";
       for (Entry<String, List<String>> entry : indirectMethodLookup.entrySet()) {
         indirectPropertyLookupTable += "      list = new ArrayList<Method>();\n";
@@ -499,7 +516,9 @@ public class GabotoGenerator {
     // abstract
     boolean abstractClass = entityEl.hasAttribute("abstract") ? entityEl.getAttribute("abstract").equals("true")
             : false;
-
+    if (entityHasEntity | entityHasPassiveProperty)
+      cText.addImport("org.oucs.gaboto.entities.GabotoEntity");
+    
     if (customMethods.contains("StaticProperty"))
       cText.addImport("org.oucs.gaboto.entities.utils.StaticProperty");
       
@@ -507,12 +526,12 @@ public class GabotoGenerator {
       cText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
     
     // build it all together
-    String clazz = "package " + entityPackageName + ";\n\n";
+    String clazz = "package " + entitiesPackageName + ";\n\n";
     clazz += cText.getImports() + "\n\n";
     clazz +=     // class comment
       "/**\n"
     + " * Gaboto generated Entity.\n"
-    + " * @see " + this.getClass().getCanonicalName() + "#generateEntity.\n"
+    + " * @see " + this.getClass().getCanonicalName() + "\n"
     + " */\n";
 
 
@@ -642,17 +661,18 @@ public class GabotoGenerator {
       switch (getPropertyAnnotationType(property)) {
       case BAG_URI_PROPERTY:
         pt.methodDefinitions += getAddMethodForBagURI("public", addMethodName, pt.propType, 
-                pt.realPropTypeInterface,
-                pt.realPropTypeImpl, parameterName, pt.propName);
+                pt.realPropTypeImpl,
+                parameterName, pt.propName);
         break;
       default:
         pt.methodDefinitions += 
-          getAddMethod("public", addMethodName, pt.propType, pt.realPropTypeInterface, pt.realPropTypeImpl,
-                parameterName, pt.propName);
+          getAddMethod("public", addMethodName, pt.propType, pt.realPropTypeImpl, parameterName,
+                pt.propName);
         break;
       }
 
     }
+    System.err.println("Prop type " + pt.propType);
 
     // load entity snippet
     pt.loadMethod = 
@@ -728,8 +748,8 @@ public class GabotoGenerator {
         addMethodName += propNameUCFirst;
         parameterName = propName;
       }
-      methodDefinitions += getAddMethod("private", addMethodName, propType, realPropTypeInterface, realPropTypeImpl,
-              parameterName, propName);
+      methodDefinitions += getAddMethod("private", addMethodName, propType, realPropTypeImpl, parameterName,
+              propName);
 
     } else {
       throw new RuntimeException("Illegal relationship type: " + relationshipType);
@@ -843,8 +863,8 @@ public class GabotoGenerator {
     return methodDefinition;
   }
 
-  private String getAddMethod(String visibility, String methodName, String propType, String realPropTypeInterface,
-          String realPropTypeImpl, String parameterName, String memberName) {
+  private String getAddMethod(String visibility, String methodName, String propType, String realPropTypeImpl,
+          String parameterName, String memberName) {
     String methodDefinition = "";
 
     if (visibility.equals("package"))
@@ -863,7 +883,7 @@ public class GabotoGenerator {
     return s.substring(0, 1).toUpperCase() + s.substring(1);
   }
   private String getAddMethodForBagURI(String visibility, String methodName, String propType,
-          String realPropTypeInterface, String realPropTypeImpl, String parameterName, String memberName) {
+          String realPropTypeImpl, String parameterName, String memberName) {
     String methodDefinition = "";
 
     if (visibility.equals("package"))
@@ -884,11 +904,24 @@ public class GabotoGenerator {
           String realPropTypeImpl, String propertyName, String setMethodName, String addMethodName) {
     String loadEntity = "";
 
+    System.err.println("Property " + propType + " - " + realPropTypeImpl);
+    System.err.println("Property " + propertyName + " - " + getPropertyAnnotationType(property));
     switch (getPropertyAnnotationType(property)) {
+    case SIMPLE_LITERAL_PROPERTY:
+      cText.addImport("com.hp.hpl.jena.rdf.model.Literal");
+      cText.addImport("org.oucs.gaboto.entities.utils.SimpleLiteralProperty");
+      cText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
+      loadEntity += "    // Load SIMPLE_LITERAL_PROPERTY " + propertyName + "\n";
+      loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
+      loadEntity += "    if(stmt != null && stmt.getObject().isLiteral())\n";
+      loadEntity += "      this." + setMethodName + "(((Literal)stmt.getObject())." + getLiteralGetMethod(property)
+              + ");\n";
+      break;
     case SIMPLE_URI_PROPERTY:
       cText.addImport("org.oucs.gaboto.entities.utils.SimpleURIProperty");
       cText.addImport("org.oucs.gaboto.entities.pool.EntityExistsCallback");
       cText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
+      cText.addImport("org.oucs.gaboto.entities.GabotoEntity");
       loadEntity += "    // Load SIMPLE_URI_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isResource()){\n";
@@ -902,16 +935,6 @@ public class GabotoGenerator {
 
       loadEntity += "      this.addMissingReference(missingReference, callback);\n";
       loadEntity += "    }\n";
-      break;
-    case SIMPLE_LITERAL_PROPERTY:
-      cText.addImport("com.hp.hpl.jena.rdf.model.Literal");
-      cText.addImport("org.oucs.gaboto.entities.utils.SimpleLiteralProperty");
-      cText.addImport("org.oucs.gaboto.entities.pool.GabotoEntityPool");
-      loadEntity += "    // Load SIMPLE_LITERAL_PROPERTY " + propertyName + "\n";
-      loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-      loadEntity += "    if(stmt != null && stmt.getObject().isLiteral())\n";
-      loadEntity += "      this." + setMethodName + "(((Literal)stmt.getObject())." + getLiteralGetMethod(property)
-              + ");\n";
       break;
     case SIMPLE_COMPLEX_PROPERTY:
       cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
@@ -1005,19 +1028,31 @@ public class GabotoGenerator {
   }
 
   private void addBeanImport(String propType, JavaText classText) {
-    try {
-      String beansPackage = GabotoBean.class.getPackage().getName();
-      Class<?> clazz = Class.forName(beansPackage + "." + propType);
-      if (clazz.newInstance() instanceof GabotoBean)
-        classText.addImport(beansPackage + "." + propType );
-    } catch (ClassNotFoundException e) {
-      // Simple types eg String
-    } catch (Exception e) {
-      throw new RuntimeException(e);
+    System.err.println("Here:" + propType);
+    if(propType.equals("String")){}
+    else if (propType.equals("Int")) {}
+    else if (propType.equals("Integer")) {}
+    else if (propType.equals("Long")) {}
+    else if (propType.equals("Double")) {}
+    else if (propType.equals("Float")) {}
+    else if (propType.equals("Boolean")) {}
+    else { 
+      // Check if this is a bean
+      try {
+        Class<?> clazz = Class.forName(beansPackageName + "." + propType);
+        if (clazz.newInstance() instanceof GabotoBean)
+          classText.addImport(beansPackageName + "." + propType );
+        System.err.println(propType + " is a bean");
+      } catch (ClassNotFoundException e) {
+        System.err.println("Here2" + beansPackageName + "." + propType);
+        // Simple types eg String
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
     }
-
   }
 
+  
   private String getIndirectAnnotation(Element property, Map<String, String> indirectMethods,
           Map<String, List<String>> indirectMethodLookup, String entityName, String getMethodName) {
     String anno = "";
@@ -1109,7 +1144,7 @@ public class GabotoGenerator {
   }
 
   private String getPropertyAnnotation(String propType, String uri, String collection) {
-    switch (getPropertyAnnotationType(propType, uri, collection)) {
+    switch (getPropertyAnnotationType(propType, collection)) {
     case SIMPLE_URI_PROPERTY:
       return "@SimpleURIProperty(\"" + uri + "\")";
     case SIMPLE_LITERAL_PROPERTY:
@@ -1175,13 +1210,12 @@ public class GabotoGenerator {
 
   private int getPropertyAnnotationType(Element property) {
     String propType = property.getAttribute("type");
-    String uri = property.getAttribute("uri");
     String collection = property.getAttribute("collection").toLowerCase();
 
-    return getPropertyAnnotationType(propType, uri, collection);
+    return getPropertyAnnotationType(propType, collection);
   }
 
-  private int getPropertyAnnotationType(String propType, String uri, String collection) {
+  private int getPropertyAnnotationType(String propType, String collection) {
     if (collection != null) {
       if (collection.equals(""))
         collection = null;
@@ -1196,9 +1230,10 @@ public class GabotoGenerator {
         return BAG_URI_PROPERTY;
     }
 
+    // Check if this is a bean
+    // FIXME There is a bootstrap problem here
     try {
-      String beansPackage = GabotoBean.class.getPackage().getName();
-      Class<?> clazz = Class.forName(beansPackage + "." + propType);
+      Class<?> clazz = Class.forName(beansPackageName + "." + propType);
       if (clazz.newInstance() instanceof GabotoBean)
         if (collection == null)
           return SIMPLE_COMPLEX_PROPERTY;
@@ -1206,6 +1241,7 @@ public class GabotoGenerator {
           return BAG_COMPLEX_PROPERTY;
     } catch (ClassNotFoundException e) {
       // Simple type eg String
+      // or non bean property
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
@@ -1223,7 +1259,7 @@ public class GabotoGenerator {
     // generate lookup class
     // FIXME This should perhaps be generated for each ontology and then aggregated
 
-    String lookupClass = "package " + miscPackageName + ";\n\n";
+    String lookupClass = "package " + packageName + ";\n\n";
     lookupClass += "import java.util.Collection;\n" + 
                    "import java.util.HashMap;\n" + 
                    "import java.util.HashSet;\n" + 
@@ -1231,16 +1267,19 @@ public class GabotoGenerator {
                    "import java.util.Set;\n" + 
                    "\n"  + 
                    "import org.oucs.gaboto.entities.GabotoEntity;\n" + 
-                   "import org.oucs.gaboto.exceptions.GabotoRuntimeException;\n";
+                   "import org.oucs.gaboto.exceptions.GabotoRuntimeException;\n" + 
+                   "\n" +
+                   "import org.oucs.gaboto.model.GabotoOntologyLookup;\n"  +
+                   "\n" ;
 
     lookupClass += "\n\n";
     lookupClass +=     // class comment
       "/**\n"
     + " * Gaboto generated ontology lookup utility.\n"
-    + " * @see " + this.getClass().getCanonicalName() + ".\n"
+    + " * @see " + this.getClass().getCanonicalName() + "\n"
     + " */\n";
     lookupClass += "@SuppressWarnings(\"unchecked\")\n";
-    lookupClass += "public class GabotoOntologyLookup{\n";
+    lookupClass += "public class " + lookupClassName + " implements GabotoOntologyLookup {\n";
 
     lookupClass += "  private static Map<String,String> entityClassLookupNames;\n";
     lookupClass += "  private static Map<String,Class<? extends GabotoEntity>> entityClassLookupClass;\n";
@@ -1260,7 +1299,7 @@ public class GabotoGenerator {
     lookupClass += "    try {\n";
     for (Entry<String, String> entry : entityClassLookup.entrySet()) {
       lookupClass += "      entityClassLookupClass.put(\"" + entry.getKey()
-              + "\", (Class<?  extends GabotoEntity>) Class.forName(\"" + entityPackageName + "." + entry.getValue()
+              + "\", (Class<?  extends GabotoEntity>) Class.forName(\"" + entitiesPackageName + "." + entry.getValue()
               + "\"));\n";
     }
     lookupClass += "    } catch (ClassNotFoundException e) {\n";
@@ -1272,7 +1311,7 @@ public class GabotoGenerator {
     lookupClass += "    classToURILookup = new HashMap<Class<? extends GabotoEntity>, String>();\n\n";
     lookupClass += "    try {\n";
     for (Entry<String, String> entry : entityClassLookup.entrySet()) {
-      lookupClass += "      classToURILookup.put((Class<?  extends GabotoEntity>) Class.forName(\"" + entityPackageName
+      lookupClass += "      classToURILookup.put((Class<?  extends GabotoEntity>) Class.forName(\"" + entitiesPackageName
               + "." + entry.getValue() + "\"), \"" + entry.getKey() + "\");\n";
     }
     lookupClass += "    } catch (ClassNotFoundException e) {\n";
@@ -1292,27 +1331,27 @@ public class GabotoGenerator {
     lookupClass += entityClassNames;
     lookupClass += "  }\n\n";
 
-    lookupClass += "  public static Set<String> getRegisteredClassesAsURIs(){\n";
+    lookupClass += "  public Set<String> getRegisteredClassesAsURIs(){\n";
     lookupClass += "    return entityTypes;\n";
     lookupClass += "  }\n\n";
 
-    lookupClass += "  public static Collection<String> getRegisteredEntityClassesAsClassNames(){\n";
+    lookupClass += "  public Collection<String> getRegisteredEntityClassesAsClassNames(){\n";
     lookupClass += "    return entityClassNames;\n";
     lookupClass += "  }\n\n";
 
-    lookupClass += "  public static Class<? extends GabotoEntity> getEntityClassFor(String typeURI){\n";
+    lookupClass += "  public Class<? extends GabotoEntity> getEntityClassFor(String typeURI){\n";
     lookupClass += "    return entityClassLookupClass.get(typeURI);\n";
     lookupClass += "  }\n\n";
 
-    lookupClass += "  public static String getLocalName(String typeURI){\n";
+    lookupClass += "  public String getLocalName(String typeURI){\n";
     lookupClass += "    return entityClassLookupNames.get(typeURI);\n";
     lookupClass += "  }\n\n";
 
-    lookupClass += "public static boolean isValidName(String name) {\n";
-    lookupClass += "  return entityClassNames.contains(name);\n";
+    lookupClass += "  public boolean isValidName(String name) {\n";
+    lookupClass += "    return entityClassNames.contains(name);\n";
     lookupClass += "  }\n\n";
 
-    lookupClass += "  public static String getTypeURIForEntityClass(Class<? extends GabotoEntity> clazz){\n";
+    lookupClass += "  public String getTypeURIForEntityClass(Class<? extends GabotoEntity> clazz){\n";
     lookupClass += "    return classToURILookup.get(clazz);\n";
     lookupClass += "  }\n\n";
 
@@ -1320,7 +1359,7 @@ public class GabotoGenerator {
 
     // write file
     try {
-      File outputFile = new File(miscOutputDir.getAbsolutePath() + File.separator + "GabotoOntologyLookup.java");
+      File outputFile = new File(outputDir.getAbsolutePath() + File.separator + lookupClassName + ".java" );
       System.out.println("Write java class to: " + outputFile.getAbsolutePath());
       BufferedWriter out = new BufferedWriter(new FileWriter(outputFile));
       out.write(lookupClass);
@@ -1336,7 +1375,7 @@ public class GabotoGenerator {
    * @param args
    */
   public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-    generate(new File("src/main/conf/Gaboto.xml"), new File("src/main/java"), "org.oucs.gaboto");
+    generate(new File("src/main/conf/Gaboto.xml"), new File("examples/oxpoints/src/main/java"), "uk.ac.ox.oucs.oxpoints.gaboto");
   }
 
   public static void generate(File config, File outputDir, String packageName) throws ParserConfigurationException,

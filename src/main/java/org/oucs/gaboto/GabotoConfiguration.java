@@ -38,6 +38,7 @@ import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.oucs.gaboto.model.GabotoOntologyLookup;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.util.XMLUtils;
 import org.w3c.dom.Document;
@@ -65,6 +66,7 @@ public class GabotoConfiguration {
 	
 	private Map<String, String> namespacePrefixes = new HashMap<String, String>();
 	
+	private GabotoOntologyLookup lookup;
 	
 	public static GabotoConfiguration fromConfigFile() {
 		try {
@@ -109,10 +111,10 @@ public class GabotoConfiguration {
 						config.dbDriver = databaseProp.getTextContent();
 					}
 				}
-			} else if(configSection.getNodeName().equals("namespaces")){
-				config.NSData = configSection.getAttribute("data");
-				config.NSGraphs = configSection.getAttribute("graphs");
-			} else if(configSection.getNodeName().equals("namespacePrefixes")){
+      } else if(configSection.getNodeName().equals("namespaces")){
+        config.NSData = configSection.getAttribute("data");
+        config.NSGraphs = configSection.getAttribute("graphs");
+      } else if(configSection.getNodeName().equals("namespacePrefixes")){
 				NodeList nspChildren = configSection.getChildNodes();
 				for(int j = 0; j < nspChildren.getLength(); j++){
 					if(! (nspChildren.item(j) instanceof Element))
@@ -122,7 +124,24 @@ public class GabotoConfiguration {
 						continue;
 					config.namespacePrefixes.put(namespacePrefix.getAttribute("prefix"), namespacePrefix.getAttribute("ns"));
 				}
-			}
+      } else if(configSection.getNodeName().equals("lookupClass")){
+        String lookupName =  configSection.getAttribute("class");
+        Class<?> clazz;
+        try {
+          clazz = Class.forName(lookupName);
+        } catch (ClassNotFoundException e) {
+          throw new GabotoRuntimeException("GabotoOntologyLookup not found " + lookupName, e);
+        }
+        Object object;
+        try {
+          object = clazz.newInstance();
+        } catch (Exception e) {
+          throw new GabotoRuntimeException(e);
+        }
+        if (!(object instanceof GabotoOntologyLookup))
+          throw new GabotoRuntimeException("GabotoOntologyLookup is not of correct type " + lookupName);
+        config.lookup = (GabotoOntologyLookup)object;
+        } else throw new GabotoRuntimeException("Unrecognised configuration section " + configSection.getNodeName());
 		}
 		
 		return config;
@@ -206,6 +225,10 @@ public class GabotoConfiguration {
 	public void setNamespacePrefixes(Map<String, String> namespacePrefixes) {
 		this.namespacePrefixes = namespacePrefixes;
 	}
+
+  public GabotoOntologyLookup getGabotoOntologyLookup() {
+    return lookup;
+  }
 	
 	
 }

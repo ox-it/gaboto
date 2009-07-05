@@ -43,6 +43,7 @@ import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
 import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.model.GabotoOntologyLookup;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
 import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.CorruptTimeIndexException;
@@ -1405,4 +1406,15 @@ public class Gaboto {
     getContextDescriptionGraph().read(cdgIS, cdgFormat);
   }
 
+  
+  public GabotoOntologyLookup  getOntologyLookup() { 
+    return GabotoLibrary.getConfig().getGabotoOntologyLookup();
+  }
+
+  /**
+   * @return the config
+   */
+  public GabotoConfiguration getConfig() {
+    return config;
+  }
 }

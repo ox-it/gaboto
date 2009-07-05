@@ -56,8 +56,6 @@ import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.timedim.TimeUtils;
 
-import uk.ac.ox.oucs.oxpoints.gaboto.GabotoOntologyLookup;
-
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;
 import com.hp.hpl.jena.ontology.OntProperty;
@@ -171,13 +169,13 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    * 
    * @param entityClass
    *          The corresponding GabotoEntity class.
+   * @param typeURI TODO
    * @param uri
    *          The URI of the entity.
-   * 
    * @see GabotoEntity
    */
-  public GabotoTimeBasedEntity(Class<? extends GabotoEntity> entityClass, String uri) {
-    this(entityClass, uri, TimeUtils.EXISTANCE);
+  public GabotoTimeBasedEntity(Class<? extends GabotoEntity> entityClass, String typeURI, String uri) {
+    this(entityClass, typeURI, uri, TimeUtils.EXISTANCE);
   }
 
   /**
@@ -185,20 +183,20 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    * 
    * @param entityClass
    *          The corresponding GabotoEntity class.
+   * @param type TODO
    * @param uri
    *          The URI of the entity.
    * @param timespan
    *          The lifetime of the object.
-   * 
    * @see GabotoEntity
    */
-  public GabotoTimeBasedEntity(Class<? extends GabotoEntity> entityClass, String uri, TimeSpan timespan) {
+  public GabotoTimeBasedEntity(Class<? extends GabotoEntity> entityClass, String type, String uri, TimeSpan timespan) {
     this.entityClass = entityClass;
 
     // type
-    this.type = GabotoOntologyLookup.getTypeURIForEntityClass(entityClass);
+    this.type = type;//GabotoOntologyLookup.getTypeURIForEntityClass(entityClass);
     if (this.type == null) {
-      throw new IllegalArgumentException("Could not locate type for entityClass " + entityClass.getName());
+      throw new NullPointerException();
     }
 
     // uri
@@ -232,13 +230,14 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
     String typeURI = gaboto.getTypeOf(uri);
 
     // entity class
-    Class<? extends GabotoEntity> entityClass = GabotoOntologyLookup.getEntityClassFor(typeURI);
+    Class<? extends GabotoEntity> entityClass = gaboto.getOntologyLookup().getEntityClassFor(typeURI);
 
     // get entity lifetime
     TimeSpan lifetime = gaboto.getEntitysLifetime(uri);
 
     // create Object
-    GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(entityClass, uri, lifetime);
+    GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(entityClass, 
+        gaboto.getOntologyLookup().getTypeURIForEntityClass(entityClass), uri, lifetime);
 
     // find all graphs that are talking about the entity
     NamedGraphSet graphSet = gaboto.getNamedGraphSet();
@@ -300,7 +299,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    * 
    * @return The corresponding GabotoEntity.class.
    * 
-   * @see #GabotoTimeBasedEntity(Class, String)
+   * @see #GabotoTimeBasedEntity(Class, String, String)
    * @see GabotoEntity
    */
   public Class<? extends GabotoEntity> getEntityClass() {

@@ -57,8 +57,6 @@ import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.QuerySolutionProcessor;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 
-import uk.ac.ox.oucs.oxpoints.gaboto.GabotoOntologyLookup;
-
 import com.hp.hpl.jena.graph.Graph;
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;
@@ -200,7 +198,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
         .debug("Attempting to create entity pool from model. This involves a lot of inflection and is error prone.");
 
     // get all types
-    Collection<String> registeredTypes = GabotoOntologyLookup
+    Collection<String> registeredTypes = snapshot.getGaboto().getOntologyLookup()
         .getRegisteredClassesAsURIs();
     for (String type : registeredTypes) {
       if (!config.getAcceptedTypes().isEmpty()
@@ -213,7 +211,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
 
       try {
         logger.debug("Loading type " + type);
-        Class<?> entityClass = GabotoOntologyLookup.getEntityClassFor(type);
+        Class<?> entityClass = snapshot.getGaboto().getOntologyLookup().getEntityClassFor(type);
 
         // get everything in the model of that type
         // TODO Be careful here if we have an inferencing model
@@ -522,7 +520,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
 
     // // try to load entity class
     try {
-      Class<?> entityClass = GabotoOntologyLookup.getEntityClassFor(type);
+      Class<?> entityClass = snapshot.getGaboto().getOntologyLookup().getEntityClassFor(type);
 
       // instantiate
       GabotoEntity entity = (GabotoEntity) entityClass.newInstance();
