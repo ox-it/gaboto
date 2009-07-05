@@ -29,48 +29,73 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.test;
+package net.sf.gaboto.entities.test;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
+import net.sf.gaboto.test.Utils;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
-import org.oucs.gaboto.vocabulary.DC;
+import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
+import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
+import org.oucs.gaboto.model.Gaboto;
+import org.oucs.gaboto.model.GabotoSnapshot;
+import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Building;
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Unit;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.College;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.Website;
+import static org.junit.Assert.assertTrue;
 
-import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
-import com.hp.hpl.jena.graph.Node;
-import com.hp.hpl.jena.graph.Triple;
+public class TestPassiveProperties  {
 
-public class TestGabotoEntityUtils {
 
-	
 	@BeforeClass
 	public static void setUp() throws Exception {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
 	}
 	
 	@Test
-	public void testEntityToTriples()  {
-		Unit u = new Unit();
-		u.setUri("http://exampleuri.co.uk/lala");
+	public void testClassicPropertyLoading() throws EntityPoolInvalidConfigurationException{
+    Gaboto oxp = Utils.getOxpointsFromXML();
 		
-		Building b = new Building();
-		b.setUri("http://exampleuri.co.uk");
-		b.setName("Abcdef");
-
-		List<Triple> triples = b.getTriplesFor();
+		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
+		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
+		config.addAcceptedType(OxPointsVocab.Website_URI);
+		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
 		
-		assertTrue(triples.contains(new Triple(
-			Node.createURI(b.getUri()),
-			Node.createURI(DC.title_URI),
-			Node.createLiteral(b.getName(), null, XSDDatatype.XSDstring)
-		)));
+		boolean foundPassive = false;
+		for(GabotoEntity e : pool.getEntities()){
+			Website web = (Website) e;
+			
+			if(null != web.getIsHomepageIn())
+				foundPassive = true;
+		}
+		
+		assertTrue(foundPassive);
 	}
+	
+	@Test
+	public void testClassicPropertyLoading2() throws EntityPoolInvalidConfigurationException{
+    Gaboto oxp = Utils.getOxpointsFromXML();
+		
+		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
+		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
+		config.addAcceptedType(OxPointsVocab.College_URI);
+		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+		
+		boolean foundPassive = false;
+		for(GabotoEntity e : pool.getEntities()){
+			College col = (College) e;
+			
+			if(null != col.getOccupiedBuildings())
+				foundPassive = true;
+		}
+		
+		assertTrue(foundPassive);
+	}
+	
 }

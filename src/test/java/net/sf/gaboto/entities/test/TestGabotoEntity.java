@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.test;
+package net.sf.gaboto.entities.test;
 
 
 import java.util.Collection;
@@ -50,10 +50,10 @@ import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
-import uk.ac.ox.oucs.oxpoints.gaboto.beans.generated.Location;
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Building;
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Carpark;
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Unit;
+import uk.ac.ox.oucs.oxpoints.gaboto.beans.Location;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.Carpark;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.Unit;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;

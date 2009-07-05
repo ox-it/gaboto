@@ -29,12 +29,12 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.importer.test;
+package net.sf.gaboto.test;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-import net.sf.gaboto.test.Utils;
+
 
 import org.junit.After;
 import org.junit.Before;

@@ -49,7 +49,7 @@ public class TestTimeInstant {
 
 	@Test (expected=IllegalStateException.class)
 	public void testDurationMethodInvocation(){
-		TimeInstant ti = Utils.getRandomTimeinstant();
+		TimeInstant ti = TimeUtils.getRandomTimeinstant();
 		ti.setDurationDay(10);
 	}
 

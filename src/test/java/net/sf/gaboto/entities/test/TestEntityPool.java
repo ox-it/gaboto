@@ -29,7 +29,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.test;
+package net.sf.gaboto.entities.test;
+
+import net.sf.gaboto.test.Utils;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -46,9 +48,9 @@ import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
-import uk.ac.ox.oucs.oxpoints.gaboto.beans.generated.Location;
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Building;
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.College;
+import uk.ac.ox.oucs.oxpoints.gaboto.beans.Location;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.College;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ResIterator;

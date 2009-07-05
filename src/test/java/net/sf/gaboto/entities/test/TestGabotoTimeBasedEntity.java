@@ -29,12 +29,14 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.test;
+package net.sf.gaboto.entities.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
+
+import net.sf.gaboto.test.TimeUtils;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -56,51 +58,52 @@ import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.vocabulary.DC;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Building;
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.College;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.College;
 
 import com.hp.hpl.jena.graph.Node;
 
 @SuppressWarnings("boxing")
 public class TestGabotoTimeBasedEntity {
-
+  static Gaboto oxp;
   @BeforeClass
   public static void setUp() throws Exception {
     GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+    oxp = GabotoFactory.getPersistentGaboto();
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testGetEntityException() {
     GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class,
-        Utils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
+        oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
     entity.getEntity(new TimeInstant(500, 0, 0));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testAddPropertyException1() throws Exception {
     GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class,
-        Utils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
+        oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
     entity.addProperty(new TimeSpan(600, 0, 0), "abc", "lila");
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testAddPropertyException2() throws Exception {
     GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class,
-        Utils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
+        oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
     entity.addProperty(new TimeSpan(600, 0, 0), DC.title, "lila");
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testAddPropertyException3() throws Exception {
     GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class,
-        Utils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
+        oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
     entity.addProperty(new TimeSpan(100, 11, 2), "abc", "lila");
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testAddPropertyException4() throws Exception {
     GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class,
-        Utils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
+        oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
     entity.addProperty("abc", "lila");
   }
 
@@ -108,7 +111,7 @@ public class TestGabotoTimeBasedEntity {
   public void testCreateTimeBasedEntity() {
     TimeSpan ts = new TimeSpan(500, 0, 0, 500, 10, 10);
     GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(Building.class,
-        Utils.generateRandomURI(), ts);
+        oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), ts);
 
     String name1 = "This is a nice building";
     String name2 = "but not from 700-900";
@@ -133,7 +136,7 @@ public class TestGabotoTimeBasedEntity {
   public void testCreateTimeBasedEntity2() {
     TimeSpan ts = new TimeSpan(500, 0, 0, 500, 10, 10);
     GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(Building.class,
-        Utils.generateRandomURI(), ts);
+        oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), ts);
     entityTB.getEntity(new TimeInstant(1100, null, null));
   }
 
@@ -141,7 +144,7 @@ public class TestGabotoTimeBasedEntity {
   public void testIterator() {
     for (int j = 0; j < 200; j++) {
       GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(
-          Building.class, Utils.generateRandomURI());
+          Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI());
       String name1 = "This is a nice building";
       if (j % 100 == 0)
         System.out.print(".");
@@ -149,8 +152,8 @@ public class TestGabotoTimeBasedEntity {
       entityTB.addProperty(DC.title, name1);
 
       for (int i = 0; i < 100; i++) {
-        TimeSpan ts = Utils.getRandomTimespan(0.9, 0.9, 0.9, 0.9, 0.9, 0.9);
-        entityTB.addProperty(ts, DC.title, Utils.generateRandomURI());
+        TimeSpan ts = TimeUtils.getRandomTimespan(0.9, 0.9, 0.9, 0.9, 0.9, 0.9);
+        entityTB.addProperty(ts, DC.title, TimeUtils.generateRandomURI());
       }
 
       Iterator<GabotoEntity> it = entityTB.iterator();
@@ -193,9 +196,9 @@ public class TestGabotoTimeBasedEntity {
 
     TimeSpan ts = new TimeSpan(0, 4, 2, 1637, 9, 28);
     GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(Building.class,
-        Utils.generateRandomURI(), ts);
+        oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), ts);
 
-    String name1 = Utils.generateRandomURI();
+    String name1 = TimeUtils.generateRandomURI();
     entityTB.addProperty(DC.title, name1);
     Iterator<GabotoEntity> it = entityTB.iterator();
     while (it.hasNext()) {
@@ -208,9 +211,9 @@ public class TestGabotoTimeBasedEntity {
   public void testIterator3() throws Exception {
     for (int i = 0; i < 10000; i++) {
       GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(
-          Building.class, Utils.generateRandomURI(), Utils.getRandomTimespan());
+          Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), TimeUtils.getRandomTimespan());
 
-      String name1 = Utils.generateRandomURI();
+      String name1 = TimeUtils.generateRandomURI();
       entityTB.addProperty(DC.title, name1);
       Iterator<GabotoEntity> it = entityTB.iterator();
       while (it.hasNext()) {
@@ -227,9 +230,9 @@ public class TestGabotoTimeBasedEntity {
 
     for (int i = 0; i < 1000; i++) {
       GabotoTimeBasedEntity timeBasedEntity = new GabotoTimeBasedEntity(
-          Building.class, Utils.generateRandomURI(), Utils.getRandomTimespan());
+          Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), TimeUtils.getRandomTimespan());
 
-      String name = Utils.generateRandomURI();
+      String name = TimeUtils.generateRandomURI();
       timeBasedEntity.addProperty(DC.title, name);
       oxp.add(timeBasedEntity);
 
@@ -258,9 +261,9 @@ public class TestGabotoTimeBasedEntity {
 
     TimeSpan ts = new TimeSpan(166, 2, 26, 679, 11, 28);
     GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(Building.class,
-        Utils.generateRandomURI(), ts);
+        oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), ts);
 
-    String name1 = Utils.generateRandomURI();
+    String name1 = TimeUtils.generateRandomURI();
     entityTB.addProperty(DC.title, name1);
     oxp.add(entityTB);
 
@@ -282,12 +285,12 @@ public class TestGabotoTimeBasedEntity {
 
     for (int i = 0; i < 50; i++) {
       GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(
-          Building.class, Utils.generateRandomURI(), Utils.getRandomTimespan());
+          Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), TimeUtils.getRandomTimespan());
 
       for (int j = 0; j < 100; j++) {
-        String name1 = Utils.generateRandomURI();
+        String name1 = TimeUtils.generateRandomURI();
         try {
-          entityTB.addProperty(Utils.getRandomTimespan(1, 1, 1, 1, 1, 1),
+          entityTB.addProperty(TimeUtils.getRandomTimespan(1, 1, 1, 1, 1, 1),
               DC.title, name1);
         } catch (IllegalArgumentException e) {
         }
@@ -329,9 +332,9 @@ public class TestGabotoTimeBasedEntity {
 
     for (int i = 0; i < 100; i++) {
       GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(
-          Building.class, Utils.generateRandomURI(), Utils.getRandomTimespan());
+          Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), TimeUtils.getRandomTimespan());
 
-      String name1 = Utils.generateRandomURI();
+      String name1 = TimeUtils.generateRandomURI();
       entityTB.addProperty(DC.title, name1);
       oxp.add(entityTB);
 
@@ -351,12 +354,12 @@ public class TestGabotoTimeBasedEntity {
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
     for (int i = 0; i < 50; i++) {
-      TimeSpan span = Utils.getRandomTimespan();
+      TimeSpan span = TimeUtils.getRandomTimespan();
       GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(
-          Building.class, Utils.generateRandomURI(), span);
+          Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), span);
 
       for (int j = 0; j < 100; j++) {
-        String name1 = Utils.generateRandomURI();
+        String name1 = TimeUtils.generateRandomURI();
         entityTB.addProperty(span, DC.title, name1);
       }
 

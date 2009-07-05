@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.test.performance;
+package net.sf.gaboto.entities.test;
 
 
 import net.sf.gaboto.test.Utils;

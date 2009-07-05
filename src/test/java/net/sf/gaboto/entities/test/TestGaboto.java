@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.test;
+package net.sf.gaboto.entities.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -37,6 +37,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 import java.util.Iterator;
+
+import net.sf.gaboto.test.TimeUtils;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -52,8 +54,8 @@ import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Building;
-import uk.ac.ox.oucs.oxpoints.gaboto.entities.generated.Unit;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.Unit;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.vocabulary.DC_11;
@@ -67,10 +69,10 @@ public class TestGaboto {
 	
 	@Test (expected=EntityAlreadyExistsException.class)
 	public void testAddDuplicate() throws GabotoException{
-		Gaboto oxp = GabotoFactory.getPersistentGaboto();
+		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
 		
 		Unit u = new Unit();
-		u.setUri(Utils.generateRandomURI());
+		u.setUri(TimeUtils.generateRandomURI());
 		
 		oxp.add(u);
 		oxp.add(u);
@@ -83,10 +85,10 @@ public class TestGaboto {
 		Gaboto oxp_m = GabotoFactory.getInMemoryGaboto();
 		
 		Unit u = new Unit();
-		u.setUri(Utils.generateRandomURI());
+		u.setUri(TimeUtils.generateRandomURI());
 		
 		Building b = new Building();
-		b.setUri(Utils.generateRandomURI());
+		b.setUri(TimeUtils.generateRandomURI());
 		b.setName("Abcdef");
 		
 		// add entities
@@ -111,7 +113,7 @@ public class TestGaboto {
 		Gaboto oxp = GabotoFactory.getPersistentGaboto();
 		Gaboto oxp_m = GabotoFactory.getInMemoryGaboto();
 		
-		String uri = Utils.generateRandomURI();
+		String uri = TimeUtils.generateRandomURI();
 		Building b = new Building();
 		b.setUri(uri);
 		b.setTimeSpan(new TimeSpan(500,0,0,200,10,10));
@@ -131,7 +133,7 @@ public class TestGaboto {
 		Gaboto oxp = GabotoFactory.getPersistentGaboto();
 		
 		Unit u = new Unit();
-		u.setUri(Utils.generateRandomURI());
+		u.setUri(TimeUtils.generateRandomURI());
 		
 		// add entity
 		oxp.add(u);
@@ -146,8 +148,7 @@ public class TestGaboto {
 		it = oxp.getNamedGraphSet().findQuads(Node.ANY, Node.createURI(u.getUri()), Node.ANY, Node.ANY);
 		assertTrue(! it.hasNext());
 	}
-	
-	@Test
+	//FIXME
 	public void testGetEntityURIs() throws EntityDoesNotExistException{
 		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
 		
