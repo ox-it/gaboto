@@ -7,7 +7,7 @@
 
   <groupId>net.sf.gaboto</groupId>
   <artifactId>gaboto</artifactId>
-  <version>0.2</version>
+  <version>0.3</version>
   <packaging>jar</packaging>
 
   <name>Gaboto</name>
@@ -109,6 +109,14 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Scarey circularity -->
+
+    <dependency>
+      <groupId>uk.ac.ox.oucs.erewhon</groupId>
+      <artifactId>oxpoints</artifactId>
+      <version>0.1</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
      <groupId>xmlunit</groupId>
@@ -195,6 +203,18 @@
             <phase>verify</phase>
             <goals>
               <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>test-jar</goal>
             </goals>
           </execution>
         </executions>
