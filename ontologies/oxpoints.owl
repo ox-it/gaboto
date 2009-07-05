@@ -227,5 +227,9 @@
       <rdfs:comment>The naming scheme for entities introduced by OLIS</rdfs:comment>
     </owl:ObjectProperty>
 
+    <owl:ObjectProperty rdf:ID="hasOBNCode">
+      <rdfs:comment>The naming scheme for entities introduced by Estates</rdfs:comment>
+    </owl:ObjectProperty>
+
             
 </rdf:RDF>
