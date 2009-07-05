@@ -9,6 +9,7 @@
 <Gaboto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <config>
+        <lookupClass class="uk.ac.ox.oucs.oxpoints.gaboto.OxpointsGabotoOntologyLookup" />
         <namespaces graphs="http://ns.ox.ac.uk/namespaces/oxpoints/graphs#"
             data="http://m.ox.ac.uk/oxpoints/id/"/>
 
@@ -126,6 +127,7 @@
                     <properties>
                         <property name="name" type="String" uri="&dc;title"/>
 
+                        <property name="OUCSCode" type="String" uri="&oxp;hasOUCSCode"/>
                         <property name="parent" type="Place"
                             uri="&oxp;physicallyContainedWithin">
                             <indirectProperty uri="&oxp;hasLocation"/>
@@ -171,11 +173,10 @@
 
                 <GabotoEntity name="Unit" type="&oxp;Unit">
                     <properties>
+                        <property name="OUCSCode" type="String" uri="&oxp;hasOUCSCode"/>
                         <property name="address" type="Address" uri="&v;adr"/>
 
                         <property name="homepage" type="Website" uri="&oxp;hasHomepage"/>
-
-                        <property name="OUCSCode" type="String" uri="&oxp;hasOUCSCode"/>
 
                         <property name="itHomepage" type="Website" uri="&oxp;hasITHomepage"/>
 
