@@ -48,9 +48,9 @@ import de.fuberlin.wiwiss.ng4j.NamedGraph;
  * 
  * <p>
  * Querying the cdg (see {@link Gaboto#getContextDescriptionGraph()}) using SPARQL is
- * hardly possible (or at least not feasible). TimeDimensionIndexer relieve Gaboto of
- * that problem by parsing all time information into some Java representation and providing
- * methods to easily query that information.
+ * hardly possible (or at least not feasible). TimeDimensionIndexer relieves Gaboto of
+ * that problem by parsing all time information into a Java representation and providing
+ * methods to query that information.
  * </p>
  * 
  * @author Arno Mittelbach
