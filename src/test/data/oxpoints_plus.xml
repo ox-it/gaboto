@@ -3327,7 +3327,7 @@ data, and if so, how? -->
                      <note> recorded by Janet McKnight</note>
                   </location>
 	              </place>
-               <place oxpID="23233586" type="building" obnCode="114">
+               <place oxpID="23233675" type="building" obnCode="114">
                   <tei:event when="1880" type="construction"/>
                   <tei:event when="1966" type="acquisition"/>
                   <placeName>47 Banbury Road</placeName>
