@@ -1728,13 +1728,6 @@
                      <ptr target="http://univ-web.univ.ox.ac.uk/Departments/IT/"/>
                   </desc>
                </trait>
-               <place oxpID="23232477" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
-                  <location when="2007-05-22T14:29:16.292+01:00">
-                     <geo rend="179">-1.251990795135498 51.752626152445906</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
                <place oxpID="23232478" type="building">
                   <placeName>25 Staverton Road</placeName>
                   <location when="2007-05-22T12:42:35.844+01:00">
@@ -1743,6 +1736,14 @@
                   </location>
                </place>
             </place>
+
+	           <place oxpID="23232477" type="building" oucsCode="b_0057" subtype="primary">
+                  <placeName>Lodge</placeName>
+                  <location when="2007-05-22T14:29:16.292+01:00">
+                     <geo rend="179">-1.251990795135498 51.752626152445906</geo>
+                     <note> recorded by Janet McKnight</note>
+                  </location>
+               </place>
             <place oucsCode="wadh" oxpID="23232479" type="college">
                <placeName>Wadham College</placeName>
                <event when="1610" type="founded">
@@ -1915,13 +1916,6 @@
                      <ptr target="http://www.ccvtm.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232491" type="building" subtype="primary">
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.21471 51.75033</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
-
             </place>
             <place oucsCode="O_cebm" oxpID="23232492" type="department">
                <placeName>Centre for Evidence-Based Medicine</placeName>
@@ -1989,7 +1983,7 @@
                <placeName>Global Economic Governance Programme</placeName>
                <location type="address">
                   <address>
-                     <addrLine>High Street, Oxford</addrLine>
+                     <addrLine>University College, High Street, Oxford</addrLine>
                      <postCode>OX1 4BH</postCode>
                   </address>
                </location>
@@ -1998,12 +1992,6 @@
                      <ptr target="http://www.globaleconomicgovernance.org/"/>
                   </desc>
                </trait>
-               <place oxpID="23232497" type="building" subtype="primary">
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.25221 51.75223</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
             </place>
             <place oucsCode="O_herc" oxpID="23232498" type="department">
                <placeName>Health Economics Research Centre</placeName>
@@ -2131,6 +2119,7 @@
                   </desc>
                </trait>
                <place oxpID="23232508" type="building" subtype="primary">
+		                <placeName>15 Norham Gardens, Oxford</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25829 51.76286</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -3329,8 +3318,19 @@ data, and if so, how? -->
                      <ptr target="http://www.wuhmo.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232599" type="building" subtype="primary">
-                  <placeName>45-47 Banbury Road</placeName>
+               <place oxpID="23232599" type="building" subtype="primary" obnCode="113">
+                  <tei:event when="1885" type="construction"/>
+                  <tei:event when="1966" type="acquisition"/>
+                  <placeName>45 Banbury Road</placeName>
+                  <location when="2007-06-14T15:11:44.977+01:00">
+                     <geo>-1.2609761953353882 51.764214556322095</geo>
+                     <note> recorded by Janet McKnight</note>
+                  </location>
+	              </place>
+               <place oxpID="23233586" type="building" obnCode="114">
+                  <tei:event when="1880" type="construction"/>
+                  <tei:event when="1966" type="acquisition"/>
+                  <placeName>47 Banbury Road</placeName>
                   <location when="2007-06-14T15:11:44.977+01:00">
                      <geo>-1.2609761953353882 51.764214556322095</geo>
                      <note> recorded by Janet McKnight</note>
@@ -3343,7 +3343,7 @@ data, and if so, how? -->
                <location type="address">
                   <address>
                      <addrLine>Institute of Health Sciences, Old Road, Headington,
- Oxford</addrLine>
+		     Oxford</addrLine>
                      <postCode>OX3 7LF</postCode>
                   </address>
                </location>
@@ -3953,16 +3953,17 @@ data, and if so, how? -->
                      <ptr target="http://www.ox.ac.uk"/>
                   </desc>
                </trait>
-               <place oxpID="23232654" type="building" subtype="primary" obnCode="632">
+	           </place>
+	           <place oxpID="23232654" oucsCode="b_0057" type="building" subtype="primary"
+                   obnCode="632">
                   <event when="1970" type="construction"/>
                   <placeName>Churchill Hospital</placeName>
                   <location when="2008-07-30T16:59:00">
                      <geo>-1.219807 51.763823</geo>
                      <note> recorded by Janet McKnight (from GEarth / postcode)</note>
                   </location>
-               </place>
+	           </place>
 
-            </place>
             <place oucsCode="online" oxpID="23232655" type="department">
                <placeName>Online and Distance Learning</placeName>
                <location type="address">
@@ -4320,13 +4321,6 @@ data, and if so, how? -->
                      <ptr target="http://www.nda.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232684" type="building" subtype="primary">
-                  <location when="2008-07-30T17:19:00">
-                     <geo>-1.214725 51.750268</geo>
-                     <note> recorded by Janet McKnight (from GEarth / postcode)</note>
-                  </location>
-               </place>
-
             </place>
             <place oucsCode="psych" oxpID="23232685" type="department">
                <placeName>Department of Psychiatry</placeName>
@@ -8248,14 +8242,6 @@ data, and if so, how? -->
                      <note>Submitted by Stephen Sangar</note>
                   </location>
                </place>
-               <place oxpID="23233491" type="building">
-                  <placeName>Extension's main entrance</placeName>
-                  <location when="2007-01-29T14:15:37.663Z">
-                     <geo>-1.2545871734619 51.75849045573376</geo>
-                     <note> recorded by haas ezzet</note>
-                  </location>
-               </place>
-
             </place>
             <place oucsCode="univmus" oxpID="23233492" type="museum">
                <placeName>University Museum of Natural History</placeName>
@@ -10882,6 +10868,11 @@ data, and if so, how? -->
             <relation name="controls" type="political" active="#offices" passive="#survey"/>
             <relation name="controls" type="political" active="#oucs" passive="#O_telecom"/>
             <relation name="controls" type="political" active="#plant" passive="#plantlib"/>
+	           <relation name="occupies" type="geo primary" active="#univ" passive="#b_0058"/>
+	           <relation name="occupies" type="geo primary" active="#O_geg" passive="#b_0058"/>
+	           <relation name="occupies" type="geo" active="#oncology" passive="#b_0057"/>
+            <relation name="occupies" type="geo" active="#O_ccvtm" passive="#b_0057"/>
+            <relation name="occupies" type="geo" active="#pru" passive="#b_0057"/>
             <relation name="occupies" type="geo" active="#qeh" passive="#b_0054"/>
             <relation name="occupies" type="geo" active="#rsc" passive="#b_0054"/>
             <relation name="occupies" type="geo" active="#conted" passive="#b_0015"/>
