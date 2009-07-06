@@ -93,7 +93,7 @@ public interface TimeDimensionIndexer {
 	public TimeSpan getTimeSpanFor(String graphURI);
 	
 	/**
-	 * Returns all the graphs that hold information which is valid a the given point in time.
+	 * Returns all the graphs that hold information which is valid at the given point in time.
 	 * 
 	 * @param ti The time instant.
 	 * 
