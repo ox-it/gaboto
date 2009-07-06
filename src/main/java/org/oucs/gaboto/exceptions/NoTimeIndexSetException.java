@@ -47,6 +47,7 @@ public class NoTimeIndexSetException extends GabotoRuntimeException {
 	private static final long serialVersionUID = 6321682744335392798L;
 
 	public NoTimeIndexSetException(){
-		super("No time index has been set for this Gaboto object. You are probably dealing with a persistent object, where indexing is too costly.");
+		super("No time index has been set for this Gaboto object." + 
+		        " You are probably dealing with a persistent object, where indexing is too costly.");
 	}
 }
