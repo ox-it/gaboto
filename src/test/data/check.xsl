@@ -15,7 +15,7 @@
 	<xsl:message>Place <xsl:value-of
 	select="@oxpCode"/>/<xsl:value-of select="@oucsCode"/> has no	type attribute</xsl:message>
       </xsl:if>
-      <xsl:if test="(@type='building' and not(../tei:geo)) and not(parent::tei:place)">
+      <xsl:if test="(@type='building' and not(.//tei:geo))">
 	<xsl:message>Place <xsl:value-of
 	select="tei:placeName"/>: <xsl:value-of
 	select="@obnCode"/>/<xsl:value-of select="@oucsCode"/> has no location</xsl:message>
