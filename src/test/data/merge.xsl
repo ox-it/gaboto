@@ -1,7 +1,9 @@
 <xsl:stylesheet 
+  xmlns="http://www.tei-c.org/ns/1.0"  
   xmlns:tei="http://www.tei-c.org/ns/1.0"  
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-  version="2.0"
+  exclude-result-prefixes="tei"
+  version="1.0"
 >
 
 <!-- identity transform -->
@@ -23,9 +25,29 @@
     <xsl:for-each select="//obn">
       <xsl:variable name="c" select="code"/>
       <xsl:variable name="p" select="placeName"/>
+      <xsl:variable name="cons" select="construction"/>
+      <xsl:variable name="acq" select="acquisition"/>
+      <xsl:variable name="N" select="position()"/>
       <xsl:for-each select="$O">
 	<xsl:if test="not(key('OBN',$c))">
-	  <xsl:message>BUILDING <xsl:value-of select="$c"/>: <xsl:value-of select="$p"/></xsl:message>
+	  <place type="building" obnCode="{$c}">
+	    <xsl:attribute name="oucsCode">
+	      <xsl:value-of select="number(23233682 + $N)"/>
+	    </xsl:attribute>
+	    <xsl:attribute name="oxpID">
+	      <xsl:text>e_</xsl:text>
+	      <xsl:value-of select="$N"/>
+	    </xsl:attribute>
+	    <placeName>
+	      <xsl:value-of select="$p"/>
+	    </placeName>
+	    <xsl:if test="string-length($cons) &gt; 1">
+	      <event when="{$cons}" type="construction"/>
+	    </xsl:if>
+	    <xsl:if test="string-length($acq) &gt; 1">
+	      <event when="{$acq}" type="acquisition"/>
+	    </xsl:if>
+	  </place>
 	</xsl:if>
       </xsl:for-each>
     </xsl:for-each>
@@ -64,10 +86,10 @@
 	      <xsl:value-of select="code"/>
 	    </xsl:attribute>
 	    <xsl:for-each select="construction">
-	      <tei:event when="{.}" type="construction"/>
+	      <event when="{.}" type="construction"/>
 	    </xsl:for-each>
 	    <xsl:for-each select="acquisition">
-	      <tei:event when="{.}" type="acquisition"/>
+	      <event when="{.}" type="acquisition"/>
 	    </xsl:for-each>
 	  </xsl:for-each>
 	</xsl:when>

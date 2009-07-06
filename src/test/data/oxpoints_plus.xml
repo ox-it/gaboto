@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:html="http://www.w3.org/1999/xhtml"
-     xmlns:tei="http://www.tei-c.org/ns/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:html="http://www.w3.org/1999/xhtml">
    <teiHeader>
       <fileDesc>
          <titleStmt>
@@ -499,7 +498,9 @@
                <trait type="figure">
                   <desc>
                      <ref target="http://www.gtc.ox.ac.uk/">
-                        <graphic url="http://www.gtc.ox.ac.uk/images/stories/right/about/aboutussection.jpg"/>
+                        <graphic
+                           url="http://www.gtc.ox.ac.uk/images/stories/right/about/aboutussection.jpg"
+                        />
                      </ref>
                   </desc>
                </trait>
@@ -1169,7 +1170,9 @@
                </trait>
                <trait type="iturl">
                   <desc>
-                     <ptr target="http://www.st-annes.ox.ac.uk/study/undergraduate/computing_it.html"/>
+                     <ptr
+                        target="http://www.st-annes.ox.ac.uk/study/undergraduate/computing_it.html"
+                     />
                   </desc>
                </trait>
                <place oxpID="23232426" type="building" subtype="primary">
@@ -1286,7 +1289,9 @@
                <trait type="figure">
                   <desc>
                      <ref target="http://www.stcatz.ox.ac.uk/">
-                        <graphic url="http://catz-av.stcatz.ox.ac.uk/downloads/public/full_college_small.jpg"/>
+                        <graphic
+                           url="http://catz-av.stcatz.ox.ac.uk/downloads/public/full_college_small.jpg"
+                        />
                      </ref>
                   </desc>
                </trait>
@@ -1734,13 +1739,13 @@
                      <geo rend="272">-1.263857 51.772328</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
-	              </place>
-	              <place oxpID="23232477" type="building" oucsCode="b_0058" subtype="primary">
+               </place>
+               <place oxpID="23232477" type="building" oucsCode="b_0058" subtype="primary">
                   <placeName>Lodge</placeName>
-		                <location when="2007-05-22T14:29:16.292+01:00">
-		                   <geo rend="179">-1.251990795135498 51.752626152445906</geo>
-		                   <note> recorded by Janet McKnight</note>
-		                </location>
+                  <location when="2007-05-22T14:29:16.292+01:00">
+                     <geo rend="179">-1.251990795135498 51.752626152445906</geo>
+                     <note> recorded by Janet McKnight</note>
+                  </location>
                </place>
             </place>
 
@@ -1763,7 +1768,9 @@
                </trait>
                <trait type="iturl">
                   <desc>
-                     <ptr target="http://www.wadham.ox.ac.uk/about-wadham/it-facilities/wadham-it-facilities.html"/>
+                     <ptr
+                        target="http://www.wadham.ox.ac.uk/about-wadham/it-facilities/wadham-it-facilities.html"
+                     />
                   </desc>
                </trait>
                <place oxpID="23232480" type="building" subtype="primary">
@@ -1901,10 +1908,10 @@
                      <ptr target="http://www.ccmp.ox.ac.uk/"/>
                   </desc>
                </trait>
-	              <place type="building" oxpID="23233682" obnCode="675">
-                  <tei:event when="2004" type="construction"/>
-		                <placeName>Cellular And Molecular Physiology</placeName>
-	              </place>
+               <place type="building" oxpID="23233682" obnCode="675">
+                  <event when="2004" type="construction"/>
+                  <placeName>Cellular And Molecular Physiology</placeName>
+               </place>
 
             </place>
             <place oucsCode="O_ccvtm" oxpID="23232490" type="department">
@@ -2026,8 +2033,8 @@
                   </desc>
                </trait>
                <place oxpID="23232500" type="building" subtype="primary" obnCode="275">
-                  <tei:event when="1865" type="construction"/>
-                  <tei:event when="2008" type="acquisition"/>
+                  <event when="1865" type="construction"/>
+                  <event when="2008" type="acquisition"/>
                   <placeName>64 Banbury Road</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.26011 51.76397</geo>
@@ -2050,7 +2057,7 @@
                   </desc>
                </trait>
                <place oxpID="23232502" type="building" subtype="primary" obnCode="234">
-                  <tei:event when="1837" type="construction"/>
+                  <event when="1837" type="construction"/>
                   <placeName>2-4 St Johns Street</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.26138 51.75544</geo>
@@ -2118,9 +2125,9 @@
                   </desc>
                </trait>
                <place oxpID="23232508" type="building" subtype="primary" obnCode="183">
-                  <tei:event when="1871" type="construction"/>
-                  <tei:event when="1924" type="acquisition"/>
-		                <placeName>15 Norham Gardens</placeName>
+                  <event when="1871" type="construction"/>
+                  <event when="1924" type="acquisition"/>
+                  <placeName>15 Norham Gardens</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25829 51.76286</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -2171,9 +2178,9 @@
                   </desc>
                </trait>
                <place oxpID="23232512" type="building" subtype="primary" obnCode="391">
-                  <tei:event when="1811" type="construction"/>
-                  <tei:event when="2003" type="acquisition"/>
-		                <placeName>Tubney House</placeName>
+                  <event when="1811" type="construction"/>
+                  <event when="2003" type="acquisition"/>
+                  <placeName>Tubney House</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.37443 51.6851</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -2340,9 +2347,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
                <place oxpID="23232526" type="building" subtype="primary" obnCode="125">
-                  <tei:event when="1868" type="construction"/>
-                  <tei:event when="1966" type="acquisition"/>
-		                <placeName>12 Bevington Road</placeName>
+                  <event when="1868" type="construction"/>
+                  <event when="1966" type="acquisition"/>
+                  <placeName>12 Bevington Road</placeName>
                   <location when="2007-01-24T10:29:14.108Z">
                      <geo>-1.2610673904418 51.76284668180086</geo>
                      <note> recorded by Natasha Heaton</note>
@@ -2634,34 +2641,34 @@ data, and if so, how? -->
                      <ptr target="http://www.chem.ox.ac.uk/help/"/>
                   </desc>
                </trait>
-	           </place>
+            </place>
 
-	           <place oxpID="23232688" type="building" subtype="primary" oucsCode="b_0062"
-                   obnCode="216">
-               <tei:event when="1940" type="construction"/>
-		             <placeName>Physical and Theoretical Chemistry Laboratory</placeName>
-                  <location when="2007-01-23T10:51:52.852Z">
-                     <geo>-1.25291347503662 51.75919438658645</geo>
-                     <note> recorded by Pete Biggs</note>
-                  </location>
+            <place oxpID="23232688" type="building" subtype="primary" oucsCode="b_0062"
+               obnCode="216">
+               <event when="1940" type="construction"/>
+               <placeName>Physical and Theoretical Chemistry Laboratory</placeName>
+               <location when="2007-01-23T10:51:52.852Z">
+                  <geo>-1.25291347503662 51.75919438658645</geo>
+                  <note> recorded by Pete Biggs</note>
+               </location>
+            </place>
+
+            <place oxpID="23232548" type="building" obnCode="332" oucsCode="b_0061">
+               <event when="2003" type="construction"/>
+               <placeName>Chemistry Research Laboratory</placeName>
+               <location when="2007-06-18T10:27:50.000">
+                  <geo>-1.253125 51.757892</geo>
+                  <note> recorded by Janet McKnight</note>
+               </location>
+               <trait type="url">
+                  <desc>
+                     <ptr target="http://www.chem.ox.ac.uk/crl/"/>
+                  </desc>
+               </trait>
+               <place oxpID="23232549" type="room">
+                  <placeName>Wolfson Seminar Room</placeName>
                </place>
-	    
-	           <place oxpID="23232548" type="building" obnCode="332" oucsCode="b_0061">
-		             <event when="2003" type="construction"/>
-                  <placeName>Chemistry Research Laboratory</placeName>
-                  <location when="2007-06-18T10:27:50.000">
-                     <geo>-1.253125 51.757892</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-                  <trait type="url">
-                     <desc>
-                        <ptr target="http://www.chem.ox.ac.uk/crl/"/>
-                     </desc>
-                  </trait>
-                  <place oxpID="23232549" type="room">
-                     <placeName>Wolfson Seminar Room</placeName>
-                  </place>
-               </place>
+            </place>
 
 
             <place oucsCode="chinese" oxpID="23232550" type="department">
@@ -2678,7 +2685,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232551" type="building" subtype="primary" obnCode="144">
-                  <tei:event when="1713" type="construction"/>
+                  <event when="1713" type="construction"/>
                   <placeName>Clarendon Institute Building</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.26354 51.75674</geo>
@@ -2806,9 +2813,9 @@ data, and if so, how? -->
                </trait>
 
                <place oxpID="23232562" type="building" obnCode="173">
-                  <tei:event when="1880" type="construction"/>
-                  <tei:event when="1934" type="acquisition"/>
-		                <placeName>8-11 Keble Road</placeName>
+                  <event when="1880" type="construction"/>
+                  <event when="1934" type="acquisition"/>
+                  <placeName>8-11 Keble Road</placeName>
                   <place oxpID="23232563" type="room">
                      <placeName>Lecture Theatre</placeName>
                   </place>
@@ -2906,9 +2913,9 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232572" type="building" subtype="primary" obnCode="674">
-                  <tei:event when="2003" type="construction"/>
-                  <tei:event when="2005" type="acquisition"/>
-		                <placeName>Richard Doll Building</placeName>
+                  <event when="2003" type="construction"/>
+                  <event when="2005" type="acquisition"/>
+                  <placeName>Richard Doll Building</placeName>
                   <location when="2008-07-30T16:35:00">
                      <geo>-1.215088 51.752564</geo>
                      <note> recorded by Janet McKnight (from GEarth / postcode)</note>
@@ -2985,7 +2992,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232578" type="building" subtype="primary" obnCode="160">
-                  <tei:event when="1910" type="construction"/>
+                  <event when="1910" type="construction"/>
                   <placeName>Earth Sciences</placeName>
                   <location when="2008-07-30T16:46:00">
                      <geo>-1.256670 51.757831</geo>
@@ -3063,7 +3070,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232583" type="building">
-		                <placeName>76 Woodstock Road</placeName>
+                  <placeName>76 Woodstock Road</placeName>
                   <location>
                      <geo>-1.264679 51.765894</geo>
                      <note>from postcode</note>
@@ -3224,7 +3231,7 @@ data, and if so, how? -->
                      <ptr target="http://www.imsu.ox.ac.uk/"/>
                   </desc>
                </trait>
-           </place>
+            </place>
             <place oucsCode="geog" oxpID="23232596" type="department">
                <placeName>School of Geography and the Environment</placeName>
                <location type="address">
@@ -3271,17 +3278,17 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232599" type="building" subtype="primary" obnCode="113">
-                  <tei:event when="1885" type="construction"/>
-                  <tei:event when="1966" type="acquisition"/>
+                  <event when="1885" type="construction"/>
+                  <event when="1966" type="acquisition"/>
                   <placeName>45 Banbury Road</placeName>
                   <location when="2007-06-14T15:11:44.977+01:00">
                      <geo>-1.2609761953353882 51.764214556322095</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
-	              </place>
+               </place>
                <place oxpID="23233675" type="building" obnCode="114">
-                  <tei:event when="1880" type="construction"/>
-                  <tei:event when="1966" type="acquisition"/>
+                  <event when="1880" type="construction"/>
+                  <event when="1966" type="acquisition"/>
                   <placeName>47 Banbury Road</placeName>
                   <location when="2007-06-14T15:11:44.977+01:00">
                      <geo>-1.2609761953353882 51.764214556322095</geo>
@@ -3335,8 +3342,8 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232603" type="building" subtype="primary" obnCode="117">
-                  <tei:event when="1873" type="construction"/>
-                  <tei:event when="1967" type="acquisition"/>
+                  <event when="1873" type="construction"/>
+                  <event when="1967" type="acquisition"/>
                   <placeName>58 Banbury Road</placeName>
                   <location when="2007-01-24T10:24:19.058Z">
                      <geo>-1.26012325286865 51.76329821777863</geo>
@@ -3365,22 +3372,22 @@ data, and if so, how? -->
                      <geo>-1.254655 51.758228</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
-		                <place oxpID="23232606" type="room">
-		                   <placeName>Reception</placeName>
-		                   <location when="2007-06-18T10:34:04.000">
-		                      <geo>-1.255047 51.758123</geo>
-		                      <note> recorded by Janet McKnight</note>
-		                   </location>
-		                </place>
-		                <place oxpID="23232607" type="room">
-		                   <placeName>Lecture Theatre</placeName>
-		                   <location when="2007-06-18T10:34:36.000">
-		                      <geo>-1.255172 51.758173</geo>
-		                      <note> recorded by Janet McKnight</note>
-		                   </location>
-		                </place>
-	              </place>
-	           </place>
+                  <place oxpID="23232606" type="room">
+                     <placeName>Reception</placeName>
+                     <location when="2007-06-18T10:34:04.000">
+                        <geo>-1.255047 51.758123</geo>
+                        <note> recorded by Janet McKnight</note>
+                     </location>
+                  </place>
+                  <place oxpID="23232607" type="room">
+                     <placeName>Lecture Theatre</placeName>
+                     <location when="2007-06-18T10:34:36.000">
+                        <geo>-1.255172 51.758173</geo>
+                        <note> recorded by Janet McKnight</note>
+                     </location>
+                  </place>
+               </place>
+            </place>
             <place oucsCode="internet" oxpID="23232608" type="department">
                <placeName>Oxford Internet Institute</placeName>
                <location type="address">
@@ -3402,8 +3409,8 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232609" type="building" subtype="primary" obnCode="371">
-                  <tei:event when="1800" type="construction"/>
-                  <tei:event when="2001" type="acquisition"/>
+                  <event when="1800" type="construction"/>
+                  <event when="2001" type="acquisition"/>
                   <placeName>1 St Giles</placeName>
                   <location when="2007-01-29T12:58:29.078Z">
                      <geo>-1.25899672508239 51.75582737275274</geo>
@@ -3541,7 +3548,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232622" type="building" subtype="primary" obnCode="327">
-                  <tei:event when="2001" type="construction"/>
+                  <event when="2001" type="construction"/>
                   <placeName>Said Business School</placeName>
                   <location when="2007-01-29T12:44:33.353Z">
                      <geo>-1.26849174499511 51.75338994968635</geo>
@@ -3603,7 +3610,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232628" type="building" subtype="primary" obnCode="177">
-                  <tei:event when="1966" type="construction"/>
+                  <event when="1966" type="construction"/>
                   <placeName>Mathematical Institute</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25959 51.75891</geo>
@@ -3611,10 +3618,10 @@ data, and if so, how? -->
                   </location>
                </place>
                <place oxpID="23232697" type="building" obnCode="367">
-                  <tei:event when="1981" type="construction"/>
-                  <tei:event when="1998" type="acquisition"/>
-		                <placeName>3 Worcester Street</placeName>
-	              </place>
+                  <event when="1981" type="construction"/>
+                  <event when="1998" type="acquisition"/>
+                  <placeName>3 Worcester Street</placeName>
+               </place>
             </place>
             <place oucsCode="mcdp" oxpID="23232629" type="department">
                <placeName>Centre for Cognitive Neuroscience</placeName>
@@ -3645,7 +3652,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232631" type="building" subtype="primary" obnCode="305">
-                  <tei:event when="1999" type="construction"/>
+                  <event when="1999" type="construction"/>
                   <placeName>Medawar Building</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25133 51.7586</geo>
@@ -3702,8 +3709,8 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232635" type="building" subtype="primary" obnCode="214">
-                  <tei:event when="1927" type="construction"/>
-		                <placeName>Pathology</placeName>
+                  <event when="1927" type="construction"/>
+                  <placeName>Pathology</placeName>
                   <location when="2007-06-18T09:58:32.000">
                      <geo>-1.251368 51.759377</geo>
                      <note> recorded by Janet McKnight</note>
@@ -3731,8 +3738,8 @@ data, and if so, how? -->
                </trait>
 
                <place oxpID="23232637" type="building" subtype="primary" obnCode="625">
-                  <tei:event when="1970" type="construction"/>
-                  <tei:event when="1972" type="acquisition"/>
+                  <event when="1970" type="construction"/>
+                  <event when="1972" type="acquisition"/>
                   <placeName>Weatherall Institute of Molecular Medicine</placeName>
                   <location when="2007-01-23T11:00:15.462Z">
                      <geo>-1.21682167053222 51.76360366602635</geo>
@@ -3761,8 +3768,8 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232640" type="building" subtype="primary" obnCode="193">
-                  <tei:event when="1913" type="construction"/>
-		                <placeName>9 Parks Road</placeName>
+                  <event when="1913" type="construction"/>
+                  <placeName>9 Parks Road</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25957 51.75892</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -3852,7 +3859,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232648" type="building" subtype="primary" obnCode="379">
-                  <tei:event when="2006" type="construction"/>
+                  <event when="2006" type="construction"/>
                   <placeName>E-Science Laboratory</placeName>
                   <location when="2007-06-14T11:16:23.961+01:00">
                      <geo>-1.2584173679351807 51.75987174365013</geo>
@@ -3897,16 +3904,16 @@ data, and if so, how? -->
                      <ptr target="http://www.ox.ac.uk"/>
                   </desc>
                </trait>
-	           </place>
-	           <place oxpID="23232654" oucsCode="b_0057" type="building" subtype="primary"
-                   obnCode="632">
-                  <event when="1970" type="construction"/>
-                  <placeName>Churchill Hospital</placeName>
-                  <location when="2008-07-30T16:59:00">
-                     <geo>-1.219807 51.763823</geo>
-                     <note> recorded by Janet McKnight (from GEarth / postcode)</note>
-                  </location>
-	           </place>
+            </place>
+            <place oxpID="23232654" oucsCode="b_0057" type="building" subtype="primary"
+               obnCode="632">
+               <event when="1970" type="construction"/>
+               <placeName>Churchill Hospital</placeName>
+               <location when="2008-07-30T16:59:00">
+                  <geo>-1.219807 51.763823</geo>
+                  <note> recorded by Janet McKnight (from GEarth / postcode)</note>
+               </location>
+            </place>
 
             <place oucsCode="online" oxpID="23232655" type="department">
                <placeName>Online and Distance Learning</placeName>
@@ -3957,9 +3964,9 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232658" type="building" subtype="primary" obnCode="639">
-                  <tei:event when="1935" type="construction"/>
-                  <tei:event when="2005" type="acquisition"/>
-		                <placeName>Nuffield Orthopaedic Centre</placeName>
+                  <event when="1935" type="construction"/>
+                  <event when="2005" type="acquisition"/>
+                  <placeName>Nuffield Orthopaedic Centre</placeName>
                   <location when="2009-06-01">
                      <geo>-1.2085 51.75425</geo>
                   </location>
@@ -4076,7 +4083,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232669" type="building" obnCode="311">
-                  <tei:event when="2000" type="construction"/>
+                  <event when="2000" type="construction"/>
                   <placeName>Pathology EPA Building</placeName>
                   <location when="2007-06-18T10:00:57.000">
                      <geo>-1.251537 51.759878</geo>
@@ -4088,8 +4095,8 @@ data, and if so, how? -->
                   <place oxpID="23232668" type="room">
                      <placeName>EPA Seminar Room</placeName>
                   </place>
-	              </place>
-	           </place>
+               </place>
+            </place>
             <place oucsCode="pharm" oxpID="23232670" type="department">
                <placeName>Department of Pharmacology</placeName>
                <location type="address">
@@ -4109,7 +4116,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232671" type="building" subtype="primary" obnCode="280">
-                  <tei:event when="1991" type="construction"/>
+                  <event when="1991" type="construction"/>
                   <placeName>Pharmacology</placeName>
                   <location when="2007-06-14T14:05:38.825+01:00">
                      <geo>-1.251389980316162 51.75820821622494</geo>
@@ -4159,31 +4166,31 @@ data, and if so, how? -->
                      <ptr target="http://www.plants.ox.ac.uk/"/>
                   </desc>
                </trait>
-	           </place>
+            </place>
 
-	           <place oxpID="23232678" type="building" subtype="primary" obnCode="158"
-                   oucsCode="b_0067">
-                  <tei:event when="1946" type="construction"/>
-                  <placeName>Plant Sciences South</placeName>
-                  <location when="2007-06-18T10:06:29.000">
-                     <geo>-1.253135 51.759335</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-                  <place oxpID="23232679" type="room">
-                     <placeName>Oak Meeting Room</placeName>
-                  </place>
-	           </place>
+            <place oxpID="23232678" type="building" subtype="primary" obnCode="158"
+               oucsCode="b_0067">
+               <event when="1946" type="construction"/>
+               <placeName>Plant Sciences South</placeName>
+               <location when="2007-06-18T10:06:29.000">
+                  <geo>-1.253135 51.759335</geo>
+                  <note> recorded by Janet McKnight</note>
+               </location>
+               <place oxpID="23232679" type="room">
+                  <placeName>Oak Meeting Room</placeName>
+               </place>
+            </place>
 
-	           <place oxpID="23233681" type="building" subtype="primary" oucsCode="b_0068"
-                   obnCode="139">
-               <tei:event when="1946" type="construction"/>
-                  <placeName>Plant Sciences North</placeName>
-	           </place>
+            <place oxpID="23233681" type="building" subtype="primary" oucsCode="b_0068"
+               obnCode="139">
+               <event when="1946" type="construction"/>
+               <placeName>Plant Sciences North</placeName>
+            </place>
 
             <place oucsCode="plantlib" oxpID="23233679" type="department">
                <placeName>Plant Sciences Library</placeName>
                <location type="address">
-		                <address>
+                  <address>
 		                   <addrLine>South Parks Road, Oxford</addrLine>
 		                   <postCode>OX1 3RB</postCode>
 		                </address>
@@ -4195,7 +4202,7 @@ data, and if so, how? -->
                </trait>
 
                <place oxpID="23232681" type="building" obnCode="158">
-                  <tei:event when="1946" type="construction"/>
+                  <event when="1946" type="construction"/>
                   <placeName>Plant Sciences South</placeName>
                   <location when="2007-06-18T10:03:54.000">
                      <geo>-1.252113 51.758692</geo>
@@ -4299,9 +4306,9 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232690" type="building" subtype="primary" obnCode="660">
-                  <tei:event when="1960" type="construction"/>
-                  <tei:event when="1996" type="acquisition"/>
-		                <placeName>Rosemary Rue Building</placeName>
+                  <event when="1960" type="construction"/>
+                  <event when="1996" type="acquisition"/>
+                  <placeName>Rosemary Rue Building</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.21507 51.75262</geo>
                      <note>Submitted by Stephen Sangar</note>
@@ -4310,13 +4317,13 @@ data, and if so, how? -->
             </place>
 
             <place oucsCode="rsc" oxpID="23232691" type="department">
-	              <placeName>Refugee Studies Centre</placeName>	
-	              <trait type="url">
-		                <desc>
-		                   <ptr target="http://www.qeh.ox.ac.uk/centres/rsc"/>
-		                </desc>
-	              </trait>
-	           </place>
+               <placeName>Refugee Studies Centre</placeName>
+               <trait type="url">
+                  <desc>
+                     <ptr target="http://www.qeh.ox.ac.uk/centres/rsc"/>
+                  </desc>
+               </trait>
+            </place>
 
             <place oucsCode="qeh" oxpID="23233678" type="department">
                <placeName>Queen Elizabeth House</placeName>
@@ -4379,20 +4386,20 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232700" type="building" subtype="primary" obnCode="308">
-                  <tei:event when="2001" type="construction"/>
+                  <event when="2001" type="construction"/>
                   <placeName>Rothermere American Institute</placeName>
                   <location when="2007-05-22T16:35:37.534+01:00">
                      <geo>-1.253428 51.759447</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
-		                <place oxpID="23232701" type="room">
-		                   <placeName>Vere Harmsworth Library</placeName>
-		                   <location when="2007-06-18T10:28:37.000">
-		                      <geo>-1.253598 51.757612</geo>
+                  <place oxpID="23232701" type="room">
+                     <placeName>Vere Harmsworth Library</placeName>
+                     <location when="2007-06-18T10:28:37.000">
+                        <geo>-1.253598 51.757612</geo>
                         <note> recorded by Janet McKnight</note>
-		                   </location>
-		                </place>
-	              </place>
+                     </location>
+                  </place>
+               </place>
             </place>
             <place oucsCode="rusksch" oxpID="23232702" type="department">
                <placeName>Ruskin School of Drawing and Fine Art</placeName>
@@ -4408,7 +4415,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232703" type="building" subtype="primary" obnCode="163">
-                  <tei:event when="1887" type="construction"/>
+                  <event when="1887" type="construction"/>
                   <placeName>Ruskin School, 74 High Street</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25054 51.75246</geo>
@@ -4449,8 +4456,8 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232706" type="building" subtype="primary" obnCode="628">
-                  <tei:event when="2002" type="construction"/>
-                  <tei:event when="2005" type="acquisition"/>
+                  <event when="2002" type="construction"/>
+                  <event when="2005" type="acquisition"/>
                   <placeName>Botnar Research Centre</placeName>
                   <location when="2007-01-23T10:22:08.349Z">
                      <geo>-1.20991230010986 51.75485109102369</geo>
@@ -4502,9 +4509,9 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232711" type="building" subtype="primary" obnCode="115">
-                  <tei:event when="1869" type="construction"/>
-                  <tei:event when="1966" type="acquisition"/>
-		                <placeName>51-53 Banbury Road</placeName>
+                  <event when="1869" type="construction"/>
+                  <event when="1966" type="acquisition"/>
+                  <placeName>51-53 Banbury Road</placeName>
                   <location when="2007-01-24T10:28:07.258Z">
                      <geo>-1.26085281372070 51.76321853528716</geo>
                      <note> recorded by Natasha Heaton</note>
@@ -4561,9 +4568,9 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232715" type="building" subtype="primary" obnCode="686">
-                  <tei:event when="2008" type="construction"/>
-                  <tei:event when="2008" type="acquisition"/>
-		                <placeName>Hayes House, 75 George Street</placeName>
+                  <event when="2008" type="construction"/>
+                  <event when="2008" type="acquisition"/>
+                  <placeName>Hayes House, 75 George Street</placeName>
                   <location when="2008-10-04T21:00:00">
                      <!-- add old location back in with old date! check svn -->
                      <geo>-1.263264 51.753503</geo>
@@ -4592,7 +4599,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place oxpID="23232718" type="building" obnCode="246">
-                  <tei:event when="1965" type="construction"/>
+                  <event when="1965" type="construction"/>
                   <placeName>University Parks - Rhodes Pavilion</placeName>
                   <location when="2007-06-14T15:02:03.642+01:00">
                      <geo>-1.2516045570373535 51.75978873475237</geo>
@@ -4600,7 +4607,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place oxpID="23232719" type="building" obnCode="347">
-                  <tei:event when="2001" type="construction"/>
+                  <event when="2001" type="construction"/>
                   <placeName>Marston Field Sports Pavilion</placeName>
                   <location when="2007-06-14T15:04:17.757+01:00">
                      <geo>-1.245253086090088 51.76511095646553</geo>
@@ -4627,8 +4634,8 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232721" type="building" subtype="primary" obnCode="238">
-                  <tei:event when="1868" type="construction"/>
-                  <tei:event when="1964" type="acquisition"/>
+                  <event when="1868" type="construction"/>
+                  <event when="1964" type="acquisition"/>
                   <placeName>1 South Parks Road</placeName>
                   <location when="2007-06-18T10:30:46.000">
                      <geo>-1.254262 51.758078</geo>
@@ -4672,8 +4679,8 @@ data, and if so, how? -->
                </trait>
 
                <place oxpID="23232724" type="building" subtype="primary" obnCode="232">
-                  <tei:event when="1700" type="construction"/>
-                  <tei:event when="1927" type="acquisition"/>
+                  <event when="1700" type="construction"/>
+                  <event when="1927" type="acquisition"/>
                   <placeName>41 St Giles</placeName>
                   <location when="2007-05-22T16:46:37.433+01:00">
                      <geo>-1.259866 51.759128</geo>
@@ -4695,8 +4702,8 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232726" type="building" subtype="primary" obnCode="170">
-                  <tei:event when="1880" type="construction"/>
-                  <tei:event when="1934" type="acquisition"/>
+                  <event when="1880" type="construction"/>
+                  <event when="1934" type="acquisition"/>
                   <placeName>Rudolf Peierls Centre</placeName>
                   <location when="2007-06-18T10:48:51.000">
                      <geo>-1.25933 51.759102</geo>
@@ -4753,28 +4760,28 @@ data, and if so, how? -->
                      <ptr target="http://www.zoo.ox.ac.uk/"/>
                   </desc>
                </trait>
-	           </place>
-	    
-	           <place oxpID="23232731" type="building" obnCode="269" subtype="primary"
-                   oucsCode="b_0060">
-                  <event when="1971" type="construction"/>
-                  <placeName>Tinbergen Building</placeName>
-                  <place oxpID="23232732" type="room">
-                     <placeName>D38</placeName>
-                  </place>
-                  <place oxpID="23232733" type="room">
-                     <placeName>E29</placeName>
-                  </place>
-                  <place oxpID="23232734" type="room">
-                     <placeName>Lecture Theatre A</placeName>
-                  </place>
-                  <place oxpID="23232735" type="room">
-                     <placeName>Lecture Theatre B</placeName>
-                  </place>
-                  <place oxpID="23232736" type="room">
-                     <placeName>Lecture Theatre A/B</placeName>
-                  </place>
+            </place>
+
+            <place oxpID="23232731" type="building" obnCode="269" subtype="primary"
+               oucsCode="b_0060">
+               <event when="1971" type="construction"/>
+               <placeName>Tinbergen Building</placeName>
+               <place oxpID="23232732" type="room">
+                  <placeName>D38</placeName>
                </place>
+               <place oxpID="23232733" type="room">
+                  <placeName>E29</placeName>
+               </place>
+               <place oxpID="23232734" type="room">
+                  <placeName>Lecture Theatre A</placeName>
+               </place>
+               <place oxpID="23232735" type="room">
+                  <placeName>Lecture Theatre B</placeName>
+               </place>
+               <place oxpID="23232736" type="room">
+                  <placeName>Lecture Theatre A/B</placeName>
+               </place>
+            </place>
 
 
             <place oucsCode="O_lib_ann" oxpID="23232737" type="library" olisCode="ANN">
@@ -4832,7 +4839,8 @@ data, and if so, how? -->
                </trait>
                <trait type="url">
                   <desc>
-                     <ptr target="http://athens.arch.ox.ac.uk/schoolarch/institute/readingroom.html"/>
+                     <ptr target="http://athens.arch.ox.ac.uk/schoolarch/institute/readingroom.html"
+                     />
                   </desc>
                </trait>
             </place>
@@ -4855,28 +4863,22 @@ data, and if so, how? -->
             <place oucsCode="O_lib_asc_1" oxpID="23232748" type="library" olisCode="ASC Anson 1st">
                <placeName>Anson Room, 1st floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_10" oxpID="23232749" type="library"
-                   olisCode="ASC Stack 3rd">
+            <place oucsCode="O_lib_asc_10" oxpID="23232749" type="library" olisCode="ASC Stack 3rd">
                <placeName>Stack 3rd floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_11" oxpID="23232750" type="library"
-                   olisCode="ASC Stack Gnd">
+            <place oucsCode="O_lib_asc_11" oxpID="23232750" type="library" olisCode="ASC Stack Gnd">
                <placeName>Stack ground floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_12" oxpID="23232751" type="library"
-                   olisCode="ASC Subl. 1st">
+            <place oucsCode="O_lib_asc_12" oxpID="23232751" type="library" olisCode="ASC Subl. 1st">
                <placeName>Sublibrarian 1st floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_13" oxpID="23232752" type="library"
-                   olisCode="ASC Subl. 2nd">
+            <place oucsCode="O_lib_asc_13" oxpID="23232752" type="library" olisCode="ASC Subl. 2nd">
                <placeName>Sublibrarian 2nd floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_14" oxpID="23232753" type="library"
-                   olisCode="ASC Subl. 3rd">
+            <place oucsCode="O_lib_asc_14" oxpID="23232753" type="library" olisCode="ASC Subl. 3rd">
                <placeName>Sublibrarian 3rd floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_15" oxpID="23232754" type="library"
-                   olisCode="ASC Subl. Gnd">
+            <place oucsCode="O_lib_asc_15" oxpID="23232754" type="library" olisCode="ASC Subl. Gnd">
                <placeName>Sublibrarian ground floor</placeName>
             </place>
             <place oucsCode="O_lib_asc_16" oxpID="23232755" type="library" olisCode="ASC Warden's">
@@ -5638,11 +5640,11 @@ data, and if so, how? -->
                </trait>
             </place>
             <place oucsCode="O_lib_exe_1" oxpID="23232936" type="library"
-                   olisCode="EXE Lower Bursary">
+               olisCode="EXE Lower Bursary">
                <placeName>Lower Bursary</placeName>
             </place>
             <place oucsCode="O_lib_exe_2" oxpID="23232937" type="library"
-                   olisCode="EXE Main Library">
+               olisCode="EXE Main Library">
                <placeName>Main Library</placeName>
             </place>
             <place oucsCode="O_lib_exe_3" oxpID="23232938" type="library" olisCode="EXE Stack">
@@ -5667,8 +5669,7 @@ data, and if so, how? -->
             <place oucsCode="O_lib_geo_1" oxpID="23232941" type="library" olisCode="GEO Main Libr">
                <placeName>Main Library</placeName>
             </place>
-            <place oucsCode="O_lib_geo_10" oxpID="23232942" type="library"
-                   olisCode="GEO Transport">
+            <place oucsCode="O_lib_geo_10" oxpID="23232942" type="library" olisCode="GEO Transport">
                <placeName>Transport Unit</placeName>
             </place>
             <place oucsCode="O_lib_geo_2" oxpID="23232943" type="library" olisCode="GEO Maps">
@@ -5954,8 +5955,7 @@ data, and if so, how? -->
             <place oucsCode="O_lib_jes_1" oxpID="23232998" type="library" olisCode="JES Archive">
                <placeName>Archive</placeName>
             </place>
-            <place oucsCode="O_lib_jes_10" oxpID="23232999" type="library"
-                   olisCode="JES StackRoof">
+            <place oucsCode="O_lib_jes_10" oxpID="23232999" type="library" olisCode="JES StackRoof">
                <placeName>Stack (roofspace)</placeName>
             </place>
             <place oucsCode="O_lib_jes_2" oxpID="23233000" type="library" olisCode="JES Celtic">
@@ -6060,7 +6060,9 @@ data, and if so, how? -->
                </trait>
                <trait type="url">
                   <desc>
-                     <ptr target="http://www.linacre.ox.ac.uk/Linacre/it-library/linacre-college-library"/>
+                     <ptr
+                        target="http://www.linacre.ox.ac.uk/Linacre/it-library/linacre-college-library"
+                     />
                   </desc>
                </trait>
             </place>
@@ -6709,8 +6711,7 @@ data, and if so, how? -->
             <place oucsCode="O_lib_que_1" oxpID="23233159" type="library" olisCode="QUE Basement">
                <placeName>Basement</placeName>
             </place>
-            <place oucsCode="O_lib_que_10" oxpID="23233160" type="library"
-                   olisCode="QUE Reference">
+            <place oucsCode="O_lib_que_10" oxpID="23233160" type="library" olisCode="QUE Reference">
                <placeName>Reference Collection</placeName>
             </place>
             <place oucsCode="O_lib_que_11" oxpID="23233161" type="library" olisCode="QUE Select">
@@ -6725,8 +6726,7 @@ data, and if so, how? -->
             <place oucsCode="O_lib_que_14" oxpID="23233164" type="library" olisCode="QUE Tunnel">
                <placeName>Tunnel</placeName>
             </place>
-            <place oucsCode="O_lib_que_15" oxpID="23233165" type="library"
-                   olisCode="QUE Upper Lib">
+            <place oucsCode="O_lib_que_15" oxpID="23233165" type="library" olisCode="QUE Upper Lib">
                <placeName>Upper Library</placeName>
             </place>
             <place oucsCode="O_lib_que_2" oxpID="23233166" type="library" olisCode="QUE Galician">
@@ -6850,7 +6850,9 @@ data, and if so, how? -->
                </trait>
                <trait type="url">
                   <desc>
-                     <ptr target="http://www.sbs.ox.ac.uk/faculty/Library+and+Information+Services.htm"/>
+                     <ptr
+                        target="http://www.sbs.ox.ac.uk/faculty/Library+and+Information+Services.htm"
+                     />
                   </desc>
                </trait>
             </place>
@@ -6900,7 +6902,9 @@ data, and if so, how? -->
                <placeName>Said Business School Library</placeName>
                <trait type="liburl">
                   <desc>
-                     <ptr target="http://www.sbs.ox.ac.uk/faculty/Library+and+Information+Services.htm"/>
+                     <ptr
+                        target="http://www.sbs.ox.ac.uk/faculty/Library+and+Information+Services.htm"
+                     />
                   </desc>
                </trait>
             </place>
@@ -7123,8 +7127,7 @@ data, and if so, how? -->
             <place oucsCode="O_lib_tas_10" oxpID="23233253" type="library" olisCode="TAS Rare">
                <placeName>Rare books</placeName>
             </place>
-            <place oucsCode="O_lib_tas_11" oxpID="23233254" type="library"
-                   olisCode="TAS Reference">
+            <place oucsCode="O_lib_tas_11" oxpID="23233254" type="library" olisCode="TAS Reference">
                <placeName>Reference LC Sequence</placeName>
             </place>
             <place oucsCode="O_lib_tas_12" oxpID="23233255" type="library" olisCode="TAS U/gr.">
@@ -7133,8 +7136,7 @@ data, and if so, how? -->
             <place oucsCode="O_lib_tas_13" oxpID="23233256" type="library" olisCode="TAS UG LC">
                <placeName>U/grad LC Classification Sequence</placeName>
             </place>
-            <place oucsCode="O_lib_tas_14" oxpID="23233257" type="library"
-                   olisCode="TAS UG LC Out">
+            <place oucsCode="O_lib_tas_14" oxpID="23233257" type="library" olisCode="TAS UG LC Out">
                <placeName>U/grad LC Class Outsize</placeName>
             </place>
             <place oucsCode="O_lib_tas_15" oxpID="23233258" type="library" olisCode="TAS XPS">
@@ -8051,7 +8053,9 @@ data, and if so, how? -->
                </location>
                <trait type="url">
                   <desc>
-                     <ptr target="http://www.chch.ox.ac.uk/index.php?option=com_content&amp;task=view&amp;id=301&amp;Itemid=363"/>
+                     <ptr
+                        target="http://www.chch.ox.ac.uk/index.php?option=com_content&amp;task=view&amp;id=301&amp;Itemid=363"
+                     />
                   </desc>
                </trait>
                <place oxpID="23233482" type="building" subtype="primary">
@@ -8120,7 +8124,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23233488" type="building" subtype="primary" obnCode="165">
-                  <tei:event when="1683" type="construction"/>
+                  <event when="1683" type="construction"/>
                   <placeName>Museum of the History of Science</placeName>
                   <location when="2007-05-22T16:59:14.311+01:00">
                      <geo>-1.255488 51.754187</geo>
@@ -8143,7 +8147,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23233490" type="building" subtype="primary" obnCode="220">
-                  <tei:event when="1885" type="construction"/>
+                  <event when="1885" type="construction"/>
                   <placeName>Pitt Rivers Museum</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.2564 51.75903</geo>
@@ -8186,7 +8190,9 @@ data, and if so, how? -->
                </location>
                <trait type="url">
                   <desc>
-                     <ptr target="http://www.chch.ox.ac.uk/index.php?option=com_content&amp;task=view&amp;id=245&amp;Itemid=300"/>
+                     <ptr
+                        target="http://www.chch.ox.ac.uk/index.php?option=com_content&amp;task=view&amp;id=245&amp;Itemid=300"
+                     />
                   </desc>
                </trait>
                <place oxpID="23233496" type="building" subtype="primary">
@@ -8260,7 +8266,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23233503" type="building" subtype="primary" obnCode="253">
-                  <tei:event when="1888" type="construction"/>
+                  <event when="1888" type="construction"/>
                   <placeName>University Museum Lodge</placeName>
                   <location when="2007-01-26T09:09:31.914Z">
                      <geo>-1.25945806503295 51.76169126035423</geo>
@@ -8268,7 +8274,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place oxpID="23233504" type="building" obnCode="256">
-                  <tei:event when="1880" type="construction"/>
+                  <event when="1880" type="construction"/>
                   <placeName>South Lodge</placeName>
                   <location when="2007-01-26T09:09:58.912Z">
                      <geo>-1.25046730041503 51.75952642563243</geo>
@@ -8276,7 +8282,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place oxpID="23233505" type="building" obnCode="245">
-                  <tei:event when="1880" type="construction"/>
+                  <event when="1880" type="construction"/>
                   <placeName>Cricket Pavilion</placeName>
                   <location when="2007-01-26T09:10:42.092Z">
                      <geo>-1.2537074089050 51.76072174598091</geo>
@@ -8284,7 +8290,7 @@ data, and if so, how? -->
                   </location>
                </place>
                <place oxpID="23233506" type="building" obnCode="258">
-                  <tei:event when="1963" type="construction"/>
+                  <event when="1963" type="construction"/>
                   <placeName>Tentorium</placeName>
                   <location when="2007-01-26T09:11:50.57Z">
                      <geo>-1.25033855438232 51.76154517047947</geo>
@@ -8307,7 +8313,7 @@ data, and if so, how? -->
                </trait>
 
                <place oxpID="23233508" type="building" subtype="primary" obnCode="236">
-                  <tei:event when="1669" type="construction"/>
+                  <event when="1669" type="construction"/>
                   <placeName>Sheldonian Theatre</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.25503 51.75437</geo>
@@ -8330,7 +8336,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23233510" type="building" subtype="primary" obnCode="364">
-                  <tei:event when="2004" type="construction"/>
+                  <event when="2004" type="construction"/>
                   <placeName>University Club</placeName>
                   <location when="2007-06-14T11:09:43.166+01:00">
                      <geo>-1.2513148784637451 51.756783709900965</geo>
@@ -8478,10 +8484,10 @@ data, and if so, how? -->
             </place>
             <place oucsCode="O_finance" oxpID="23233521" type="uas">
                <placeName>Finance Division</placeName>
-	              <location type="address">
-		                <addrLine>23-38 Hythe Bridge Street, Oxford</addrLine>
-		                <postCode>OX1 2EP</postCode>
-	              </location>
+               <location type="address">
+                  <addrLine>23-38 Hythe Bridge Street, Oxford</addrLine>
+                  <postCode>OX1 2EP</postCode>
+               </location>
                <trait type="url">
                   <desc>
                      <ptr target="http://www.admin.ox.ac.uk/finance/"/>
@@ -8640,7 +8646,9 @@ data, and if so, how? -->
                </location>
                <trait type="url">
                   <desc>
-                     <ptr target="http://www.ox.ac.uk/about_the_university/introducing_oxford/the_structure_of_the_university/index.html"/>
+                     <ptr
+                        target="http://www.ox.ac.uk/about_the_university/introducing_oxford/the_structure_of_the_university/index.html"
+                     />
                   </desc>
                </trait>
 
@@ -8881,7 +8889,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23233552" type="building" subtype="primary" obnCode="328">
-                  <tei:event when="1828" type="construction"/>
+                  <event when="1828" type="construction"/>
                   <placeName>34 St Giles</placeName>
                   <location when="2007-05-22T16:06:19.321+01:00">
                      <geo>-1.2610888481140137 51.75854358297344</geo>
@@ -8948,17 +8956,17 @@ data, and if so, how? -->
                      <ptr target="http://www.lang.ox.ac.uk/"/>
                   </desc>
                </trait>
-	           </place>
-	    
-	           <place oucsCode="b_0066" oxpID="23233558" type="building" subtype="primary"
-                   obnCode="293">
-                  <tei:event when="1890" type="construction"/>
-		                <placeName>Red Barn</placeName>
-		                <location when="2007-01-29T12:43:29.455Z">
-                     <geo>-1.261115 51.759538</geo>
-                     <note> recorded by Mike Sloane</note>
-                  </location>
-	           </place>
+            </place>
+
+            <place oucsCode="b_0066" oxpID="23233558" type="building" subtype="primary"
+               obnCode="293">
+               <event when="1890" type="construction"/>
+               <placeName>Red Barn</placeName>
+               <location when="2007-01-29T12:43:29.455Z">
+                  <geo>-1.261115 51.759538</geo>
+                  <note> recorded by Mike Sloane</note>
+               </location>
+            </place>
 
             <place oucsCode="medoff" oxpID="23233559" type="uas">
                <placeName>Medical School Offices</placeName>
@@ -8993,7 +9001,7 @@ data, and if so, how? -->
                </trait>
 
                <place oxpID="23233562" type="building" obnCode="336">
-                  <tei:event when="2002" type="construction"/>
+                  <event when="2002" type="construction"/>
                   <placeName>Medical Sciences Teaching Centre</placeName>
                   <location type="address">
                      <address>
@@ -9101,24 +9109,24 @@ data, and if so, how? -->
                   </desc>
                </trait>
 
-	              <place oxpID="23233572" type="building" obnCode="174" oucsCode="b_0069">
-	                 <tei:event when="1850" type="construction"/>
-	                 <tei:event when="1957" type="acquisition"/>
-	                 <placeName>The Malthouse</placeName>
-	                 <location when="2007-06-18T09:50:57.000">
-		                   <geo>-1.253703 51.759753</geo>
-		                   <note> recorded by Janet McKnight</note>
-	                 </location>
-	              </place>
-	           </place>
-	    
-	           <place oxpID="23233574" type="building">
-	              <placeName>Security Service</placeName>
-	              <location when="2007-06-18T09:50:21.000">
-		                <geo>-1.253528 51.75973</geo>
-		                <note> recorded by Janet McKnight</note>
-	              </location>
-	           </place>
+               <place oxpID="23233572" type="building" obnCode="174" oucsCode="b_0069">
+                  <event when="1850" type="construction"/>
+                  <event when="1957" type="acquisition"/>
+                  <placeName>The Malthouse</placeName>
+                  <location when="2007-06-18T09:50:57.000">
+                     <geo>-1.253703 51.759753</geo>
+                     <note> recorded by Janet McKnight</note>
+                  </location>
+               </place>
+            </place>
+
+            <place oxpID="23233574" type="building">
+               <placeName>Security Service</placeName>
+               <location when="2007-06-18T09:50:21.000">
+                  <geo>-1.253528 51.75973</geo>
+                  <note> recorded by Janet McKnight</note>
+               </location>
+            </place>
 
             <place oucsCode="vet" oxpID="23233575" type="uas">
                <placeName>Veterinary Services</placeName>
@@ -9214,29 +9222,29 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23233580" type="building" subtype="primary" obnCode="237">
-                  <tei:event when="1880" type="construction"/>
-                  <tei:event when="1977" type="acquisition"/>
+                  <event when="1880" type="construction"/>
+                  <event when="1977" type="acquisition"/>
                   <placeName>Old Boys High School</placeName>
                   <location when="2007-06-14T10:38:15.348+01:00">
                      <geo>-1.26317 51.753656</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
                </place>
-	           </place>
+            </place>
 
-	           <place oxpID="23233581" type="building" obnCode="164" oucsCode="b_0063">
-                  <event when="1896" type="construction"/>
-                  <placeName>Old Indian Institute Building</placeName>
-                  <location type="address">
-                     <address>
+            <place oxpID="23233581" type="building" obnCode="164" oucsCode="b_0063">
+               <event when="1896" type="construction"/>
+               <placeName>Old Indian Institute Building</placeName>
+               <location type="address">
+                  <address>
                         <addrLine>Broad Street, Oxford</addrLine>
                         <postCode>OX1 3BD</postCode>
                      </address>
-                  </location>
-                  <place oxpID="23233582" type="room">
-                     <placeName>Seminar Room 1</placeName>
-                  </place>
-	           </place>
+               </location>
+               <place oxpID="23233582" type="room">
+                  <placeName>Seminar Room 1</placeName>
+               </place>
+            </place>
 
             <place oucsCode="libsys" oxpID="23233583" type="unit" subtype="mlp">
                <placeName>Systems and Electronic Resources Service</placeName>
@@ -9276,9 +9284,9 @@ data, and if so, how? -->
                      <ptr target="http://www.mod-langs.ox.ac.uk/computing/"/>
                   </desc>
                </trait>
-	           </place>
+            </place>
 
-	           <place oucsCode="music" oxpID="23233586" type="unit">
+            <place oucsCode="music" oxpID="23233586" type="unit">
                <placeName>Faculty of Music</placeName>
                <location type="address">
                   <address>
@@ -9321,7 +9329,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23233588" type="building" subtype="primary" obnCode="191">
-                  <tei:event when="1962" type="construction"/>
+                  <event when="1962" type="construction"/>
                   <placeName>Oriental Institute</placeName>
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.26092 51.75592</geo>
@@ -9350,7 +9358,7 @@ data, and if so, how? -->
                </trait>
 
                <place oxpID="23233590" type="building" obnCode="178">
-                  <tei:event when="1956" type="construction"/>
+                  <event when="1956" type="construction"/>
                   <placeName>10 Merton Street</placeName>
                   <location when="2007-05-22T16:32:45.881+01:00">
                      <geo>-1.255445 51.757428</geo>
@@ -9431,13 +9439,13 @@ data, and if so, how? -->
                </trait>
             </place>
 
-	           <place oxpID="23232537" type="unit">
-	              <placeName>Oxford Glycobiology Institute</placeName>
-	           </place>
+            <place oxpID="23232537" type="unit">
+               <placeName>Oxford Glycobiology Institute</placeName>
+            </place>
 
-	           <place oxpID="23232536" type="unit">
-	              <placeName>Scripps-Oxford Laboratory</placeName>
-	           </place>
+            <place oxpID="23232536" type="unit">
+               <placeName>Scripps-Oxford Laboratory</placeName>
+            </place>
 
 
          </listPlace>
@@ -9481,7 +9489,7 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0005" oxpID="23233603" type="building" obnCode="109">
-               <tei:event when="1969" type="construction"/>
+               <event when="1969" type="construction"/>
                <placeName>7-19 Banbury Road</placeName>
                <location>
                   <geo>-1.260350 51.760010</geo>
@@ -9535,8 +9543,8 @@ data, and if so, how? -->
                </place>
             </place>
             <place oucsCode="b_0006" oxpID="23233613" type="building" obnCode="232">
-               <tei:event when="1700" type="construction"/>
-               <tei:event when="1927" type="acquisition"/>
+               <event when="1700" type="construction"/>
+               <event when="1927" type="acquisition"/>
                <placeName>41 St Giles</placeName>
                <location type="address">
                   <address>
@@ -9548,8 +9556,8 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0007" oxpID="23233614" type="building" obnCode="368">
-               <tei:event when="1989" type="construction"/>
-               <tei:event when="2005" type="acquisition"/>
+               <event when="1989" type="construction"/>
+               <event when="2005" type="acquisition"/>
                <placeName>5 Worcester Street</placeName>
                <location type="address">
                   <address>
@@ -9561,8 +9569,8 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0008" oxpID="23233615" type="building" obnCode="233">
-               <tei:event when="1869" type="construction"/>
-               <tei:event when="1944" type="acquisition"/>
+               <event when="1869" type="construction"/>
+               <event when="1944" type="acquisition"/>
                <placeName>66 St Giles</placeName>
                <location>
                   <geo>-1.260252 51.756923</geo>
@@ -9587,11 +9595,11 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0010" oxpID="23233619" type="building" obnCode="389">
-               <tei:event when="1850" type="construction"/>
-               <tei:event when="2007" type="acquisition"/>
+               <event when="1850" type="construction"/>
+               <event when="2007" type="acquisition"/>
                <placeName>Oxford-Man Institute Of Quantitative Finance</placeName>
                <location type="address">
-		                <address>
+                  <address>
 		                   <addrLine>Blue Boar Court, 9 Alfred Street, Oxford</addrLine>
                   </address>
                </location>
@@ -9608,26 +9616,28 @@ data, and if so, how? -->
                <trait type="url">
                   <!-- should this be for the building or the unit? -->
                   <desc>
-                     <ptr target="http://www.lib.ox.ac.uk/libraries/guides/BOD.html#BodleianLibrary-OldLibrary"/>
+                     <ptr
+                        target="http://www.lib.ox.ac.uk/libraries/guides/BOD.html#BodleianLibrary-OldLibrary"
+                     />
                   </desc>
                </trait>
             </place>
             <place oucsCode="b_0013" oxpID="23233621" type="building" obnCode="145">
-               <tei:event when="1939" type="construction"/>
+               <event when="1939" type="construction"/>
                <placeName>Clarendon Laboratory - Lindemann</placeName>
                <location>
                   <geo>-1.256877 51.759838</geo>
                </location>
             </place>
             <place oucsCode="b_0064" oxpID="23233676" type="building" obnCode="146">
-               <tei:event when="1949" type="construction"/>
+               <event when="1949" type="construction"/>
                <placeName>Clarendon Laboratory - Simon</placeName>
                <location>
                   <geo>-1.256877 51.759838</geo>
                </location>
             </place>
             <place oucsCode="b_0065" oxpID="23233677" type="building" obnCode="147">
-               <tei:event when="1910" type="construction"/>
+               <event when="1910" type="construction"/>
                <placeName>Clarendon Laboratory - Townsend</placeName>
                <location>
                   <geo>-1.256877 51.759838</geo>
@@ -9663,8 +9673,8 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0017" oxpID="23233625" type="building" obnCode="678">
-               <tei:event when="2007" type="construction"/>
-               <tei:event when="2007" type="acquisition"/>
+               <event when="2007" type="construction"/>
+               <event when="2007" type="acquisition"/>
                <placeName>Old Road Campus - Research Building</placeName>
                <location>
                   <geo>-1.215127 51.752766</geo>
@@ -9806,8 +9816,8 @@ data, and if so, how? -->
                </place>
             </place>
             <place oucsCode="b_0033" oxpID="23233647" type="building" subtype="primary"
-                   obnCode="261">
-               <tei:event when="1875" type="construction"/>
+               obnCode="261">
+               <event when="1875" type="construction"/>
                <placeName>11 Wellington Square</placeName>
                <location>
                   <geo>-1.261982 51.757668</geo>
@@ -9842,7 +9852,7 @@ data, and if so, how? -->
                   <note> recorded by Janet McKnight</note>
                </location>
                <place oxpID="23233555" type="room">
-		                <placeName>IMSU</placeName>
+                  <placeName>IMSU</placeName>
                   <location when="2007-01-23T14:26:03.164Z">
                      <geo>-1.21920347213745 51.76449343827409</geo>
                      <note> recorded by Sylvain Phaneuf</note>
@@ -9871,7 +9881,7 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0040" oxpID="23233654" type="building" subtype="primary"
-                   obnCode="630">
+               obnCode="630">
                <event when="2003" type="construction"/>
                <placeName>OCDEM 1, Churchill Hospital</placeName>
                <location when="2007-06-14T10:25:08.332+01:00">
@@ -9918,7 +9928,7 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0043" oxpID="23233663" type="building" subtype="primary"
-                   obnCode="166">
+               obnCode="166">
                <event when="1892" type="construction"/>
                <placeName>Le Gros Clark Building</placeName>
                <location when="2007-06-18T10:17:04.000">
@@ -9927,7 +9937,7 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0045" oxpID="23233665" type="building" obnCode="262">
-               <tei:event when="1875" type="construction"/>
+               <event when="1875" type="construction"/>
                <placeName>16 Wellington Square</placeName>
                <location when="2007-06-14T08:00:00.634+01:00">
                   <geo>-1.262028 51.757803</geo>
@@ -9942,7 +9952,7 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0047" oxpID="23233667" type="building" obnCode="181">
-               <tei:event when="1936" type="construction"/>
+               <event when="1936" type="construction"/>
                <placeName>Music Faculty</placeName>
                <location when="2008-01-09T16:00:00">
                   <geo>-1.25579 51.74859</geo>
@@ -9950,8 +9960,8 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0048" oxpID="23233668" type="building" obnCode="342">
-               <tei:event when="1970" type="construction"/>
-               <tei:event when="2001" type="acquisition"/>
+               <event when="1970" type="construction"/>
+               <event when="2001" type="acquisition"/>
                <placeName>Osney 1 Building</placeName>
                <location when="2007-01-23T10:22:08.802Z">
                   <geo>-1.26943588256835 51.74682751390124</geo>
@@ -9959,32 +9969,32 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0049" oxpID="23233669" type="building" obnCode="108">
-               <tei:event when="1855" type="construction"/>
-               <tei:event when="1968" type="acquisition"/>
+               <event when="1855" type="construction"/>
+               <event when="1968" type="acquisition"/>
                <placeName>15-19 Banbury Road</placeName>
                <location>
                   <geo>-1.260350 51.760010</geo>
                </location>
             </place>
             <place oucsCode="b_0050" oxpID="23233670" type="building" obnCode="106">
-               <tei:event when="1855" type="construction"/>
-               <tei:event when="1968" type="acquisition"/>
+               <event when="1855" type="construction"/>
+               <event when="1968" type="acquisition"/>
                <placeName>7-9 Banbury Road</placeName>
                <location>
                   <geo>-1.260350 51.760010</geo>
                </location>
             </place>
             <place oucsCode="b_0051" oxpID="23233671" type="building" obnCode="107">
-               <tei:event when="1855" type="construction"/>
-               <tei:event when="1968" type="acquisition"/>
+               <event when="1855" type="construction"/>
+               <event when="1968" type="acquisition"/>
                <placeName>11-13 Banbury Road</placeName>
                <location>
                   <geo>-1.260350 51.760010</geo>
                </location>
             </place>
             <place oucsCode="b_0052" oxpID="23233672" type="building" obnCode="506">
-               <tei:event when="1970" type="construction"/>
-               <tei:event when="2006" type="acquisition"/>
+               <event when="1970" type="construction"/>
+               <event when="2006" type="acquisition"/>
                <placeName>Beaver House, 23-38 Hythe Bridge Street</placeName>
                <location when="2008-01-09T16:00:00">
                   <geo>-1.26743 51.75308</geo>
@@ -9992,7 +10002,7 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0053" oxpID="23233673" type="building" obnCode="152">
-               <tei:event when="1913" type="construction"/>
+               <event when="1913" type="construction"/>
                <placeName>Dyson Perrins</placeName>
                <location>
                   <geo>-1.25392 51.75898</geo>
@@ -10002,35 +10012,35 @@ data, and if so, how? -->
                </place>
             </place>
 
-	           <place oxpID="23232695" type="building" oucsCode="b_0054" obnCode="159">
-               <tei:event when="1898" type="construction"/>
-                  <placeName>3 Mansfield Road</placeName>
-		             <location when="2007-01-30T12:42:28.587Z">
-		                <geo>-1.251540184020996 51.75572111181941</geo>
-		             </location>
-		             <place oxpID="23232693" type="room">
-		                <placeName>Seminar Room 2</placeName>
-		             </place>
-	           </place>
-	    
-	           <place oxpID="23232569" type="building" oucsCode="b_0055" obnCode="260">
-               <tei:event when="1875" type="construction"/>
-		             <placeName>8 Wellington Square</placeName>
-		             <location when="2007-06-14T08:00:00.634+01:00">
-		                <geo>-1.261717 51.757542</geo>
-		                <note> recorded by Sebastian Rahtz</note>
-                  </location>
-	           </place>
-
-		          <place oxpID="23233585" type="building" subtype="primary" obnCode="264"
-                   oucsCode="b_0056">
-                  <tei:event when="1875" type="construction"/>
-                  <placeName>Barnett House, 32-42 Wellington Square</placeName>
-                  <location when="2008-07-30T17:01:00">
-                     <geo>-1.262727 51.757231</geo>
-                     <note> recorded by Janet McKnight (from GEarth / postcode)</note>
-                  </location>
+            <place oxpID="23232695" type="building" oucsCode="b_0054" obnCode="159">
+               <event when="1898" type="construction"/>
+               <placeName>3 Mansfield Road</placeName>
+               <location when="2007-01-30T12:42:28.587Z">
+                  <geo>-1.251540184020996 51.75572111181941</geo>
+               </location>
+               <place oxpID="23232693" type="room">
+                  <placeName>Seminar Room 2</placeName>
                </place>
+            </place>
+
+            <place oxpID="23232569" type="building" oucsCode="b_0055" obnCode="260">
+               <event when="1875" type="construction"/>
+               <placeName>8 Wellington Square</placeName>
+               <location when="2007-06-14T08:00:00.634+01:00">
+                  <geo>-1.261717 51.757542</geo>
+                  <note> recorded by Sebastian Rahtz</note>
+               </location>
+            </place>
+
+            <place oxpID="23233585" type="building" subtype="primary" obnCode="264"
+               oucsCode="b_0056">
+               <event when="1875" type="construction"/>
+               <placeName>Barnett House, 32-42 Wellington Square</placeName>
+               <location when="2008-07-30T17:01:00">
+                  <geo>-1.262727 51.757231</geo>
+                  <note> recorded by Janet McKnight (from GEarth / postcode)</note>
+               </location>
+            </place>
 
             <relation name="controls" active="#O_ceu" passive="#O_lib_ceu"/>
             <relation name="controls" active="#O_clpic" passive="#O_lib_icl"/>
@@ -10785,25 +10795,25 @@ data, and if so, how? -->
             <relation name="controls" type="political" active="#offices" passive="#survey"/>
             <relation name="controls" type="political" active="#oucs" passive="#O_telecom"/>
             <relation name="controls" type="political" active="#plant" passive="#plantlib"/>
-	           <relation name="occupies" type="geo primary" active="#O_finance" passive="#b_0052"/>
-	           <relation name="occupies" type="geo primary" active="#O_geg" passive="#b_0058"/>
-	           <relation name="occupies" type="geo primary" active="#O_lcb" passive="#b_0061"/>
-	           <relation name="occupies" type="geo primary" active="#anat" passive="#b_0039"/>
-	           <relation name="occupies" type="geo primary" active="#appsoc" passive="#b_0056"/>
-	           <relation name="occupies" type="geo primary" active="#biomed" passive="#b_0060"/>
-	           <relation name="occupies" type="geo primary" active="#chem" passive="#b_0061"/>
-	           <relation name="occupies" type="geo primary" active="#clg" passive="#b_006"/>
-	           <relation name="occupies" type="geo primary" active="#expsych" passive="#b_0060"/>
-	           <relation name="occupies" type="geo primary" active="#jmar" passive="#b_0063"/>
-	           <relation name="occupies" type="geo primary" active="#langteach" passive="#b_0066"/>
-	           <relation name="occupies" type="geo primary" active="#plant" passive="#b_0068"/>
-	           <relation name="occupies" type="geo primary" active="#plantlib" passive="#b_0067"/>
-	           <relation name="occupies" type="geo primary" active="#ptchem" passive="#b_0062"/>
-	           <relation name="occupies" type="geo primary" active="#univ" passive="#b_0058"/>
-	           <relation name="occupies" type="geo primary" active="#zoo" passive="#b_0060"/>
-	           <relation name="occupies" type="geo" active="#anat" passive="#b_0043"/>
-	           <relation name="occupies" type="geo" active="#histfac" passive="#b_0063"/>
-	           <relation name="occupies" type="geo" active="#oncology" passive="#b_0057"/>
+            <relation name="occupies" type="geo primary" active="#O_finance" passive="#b_0052"/>
+            <relation name="occupies" type="geo primary" active="#O_geg" passive="#b_0058"/>
+            <relation name="occupies" type="geo primary" active="#O_lcb" passive="#b_0061"/>
+            <relation name="occupies" type="geo primary" active="#anat" passive="#b_0039"/>
+            <relation name="occupies" type="geo primary" active="#appsoc" passive="#b_0056"/>
+            <relation name="occupies" type="geo primary" active="#biomed" passive="#b_0060"/>
+            <relation name="occupies" type="geo primary" active="#chem" passive="#b_0061"/>
+            <relation name="occupies" type="geo primary" active="#clg" passive="#b_006"/>
+            <relation name="occupies" type="geo primary" active="#expsych" passive="#b_0060"/>
+            <relation name="occupies" type="geo primary" active="#jmar" passive="#b_0063"/>
+            <relation name="occupies" type="geo primary" active="#langteach" passive="#b_0066"/>
+            <relation name="occupies" type="geo primary" active="#plant" passive="#b_0068"/>
+            <relation name="occupies" type="geo primary" active="#plantlib" passive="#b_0067"/>
+            <relation name="occupies" type="geo primary" active="#ptchem" passive="#b_0062"/>
+            <relation name="occupies" type="geo primary" active="#univ" passive="#b_0058"/>
+            <relation name="occupies" type="geo primary" active="#zoo" passive="#b_0060"/>
+            <relation name="occupies" type="geo" active="#anat" passive="#b_0043"/>
+            <relation name="occupies" type="geo" active="#histfac" passive="#b_0063"/>
+            <relation name="occupies" type="geo" active="#oncology" passive="#b_0057"/>
             <relation name="occupies" type="geo primary" active="#O_acdivcomms" passive="#b_0021"/>
             <relation name="occupies" type="geo primary" active="#O_alumni" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_asuc" passive="#b_0027"/>
@@ -10819,7 +10829,8 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#O_examassess" passive="#b_0016"/>
             <relation name="occupies" type="geo primary" active="#O_frc" passive="#b_0010"/>
             <relation name="occupies" type="geo primary" active="#O_gradadmin" passive="#b_0027"/>
-            <relation name="occupies" type="geo primary" active="#O_gradadmissions" passive="#b_0027"/>
+            <relation name="occupies" type="geo primary" active="#O_gradadmissions"
+               passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_herc" passive="#b_0017"/>
             <relation name="occupies" type="geo primary" active="#O_intstrat" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_landagent" passive="#b_0015"/>
@@ -10964,7 +10975,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo" active="#qeh" passive="#b_0054"/>
             <relation name="occupies" type="geo" active="#rsc" passive="#b_0054"/>
 
-	           <!--
+            <!--
              <relation name="uses" type="room" active="#O_bsp" passive="#r_0001"/>
              <relation name="uses" type="room" active="#ageing" passive="#b_0020r1"/>
              <relation name="uses" type="room" active="#econlib" passive="#b_0020r2"/>
@@ -10973,6 +10984,448 @@ data, and if so, how? -->
 	    -->
          </listPlace>
 
+         <listPlace>
+            <place type="building" obnCode="101" oucsCode="23233683" oxpID="e_1">
+               <placeName>Dartington House</placeName>
+               <event when="1970" type="construction"/>
+               <event when="1970" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="105" oucsCode="23233685" oxpID="e_3">
+               <placeName>Old Observatory</placeName>
+               <event when="1875" type="construction"/>
+            </place>
+            <place type="building" obnCode="110" oucsCode="23233690" oxpID="e_8">
+               <placeName>21 Banbury Road</placeName>
+               <event when="1879" type="construction"/>
+               <event when="1957" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="111" oucsCode="23233691" oxpID="e_9">
+               <placeName>43 Banbury Road</placeName>
+               <event when="1885" type="construction"/>
+               <event when="1966" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="119" oucsCode="23233697" oxpID="e_15">
+               <placeName>61 Banbury Road</placeName>
+               <event when="1868" type="construction"/>
+               <event when="1966" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="123" oucsCode="23233699" oxpID="e_17">
+               <placeName>37 Beaumont Street</placeName>
+               <event when="1837" type="construction"/>
+               <event when="1940" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="126" oucsCode="23233702" oxpID="e_20">
+               <placeName>13 Bevington Road</placeName>
+               <event when="1868" type="construction"/>
+               <event when="1966" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="130" oucsCode="23233703" oxpID="e_21">
+               <placeName>Bodleian Library</placeName>
+               <event when="1939" type="construction"/>
+            </place>
+            <place type="building" obnCode="138" oucsCode="23233707" oxpID="e_25">
+               <placeName>Botanic Garden Cottage</placeName>
+               <event when="1880" type="construction"/>
+               <event when="1880" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="141" oucsCode="23233709" oxpID="e_27">
+               <placeName>Nuneham - Old Sawmill</placeName>
+               <event when="1945" type="construction"/>
+               <event when="1948" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="143" oucsCode="23233710" oxpID="e_28">
+               <placeName>Central Cycle Shelter</placeName>
+               <event when="1962" type="construction"/>
+            </place>
+            <place type="building" obnCode="148" oucsCode="23233715" oxpID="e_33">
+               <placeName>Clarendon Lodge</placeName>
+               <event when="1939" type="construction"/>
+            </place>
+            <place type="building" obnCode="157" oucsCode="23233721" oxpID="e_39">
+               <placeName>Sadler House</placeName>
+               <event when="1875" type="construction"/>
+            </place>
+            <place type="building" obnCode="162" oucsCode="23233725" oxpID="e_43">
+               <placeName>2 South Parks Road</placeName>
+               <event when="1866" type="construction"/>
+               <event when="1963" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="167" oucsCode="23233730" oxpID="e_48">
+               <placeName>The Pauling Centre, 58a Banbury Road, Oxford</placeName>
+               <event when="1981" type="construction"/>
+            </place>
+            <place type="building" obnCode="171" oucsCode="23233733" oxpID="e_51">
+               <placeName>5-6 Keble Road</placeName>
+               <event when="1880" type="construction"/>
+               <event when="1934" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="172" oucsCode="23233734" oxpID="e_52">
+               <placeName>7 Keble Road</placeName>
+               <event when="1880" type="construction"/>
+               <event when="1934" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="180" oucsCode="23233740" oxpID="e_58">
+               <placeName>Donald Woods Building</placeName>
+               <event when="1961" type="construction"/>
+            </place>
+            <place type="building" obnCode="184" oucsCode="23233744" oxpID="e_62">
+               <placeName>Bruner Building, 28 Norham Gardens</placeName>
+               <event when="1875" type="construction"/>
+               <event when="1972" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="185" oucsCode="23233745" oxpID="e_63">
+               <placeName>Bruner Building, 30 Norham Gardens</placeName>
+               <event when="1875" type="construction"/>
+               <event when="1972" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="187" oucsCode="23233747" oxpID="e_65">
+               <placeName>Nuneham - Church</placeName>
+               <event when="1850" type="construction"/>
+               <event when="1979" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="195" oucsCode="23233752" oxpID="e_70">
+               <placeName>12-13 Parks Road</placeName>
+               <event when="1880" type="construction"/>
+               <event when="1934" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="196" oucsCode="23233753" oxpID="e_71">
+               <placeName>14-15 Parks Road</placeName>
+               <event when="1880" type="construction"/>
+               <event when="1934" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="197" oucsCode="23233754" oxpID="e_72">
+               <placeName>Jenkin Building</placeName>
+               <event when="1914" type="construction"/>
+            </place>
+            <place type="building" obnCode="224" oucsCode="23233759" oxpID="e_77">
+               <placeName>Radcliffe Camera</placeName>
+               <event when="1747" type="construction"/>
+            </place>
+            <place type="building" obnCode="227" oucsCode="23233761" oxpID="e_79">
+               <placeName>Richard Burton Building</placeName>
+               <event when="1974" type="construction"/>
+               <event when="1974" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="231" oucsCode="23233763" oxpID="e_81">
+               <placeName>39a St Giles</placeName>
+               <event when="1850" type="construction"/>
+               <event when="1927" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="240" oucsCode="23233770" oxpID="e_88">
+               <placeName>Sports Centre Caretaker</placeName>
+               <event when="1965" type="construction"/>
+            </place>
+            <place type="building" obnCode="241" oucsCode="23233771" oxpID="e_89">
+               <placeName>Sports Centre Cricket</placeName>
+               <event when="1980" type="construction"/>
+            </place>
+            <place type="building" obnCode="242" oucsCode="23233772" oxpID="e_90">
+               <placeName>Sports Centre Gymnasium</placeName>
+               <event when="1965" type="construction"/>
+            </place>
+            <place type="building" obnCode="244" oucsCode="23233773" oxpID="e_91">
+               <placeName>Sports Centre Squash</placeName>
+               <event when="1975" type="construction"/>
+            </place>
+            <place type="building" obnCode="248" oucsCode="23233776" oxpID="e_94">
+               <placeName>Summertown House Mansion</placeName>
+               <event when="1880" type="construction"/>
+               <event when="1947" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="265" oucsCode="23233787" oxpID="e_105">
+               <placeName>43-48 Wellington Square</placeName>
+               <event when="1875" type="construction"/>
+            </place>
+            <place type="building" obnCode="267" oucsCode="23233788" oxpID="e_106">
+               <placeName>John Krebs Field Station, Wytham</placeName>
+               <event when="1952" type="construction"/>
+            </place>
+            <place type="building" obnCode="268" oucsCode="23233789" oxpID="e_107">
+               <placeName>Technician, Wytham</placeName>
+               <event when="1952" type="construction"/>
+            </place>
+            <place type="building" obnCode="270" oucsCode="23233791" oxpID="e_109">
+               <placeName>Atmospheric Physics</placeName>
+               <event when="1898" type="construction"/>
+            </place>
+            <place type="building" obnCode="273" oucsCode="23233793" oxpID="e_111">
+               <placeName>Ruskin Annex, 128 Bullingdon Road</placeName>
+               <event when="1930" type="construction"/>
+            </place>
+            <place type="building" obnCode="276" oucsCode="23233795" oxpID="e_113">
+               <placeName>Engineering And Technology Building</placeName>
+               <event when="1989" type="construction"/>
+            </place>
+            <place type="building" obnCode="282" oucsCode="23233798" oxpID="e_116">
+               <placeName>75 Banbury Road</placeName>
+               <event when="1840" type="construction"/>
+               <event when="2003" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="284" oucsCode="23233799" oxpID="e_117">
+               <placeName>Sports Centre Rugby Fives</placeName>
+               <event when="1989" type="construction"/>
+            </place>
+            <place type="building" obnCode="288" oucsCode="23233801" oxpID="e_119">
+               <placeName>Sports Centre Rowing Tank</placeName>
+               <event when="1992" type="construction"/>
+            </place>
+            <place type="building" obnCode="292" oucsCode="23233802" oxpID="e_120">
+               <placeName>Sports Centre Tennis</placeName>
+               <event when="1987" type="construction"/>
+            </place>
+            <place type="building" obnCode="294" oucsCode="23233804" oxpID="e_122">
+               <placeName>Red Barn Cottage</placeName>
+               <event when="1890" type="construction"/>
+            </place>
+            <place type="building" obnCode="297" oucsCode="23233805" oxpID="e_123">
+               <placeName>Museum Telephone Exchange</placeName>
+               <event when="1985" type="construction"/>
+            </place>
+            <place type="building" obnCode="298" oucsCode="23233806" oxpID="e_124">
+               <placeName>Bradmore Road Creche</placeName>
+               <event when="1994" type="construction"/>
+            </place>
+            <place type="building" obnCode="304" oucsCode="23233809" oxpID="e_127">
+               <placeName>Pathology Support Building</placeName>
+               <event when="1997" type="construction"/>
+            </place>
+            <place type="building" obnCode="306" oucsCode="23233811" oxpID="e_129">
+               <placeName>9 Wellington Square</placeName>
+               <event when="1875" type="construction"/>
+            </place>
+            <place type="building" obnCode="310" oucsCode="23233815" oxpID="e_133">
+               <placeName>Osney Mead Warehouse</placeName>
+               <event when="1955" type="construction"/>
+               <event when="1997" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="317" oucsCode="23233818" oxpID="e_136">
+               <placeName>Hirsch Building, Begbroke Science Park</placeName>
+               <event when="1955" type="construction"/>
+               <event when="1998" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="318" oucsCode="23233819" oxpID="e_137">
+               <placeName>Unit 10, Begbroke Science Park</placeName>
+               <event when="1955" type="construction"/>
+               <event when="1998" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="319" oucsCode="23233820" oxpID="e_138">
+               <placeName>HI-Bay, Begbroke Science Park</placeName>
+               <event when="1955" type="construction"/>
+               <event when="1998" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="321" oucsCode="23233821" oxpID="e_139">
+               <placeName>Christian Building, Begbroke Science Park</placeName>
+               <event when="1820" type="construction"/>
+               <event when="1998" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="322" oucsCode="23233822" oxpID="e_140">
+               <placeName>Manor House, Begbroke Science Park</placeName>
+               <event when="1604" type="construction"/>
+               <event when="1998" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="333" oucsCode="23233826" oxpID="e_144">
+               <placeName>Pathology Leslie Martin</placeName>
+               <event when="1968" type="construction"/>
+            </place>
+            <place type="building" obnCode="334" oucsCode="23233827" oxpID="e_145">
+               <placeName>Pathology Warren Building</placeName>
+               <event when="1927" type="construction"/>
+            </place>
+            <place type="building" obnCode="337" oucsCode="23233829" oxpID="e_147">
+               <placeName>HWB Of Gene Function</placeName>
+               <event when="2003" type="construction"/>
+            </place>
+            <place type="building" obnCode="338" oucsCode="23233830" oxpID="e_148">
+               <placeName>Cast Gallery, Ashmolean Museum</placeName>
+               <event when="1961" type="construction"/>
+            </place>
+            <place type="building" obnCode="341" oucsCode="23233831" oxpID="e_149">
+               <placeName>SERS</placeName>
+               <event when="1965" type="construction"/>
+               <event when="2001" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="343" oucsCode="23233833" oxpID="e_151">
+               <placeName>Holywell Music Room</placeName>
+               <event when="1748" type="construction"/>
+               <event when="1945" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="344" oucsCode="23233834" oxpID="e_152">
+               <placeName>Thomas Hull House</placeName>
+               <event when="1979" type="construction"/>
+               <event when="2002" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="346" oucsCode="23233835" oxpID="e_153">
+               <placeName>Wolsey Hall, 66 Banbury Road</placeName>
+               <event when="1869" type="construction"/>
+               <event when="2002" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="348" oucsCode="23233837" oxpID="e_155">
+               <placeName>Ancient Bio-Molecules</placeName>
+               <event when="2003" type="construction"/>
+            </place>
+            <place type="building" obnCode="352" oucsCode="23233838" oxpID="e_156">
+               <placeName>IAT Building, Begbroke Science Park</placeName>
+               <event when="2006" type="construction"/>
+            </place>
+            <place type="building" obnCode="353" oucsCode="23233839" oxpID="e_157">
+               <placeName>APL, Begbroke Science Park</placeName>
+               <event when="2006" type="construction"/>
+            </place>
+            <place type="building" obnCode="354" oucsCode="23233840" oxpID="e_158">
+               <placeName>15a Norham Gardens</placeName>
+               <event when="2006" type="construction"/>
+            </place>
+            <place type="building" obnCode="361" oucsCode="23233842" oxpID="e_160">
+               <placeName>Information Engineering</placeName>
+               <event when="2004" type="construction"/>
+            </place>
+            <place type="building" obnCode="363" oucsCode="23233843" oxpID="e_161">
+               <placeName>Axis Point</placeName>
+               <event when="2001" type="construction"/>
+               <event when="2003" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="372" oucsCode="23233848" oxpID="e_166">
+               <placeName>42 St Giles</placeName>
+               <event when="1820" type="construction"/>
+            </place>
+            <place type="building" obnCode="375" oucsCode="23233849" oxpID="e_167">
+               <placeName>Wolfson College Annexe</placeName>
+               <event when="1960" type="construction"/>
+            </place>
+            <place type="building" obnCode="378" oucsCode="23233851" oxpID="e_169">
+               <placeName>Jack Straws Lane Nursery</placeName>
+               <event when="2003" type="construction"/>
+               <event when="2003" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="393" oucsCode="23233856" oxpID="e_174">
+               <placeName>Tubney - Barn</placeName>
+               <event when="1811" type="construction"/>
+               <event when="2003" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="502" oucsCode="23233857" oxpID="e_175">
+               <placeName>6 Worcester Street</placeName>
+               <event when="1988" type="construction"/>
+               <event when="2006" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="514" oucsCode="23233859" oxpID="e_177">
+               <placeName>Waste Collection Store</placeName>
+            </place>
+            <place type="building" obnCode="541" oucsCode="23233860" oxpID="e_178">
+               <placeName>2 Worcester Street</placeName>
+               <event when="1988" type="construction"/>
+               <event when="2009" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="621" oucsCode="23233861" oxpID="e_179">
+               <placeName>John Radcliffe Women's Centre</placeName>
+               <event when="1970" type="construction"/>
+            </place>
+            <place type="building" obnCode="624" oucsCode="23233864" oxpID="e_182">
+               <placeName>John Radcliffe Industrial</placeName>
+               <event when="1975" type="construction"/>
+            </place>
+            <place type="building" obnCode="629" oucsCode="23233868" oxpID="e_186">
+               <placeName>John Radcliffe OCMR Building (MRS)</placeName>
+               <event when="2003" type="construction"/>
+            </place>
+            <place type="building" obnCode="631" oucsCode="23233870" oxpID="e_188">
+               <placeName>OCDEM 2, Churchill Hospital</placeName>
+               <event when="2003" type="construction"/>
+            </place>
+            <place type="building" obnCode="634" oucsCode="23233872" oxpID="e_190">
+               <placeName>Clinical Bio-Manufacturing Facility, Churchill</placeName>
+               <event when="1995" type="construction"/>
+               <event when="1994" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="643" oucsCode="23233874" oxpID="e_192">
+               <placeName>Neurosciences, Warneford</placeName>
+               <event when="1998" type="construction"/>
+            </place>
+            <place type="building" obnCode="644" oucsCode="23233875" oxpID="e_193">
+               <placeName>Wellcome, Warneford</placeName>
+               <event when="1995" type="construction"/>
+            </place>
+            <place type="building" obnCode="646" oucsCode="23233877" oxpID="e_195">
+               <placeName>Lab, Warneford</placeName>
+               <event when="1960" type="construction"/>
+            </place>
+            <place type="building" obnCode="653" oucsCode="23233878" oxpID="e_196">
+               <placeName>Wellcome Trust Centre Clinical Vaccinology and Tropical
+                  Medicine</placeName>
+               <event when="2003" type="construction"/>
+               <event when="2000" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="654" oucsCode="23233879" oxpID="e_197">
+               <placeName>MEG Scanner Facility, Warneford</placeName>
+               <event when="2006" type="construction"/>
+               <event when="2007" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="661" oucsCode="23233881" oxpID="e_199">
+               <placeName>Conference, Old Road Campus</placeName>
+               <event when="1960" type="construction"/>
+               <event when="1996" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="665" oucsCode="23233883" oxpID="e_201">
+               <placeName>Richards Building, Old Road Campus</placeName>
+               <event when="1960" type="construction"/>
+               <event when="2008" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="669" oucsCode="23233884" oxpID="e_202">
+               <placeName>Management, Old Road Campus</placeName>
+               <event when="1960" type="construction"/>
+               <event when="1996" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="671" oucsCode="23233885" oxpID="e_203">
+               <placeName>Terrapin (OPPF), Old Road Campus</placeName>
+               <event when="2002" type="construction"/>
+            </place>
+            <place type="building" obnCode="672" oucsCode="23233886" oxpID="e_204">
+               <placeName>The Triangle, PGMDE</placeName>
+               <event when="1997" type="construction"/>
+            </place>
+            <place type="building" obnCode="673" oucsCode="23233887" oxpID="e_205">
+               <placeName>HWB Genomic Medicine</placeName>
+               <event when="1999" type="construction"/>
+            </place>
+            <place type="building" obnCode="676" oucsCode="23233890" oxpID="e_208">
+               <placeName>HWB For Particle Imaging (Opic)</placeName>
+               <event when="2004" type="construction"/>
+            </place>
+            <place type="building" obnCode="679" oucsCode="23233892" oxpID="e_210">
+               <placeName>John Radcliffe Cardiac Centre</placeName>
+               <event when="1992" type="construction"/>
+            </place>
+            <place type="building" obnCode="680" oucsCode="23233893" oxpID="e_211">
+               <placeName>John Radcliffe Anaesthetic Modular Building</placeName>
+               <event when="1998" type="construction"/>
+            </place>
+            <place type="building" obnCode="681" oucsCode="23233894" oxpID="e_212">
+               <placeName>John Radcliffe West Wing And Children's Hospital</placeName>
+               <event when="2006" type="construction"/>
+               <event when="2007" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="682" oucsCode="23233895" oxpID="e_213">
+               <placeName>John Radcliffe Manor House</placeName>
+               <event when="1776" type="construction"/>
+               <event when="2005" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="685" oucsCode="23233897" oxpID="e_215">
+               <placeName>Eagle House</placeName>
+               <event when="2009" type="construction"/>
+               <event when="2009" type="acquisition"/>
+            </place>
+            <place type="building" obnCode="687" oucsCode="23233899" oxpID="e_217">
+               <placeName>Cancer Hospital, Churchill</placeName>
+               <event when="2009" type="construction"/>
+            </place>
+            <place type="building" obnCode="688" oucsCode="23233900" oxpID="e_218">
+               <placeName>SKOPE - Warwick</placeName>
+            </place>
+            <place type="building" obnCode="691" oucsCode="23233901" oxpID="e_219">
+               <placeName>Old Road Campus Estates Annexe</placeName>
+               <event when="2007" type="construction"/>
+            </place>
+
+         </listPlace>
          <div>
             <!--
 	<figure corresp="#camp"/>
