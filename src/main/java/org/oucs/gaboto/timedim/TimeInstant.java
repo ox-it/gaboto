@@ -71,8 +71,8 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
    * @param calendar
    */
   public static TimeInstant from(Calendar calendar) {
-    return new TimeInstant(calendar.get(Calendar.YEAR), calendar
-        .get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+    return new TimeInstant(calendar.get(Calendar.YEAR), 
+            calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
   }
 
   /**
@@ -161,7 +161,7 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
   }
 
   /**
-   * Tests if to instants are roughly the same .. for example 300-3-18 is
+   * Tests if an instant is roughly the same .. for example 300-3-18 is
    * roughly the same as 300-null-null
    * 
    * @param ti
@@ -172,11 +172,11 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
   public boolean aboutTheSame(TimeInstant ti) {
     if (this.startYear.equals(ti.getStartYear())) {
       // years are the same
-      if (null == this.getStartMonth() || null == ti.getStartMonth())
+      if (this.getStartMonth() == null || ti.getStartMonth() == null)
         return true;
       else if (this.getStartMonth().equals(ti.getStartMonth())) {
         // months are the same
-        if (null == this.getStartDay() || null == ti.getStartDay())
+        if (this.getStartDay() == null|| ti.getStartDay() == null)
           return true;
         else if (this.getStartDay().equals(ti.getStartDay()))
           return true;
