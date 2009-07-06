@@ -9,11 +9,28 @@
 
 <xsl:key name="N" match="obn" use="placeName"/>
 
+<xsl:key name="OBN" use="@obnCode" match="tei:place"/>
+
 <xsl:template match="@*|text()|comment()|processing-instruction()">
  <xsl:copy-of select="."/>
 </xsl:template>
 
 
+<xsl:template match="/">
+  <xsl:variable name="O" select="/"/>
+  <xsl:apply-templates/>
+  <xsl:for-each select="document('BuildingList.xml')">
+    <xsl:for-each select="//obn">
+      <xsl:variable name="c" select="code"/>
+      <xsl:variable name="p" select="placeName"/>
+      <xsl:for-each select="$O">
+	<xsl:if test="not(key('OBN',$c))">
+	  <xsl:message>BUILDING <xsl:value-of select="$c"/>: <xsl:value-of select="$p"/></xsl:message>
+	</xsl:if>
+      </xsl:for-each>
+    </xsl:for-each>
+  </xsl:for-each>
+</xsl:template>
 <xsl:template match="*">
   <xsl:copy>
     <xsl:apply-templates 

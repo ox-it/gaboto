@@ -3734,7 +3734,9 @@ data, and if so, how? -->
                   </desc>
                </trait>
 
-               <place oxpID="23232637" type="building" subtype="primary">
+               <place oxpID="23232637" type="building" subtype="primary" obnCode="625">
+                  <tei:event when="1970" type="construction"/>
+                  <tei:event when="1972" type="acquisition"/>
                   <placeName>Weatherall Institute of Molecular Medicine</placeName>
                   <location when="2007-01-23T11:00:15.462Z">
                      <geo>-1.21682167053222 51.76360366602635</geo>
