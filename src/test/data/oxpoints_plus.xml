@@ -10685,7 +10685,7 @@ data, and if so, how? -->
             <relation name="controls" active="#phillib" passive="#phillib_9"/>
             <relation name="controls" active="#physics" passive="#O_lib_cla"/>
             <relation name="controls" active="#physics" passive="#O_lib_dwb"/>
-            <relation name="controls" active="#physiol" passive="#O_lib_phy"/>
+            <relation name="controls" active="#dpag" passive="#O_lib_phy"/>
             <relation name="controls" active="#pitt" passive="#O_lib_bal"/>
             <relation name="controls" active="#plant" passive="#O_lib_pls"/>
             <relation name="controls" active="#ptchem" passive="#O_lib_pch"/>
@@ -10802,7 +10802,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#appsoc" passive="#b_0056"/>
             <relation name="occupies" type="geo primary" active="#biomed" passive="#b_0060"/>
             <relation name="occupies" type="geo primary" active="#chem" passive="#b_0061"/>
-            <relation name="occupies" type="geo primary" active="#clg" passive="#b_006"/>
+            <relation name="occupies" type="geo primary" active="#clg" passive="#b_0066"/>
             <relation name="occupies" type="geo primary" active="#expsych" passive="#b_0060"/>
             <relation name="occupies" type="geo primary" active="#jmar" passive="#b_0063"/>
             <relation name="occupies" type="geo primary" active="#langteach" passive="#b_0066"/>
