@@ -2068,13 +2068,8 @@
                      <ptr target="http://www.chem.ox.ac.uk/bayleygroup/"/>
                   </desc>
                </trait>
-               <place oxpID="23232504" type="building" subtype="primary">
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.25218 51.75713</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
             </place>
+
             <place oucsCode="O_lsi" oxpID="23232505" type="department">
                <placeName>Life Sciences Inferface Doctoral Training Centre</placeName>
                <location type="address">
@@ -2249,15 +2244,9 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                </location>
                <trait type="url">
                   <desc>
-                     <ptr target="http://www.anat.ox.ac.uk/"/>
+                     <ptr target="http://www.dpag.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232518" type="building">
-                  <location>
-                     <geo>-1.254753 51.758836</geo>
-                     <note>from postcode, needs checking</note>
-                  </location>
-               </place>
             </place>
             <place oucsCode="appsoc" oxpID="23232519" type="department">
                <placeName>Department of Social Policy and Social Work</placeName>
@@ -2277,20 +2266,6 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://weblearn.ox.ac.uk/site/socsci/appsoc/"/>
                   </desc>
                </trait>
-               <place oxpID="23232520" type="building" subtype="primary">
-                  <placeName>Office</placeName>
-                  <location>
-                     <geo>-1.262568 51.757918</geo>
-                  </location>
-                  <trait type="figure">
-                     <desc>
-                        <ref target="images/appsoc/DSC_0041.JPG">
-                           <graphic url="images/appsoc/thumb_DSC_0041.JPG"/>
-                        </ref>
-                     </desc>
-                  </trait>
-               </place>
-
             </place>
             <place oucsCode="archfac" oxpID="23232521" type="department">
                <placeName>Committee for Archaeology</placeName>
@@ -2323,18 +2298,6 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
 
-               <place oxpID="23232523" type="building">
-                  <placeName>Research Laboratory for Archaeology and the History of Art</placeName>
-                  <location when="2007-06-18T10:22:21.000">
-                     <geo>-1.253583 51.758982</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-                  <trait type="url">
-                     <desc>
-                        <ptr target="http://www.rlaha.ox.ac.uk/committee"/>
-                     </desc>
-                  </trait>
-               </place>
             </place>
             <place oucsCode="archres" oxpID="23232524" type="department">
                <placeName>Research Laboratory for Archaeology and the History of Art</placeName>
@@ -2351,6 +2314,7 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                   </desc>
                </trait>
             </place>
+
             <place oucsCode="area" oxpID="23232525" type="department">
                <placeName>School of Interdisciplinary Area Studies</placeName>
                <location type="address">
@@ -2369,8 +2333,10 @@ Hospital, Headley Way, Headington, Oxford</addrLine>
                      <ptr target="http://weblearn.ox.ac.uk/site/socsci/area/"/>
                   </desc>
                </trait>
-               <place oxpID="23232526" type="building" subtype="primary">
-                  <placeName>school</placeName>
+               <place oxpID="23232526" type="building" subtype="primary" obnCode="125">
+                  <tei:event when="1868" type="construction"/>
+                  <tei:event when="1966" type="acquisition"/>
+		                <placeName>12 Bevington Road</placeName>
                   <location when="2007-01-24T10:29:14.108Z">
                      <geo>-1.2610673904418 51.76284668180086</geo>
                      <note> recorded by Natasha Heaton</note>
@@ -2578,13 +2544,6 @@ data, and if so, how? -->
                      <ptr target="http://www.ox.ac.uk"/>
                   </desc>
                </trait>
-               <place oxpID="23232540" type="building" subtype="primary">
-                  <location when="2008-07-30T16:52:00">
-                     <geo>-1.254111 51.757926</geo>
-                     <note> recorded by Janet McKnight (from GEarth / postcode)</note>
-                  </location>
-               </place>
-
             </place>
             <place oucsCode="brazil" oxpID="23232541" type="department">
                <placeName>Centre for Brazilian Studies</placeName>
@@ -2650,10 +2609,9 @@ data, and if so, how? -->
                <placeName>Department of Chemistry</placeName>
                <location type="address">
                   <address>
-                     <addrLine>Chemistry Research Laboratory, 12 Mansfield Road,
- Oxford</addrLine>
-                     <postCode>OX1 3TA</postCode>
-                  </address>
+		                   <addrLine>Chemistry Research Laboratory, 12 Mansfield Road, Oxford</addrLine>
+		                   <postCode>OX1 3TA</postCode>
+		                </address>
                </location>
                <trait type="url">
                   <desc>
@@ -2670,16 +2628,20 @@ data, and if so, how? -->
                      <ptr target="http://www.chem.ox.ac.uk/help/"/>
                   </desc>
                </trait>
-               <place oxpID="23232547" type="building" subtype="primary" obnCode="216">
-                  <tei:event when="1940" type="construction"/>
-		                <placeName>Physical Chemistry</placeName>
-                  <location when="2007-06-18T10:18:23.000">
-                     <geo>-1.254183 51.758737</geo>
-                     <note> recorded by Janet McKnight</note>
+	           </place>
+
+	           <place oxpID="23232688" type="building" subtype="primary" oucsCode="b_0062"
+                   obnCode="216">
+               <tei:event when="1940" type="construction"/>
+		             <placeName>Physical and Theoretical Chemistry Laboratory</placeName>
+                  <location when="2007-01-23T10:51:52.852Z">
+                     <geo>-1.25291347503662 51.75919438658645</geo>
+                     <note> recorded by Pete Biggs</note>
                   </location>
                </place>
-               <place oxpID="23232548" type="building" obnCode="332">
-                  <event when="2003" type="construction"/>
+	    
+	           <place oxpID="23232548" type="building" obnCode="332" oucsCode="b_0061">
+		             <event when="2003" type="construction"/>
                   <placeName>Chemistry Research Laboratory</placeName>
                   <location when="2007-06-18T10:27:50.000">
                      <geo>-1.253125 51.757892</geo>
@@ -2695,7 +2657,7 @@ data, and if so, how? -->
                   </place>
                </place>
 
-            </place>
+
             <place oucsCode="chinese" oxpID="23232550" type="department">
                <placeName>Institute for Chinese Studies</placeName>
                <location type="address">
@@ -2741,12 +2703,6 @@ data, and if so, how? -->
                      <ptr target="http://www.ling-phil.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232554" type="building">
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.26354 51.75674</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
             </place>
             <place oucsCode="clinlab" oxpID="23232555" type="department">
                <placeName>Clinical Laboratory Sciences</placeName>
@@ -2940,17 +2896,19 @@ data, and if so, how? -->
                <placeName>Clinical Trial Service Unit</placeName>
                <location type="address">
                   <address>
-                     <addrLine>Richard Doll Building, Roosevelt Drive, Headington,
- Oxford</addrLine>
+                     <addrLine>Richard Doll Building, Roosevelt Drive, Headington, Oxford</addrLine>
                      <postCode>OX3 7DG</postCode>
                   </address>
                </location>
                <trait type="url">
                   <desc>
-                     <ptr target="http://www.ctsu.ox.ac.uk/"/>
+                     <ptr target=""/>
                   </desc>
                </trait>
-               <place oxpID="23232572" type="building" subtype="primary">
+               <place oxpID="23232572" type="building" subtype="primary" obnCode="674">
+                  <tei:event when="2003" type="construction"/>
+                  <tei:event when="2005" type="acquisition"/>
+		                <placeName>Richard Doll Building</placeName>
                   <location when="2008-07-30T16:35:00">
                      <geo>-1.215088 51.752564</geo>
                      <note> recorded by Janet McKnight (from GEarth / postcode)</note>
@@ -3257,7 +3215,7 @@ data, and if so, how? -->
                </location>
                <trait type="url">
                   <desc>
-                     <ptr target="http://www.psych.ox.ac.uk/"/>
+                     <ptr target="http://www.psy.ox.ac.uk/"/>
                   </desc>
                </trait>
                <trait type="iturl">
@@ -3265,14 +3223,7 @@ data, and if so, how? -->
                      <ptr target="http://www.imsu.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232595" type="building" subtype="primary">
-                  <location when="2008-07-30T16:52:00">
-                     <geo>-1.254111 51.757926</geo>
-                     <note> recorded by Janet McKnight (from GEarth / postcode)</note>
-                  </location>
-               </place>
-
-            </place>
+           </place>
             <place oucsCode="geog" oxpID="23232596" type="department">
                <placeName>School of Geography and the Environment</placeName>
                <location type="address">
@@ -3382,8 +3333,10 @@ data, and if so, how? -->
                      <ptr target="http://www.human-sciences.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232603" type="building" subtype="primary">
-                  <placeName>Institute</placeName>
+               <place oxpID="23232603" type="building" subtype="primary" obnCode="117">
+                  <tei:event when="1873" type="construction"/>
+                  <tei:event when="1967" type="acquisition"/>
+                  <placeName>58 Banbury Road</placeName>
                   <location when="2007-01-24T10:24:19.058Z">
                      <geo>-1.26012325286865 51.76329821777863</geo>
                      <note> recorded by Natasha Heaton</note>
@@ -3411,22 +3364,22 @@ data, and if so, how? -->
                      <geo>-1.254655 51.758228</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
-               </place>
-               <place oxpID="23232606" type="building">
-                  <placeName>Reception</placeName>
-                  <location when="2007-06-18T10:34:04.000">
-                     <geo>-1.255047 51.758123</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
-               <place oxpID="23232607" type="building">
-                  <placeName>Lecture Theatre</placeName>
-                  <location when="2007-06-18T10:34:36.000">
-                     <geo>-1.255172 51.758173</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
-            </place>
+		                <place oxpID="23232606" type="room">
+		                   <placeName>Reception</placeName>
+		                   <location when="2007-06-18T10:34:04.000">
+		                      <geo>-1.255047 51.758123</geo>
+		                      <note> recorded by Janet McKnight</note>
+		                   </location>
+		                </place>
+		                <place oxpID="23232607" type="room">
+		                   <placeName>Lecture Theatre</placeName>
+		                   <location when="2007-06-18T10:34:36.000">
+		                      <geo>-1.255172 51.758173</geo>
+		                      <note> recorded by Janet McKnight</note>
+		                   </location>
+		                </place>
+	              </place>
+	           </place>
             <place oucsCode="internet" oxpID="23232608" type="department">
                <placeName>Oxford Internet Institute</placeName>
                <location type="address">
@@ -3476,15 +3429,6 @@ data, and if so, how? -->
                      <ptr target="http://www.21school.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232613" type="building" subtype="primary">
-                  <location when="2008-07-30T16:55:00">
-                     <geo>-1.254132 51.754907</geo>
-                     <note> recorded by Janet McKnight (from GEarth / postcode)</note>
-                  </location>
-                  <place oxpID="23232614" type="room">
-                     <placeName>Seminar Room 1</placeName>
-                  </place>
-               </place>
             </place>
             <place oucsCode="latcent" oxpID="23232615" type="department">
                <placeName>Latin American Centre</placeName>
@@ -4208,32 +4152,6 @@ data, and if so, how? -->
 
 
             </place>
-            <place oucsCode="physiol" oxpID="23232675" type="department">
-               <placeName>Department of Physiology</placeName>
-               <location type="address">
-                  <address>
-                     <addrLine>Parks Road, Oxford</addrLine>
-                     <postCode>OX1 3PT</postCode>
-                  </address>
-               </location>
-               <trait type="url">
-                  <desc>
-                     <ptr target="http://www.physiol.ox.ac.uk/dept/"/>
-                  </desc>
-               </trait>
-               <trait type="iturl">
-                  <desc>
-                     <ptr target="http://www.physiol.ox.ac.uk/Computing/"/>
-                  </desc>
-               </trait>
-               <place oxpID="23232676" type="building" subtype="primary">
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.25473 51.75889</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
-
-            </place>
             <place oucsCode="plant" oxpID="23232677" type="department">
                <placeName>Department of Plant Sciences</placeName>
                <location type="address">
@@ -4264,9 +4182,9 @@ data, and if so, how? -->
                <placeName>Plant Sciences Library</placeName>
                <location type="address">
                   <address>
-	                    <addrLine>South Parks Road, Oxford</addrLine>
-	                    <postCode>OX1 3RB</postCode>
-	                 </address>
+		                   <addrLine>South Parks Road, Oxford</addrLine>
+		                   <postCode>OX1 3RB</postCode>
+		                </address>
                </location>
                <trait type="url">
                   <desc>
@@ -4360,17 +4278,9 @@ data, and if so, how? -->
                </location>
                <trait type="url">
                   <desc>
-                     <ptr target="http://www.physchem.ox.ac.uk/"/>
+                     <ptr target="http://physchem.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232688" type="building" subtype="primary">
-		                <placeName>Physical and Theoretical Chemistry Laboratory</placeName>
-                  <location when="2007-01-23T10:51:52.852Z">
-                     <geo>-1.25291347503662 51.75919438658645</geo>
-                     <note> recorded by Pete Biggs</note>
-                  </location>
-               </place>
-
             </place>
             <place oucsCode="pubhealth" oxpID="23232689" type="department">
                <placeName>Division of Public Health and Primary Health Care</placeName>
@@ -4594,8 +4504,10 @@ data, and if so, how? -->
                      <ptr target="http://www.isca.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232711" type="building" subtype="primary">
-                  <placeName>Institute</placeName>
+               <place oxpID="23232711" type="building" subtype="primary" obnCode="115">
+                  <tei:event when="1869" type="construction"/>
+                  <tei:event when="1966" type="acquisition"/>
+		                <placeName>51-53 Banbury Road</placeName>
                   <location when="2007-01-24T10:28:07.258Z">
                      <geo>-1.26085281372070 51.76321853528716</geo>
                      <note> recorded by Natasha Heaton</note>
@@ -4841,14 +4753,10 @@ data, and if so, how? -->
                      <ptr target="http://www.zoo.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232730" type="building" subtype="primary">
-                  <placeName>Main Entrance</placeName>
-                  <location when="2007-01-30T08:02:17.456Z">
-                     <geo>-1.250960826873779 51.7590283661478</geo>
-                     <note> recorded by Dave Hart</note>
-                  </location>
-               </place>
-               <place oxpID="23232731" type="building" obnCode="269">
+	           </place>
+	    
+	           <place oxpID="23232731" type="building" obnCode="269" subtype="primary"
+                   oucsCode="b_0060">
                   <event when="1971" type="construction"/>
                   <placeName>Tinbergen Building</placeName>
                   <place oxpID="23232732" type="room">
@@ -4868,7 +4776,7 @@ data, and if so, how? -->
                   </place>
                </place>
 
-            </place>
+
             <place oucsCode="O_lib_ann" oxpID="23232737" type="library" olisCode="ANN">
                <placeName>St Anne's College Library</placeName>
                <trait type="liburl">
@@ -9041,16 +8949,18 @@ data, and if so, how? -->
                      <ptr target="http://www.lang.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23233558" type="building" subtype="primary" obnCode="293">
+	           </place>
+	    
+	           <place oucsCode="b_0066" oxpID="23233558" type="building" subtype="primary"
+                   obnCode="293">
                   <tei:event when="1890" type="construction"/>
 		                <placeName>Red Barn</placeName>
 		                <location when="2007-01-29T12:43:29.455Z">
                      <geo>-1.261115 51.759538</geo>
                      <note> recorded by Mike Sloane</note>
                   </location>
-               </place>
+	           </place>
 
-            </place>
             <place oucsCode="medoff" oxpID="23233559" type="uas">
                <placeName>Medical School Offices</placeName>
                <location type="address">
@@ -9331,7 +9241,9 @@ data, and if so, how? -->
                      <note> recorded by Janet McKnight</note>
                   </location>
                </place>
-               <place oxpID="23233581" type="building" obnCode="164">
+	           </place>
+
+	           <place oxpID="23233581" type="building" obnCode="164" oucsCode="b_0063">
                   <event when="1896" type="construction"/>
                   <placeName>Old Indian Institute Building</placeName>
                   <location type="address">
@@ -9343,9 +9255,8 @@ data, and if so, how? -->
                   <place oxpID="23233582" type="room">
                      <placeName>Seminar Room 1</placeName>
                   </place>
-               </place>
+	           </place>
 
-            </place>
             <place oucsCode="libsys" oxpID="23233583" type="unit" subtype="mlp">
                <placeName>Systems and Electronic Resources Service</placeName>
                <location type="address">
@@ -9699,7 +9610,7 @@ data, and if so, how? -->
                <tei:event when="2007" type="acquisition"/>
                <placeName>Oxford-Man Institute Of Quantitative Finance</placeName>
                <location type="address">
-                  <address>
+		                <address>
 		                   <addrLine>Blue Boar Court, 9 Alfred Street, Oxford</addrLine>
                   </address>
                </location>
@@ -9720,12 +9631,28 @@ data, and if so, how? -->
                   </desc>
                </trait>
             </place>
-            <place oucsCode="b_0013" oxpID="23233621" type="building">
-               <placeName>Clarendon Laboratory</placeName>
+            <place oucsCode="b_0013" oxpID="23233621" type="building" obnCode="145">
+               <tei:event when="1939" type="construction"/>
+               <placeName>Clarendon Laboratory - Lindemann</placeName>
                <location>
                   <geo>-1.256877 51.759838</geo>
                </location>
             </place>
+            <place oucsCode="b_0064" oxpID="23233676" type="building" obnCode="146">
+               <tei:event when="1949" type="construction"/>
+               <placeName>Clarendon Laboratory - Simon</placeName>
+               <location>
+                  <geo>-1.256877 51.759838</geo>
+               </location>
+            </place>
+            <place oucsCode="b_0065" oxpID="23233677" type="building" obnCode="147">
+               <tei:event when="1910" type="construction"/>
+               <placeName>Clarendon Laboratory - Townsend</placeName>
+               <location>
+                  <geo>-1.256877 51.759838</geo>
+               </location>
+            </place>
+
             <place oucsCode="b_0014" oxpID="23233622" type="building" obnCode="186">
                <event when="1964" type="construction"/>
                <placeName>Denys Wilkinson Building</placeName>
@@ -10105,7 +10032,7 @@ data, and if so, how? -->
                   </location>
 	           </place>
 
-	           <place oxpID="23233585" type="building" subtype="primary" obnCode="264"
+		          <place oxpID="23233585" type="building" subtype="primary" obnCode="264"
                    oucsCode="b_0056">
                   <tei:event when="1875" type="construction"/>
                   <placeName>Barnett House, 32-42 Wellington Square</placeName>
@@ -10868,32 +10795,36 @@ data, and if so, how? -->
             <relation name="controls" type="political" active="#offices" passive="#survey"/>
             <relation name="controls" type="political" active="#oucs" passive="#O_telecom"/>
             <relation name="controls" type="political" active="#plant" passive="#plantlib"/>
-	           <relation name="occupies" type="geo primary" active="#univ" passive="#b_0058"/>
+
+
+	           <relation name="occupies" type="geo primary" active="#clg" passive="#b_006"/>
+	           <relation name="occupies" type="geo primary" active="#langteach" passive="#b_0066"/>
+	           <relation name="occupies" type="geo primary" active="#anat" passive="#b_0039"/>
+	           <relation name="occupies" type="geo" active="#anat" passive="#b_0043"/>
+
+	           <relation name="occupies" type="geo" active="#histfac" passive="#b_0063"/>
+	           <relation name="occupies" type="geo primary" active="#jmar" passive="#b_0063"/>
+
+	           <relation name="occupies" type="geo primary" active="#appsoc" passive="#b_0056"/>
+
+	           <relation name="occupies" type="geo primary" active="#ptchem" passive="#b_0062"/>
+	           <relation name="occupies" type="geo primary" active="#chem" passive="#b_0061"/>
+	           <relation name="occupies" type="geo primary" active="#O_lcb" passive="#b_0061"/>
+
+	           <relation name="occupies" type="geo primary" active="#biomed" passive="#b_0060"/>
+	           <relation name="occupies" type="geo primary" active="#expsych" passive="#b_0060"/>
+	           <relation name="occupies" type="geo primary" active="#zoo" passive="#b_0060"/>
 	           <relation name="occupies" type="geo primary" active="#O_geg" passive="#b_0058"/>
+	           <relation name="occupies" type="geo primary" active="#univ" passive="#b_0058"/>
 	           <relation name="occupies" type="geo" active="#oncology" passive="#b_0057"/>
-            <relation name="occupies" type="geo" active="#O_ccvtm" passive="#b_0057"/>
-            <relation name="occupies" type="geo" active="#pru" passive="#b_0057"/>
-            <relation name="occupies" type="geo" active="#qeh" passive="#b_0054"/>
-            <relation name="occupies" type="geo" active="#rsc" passive="#b_0054"/>
-            <relation name="occupies" type="geo" active="#conted" passive="#b_0015"/>
-            <relation name="occupies" type="geo" active="#conted" passive="#b_0030"/>
-            <relation name="occupies" type="geo" active="#conted" passive="#b_0055"/>
-            <relation name="occupies" type="geo" active="#conted" passive="#b_0031"/>
-            <relation name="occupies" type="geo" active="#hclu" passive="#b_0018"/>
-            <relation name="occupies" type="geo" active="#kell" passive="#b_0031"/>
-            <relation name="occupies" type="geo" active="#manstud" passive="#b_0019"/>
-            <relation name="occupies" type="geo" active="#medoff" passive="#b_0018"/>
-            <relation name="occupies" type="geo" active="#molmed" passive="#b_0018"/>
-            <relation name="occupies" type="geo" active="#mpls" passive="#b_0029"/>
+            <!-- relation name="occupies" type="geo primary" active="#O_ceu" passive="#b_0024"/ -->
             <relation name="occupies" type="geo primary" active="#O_acdivcomms" passive="#b_0021"/>
             <relation name="occupies" type="geo primary" active="#O_alumni" passive="#b_0027"/>
-            <relation name="occupies" type="geo primary" active="#ousoc" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_asuc" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_card" passive="#b_0016"/>
             <relation name="occupies" type="geo primary" active="#O_ccmp" passive="#b_0024"/>
             <relation name="occupies" type="geo primary" active="#O_cebm" passive="#b_0017"/>
             <relation name="occupies" type="geo primary" active="#O_centraladmin" passive="#b_0027"/>
-            <!-- relation name="occupies" type="geo primary" active="#O_ceu" passive="#b_0024"/ -->
             <relation name="occupies" type="geo primary" active="#O_clpic" passive="#b_0003"/>
             <relation name="occupies" type="geo primary" active="#O_councilsec" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_dma" passive="#b_0021"/>
@@ -10907,7 +10838,6 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#O_intstrat" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_landagent" passive="#b_0015"/>
             <relation name="occupies" type="geo primary" active="#O_lib_cai" passive="#b_0036"/>
-            <relation name="occupies" type="geo primary" active="#imsu" passive="#b_0036"/>
             <relation name="occupies" type="geo primary" active="#O_lib_ind_3" passive="#b_0038"/>
             <relation name="occupies" type="geo primary" active="#O_lib_ous" passive="#b_0037"/>
             <relation name="occupies" type="geo primary" active="#O_lib_rho_1" passive="#b_0038"/>
@@ -10979,6 +10909,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#hsru" passive="#b_0017"/>
             <relation name="occupies" type="geo primary" active="#humgen" passive="#b_0024"/>
             <relation name="occupies" type="geo primary" active="#ict" passive="#b_0005"/>
+            <relation name="occupies" type="geo primary" active="#imsu" passive="#b_0036"/>
             <relation name="occupies" type="geo primary" active="#isis" passive="#b_0015"/>
             <relation name="occupies" type="geo primary" active="#law" passive="#b_0025"/>
             <relation name="occupies" type="geo primary" active="#lawlib_3" passive="#b_0038"/>
@@ -10986,9 +10917,8 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#mcdp" passive="#b_0039"/>
             <relation name="occupies" type="geo primary" active="#medsci" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#metres" passive="#b_0040"/>
-            <relation name="occupies" type="geo primary" active="#molbiol" passive="#b_0042"/>
             <relation name="occupies" type="geo primary" active="#modlang" passive="#b_0056"/>
-            <relation name="occupies" type="geo primary" active="#phone" passive="#b_0056"/>
+            <relation name="occupies" type="geo primary" active="#molbiol" passive="#b_0042"/>
             <relation name="occupies" type="geo primary" active="#npeu" passive="#b_0017"/>
             <relation name="occupies" type="geo primary" active="#obst" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#ocdem" passive="#b_0040"/>
@@ -11002,11 +10932,13 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0049"/>
             <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0050"/>
             <relation name="occupies" type="geo primary" active="#oucs" passive="#b_0051"/>
+            <relation name="occupies" type="geo primary" active="#ousoc" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#oxman" passive="#b_0010"/>
             <relation name="occupies" type="geo primary" active="#paed" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#particle" passive="#b_0014"/>
             <relation name="occupies" type="geo primary" active="#philfac" passive="#b_0030"/>
             <relation name="occupies" type="geo primary" active="#phillib" passive="#b_0002"/>
+            <relation name="occupies" type="geo primary" active="#phone" passive="#b_0056"/>
             <relation name="occupies" type="geo primary" active="#physics" passive="#b_0014"/>
             <relation name="occupies" type="geo primary" active="#politics" passive="#b_0020"/>
             <relation name="occupies" type="geo primary" active="#radlib" passive="#b_0032"/>
@@ -11029,6 +10961,20 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#ulib" passive="#b_0011"/>
             <relation name="occupies" type="geo primary" active="#vet" passive="#b_0043"/>
             <relation name="occupies" type="geo primary" active="#voltaire" passive="#b_0009"/>
+            <relation name="occupies" type="geo" active="#O_ccvtm" passive="#b_0057"/>
+            <relation name="occupies" type="geo" active="#conted" passive="#b_0015"/>
+            <relation name="occupies" type="geo" active="#conted" passive="#b_0030"/>
+            <relation name="occupies" type="geo" active="#conted" passive="#b_0031"/>
+            <relation name="occupies" type="geo" active="#conted" passive="#b_0055"/>
+            <relation name="occupies" type="geo" active="#hclu" passive="#b_0018"/>
+            <relation name="occupies" type="geo" active="#kell" passive="#b_0031"/>
+            <relation name="occupies" type="geo" active="#manstud" passive="#b_0019"/>
+            <relation name="occupies" type="geo" active="#medoff" passive="#b_0018"/>
+            <relation name="occupies" type="geo" active="#molmed" passive="#b_0018"/>
+            <relation name="occupies" type="geo" active="#mpls" passive="#b_0029"/>
+            <relation name="occupies" type="geo" active="#pru" passive="#b_0057"/>
+            <relation name="occupies" type="geo" active="#qeh" passive="#b_0054"/>
+            <relation name="occupies" type="geo" active="#rsc" passive="#b_0054"/>
 
 	           <!--
              <relation name="uses" type="room" active="#O_bsp" passive="#r_0001"/>

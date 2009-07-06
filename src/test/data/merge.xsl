@@ -60,8 +60,8 @@
 	</xsl:when>
 	<xsl:when test="$name='Oxford Union Society'"/>
 	<xsl:when test="$name='57 Woodstock Road'"/>
+	<xsl:when test="$parentname='Oxford University Press'"/>
 	<xsl:when test="$parentname='Blackfriars'"/>
-	<xsl:when test="$parentname='Christ Church'"/>
 	<xsl:when test="$parentname='Christ Church'"/>
 	<xsl:when test="contains($parentname,'Greyfriar')"/>
 	<xsl:when test="contains($parentname,'St Stephen')"/>
