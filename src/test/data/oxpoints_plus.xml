@@ -1737,7 +1737,7 @@
                </place>
             </place>
 
-	           <place oxpID="23232477" type="building" oucsCode="b_0057" subtype="primary">
+	           <place oxpID="23232477" type="building" oucsCode="b_0058" subtype="primary">
                   <placeName>Lodge</placeName>
                   <location when="2007-05-22T14:29:16.292+01:00">
                      <geo rend="179">-1.251990795135498 51.752626152445906</geo>
