@@ -8485,8 +8485,10 @@ data, and if so, how? -->
             <place oucsCode="O_finance" oxpID="23233521" type="uas">
                <placeName>Finance Division</placeName>
                <location type="address">
+                 <address>
                   <addrLine>23-38 Hythe Bridge Street, Oxford</addrLine>
                   <postCode>OX1 2EP</postCode>
+                 </address>
                </location>
                <trait type="url">
                   <desc>
