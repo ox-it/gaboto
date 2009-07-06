@@ -75,7 +75,11 @@
 	  <xsl:message>Found MULTIPLE matches for  <xsl:value-of
 	  select="$name"/></xsl:message>
 	</xsl:when>
+	<xsl:when test="$name='NERC Centre for Ecology and Hydrology'"/>
+	<xsl:when test="$parentname='European Humanities Research Centre'"/>
 	<xsl:when test="$name='Oxford Union Society'"/>
+	<xsl:when test="$name='Rhodes House'"/>
+	<xsl:when test="$name='Security Service'"/>
 	<xsl:when test="$name='57 Woodstock Road'"/>
 	<xsl:when test="$parentname='Oxford University Press'"/>
 	<xsl:when test="$parentname='Blackfriars'"/>
@@ -88,6 +92,7 @@
 	<xsl:when test="contains($name,' College') or
 			contains($parentname,' College')"/>
 	<xsl:when test="contains($name,' Hall') or contains($parentname,' Hall')"/>
+	<xsl:when test="$parentname='Oxford University Student Union'"/>
 	<xsl:when test="$name=''">
 	  <xsl:message>NO MATCH. <xsl:value-of select="$id"/>. Empty name. Parent is <xsl:value-of select="$parentname"/></xsl:message>
 	</xsl:when>
