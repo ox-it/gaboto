@@ -10,7 +10,7 @@
     <property name="build.dir"     value="bin"/>
     <property name="lib.dir"       value="lib"/>
     <property name="documentation.dir"     value="documentation"/>
-    <property name="example-data.dir"     value="exampledata"/>
+    <property name="example-data.dir"     value="rdfdata"/>
     <property name="deploy.tmp.dir"     value="deploy_tmp"/>
     <property name="deploy.dir"     value="deploy"/>
     <property name="vocab.dir"   value="src/main/java/org/oucs/gaboto/vocabulary"/>
@@ -246,7 +246,7 @@
          <jar destfile="${deploy.tmp.dir}/gaboto.jar" 
                                  basedir="${build.dir}" includes="**/*.*">
                 <manifest>
-                  <attribute name="Created-By" value="Arno Mittelbach"/>
+                  <attribute name="Created-By" value="Tim Pizey"/>
                   
                   <attribute name="Implementation-Title" value="gaboto"/>
                   <attribute name="Implementation-Version" value="${version}"/>
