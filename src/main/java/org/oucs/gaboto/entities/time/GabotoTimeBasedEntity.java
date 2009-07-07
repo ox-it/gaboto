@@ -353,14 +353,14 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
 
     // add timespan to beginning and end if necessary.
     List<TimeSpan> timespans = new ArrayList<TimeSpan>();
-    if (tmpTimespans.size() > 0 && !tmpTimespans.get(0).getBegin().aboutTheSame(getTimeSpan().getBegin()))
+    if (tmpTimespans.size() > 0 && !tmpTimespans.get(0).getBegin().canUnify(getTimeSpan().getBegin()))
       timespans.add(TimeSpan.createFromInstants(getTimeSpan().getBegin(), tmpTimespans.get(0).getBegin()));
     else if (tmpTimespans.size() == 0)
       timespans.add(getTimeSpan());
 
     timespans.addAll(tmpTimespans);
 
-    if (!timespans.get(timespans.size() - 1).getEnd().aboutTheSame(getTimeSpan().getEnd())) {
+    if (!timespans.get(timespans.size() - 1).getEnd().canUnify(getTimeSpan().getEnd())) {
       timespans.add(TimeSpan.createFromInstants(timespans.get(timespans.size() - 1).getEnd(), getTimeSpan().getEnd()));
     }
 
@@ -395,7 +395,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
     // loop over propertyMap and try also to find the earliest possible
     // occurence
     for (Entry<TimeSpan, List<Property>> entry : propertyMap.entrySet()) {
-      if (entry.getKey().contains(ti) && (!ti.aboutTheSame(entry.getKey().getEnd()) || !containsTimeSpanWithBegin(ti))) {
+      if (entry.getKey().contains(ti) && (!ti.canUnify(entry.getKey().getEnd()) || !containsTimeSpanWithBegin(ti))) {
         // relevant property map
         for (Property p : entry.getValue()) {
           // set property in entity
@@ -449,7 +449,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    */
   private boolean containsTimeSpanWithBegin(TimeInstant ti) {
     for (TimeSpan tsToTest : getTimeSpansSorted())
-      if (tsToTest.getBegin().aboutTheSame(ti))
+      if (tsToTest.getBegin().canUnify(ti))
         return true;
 
     return false;
@@ -556,11 +556,11 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
               + ") is not in the range of this entity's lifetime (" + lifespan + ").");
 
     // do we have to adjust timespans?
-    if (getTimeSpan().getBegin().aboutTheSame(ts.getBegin()) && !getTimeSpan().getBegin().equals(ts.getBegin())) {
+    if (getTimeSpan().getBegin().canUnify(ts.getBegin()) && !getTimeSpan().getBegin().equals(ts.getBegin())) {
       logger.debug("Adjust begin of time span " + ts.getBegin() + " to " + getTimeSpan().getBegin());
       ts = TimeSpan.createFromInstants(getTimeSpan().getBegin(), ts.getEnd());
     }
-    if (getTimeSpan().getEnd().aboutTheSame(ts.getEnd()) && !getTimeSpan().getEnd().equals(ts.getEnd())) {
+    if (getTimeSpan().getEnd().canUnify(ts.getEnd()) && !getTimeSpan().getEnd().equals(ts.getEnd())) {
       logger.debug("Adjust end of time span " + ts.getEnd() + " to " + getTimeSpan().getEnd());
       ts = TimeSpan.createFromInstants(ts.getBegin(), getTimeSpan().getEnd());
     }
@@ -573,13 +573,13 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
       Property tempProp = removeProperty(universalProperties, propertyURI);
 
       // new small time span before the new one
-      if (!ts.getBegin().aboutTheSame(getTimeSpan().getBegin())) {
+      if (!ts.getBegin().canUnify(getTimeSpan().getBegin())) {
         TimeSpan newBeforeTS = TimeSpan.createFromInstants(getTimeSpan().getBegin(), ts.getBegin());
         propertiesToAdd.add(new Object[] { newBeforeTS, tempProp });
       }
 
       // new small one after the new one
-      if (!ts.getEnd().aboutTheSame(getTimeSpan().getEnd())) {
+      if (!ts.getEnd().canUnify(getTimeSpan().getEnd())) {
         TimeSpan newAfterTS = TimeSpan.createFromInstants(ts.getEnd(), getTimeSpan().getEnd());
         propertiesToAdd.add(new Object[] { newAfterTS, tempProp });
       }
@@ -601,13 +601,13 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
           Property tempProp = removeProperty(entry.getValue(), propertyURI);
 
           // new small time span before the new one
-          if (!entry.getKey().getBegin().aboutTheSame(ts.getBegin())) {
+          if (!entry.getKey().getBegin().canUnify(ts.getBegin())) {
             TimeSpan newBeforeTS = TimeSpan.createFromInstants(entry.getKey().getBegin(), ts.getBegin());
             propertiesToAdd.add(new Object[] { newBeforeTS, tempProp });
           }
 
           // new small one after the new one
-          if (!entry.getKey().getEnd().aboutTheSame(ts.getEnd())) {
+          if (!entry.getKey().getEnd().canUnify(ts.getEnd())) {
             TimeSpan newAfterTS = TimeSpan.createFromInstants(ts.getEnd(), entry.getKey().getEnd());
             propertiesToAdd.add(new Object[] { newAfterTS, tempProp });
           }
