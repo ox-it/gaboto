@@ -92,12 +92,13 @@ import de.fuberlin.wiwiss.ng4j.Quad;
  * </p>
  * 
  * <p>
- * It further more provides methods to query the data and to create
- * {@link GabotoSnapshot}s (containing a subset of the data).
+ * It provides methods to query the data and to create {@link GabotoSnapshot}s 
+ * containing a subset of the data.
  * </p>
  * 
  * <p>
- * A description of the underlying data model can be found at <a href="http://oxforderewhon.wordpress.com/2008/12/10/rdf-and-the-time-dimension-part-2/#more-201"
+ * A description of the underlying data model can be found at 
+ * <a href="http://oxforderewhon.wordpress.com/2008/12/10/rdf-and-the-time-dimension-part-2/#more-201"
  * > RDF and the Time Dimension - Part 2</a>. Gaboto is using the solution with
  * named graphs rather than reification.
  * </p>
@@ -124,20 +125,18 @@ public class Gaboto {
   long id = 23232322;
 
   /**
-   * Stores update listeners.
+   * Update listeners.
    */
   private List<UpdateListener> updateListener = new ArrayList<UpdateListener>();
 
   /**
-   * Stores named graph set.
+   * Named graph set. 
    */
   private NamedGraphSet ngs;
 
-  /**
-	 * 
-	 */
   private TimeDimensionIndexer timeIdx;
 
+  /** context description graph */
   private Model cdg;
 
   private GabotoConfiguration config;
@@ -193,8 +192,7 @@ public class Gaboto {
    * @throws NoTimeIndexSetException
    *           Thrown if no time dimension index was created.
    */
-  public TimeDimensionIndexer getTimeDimensionIndexer()
-      throws NoTimeIndexSetException {
+  public TimeDimensionIndexer getTimeDimensionIndexer() {
     if (timeIdx == null)
       throw new NoTimeIndexSetException();
     return timeIdx;
@@ -270,10 +268,8 @@ public class Gaboto {
    */
   public GabotoSnapshot getSnapshot(TimeInstant ti)
       throws NoTimeIndexSetException {
-    logger.debug("create snapshot for time instant " + ti);
-    Collection<String> graphURIs = getTimeDimensionIndexer()
-        .getGraphsForInstant(ti);
-
+    logger.debug("Creating snapshot for time instant " + ti);
+    Collection<String> graphURIs = getTimeDimensionIndexer().getGraphsForInstant(ti);
     return getSnapshot(graphURIs);
   }
 
@@ -324,9 +320,10 @@ public class Gaboto {
     // create snapshot
     GabotoSnapshot snapshot = new GabotoSnapshot(model, this);
 
+    logger.debug("Adding " + graphURIs.size() + " graphs to snapshot");
     // fill model
     for (String g : graphURIs) {
-      logger.debug("add graph to snapshot: " + g);
+      logger.debug("Adding graph to snapshot: " + g);
       NamedGraph graph = ngs.getGraph(g);
       if (graph == null)
         throw new IllegalArgumentException("Unknown graph: " + g);
@@ -401,8 +398,11 @@ public class Gaboto {
   synchronized public void change(GabotoEntity entity) {
     try {
       purge(entity);
-      add(entity);
     } catch (EntityDoesNotExistException e) {
+      // Add is a change
+    } 
+    try {
+      add(entity);
     } catch (EntityAlreadyExistsException e) {
       CorruptDataException cde = new CorruptDataException(
           "Something went teribly wrong .. I just purged " + entity.getUri()
@@ -1126,34 +1126,7 @@ public class Gaboto {
             + " has an invalid type.");
       }
 
-      String name = quad.getObject().getLocalName();
-      String packageName = GabotoEntity.class.getPackage().getName();
-
-      // try and load type
-      try {
-        Class<?> clazz = Class.forName(packageName + "." + name);
-        Object object = clazz.newInstance();
-        if (!(object instanceof GabotoEntity))
-          throw new CorruptDataException("Type for uri " + uri
-              + " should point to an GabotoEntity.");
-
-        // cast object
-        GabotoEntity entity = (GabotoEntity)object;
-
-        // return type
-        return entity.getType();
-      } catch (ClassNotFoundException e) {
-        throw new GabotoRuntimeException("Could not find associated type for uri: " + uri
-                + ". Tried to load class " + packageName + "." + name, e);
-      } catch (InstantiationException e) {
-        throw  new CorruptDataException("Could not instantiate class " + packageName + "." + name, e);
-      } catch (IllegalAccessException e) {
-        throw new CorruptDataException(
-            "Could not instantiate class " + packageName + "." + name, e);
-      } catch (Exception e) { 
-        throw new GabotoRuntimeException("Could not find associated type for uri: " + uri
-              + ". Tried to load class " + packageName + "." + name, e);
-      }
+      return quad.getObject().getURI();
     } else 
       throw new GabotoRuntimeException("No quad found");
   }
