@@ -40,7 +40,7 @@ package org.oucs.gaboto.timedim;
 public class TimeUtils {
 
 	/**
-	 * You could also refer to this as the begin of time.
+	 * You could also refer to this as the beginning of time.
 	 * 
 	 * Integer.MIN_INT does not work since the duration is also represented as an integer.
 	 * This might be changed at some point to use longs instead of int.
@@ -51,7 +51,7 @@ public class TimeUtils {
 	 * You could also refer to this as the end of time or the big crunch ..
 	 * 
 	 * Integer.MAXINT does not work since the duration is also represented as an integer.
-	 * This might be changed at some point to use longs instead of int.
+	 * This might be changed at some point to use longs instead of integers.
 	 */
 	public static final TimeInstant DOOMS_DAY = new TimeInstant(100000000, 11, 30);
 	
