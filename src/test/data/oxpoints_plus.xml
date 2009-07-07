@@ -2811,8 +2811,9 @@ data, and if so, how? -->
                      <ptr target="http://web.comlab.ox.ac.uk/internal/comp-net/"/>
                   </desc>
                </trait>
+	    </place>
 
-               <place oxpID="23232562" type="building" obnCode="173">
+            <place oucsCode="b_0028" oxpID="23232562" type="building" obnCode="173">
                   <event when="1880" type="construction"/>
                   <event when="1934" type="acquisition"/>
                   <placeName>8-11 Keble Road</placeName>
@@ -2821,9 +2822,9 @@ data, and if so, how? -->
                   </place>
                   <place oxpID="23232564" type="room">
                      <placeName>Room 051</placeName>
-                  </place>
-               </place>
-            </place>
+		  </place>
+	    </place>
+
 
             <place oucsCode="compas" oxpID="23232565" type="department">
                <placeName>Centre on Migration, Policy and Society</placeName>
@@ -9771,12 +9772,6 @@ data, and if so, how? -->
                   </location>
                </place>
 
-            </place>
-            <place oucsCode="b_0028" oxpID="23233639" type="building">
-               <placeName>Wolfson Building, Parks Road, Oxford</placeName>
-               <location>
-                  <geo>-1.258090 51.759930</geo>
-               </location>
             </place>
             <place oucsCode="b_0029" oxpID="23233640" type="building" obnCode="193">
                <event when="1913" type="construction"/>
