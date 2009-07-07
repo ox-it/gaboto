@@ -66,6 +66,7 @@ import com.hp.hpl.jena.graph.Node;
 @SuppressWarnings("boxing")
 public class TestGabotoTimeBasedEntity {
   static Gaboto oxp;
+  
   @BeforeClass
   public static void setUp() throws Exception {
     GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
@@ -169,7 +170,6 @@ public class TestGabotoTimeBasedEntity {
     System.out.println();
   }
 
-  
   @Test
   public void testLoadingEntitiesSimple() throws GabotoException {
     //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
@@ -257,7 +257,6 @@ public class TestGabotoTimeBasedEntity {
     }
   }
 
-  // Not sure how or when this broke
   @Test
   public void testAddEntityOverflow() throws EntityAlreadyExistsException,
       ResourceDoesNotExistException {
