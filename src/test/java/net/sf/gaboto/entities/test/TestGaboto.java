@@ -116,12 +116,12 @@ public class TestGaboto {
 		String uri = TimeUtils.generateRandomURI();
 		Building b = new Building();
 		b.setUri(uri);
-		b.setTimeSpan(new TimeSpan(500,0,0,200,10,10));
+		b.setTimeSpan(new TimeSpan(500,1,1,200,10,10));
 		b.setName("Abcdef");
 		
 		oxp.add(b);
 		
-		Building b_loaded = (Building) oxp_m.getEntity(uri, new TimeInstant(600,0,0));
+		Building b_loaded = (Building) oxp_m.getEntity(uri, new TimeInstant(600,1,1));
 		assertNotNull("Should have found something", b_loaded);
 		assertEquals(b_loaded.getName(), b.getName());
 		assertEquals(b_loaded.getTimeSpan(), b.getTimeSpan());
@@ -148,7 +148,7 @@ public class TestGaboto {
 		it = oxp.getNamedGraphSet().findQuads(Node.ANY, Node.createURI(u.getUri()), Node.ANY, Node.ANY);
 		assertTrue(! it.hasNext());
 	}
-	//FIXME
+	@Test
 	public void testGetEntityURIs() throws EntityDoesNotExistException{
 		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
 		
