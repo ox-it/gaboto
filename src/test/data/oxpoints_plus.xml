@@ -10982,119 +10982,119 @@ data, and if so, how? -->
          </listPlace>
 
          <listPlace>
-            <place type="building" obnCode="101" oucsCode="23233683" oxpID="e_1">
+            <place type="building" obnCode="101" oxpID="23233683" oucsCode="e_1">
                <placeName>Dartington House</placeName>
                <event when="1970" type="construction"/>
                <event when="1970" type="acquisition"/>
             </place>
-            <place type="building" obnCode="105" oucsCode="23233685" oxpID="e_3">
+            <place type="building" obnCode="105" oxpID="23233685" oucsCode="e_3">
                <placeName>Old Observatory</placeName>
                <event when="1875" type="construction"/>
             </place>
-            <place type="building" obnCode="110" oucsCode="23233690" oxpID="e_8">
+            <place type="building" obnCode="110" oxpID="23233690" oucsCode="e_8">
                <placeName>21 Banbury Road</placeName>
                <event when="1879" type="construction"/>
                <event when="1957" type="acquisition"/>
             </place>
-            <place type="building" obnCode="111" oucsCode="23233691" oxpID="e_9">
+            <place type="building" obnCode="111" oxpID="23233691" oucsCode="e_9">
                <placeName>43 Banbury Road</placeName>
                <event when="1885" type="construction"/>
                <event when="1966" type="acquisition"/>
             </place>
-            <place type="building" obnCode="119" oucsCode="23233697" oxpID="e_15">
+            <place type="building" obnCode="119" oxpID="23233697" oucsCode="e_15">
                <placeName>61 Banbury Road</placeName>
                <event when="1868" type="construction"/>
                <event when="1966" type="acquisition"/>
             </place>
-            <place type="building" obnCode="123" oucsCode="23233699" oxpID="e_17">
+            <place type="building" obnCode="123" oxpID="23233699" oucsCode="e_17">
                <placeName>37 Beaumont Street</placeName>
                <event when="1837" type="construction"/>
                <event when="1940" type="acquisition"/>
             </place>
-            <place type="building" obnCode="126" oucsCode="23233702" oxpID="e_20">
+            <place type="building" obnCode="126" oxpID="23233702" oucsCode="e_20">
                <placeName>13 Bevington Road</placeName>
                <event when="1868" type="construction"/>
                <event when="1966" type="acquisition"/>
             </place>
-            <place type="building" obnCode="130" oucsCode="23233703" oxpID="e_21">
+            <place type="building" obnCode="130" oxpID="23233703" oucsCode="e_21">
                <placeName>Bodleian Library</placeName>
                <event when="1939" type="construction"/>
             </place>
-            <place type="building" obnCode="138" oucsCode="23233707" oxpID="e_25">
+            <place type="building" obnCode="138" oxpID="23233707" oucsCode="e_25">
                <placeName>Botanic Garden Cottage</placeName>
                <event when="1880" type="construction"/>
                <event when="1880" type="acquisition"/>
             </place>
-            <place type="building" obnCode="141" oucsCode="23233709" oxpID="e_27">
+            <place type="building" obnCode="141" oxpID="23233709" oucsCode="e_27">
                <placeName>Nuneham - Old Sawmill</placeName>
                <event when="1945" type="construction"/>
                <event when="1948" type="acquisition"/>
             </place>
-            <place type="building" obnCode="143" oucsCode="23233710" oxpID="e_28">
+            <place type="building" obnCode="143" oxpID="23233710" oucsCode="e_28">
                <placeName>Central Cycle Shelter</placeName>
                <event when="1962" type="construction"/>
             </place>
-            <place type="building" obnCode="148" oucsCode="23233715" oxpID="e_33">
+            <place type="building" obnCode="148" oxpID="23233715" oucsCode="e_33">
                <placeName>Clarendon Lodge</placeName>
                <event when="1939" type="construction"/>
             </place>
-            <place type="building" obnCode="157" oucsCode="23233721" oxpID="e_39">
+            <place type="building" obnCode="157" oxpID="23233721" oucsCode="e_39">
                <placeName>Sadler House</placeName>
                <event when="1875" type="construction"/>
             </place>
-            <place type="building" obnCode="162" oucsCode="23233725" oxpID="e_43">
+            <place type="building" obnCode="162" oxpID="23233725" oucsCode="e_43">
                <placeName>2 South Parks Road</placeName>
                <event when="1866" type="construction"/>
                <event when="1963" type="acquisition"/>
             </place>
-            <place type="building" obnCode="167" oucsCode="23233730" oxpID="e_48">
+            <place type="building" obnCode="167" oxpID="23233730" oucsCode="e_48">
                <placeName>The Pauling Centre, 58a Banbury Road, Oxford</placeName>
                <event when="1981" type="construction"/>
             </place>
-            <place type="building" obnCode="171" oucsCode="23233733" oxpID="e_51">
+            <place type="building" obnCode="171" oxpID="23233733" oucsCode="e_51">
                <placeName>5-6 Keble Road</placeName>
                <event when="1880" type="construction"/>
                <event when="1934" type="acquisition"/>
             </place>
-            <place type="building" obnCode="172" oucsCode="23233734" oxpID="e_52">
+            <place type="building" obnCode="172" oxpID="23233734" oucsCode="e_52">
                <placeName>7 Keble Road</placeName>
                <event when="1880" type="construction"/>
                <event when="1934" type="acquisition"/>
             </place>
-            <place type="building" obnCode="180" oucsCode="23233740" oxpID="e_58">
+            <place type="building" obnCode="180" oxpID="23233740" oucsCode="e_58">
                <placeName>Donald Woods Building</placeName>
                <event when="1961" type="construction"/>
             </place>
-            <place type="building" obnCode="184" oucsCode="23233744" oxpID="e_62">
+            <place type="building" obnCode="184" oxpID="23233744" oucsCode="e_62">
                <placeName>Bruner Building, 28 Norham Gardens</placeName>
                <event when="1875" type="construction"/>
                <event when="1972" type="acquisition"/>
             </place>
-            <place type="building" obnCode="185" oucsCode="23233745" oxpID="e_63">
+            <place type="building" obnCode="185" oxpID="23233745" oucsCode="e_63">
                <placeName>Bruner Building, 30 Norham Gardens</placeName>
                <event when="1875" type="construction"/>
                <event when="1972" type="acquisition"/>
             </place>
-            <place type="building" obnCode="187" oucsCode="23233747" oxpID="e_65">
+            <place type="building" obnCode="187" oxpID="23233747" oucsCode="e_65">
                <placeName>Nuneham - Church</placeName>
                <event when="1850" type="construction"/>
                <event when="1979" type="acquisition"/>
             </place>
-            <place type="building" obnCode="195" oucsCode="23233752" oxpID="e_70">
+            <place type="building" obnCode="195" oxpID="23233752" oucsCode="e_70">
                <placeName>12-13 Parks Road</placeName>
                <event when="1880" type="construction"/>
                <event when="1934" type="acquisition"/>
             </place>
-            <place type="building" obnCode="196" oucsCode="23233753" oxpID="e_71">
+            <place type="building" obnCode="196" oxpID="23233753" oucsCode="e_71">
                <placeName>14-15 Parks Road</placeName>
                <event when="1880" type="construction"/>
                <event when="1934" type="acquisition"/>
             </place>
-            <place type="building" obnCode="197" oucsCode="23233754" oxpID="e_72">
+            <place type="building" obnCode="197" oxpID="23233754" oucsCode="e_72">
                <placeName>Jenkin Building</placeName>
                <event when="1914" type="construction"/>
             </place>
-            <place type="building" obnCode="224" oucsCode="23233759" oxpID="e_77">
+            <place type="building" obnCode="224" oxpID="23233759" oucsCode="e_77">
                <placeName>Radcliffe Camera</placeName>
                <event when="1747" type="construction"/>
 	       <location when="2007-05-22T17:08:49.467+01:00">
@@ -11102,326 +11102,326 @@ data, and if so, how? -->
 		 <note> recorded by Owen Massey</note>
 	       </location>
             </place>
-            <place type="building" obnCode="227" oucsCode="23233761" oxpID="e_79">
+            <place type="building" obnCode="227" oxpID="23233761" oucsCode="e_79">
                <placeName>Richard Burton Building</placeName>
                <event when="1974" type="construction"/>
                <event when="1974" type="acquisition"/>
             </place>
-            <place type="building" obnCode="231" oucsCode="23233763" oxpID="e_81">
+            <place type="building" obnCode="231" oxpID="23233763" oucsCode="e_81">
                <placeName>39a St Giles</placeName>
                <event when="1850" type="construction"/>
                <event when="1927" type="acquisition"/>
             </place>
-            <place type="building" obnCode="240" oucsCode="23233770" oxpID="e_88">
+            <place type="building" obnCode="240" oxpID="23233770" oucsCode="e_88">
                <placeName>Sports Centre Caretaker</placeName>
                <event when="1965" type="construction"/>
             </place>
-            <place type="building" obnCode="241" oucsCode="23233771" oxpID="e_89">
+            <place type="building" obnCode="241" oxpID="23233771" oucsCode="e_89">
                <placeName>Sports Centre Cricket</placeName>
                <event when="1980" type="construction"/>
             </place>
-            <place type="building" obnCode="242" oucsCode="23233772" oxpID="e_90">
+            <place type="building" obnCode="242" oxpID="23233772" oucsCode="e_90">
                <placeName>Sports Centre Gymnasium</placeName>
                <event when="1965" type="construction"/>
             </place>
-            <place type="building" obnCode="244" oucsCode="23233773" oxpID="e_91">
+            <place type="building" obnCode="244" oxpID="23233773" oucsCode="e_91">
                <placeName>Sports Centre Squash</placeName>
                <event when="1975" type="construction"/>
             </place>
-            <place type="building" obnCode="248" oucsCode="23233776" oxpID="e_94">
+            <place type="building" obnCode="248" oxpID="23233776" oucsCode="e_94">
                <placeName>Summertown House Mansion</placeName>
                <event when="1880" type="construction"/>
                <event when="1947" type="acquisition"/>
             </place>
-            <place type="building" obnCode="265" oucsCode="23233787" oxpID="e_105">
+            <place type="building" obnCode="265" oxpID="23233787" oucsCode="e_105">
                <placeName>43-48 Wellington Square</placeName>
                <event when="1875" type="construction"/>
             </place>
-            <place type="building" obnCode="267" oucsCode="23233788" oxpID="e_106">
+            <place type="building" obnCode="267" oxpID="23233788" oucsCode="e_106">
                <placeName>John Krebs Field Station, Wytham</placeName>
                <event when="1952" type="construction"/>
             </place>
-            <place type="building" obnCode="268" oucsCode="23233789" oxpID="e_107">
+            <place type="building" obnCode="268" oxpID="23233789" oucsCode="e_107">
                <placeName>Technician, Wytham</placeName>
                <event when="1952" type="construction"/>
             </place>
-            <place type="building" obnCode="270" oucsCode="23233791" oxpID="e_109">
+            <place type="building" obnCode="270" oxpID="23233791" oucsCode="e_109">
                <placeName>Atmospheric Physics</placeName>
                <event when="1898" type="construction"/>
             </place>
-            <place type="building" obnCode="273" oucsCode="23233793" oxpID="e_111">
+            <place type="building" obnCode="273" oxpID="23233793" oucsCode="e_111">
                <placeName>Ruskin Annex, 128 Bullingdon Road</placeName>
                <event when="1930" type="construction"/>
             </place>
-            <place type="building" obnCode="276" oucsCode="23233795" oxpID="e_113">
+            <place type="building" obnCode="276" oxpID="23233795" oucsCode="e_113">
                <placeName>Engineering And Technology Building</placeName>
                <event when="1989" type="construction"/>
             </place>
-            <place type="building" obnCode="282" oucsCode="23233798" oxpID="e_116">
+            <place type="building" obnCode="282" oxpID="23233798" oucsCode="e_116">
                <placeName>75 Banbury Road</placeName>
                <event when="1840" type="construction"/>
                <event when="2003" type="acquisition"/>
             </place>
-            <place type="building" obnCode="284" oucsCode="23233799" oxpID="e_117">
+            <place type="building" obnCode="284" oxpID="23233799" oucsCode="e_117">
                <placeName>Sports Centre Rugby Fives</placeName>
                <event when="1989" type="construction"/>
             </place>
-            <place type="building" obnCode="288" oucsCode="23233801" oxpID="e_119">
+            <place type="building" obnCode="288" oxpID="23233801" oucsCode="e_119">
                <placeName>Sports Centre Rowing Tank</placeName>
                <event when="1992" type="construction"/>
             </place>
-            <place type="building" obnCode="292" oucsCode="23233802" oxpID="e_120">
+            <place type="building" obnCode="292" oxpID="23233802" oucsCode="e_120">
                <placeName>Sports Centre Tennis</placeName>
                <event when="1987" type="construction"/>
             </place>
-            <place type="building" obnCode="294" oucsCode="23233804" oxpID="e_122">
+            <place type="building" obnCode="294" oxpID="23233804" oucsCode="e_122">
                <placeName>Red Barn Cottage</placeName>
                <event when="1890" type="construction"/>
             </place>
-            <place type="building" obnCode="297" oucsCode="23233805" oxpID="e_123">
+            <place type="building" obnCode="297" oxpID="23233805" oucsCode="e_123">
                <placeName>Museum Telephone Exchange</placeName>
                <event when="1985" type="construction"/>
             </place>
-            <place type="building" obnCode="298" oucsCode="23233806" oxpID="e_124">
+            <place type="building" obnCode="298" oxpID="23233806" oucsCode="e_124">
                <placeName>Bradmore Road Creche</placeName>
                <event when="1994" type="construction"/>
             </place>
-            <place type="building" obnCode="304" oucsCode="23233809" oxpID="e_127">
+            <place type="building" obnCode="304" oxpID="23233809" oucsCode="e_127">
                <placeName>Pathology Support Building</placeName>
                <event when="1997" type="construction"/>
             </place>
-            <place type="building" obnCode="306" oucsCode="23233811" oxpID="e_129">
+            <place type="building" obnCode="306" oxpID="23233811" oucsCode="e_129">
                <placeName>9 Wellington Square</placeName>
                <event when="1875" type="construction"/>
             </place>
-            <place type="building" obnCode="310" oucsCode="23233815" oxpID="e_133">
+            <place type="building" obnCode="310" oxpID="23233815" oucsCode="e_133">
                <placeName>Osney Mead Warehouse</placeName>
                <event when="1955" type="construction"/>
                <event when="1997" type="acquisition"/>
             </place>
-            <place type="building" obnCode="317" oucsCode="23233818" oxpID="e_136">
+            <place type="building" obnCode="317" oxpID="23233818" oucsCode="e_136">
                <placeName>Hirsch Building, Begbroke Science Park</placeName>
                <event when="1955" type="construction"/>
                <event when="1998" type="acquisition"/>
             </place>
-            <place type="building" obnCode="318" oucsCode="23233819" oxpID="e_137">
+            <place type="building" obnCode="318" oxpID="23233819" oucsCode="e_137">
                <placeName>Unit 10, Begbroke Science Park</placeName>
                <event when="1955" type="construction"/>
                <event when="1998" type="acquisition"/>
             </place>
-            <place type="building" obnCode="319" oucsCode="23233820" oxpID="e_138">
+            <place type="building" obnCode="319" oxpID="23233820" oucsCode="e_138">
                <placeName>HI-Bay, Begbroke Science Park</placeName>
                <event when="1955" type="construction"/>
                <event when="1998" type="acquisition"/>
             </place>
-            <place type="building" obnCode="321" oucsCode="23233821" oxpID="e_139">
+            <place type="building" obnCode="321" oxpID="23233821" oucsCode="e_139">
                <placeName>Christian Building, Begbroke Science Park</placeName>
                <event when="1820" type="construction"/>
                <event when="1998" type="acquisition"/>
             </place>
-            <place type="building" obnCode="322" oucsCode="23233822" oxpID="e_140">
+            <place type="building" obnCode="322" oxpID="23233822" oucsCode="e_140">
                <placeName>Manor House, Begbroke Science Park</placeName>
                <event when="1604" type="construction"/>
                <event when="1998" type="acquisition"/>
             </place>
-            <place type="building" obnCode="333" oucsCode="23233826" oxpID="e_144">
+            <place type="building" obnCode="333" oxpID="23233826" oucsCode="e_144">
                <placeName>Pathology Leslie Martin</placeName>
                <event when="1968" type="construction"/>
             </place>
-            <place type="building" obnCode="334" oucsCode="23233827" oxpID="e_145">
+            <place type="building" obnCode="334" oxpID="23233827" oucsCode="e_145">
                <placeName>Pathology Warren Building</placeName>
                <event when="1927" type="construction"/>
             </place>
-            <place type="building" obnCode="337" oucsCode="23233829" oxpID="e_147">
+            <place type="building" obnCode="337" oxpID="23233829" oucsCode="e_147">
                <placeName>HWB Of Gene Function</placeName>
                <event when="2003" type="construction"/>
             </place>
-            <place type="building" obnCode="338" oucsCode="23233830" oxpID="e_148">
+            <place type="building" obnCode="338" oxpID="23233830" oucsCode="e_148">
                <placeName>Cast Gallery, Ashmolean Museum</placeName>
                <event when="1961" type="construction"/>
             </place>
-            <place type="building" obnCode="341" oucsCode="23233831" oxpID="e_149">
+            <place type="building" obnCode="341" oxpID="23233831" oucsCode="e_149">
                <placeName>SERS</placeName>
                <event when="1965" type="construction"/>
                <event when="2001" type="acquisition"/>
             </place>
-            <place type="building" obnCode="343" oucsCode="23233833" oxpID="e_151">
+            <place type="building" obnCode="343" oxpID="23233833" oucsCode="e_151">
                <placeName>Holywell Music Room</placeName>
                <event when="1748" type="construction"/>
                <event when="1945" type="acquisition"/>
             </place>
-            <place type="building" obnCode="344" oucsCode="23233834" oxpID="e_152">
+            <place type="building" obnCode="344" oxpID="23233834" oucsCode="e_152">
                <placeName>Thomas Hull House</placeName>
                <event when="1979" type="construction"/>
                <event when="2002" type="acquisition"/>
             </place>
-            <place type="building" obnCode="346" oucsCode="23233835" oxpID="e_153">
+            <place type="building" obnCode="346" oxpID="23233835" oucsCode="e_153">
                <placeName>Wolsey Hall, 66 Banbury Road</placeName>
                <event when="1869" type="construction"/>
                <event when="2002" type="acquisition"/>
             </place>
-            <place type="building" obnCode="348" oucsCode="23233837" oxpID="e_155">
+            <place type="building" obnCode="348" oxpID="23233837" oucsCode="e_155">
                <placeName>Ancient Bio-Molecules</placeName>
                <event when="2003" type="construction"/>
             </place>
-            <place type="building" obnCode="352" oucsCode="23233838" oxpID="e_156">
+            <place type="building" obnCode="352" oxpID="23233838" oucsCode="e_156">
                <placeName>IAT Building, Begbroke Science Park</placeName>
                <event when="2006" type="construction"/>
             </place>
-            <place type="building" obnCode="353" oucsCode="23233839" oxpID="e_157">
+            <place type="building" obnCode="353" oxpID="23233839" oucsCode="e_157">
                <placeName>APL, Begbroke Science Park</placeName>
                <event when="2006" type="construction"/>
             </place>
-            <place type="building" obnCode="354" oucsCode="23233840" oxpID="e_158">
+            <place type="building" obnCode="354" oxpID="23233840" oucsCode="e_158">
                <placeName>15a Norham Gardens</placeName>
                <event when="2006" type="construction"/>
             </place>
-            <place type="building" obnCode="361" oucsCode="23233842" oxpID="e_160">
+            <place type="building" obnCode="361" oxpID="23233842" oucsCode="e_160">
                <placeName>Information Engineering</placeName>
                <event when="2004" type="construction"/>
             </place>
-            <place type="building" obnCode="363" oucsCode="23233843" oxpID="e_161">
+            <place type="building" obnCode="363" oxpID="23233843" oucsCode="e_161">
                <placeName>Axis Point</placeName>
                <event when="2001" type="construction"/>
                <event when="2003" type="acquisition"/>
             </place>
-            <place type="building" obnCode="372" oucsCode="23233848" oxpID="e_166">
+            <place type="building" obnCode="372" oxpID="23233848" oucsCode="e_166">
                <placeName>42 St Giles</placeName>
                <event when="1820" type="construction"/>
             </place>
-            <place type="building" obnCode="375" oucsCode="23233849" oxpID="e_167">
+            <place type="building" obnCode="375" oxpID="23233849" oucsCode="e_167">
                <placeName>Wolfson College Annexe</placeName>
                <event when="1960" type="construction"/>
             </place>
-            <place type="building" obnCode="378" oucsCode="23233851" oxpID="e_169">
+            <place type="building" obnCode="378" oxpID="23233851" oucsCode="e_169">
                <placeName>Jack Straws Lane Nursery</placeName>
                <event when="2003" type="construction"/>
                <event when="2003" type="acquisition"/>
             </place>
-            <place type="building" obnCode="393" oucsCode="23233856" oxpID="e_174">
+            <place type="building" obnCode="393" oxpID="23233856" oucsCode="e_174">
                <placeName>Tubney - Barn</placeName>
                <event when="1811" type="construction"/>
                <event when="2003" type="acquisition"/>
             </place>
-            <place type="building" obnCode="502" oucsCode="23233857" oxpID="e_175">
+            <place type="building" obnCode="502" oxpID="23233857" oucsCode="e_175">
                <placeName>6 Worcester Street</placeName>
                <event when="1988" type="construction"/>
                <event when="2006" type="acquisition"/>
             </place>
-            <place type="building" obnCode="514" oucsCode="23233859" oxpID="e_177">
+            <place type="building" obnCode="514" oxpID="23233859" oucsCode="e_177">
                <placeName>Waste Collection Store</placeName>
             </place>
-            <place type="building" obnCode="541" oucsCode="23233860" oxpID="e_178">
+            <place type="building" obnCode="541" oxpID="23233860" oucsCode="e_178">
                <placeName>2 Worcester Street</placeName>
                <event when="1988" type="construction"/>
                <event when="2009" type="acquisition"/>
             </place>
-            <place type="building" obnCode="621" oucsCode="23233861" oxpID="e_179">
+            <place type="building" obnCode="621" oxpID="23233861" oucsCode="e_179">
                <placeName>John Radcliffe Women's Centre</placeName>
                <event when="1970" type="construction"/>
             </place>
-            <place type="building" obnCode="624" oucsCode="23233864" oxpID="e_182">
+            <place type="building" obnCode="624" oxpID="23233864" oucsCode="e_182">
                <placeName>John Radcliffe Industrial</placeName>
                <event when="1975" type="construction"/>
             </place>
-            <place type="building" obnCode="629" oucsCode="23233868" oxpID="e_186">
+            <place type="building" obnCode="629" oxpID="23233868" oucsCode="e_186">
                <placeName>John Radcliffe OCMR Building (MRS)</placeName>
                <event when="2003" type="construction"/>
             </place>
-            <place type="building" obnCode="631" oucsCode="23233870" oxpID="e_188">
+            <place type="building" obnCode="631" oxpID="23233870" oucsCode="e_188">
                <placeName>OCDEM 2, Churchill Hospital</placeName>
                <event when="2003" type="construction"/>
             </place>
-            <place type="building" obnCode="634" oucsCode="23233872" oxpID="e_190">
+            <place type="building" obnCode="634" oxpID="23233872" oucsCode="e_190">
                <placeName>Clinical Bio-Manufacturing Facility, Churchill</placeName>
                <event when="1995" type="construction"/>
                <event when="1994" type="acquisition"/>
             </place>
-            <place type="building" obnCode="643" oucsCode="23233874" oxpID="e_192">
+            <place type="building" obnCode="643" oxpID="23233874" oucsCode="e_192">
                <placeName>Neurosciences, Warneford</placeName>
                <event when="1998" type="construction"/>
             </place>
-            <place type="building" obnCode="644" oucsCode="23233875" oxpID="e_193">
+            <place type="building" obnCode="644" oxpID="23233875" oucsCode="e_193">
                <placeName>Wellcome, Warneford</placeName>
                <event when="1995" type="construction"/>
             </place>
-            <place type="building" obnCode="646" oucsCode="23233877" oxpID="e_195">
+            <place type="building" obnCode="646" oxpID="23233877" oucsCode="e_195">
                <placeName>Lab, Warneford</placeName>
                <event when="1960" type="construction"/>
             </place>
-            <place type="building" obnCode="653" oucsCode="23233878" oxpID="e_196">
+            <place type="building" obnCode="653" oxpID="23233878" oucsCode="e_196">
                <placeName>Wellcome Trust Centre Clinical Vaccinology and Tropical
                   Medicine</placeName>
                <event when="2003" type="construction"/>
                <event when="2000" type="acquisition"/>
             </place>
-            <place type="building" obnCode="654" oucsCode="23233879" oxpID="e_197">
+            <place type="building" obnCode="654" oxpID="23233879" oucsCode="e_197">
                <placeName>MEG Scanner Facility, Warneford</placeName>
                <event when="2006" type="construction"/>
                <event when="2007" type="acquisition"/>
             </place>
-            <place type="building" obnCode="661" oucsCode="23233881" oxpID="e_199">
+            <place type="building" obnCode="661" oxpID="23233881" oucsCode="e_199">
                <placeName>Conference, Old Road Campus</placeName>
                <event when="1960" type="construction"/>
                <event when="1996" type="acquisition"/>
             </place>
-            <place type="building" obnCode="665" oucsCode="23233883" oxpID="e_201">
+            <place type="building" obnCode="665" oxpID="23233883" oucsCode="e_201">
                <placeName>Richards Building, Old Road Campus</placeName>
                <event when="1960" type="construction"/>
                <event when="2008" type="acquisition"/>
             </place>
-            <place type="building" obnCode="669" oucsCode="23233884" oxpID="e_202">
+            <place type="building" obnCode="669" oxpID="23233884" oucsCode="e_202">
                <placeName>Management, Old Road Campus</placeName>
                <event when="1960" type="construction"/>
                <event when="1996" type="acquisition"/>
             </place>
-            <place type="building" obnCode="671" oucsCode="23233885" oxpID="e_203">
+            <place type="building" obnCode="671" oxpID="23233885" oucsCode="e_203">
                <placeName>Terrapin (OPPF), Old Road Campus</placeName>
                <event when="2002" type="construction"/>
             </place>
-            <place type="building" obnCode="672" oucsCode="23233886" oxpID="e_204">
+            <place type="building" obnCode="672" oxpID="23233886" oucsCode="e_204">
                <placeName>The Triangle, PGMDE</placeName>
                <event when="1997" type="construction"/>
             </place>
-            <place type="building" obnCode="673" oucsCode="23233887" oxpID="e_205">
+            <place type="building" obnCode="673" oxpID="23233887" oucsCode="e_205">
                <placeName>HWB Genomic Medicine</placeName>
                <event when="1999" type="construction"/>
             </place>
-            <place type="building" obnCode="676" oucsCode="23233890" oxpID="e_208">
+            <place type="building" obnCode="676" oxpID="23233890" oucsCode="e_208">
                <placeName>HWB For Particle Imaging (Opic)</placeName>
                <event when="2004" type="construction"/>
             </place>
-            <place type="building" obnCode="679" oucsCode="23233892" oxpID="e_210">
+            <place type="building" obnCode="679" oxpID="23233892" oucsCode="e_210">
                <placeName>John Radcliffe Cardiac Centre</placeName>
                <event when="1992" type="construction"/>
             </place>
-            <place type="building" obnCode="680" oucsCode="23233893" oxpID="e_211">
+            <place type="building" obnCode="680" oxpID="23233893" oucsCode="e_211">
                <placeName>John Radcliffe Anaesthetic Modular Building</placeName>
                <event when="1998" type="construction"/>
             </place>
-            <place type="building" obnCode="681" oucsCode="23233894" oxpID="e_212">
+            <place type="building" obnCode="681" oxpID="23233894" oucsCode="e_212">
                <placeName>John Radcliffe West Wing And Children's Hospital</placeName>
                <event when="2006" type="construction"/>
                <event when="2007" type="acquisition"/>
             </place>
-            <place type="building" obnCode="682" oucsCode="23233895" oxpID="e_213">
+            <place type="building" obnCode="682" oxpID="23233895" oucsCode="e_213">
                <placeName>John Radcliffe Manor House</placeName>
                <event when="1776" type="construction"/>
                <event when="2005" type="acquisition"/>
             </place>
-            <place type="building" obnCode="685" oucsCode="23233897" oxpID="e_215">
+            <place type="building" obnCode="685" oxpID="23233897" oucsCode="e_215">
                <placeName>Eagle House</placeName>
                <event when="2009" type="construction"/>
                <event when="2009" type="acquisition"/>
             </place>
-            <place type="building" obnCode="687" oucsCode="23233899" oxpID="e_217">
+            <place type="building" obnCode="687" oxpID="23233899" oucsCode="e_217">
                <placeName>Cancer Hospital, Churchill</placeName>
                <event when="2009" type="construction"/>
             </place>
-            <place type="building" obnCode="688" oucsCode="23233900" oxpID="e_218">
+            <place type="building" obnCode="688" oxpID="23233900" oucsCode="e_218">
                <placeName>SKOPE - Warwick</placeName>
             </place>
-            <place type="building" obnCode="691" oucsCode="23233901" oxpID="e_219">
+            <place type="building" obnCode="691" oxpID="23233901" oucsCode="e_219">
                <placeName>Old Road Campus Estates Annexe</placeName>
                <event when="2007" type="construction"/>
             </place>
