@@ -40,6 +40,7 @@ import java.util.Iterator;
 
 import net.sf.gaboto.test.TimeUtils;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
@@ -65,6 +66,11 @@ public class TestGaboto {
 	@BeforeClass
 	public static void setUp() throws Exception {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+	}
+
+	@AfterClass
+	public static void tearDown() { 
+    GabotoFactory.clear();
 	}
 	
 	@Test (expected=EntityAlreadyExistsException.class)
@@ -148,6 +154,7 @@ public class TestGaboto {
 		it = oxp.getNamedGraphSet().findQuads(Node.ANY, Node.createURI(u.getUri()), Node.ANY, Node.ANY);
 		assertTrue(! it.hasNext());
 	}
+	
 	@Test
 	public void testGetEntityURIs() throws EntityDoesNotExistException{
 		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
