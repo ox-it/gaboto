@@ -33,7 +33,9 @@ package net.sf.gaboto.test;
 
 import net.sf.gaboto.test.Utils;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
@@ -42,6 +44,7 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.model.Gaboto;
+import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.QuerySolutionProcessorImpl;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -64,15 +67,19 @@ public class TestGabotoSnapshot {
 
 	@BeforeClass
   public static void setUp() throws Exception {
-		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
-	}
+    GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+  }
+	@AfterClass
+  public static void tearDown() throws Exception {
+	  // FIXME I do not understand the need for this
+	  GabotoFactory.clear();
+  }
 	
 	@Test
 	public void testSPARQLSelect() throws EntityPoolInvalidConfigurationException {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
-		
 		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(nowSnap);
 		config.addAcceptedType(OxPointsVocab.College_URI);
 		config.setAddReferencedEntitiesToPool(false);
