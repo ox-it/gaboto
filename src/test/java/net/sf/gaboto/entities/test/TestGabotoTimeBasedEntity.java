@@ -109,7 +109,7 @@ public class TestGabotoTimeBasedEntity {
 
   @Test
   public void testCreateTimeBasedEntity() {
-    TimeSpan ts = new TimeSpan(500, 0, 0, 500, 10, 10);
+    TimeSpan ts = new TimeSpan(500, 1, 1, 500, 10, 10);
     GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(Building.class,
         oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), ts);
 
@@ -118,7 +118,7 @@ public class TestGabotoTimeBasedEntity {
 
     // set different names
     entityTB.addProperty(DC.title, name1);
-    entityTB.addProperty(new TimeSpan(700, 0, 0, 200, 0, 0), DC.title, name2);
+    entityTB.addProperty(new TimeSpan(700, 1, 1, 200, 0, 0), DC.title, name2);
 
     Building entityEarly = (Building) entityTB.getEntity(new TimeInstant(600,
         null, null));
@@ -134,7 +134,7 @@ public class TestGabotoTimeBasedEntity {
 
   @Test(expected = IllegalArgumentException.class)
   public void testCreateTimeBasedEntity2() {
-    TimeSpan ts = new TimeSpan(500, 0, 0, 500, 10, 10);
+    TimeSpan ts = new TimeSpan(500, 1, 1, 500, 10, 10);
     GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(Building.class,
         oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), ts);
     entityTB.getEntity(new TimeInstant(1100, null, null));
@@ -160,17 +160,19 @@ public class TestGabotoTimeBasedEntity {
       GabotoEntity entity = it.next();
       while (it.hasNext()) {
         GabotoEntity next = it.next();
-        assertTrue(entity.getTimeSpan().getEnd().compareTo(
-            next.getTimeSpan().getBegin()) <= 0);
+        assertTrue("" + entity.getTimeSpan().getBegin().compareTo(
+                next.getTimeSpan().getBegin()),entity.getTimeSpan().getBegin().compareTo(
+                        next.getTimeSpan().getBegin()) <= 0);
         entity = next;
       }
     }
     System.out.println();
   }
 
-  // @Test
-  public void BorkedtestLoadingEntitiesSimple() throws GabotoException {
-    Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+  
+  @Test
+  public void testLoadingEntitiesSimple() throws GabotoException {
+    //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
 
     TimeInstant now = TimeInstant.now();
 
@@ -211,7 +213,10 @@ public class TestGabotoTimeBasedEntity {
   public void testIterator3() throws Exception {
     for (int i = 0; i < 10000; i++) {
       GabotoTimeBasedEntity entityTB = new GabotoTimeBasedEntity(
-          Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), TimeUtils.getRandomTimespan());
+          Building.class, 
+          oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), 
+          TimeUtils.generateRandomURI(), 
+          TimeUtils.getRandomTimespan());
 
       String name1 = TimeUtils.generateRandomURI();
       entityTB.addProperty(DC.title, name1);
@@ -223,14 +228,15 @@ public class TestGabotoTimeBasedEntity {
     }
   }
 
-  // @Test
-  public void tooSlowtestAddEntitySimple() throws GabotoException {
-    Gaboto oxp = GabotoFactory.getPersistentGaboto();
+  @Test
+  public void testAddEntitySimple() throws GabotoException {
+   // oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
     for (int i = 0; i < 1000; i++) {
       GabotoTimeBasedEntity timeBasedEntity = new GabotoTimeBasedEntity(
-          Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), TimeUtils.getRandomTimespan());
+          Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), 
+          TimeUtils.generateRandomURI(), TimeUtils.getRandomTimespan());
 
       String name = TimeUtils.generateRandomURI();
       timeBasedEntity.addProperty(DC.title, name);
@@ -247,16 +253,15 @@ public class TestGabotoTimeBasedEntity {
           .getUri());
       assertEquals("Iteration " + 1, building.getType(), timeBasedEntity
           .getType());
-      // FIXME Failing
-      // assertNotEqual("Iteration " + 1, building.getTimeSpan(),
-      // timeBasedEntity.getTimeSpan());
+       assertEquals("Iteration " + 1, building.getTimeSpan(), timeBasedEntity.getTimeSpan());
     }
   }
 
+  // Not sure how or when this broke
   @Test
   public void testAddEntityOverflow() throws EntityAlreadyExistsException,
       ResourceDoesNotExistException {
-    Gaboto oxp = GabotoFactory.getPersistentGaboto();
+    oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
     TimeSpan ts = new TimeSpan(166, 2, 26, 679, 11, 28);
@@ -278,9 +283,9 @@ public class TestGabotoTimeBasedEntity {
     assertEquals(b.getName(), name1);
   }
 
-  // @Test
-  public void BorkedTestAddEntityComplex() throws GabotoException {
-    Gaboto oxp = GabotoFactory.getPersistentGaboto();
+  @Test
+  public void testAddEntityComplex() throws GabotoException {
+   // Gaboto oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
     for (int i = 0; i < 50; i++) {
@@ -316,10 +321,10 @@ public class TestGabotoTimeBasedEntity {
 
         assertEquals(b1.getUri(), b2.getUri());
         assertEquals(b1.getType(), b2.getType());
-        assertTrue(b1.getTimeSpan().getBegin().aboutTheSame(
+        assertTrue(b1.getTimeSpan().getBegin().canUnify(
             b2.getTimeSpan().getBegin())
             && b1.getTimeSpan().getEnd()
-                .aboutTheSame(b2.getTimeSpan().getEnd()));
+                .canUnify(b2.getTimeSpan().getEnd()));
         assertEquals(b1.getName(), b2.getName());
       }
     }
@@ -327,7 +332,7 @@ public class TestGabotoTimeBasedEntity {
 
   @Test(expected = ResourceDoesNotExistException.class)
   public void testAddPurgeEntitySimple() throws GabotoException {
-    Gaboto oxp = GabotoFactory.getPersistentGaboto();
+    oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
     for (int i = 0; i < 100; i++) {
@@ -350,7 +355,7 @@ public class TestGabotoTimeBasedEntity {
   @SuppressWarnings("unchecked")
   @Test
   public void testPurgeEntityComplex() throws GabotoException {
-    Gaboto oxp = GabotoFactory.getPersistentGaboto();
+    oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
     for (int i = 0; i < 50; i++) {
