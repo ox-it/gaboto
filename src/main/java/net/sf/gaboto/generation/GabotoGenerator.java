@@ -472,7 +472,7 @@ public class GabotoGenerator {
       cText.addImport("java.util.ArrayList");
       cText.addImport("org.oucs.gaboto.exceptions.GabotoRuntimeException");
       indirectPropertyLookupTable += "    List<Method> list;\n\n";
-      indirectPropertyLookupTable += "    try{\n";
+      indirectPropertyLookupTable += "    try {\n";
       for (Entry<String, List<String>> entry : indirectMethodLookup.entrySet()) {
         indirectPropertyLookupTable += "      list = new ArrayList<Method>();\n";
         for (String property : entry.getValue()) {
