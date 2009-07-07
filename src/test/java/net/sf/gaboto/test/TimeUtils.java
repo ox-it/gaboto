@@ -34,7 +34,7 @@ public class TimeUtils {
       timeSpan.setStartMonth(r.nextInt(12));
       if (r.nextDouble() < prob2) {
         day = true;
-        timeSpan.setStartDay(r.nextInt(28));
+        timeSpan.setStartDay(r.nextInt(27) + 1);
       }
     }
 
@@ -61,7 +61,7 @@ public class TimeUtils {
     if (r.nextDouble() < 0.5) {
       ti.setStartMonth(r.nextInt(12));
       if (r.nextDouble() < 0.5) {
-        ti.setStartDay(r.nextInt(28));
+        ti.setStartDay(r.nextInt(27) + 1);
       }
     }
 
