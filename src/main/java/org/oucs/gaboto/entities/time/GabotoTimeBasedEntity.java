@@ -501,10 +501,10 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
       }
 
       // if getter was found -> get value and add it
-      if (null != getter) {
+      if (getter != null) {
         try {
           Object value = getter.invoke(entity, (Object[]) null);
-          if (null != value)
+          if (value != null)
             addProperty(entity.getTimeSpan(), propertyURI, value);
         } catch (Exception e) {
           throw new GabotoRuntimeException(e);
@@ -707,10 +707,10 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
     Method setter = GabotoEntityUtils.getSetMethodFor(entityClass, propertyURI);
     Method getter = GabotoEntityUtils.getDirectGetMethodFor(entityClass, propertyURI);
 
-    if (null == setter)
+    if (setter == null)
       throw new IllegalArgumentException("Could not find set method for property " + propertyURI + " in class "
               + entityClass.getName());
-    if (null == getter)
+    if (getter == null)
       throw new IllegalArgumentException("Could not find set method for property " + propertyURI + " in class "
               + entityClass.getName());
 
@@ -720,7 +720,8 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
       returnType.cast(value);
     } catch (ClassCastException e) {
       throw new IllegalArgumentException("The get method's return type (" + returnType
-              + ") and the supplied object (" + value.getClass() + ") do not work well together.", e);
+              + ") for propertyURI " + propertyURI + 
+              " and the supplied object (" + value.getClass() + ") cannot be cast.", e);
     }
 
     // test if value is of the correct type
