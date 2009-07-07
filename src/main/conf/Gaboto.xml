@@ -156,7 +156,7 @@
 
                         <GabotoEntity name="Carpark" type="&oxp;Carpark">
                             <properties>
-                                <property name="capacity" type="int" uri="&oxp;capacity"/>
+                                <property name="capacity" type="Integer" uri="&oxp;capacity"/>
                             </properties>
                         </GabotoEntity>
 
