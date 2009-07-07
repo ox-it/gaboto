@@ -75,7 +75,7 @@ public class TestEntityPool {
   @Test
   public void testEntityPoolCreation()  {
 
-    GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 0, 0));
+    GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 1, 1));
 
     Model m = snap.getModel();
 
@@ -100,7 +100,6 @@ public class TestEntityPool {
     GabotoEntityPool pool = GabotoEntityPool
         .createFrom(new GabotoEntityPoolConfiguration(snap));
 
-    // go through buildings & colleges in pool
     assertEquals(nrOfBuildings, pool.getEntities(new Building()).size());
     assertEquals(nrOfColleges, pool.getEntities(new College()).size());
   }
@@ -119,22 +118,21 @@ public class TestEntityPool {
     while (it.hasNext()) {
       Statement stmt = it.nextStatement();
       if (!m2.contains(stmt))
-        System.out.println("stmt not in m2: " + stmt);
+        System.out.println("Statement not in m2: " + stmt);
+      //else 
+      //  System.out.println("Statement in m2: " + stmt);
     }
 
     // Still one out
-    //assertEquals(m1.size() + " not equal " + m2.size(),m1.size(),m2.size());
-     System.err.println(m1.size() + " not less then 25 smaller than " +
-     m2.size());
     // FIXME TPP What is going on here? was 10 in mysql
-     assertTrue(m1.size() + " not less then 25 smaller than " + m2.size(),
-     Math.abs(m1.size()-m2.size()) < 25);
+     assertTrue(m1.size() + " not one bigger than " + m2.size(),
+     Math.abs(m1.size()-m2.size()) == 1);
   }
 
   @Test
   public void testEntityAddReferencedEntities() {
 
-    GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 0, 0));
+    GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 1, 1));
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
         snap);
@@ -180,7 +178,7 @@ public class TestEntityPool {
 
   @Test
   public void testEntityFilter()  {
-    GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 0, 0));
+    GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 1, 1));
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
         snap);
@@ -253,7 +251,7 @@ public class TestEntityPool {
         Location loc = col.getPrimaryPlace().getLocation();
 
         // reject if no location is set
-        if (null == loc)
+        if (loc == null)
           return false;
 
         double lat_oucs = 51.760010;
