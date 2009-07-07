@@ -75,6 +75,16 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
             calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
   }
 
+  public static TimeInstant oneYearOn(TimeInstant in) { 
+    TimeInstant out = new TimeInstant(in.getStartYear() + 1, in.getStartMonth(), in.getStartDay());
+    if (out.getStartMonth() == null)
+      out.setStartMonth(0);
+    if (out.getStartDay() == null)
+      out.setStartDay(1);
+    else 
+      out.setStartDay(out.getStartDay());
+    return out;
+  }
   /**
    * Creates a time instant representing now.
    * 
@@ -142,6 +152,10 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
             .getStartDay() && this.getStartDay().equals(ti.getStartDay())));
   }
 
+  /**
+   * With non-zero based months.
+   * @see org.oucs.gaboto.timedim.TimeSpan#toString()
+   */
   @Override
   public String toString() {
     if (this.equals(TimeUtils.BIG_BANG))
@@ -152,9 +166,9 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
     String s = "";
 
     s += startYear;
-    if (null != startMonth)
-      s += "-" + startMonth;
-    if (null != startDay)
+    if (startMonth != null)
+      s += "-" + (startMonth + 1);
+    if (startDay != null)
       s += "-" + startDay;
 
     return s;
@@ -169,17 +183,19 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
    * 
    * @return True, if they are roughly the same.
    */
-  public boolean aboutTheSame(TimeInstant ti) {
+  public boolean canUnify(TimeInstant ti) {
     if (this.startYear.equals(ti.getStartYear())) {
-      // years are the same
-      if (this.getStartMonth() == null || ti.getStartMonth() == null)
+      if (this.getStartMonth() == null || ti.getStartMonth() == null) {
+        System.err.println("Can unify");
         return true;
-      else if (this.getStartMonth().equals(ti.getStartMonth())) {
-        // months are the same
-        if (this.getStartDay() == null|| ti.getStartDay() == null)
+      } else if (this.getStartMonth().equals(ti.getStartMonth())) {
+        if (this.getStartDay() == null || ti.getStartDay() == null) { 
+          System.err.println("Can unify");
           return true;
-        else if (this.getStartDay().equals(ti.getStartDay()))
+        } else if (this.getStartDay().equals(ti.getStartDay())) { 
+          System.err.println("Can unify");
           return true;
+        }
       }
     }
     return false;
@@ -194,19 +210,20 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
    * @return -1, if this instant is earlier. 1, if it is later. 0 else.
    */
   public int compareTo(TimeInstant ti) {
-    if (this.startYear < ti.getStartYear())
+    if (this.startYear < ti.getStartYear()) { 
+      System.err.println(this.startYear + "<" +  ti.getStartYear());
       return -1;
-    else if (this.startYear > ti.getStartYear())
+    } else if (this.startYear > ti.getStartYear())
       return 1;
     else {
       // years are the same
 
-      if (null == this.getStartMonth() && null == ti.getStartMonth())
+      if (this.getStartMonth() == null && ti.getStartMonth() == null)
         return 0;
       // we define that if one is null then both are more or less equal
-      else if (null == this.getStartMonth())
+      else if (this.getStartMonth() == null)
         return 0;
-      else if (null == ti.getStartMonth())
+      else if (ti.getStartMonth() == null)
         return 0;
       else if (this.getStartMonth() < ti.getStartMonth())
         return -1;
@@ -215,12 +232,12 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
       else {
         // months are the same
 
-        if (null == this.getStartDay() && null == ti.getStartDay())
+        if (this.getStartDay() == null && ti.getStartDay() == null)
           return 0;
         // we define that if one is null then both are more or less equal
-        else if (null == this.getStartDay())
+        else if (this.getStartDay() == null)
           return 0;
-        else if (null == ti.getStartDay())
+        else if (ti.getStartDay() == null)
           return 0;
         else if (this.getStartDay() < ti.getStartDay())
           return -1;
