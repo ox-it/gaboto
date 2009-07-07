@@ -79,6 +79,14 @@ public class GabotoFactory {
 	private static Model cdg = null;
 	
 	
+  /**
+   * HACK used in tests.
+   */
+  public static void clear() { 
+    inMemoryGaboto = null;
+    persistentGaboto = null;
+    cdg = null;
+  }
 	/**
 	 * Creates an empty in memory Gaboto model that is not linked to any persistent data store.
 	 * 
@@ -91,20 +99,12 @@ public class GabotoFactory {
 	public static Gaboto getEmptyInMemoryGaboto(){
 		// Create a new graphset and copy graphs
 		NamedGraphSet graphset = new NamedGraphSetImpl();
+    createGKG(graphset);
 		
-		// create none db backed up cdg
+		// create non db-backed-up cdg
 		cdg = ModelFactory.createDefaultModel();
 		
-		// get config
-		GabotoConfiguration config = GabotoLibrary.getConfig();
-		
-		// if graphset is empty, create special graphs
-		if(! graphset.containsGraph(config.getGKG()))
-			createGKG(graphset);
-		
-		Gaboto test = new Gaboto(cdg, graphset, new SimpleTimeDimensionIndexer());
-
-		return test;
+		return new Gaboto(cdg, graphset, new SimpleTimeDimensionIndexer());
 	}
 	
 	/**
@@ -278,7 +278,7 @@ public class GabotoFactory {
 	
 	
 	/**
-	 * adds the gkgg to the graphset
+	 * Adds the Global Knowledge Graph (GKG) to the graphset
 	 * @param graphset
 	 */
 	private static void createGKG(NamedGraphSet graphset) {
