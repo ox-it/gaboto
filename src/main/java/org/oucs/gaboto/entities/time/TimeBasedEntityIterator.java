@@ -79,7 +79,7 @@ public class TimeBasedEntityIterator implements Iterator<GabotoEntity> {
 			if(tmp == null)
 				System.out.println("lala");
 			
-			while(entity.getTimeSpan().getBegin().aboutTheSame(begin)){
+			while(entity.getTimeSpan().getBegin().canUnify(begin)){
 				index++;
 				begin = timespans.get(index).getBegin();
 			}
