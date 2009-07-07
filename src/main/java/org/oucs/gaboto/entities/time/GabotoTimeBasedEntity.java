@@ -393,7 +393,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
     TimeInstant latest = getTimeSpan().getEnd();
 
     // loop over propertyMap and try also to find the earliest possible
-    // occurence
+    // occurrence
     for (Entry<TimeSpan, List<Property>> entry : propertyMap.entrySet()) {
       if (entry.getKey().contains(ti) && (!ti.canUnify(entry.getKey().getEnd()) || !containsTimeSpanWithBegin(ti))) {
         // relevant property map
