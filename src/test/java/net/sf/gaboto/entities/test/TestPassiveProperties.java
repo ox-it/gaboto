@@ -71,7 +71,7 @@ public class TestPassiveProperties  {
 		for(GabotoEntity e : pool.getEntities()){
 			Website web = (Website) e;
 			
-			if(null != web.getIsHomepageIn())
+			if(web.getIsHomepageIn() != null)
 				foundPassive = true;
 		}
 		
@@ -91,11 +91,12 @@ public class TestPassiveProperties  {
 		for(GabotoEntity e : pool.getEntities()){
 			College col = (College) e;
 			
-			if(null != col.getOccupiedBuildings())
+			if(col.getOccupiedBuildings() != null)
 				foundPassive = true;
 		}
 		
 		assertTrue(foundPassive);
 	}
-	
+
 }
+
