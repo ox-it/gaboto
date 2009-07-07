@@ -42,7 +42,6 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -61,14 +60,12 @@ public class TestPoolCreationPerformance {
 	
 	@Test
 	public void testSimplePoolCreation() throws EntityPoolInvalidConfigurationException{
-    System.out.println("testSimplePoolCreation");
-		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
-    System.out.println("Got gaboto");
+    //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+    Gaboto oxp = Utils.getOxpointsFromXML();
 
 		PerformanceAverager perf = new PerformanceAverager("Simple Pool Creation");
 		for(int i = 0; i < RUNS; i++){
 			perf.start("creation");
-      System.out.println("Starting");
 			
 			GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 			GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snap);
@@ -82,7 +79,8 @@ public class TestPoolCreationPerformance {
 	
 	@Test
 	public void testSimplePoolCreationWithAllPassive() throws EntityPoolInvalidConfigurationException{
-		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+    //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+    Gaboto oxp = Utils.getOxpointsFromXML();
 
 		PerformanceAverager perf = new PerformanceAverager("Simple Pool Creation with passive creation");
 		for(int i = 0; i < RUNS; i++){
@@ -101,7 +99,8 @@ public class TestPoolCreationPerformance {
 	
 	@Test
 	public void testQuery1() throws Exception{
-	  Gaboto oxp = Utils.getOxpointsFromXML();
+    //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
+    Gaboto oxp = Utils.getOxpointsFromXML();
 
 		CollegesNearEntity query = new CollegesNearEntity(oxp, "Somerville College", 10, TimeInstant.now());
 		query.prepare();
