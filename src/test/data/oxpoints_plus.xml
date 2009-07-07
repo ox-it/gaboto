@@ -11097,6 +11097,10 @@ data, and if so, how? -->
             <place type="building" obnCode="224" oucsCode="23233759" oxpID="e_77">
                <placeName>Radcliffe Camera</placeName>
                <event when="1747" type="construction"/>
+	       <location when="2007-05-22T17:08:49.467+01:00">
+		 <geo>-1.2539970874786377 51.75344308292687</geo>
+		 <note> recorded by Owen Massey</note>
+	       </location>
             </place>
             <place type="building" obnCode="227" oucsCode="23233761" oxpID="e_79">
                <placeName>Richard Burton Building</placeName>
