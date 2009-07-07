@@ -37,8 +37,6 @@ import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
 import org.oucs.gaboto.vocabulary.DC;
 
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
@@ -53,7 +51,6 @@ public class TestGabotoEntityUtils {
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
-		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
 	}
 	
 	@Test
@@ -64,7 +61,6 @@ public class TestGabotoEntityUtils {
 		Building b = new Building();
 		b.setUri("http://exampleuri.co.uk");
 		b.setName("Abcdef");
-
 		List<Triple> triples = b.getTriplesFor();
 		
 		assertTrue(triples.contains(new Triple(
