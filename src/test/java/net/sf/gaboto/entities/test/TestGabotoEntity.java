@@ -69,6 +69,7 @@ public class TestGabotoEntity  {
 		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
     //oxp = GabotoFactory.getPersistentGaboto();
     oxp = GabotoFactory.getInMemoryGaboto();
+    //oxp = GabotoFactory.getEmptyInMemoryGaboto();
 	}
 	
 	@Test
