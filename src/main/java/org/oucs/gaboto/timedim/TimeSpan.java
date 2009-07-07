@@ -32,6 +32,7 @@
 package org.oucs.gaboto.timedim;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import org.oucs.gaboto.exceptions.NoTimeIndexSetException;
@@ -68,7 +69,9 @@ public class TimeSpan implements Serializable {
   public static final int START_UNIT_MONTH = 2;
   public static final int START_UNIT_DAY = 3;
 
+  /* 1 - 31 */
   protected Integer startDay;
+  /* 0 - 11 */
   protected Integer startMonth;
   protected Integer startYear;
 
@@ -162,16 +165,16 @@ public class TimeSpan implements Serializable {
         // extract timespan
         TimeSpan ts = new TimeSpan();
         ts.setStartYear(((Literal) startYearNode).getInt());
-        if (null != startMonthNode)
+        if (startMonthNode != null)
           ts.setStartMonth(((Literal) startMonthNode).getInt());
-        if (null != startDayNode)
+        if (startDayNode != null)
           ts.setStartDay(((Literal) startDayNode).getInt());
 
-        if (null != durationYearNode)
+        if (durationYearNode != null)
           ts.setDurationYear(((Literal) durationYearNode).getInt());
-        if (null != durationMonthNode)
+        if (durationMonthNode != null)
           ts.setDurationMonth(((Literal) durationMonthNode).getInt());
-        if (null != durationDayNode)
+        if (durationDayNode != null)
           ts.setDurationDay(((Literal) durationDayNode).getInt());
 
         return ts;
@@ -192,27 +195,25 @@ public class TimeSpan implements Serializable {
    * @return The time span.
    */
   public static TimeSpan createFromInstants(TimeInstant begin, TimeInstant end) {
-    // run tests
-    if (begin.aboutTheSame(end))
-      return createFromInstants(begin, new TimeInstant(
-          begin.getStartYear() + 1, 0, 0));
-    else if (begin.compareTo(end) != -1)
+    if (begin.canUnify(end)) 
+      // FIXME WTF looks like a hack
+      return createFromInstants(begin, TimeInstant.oneYearOn(begin));
+    else if (begin.compareTo(end) != -1)  
       throw new IllegalArgumentException(
-          "Begin has to be earlier than end. begin: " + begin + ", end: " + end);
+          "Begin has to be earlier than end. begin: " + begin + ", end: " + end  );
 
-    if (null == begin.startMonth)
-      end.setStartMonth(null);
-    if (null != begin.startMonth && null == end.startMonth)
-      end.setStartMonth(0);
-    if (null == begin.startDay)
+    if (begin.startMonth == null)
+      end.setStartMonth(null);  // WTF ???
+    if (begin.startMonth != null && end.startMonth == null)
+      end.setStartMonth(1);
+    if (begin.startDay == null)
       end.setStartDay(null);
-    if (null != begin.startDay && null == end.startDay)
-      end.setStartDay(0);
+    if (begin.startDay != null && end.startDay == null)
+      end.setStartDay(1);
 
     // everything seems ok
 
-    TimeSpan ts = new TimeSpan(begin.startYear, begin.startMonth,
-        begin.startDay);
+    TimeSpan ts = new TimeSpan(begin.startYear, begin.startMonth, begin.startDay);
 
     // if latest == big crunch, it is easy
     if (end.equals(TimeUtils.DOOMS_DAY))
@@ -226,19 +227,18 @@ public class TimeSpan implements Serializable {
 
     // years
 
-    if (null != end.startDay) {
+    if (end.startDay != null) {
       if (end.startDay < begin.startDay) {
         int daysInMonth = 0;
-        if (end.startMonth > 0)
+        if (end.startMonth > 1)
           daysInMonth = getDaysInMonth(end.startYear, end.startMonth - 1);
         else
           daysInMonth = getDaysInMonth(end.startYear - 1, 11);
 
-        durationDays = (daysInMonth - begin.startDay + end.startDay)
-            % daysInMonth;
+        durationDays = (daysInMonth - begin.startDay + end.startDay) % daysInMonth;
 
         if (durationDays >= 31)
-          System.out.println("Mist");
+          throw new RuntimeException("Bug in time arithetic");
 
         dayOverflow = true;
       } else {
@@ -246,7 +246,7 @@ public class TimeSpan implements Serializable {
       }
     }
 
-    if (null != end.startMonth) {
+    if (end.startMonth != null) {
       int endStartMonth = end.startMonth;
       if (dayOverflow)
         endStartMonth--;
@@ -300,9 +300,12 @@ public class TimeSpan implements Serializable {
    *          The start day.
    */
   public void setStartDay(Integer startDay) {
-    if (null != startDay && startDay > 31)
+    if (startDay !=  null && startDay > 31)
       throw new IllegalArgumentException(
           "There is no month with more than 31 days, argument was " + startDay);
+    if (startDay !=  null && startDay < 1)
+      throw new IllegalArgumentException(
+          "Days start with day 1 : " + startDay);
     this.startDay = startDay;
   }
 
@@ -322,13 +325,13 @@ public class TimeSpan implements Serializable {
    *          The start month.
    */
   public void setStartMonth(Integer startMonth) {
-    if (null != startMonth && startMonth.intValue() > 11)
+    if (startMonth != null && startMonth.intValue() > 11)
       throw new IllegalArgumentException(
           "There is no year with more than 12 months, zero based, argument was "
               + startMonth + ".");
-    if (null != startMonth && startMonth.intValue() < 0)
+    if (startMonth != null && startMonth.intValue() < 0)
       throw new IllegalArgumentException(
-          "Negative month number: "
+          "Month number: "
               + startMonth);
     this.startMonth = startMonth;
   }
@@ -358,9 +361,9 @@ public class TimeSpan implements Serializable {
    * @return The resolution.
    */
   public int getStartUnit() {
-    if (null != startDay)
+    if (startDay != null)
       return START_UNIT_DAY;
-    else if (null != startMonth)
+    else if (startMonth != null)
       return START_UNIT_MONTH;
 
     return START_UNIT_YEAR;
@@ -372,7 +375,7 @@ public class TimeSpan implements Serializable {
    * @return The number of days.
    */
   public Integer getDurationDay() {
-    return null == durationDay ? 0 : durationDay;
+    return durationDay == null ? 0 : durationDay;
   }
 
   /**
@@ -382,14 +385,14 @@ public class TimeSpan implements Serializable {
    *          The number of days.
    */
   public void setDurationDay(Integer durationDay) {
-    if (null != durationDay && durationDay >= 31)
+    if (durationDay  != null && durationDay >= 31)
       throw new IllegalArgumentException(
           "There is no month on earth that has more than 31 days. You might just want to add an extra month");
 
     if (durationDay == null)
       this.durationDay = null;
-    else
-      this.durationDay = 0 == durationDay ? null : durationDay;
+    else 
+      this.durationDay = durationDay == 0 ? null : durationDay;
   }
 
   /**
@@ -398,7 +401,7 @@ public class TimeSpan implements Serializable {
    * @return The number of months.
    */
   public Integer getDurationMonth() {
-    return null == durationMonth ? 0 : durationMonth;
+    return durationMonth == null ? 0 : durationMonth;
   }
 
   /**
@@ -408,14 +411,14 @@ public class TimeSpan implements Serializable {
    *          The number of months.
    */
   public void setDurationMonth(Integer durationMonth) {
-    if (null != durationMonth && durationMonth >= 12)
+    if (durationMonth != null && durationMonth >= 12)
       throw new IllegalArgumentException(
           "There is no year on earth that has more than 12 months. You might just want to add an extra year.");
 
-    if (null == durationMonth)
+    if (durationMonth == null)
       this.durationMonth = null;
     else
-      this.durationMonth = 0 == durationMonth ? null : durationMonth;
+      this.durationMonth = durationMonth == 0 ? null : durationMonth;
   }
 
   /**
@@ -424,7 +427,7 @@ public class TimeSpan implements Serializable {
    * @return The duration of years.
    */
   public Integer getDurationYear() {
-    return null == durationYear ? 0 : durationYear;
+    return durationYear == null ? 0 : durationYear;
   }
 
   /**
@@ -433,10 +436,10 @@ public class TimeSpan implements Serializable {
    * @param durationYear
    */
   public void setDurationYear(Integer durationYear) {
-    if (null == durationYear)
+    if (durationYear == null)
       this.durationYear = null;
     else
-      this.durationYear = 0 == durationYear ? null : durationYear;
+      this.durationYear = durationYear == 0 ? null : durationYear;
   }
 
   /**
@@ -463,33 +466,28 @@ public class TimeSpan implements Serializable {
     Integer newMonth = null;
     Integer newDay = null;
 
-    if (null != getStartMonth()) {
+    if (getStartMonth() != null) {
       newMonth = getStartMonth() + getDurationMonth();
 
-      // year overflow 1
       if (newMonth > 11) {
         newMonth = newMonth % 12;
         newYear++;
       }
 
-      if (null != getStartDay()) {
-        // month overflow
+      if (getStartDay() != null) {
         if (isMonthOverflow(newYear, newMonth, getStartDay(), getDurationDay())) {
           newMonth++;
-          // year overflow 2
           if (newMonth > 11) {
             newMonth = newMonth % 12;
             newYear++;
           }
-          if (newMonth == 0)
-            newDay = (getStartDay() + getDurationDay())
-                % getDaysInMonth(newYear, 11);
+          if (newMonth == Calendar.JANUARY)
+            newDay = newDay(getStartDay(), getDurationDay(), getDaysInMonth(newYear, Calendar.DECEMBER));
           else
-            newDay = (getStartDay() + getDurationDay())
-                % getDaysInMonth(newYear, newMonth - 1);
-        } else
-          newDay = (getStartDay() + getDurationDay())
-              % getDaysInMonth(newYear, newMonth);
+            newDay = newDay(getStartDay(), getDurationDay(), getDaysInMonth(newYear, newMonth - 1));
+        } else {
+          newDay = newDay(getStartDay(), getDurationDay(), getDaysInMonth(newYear, newMonth));
+        }
       }
     }
 
@@ -500,6 +498,12 @@ public class TimeSpan implements Serializable {
     return end;
   }
 
+  int newDay(int start, int duration, int daysInMonth) { 
+    if (((start + duration) % daysInMonth) == 0)
+      return daysInMonth;
+    else 
+      return (start + duration) % daysInMonth;
+  }
   /**
    * Tests whether a given point in time falls into this time span.
    * 
@@ -511,14 +515,14 @@ public class TimeSpan implements Serializable {
     // test if beginning is later than this beginning
     TimeInstant beginning = this.getBegin();
     int compB = ti.compareTo(beginning);
-    if (compB == 0 || ti.aboutTheSame(beginning))
+    if (compB == 0 || ti.canUnify(beginning))
       return true;
     else if (compB < 0)
       return false;
 
     TimeInstant end = this.getEnd();
     int compE = ti.compareTo(end);
-    if (compE <= 0 || ti.aboutTheSame(end))
+    if (compE <= 0 || ti.canUnify(end))
       return true;
 
     return false;
@@ -536,41 +540,41 @@ public class TimeSpan implements Serializable {
   private static int getDaysInMonth(int year, int month) {
     int daysInMonth = 0;
     switch (month) {
-    case 0:
+    case Calendar.JANUARY:
       daysInMonth = 31;
       break;
-    case 1:
+    case Calendar.FEBRUARY:
       GregorianCalendar cal = new GregorianCalendar();
       daysInMonth = cal.isLeapYear(year) ? 29 : 28;
       break;
-    case 2:
+    case Calendar.MARCH:
       daysInMonth = 31;
       break;
-    case 3: // April
+    case Calendar.APRIL: 
       daysInMonth = 30;
       break;
-    case 4:
+    case Calendar.MAY:
       daysInMonth = 31;
       break;
-    case 5: // June
+    case Calendar.JUNE: 
       daysInMonth = 30;
       break;
-    case 6:
+    case Calendar.JULY:
       daysInMonth = 31;
       break;
-    case 7: // August
+    case Calendar.AUGUST:
       daysInMonth = 31;
       break;
-    case 8:
+    case Calendar.SEPTEMBER:
       daysInMonth = 30;
       break;
-    case 9:
+    case Calendar.OCTOBER: 
       daysInMonth = 31;
       break;
-    case 10:
+    case Calendar.NOVEMBER:
       daysInMonth = 30;
       break;
-    case 11:
+    case Calendar.DECEMBER:
       daysInMonth = 31;
       break;
     default:
@@ -595,13 +599,17 @@ public class TimeSpan implements Serializable {
    * 
    * @return Whether or not we end up in the next month
    */
-  private boolean isMonthOverflow(Integer year, Integer month, Integer day,
-      Integer durationDays) {
-    if (null == year || null == month || null == day || null == durationDays)
+  private boolean isMonthOverflow(Integer year, Integer month, Integer day, Integer durationDays) {
+    
+    if (year == null || month == null || day == null || durationDays == null)
       return false;
 
     int daysInMonth = getDaysInMonth(year, month);
 
+    if (day + durationDays >= daysInMonth)
+      System.err.println(day +"+"+ durationDays +">="+ daysInMonth);
+    else
+      System.err.println(day +"+"+ durationDays +"<"+ daysInMonth);
     return day + durationDays >= daysInMonth;
   }
 
@@ -673,9 +681,9 @@ public class TimeSpan implements Serializable {
     if (!hasFixedDuration())
       s += "~dooms-day";
     else {
-      s += "~" + (null == durationYear ? "0" : durationYear);
-      s += "-" + (null == durationMonth ? "0" : durationMonth);
-      s += "-" + (null == durationDay ? "0" : durationDay);
+      s += "~" + (durationYear == null  ? "0" : durationYear);
+      s += "-" + (durationMonth == null ? "0" : durationMonth);
+      s += "-" + (durationDay == null   ? "0" : durationDay);
     }
 
     return s;
