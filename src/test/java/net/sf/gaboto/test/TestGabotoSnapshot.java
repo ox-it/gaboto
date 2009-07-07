@@ -35,7 +35,6 @@ import net.sf.gaboto.test.Utils;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
