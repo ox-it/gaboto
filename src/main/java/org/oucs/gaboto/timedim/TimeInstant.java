@@ -211,7 +211,6 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
    */
   public int compareTo(TimeInstant ti) {
     if (this.startYear < ti.getStartYear()) { 
-      System.err.println(this.startYear + "<" +  ti.getStartYear());
       return -1;
     } else if (this.startYear > ti.getStartYear())
       return 1;
