@@ -2908,11 +2908,6 @@ data, and if so, how? -->
                      <postCode>OX3 7DG</postCode>
                   </address>
                </location>
-               <trait type="url">
-                  <desc>
-                     <ptr target=""/>
-                  </desc>
-               </trait>
                <place oxpID="23232572" type="building" subtype="primary" obnCode="674">
                   <event when="2003" type="construction"/>
                   <event when="2005" type="acquisition"/>
