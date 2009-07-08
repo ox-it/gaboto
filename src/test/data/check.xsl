@@ -11,6 +11,10 @@
 
 <xsl:template match="/">
     <xsl:for-each select="//tei:place">
+      <xsl:if test="not(@oxpID)">
+	<xsl:message>Place <xsl:value-of
+	select="@oxpID"/>/<xsl:value-of select="@oucsCode"/> has no	oxpid attribute</xsl:message>
+      </xsl:if>
       <xsl:if test="not(@type)">
 	<xsl:message>Place <xsl:value-of
 	select="@oxpCode"/>/<xsl:value-of select="@oucsCode"/> has no	type attribute</xsl:message>
