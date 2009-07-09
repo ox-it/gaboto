@@ -148,14 +148,14 @@
     -->
     <owl:ObjectProperty rdf:ID="hasPrimaryPlace">
       <rdfs:comment>Defines the primary place for an entity</rdfs:comment>
-      <rdfs:range rdf:resource="#Place"/>
       <rdfs:domain rdf:resource="#Unit"/>
+      <rdfs:range rdf:resource="#Place"/>
     </owl:ObjectProperty>
     
     <owl:ObjectProperty rdf:ID="occupies">
       <rdfs:comment>Describes that a unit occupies a place</rdfs:comment>
-      <rdfs:range>#Place</rdfs:range>
       <rdfs:domain>#Unit</rdfs:domain>
+      <rdfs:range>#Place</rdfs:range>
     </owl:ObjectProperty>
                     
     <owl:ObjectProperty rdf:ID="uses"/>
@@ -208,11 +208,13 @@
     
     
     <owl:ObjectProperty rdf:ID="hasWidth">
-      <rdfs:comment>Describe the width of an entity</rdfs:comment>
+      <rdfs:comment>Describe the width of an image</rdfs:comment>
+      <rdfs:domain>#Image</rdfs:domain>
     </owl:ObjectProperty>
 
     <owl:ObjectProperty rdf:ID="hasHeight">
-      <rdfs:comment>Describe the width of an entity</rdfs:comment>
+      <rdfs:comment>Describe the width of an image</rdfs:comment>
+      <rdfs:domain>#Image</rdfs:domain>
     </owl:ObjectProperty>
     
     <owl:ObjectProperty rdf:ID="inImage">
