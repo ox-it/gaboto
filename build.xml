@@ -12,8 +12,9 @@
     <property name="documentation.dir"     value="documentation"/>
     <property name="example-data.dir"     value="rdfdata"/>
     <property name="deploy.tmp.dir"     value="deploy_tmp"/>
-    <property name="deploy.dir"     value="deploy"/>
-    <property name="vocab.dir"   value="src/main/java/org/oucs/gaboto/vocabulary"/>
+    <property name="deploy.dir"    value="deploy"/>
+    <property name="vocab.dir"     value="src/main/java/org/oucs/gaboto/vocabulary"/>
+    <property name="package.name"  value="org.oucs.gaboto"/>
 
      <path id="cp" >
       <pathelement path=""/>
@@ -60,27 +61,31 @@
         <!-- create Gaboto Vocabulary -->
         <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
-          <arg value="ontologies/gaboto.owl" />
+          <arg value="ontologies/Gaboto.owl" />
           <arg value="-n" />
           <arg value="GabotoVocab" />
+          <arg value="--classnamesuffix" />
+          <arg value="Vocab" />
           <arg value="-o" />
           <arg value="${vocab.dir}/GabotoVocab.java" />
           <arg value="--ontology" />
           <arg value="--package" />
-          <arg value="org.oucs.gaboto.vocabulary"/>
+          <arg value="${package.name}.vocabulary"/>
         </java>
         
         <!-- create OxPoints Vocabulary -->
         <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
-          <arg value="ontologies/oxpoints.owl" />
+          <arg value="ontologies/OxPoints.owl" />
           <arg value="-n" />
           <arg value="OxPointsVocab" />
           <arg value="-o" />
           <arg value="${vocab.dir}/OxPointsVocab.java" />
+          <arg value="--classnamesuffix" />
+          <arg value="Vocab" />
           <arg value="--ontology" />
           <arg value="--package" />
-          <arg value="org.oucs.gaboto.vocabulary"/>
+          <arg value="${package.name}.vocabulary"/>
         </java>
         
         <!-- create geo vocabulary -->
@@ -95,7 +100,7 @@
           <arg value="http://www.w3.org/2003/01/geo/wgs84_pos"/>
           <arg value="--ontology" />
           <arg value="--package" />
-          <arg value="org.oucs.gaboto.vocabulary"/>
+          <arg value="${package.name}.vocabulary"/>
         </java>
         
         <!-- create time vocabulary -->
@@ -108,20 +113,20 @@
           <arg value="Vocab" />
           <arg value="--ontology" />
           <arg value="--package" />
-          <arg value="org.oucs.gaboto.vocabulary"/>
+          <arg value="${package.name}.vocabulary"/>
         </java>
         
         <!-- create rdfcon vocabulary -->
         <java classname="net.sf.gaboto.generation.VocabularyGenerator" classpathref="cp" fork="yes">
           <arg value="-i" />
           <arg value="ontologies/rdfcon.owl" />
-          <!--arg value="-n" />
-          <arg value="RDFCON" /-->
+          <arg value="-n" />
+          <arg value="RDFCON" />
           <arg value="-o" />
           <arg value="${vocab.dir}" />
           <arg value="--ontology" />
           <arg value="--package" />
-          <arg value="org.oucs.gaboto.vocabulary"/>
+          <arg value="${package.name}.vocabulary"/>
         </java>
         
         <!-- create dc vocabulary -->
@@ -134,7 +139,7 @@
           <arg value="${vocab.dir}" />
           <arg value="--ontology" />
           <arg value="--package" />
-          <arg value="org.oucs.gaboto.vocabulary"/>
+          <arg value="${package.name}.vocabulary"/>
         </java>
         
         <!-- create rdfg vocabulary -->
@@ -150,7 +155,7 @@
           <arg value="${vocab.dir}" />
           <arg value="--ontology" />
           <arg value="--package" />
-          <arg value="org.oucs.gaboto.vocabulary"/>
+          <arg value="${package.name}.vocabulary"/>
         </java>
 
         <!-- create vCard vocabulary -->
@@ -163,7 +168,7 @@
           <arg value="${vocab.dir}" />
           <arg value="--ontology" />
           <arg value="--package" />
-          <arg value="org.oucs.gaboto.vocabulary"/>
+          <arg value="${package.name}.vocabulary"/>
         </java>
         
         <!-- create gabotoKML vocabulary -->
@@ -174,7 +179,7 @@
           <arg value="${vocab.dir}" />
           <arg value="--ontology" />
           <arg value="--package" />
-          <arg value="org.oucs.gaboto.vocabulary"/>
+          <arg value="${package.name}.vocabulary"/>
         </java>        
             <property name="cpcontent" refid="cp"/>
         <echo>The newly created classpath is ${cpcontent}</echo>
