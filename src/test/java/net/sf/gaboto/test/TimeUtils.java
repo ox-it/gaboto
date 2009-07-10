@@ -8,6 +8,8 @@ import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 
 public class TimeUtils {
+  
+  
   public static TimeSpan getRandomTimespan() {
     TimeInstant t1 = getRandomTimeinstant();
     TimeInstant t2 = getRandomTimeinstant();
@@ -44,7 +46,7 @@ public class TimeUtils {
       if (month && r.nextDouble() < prob5)
         timeSpan.setDurationMonth(r.nextInt(12));
       if (day && r.nextDouble() < prob6)
-        timeSpan.setDurationDay(r.nextInt(30));
+        timeSpan.setDurationDay(r.nextInt(27));
     }
 
     return timeSpan;
