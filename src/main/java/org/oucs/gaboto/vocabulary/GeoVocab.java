@@ -22,14 +22,14 @@ public class GeoVocab {
     /** <p>The namespace of the vocabulary as a resource</p> */
     public static final Resource NAMESPACE = MODEL.createResource( NS );
     
-    // see VocabularyGenerator#writeObjectProperties()
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeObjectProperties() */
     public static final 
     String exterior_URI = "http://www.opengis.net/gml/exterior";
     public static final 
     ObjectProperty exterior = MODEL.createObjectProperty( "http://www.opengis.net/gml/exterior" );
     
     
-    // see VocabularyGenerator#writeDatatypeProperties()
+      /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
     public static final 
     String featurename_URI = "http://www.opengis.net/gml/featurename";
     public static final 
@@ -78,9 +78,9 @@ public class GeoVocab {
     DatatypeProperty long_ = MODEL.createDatatypeProperty( "http://www.w3.org/2003/01/geo/wgs84_pos#long" );
     
     
-    // see VocabularyGenerator#writeAnnotationProperties()
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeAnnotationProperties() */
     
-    // see VocabularyGenerator#writeOntClasses()
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntClasses() */
     public static final 
     String Envelope_URI = "http://www.opengis.net/gml/Envelope";
     public static final 
@@ -120,6 +120,6 @@ public class GeoVocab {
     OntClass _Geometry = MODEL.createClass( "http://www.opengis.net/gml/_Geometry" );
     
     
-    // see VocabularyGenerator#writeOntIndividuals()
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntIndividuals() */
     
 }

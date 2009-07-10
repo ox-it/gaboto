@@ -22,30 +22,18 @@ public class OxPointsVocab {
     /** <p>The namespace of the vocabulary as a resource</p> */
     public static final Resource NAMESPACE = MODEL.createResource( NS );
     
-    // see VocabularyGenerator#writeObjectProperties()
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeObjectProperties() */
     /** <p>Defines that two entities are associated with one another (N:M)</p> */
     public static final 
     String associatedWith_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#associatedWith";
     public static final 
     ObjectProperty associatedWith = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#associatedWith" );
     
-    /** <p>Can for example be used to describe the capacity of carparks</p> */
+    /** <p>The number of cars that can park</p> */
     public static final 
     String capacity_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#capacity";
     public static final 
     ObjectProperty capacity = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#capacity" );
-    
-    /** <p>Describe the width of an entity</p> */
-    public static final 
-    String hasHeight_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasHeight";
-    public static final 
-    ObjectProperty hasHeight = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasHeight" );
-    
-    /** <p>Describes that an entity has a homepage</p> */
-    public static final 
-    String hasHomepage_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasHomepage";
-    public static final 
-    ObjectProperty hasHomepage = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasHomepage" );
     
     /** <p>Describes that an entity has a homepage for its it people</p> */
     public static final 
@@ -95,13 +83,13 @@ public class OxPointsVocab {
     public static final 
     ObjectProperty hasWeblearn = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasWeblearn" );
     
-    /** <p>Describe the width of an entity</p> */
+    /** <p>Describes that an entity has a homepage</p> */
     public static final 
-    String hasWidth_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasWidth";
+    String homepage_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#homepage";
     public static final 
-    ObjectProperty hasWidth = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasWidth" );
+    ObjectProperty homepage = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#homepage" );
     
-    /** <p></p> */
+    /** <p>The Place is depicted within the Image</p> */
     public static final 
     String inImage_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#inImage";
     public static final 
@@ -131,11 +119,23 @@ public class OxPointsVocab {
     ObjectProperty uses = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#uses" );
     
     
-    // see VocabularyGenerator#writeDatatypeProperties()
+      /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
+    /** <p>Describe the height of an image</p> */
+    public static final 
+    String height_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#height";
+    public static final 
+    DatatypeProperty height = MODEL.createDatatypeProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#height" );
     
-    // see VocabularyGenerator#writeAnnotationProperties()
+    /** <p>Describe the width of an image</p> */
+    public static final 
+    String width_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#width";
+    public static final 
+    DatatypeProperty width = MODEL.createDatatypeProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#width" );
     
-    // see VocabularyGenerator#writeOntClasses()
+    
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeAnnotationProperties() */
+    
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntClasses() */
     public static final 
     String Building_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Building";
     public static final 
@@ -239,6 +239,6 @@ public class OxPointsVocab {
     OntClass Website = MODEL.createClass( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Website" );
     
     
-    // see VocabularyGenerator#writeOntIndividuals()
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntIndividuals() */
     
 }
