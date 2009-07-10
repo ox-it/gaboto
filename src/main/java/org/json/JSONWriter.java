@@ -117,7 +117,8 @@ public class JSONWriter {
             try {
                 if (this.comma && this.mode == 'a') {
                     this.writer.write(',');
-                      this.writer.write(",\n");
+                    // NOTE TPP Change here
+                    this.writer.write("\n");
                     for (int i = 0; i < this.top; i++)
                       this.writer.write(" ");
                 }
