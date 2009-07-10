@@ -483,7 +483,37 @@ public class VocabularyGenerator {
    * arguments
    */
   public static void main(String[] args) {
-    new VocabularyGenerator().go(args);
+    if (args.length == 0) { 
+      new VocabularyGenerator().go(new String[] 
+                                              {
+              "-i", "ontologies/Gaboto.owl",
+              "-n", "GabotoVocab",
+              "--classnamesuffix", "Vocab",
+              "-o", "src/main/java/org/oucs/gaboto/vocabulary/GabotoVocab.java",
+              "--ontology",
+              "--package", "org.oucs.gaboto.vocabulary"
+      });      
+      new VocabularyGenerator().go(new String[] 
+                                              {
+              "-i", "ontologies/oxpoints.owl",
+              "-n", "OxPointsVocab",
+              "--classnamesuffix", "Vocab",
+              "-o", "src/main/java/org/oucs/gaboto/vocabulary/OxPointsVocab.java",
+              "--ontology",
+              "--package", "org.oucs.gaboto.vocabulary"
+      });      
+      new VocabularyGenerator().go(new String[] 
+                                              {
+              "-i", "ontologies/geo.owl",
+              "-n", "GeoVocab",
+              "--classnamesuffix", "Vocab",
+              "-o", "src/main/java/org/oucs/gaboto/vocabulary/GeoVocab.java",
+              "--include", "http://www.w3.org/2003/01/geo/wgs84_pos",
+              "--ontology",
+              "--package", "org.oucs.gaboto.vocabulary"
+      });      
+    } else
+      new VocabularyGenerator().go(args);
   }
 
   // Internal implementation methods
@@ -651,9 +681,13 @@ public class VocabularyGenerator {
       writeln(0, substitute(header));
     } else {
       // we have to do the imports at least
-      writeln(0, "import com.hp.hpl.jena.rdf.model.*;");
+      writeln(0, "import com.hp.hpl.jena.rdf.model.ModelFactory;");
+      writeln(0, "import com.hp.hpl.jena.rdf.model.Resource;");
       if (isTrue(OPT_ONTOLOGY)) {
-        writeln(0, "import com.hp.hpl.jena.ontology.*;");
+        writeln(0, "import com.hp.hpl.jena.ontology.ObjectProperty;");
+        writeln(0, "import com.hp.hpl.jena.ontology.OntClass;");
+        writeln(0, "import com.hp.hpl.jena.ontology.OntModel;");
+        writeln(0, "import com.hp.hpl.jena.ontology.OntModelSpec;");
       }
       if (isTrue(OPT_INCLUDE_SOURCE)) {
         writeln(0, "import java.io.ByteArrayInputStream;");
@@ -1237,7 +1271,7 @@ public class VocabularyGenerator {
   /** Write any object properties in the vocabulary */
   @SuppressWarnings("unchecked")
   protected void writeObjectProperties() {
-    write(1, "// see VocabularyGenerator#writeObjectProperties()\n");
+    write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeObjectProperties() */\n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
 
     if (!isTrue(OPT_LANG_RDFS)) {
@@ -1251,7 +1285,7 @@ public class VocabularyGenerator {
   /** Write any datatype properties in the vocabulary */
   @SuppressWarnings("unchecked")
   protected void writeDatatypeProperties() {
-    write(1, "// see VocabularyGenerator#writeDatatypeProperties()\n");
+    write(1, "  /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ \n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
 
     if (!isTrue(OPT_LANG_RDFS)) {
@@ -1265,7 +1299,7 @@ public class VocabularyGenerator {
   /** Write any annotation properties in the vocabulary */
   @SuppressWarnings("unchecked")
   protected void writeAnnotationProperties() {
-    write(1, "// see VocabularyGenerator#writeAnnotationProperties()\n");
+    write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeAnnotationProperties() */\n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
 
     if (!isTrue(OPT_LANG_RDFS)) {
@@ -1326,7 +1360,7 @@ public class VocabularyGenerator {
   /** Write classes as ontology terms */
   @SuppressWarnings("unchecked")
   protected void writeOntClasses() {
-    write(1, "// see VocabularyGenerator#writeOntClasses()\n");
+    write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntClasses() */\n");
     String template = hasValue(OPT_CLASS_TEMPLATE) ? getValue(OPT_CLASS_TEMPLATE) : DEFAULT_CLASS_TEMPLATE;
 
     for (Iterator<? extends RDFNode> i = sorted(m_source.listClasses()); i.hasNext();) {
@@ -1381,7 +1415,7 @@ public class VocabularyGenerator {
   /** Write individuals as ontology terms */
   @SuppressWarnings("unchecked")
   protected void writeOntIndividuals() {
-    write(1, "// see VocabularyGenerator#writeOntIndividuals()\n");
+    write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntIndividuals() */\n");
     String template = hasValue(OPT_INDIVIDUAL_TEMPLATE) ? getValue(OPT_INDIVIDUAL_TEMPLATE)
             : DEFAULT_INDIVIDUAL_TEMPLATE;
 
