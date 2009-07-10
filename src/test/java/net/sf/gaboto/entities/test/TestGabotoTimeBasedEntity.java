@@ -320,10 +320,10 @@ public class TestGabotoTimeBasedEntity {
 
         assertEquals(b1.getUri(), b2.getUri());
         assertEquals(b1.getType(), b2.getType());
-        assertTrue(b1.getTimeSpan().getBegin().canUnify(
-            b2.getTimeSpan().getBegin())
-            && b1.getTimeSpan().getEnd()
-                .canUnify(b2.getTimeSpan().getEnd()));
+        assertTrue(""  + b1.getTimeSpan().getBegin() + " cannot unify with " + b2.getTimeSpan().getBegin(),
+                b1.getTimeSpan().getBegin().canUnify(b2.getTimeSpan().getBegin()));
+        assertTrue(""  + b1.getTimeSpan().getEnd() + " cannot unify with " + b2.getTimeSpan().getEnd(), 
+                b1.getTimeSpan().getEnd().canUnify(b2.getTimeSpan().getEnd()));
         assertEquals(b1.getName(), b2.getName());
       }
     }
