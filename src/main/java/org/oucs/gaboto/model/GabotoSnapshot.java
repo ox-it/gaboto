@@ -416,12 +416,12 @@ public class GabotoSnapshot {
 	 * @return The entity pool
 	 */
 	private GabotoEntityPool loadEntityPoolFromResources(Collection<Resource> resources) {
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(this);
-		config.setResources(resources);
-		config.setAddReferencedEntitiesToPool(false);
+		GabotoEntityPoolConfiguration poolConfig = new GabotoEntityPoolConfiguration(this);
+		poolConfig.setResources(resources);
+		poolConfig.setAddReferencedEntitiesToPool(false);
 		
 		try {
-			return GabotoEntityPool.createFrom(config);
+			return GabotoEntityPool.createFrom(poolConfig);
 		} catch (EntityPoolInvalidConfigurationException e) {
 			throw new GabotoRuntimeException(e);
 		}
