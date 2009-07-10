@@ -127,6 +127,11 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
     this.snapshot = snapshot;
   }
 
+  public GabotoEntityPool(GabotoSnapshot snapshot) {
+    this.gaboto = snapshot.getGaboto();
+    this.snapshot = snapshot;
+  }
+
   /**
    * Creates a new, empty entity pool with a given configuration.
    * 
@@ -637,6 +642,9 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
     Model model = ModelFactory.createDefaultModel();
 
     for (GabotoEntity e : entityMap.values()) {
+      if (e.getUri() == null)
+        throw new NullPointerException("No Uri set for " + e);
+      System.err.println(e);
       e.addToModel(model);
     }
 
