@@ -448,7 +448,7 @@ abstract public class GabotoEntity implements RDFContainer {
 		if(isDirectReferencesResolved())
 			return;
 	
-		if(null == pool)
+		if(pool == null)
 			throw new IllegalStateException("The GabotoEntity was not provided with a pool object to resolve its references from.");
 		
 		// add missing references
@@ -485,7 +485,7 @@ abstract public class GabotoEntity implements RDFContainer {
 		if(passiveEntitiesLoaded)
 			return;
 		
-		if(null == pool)
+		if(pool == null)
 			throw new IllegalStateException("The GabotoEntity was not provided with a pool object to load the passive properties from.");
 
 		pool.addPassiveEntitiesFor(this);
@@ -557,7 +557,7 @@ abstract public class GabotoEntity implements RDFContainer {
 		if(null != directMethod){
 			try {
 				Object value = directMethod.invoke(this, (Object[])null);
-				if(null != value)
+				if(value != null)
 					return value;
 			} catch (Exception e) {
 				throw new GabotoRuntimeException(e);
@@ -567,7 +567,7 @@ abstract public class GabotoEntity implements RDFContainer {
 		// search in passive
 		if(searchInPassiveProperties){
 			Object value = getPassivePropertyValue(propURI);
-			if(null != value)
+			if(value != null)
 				return value;
 		}
 
@@ -577,13 +577,13 @@ abstract public class GabotoEntity implements RDFContainer {
 		
 		// look for indirect Method
 		List<Method> indirectMethods = getIndirectMethodsForProperty(propURI);
-		if(null == indirectMethods)
+		if(indirectMethods == null)
 			return null;
 		
 		for(Method indirectMethod : indirectMethods){
 			try {
 				Object obj = indirectMethod.invoke(this, (Object[])null);
-				if(null != obj){
+				if(obj != null){
 					if(! (obj instanceof GabotoEntity) && !(obj instanceof Collection))
 						throw new IllegalAnnotationException(getClass());
 					
@@ -593,7 +593,7 @@ abstract public class GabotoEntity implements RDFContainer {
 						
 						// try to find answer at entity
 						Object value = entity.getPropertyValue(propURI, searchInPassiveProperties, searchInIndirectProperties);
-						if(null != value)
+						if(value != null)
 							return value;
 					} else if(obj instanceof Collection){
 						// try to cast
@@ -637,7 +637,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	 */
 	public Object getPassivePropertyValue(String propURI){
 		Method m = GabotoEntityUtils.getPassiveGetMethodFor(this.getClass(), propURI);
-		if(null != m){
+		if(m != null){
 			try {
 				return m.invoke(this, (Object[])null);
       } catch (Exception e) {
@@ -754,7 +754,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	 */
 	public List<Triple> getTriplesFor(boolean includeType) throws IllegalAnnotationException{
 		// if no uri
-		if(null == this.getUri())
+		if(this.getUri() == null)
 			throw new IllegalArgumentException("Entities need to have a defined uri");
 		
 		List<Triple> triples = RDFContainerTripleGeneratorImpl.getInstance().getTriplesFor(this, Node.createURI(getUri()), includeType);
@@ -769,7 +769,7 @@ abstract public class GabotoEntity implements RDFContainer {
 		if(null == ts)
 			ts = TimeUtils.EXISTANCE;
 		
-		return "entity (" + this.getClass().getSimpleName() + "): " + ts + ", " + getUri();
+		return getUri() + " " + this.getClass().getSimpleName() + " : " + ts + "";
 	}
 	
 	
