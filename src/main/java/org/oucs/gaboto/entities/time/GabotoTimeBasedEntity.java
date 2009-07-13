@@ -160,7 +160,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
 
   /**
    * Creates a new empty GabotoTimeBasedEntity with an undefined lifespan (
-   * {@link TimeUtils#EXISTANCE}).
+   * {@link TimeUtils#EXISTENCE}).
    * 
    * <p>
    * Has the same result as calling
@@ -175,7 +175,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    * @see GabotoEntity
    */
   public GabotoTimeBasedEntity(Class<? extends GabotoEntity> entityClass, String typeURI, String uri) {
-    this(entityClass, typeURI, uri, TimeUtils.EXISTANCE);
+    this(entityClass, typeURI, uri, TimeUtils.EXISTENCE);
   }
 
   /**
@@ -539,7 +539,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    */
   public void addProperty(TimeSpan ts, String propertyURI, Object value) {
     // if timespan is EXISTANCE
-    if (ts.equals(TimeUtils.EXISTANCE)) {
+    if (ts.equals(TimeUtils.EXISTENCE)) {
       // put it in universal properties and get out of here.
       addProperty(propertyURI, value);
       return;
