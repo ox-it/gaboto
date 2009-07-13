@@ -68,7 +68,7 @@ public class TestPassiveProperties  {
 		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
 		
 		boolean foundPassive = false;
-		for(GabotoEntity e : pool.getEntities()){
+    for(GabotoEntity e : pool.getEntities()){
 			Website web = (Website) e;
 			
 			if(web.getIsHomepageIn() != null)
