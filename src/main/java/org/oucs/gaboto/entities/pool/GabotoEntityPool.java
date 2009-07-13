@@ -456,7 +456,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
         snapshot.execSPARQLSelect(query, new QuerySolutionProcessor() {
           public void processSolution(QuerySolution solution) {
             Resource res = solution.getResource("res");
-            if (null != res) {
+            if (res != null) {
               if (entityMap.containsKey(res.getURI()))
                 request.passiveEntityLoaded(entityMap.get(res.getURI()));
               else if (referencedEntityMap.containsKey(res.getURI()))
@@ -476,7 +476,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
           }
 
           public boolean stopProcessing() {
-            return true;
+            return false;
           }
 
         });
@@ -643,7 +643,6 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
     for (GabotoEntity e : entityMap.values()) {
       if (e.getUri() == null)
         throw new NullPointerException("No Uri set for " + e);
-      System.err.println(e);
       e.addToModel(model);
     }
 
