@@ -139,7 +139,7 @@ public class TimeSpan implements Serializable {
    */
   public static TimeSpan createFromGraphName(String graphName, Gaboto gaboto) {
     if (graphName.equals(gaboto.getGlobalKnowledgeGraph().getGraphName().getURI()))
-      return TimeUtils.EXISTANCE;
+      return TimeUtils.EXISTENCE;
 
     try {
       return gaboto.getTimeDimensionIndexer().getTimeSpanFor(graphName);
@@ -672,8 +672,8 @@ public class TimeSpan implements Serializable {
 
   @Override
   public String toString() {
-    if (this.equals(TimeUtils.EXISTANCE))
-      return "existance";
+    if (this.equals(TimeUtils.EXISTENCE))
+      return "existence";
     String s = "";
 
     s += getBegin().toString();
