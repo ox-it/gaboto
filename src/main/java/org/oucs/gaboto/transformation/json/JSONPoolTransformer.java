@@ -269,6 +269,8 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
       addKey(jsonStringer, key);
       addEntity(jsonStringer, (GabotoEntity) memberValue, level + 1);
     } else if (memberValue instanceof Collection) {
+      if (((Collection<GabotoEntity>) memberValue).size() == 0)
+        return;
       addKey(jsonStringer, key);
       startArray(jsonStringer);
       for (GabotoEntity innerEntity : (Collection<GabotoEntity>) memberValue) {
