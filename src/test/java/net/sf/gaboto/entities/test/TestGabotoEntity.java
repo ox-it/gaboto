@@ -34,11 +34,16 @@ package net.sf.gaboto.entities.test;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.Map.Entry;
+
+import net.sf.gaboto.test.Utils;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.model.Gaboto;
@@ -59,6 +64,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 import com.hp.hpl.jena.query.QuerySolution;
+import com.hp.hpl.jena.rdf.model.Property;
 
 public class TestGabotoEntity  {
 
@@ -189,5 +195,42 @@ public class TestGabotoEntity  {
 		
 		assertTrue(foundURIs.contains(uri2));
 	}
-		
+	
+	@SuppressWarnings("unchecked")
+  @Test
+	public void testPassiveProperties() { 
+    Gaboto oxp = Utils.getOxpointsFromXML();
+    
+    GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
+	  
+    GabotoEntityPool pool = new GabotoEntityPool(oxp, nowSnap);
+    GabotoEntity passiveParticipant = nowSnap.loadEntity("http://m.ox.ac.uk/oxpoints/id/23232562");
+    Property prop = OxPointsVocab.MODEL.getObjectProperty("http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#occupies");
+    Set<Entry<String, Object>> passiveProperties = passiveParticipant.getAllPassiveProperties().entrySet(); 
+    for (Entry<String, Object> entry : passiveProperties) {
+      if (entry.getKey().equals(prop.getURI())) {
+        if (entry.getValue() != null) {
+          if (entry.getValue() instanceof HashSet) { 
+            HashSet<Object> them = (HashSet<Object>)entry.getValue(); 
+            for (Object e : them) { 
+              if (e instanceof GabotoEntity) {
+                System.err.println("Adding set member :" + e);
+                pool.add((GabotoEntity)e);
+              }
+            }
+          } else if (entry.getValue() instanceof GabotoEntity) { 
+            System.err.println("Adding individual :" + entry.getKey());
+            pool.add((GabotoEntity)entry.getValue());            
+          } else { 
+            System.err.println("Ignoring:" + entry.getKey());
+          }
+        } else { 
+          System.err.println("Ignoring:" + entry.getKey());
+        }
+      } else { 
+        System.err.println("Ignoring:" + entry.getKey());
+      }
+    }
+    assertEquals(3, pool.size());
+	}
 }
