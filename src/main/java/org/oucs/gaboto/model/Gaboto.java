@@ -661,7 +661,7 @@ public class Gaboto {
    * @see GabotoInsertionEvent
    */
   synchronized public NamedGraph add(TimeSpan ts, Triple triple) {
-    if (ts == null || ts.equals(TimeUtils.EXISTANCE)) {
+    if (ts == null || ts.equals(TimeUtils.EXISTENCE)) {
       add(triple);
       return null;
     }
@@ -711,7 +711,7 @@ public class Gaboto {
    * @see GabotoRemovalEvent
    */
   synchronized public void remove(TimeSpan ts, Triple triple) {
-    if (ts == null || ts.equals(TimeUtils.EXISTANCE)) {
+    if (ts == null || ts.equals(TimeUtils.EXISTENCE)) {
       remove(triple);
       return;
     }
