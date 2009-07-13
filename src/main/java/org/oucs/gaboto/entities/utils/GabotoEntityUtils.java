@@ -370,7 +370,7 @@ public class GabotoEntityUtils {
     if (getMethodCache.containsKey(key))
       return getMethodCache.get(key);
 
-    // did we already look for it?
+    // did we already look for it and not find it?
     if (getMethodInCache.contains(key))
       return null;
     getMethodInCache.add(key);
