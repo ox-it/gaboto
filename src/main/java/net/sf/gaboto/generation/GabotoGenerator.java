@@ -374,8 +374,7 @@ public class GabotoGenerator {
     String passiveEntityRequests = 
       "  public Collection<PassiveEntitiesRequest> getPassiveEntitiesRequest(){\n" + 
       "    Collection<PassiveEntitiesRequest> requests = super.getPassiveEntitiesRequest();\n" + 
-      "    if(requests == null)\n" +
-      "      requests = new HashSet<PassiveEntitiesRequest>();\n";
+      "\n";
 
     // custom methods
     String customMethods = "";
