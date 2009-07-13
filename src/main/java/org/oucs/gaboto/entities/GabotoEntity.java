@@ -298,7 +298,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	/**
 	 * Stores the timespan in which this entity is valid. If it is null, then the entity is valid indefinitely. 
 	 */
-	private TimeSpan timespan = TimeUtils.EXISTANCE;
+	private TimeSpan timespan = TimeUtils.EXISTENCE;
 	
 	/**
 	 * stores the entity's URI.
@@ -393,7 +393,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	 */
 	final public void setTimeSpan(TimeSpan ts){
 		if(ts == null)
-			this.timespan = TimeUtils.EXISTANCE;
+			this.timespan = TimeUtils.EXISTENCE;
 		else
 			this.timespan = ts.canonicalize();
 	}
@@ -639,7 +639,8 @@ abstract public class GabotoEntity implements RDFContainer {
 		Method m = GabotoEntityUtils.getPassiveGetMethodFor(this.getClass(), propURI);
 		if(m != null){
 			try {
-	      System.err.println("Found passive method " + m.getName() + ":" + m.invoke(this, (Object[])null));
+	      System.err.println("For class " + this.getClass() + 
+	              " found passive method " + m.getName() + ":" + m.invoke(this, (Object[])null));
 				return m.invoke(this, (Object[])null);
       } catch (Exception e) {
         throw new GabotoRuntimeException(e);
@@ -767,8 +768,8 @@ abstract public class GabotoEntity implements RDFContainer {
 	@Override
 	public String toString(){
 		TimeSpan ts = getTimeSpan();
-		if(null == ts)
-			ts = TimeUtils.EXISTANCE;
+		if(ts == null)
+			ts = TimeUtils.EXISTENCE;
 		
 		return getUri() + " " + this.getClass().getSimpleName() + " : " + ts + "";
 	}
