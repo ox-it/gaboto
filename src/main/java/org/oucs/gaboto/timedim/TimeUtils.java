@@ -61,7 +61,7 @@ public class TimeUtils {
 	 * @see #BIG_BANG
 	 * @see #DOOMS_DAY
 	 */
-	public static final TimeSpan EXISTANCE = TimeSpan.createFromInstants(TimeUtils.BIG_BANG, TimeUtils.DOOMS_DAY);
+	public static final TimeSpan EXISTENCE = TimeSpan.createFromInstants(TimeUtils.BIG_BANG, TimeUtils.DOOMS_DAY);
 	
 
 }
