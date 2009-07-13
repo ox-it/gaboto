@@ -340,7 +340,7 @@ abstract public class GabotoEntity implements RDFContainer {
 		return newEntity;
 	}
 	
-	final public void setCreatedFromInformation(GabotoEntityPool pool){
+	final public void setCreatedFromPool(GabotoEntityPool pool){
 		this.createFromPool = pool;
 	}
 	
@@ -639,6 +639,7 @@ abstract public class GabotoEntity implements RDFContainer {
 		Method m = GabotoEntityUtils.getPassiveGetMethodFor(this.getClass(), propURI);
 		if(m != null){
 			try {
+	      System.err.println("Found passive method " + m.getName() + ":" + m.invoke(this, (Object[])null));
 				return m.invoke(this, (Object[])null);
       } catch (Exception e) {
         throw new GabotoRuntimeException(e);
