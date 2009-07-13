@@ -616,8 +616,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       directEntities.add(entity.getUri());
     }
 
-    // store information
-    entity.setCreatedFromInformation(this);
+    entity.setCreatedFromPool(this);
 
     // add entity
     if (direct || (config != null && config.isAddReferencedEntitiesToPool()))
