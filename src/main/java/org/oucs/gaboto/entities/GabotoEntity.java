@@ -497,7 +497,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * @return null
 	 */
 	public Collection<PassiveEntitiesRequest> getPassiveEntitiesRequest(){
-		return new HashSet<PassiveEntitiesRequest>();
+		return null;
 	}
 	
 	/**
