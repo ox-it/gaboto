@@ -784,10 +784,10 @@ abstract public class GabotoEntity implements RDFContainer {
 		
 		GabotoEntity entity = (GabotoEntity) obj;
 		
-		if(null != getTimeSpan() && null != getUri() && null != entity.getTimeSpan() && null != entity.getUri())
+		if(getTimeSpan() != null && getUri() != null && entity.getTimeSpan() != null && entity.getUri() != null)
 			return getTimeSpan().equals(entity.getTimeSpan()) && getUri().equals(entity.getUri()) && getClass().equals(entity.getClass());
 		
-		if(null != getUri() && null != entity.getUri())
+		if(getUri() != null && entity.getUri() != null)
 			return getUri().equals(entity.getUri()) && getClass().equals(entity.getClass());
 		
 		return super.equals(obj);
