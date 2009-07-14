@@ -6,10 +6,18 @@
 
 <xsl:key name="I" use="@oucsCode" match="*"/>
 
+<xsl:key name="O_All" match="*[@obnCode]" use="1"/>
+<xsl:key name="O" use="@obnCode" match="*[@obnCode]"/>
+
 <xsl:output method="xml" indent="yes" encoding="utf-8"/>
 
 
 <xsl:template match="/">
+  <xsl:for-each select="key('O_All',1)">
+    <xsl:if test="count(key('O',@obnCode))&gt;1">
+      <xsl:message><xsl:value-of select="@obnCode"/> occurs more than once</xsl:message>
+    </xsl:if>
+  </xsl:for-each>
     <xsl:for-each select="//tei:place">
       <xsl:if test="not(@oxpID)">
 	<xsl:message>Place <xsl:value-of

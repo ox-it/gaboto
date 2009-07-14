@@ -133,7 +133,7 @@
                   </desc>
                </trait>
                <place oxpID="23232336" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>All Souls College Lodge</placeName>
                   <location when="2007-01-29T13:08:55.535Z">
                      <geo rend="0">-1.253042221069336 51.75278555467572</geo>
                      <note> recorded by Richard Wain</note>
@@ -175,7 +175,7 @@
                   </desc>
                </trait>
                <place oxpID="23232340" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Balliol College Lodge</placeName>
                   <location when="2007-01-20T23:31:06.401Z">
                      <geo rend="15">-1.257259 51.7544415</geo>
                      <note> recorded by Lou</note>
@@ -239,7 +239,7 @@
                   </desc>
                </trait>
                <place oxpID="23232347" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Blackfriars Lodge</placeName>
                   <location when="2007-05-22T11:50:22.34+01:00">
                      <geo rend="90">-1.2603700160980225 51.756916532903084</geo>
                      <note> recorded by Janet McKnight</note>
@@ -269,7 +269,7 @@
                   </desc>
                </trait>
                <place oxpID="23232349" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Brasenose College Lodge</placeName>
                   <location when="2007-05-22T11:51:52.71+01:00">
                      <geo rend="95">-1.2542814016342163 51.75292669159709</geo>
                      <note> recorded by Janet McKnight</note>
@@ -293,7 +293,7 @@
                   </desc>
                </trait>
                <place oxpID="23232351" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Campion Hall Lodge</placeName>
                   <location when="2007-05-22T11:53:20.498+01:00">
                      <geo>-1.258106 51.749724</geo>
                      <note> recorded by Janet McKnight</note>
@@ -329,7 +329,7 @@
                   </desc>
                </trait>
                <place oxpID="23232353" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Christ Church Lodge</placeName>
                   <location when="2007-05-22T11:54:58.288+01:00">
                      <geo rend="272">-1.256670 51.750205</geo>
                      <note> recorded by Janet McKnight</note>
@@ -368,7 +368,7 @@
                   </desc>
                </trait>
                <place oxpID="23232356" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Corpus Christi College Lodge</placeName>
                   <location when="2007-01-23T09:55:38.657Z">
                      <geo rend="180">-1.2537181377410889 51.7510188151915</geo>
                      <note> recorded by Sebastian Rahtz</note>
@@ -394,7 +394,7 @@
                   </desc>
                </trait>
                <place oxpID="23232358" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Exeter College Lodge</placeName>
                   <location when="2007-01-23T14:36:14.53Z">
                      <geo rend="280">-1.25626087188720 51.753690</geo>
                      <note> recorded by Jonathan Marks</note>
@@ -447,7 +447,7 @@
                   </desc>
                </trait>
                <place oxpID="23232363" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Green College Lodge</placeName>
                   <location when="2007-01-29T14:05:42.258Z">
                      <geo rend="80">-1.262467503547 51.761257969688444</geo>
                      <note> recorded by SR</note>
@@ -475,7 +475,7 @@
                   </desc>
                </trait>
                <place oxpID="23232365" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Greyfriars Lodge</placeName>
                   <location when="2007-06-14T10:39:57.985+01:00">
                      <geo rend="270">-1.240231990814209 51.744024239597415</geo>
                      <note> recorded by Janet McKnight</note>
@@ -511,7 +511,7 @@
                   </desc>
                </trait>
                <place oxpID="23232367" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Green Templeton College Lodge</placeName>
                   <location when="2007-01-29T14:05:42.258Z">
                      <geo rend="80">-1.262467503547 51.761257969688444</geo>
                      <note> copied from Green College location</note>
@@ -544,7 +544,7 @@
                   </desc>
                </trait>
                <place oxpID="23232369" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Hertford College Lodge</placeName>
                   <location when="2007-06-20">
                      <geo rend="272">-1.253790924967422 51.75425484287634</geo>
                      <note> recorded by Sebastian Rahtz</note>
@@ -582,7 +582,7 @@
                   </desc>
                </trait>
                <place oxpID="23232372" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Jesus College Lodge</placeName>
                   <location when="2007-01-29T17:48:23.512Z">
                      <geo rend="100">-1.25647544860839 51.753561</geo>
                      <note> recorded by Sebastian Rahtz</note>
@@ -617,7 +617,7 @@
                   </desc>
                </trait>
                <place oxpID="23232374" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Keble College Lodge</placeName>
                   <location when="2007-01-29T13:17:29.915Z">
                      <geo rend="105">-1.2569367885589 51.75876937304466</geo>
                      <note> recorded by Steve Kersley</note>
@@ -714,7 +714,7 @@
                   </desc>
                </trait>
                <place oxpID="23232384" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Lady Margaret Hall Lodge</placeName>
                   <location when="2007-01-29T13:07:00.397Z">
                      <geo rend="250">-1.25428676605224 51.76465943861804</geo>
                      <note> recorded by Matteo Turilli</note>
@@ -749,7 +749,7 @@
                   </desc>
                </trait>
                <place oxpID="23232386" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Linacre College Lodge</placeName>
                   <location when="2007-05-22T12:04:45.659+01:00">
                      <geo rend="270">-1.250384151 51.759352105</geo>
                      <note> recorded by Janet McKnight</note>
@@ -831,7 +831,7 @@
                   </desc>
                </trait>
                <place oxpID="23232393" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Magdalen College Lodge</placeName>
                   <location when="2007-01-23T10:44:05.039Z">
                      <geo rend="315">-1.24744176864624 51.75196197043263</geo>
                      <note> recorded by John Veness</note>
@@ -866,7 +866,7 @@
                   </desc>
                </trait>
                <place oxpID="23232396" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Harris Manchester College Lodge</placeName>
                   <location when="2007-09-04T10:31:00.369Z">
                      <geo rend="90">-1.2520551681518555 51.75556836128973</geo>
                      <note> recorded by Janet McKnight</note>
@@ -901,7 +901,7 @@
                   </desc>
                </trait>
                <place oxpID="23232399" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Mansfield College Lodge</placeName>
                   <location when="2007-05-22T12:06:13.211+01:00">
                      <geo rend="105">-1.2527954578399658 51.75803887167288</geo>
                      <note> recorded by Janet McKnight</note>
@@ -931,7 +931,7 @@
                   </desc>
                </trait>
                <place oxpID="23232401" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Merton College Lodge</placeName>
                   <location when="2007-01-20T21:26:32.601Z">
                      <geo rend="180">-1.252216100692749 51.75129113668488</geo>
                      <note> recorded by Sebastian Rahtz</note>
@@ -973,7 +973,7 @@
                   </desc>
                </trait>
                <place oxpID="23232406" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>New College Lodge</placeName>
                   <location when="2007-05-22T12:10:18.796+01:00">
                      <geo rend="180">-1.252609529331303 51.75499674217757</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1015,7 +1015,7 @@
                   </desc>
                </trait>
                <place oxpID="23232411" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Nuffield College Lodge</placeName>
                   <location when="2007-05-22T12:13:04.199+01:00">
                      <geo rend="340">-1.2627732753753662 51.75259294357723</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1045,7 +1045,7 @@
                   </desc>
                </trait>
                <place oxpID="23232413" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Oriel College Lodge</placeName>
                   <location when="2007-05-22T12:16:34.323+01:00">
                      <geo rend="270">-1.2539863586425781 51.751370840225995</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1075,7 +1075,7 @@
                   </desc>
                </trait>
                <place oxpID="23232415" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Pembroke College Lodge</placeName>
                   <location when="2007-05-22T12:18:45.997+01:00">
                      <geo rend="75">-1.257961392402649 51.750142061670154</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1105,7 +1105,7 @@
                   </desc>
                </trait>
                <place oxpID="23232417" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>The Queen's College Lodge</placeName>
                   <location when="2007-01-23T10:52:53.382Z">
                      <geo rend="85">-1.2510466575622559 51.75283536775716</geo>
                      <note> recorded by David Olds</note>
@@ -1143,7 +1143,7 @@
                   </desc>
                </trait>
                <place oxpID="23232424" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Regent's Park College Lodge</placeName>
                   <location when="2007-05-22T12:22:54.997+01:00">
                      <geo>-1.2606704235076904 51.75731499956544</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1176,7 +1176,7 @@
                   </desc>
                </trait>
                <place oxpID="23232426" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Anne's College Lodge</placeName>
                   <location when="2007-05-22T12:24:59.356+01:00">
                      <geo rend="285">-1.262354850769043 51.76193031549332</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1214,7 +1214,7 @@
                   </desc>
                </trait>
                <place oxpID="23232428" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Antony's College Lodge</placeName>
                   <location when="2007-05-22T12:26:22.067+01:00">
                      <geo rend="20">-1.263047 51.763463</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1257,7 +1257,7 @@
                   </desc>
                </trait>
                <place oxpID="23232436" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Benet's Hall Lodge</placeName>
                   <location when="2007-01-23T10:42:43.84Z">
                      <geo rend="95">-1.26084208488464 51.75807207653707</geo>
                      <note> recorded by Brian Wright</note>
@@ -1296,7 +1296,7 @@
                   </desc>
                </trait>
                <place oxpID="23232438" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Catherine's College Lodge</placeName>
                   <location when="2007-05-22T12:32:16.843+01:00">
                      <geo rend="270">-1.2455642223358154 51.75723530651425</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1343,7 +1343,7 @@
                   </desc>
                </trait>
                <place oxpID="23232442" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Cross College Lodge</placeName>
                   <location when="2007-01-25T10:44:21.137Z">
                      <geo rend="180">-1.2601232528686 51.75653798631708</geo>
                      <note> recorded by Razvan Novacovschi</note>
@@ -1423,7 +1423,7 @@
                   </desc>
                </trait>
                <place oxpID="23232450" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Edmund Hall Lodge</placeName>
                   <location when="2007-01-29T13:57:49.108Z">
                      <geo rend="245">-1.25022053718566 51.75297816495278</geo>
                      <note> recorded by Michael Lakatos</note>
@@ -1474,7 +1474,7 @@
                   </desc>
                </trait>
                <place oxpID="23232455" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Hilda's College Lodge</placeName>
                   <location when="2007-01-26T15:00:03.979Z">
                      <geo rend="85">-1.2455856800079 51.74870733737946</geo>
                      <note> recorded by Anne Wilson</note>
@@ -1499,7 +1499,7 @@
                   </desc>
                </trait>
                <place oxpID="23232457" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Hugh's College Lodge</placeName>
                   <location when="2007-01-29T14:22:43.283Z">
                      <geo rend="175">-1.262183189392089 51.7672290460841</geo>
                      <note> recorded by Alexander Wong</note>
@@ -1551,7 +1551,7 @@
                   </desc>
                </trait>
                <place oxpID="23232465" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St John's College Lodge</placeName>
                   <location when="2007-01-29T17:29:44.785Z">
                      <geo rend="270">-1.25892162322998 51.75615943655779</geo>
                      <note> recorded by Matt Jennings</note>
@@ -1588,7 +1588,7 @@
                   </desc>
                </trait>
                <place oxpID="23232467" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Somerville College Lodge</placeName>
                   <location when="2007-01-23T13:06:13.774Z">
                      <geo rend="95">-1.2613785266876 51.75943345494568</geo>
                      <note> recorded by Chris Bamber</note>
@@ -1613,7 +1613,7 @@
                   </desc>
                </trait>
                <place oxpID="23232469" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Peter's College Lodge</placeName>
                   <location when="2007-05-22T12:34:38.896+01:00">
                      <geo rend="210">-1.2604236602783203 51.75255973468411</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1639,7 +1639,7 @@
 
 
                <place oxpID="23232471" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>St Stephen's House Lodge</placeName>
                   <location when="2007-05-22T12:35:49.627+01:00">
                      <geo>-1.239039 51.746908</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1704,7 +1704,7 @@
                   </desc>
                </trait>
                <place oxpID="23232475" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Trinity College Lodge</placeName>
                   <location when="2007-05-22T12:38:56.781+01:00">
                      <geo rend="10">-1.256685 51.754494</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1741,7 +1741,7 @@
                   </location>
                </place>
                <place oxpID="23232477" type="building" oucsCode="b_0058" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>University College Lodge</placeName>
                   <location when="2007-05-22T14:29:16.292+01:00">
                      <geo rend="179">-1.251990795135498 51.752626152445906</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1774,7 +1774,7 @@
                   </desc>
                </trait>
                <place oxpID="23232480" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Wadham College Lodge</placeName>
                   <location when="2007-09-03T12:52:56.762Z">
                      <geo rend="270">-1.254695 51.7555815</geo>
                      <note> recorded by Sebastian Rahtz</note>
@@ -1828,7 +1828,7 @@
                   </desc>
                </trait>
                <place oxpID="23232484" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Wolfson College Lodge</placeName>
                   <location when="2007-05-22T13:00:09.778+01:00">
                      <geo rend="270">-1.255222 51.771053</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1858,7 +1858,7 @@
                   </desc>
                </trait>
                <place oxpID="23232486" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Worcester College Lodge</placeName>
                   <location when="2007-05-22T13:01:08.395+01:00">
                      <geo rend="90">-1.2633422 51.75495237</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1888,7 +1888,7 @@
                   </desc>
                </trait>
                <place oxpID="23232488" type="building" subtype="primary">
-                  <placeName>Lodge</placeName>
+                  <placeName>Wycliffe Hall Lodge</placeName>
                   <location when="2007-05-22T13:01:55.525+01:00">
                      <geo rend="270">-1.2604665 51.7629596</geo>
                      <note> recorded by Janet McKnight</note>
@@ -2124,16 +2124,9 @@
                      <ptr target="http://reutersinstitute.politics.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232508" type="building" subtype="primary" obnCode="183">
-                  <event when="1871" type="construction"/>
-                  <event when="1924" type="acquisition"/>
-                  <placeName>15 Norham Gardens</placeName>
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.25829 51.76286</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
-            </place>
+	    </place>
+
+
             <place oucsCode="O_softeng" oxpID="23232509" type="department">
                <placeName>Software Engineering Programme</placeName>
                <location type="address">
@@ -2200,15 +2193,6 @@
                      <ptr target="http://www.africanstudies.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232514" type="building" subtype="primary" obnCode="286">
-                  <event when="1900" type="construction"/>
-                  <event when="1990" type="acquisition"/>
-                  <placeName>92 Woodstock Road</placeName>
-                  <location when="2007-01-24T10:25:22.617Z">
-                     <geo>-1.26119613647460 51.76287324286575</geo>
-                     <note> recorded by Natasha Heaton</note>
-                  </location>
-               </place>
             </place>
             <place oucsCode="ageing" oxpID="23232515" type="department">
                <placeName>Oxford Institute of Ageing</placeName>
@@ -2571,15 +2555,6 @@ data, and if so, how? -->
                      <ptr target="http://www.brazil.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232542" type="building" subtype="primary" obnCode="286">
-                  <event when="1900" type="construction"/>
-                  <event when="1990" type="acquisition"/>
-                  <placeName>92 Woodstock Road</placeName>
-                  <location when="2007-05-22T14:33:29.586+01:00">
-                     <geo>-1.264586 51.769194</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
             </place>
             <place oucsCode="cardio" oxpID="23232543" type="department">
                <placeName>Department of Cardiovascular Medicine</placeName>
@@ -2690,14 +2665,6 @@ data, and if so, how? -->
                   <location when="2008-01-09T16:00:00">
                      <geo>-1.26354 51.75674</geo>
                      <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
-               <place oxpID="23232552" type="building" obnCode="144">
-                  <event when="1713" type="construction"/>
-                  <placeName>Clarendon Institute Building</placeName>
-                  <location when="2007-05-22T14:36:44.634+01:00">
-                     <geo>-1.263041 51.761359</geo>
-                     <note> recorded by Janet McKnight</note>
                   </location>
                </place>
 
@@ -2839,16 +2806,8 @@ data, and if so, how? -->
                      <ptr target="http://www.compas.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232566" type="building" subtype="primary" obnCode="117">
-                  <event when="1873" type="construction"/>
-                  <event when="1967" type="acquisition"/>
-                  <placeName>58 Banbury Road</placeName>
-                  <location when="2007-01-24T10:30:07.229Z">
-                     <geo>-1.26038074493408 51.76321853528716</geo>
-                     <note> recorded by Natasha Heaton</note>
-                  </location>
-               </place>
             </place>
+
             <place oucsCode="conden" oxpID="23232567" type="department">
                <placeName>Condensed Matter Physics</placeName>
                <location type="address">
@@ -3041,7 +3000,9 @@ data, and if so, how? -->
                      <ptr target="http://weblearn.ox.ac.uk/site/socsci/edstud/"/>
                   </desc>
                </trait>
-               <place oxpID="23232581" type="building" subtype="primary" obnCode="183">
+	    </place>
+
+               <place oucsCode="b_0070" oxpID="23232581" type="building" subtype="primary" obnCode="183">
                   <event when="1871" type="construction"/>
                   <event when="1924" type="acquisition"/>
                   <placeName>15 Norham Gardens</placeName>
@@ -3051,7 +3012,7 @@ data, and if so, how? -->
                   </location>
                </place>
 
-            </place>
+
             <place oucsCode="ehrc" oxpID="23232582" type="department">
                <placeName>European Humanities Research Centre</placeName>
                <location type="address">
@@ -3337,17 +3298,29 @@ data, and if so, how? -->
                      <ptr target="http://www.human-sciences.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232603" type="building" subtype="primary" obnCode="117">
+	    </place>
+
+               <place oucsCode="b_0071" oxpID="23232566" type="building" subtype="primary" obnCode="117">
                   <event when="1873" type="construction"/>
                   <event when="1967" type="acquisition"/>
                   <placeName>58 Banbury Road</placeName>
-                  <location when="2007-01-24T10:24:19.058Z">
-                     <geo>-1.26012325286865 51.76329821777863</geo>
+                  <location when="2007-01-24T10:30:07.229Z">
+                     <geo>-1.26038074493408 51.76321853528716</geo>
                      <note> recorded by Natasha Heaton</note>
                   </location>
                </place>
 
-            </place>
+               <place oxpID="23232514" type="building" obnCode="286" oucsCode="b_0072">
+                  <event when="1900" type="construction"/>
+                  <event when="1990" type="acquisition"/>
+                  <placeName>92 Woodstock Road</placeName>
+                  <location when="2007-01-24T10:25:22.617Z">
+                     <geo>-1.26119613647460 51.76287324286575</geo>
+                     <note> recorded by Natasha Heaton</note>
+                  </location>
+               </place>
+
+
             <place oucsCode="inorg" oxpID="23232604" type="department">
                <placeName>Inorganic Chemistry Laboratory</placeName>
                <location type="address">
@@ -3763,14 +3736,6 @@ data, and if so, how? -->
                      <ptr target="http://www.mpls.ox.ac.uk/"/>
                   </desc>
                </trait>
-               <place oxpID="23232640" type="building" subtype="primary" obnCode="193">
-                  <event when="1913" type="construction"/>
-                  <placeName>9 Parks Road</placeName>
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.25957 51.75892</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
 
             </place>
             <place oucsCode="nissan" oxpID="23232642" type="department">
@@ -3901,16 +3866,6 @@ data, and if so, how? -->
                   </desc>
                </trait>
             </place>
-            <place oxpID="23232654" oucsCode="b_0057" type="building" subtype="primary"
-               obnCode="632">
-               <event when="1970" type="construction"/>
-               <placeName>Churchill Hospital</placeName>
-               <location when="2008-07-30T16:59:00">
-                  <geo>-1.219807 51.763823</geo>
-                  <note> recorded by Janet McKnight (from GEarth / postcode)</note>
-               </location>
-            </place>
-
             <place oucsCode="online" oxpID="23232655" type="department">
                <placeName>Online and Distance Learning</placeName>
                <location type="address">
@@ -4164,19 +4119,6 @@ data, and if so, how? -->
                </trait>
             </place>
 
-            <place oxpID="23232678" type="building" subtype="primary" obnCode="158"
-               oucsCode="b_0067">
-               <event when="1946" type="construction"/>
-               <placeName>Plant Sciences South</placeName>
-               <location when="2007-06-18T10:06:29.000">
-                  <geo>-1.253135 51.759335</geo>
-                  <note> recorded by Janet McKnight</note>
-               </location>
-               <place oxpID="23232679" type="room">
-                  <placeName>Oak Meeting Room</placeName>
-               </place>
-            </place>
-
             <place oxpID="23233681" type="building" subtype="primary" oucsCode="b_0068"
                obnCode="139">
                <event when="1946" type="construction"/>
@@ -4197,15 +4139,22 @@ data, and if so, how? -->
                   </desc>
                </trait>
 
-               <place oxpID="23232681" type="building" obnCode="158">
-                  <event when="1946" type="construction"/>
-                  <placeName>Plant Sciences South</placeName>
-                  <location when="2007-06-18T10:03:54.000">
-                     <geo>-1.252113 51.758692</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
+            </place>
+
+            <place oxpID="23232678" type="building" subtype="primary" obnCode="158"
+               oucsCode="b_0067">
+               <event when="1946" type="construction"/>
+               <placeName>Plant Sciences South</placeName>
+               <location when="2007-06-18T10:06:29.000">
+                  <geo>-1.253135 51.759335</geo>
+                  <note> recorded by Janet McKnight</note>
+               </location>
+               <place oxpID="23232679" type="room">
+                  <placeName>Oak Meeting Room</placeName>
                </place>
             </place>
+
+
             <place oucsCode="politics" oxpID="23232682" type="department">
                <placeName>Politics and International Relations</placeName>
                <location type="address">
@@ -4348,16 +4297,19 @@ data, and if so, how? -->
                      <ptr target="http://www.ox.ac.uk"/>
                   </desc>
                </trait>
-               <place oxpID="23233680" type="building" subtype="primary" obnCode="632">
-                  <event when="1970" type="construction"/>
-                  <placeName>Churchill Hospital</placeName>
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.21471 51.75033</geo>
-                     <note>Submitted by Stephen Sangar</note>
-                  </location>
-               </place>
+	    </place>
 
+	    <place oxpID="23232654" oucsCode="b_0057" type="building" subtype="primary"
+               obnCode="632">
+               <event when="1970" type="construction"/>
+               <placeName>Churchill Hospital</placeName>
+               <location when="2008-07-30T16:59:00">
+                  <geo>-1.219807 51.763823</geo>
+                  <note> recorded by Janet McKnight (from GEarth / postcode)</note>
+               </location>
             </place>
+
+
             <place oucsCode="rob" oxpID="23232698" type="department">
                <placeName>Radiation Oncology and Biology</placeName>
                <location type="address">
@@ -4674,16 +4626,9 @@ data, and if so, how? -->
                   </desc>
                </trait>
 
-               <place oxpID="23232724" type="building" subtype="primary" obnCode="232">
-                  <event when="1700" type="construction"/>
-                  <event when="1927" type="acquisition"/>
-                  <placeName>41 St Giles</placeName>
-                  <location when="2007-05-22T16:46:37.433+01:00">
-                     <geo>-1.259866 51.759128</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
             </place>
+
+
             <place oucsCode="thphys" oxpID="23232725" type="department">
                <placeName>Theoretical Physics</placeName>
                <location type="address">
@@ -9107,15 +9052,6 @@ data, and if so, how? -->
                   </desc>
                </trait>
 
-               <place oxpID="23233572" type="building" obnCode="174" oucsCode="b_0069">
-                  <event when="1850" type="construction"/>
-                  <event when="1957" type="acquisition"/>
-                  <placeName>The Malthouse</placeName>
-                  <location when="2007-06-18T09:50:57.000">
-                     <geo>-1.253703 51.759753</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-               </place>
             </place>
 
             <place oxpID="23233574" type="building">
@@ -9354,30 +9290,8 @@ data, and if so, how? -->
                      <ptr target="http://www.philosophy.ox.ac.uk/"/>
                   </desc>
                </trait>
+	    </place>
 
-               <place oxpID="23233590" type="building" obnCode="178">
-                  <event when="1956" type="construction"/>
-                  <placeName>10 Merton Street</placeName>
-                  <location when="2007-05-22T16:32:45.881+01:00">
-                     <geo>-1.255445 51.757428</geo>
-                     <note> recorded by Janet McKnight</note>
-                  </location>
-                  <place oxpID="23233591" type="room">
-                     <placeName>Lecture Room</placeName>
-                     <location when="2007-01-23T10:39:10.925Z">
-                        <geo>-1.25084280967712 51.75161659192567</geo>
-                        <note> recorded by Andy Davies</note>
-                     </location>
-                  </place>
-                  <place oxpID="23233592" type="room">
-                     <placeName>Ryle Room</placeName>
-                     <location when="2007-01-23T10:39:43.438Z">
-                        <geo>-1.25078916549682 51.75160330808421</geo>
-                        <note> recorded by Andy Davies</note>
-                     </location>
-                  </place>
-               </place>
-            </place>
             <place oucsCode="phone" oxpID="23233593" type="unit">
                <placeName>Phonetics Laboratory</placeName>
                <location type="address">
@@ -9463,13 +9377,30 @@ data, and if so, how? -->
                   <geo>-1.256872398790064 51.75835645044408</geo>
                </location>
             </place>
-            <place oucsCode="b_0002" oxpID="23233600" type="building" obnCode="178">
-               <event when="1956" type="construction"/>
-               <placeName>10 Merton Street</placeName>
-               <location>
-                  <geo>-1.250844 51.751636</geo>
-               </location>
-            </place>
+
+	    <place oxpID="23233590" type="building" obnCode="178" oucsCode="b_0002">
+	      <event when="1956" type="construction"/>
+	      <placeName>10 Merton Street</placeName>
+	      <location when="2007-05-22T16:32:45.881+01:00">
+		<geo>-1.255445 51.757428</geo>
+		<note> recorded by Janet McKnight</note>
+	      </location>
+	      <place oxpID="23233591" type="room">
+		<placeName>Lecture Room</placeName>
+		<location when="2007-01-23T10:39:10.925Z">
+		  <geo>-1.25084280967712 51.75161659192567</geo>
+		  <note> recorded by Andy Davies</note>
+		</location>
+	      </place>
+	      <place oxpID="23233592" type="room">
+		<placeName>Ryle Room</placeName>
+		<location when="2007-01-23T10:39:43.438Z">
+		  <geo>-1.25078916549682 51.75160330808421</geo>
+		  <note> recorded by Andy Davies</note>
+		</location>
+	      </place>
+	    </place>
+
             <place oucsCode="b_0003" oxpID="23233601" type="building" obnCode="124">
                <event when="1868" type="construction"/>
                <event when="1966" type="acquisition"/>
@@ -9540,6 +9471,8 @@ data, and if so, how? -->
                   <placeName>Lovelace Room</placeName>
                </place>
             </place>
+
+
             <place oucsCode="b_0006" oxpID="23233613" type="building" obnCode="232">
                <event when="1700" type="construction"/>
                <event when="1927" type="acquisition"/>
@@ -9731,6 +9664,7 @@ data, and if so, how? -->
                   <geo>-1.248376 51.756936</geo>
                </location>
             </place>
+
             <place oucsCode="b_0026" oxpID="23233636" type="building" obnCode="174">
                <event when="1850" type="construction"/>
                <event when="1957" type="acquisition"/>
@@ -10018,6 +9952,7 @@ data, and if so, how? -->
             <place oxpID="23232569" type="building" oucsCode="b_0055" obnCode="260">
                <event when="1875" type="construction"/>
                <placeName>8 Wellington Square</placeName>
+
                <location when="2007-06-14T08:00:00.634+01:00">
                   <geo>-1.261717 51.757542</geo>
                   <note> recorded by Sebastian Rahtz</note>
@@ -10787,6 +10722,9 @@ data, and if so, how? -->
             <relation name="controls" type="political" active="#offices" passive="#survey"/>
             <relation name="controls" type="political" active="#oucs" passive="#O_telecom"/>
             <relation name="controls" type="political" active="#plant" passive="#plantlib"/>
+            <relation name="occupies" type="geo primary" active="#compas" passive="#b_0071"/>
+            <relation name="occupies" type="geo primary" active="#humsci" passive="#b_0071"/>
+
             <relation name="occupies" type="geo primary" active="#O_finance" passive="#b_0052"/>
             <relation name="occupies" type="geo primary" active="#O_geg" passive="#b_0058"/>
             <relation name="occupies" type="geo primary" active="#O_lcb" passive="#b_0061"/>
@@ -10807,6 +10745,10 @@ data, and if so, how? -->
             <relation name="occupies" type="geo" active="#histfac" passive="#b_0063"/>
             <relation name="occupies" type="geo" active="#oncology" passive="#b_0057"/>
             <relation name="occupies" type="geo primary" active="#O_acdivcomms" passive="#b_0021"/>
+
+            <relation name="occupies" type="geo primary" active="#O_reuters" passive="#b_0070"/>
+            <relation name="occupies" type="geo primary" active="#O_edstud" passive="#b_0070"/>
+
             <relation name="occupies" type="geo primary" active="#O_alumni" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_asuc" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_card" passive="#b_0016"/>
@@ -10928,6 +10870,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#paed" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#particle" passive="#b_0014"/>
             <relation name="occupies" type="geo primary" active="#philfac" passive="#b_0030"/>
+            <relation name="occupies" type="geo" active="#philfac" passive="#b_0002"/>
             <relation name="occupies" type="geo primary" active="#phillib" passive="#b_0002"/>
             <relation name="occupies" type="geo primary" active="#phone" passive="#b_0056"/>
             <relation name="occupies" type="geo primary" active="#physics" passive="#b_0014"/>
@@ -10946,6 +10889,11 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#survey" passive="#b_0026"/>
             <relation name="occupies" type="geo primary" active="#taylor" passive="#b_0035"/>
             <relation name="occupies" type="geo primary" active="#taylor_15" passive="#b_0038"/>
+
+            <relation name="occupies" type="geo primary" active="#africa" passive="#b_0072"/>
+            <relation name="occupies" type="geo primary" active="#brazil" passive="#b_0072"/>
+            <relation name="occupies" type="geo primary" active="#resinst" passive="#b_0057"/>
+
             <relation name="occupies" type="geo primary" active="#theofac" passive="#b_0006"/>
             <relation name="occupies" type="geo primary" active="#theolib" passive="#b_0006"/>
             <relation name="occupies" type="geo primary" active="#trans" passive="#b_0053"/>
