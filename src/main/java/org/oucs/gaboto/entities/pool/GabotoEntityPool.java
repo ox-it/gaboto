@@ -102,7 +102,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
 
   private HashSet<String> directEntities = new HashSet<String>();
 
-  private GabotoEntityPoolConfiguration config;
+  private GabotoEntityPoolConfiguration poolConfig;
 
   private Gaboto gaboto;
 
@@ -146,7 +146,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
   public GabotoEntityPool(GabotoEntityPoolConfiguration config)
       throws EntityPoolInvalidConfigurationException {
     this.gaboto = config.getGaboto();
-    this.config = config;
+    this.poolConfig = config;
   }
 
   /**
@@ -194,7 +194,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
   private static GabotoEntityPool createFrom(
       GabotoEntityPoolConfiguration config, GabotoSnapshot snapshot) {
     GabotoEntityPool pool = new GabotoEntityPool(snapshot.getGaboto());
-    pool.config = config;
+    pool.poolConfig = config;
     pool.snapshot = snapshot;
 
     Model model = snapshot.getModel();
@@ -281,7 +281,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       GabotoEntityPoolConfiguration config, GabotoSnapshot snapshot,
       Collection<Resource> resources) {
     GabotoEntityPool pool = new GabotoEntityPool(snapshot.getGaboto());
-    pool.config = config;
+    pool.poolConfig = config;
     pool.snapshot = snapshot;
 
     logger
@@ -322,7 +322,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * @param config
    */
   public void setConfig(GabotoEntityPoolConfiguration config) {
-    this.config = config;
+    this.poolConfig = config;
   }
 
   /**
@@ -365,7 +365,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
     myResources.addAll(resources);
 
     // add entity?
-    boolean direct = config != null && config.isAddReferencedEntitiesToPool();
+    boolean direct = poolConfig != null && poolConfig.isAddReferencedEntitiesToPool();
 
     // loop over resources
     for (Resource res : myResources) {
@@ -415,8 +415,8 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       return;
 
     // add stuff direct?
-    final boolean direct = config != null
-        && config.isAddReferencedEntitiesToPool();
+    final boolean direct = poolConfig != null
+        && poolConfig.isAddReferencedEntitiesToPool();
 
     // loop over requests for entity
     for (final PassiveEntitiesRequest request : requests) {
@@ -532,13 +532,13 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       // test type
       // is entity of allowed type or is it an indirect add
       if (!bypassTests) {
-        if (direct && config != null && !config.getAcceptedTypes().isEmpty()
-            && !config.getAcceptedTypes().contains(entity.getType())) {
+        if (direct && poolConfig != null && !poolConfig.getAcceptedTypes().isEmpty()
+            && !poolConfig.getAcceptedTypes().contains(entity.getType())) {
           return null;
         }
         // is entity of an unaccepted type?
-        if (direct && null != config && !config.getUnacceptedTypes().isEmpty()
-            && config.getUnacceptedTypes().contains(entity.getType())) {
+        if (direct && null != poolConfig && !poolConfig.getUnacceptedTypes().isEmpty()
+            && poolConfig.getUnacceptedTypes().contains(entity.getType())) {
           return null;
         }
       }
@@ -547,7 +547,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       if (direct) {
         // resource filters
         boolean passedFilter = true;
-        for (ResourceFilter filter : config.getResourceFilters()) {
+        for (ResourceFilter filter : poolConfig.getResourceFilters()) {
           try {
             filter.appliesTo().cast(entity);
             if (!filter.filterResource(resource)) {
@@ -618,13 +618,13 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
     entity.setCreatedFromPool(this);
 
     // add entity
-    if (direct || (config != null && config.isAddReferencedEntitiesToPool()))
+    if (direct || (poolConfig != null && poolConfig.isAddReferencedEntitiesToPool()))
       entityMap.put(entity.getUri(), entity);
     else
       referencedEntityMap.put(entity.getUri(), entity);
 
     // lazy initialization?
-    if (config != null && !config.isEnableLazyDereferencing())
+    if (poolConfig != null && !poolConfig.isEnableLazyDereferencing())
       entity.resolveDirectReferences();
 
     return entity;
