@@ -11027,6 +11027,9 @@ data, and if so, how? -->
                <placeName>13 Bevington Road</placeName>
                <event when="1868" type="construction"/>
                <event when="1966" type="acquisition"/>
+	       <location>
+                  <geo>-1.261586 51.762919</geo>
+	       </location>
             </place>
             <place type="building" obnCode="130" oxpID="23233703" oucsCode="e_21">
                <placeName>Bodleian Library</placeName>
