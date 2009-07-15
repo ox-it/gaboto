@@ -10846,8 +10846,8 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#oxman" passive="#b_0010"/>
             <relation name="occupies" type="geo primary" active="#paed" passive="#b_0018"/>
             <relation name="occupies" type="geo primary" active="#particle" passive="#b_0014"/>
-            <relation name="occupies" type="geo primary" active="#philfac" passive="#b_0030"/>
-            <relation name="occupies" type="geo" active="#philfac" passive="#b_0002"/>
+            <relation name="occupies" type="geo" active="#philfac" passive="#b_0030"/>
+            <relation name="occupies" type="geo primary" active="#philfac" passive="#b_0002"/>
             <relation name="occupies" type="geo primary" active="#phillib" passive="#b_0002"/>
             <relation name="occupies" type="geo primary" active="#phone" passive="#b_0056"/>
             <relation name="occupies" type="geo primary" active="#physics" passive="#b_0014"/>
