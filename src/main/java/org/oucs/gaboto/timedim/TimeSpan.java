@@ -80,6 +80,30 @@ public class TimeSpan implements Serializable {
   private Integer durationYear;
 
   /**
+   * You could also refer to this as the beginning of time.
+   * 
+   * Integer.MIN_INT does not work since the duration is also represented as an integer.
+   * This might be changed at some point to use longs instead of int.
+   */
+  public static final TimeInstant BIG_BANG = new TimeInstant(-100000000, 0, 1);
+
+  /**
+   * You could also refer to this as the end of time or the big crunch ..
+   * 
+   * Integer.MAXINT does not work since the duration is also represented as an integer.
+   * This might be changed at some point to use longs instead of integers.
+   */
+  public static final TimeInstant DOOMS_DAY = new TimeInstant(100000000, 11, 31);
+
+  /**
+   * Describes the time span from BIG_BANG to DOOMS_DAY.
+   * 
+   * @see TimeSpan#BIG_BANG
+   * @see TimeSpan#DOOMS_DAY
+   */
+  public static final TimeSpan EXISTENCE = createFromInstants(TimeSpan.BIG_BANG, TimeSpan.DOOMS_DAY);
+
+  /**
    * Creates an empty time span
    */
   public TimeSpan() {
@@ -139,7 +163,7 @@ public class TimeSpan implements Serializable {
    */
   public static TimeSpan createFromGraphName(String graphName, Gaboto gaboto) {
     if (graphName.equals(gaboto.getGlobalKnowledgeGraph().getGraphName().getURI()))
-      return TimeUtils.EXISTENCE;
+      return TimeSpan.EXISTENCE;
 
     try {
       return gaboto.getTimeDimensionIndexer().getTimeSpanFor(graphName);
@@ -216,7 +240,7 @@ public class TimeSpan implements Serializable {
     TimeSpan ts = new TimeSpan(begin.startYear, begin.startMonth, begin.startDay);
 
     // if latest == big crunch, it is easy
-    if (end.equals(TimeUtils.DOOMS_DAY))
+    if (end.equals(TimeSpan.DOOMS_DAY))
       return ts;
 
     // calculate duration
@@ -458,7 +482,7 @@ public class TimeSpan implements Serializable {
    */
   public TimeInstant getEnd() {
     if (!hasFixedDuration())
-      return TimeUtils.DOOMS_DAY;
+      return TimeSpan.DOOMS_DAY;
 
     TimeInstant end = new TimeInstant();
 
@@ -672,7 +696,7 @@ public class TimeSpan implements Serializable {
 
   @Override
   public String toString() {
-    if (this.equals(TimeUtils.EXISTENCE))
+    if (this.equals(TimeSpan.EXISTENCE))
       return "existence";
     String s = "";
 

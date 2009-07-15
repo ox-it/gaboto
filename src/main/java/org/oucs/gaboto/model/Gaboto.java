@@ -60,7 +60,6 @@ import org.oucs.gaboto.model.events.GabotoRemovalEvent;
 import org.oucs.gaboto.model.listener.UpdateListener;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
-import org.oucs.gaboto.timedim.TimeUtils;
 import org.oucs.gaboto.timedim.index.TimeDimensionIndexer;
 import org.oucs.gaboto.vocabulary.RDFCON;
 import org.oucs.gaboto.vocabulary.RDFG;
@@ -661,7 +660,7 @@ public class Gaboto {
    * @see GabotoInsertionEvent
    */
   synchronized public NamedGraph add(TimeSpan ts, Triple triple) {
-    if (ts == null || ts.equals(TimeUtils.EXISTENCE)) {
+    if (ts == null || ts.equals(TimeSpan.EXISTENCE)) {
       add(triple);
       return null;
     }
@@ -711,7 +710,7 @@ public class Gaboto {
    * @see GabotoRemovalEvent
    */
   synchronized public void remove(TimeSpan ts, Triple triple) {
-    if (ts == null || ts.equals(TimeUtils.EXISTENCE)) {
+    if (ts == null || ts.equals(TimeSpan.EXISTENCE)) {
       remove(triple);
       return;
     }

@@ -53,7 +53,6 @@ import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.reflection.RDFContainer;
 import org.oucs.gaboto.reflection.RDFContainerTripleGeneratorImpl;
 import org.oucs.gaboto.timedim.TimeSpan;
-import org.oucs.gaboto.timedim.TimeUtils;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 import com.hp.hpl.jena.graph.Graph;
@@ -298,7 +297,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	/**
 	 * Stores the timespan in which this entity is valid. If it is null, then the entity is valid indefinitely. 
 	 */
-	private TimeSpan timespan = TimeUtils.EXISTENCE;
+	private TimeSpan timespan = TimeSpan.EXISTENCE;
 	
 	/**
 	 * stores the entity's URI.
@@ -393,7 +392,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	 */
 	final public void setTimeSpan(TimeSpan ts){
 		if(ts == null)
-			this.timespan = TimeUtils.EXISTENCE;
+			this.timespan = TimeSpan.EXISTENCE;
 		else
 			this.timespan = ts.canonicalize();
 	}
@@ -771,7 +770,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	public String toString(){
 		TimeSpan ts = getTimeSpan();
 		if(ts == null)
-			ts = TimeUtils.EXISTENCE;
+			ts = TimeSpan.EXISTENCE;
 		
 		return getUri() + " " + this.getClass().getSimpleName() + " : " + ts + "";
 	}

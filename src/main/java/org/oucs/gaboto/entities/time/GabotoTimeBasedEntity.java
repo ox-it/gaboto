@@ -54,7 +54,6 @@ import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
-import org.oucs.gaboto.timedim.TimeUtils;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;
@@ -160,7 +159,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
 
   /**
    * Creates a new empty GabotoTimeBasedEntity with an undefined lifespan (
-   * {@link TimeUtils#EXISTENCE}).
+   * {@link TimeSpan#EXISTENCE}).
    * 
    * <p>
    * Has the same result as calling
@@ -175,7 +174,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    * @see GabotoEntity
    */
   public GabotoTimeBasedEntity(Class<? extends GabotoEntity> entityClass, String typeURI, String uri) {
-    this(entityClass, typeURI, uri, TimeUtils.EXISTENCE);
+    this(entityClass, typeURI, uri, TimeSpan.EXISTENCE);
   }
 
   /**
@@ -539,7 +538,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    */
   public void addProperty(TimeSpan ts, String propertyURI, Object value) {
     // if timespan is EXISTANCE
-    if (ts.equals(TimeUtils.EXISTENCE)) {
+    if (ts.equals(TimeSpan.EXISTENCE)) {
       // put it in universal properties and get out of here.
       addProperty(propertyURI, value);
       return;

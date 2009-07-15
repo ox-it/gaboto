@@ -158,9 +158,9 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
    */
   @Override
   public String toString() {
-    if (this.equals(TimeUtils.BIG_BANG))
+    if (this.equals(TimeSpan.BIG_BANG))
       return "big-bang";
-    if (this.equals(TimeUtils.DOOMS_DAY))
+    if (this.equals(TimeSpan.DOOMS_DAY))
       return "dooms-day";
 
     String s = "";
