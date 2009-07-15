@@ -498,9 +498,7 @@
                <trait type="figure">
                   <desc>
                      <ref target="http://www.gtc.ox.ac.uk/">
-                        <graphic
-                           url="http://www.gtc.ox.ac.uk/images/stories/right/about/aboutussection.jpg"
-                        />
+                        <graphic url="http://www.gtc.ox.ac.uk/images/stories/right/about/aboutussection.jpg"/>
                      </ref>
                   </desc>
                </trait>
@@ -1170,9 +1168,7 @@
                </trait>
                <trait type="iturl">
                   <desc>
-                     <ptr
-                        target="http://www.st-annes.ox.ac.uk/study/undergraduate/computing_it.html"
-                     />
+                     <ptr target="http://www.st-annes.ox.ac.uk/study/undergraduate/computing_it.html"/>
                   </desc>
                </trait>
                <place oxpID="23232426" type="building" subtype="primary">
@@ -1289,9 +1285,7 @@
                <trait type="figure">
                   <desc>
                      <ref target="http://www.stcatz.ox.ac.uk/">
-                        <graphic
-                           url="http://catz-av.stcatz.ox.ac.uk/downloads/public/full_college_small.jpg"
-                        />
+                        <graphic url="http://catz-av.stcatz.ox.ac.uk/downloads/public/full_college_small.jpg"/>
                      </ref>
                   </desc>
                </trait>
@@ -1768,9 +1762,7 @@
                </trait>
                <trait type="iturl">
                   <desc>
-                     <ptr
-                        target="http://www.wadham.ox.ac.uk/about-wadham/it-facilities/wadham-it-facilities.html"
-                     />
+                     <ptr target="http://www.wadham.ox.ac.uk/about-wadham/it-facilities/wadham-it-facilities.html"/>
                   </desc>
                </trait>
                <place oxpID="23232480" type="building" subtype="primary">
@@ -1911,6 +1903,9 @@
                <place type="building" oxpID="23233682" obnCode="675">
                   <event when="2004" type="construction"/>
                   <placeName>Cellular And Molecular Physiology</placeName>
+                  <location>
+                     <geo>-1.21647351.752781</geo>
+                  </location>
                </place>
 
             </place>
@@ -2124,7 +2119,7 @@
                      <ptr target="http://reutersinstitute.politics.ox.ac.uk/"/>
                   </desc>
                </trait>
-	    </place>
+	           </place>
 
 
             <place oucsCode="O_softeng" oxpID="23232509" type="department">
@@ -2619,7 +2614,7 @@ data, and if so, how? -->
             </place>
 
             <place oxpID="23232688" type="building" subtype="primary" oucsCode="b_0062"
-               obnCode="216">
+                   obnCode="216">
                <event when="1940" type="construction"/>
                <placeName>Physical and Theoretical Chemistry Laboratory</placeName>
                <location when="2007-01-23T10:51:52.852Z">
@@ -2778,7 +2773,7 @@ data, and if so, how? -->
                      <ptr target="http://web.comlab.ox.ac.uk/internal/comp-net/"/>
                   </desc>
                </trait>
-	    </place>
+	           </place>
 
             <place oucsCode="b_0028" oxpID="23232562" type="building" obnCode="173">
                   <event when="1880" type="construction"/>
@@ -2789,8 +2784,11 @@ data, and if so, how? -->
                   </place>
                   <place oxpID="23232564" type="room">
                      <placeName>Room 051</placeName>
-		  </place>
-	    </place>
+		             </place>
+	              <location>
+                  <geo>-1.258256 51.759667</geo>
+               </location>
+            </place>
 
 
             <place oucsCode="compas" oxpID="23232565" type="department">
@@ -3000,9 +2998,10 @@ data, and if so, how? -->
                      <ptr target="http://weblearn.ox.ac.uk/site/socsci/edstud/"/>
                   </desc>
                </trait>
-	    </place>
+	           </place>
 
-               <place oucsCode="b_0070" oxpID="23232581" type="building" subtype="primary" obnCode="183">
+               <place oucsCode="b_0070" oxpID="23232581" type="building" subtype="primary"
+                   obnCode="183">
                   <event when="1871" type="construction"/>
                   <event when="1924" type="acquisition"/>
                   <placeName>15 Norham Gardens</placeName>
@@ -3298,9 +3297,10 @@ data, and if so, how? -->
                      <ptr target="http://www.human-sciences.ox.ac.uk/"/>
                   </desc>
                </trait>
-	    </place>
+	           </place>
 
-               <place oucsCode="b_0071" oxpID="23232566" type="building" subtype="primary" obnCode="117">
+               <place oucsCode="b_0071" oxpID="23232566" type="building" subtype="primary"
+                   obnCode="117">
                   <event when="1873" type="construction"/>
                   <event when="1967" type="acquisition"/>
                   <placeName>58 Banbury Road</placeName>
@@ -4120,9 +4120,12 @@ data, and if so, how? -->
             </place>
 
             <place oxpID="23233681" type="building" subtype="primary" oucsCode="b_0068"
-               obnCode="139">
+                   obnCode="139">
                <event when="1946" type="construction"/>
                <placeName>Plant Sciences North</placeName>
+               <location>
+                  <geo>-1.25269351.759323</geo>
+               </location>
             </place>
 
             <place oucsCode="plantlib" oxpID="23233679" type="department">
@@ -4142,7 +4145,7 @@ data, and if so, how? -->
             </place>
 
             <place oxpID="23232678" type="building" subtype="primary" obnCode="158"
-               oucsCode="b_0067">
+                   oucsCode="b_0067">
                <event when="1946" type="construction"/>
                <placeName>Plant Sciences South</placeName>
                <location when="2007-06-18T10:06:29.000">
@@ -4297,10 +4300,10 @@ data, and if so, how? -->
                      <ptr target="http://www.ox.ac.uk"/>
                   </desc>
                </trait>
-	    </place>
+	           </place>
 
-	    <place oxpID="23232654" oucsCode="b_0057" type="building" subtype="primary"
-               obnCode="632">
+	           <place oxpID="23232654" oucsCode="b_0057" type="building" subtype="primary"
+                   obnCode="632">
                <event when="1970" type="construction"/>
                <placeName>Churchill Hospital</placeName>
                <location when="2008-07-30T16:59:00">
@@ -4704,7 +4707,7 @@ data, and if so, how? -->
             </place>
 
             <place oxpID="23232731" type="building" obnCode="269" subtype="primary"
-               oucsCode="b_0060">
+                   oucsCode="b_0060">
                <event when="1971" type="construction"/>
                <placeName>Tinbergen Building</placeName>
                <place oxpID="23232732" type="room">
@@ -4722,6 +4725,9 @@ data, and if so, how? -->
                <place oxpID="23232736" type="room">
                   <placeName>Lecture Theatre A/B</placeName>
                </place>
+               <location>
+                  <geo>-1.250441 51.758375</geo>
+               </location>
             </place>
 
 
@@ -4780,8 +4786,7 @@ data, and if so, how? -->
                </trait>
                <trait type="url">
                   <desc>
-                     <ptr target="http://athens.arch.ox.ac.uk/schoolarch/institute/readingroom.html"
-                     />
+                     <ptr target="http://athens.arch.ox.ac.uk/schoolarch/institute/readingroom.html"/>
                   </desc>
                </trait>
             </place>
@@ -4804,22 +4809,28 @@ data, and if so, how? -->
             <place oucsCode="O_lib_asc_1" oxpID="23232748" type="library" olisCode="ASC Anson 1st">
                <placeName>Anson Room, 1st floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_10" oxpID="23232749" type="library" olisCode="ASC Stack 3rd">
+            <place oucsCode="O_lib_asc_10" oxpID="23232749" type="library"
+                   olisCode="ASC Stack 3rd">
                <placeName>Stack 3rd floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_11" oxpID="23232750" type="library" olisCode="ASC Stack Gnd">
+            <place oucsCode="O_lib_asc_11" oxpID="23232750" type="library"
+                   olisCode="ASC Stack Gnd">
                <placeName>Stack ground floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_12" oxpID="23232751" type="library" olisCode="ASC Subl. 1st">
+            <place oucsCode="O_lib_asc_12" oxpID="23232751" type="library"
+                   olisCode="ASC Subl. 1st">
                <placeName>Sublibrarian 1st floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_13" oxpID="23232752" type="library" olisCode="ASC Subl. 2nd">
+            <place oucsCode="O_lib_asc_13" oxpID="23232752" type="library"
+                   olisCode="ASC Subl. 2nd">
                <placeName>Sublibrarian 2nd floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_14" oxpID="23232753" type="library" olisCode="ASC Subl. 3rd">
+            <place oucsCode="O_lib_asc_14" oxpID="23232753" type="library"
+                   olisCode="ASC Subl. 3rd">
                <placeName>Sublibrarian 3rd floor</placeName>
             </place>
-            <place oucsCode="O_lib_asc_15" oxpID="23232754" type="library" olisCode="ASC Subl. Gnd">
+            <place oucsCode="O_lib_asc_15" oxpID="23232754" type="library"
+                   olisCode="ASC Subl. Gnd">
                <placeName>Sublibrarian ground floor</placeName>
             </place>
             <place oucsCode="O_lib_asc_16" oxpID="23232755" type="library" olisCode="ASC Warden's">
@@ -5581,11 +5592,11 @@ data, and if so, how? -->
                </trait>
             </place>
             <place oucsCode="O_lib_exe_1" oxpID="23232936" type="library"
-               olisCode="EXE Lower Bursary">
+                   olisCode="EXE Lower Bursary">
                <placeName>Lower Bursary</placeName>
             </place>
             <place oucsCode="O_lib_exe_2" oxpID="23232937" type="library"
-               olisCode="EXE Main Library">
+                   olisCode="EXE Main Library">
                <placeName>Main Library</placeName>
             </place>
             <place oucsCode="O_lib_exe_3" oxpID="23232938" type="library" olisCode="EXE Stack">
@@ -5610,7 +5621,8 @@ data, and if so, how? -->
             <place oucsCode="O_lib_geo_1" oxpID="23232941" type="library" olisCode="GEO Main Libr">
                <placeName>Main Library</placeName>
             </place>
-            <place oucsCode="O_lib_geo_10" oxpID="23232942" type="library" olisCode="GEO Transport">
+            <place oucsCode="O_lib_geo_10" oxpID="23232942" type="library"
+                   olisCode="GEO Transport">
                <placeName>Transport Unit</placeName>
             </place>
             <place oucsCode="O_lib_geo_2" oxpID="23232943" type="library" olisCode="GEO Maps">
@@ -5896,7 +5908,8 @@ data, and if so, how? -->
             <place oucsCode="O_lib_jes_1" oxpID="23232998" type="library" olisCode="JES Archive">
                <placeName>Archive</placeName>
             </place>
-            <place oucsCode="O_lib_jes_10" oxpID="23232999" type="library" olisCode="JES StackRoof">
+            <place oucsCode="O_lib_jes_10" oxpID="23232999" type="library"
+                   olisCode="JES StackRoof">
                <placeName>Stack (roofspace)</placeName>
             </place>
             <place oucsCode="O_lib_jes_2" oxpID="23233000" type="library" olisCode="JES Celtic">
@@ -5980,9 +5993,6 @@ data, and if so, how? -->
             <place oucsCode="O_lib_lan_1" oxpID="23233016" type="library" olisCode="LAN Archive">
                <placeName>Archive</placeName>
             </place>
-            <place oucsCode="O_lib_lan_2" oxpID="23233017" type="library" olisCode="LAN Archive">
-               <placeName>Storage and recording room</placeName>
-            </place>
             <place oucsCode="O_lib_lan_3" oxpID="23233018" type="library" olisCode="LAN Libr Off">
                <placeName>Librarian's Office</placeName>
             </place>
@@ -6001,9 +6011,7 @@ data, and if so, how? -->
                </trait>
                <trait type="url">
                   <desc>
-                     <ptr
-                        target="http://www.linacre.ox.ac.uk/Linacre/it-library/linacre-college-library"
-                     />
+                     <ptr target="http://www.linacre.ox.ac.uk/Linacre/it-library/linacre-college-library"/>
                   </desc>
                </trait>
             </place>
@@ -6652,7 +6660,8 @@ data, and if so, how? -->
             <place oucsCode="O_lib_que_1" oxpID="23233159" type="library" olisCode="QUE Basement">
                <placeName>Basement</placeName>
             </place>
-            <place oucsCode="O_lib_que_10" oxpID="23233160" type="library" olisCode="QUE Reference">
+            <place oucsCode="O_lib_que_10" oxpID="23233160" type="library"
+                   olisCode="QUE Reference">
                <placeName>Reference Collection</placeName>
             </place>
             <place oucsCode="O_lib_que_11" oxpID="23233161" type="library" olisCode="QUE Select">
@@ -6667,7 +6676,8 @@ data, and if so, how? -->
             <place oucsCode="O_lib_que_14" oxpID="23233164" type="library" olisCode="QUE Tunnel">
                <placeName>Tunnel</placeName>
             </place>
-            <place oucsCode="O_lib_que_15" oxpID="23233165" type="library" olisCode="QUE Upper Lib">
+            <place oucsCode="O_lib_que_15" oxpID="23233165" type="library"
+                   olisCode="QUE Upper Lib">
                <placeName>Upper Library</placeName>
             </place>
             <place oucsCode="O_lib_que_2" oxpID="23233166" type="library" olisCode="QUE Galician">
@@ -6738,9 +6748,6 @@ data, and if so, how? -->
             <place oucsCode="O_lib_rho_2" oxpID="23233181" type="library" olisCode="RHO Offsite">
                <placeName>Offsite Storage</placeName>
             </place>
-            <place oucsCode="O_lib_rho_3" oxpID="23233182" type="library" olisCode="RHO ReadingRm">
-               <placeName>Copy of Reading Room - for migration</placeName>
-            </place>
             <place oucsCode="O_lib_rho_4" oxpID="23233183" type="library" olisCode="RHO ReadingRm">
                <placeName>Reading Room</placeName>
             </place>
@@ -6791,9 +6798,7 @@ data, and if so, how? -->
                </trait>
                <trait type="url">
                   <desc>
-                     <ptr
-                        target="http://www.sbs.ox.ac.uk/faculty/Library+and+Information+Services.htm"
-                     />
+                     <ptr target="http://www.sbs.ox.ac.uk/faculty/Library+and+Information+Services.htm"/>
                   </desc>
                </trait>
             </place>
@@ -6843,9 +6848,7 @@ data, and if so, how? -->
                <placeName>Said Business School Library</placeName>
                <trait type="liburl">
                   <desc>
-                     <ptr
-                        target="http://www.sbs.ox.ac.uk/faculty/Library+and+Information+Services.htm"
-                     />
+                     <ptr target="http://www.sbs.ox.ac.uk/faculty/Library+and+Information+Services.htm"/>
                   </desc>
                </trait>
             </place>
@@ -6854,9 +6857,6 @@ data, and if so, how? -->
             </place>
             <place oucsCode="O_lib_sms_2" oxpID="23233202" type="library" olisCode="SMS Desk">
                <placeName>Issue Desk</placeName>
-            </place>
-            <place oucsCode="O_lib_sms_3" oxpID="23233203" type="library" olisCode="SMS Short">
-               <placeName>Based on Short Loan Collection - for migration</placeName>
             </place>
             <place oucsCode="O_lib_sms_4" oxpID="23233204" type="library" olisCode="SMS Short">
                <placeName>Short Loan Collection</placeName>
@@ -7068,7 +7068,8 @@ data, and if so, how? -->
             <place oucsCode="O_lib_tas_10" oxpID="23233253" type="library" olisCode="TAS Rare">
                <placeName>Rare books</placeName>
             </place>
-            <place oucsCode="O_lib_tas_11" oxpID="23233254" type="library" olisCode="TAS Reference">
+            <place oucsCode="O_lib_tas_11" oxpID="23233254" type="library"
+                   olisCode="TAS Reference">
                <placeName>Reference LC Sequence</placeName>
             </place>
             <place oucsCode="O_lib_tas_12" oxpID="23233255" type="library" olisCode="TAS U/gr.">
@@ -7077,7 +7078,8 @@ data, and if so, how? -->
             <place oucsCode="O_lib_tas_13" oxpID="23233256" type="library" olisCode="TAS UG LC">
                <placeName>U/grad LC Classification Sequence</placeName>
             </place>
-            <place oucsCode="O_lib_tas_14" oxpID="23233257" type="library" olisCode="TAS UG LC Out">
+            <place oucsCode="O_lib_tas_14" oxpID="23233257" type="library"
+                   olisCode="TAS UG LC Out">
                <placeName>U/grad LC Class Outsize</placeName>
             </place>
             <place oucsCode="O_lib_tas_15" oxpID="23233258" type="library" olisCode="TAS XPS">
@@ -7258,9 +7260,6 @@ data, and if so, how? -->
             </place>
             <place oucsCode="O_lib_wor_3" oxpID="23233300" type="library" olisCode="WOR Office">
                <placeName>Library Office</placeName>
-            </place>
-            <place oucsCode="O_lib_wor_4" oxpID="23233301" type="library" olisCode="WOR Office">
-               <placeName>Temporary WOR Holdings for migration</placeName>
             </place>
             <place oucsCode="O_lib_wor_5" oxpID="23233302" type="library" olisCode="WOR Old Lib">
                <placeName>Old Library</placeName>
@@ -7600,9 +7599,6 @@ data, and if so, how? -->
             <place oucsCode="hclu_2" oxpID="23233389" type="library" olisCode="HCL Churchill">
                <placeName>Churchill Hospital</placeName>
             </place>
-            <place oucsCode="hclu_3" oxpID="23233390" type="library" olisCode="HCL John Radc">
-               <placeName>COPY OF John Radcliffe Hospital - for migration</placeName>
-            </place>
             <place oucsCode="hclu_4" oxpID="23233391" type="library" olisCode="HCL John Radc">
                <placeName>John Radcliffe Hospital</placeName>
             </place>
@@ -7752,9 +7748,6 @@ data, and if so, how? -->
             <place oucsCode="phillib_10" oxpID="23233423" type="library" olisCode="PHI Main Libr">
                <placeName>Main Library</placeName>
             </place>
-            <place oucsCode="phillib_11" oxpID="23233424" type="library" olisCode="PHI New Books">
-               <placeName>Copy of Display Shelf - for migration</placeName>
-            </place>
             <place oucsCode="phillib_12" oxpID="23233425" type="library" olisCode="PHI New Books">
                <placeName>Display Shelf</placeName>
             </place>
@@ -7812,9 +7805,6 @@ data, and if so, how? -->
             </place>
             <place oucsCode="radlib_12" oxpID="23233440" type="library" olisCode="RSL Offsite">
                <placeName>Offsite Storage</placeName>
-            </place>
-            <place oucsCode="radlib_13" oxpID="23233441" type="library" olisCode="RSL Offsite">
-               <placeName>Offsite Storage (Inactive)</placeName>
             </place>
             <place oucsCode="radlib_14" oxpID="23233442" type="library" olisCode="RSL OpenShelf">
                <placeName>Open Shelf</placeName>
@@ -7994,9 +7984,7 @@ data, and if so, how? -->
                </location>
                <trait type="url">
                   <desc>
-                     <ptr
-                        target="http://www.chch.ox.ac.uk/index.php?option=com_content&amp;task=view&amp;id=301&amp;Itemid=363"
-                     />
+                     <ptr target="http://www.chch.ox.ac.uk/index.php?option=com_content&amp;task=view&amp;id=301&amp;Itemid=363"/>
                   </desc>
                </trait>
                <place oxpID="23233482" type="building" subtype="primary">
@@ -8131,9 +8119,7 @@ data, and if so, how? -->
                </location>
                <trait type="url">
                   <desc>
-                     <ptr
-                        target="http://www.chch.ox.ac.uk/index.php?option=com_content&amp;task=view&amp;id=245&amp;Itemid=300"
-                     />
+                     <ptr target="http://www.chch.ox.ac.uk/index.php?option=com_content&amp;task=view&amp;id=245&amp;Itemid=300"/>
                   </desc>
                </trait>
                <place oxpID="23233496" type="building" subtype="primary">
@@ -8427,8 +8413,8 @@ data, and if so, how? -->
                <placeName>Finance Division</placeName>
                <location type="address">
                  <address>
-                  <addrLine>23-38 Hythe Bridge Street, Oxford</addrLine>
-                  <postCode>OX1 2EP</postCode>
+                     <addrLine>23-38 Hythe Bridge Street, Oxford</addrLine>
+                     <postCode>OX1 2EP</postCode>
                  </address>
                </location>
                <trait type="url">
@@ -8589,9 +8575,7 @@ data, and if so, how? -->
                </location>
                <trait type="url">
                   <desc>
-                     <ptr
-                        target="http://www.ox.ac.uk/about_the_university/introducing_oxford/the_structure_of_the_university/index.html"
-                     />
+                     <ptr target="http://www.ox.ac.uk/about_the_university/introducing_oxford/the_structure_of_the_university/index.html"/>
                   </desc>
                </trait>
 
@@ -8902,7 +8886,7 @@ data, and if so, how? -->
             </place>
 
             <place oucsCode="b_0066" oxpID="23233558" type="building" subtype="primary"
-               obnCode="293">
+                   obnCode="293">
                <event when="1890" type="construction"/>
                <placeName>Red Barn</placeName>
                <location when="2007-01-29T12:43:29.455Z">
@@ -9178,6 +9162,9 @@ data, and if so, how? -->
                <place oxpID="23233582" type="room">
                   <placeName>Seminar Room 1</placeName>
                </place>
+               <location>
+                  <geo>-1.254214 51.754903</geo>
+               </location>
             </place>
 
             <place oucsCode="libsys" oxpID="23233583" type="unit" subtype="mlp">
@@ -9290,7 +9277,7 @@ data, and if so, how? -->
                      <ptr target="http://www.philosophy.ox.ac.uk/"/>
                   </desc>
                </trait>
-	    </place>
+	           </place>
 
             <place oucsCode="phone" oxpID="23233593" type="unit">
                <placeName>Phonetics Laboratory</placeName>
@@ -9378,28 +9365,28 @@ data, and if so, how? -->
                </location>
             </place>
 
-	    <place oxpID="23233590" type="building" obnCode="178" oucsCode="b_0002">
-	      <event when="1956" type="construction"/>
-	      <placeName>10 Merton Street</placeName>
-	      <location when="2007-05-22T16:32:45.881+01:00">
-		<geo>-1.255445 51.757428</geo>
-		<note> recorded by Janet McKnight</note>
-	      </location>
-	      <place oxpID="23233591" type="room">
-		<placeName>Lecture Room</placeName>
-		<location when="2007-01-23T10:39:10.925Z">
-		  <geo>-1.25084280967712 51.75161659192567</geo>
-		  <note> recorded by Andy Davies</note>
-		</location>
-	      </place>
-	      <place oxpID="23233592" type="room">
-		<placeName>Ryle Room</placeName>
-		<location when="2007-01-23T10:39:43.438Z">
-		  <geo>-1.25078916549682 51.75160330808421</geo>
-		  <note> recorded by Andy Davies</note>
-		</location>
-	      </place>
-	    </place>
+	           <place oxpID="23233590" type="building" obnCode="178" oucsCode="b_0002">
+	              <event when="1956" type="construction"/>
+	              <placeName>10 Merton Street</placeName>
+	              <location when="2007-05-22T16:32:45.881+01:00">
+		                <geo>-1.255445 51.757428</geo>
+		                <note> recorded by Janet McKnight</note>
+	              </location>
+	              <place oxpID="23233591" type="room">
+		                <placeName>Lecture Room</placeName>
+		                <location when="2007-01-23T10:39:10.925Z">
+		                   <geo>-1.25084280967712 51.75161659192567</geo>
+		                   <note> recorded by Andy Davies</note>
+		                </location>
+	              </place>
+	              <place oxpID="23233592" type="room">
+		                <placeName>Ryle Room</placeName>
+		                <location when="2007-01-23T10:39:43.438Z">
+		                   <geo>-1.25078916549682 51.75160330808421</geo>
+		                   <note> recorded by Andy Davies</note>
+		                </location>
+	              </place>
+	           </place>
 
             <place oucsCode="b_0003" oxpID="23233601" type="building" obnCode="124">
                <event when="1868" type="construction"/>
@@ -9547,9 +9534,7 @@ data, and if so, how? -->
                <trait type="url">
                   <!-- should this be for the building or the unit? -->
                   <desc>
-                     <ptr
-                        target="http://www.lib.ox.ac.uk/libraries/guides/BOD.html#BodleianLibrary-OldLibrary"
-                     />
+                     <ptr target="http://www.lib.ox.ac.uk/libraries/guides/BOD.html#BodleianLibrary-OldLibrary"/>
                   </desc>
                </trait>
             </place>
@@ -9742,7 +9727,7 @@ data, and if so, how? -->
                </place>
             </place>
             <place oucsCode="b_0033" oxpID="23233647" type="building" subtype="primary"
-               obnCode="261">
+                   obnCode="261">
                <event when="1875" type="construction"/>
                <placeName>11 Wellington Square</placeName>
                <location>
@@ -9807,7 +9792,7 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0040" oxpID="23233654" type="building" subtype="primary"
-               obnCode="630">
+                   obnCode="630">
                <event when="2003" type="construction"/>
                <placeName>OCDEM 1, Churchill Hospital</placeName>
                <location when="2007-06-14T10:25:08.332+01:00">
@@ -9854,7 +9839,7 @@ data, and if so, how? -->
                </location>
             </place>
             <place oucsCode="b_0043" oxpID="23233663" type="building" subtype="primary"
-               obnCode="166">
+                   obnCode="166">
                <event when="1892" type="construction"/>
                <placeName>Le Gros Clark Building</placeName>
                <location when="2007-06-18T10:17:04.000">
@@ -9960,7 +9945,7 @@ data, and if so, how? -->
             </place>
 
             <place oxpID="23233585" type="building" subtype="primary" obnCode="264"
-               oucsCode="b_0056">
+                   oucsCode="b_0056">
                <event when="1875" type="construction"/>
                <placeName>Barnett House, 32-42 Wellington Square</placeName>
                <location when="2008-07-30T17:01:00">
@@ -10195,7 +10180,6 @@ data, and if so, how? -->
             <relation name="controls" active="#O_lib_keb" passive="#O_lib_keb_4"/>
             <relation name="controls" active="#O_lib_lac" passive="#O_lib_lac_1"/>
             <relation name="controls" active="#O_lib_lan" passive="#O_lib_lan_1"/>
-            <relation name="controls" active="#O_lib_lan" passive="#O_lib_lan_2"/>
             <relation name="controls" active="#O_lib_lan" passive="#O_lib_lan_3"/>
             <relation name="controls" active="#O_lib_lan" passive="#O_lib_lan_4"/>
             <relation name="controls" active="#O_lib_lan" passive="#O_lib_lan_5"/>
@@ -10328,7 +10312,6 @@ data, and if so, how? -->
             <relation name="controls" active="#O_lib_reg" passive="#O_lib_reg_4"/>
             <relation name="controls" active="#O_lib_rho" passive="#O_lib_rho_1"/>
             <relation name="controls" active="#O_lib_rho" passive="#O_lib_rho_2"/>
-            <relation name="controls" active="#O_lib_rho" passive="#O_lib_rho_3"/>
             <relation name="controls" active="#O_lib_rho" passive="#O_lib_rho_4"/>
             <relation name="controls" active="#O_lib_rho" passive="#O_lib_rho_5"/>
             <relation name="controls" active="#O_lib_rsc" passive="#O_lib_rsc_1"/>
@@ -10343,7 +10326,6 @@ data, and if so, how? -->
             <relation name="controls" active="#O_lib_sls" passive="#O_lib_sls_2"/>
             <relation name="controls" active="#O_lib_sms" passive="#O_lib_sms_1"/>
             <relation name="controls" active="#O_lib_sms" passive="#O_lib_sms_2"/>
-            <relation name="controls" active="#O_lib_sms" passive="#O_lib_sms_3"/>
             <relation name="controls" active="#O_lib_sms" passive="#O_lib_sms_4"/>
             <relation name="controls" active="#O_lib_sms" passive="#O_lib_sms_5"/>
             <relation name="controls" active="#O_lib_sms" passive="#O_lib_sms_6"/>
@@ -10422,7 +10404,6 @@ data, and if so, how? -->
             <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_1"/>
             <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_2"/>
             <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_3"/>
-            <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_4"/>
             <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_5"/>
             <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_6"/>
             <relation name="controls" active="#O_lib_wor" passive="#O_lib_wor_7"/>
@@ -10533,7 +10514,6 @@ data, and if so, how? -->
             <relation name="controls" active="#grte" passive="#O_lib_tem"/>
             <relation name="controls" active="#hclu" passive="#hclu_1"/>
             <relation name="controls" active="#hclu" passive="#hclu_2"/>
-            <relation name="controls" active="#hclu" passive="#hclu_3"/>
             <relation name="controls" active="#hclu" passive="#hclu_4"/>
             <relation name="controls" active="#hclu" passive="#hclu_5"/>
             <relation name="controls" active="#hclu" passive="#hclu_6"/>
@@ -10598,7 +10578,6 @@ data, and if so, how? -->
             <relation name="controls" active="#pharm" passive="#O_lib_pha"/>
             <relation name="controls" active="#phillib" passive="#phillib_1"/>
             <relation name="controls" active="#phillib" passive="#phillib_10"/>
-            <relation name="controls" active="#phillib" passive="#phillib_11"/>
             <relation name="controls" active="#phillib" passive="#phillib_12"/>
             <relation name="controls" active="#phillib" passive="#phillib_13"/>
             <relation name="controls" active="#phillib" passive="#phillib_14"/>
@@ -10624,7 +10603,6 @@ data, and if so, how? -->
             <relation name="controls" active="#radlib" passive="#radlib_10"/>
             <relation name="controls" active="#radlib" passive="#radlib_11"/>
             <relation name="controls" active="#radlib" passive="#radlib_12"/>
-            <relation name="controls" active="#radlib" passive="#radlib_13"/>
             <relation name="controls" active="#radlib" passive="#radlib_14"/>
             <relation name="controls" active="#radlib" passive="#radlib_15"/>
             <relation name="controls" active="#radlib" passive="#radlib_16"/>
@@ -10763,8 +10741,7 @@ data, and if so, how? -->
             <relation name="occupies" type="geo primary" active="#O_examassess" passive="#b_0016"/>
             <relation name="occupies" type="geo primary" active="#O_frc" passive="#b_0010"/>
             <relation name="occupies" type="geo primary" active="#O_gradadmin" passive="#b_0027"/>
-            <relation name="occupies" type="geo primary" active="#O_gradadmissions"
-               passive="#b_0027"/>
+            <relation name="occupies" type="geo primary" active="#O_gradadmissions" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_herc" passive="#b_0017"/>
             <relation name="occupies" type="geo primary" active="#O_intstrat" passive="#b_0027"/>
             <relation name="occupies" type="geo primary" active="#O_landagent" passive="#b_0015"/>
@@ -10929,6 +10906,9 @@ data, and if so, how? -->
                <placeName>Dartington House</placeName>
                <event when="1970" type="construction"/>
                <event when="1970" type="acquisition"/>
+               <location>
+                  <geo>-1.261179 51.758745</geo>
+               </location>
             </place>
             <place type="building" obnCode="105" oxpID="23233685" oucsCode="e_3">
                <placeName>Old Observatory</placeName>
@@ -10938,21 +10918,33 @@ data, and if so, how? -->
                <placeName>21 Banbury Road</placeName>
                <event when="1879" type="construction"/>
                <event when="1957" type="acquisition"/>
+               <location>
+                  <geo>-1.260303 51.760453</geo>
+               </location>
             </place>
             <place type="building" obnCode="111" oxpID="23233691" oucsCode="e_9">
                <placeName>43 Banbury Road</placeName>
                <event when="1885" type="construction"/>
                <event when="1966" type="acquisition"/>
+               <location>
+                  <geo>-1.261035 51.763044</geo>
+               </location>
             </place>
             <place type="building" obnCode="119" oxpID="23233697" oucsCode="e_15">
                <placeName>61 Banbury Road</placeName>
                <event when="1868" type="construction"/>
                <event when="1966" type="acquisition"/>
+               <location>
+                  <geo>-1.260879 51.764199</geo>
+               </location>
             </place>
             <place type="building" obnCode="123" oxpID="23233699" oucsCode="e_17">
                <placeName>37 Beaumont Street</placeName>
                <event when="1837" type="construction"/>
                <event when="1940" type="acquisition"/>
+               <location>
+                  <geo>-1.260862 51.755070</geo>
+               </location>
             </place>
             <place type="building" obnCode="126" oxpID="23233702" oucsCode="e_20">
                <placeName>13 Bevington Road</placeName>
@@ -10989,34 +10981,55 @@ data, and if so, how? -->
                <placeName>2 South Parks Road</placeName>
                <event when="1866" type="construction"/>
                <event when="1963" type="acquisition"/>
+               <location>
+                  <geo>-1.253717 51.758169</geo>
+               </location>
             </place>
             <place type="building" obnCode="167" oxpID="23233730" oucsCode="e_48">
                <placeName>The Pauling Centre, 58a Banbury Road, Oxford</placeName>
                <event when="1981" type="construction"/>
+               <location>
+                  <geo>-1.26054151.763498</geo>
+               </location>
             </place>
             <place type="building" obnCode="171" oxpID="23233733" oucsCode="e_51">
                <placeName>5-6 Keble Road</placeName>
                <event when="1880" type="construction"/>
                <event when="1934" type="acquisition"/>
+               <location>
+                  <geo>-1.258939 51.759528</geo>
+               </location>
             </place>
             <place type="building" obnCode="172" oxpID="23233734" oucsCode="e_52">
                <placeName>7 Keble Road</placeName>
                <event when="1880" type="construction"/>
                <event when="1934" type="acquisition"/>
+               <location>
+                  <geo>-1.258627 51.759591</geo>
+               </location>
             </place>
             <place type="building" obnCode="180" oxpID="23233740" oucsCode="e_58">
                <placeName>Donald Woods Building</placeName>
                <event when="1961" type="construction"/>
+               <location>
+                  <geo>-1.254156 51.759637</geo>
+               </location>
             </place>
             <place type="building" obnCode="184" oxpID="23233744" oucsCode="e_62">
                <placeName>Bruner Building, 28 Norham Gardens</placeName>
                <event when="1875" type="construction"/>
                <event when="1972" type="acquisition"/>
+               <location>
+                  <geo>-1.255357 51.764276</geo>
+               </location>
             </place>
             <place type="building" obnCode="185" oxpID="23233745" oucsCode="e_63">
                <placeName>Bruner Building, 30 Norham Gardens</placeName>
                <event when="1875" type="construction"/>
                <event when="1972" type="acquisition"/>
+               <location>
+                  <geo>-1.25535751.764276</geo>
+               </location>
             </place>
             <place type="building" obnCode="187" oxpID="23233747" oucsCode="e_65">
                <placeName>Nuneham - Church</placeName>
@@ -11027,23 +11040,32 @@ data, and if so, how? -->
                <placeName>12-13 Parks Road</placeName>
                <event when="1880" type="construction"/>
                <event when="1934" type="acquisition"/>
+               <location>
+                  <geo>-1.258612 51.760190</geo>
+               </location>
             </place>
             <place type="building" obnCode="196" oxpID="23233753" oucsCode="e_71">
                <placeName>14-15 Parks Road</placeName>
                <event when="1880" type="construction"/>
                <event when="1934" type="acquisition"/>
+               <location>
+                  <geo>-1.258787 51.760291</geo>
+               </location>
             </place>
             <place type="building" obnCode="197" oxpID="23233754" oucsCode="e_72">
                <placeName>Jenkin Building</placeName>
                <event when="1914" type="construction"/>
+               <location>
+                  <geo>-1.260091 51.761402</geo>
+               </location>
             </place>
             <place type="building" obnCode="224" oxpID="23233759" oucsCode="e_77">
                <placeName>Radcliffe Camera</placeName>
                <event when="1747" type="construction"/>
-	       <location when="2007-05-22T17:08:49.467+01:00">
-		 <geo>-1.2539970874786377 51.75344308292687</geo>
-		 <note> recorded by Owen Massey</note>
-	       </location>
+	              <location when="2007-05-22T17:08:49.467+01:00">
+		                <geo>-1.2539970874786377 51.75344308292687</geo>
+		                <note> recorded by Owen Massey</note>
+	              </location>
             </place>
             <place type="building" obnCode="227" oxpID="23233761" oucsCode="e_79">
                <placeName>Richard Burton Building</placeName>
@@ -11075,6 +11097,9 @@ data, and if so, how? -->
                <placeName>Summertown House Mansion</placeName>
                <event when="1880" type="construction"/>
                <event when="1947" type="acquisition"/>
+               <location>
+                  <geo>-1.269778 51.784780</geo>
+               </location>
             </place>
             <place type="building" obnCode="265" oxpID="23233787" oucsCode="e_105">
                <placeName>43-48 Wellington Square</placeName>
@@ -11083,6 +11108,9 @@ data, and if so, how? -->
             <place type="building" obnCode="267" oxpID="23233788" oucsCode="e_106">
                <placeName>John Krebs Field Station, Wytham</placeName>
                <event when="1952" type="construction"/>
+               <location>
+                  <geo>-1.31593751.782970</geo>
+               </location>
             </place>
             <place type="building" obnCode="268" oxpID="23233789" oucsCode="e_107">
                <placeName>Technician, Wytham</placeName>
@@ -11091,6 +11119,9 @@ data, and if so, how? -->
             <place type="building" obnCode="270" oxpID="23233791" oucsCode="e_109">
                <placeName>Atmospheric Physics</placeName>
                <event when="1898" type="construction"/>
+               <location>
+                  <geo>-1.25600751.759197</geo>
+               </location>
             </place>
             <place type="building" obnCode="273" oxpID="23233793" oucsCode="e_111">
                <placeName>Ruskin Annex, 128 Bullingdon Road</placeName>
@@ -11099,11 +11130,17 @@ data, and if so, how? -->
             <place type="building" obnCode="276" oxpID="23233795" oucsCode="e_113">
                <placeName>Engineering And Technology Building</placeName>
                <event when="1989" type="construction"/>
+               <location>
+                  <geo>-1.25970951.761163</geo>
+               </location>
             </place>
             <place type="building" obnCode="282" oxpID="23233798" oucsCode="e_116">
                <placeName>75 Banbury Road</placeName>
                <event when="1840" type="construction"/>
                <event when="2003" type="acquisition"/>
+               <location>
+                  <geo>-1.261091 51.764783</geo>
+               </location>
             </place>
             <place type="building" obnCode="284" oxpID="23233799" oucsCode="e_117">
                <placeName>Sports Centre Rugby Fives</placeName>
@@ -11128,6 +11165,9 @@ data, and if so, how? -->
             <place type="building" obnCode="298" oxpID="23233806" oucsCode="e_124">
                <placeName>Bradmore Road Creche</placeName>
                <event when="1994" type="construction"/>
+               <location>
+                  <geo>-1.258943 51.763627</geo>
+               </location>
             </place>
             <place type="building" obnCode="304" oxpID="23233809" oucsCode="e_127">
                <placeName>Pathology Support Building</placeName>
@@ -11192,20 +11232,32 @@ data, and if so, how? -->
                <placeName>Holywell Music Room</placeName>
                <event when="1748" type="construction"/>
                <event when="1945" type="acquisition"/>
+               <location>
+                  <geo>-1.25321551.755173</geo>
+               </location>
             </place>
             <place type="building" obnCode="344" oxpID="23233834" oucsCode="e_152">
                <placeName>Thomas Hull House</placeName>
                <event when="1979" type="construction"/>
                <event when="2002" type="acquisition"/>
+               <location>
+                  <geo>-1.260150 51.751848</geo>
+               </location>
             </place>
             <place type="building" obnCode="346" oxpID="23233835" oucsCode="e_153">
                <placeName>Wolsey Hall, 66 Banbury Road</placeName>
                <event when="1869" type="construction"/>
                <event when="2002" type="acquisition"/>
+               <location>
+                  <geo>-1.260639 51.764652</geo>
+               </location>
             </place>
             <place type="building" obnCode="348" oxpID="23233837" oucsCode="e_155">
                <placeName>Ancient Bio-Molecules</placeName>
                <event when="2003" type="construction"/>
+               <location>
+                  <geo>-1.25903 51.757900</geo>
+               </location>
             </place>
             <place type="building" obnCode="352" oxpID="23233838" oucsCode="e_156">
                <placeName>IAT Building, Begbroke Science Park</placeName>
@@ -11218,6 +11270,9 @@ data, and if so, how? -->
             <place type="building" obnCode="354" oxpID="23233840" oucsCode="e_158">
                <placeName>15a Norham Gardens</placeName>
                <event when="2006" type="construction"/>
+               <location>
+                  <geo>-1.256092 51.763709</geo>
+               </location>
             </place>
             <place type="building" obnCode="361" oxpID="23233842" oucsCode="e_160">
                <placeName>Information Engineering</placeName>
@@ -11235,6 +11290,9 @@ data, and if so, how? -->
             <place type="building" obnCode="375" oxpID="23233849" oucsCode="e_167">
                <placeName>Wolfson College Annexe</placeName>
                <event when="1960" type="construction"/>
+               <location>
+                  <geo>-1.256434 51.770519</geo>
+               </location>
             </place>
             <place type="building" obnCode="378" oxpID="23233851" oucsCode="e_169">
                <placeName>Jack Straws Lane Nursery</placeName>
@@ -11333,6 +11391,9 @@ data, and if so, how? -->
             <place type="building" obnCode="676" oxpID="23233890" oucsCode="e_208">
                <placeName>HWB For Particle Imaging (Opic)</placeName>
                <event when="2004" type="construction"/>
+               <location>
+                  <geo>-1.216083 51.752905</geo>
+               </location>
             </place>
             <place type="building" obnCode="679" oxpID="23233892" oucsCode="e_210">
                <placeName>John Radcliffe Cardiac Centre</placeName>
@@ -11356,6 +11417,9 @@ data, and if so, how? -->
                <placeName>Eagle House</placeName>
                <event when="2009" type="construction"/>
                <event when="2009" type="acquisition"/>
+               <location>
+                  <geo>-1.268780 51.761575</geo>
+               </location>
             </place>
             <place type="building" obnCode="687" oxpID="23233899" oucsCode="e_217">
                <placeName>Cancer Hospital, Churchill</placeName>
