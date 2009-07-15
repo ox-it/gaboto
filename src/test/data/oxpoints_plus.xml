@@ -108,7 +108,7 @@
                   <label>Register of fellows</label>
                </event>
                <place oxpID="23232334" type="building">
-                  <placeName>Entrance</placeName>
+                  <placeName>St Alban Hall Entrance</placeName>
                   <location>
                      <geo>-1.251376 51.751379</geo>
                   </location>
@@ -3421,7 +3421,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23232616" type="building" subtype="primary">
-                  <placeName>St Antony's College</placeName>
+                  <placeName>Latin American Centre</placeName>
                   <location when="2007-05-22T16:15:32.737+01:00">
                      <geo>-1.263047 51.763463</geo>
                      <note> recorded by Janet McKnight</note>
@@ -8172,7 +8172,7 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23233501" type="building" subtype="primary">
-                  <placeName>Entrance</placeName>
+                  <placeName>OUP</placeName>
                   <location when="2007-06-14T08:00:00.634+01:00">
                      <geo>-1.264647 51.758902</geo>
                      <note> recorded by Sebastian Rahtz</note>
