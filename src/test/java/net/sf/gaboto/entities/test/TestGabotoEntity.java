@@ -58,6 +58,7 @@ import org.oucs.gaboto.vocabulary.OxPointsVocab;
 import uk.ac.ox.oucs.oxpoints.gaboto.beans.Location;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Carpark;
+import uk.ac.ox.oucs.oxpoints.gaboto.entities.OxpEntity;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Unit;
 
 import static org.junit.Assert.assertTrue;
@@ -196,13 +197,18 @@ public class TestGabotoEntity  {
 		assertTrue(foundURIs.contains(uri2));
 	}
 	
+  @Test
+  public void testLoad() { 
+    oxp = Utils.getOxpointsFromXML();
+  }
+	
 	@SuppressWarnings("unchecked")
   @Test
-	public void testPassiveProperties() { 
-    Gaboto oxp = Utils.getOxpointsFromXML();
+  public void testPassiveProperties() { 
+    oxp = Utils.getOxpointsFromXML();
     
     GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
-	  
+    
     GabotoEntityPool pool = new GabotoEntityPool(oxp, nowSnap);
     GabotoEntity passiveParticipant = nowSnap.loadEntity("http://m.ox.ac.uk/oxpoints/id/23232562");
     Property prop = OxPointsVocab.MODEL.getObjectProperty("http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#occupies");
@@ -232,5 +238,38 @@ public class TestGabotoEntity  {
       }
     }
     assertEquals(3, pool.size());
-	}
+  }
+  @SuppressWarnings("unchecked")
+  @Test
+  public void testPassivePropertiesTheLongWay() { 
+    oxp = Utils.getOxpointsFromXML();
+    
+    GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
+    
+    GabotoEntityPool pool = new GabotoEntityPool(oxp, nowSnap);
+    GabotoEntity passiveParticipant = nowSnap.loadEntity("http://m.ox.ac.uk/oxpoints/id/23232562");
+    Property prop = OxPointsVocab.MODEL.getObjectProperty("http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#occupies");
+    
+    GabotoEntityPool allEntitiesWithProp = nowSnap.loadEntitiesWithProperty(prop);
+    for(GabotoEntity e : allEntitiesWithProp.getEntities()) {
+      if (e.getPropertyValue(prop) != null) {
+        if (e.getPropertyValue(prop) instanceof HashSet) { 
+          for (Object ent : (HashSet)e.getPropertyValue(prop)) { 
+            if (((OxpEntity)ent).getUri().equals(passiveParticipant.getUri())) { 
+              System.err.println("FOUND" + ((OxpEntity)ent).getUri());
+              System.err.println("Adding" + e);
+              pool.add(e);
+            }
+          }
+        } else if (e.getPropertyValue(prop) instanceof OxpEntity) 
+          if (((OxpEntity)e.getPropertyValue(prop)).getUri().equals(passiveParticipant.getUri())) { 
+            System.err.println(((OxpEntity)e.getPropertyValue(prop)).getUri());
+            System.err.println("FOUND" + ((OxpEntity)e).getUri());
+            pool.add(e);
+            System.err.println("Adding" + e);
+          }
+      }
+    }
+    assertEquals(3, pool.size());
+  }
 }
