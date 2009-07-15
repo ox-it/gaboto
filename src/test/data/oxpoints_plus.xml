@@ -1904,7 +1904,7 @@
                   <event when="2004" type="construction"/>
                   <placeName>Cellular And Molecular Physiology</placeName>
                   <location>
-                     <geo>-1.21647351.752781</geo>
+                     <geo>-1.216473 51.752781</geo>
                   </location>
                </place>
 
@@ -4124,7 +4124,7 @@ data, and if so, how? -->
                <event when="1946" type="construction"/>
                <placeName>Plant Sciences North</placeName>
                <location>
-                  <geo>-1.25269351.759323</geo>
+                  <geo>-1.252693 51.759323</geo>
                </location>
             </place>
 
@@ -10989,7 +10989,7 @@ data, and if so, how? -->
                <placeName>The Pauling Centre, 58a Banbury Road, Oxford</placeName>
                <event when="1981" type="construction"/>
                <location>
-                  <geo>-1.26054151.763498</geo>
+                  <geo>-1.260541 51.763498</geo>
                </location>
             </place>
             <place type="building" obnCode="171" oxpID="23233733" oucsCode="e_51">
@@ -11028,7 +11028,7 @@ data, and if so, how? -->
                <event when="1875" type="construction"/>
                <event when="1972" type="acquisition"/>
                <location>
-                  <geo>-1.25535751.764276</geo>
+                  <geo>-1.255357 51.764276</geo>
                </location>
             </place>
             <place type="building" obnCode="187" oxpID="23233747" oucsCode="e_65">
@@ -11109,7 +11109,7 @@ data, and if so, how? -->
                <placeName>John Krebs Field Station, Wytham</placeName>
                <event when="1952" type="construction"/>
                <location>
-                  <geo>-1.31593751.782970</geo>
+                  <geo>-1.315937 51.782970</geo>
                </location>
             </place>
             <place type="building" obnCode="268" oxpID="23233789" oucsCode="e_107">
@@ -11120,7 +11120,7 @@ data, and if so, how? -->
                <placeName>Atmospheric Physics</placeName>
                <event when="1898" type="construction"/>
                <location>
-                  <geo>-1.25600751.759197</geo>
+                  <geo>-1.256007 51.759197</geo>
                </location>
             </place>
             <place type="building" obnCode="273" oxpID="23233793" oucsCode="e_111">
@@ -11131,7 +11131,7 @@ data, and if so, how? -->
                <placeName>Engineering And Technology Building</placeName>
                <event when="1989" type="construction"/>
                <location>
-                  <geo>-1.25970951.761163</geo>
+                  <geo>-1.259709 51.761163</geo>
                </location>
             </place>
             <place type="building" obnCode="282" oxpID="23233798" oucsCode="e_116">
@@ -11233,7 +11233,7 @@ data, and if so, how? -->
                <event when="1748" type="construction"/>
                <event when="1945" type="acquisition"/>
                <location>
-                  <geo>-1.25321551.755173</geo>
+                  <geo>-1.253215 51.755173</geo>
                </location>
             </place>
             <place type="building" obnCode="344" oxpID="23233834" oucsCode="e_152">
