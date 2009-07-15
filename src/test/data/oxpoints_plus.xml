@@ -555,6 +555,18 @@
                      <note> recorded by Janet McKnight</note>
                   </location>
                </place>
+	       <place type="building" oxpID="23233907">
+		 <placeName>Annexe 57 Banbury Road</placeName>
+		 <location>
+		   <geo>-1.260840 51.763948</geo>
+		 </location>
+	       </place>
+	       <place type="building" oxpID="23233908">
+		 <placeName>Annexe 59 Banbury Road</placeName>
+		 <location>
+		   <geo>-1.260831 51.764063</geo>
+		 </location>
+	       </place>
             </place>
             <place oucsCode="jesu" oxpID="23232371" type="college">
                <placeName>Jesus College</placeName>
@@ -10837,11 +10849,11 @@ data, and if so, how? -->
   <relation name="occupies" active="#ashlib_13" passive="#b_0038" type="geo primary" />
   <relation name="occupies" active="#astro" passive="#b_0014" type="geo primary" />
   <relation name="occupies" active="#atmos" passive="#b_0013" type="geo primary" />
-  <relation name="occupies" active="#atmos" passive="#e_109" type="geo primary" />
+  <relation name="occupies" active="#atmos" passive="#e_109" type="geo" />
   <relation name="occupies" active="#atom" passive="#b_0013" type="geo primary" />
   <relation name="occupies" active="#beazley" passive="#b_0008" type="geo primary" />
   <relation name="occupies" active="#bioch" passive="#b_0041" type="geo primary" />
-  <relation name="occupies" active="#bioch" passive="#b_0042" type="geo primary" />
+  <relation name="occupies" active="#bioch" passive="#b_0042" type="geo" />
   <relation name="occupies" active="#biomed" passive="#b_0060" type="geo primary" />
   <relation name="occupies" active="#blu" passive="#b_0015" type="geo primary" />
   <relation name="occupies" active="#bodlib" passive="#b_0011" type="geo primary" />
@@ -10867,12 +10879,12 @@ data, and if so, how? -->
   <relation name="occupies" active="#devoff" passive="#b_0027" type="geo primary" />
   <relation name="occupies" active="#diabres" passive="#b_0040" type="geo primary" />
   <relation name="occupies" active="#dpag" passive="#b_0039" type="geo primary" />
-  <relation name="occupies" active="#dpag" passive="#b_0043" type="geo primary" />
+  <relation name="occupies" active="#dpag" passive="#b_0043" type="geo" />
   <relation name="occupies" active="#dtu" passive="#b_0040" type="geo primary" />
   <relation name="occupies" active="#econ" passive="#b_0020" type="geo primary" />
   <relation name="occupies" active="#econlib" passive="#b_0020" type="geo primary" />
   <relation name="occupies" active="#edstud" passive="#b_0070" type="geo primary" />
-  <relation name="occupies" active="#edstud" passive="#e_158" type="geo primary" />
+  <relation name="occupies" active="#edstud" passive="#e_158" type="geo" />
   <relation name="occupies" active="#edstud" passive="#e_62" type="geo" />
   <relation name="occupies" active="#edstud" passive="#e_63" type="geo" />
   <relation name="occupies" active="#engfac" passive="#b_0025" type="geo primary" />
@@ -10907,7 +10919,7 @@ data, and if so, how? -->
   <relation name="occupies" active="#mcdp" passive="#b_0039" type="geo primary" />
   <relation name="occupies" active="#medoff" passive="#b_0018" type="geo" />
   <relation name="occupies" active="#medsci" passive="#b_0018" type="geo primary" />
-  <relation name="occupies" active="#medsci" passive="#b_0018" type="geo primary" />
+  <relation name="occupies" active="#medsci" passive="#b_0018" type="geo" />
   <relation name="occupies" active="#metres" passive="#b_0040" type="geo primary" />
   <relation name="occupies" active="#modlang" passive="#b_0056" type="geo primary" />
   <relation name="occupies" active="#molbiol" passive="#b_0042" type="geo primary" />
@@ -10924,9 +10936,9 @@ data, and if so, how? -->
   <relation name="occupies" active="#ophth" passive="#b_0018" type="geo primary" />
   <relation name="occupies" active="#ouce" passive="#b_0053" type="geo primary" />
   <relation name="occupies" active="#oucs" passive="#b_0005" type="geo primary" />
-  <relation name="occupies" active="#oucs" passive="#b_0049" type="geo primary" />
-  <relation name="occupies" active="#oucs" passive="#b_0050" type="geo primary" />
-  <relation name="occupies" active="#oucs" passive="#b_0051" type="geo primary" />
+  <relation name="occupies" active="#oucs" passive="#b_0049" type="geo" />
+  <relation name="occupies" active="#oucs" passive="#b_0050" type="geo" />
+  <relation name="occupies" active="#oucs" passive="#b_0051" type="geo" />
   <relation name="occupies" active="#ousoc" passive="#b_0027" type="geo primary" />
   <relation name="occupies" active="#oxman" passive="#b_0010" type="geo primary" />
   <relation name="occupies" active="#paed" passive="#b_0018" type="geo primary" />
@@ -11034,7 +11046,10 @@ data, and if so, how? -->
             <place type="building" obnCode="130" oxpID="23233703" oucsCode="e_21">
                <placeName>Bodleian Library</placeName>
                <event when="1939" type="construction"/>
-            </place>
+	       <location>
+		 <geo>-1.254520 51.754021</geo>
+	       </location>
+	    </place>
             <place type="building" obnCode="138" oxpID="23233707" oucsCode="e_25">
                <placeName>Botanic Garden Cottage</placeName>
                <event when="1880" type="construction"/>
@@ -11115,6 +11130,9 @@ data, and if so, how? -->
                <placeName>Nuneham - Church</placeName>
                <event when="1850" type="construction"/>
                <event when="1979" type="acquisition"/>
+	       <location>
+		 <geo>-1.205616 51.688363</geo>
+	       </location>
             </place>
             <place type="building" obnCode="195" oxpID="23233752" oucsCode="e_70">
                <placeName>12-13 Parks Road</placeName>
@@ -11206,6 +11224,9 @@ data, and if so, how? -->
             <place type="building" obnCode="273" oxpID="23233793" oucsCode="e_111">
                <placeName>Ruskin Annex, 128 Bullingdon Road</placeName>
                <event when="1930" type="construction"/>
+	       <location>
+		 <geo>-1.235488 51.746829</geo>
+	       </location>
             </place>
             <place type="building" obnCode="276" oxpID="23233795" oucsCode="e_113">
                <placeName>Engineering And Technology Building</placeName>
@@ -11357,6 +11378,9 @@ data, and if so, how? -->
             <place type="building" obnCode="361" oxpID="23233842" oucsCode="e_160">
                <placeName>Information Engineering</placeName>
                <event when="2004" type="construction"/>
+	       <location>
+		 <geo>-1.259670 51.760991</geo>
+	       </location>
             </place>
             <place type="building" obnCode="363" oxpID="23233843" oucsCode="e_161">
                <placeName>Axis Point</placeName>
@@ -11378,6 +11402,9 @@ data, and if so, how? -->
                <placeName>Jack Straws Lane Nursery</placeName>
                <event when="2003" type="construction"/>
                <event when="2003" type="acquisition"/>
+	       <location>
+		 <geo>-1.228556 51.763103</geo>
+	       </location>
             </place>
             <place type="building" obnCode="393" oxpID="23233856" oucsCode="e_174">
                <placeName>Tubney - Barn</placeName>

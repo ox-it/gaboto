@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet 
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
   xmlns:tei="http://www.tei-c.org/ns/1.0"
@@ -8,6 +9,9 @@
 
 <xsl:key name="O_All" match="*[@obnCode]" use="1"/>
 <xsl:key name="O" use="@obnCode" match="*[@obnCode]"/>
+<xsl:key name="Occupies"
+	 match="tei:relation[contains(@type,'primary')]"
+	 use="@active"/>
 
 <xsl:output method="xml" indent="yes" encoding="utf-8"/>
 
@@ -19,6 +23,11 @@
     </xsl:if>
   </xsl:for-each>
     <xsl:for-each select="//tei:place">
+      <xsl:if
+	  test="count(key('Occupies',concat('#',@oucsCode)))&gt;1">
+	<xsl:message>Place <xsl:value-of
+	select="@oxpID"/>/<xsl:value-of select="@oucsCode"/> has more	than one primary place</xsl:message>
+      </xsl:if>
       <xsl:if test="not(@oxpID)">
 	<xsl:message>Place <xsl:value-of
 	select="@oxpID"/>/<xsl:value-of select="@oucsCode"/> has no	oxpid attribute</xsl:message>
