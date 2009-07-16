@@ -140,6 +140,7 @@
                   </location>
                </place>
                <place oxpID="23232337" type="building">
+                  <placeName>Oxmore Towers</placeName>
                   <place oxpID="23232338" type="room">
                      <placeName>Wharton Room</placeName>
                   </place>
@@ -8254,12 +8255,6 @@ data, and if so, how? -->
             </place>
             <place oucsCode="parks" oxpID="23233502" type="poi">
                <placeName>University Parks</placeName>
-               <location type="address">
-                  <address>
-                     <addrLine/>
-                     <postCode/>
-                  </address>
-               </location>
                <trait type="url">
                   <desc>
                      <ptr target="http://www.parks.ox.ac.uk/"/>
