@@ -760,7 +760,7 @@
                   </desc>
                </trait>
                <place oxpID="23232386" type="building" subtype="primary">
-                  <placeName>Linacre College Lodge</placeName>
+                  <placeName>Linacre College Main Site</placeName>
                   <location when="2007-05-22T12:04:45.659+01:00">
                      <geo rend="270">-1.250384151 51.759352105</geo>
                      <note> recorded by Janet McKnight</note>
@@ -1952,7 +1952,7 @@
 
             </place>
             <place oucsCode="O_ceu" oxpID="23232493" type="department">
-               <placeName>Cancer Research UK Epidemiology Unit</placeName>
+               <placeName>Cancer Epidemiology Unit</placeName>
                <location type="address">
                   <address>
                      <addrLine>Roosevelt Drive, Oxford</addrLine>
@@ -2878,7 +2878,9 @@ data, and if so, how? -->
                      <postCode>OX3 7DG</postCode>
                   </address>
                </location>
-               <place oxpID="23232572" type="building" subtype="primary" obnCode="674">
+	    </place>
+
+	    <place oxpID="23232572" oucsCode="b_0073" type="building" obnCode="674">
                   <event when="2003" type="construction"/>
                   <event when="2005" type="acquisition"/>
                   <placeName>Richard Doll Building</placeName>
@@ -2890,7 +2892,7 @@ data, and if so, how? -->
                      <placeName>Lecture Theatre</placeName>
                   </place>
                </place>
-            </place>
+
             <place oucsCode="diabres" oxpID="23232574" type="department">
                <placeName>Diabetes Research Laboratories</placeName>
                <location type="address">
@@ -3072,30 +3074,38 @@ data, and if so, how? -->
                <place oxpID="23232585" type="building" subtype="primary" obnCode="153">
                   <event when="1963" type="construction"/>
                   <placeName>Thom Building</placeName>
-                  <location when="2007-06-18T10:51:19.000">
-                     <geo>-1.259203 51.760258</geo>
-                     <note> recorded by Janet McKnight</note>
+                  <location>
+                     <geo>-1.259516403079033 51.76031168826047</geo>
                   </location>
                </place>
                <place oxpID="23232586" type="building" obnCode="189">
                   <event when="1892" type="construction"/>
                   <event when="1968" type="acquisition"/>
                   <placeName>Southwell Building</placeName>
-                  <location when="2007-05-22T15:17:50.834+01:00">
-                     <geo>-1.2713134288787842 51.75179592340317</geo>
-                     <note> recorded by Janet McKnight</note>
+                  <location>
+                     <geo>-1.271907 51.751545</geo>
                   </location>
                </place>
                <place oxpID="23232587" type="building" obnCode="154">
                   <event when="1976" type="construction"/>
                   <placeName>Holder Building</placeName>
-                  <location when="2007-06-18T10:52:04.000">
-                     <geo>-1.25955 51.760432</geo>
-                     <note> recorded by Janet McKnight</note>
+                  <location>
+                     <geo>-1.259579 51.760510</geo>
                   </location>
                </place>
 
             </place>
+	    <place type="department" oxpID="23233909" oucsCode="O_ibme">
+	      <placeName>Institute of Biomedical Engineering  (IBME)</placeName>
+	      <location type="address">
+                  <address>
+                     <addrLine>Old Road Campus Research Building, off Roosevelt Drive, Oxford</addrLine>
+                     <postCode>OX3 7DQ</postCode>
+                  </address>
+               </location>
+	    </place>
+
+
             <place oucsCode="envch" oxpID="23232588" type="department">
                <placeName>Environmental Change Institute</placeName>
                <location type="address">
@@ -4352,16 +4362,11 @@ data, and if so, how? -->
                <place oxpID="23232700" type="building" subtype="primary" obnCode="308">
                   <event when="2001" type="construction"/>
                   <placeName>Rothermere American Institute</placeName>
-                  <location when="2007-05-22T16:35:37.534+01:00">
-                     <geo>-1.253428 51.759447</geo>
-                     <note> recorded by Janet McKnight</note>
+                  <location>
+                        <geo>-1.253598 51.757612</geo>
                   </location>
                   <place oxpID="23232701" type="room">
                      <placeName>Vere Harmsworth Library</placeName>
-                     <location when="2007-06-18T10:28:37.000">
-                        <geo>-1.253598 51.757612</geo>
-                        <note> recorded by Janet McKnight</note>
-                     </location>
                   </place>
                </place>
             </place>
@@ -5169,7 +5174,7 @@ data, and if so, how? -->
                <placeName>Overflow at Ewert House</placeName>
             </place>
             <place oucsCode="O_lib_ceu" oxpID="23232817" type="library" olisCode="CEU">
-               <placeName>Cancer Epidemiology Unit</placeName>
+               <placeName>Cancer Epidemiology Unit Library</placeName>
                <trait type="liburl">
                   <desc>
                      <ptr target="http://www.lib.ox.ac.uk/libraries/guides/CEU.html"/>
@@ -8806,9 +8811,8 @@ data, and if so, how? -->
                   <event when="1866" type="construction"/>
                   <event when="1967" type="acquisition"/>
                   <placeName>56 Banbury Road</placeName>
-                  <location when="2007-05-22T14:35:01.251+01:00">
-                     <geo>-1.261184 51.767531</geo>
-                     <note> recorded by Janet McKnight</note>
+                  <location>
+                     <geo>-1.423889 51.972222</geo>
                   </location>
                </place>
             </place>
@@ -9736,7 +9740,7 @@ data, and if so, how? -->
                <trait type="figure">
                   <desc>
                      <ref target="images/offices/DSC_0048.JPG">
-                        <graphic url="images/offices/thumb_DSC_0048.JPG"/>
+                        <graphic url="http://m.ox.ac.uk/images/offices/thumb_DSC_0048.JPG"/>
                      </ref>
                   </desc>
                </trait>
@@ -9805,7 +9809,7 @@ data, and if so, how? -->
                <trait type="figure">
                   <desc>
                      <ref target="images/counsel/DSC_0045.JPG">
-                        <graphic url="images/counsel/thumb_DSC_0045.JPG"/>
+                        <graphic url="http://m.ox.ac.uk/images/counsel/thumb_DSC_0045.JPG"/>
                      </ref>
                   </desc>
                </trait>
@@ -10576,6 +10580,7 @@ data, and if so, how? -->
             <relation name="controls" active="#englib" passive="#englib_8"/>
             <relation name="controls" active="#englib" passive="#englib_9"/>
             <relation name="controls" active="#engsci" passive="#O_lib_eng"/>
+            <relation name="controls" active="#engsci" passive="#O_ibme"/>
             <relation name="controls" active="#exet" passive="#O_lib_exe"/>
             <relation name="controls" active="#expsych" passive="#O_lib_psy"/>
             <relation name="controls" active="#grey" passive="#O_lib_grf"/>
@@ -10785,6 +10790,8 @@ data, and if so, how? -->
   <relation name="occupies" active="#O_cebm" passive="#b_0017" type="geo primary" />
   <relation name="occupies" active="#O_centraladmin" passive="#b_0027" type="geo primary" />
   <relation name="occupies" active="#O_clpic" passive="#b_0003" type="geo primary" />
+  <relation name="occupies" active="#ctsu" passive="#b_0073" type="geo" />
+  <relation name="occupies" active="#ceu" passive="#b_0073" type="geo" />
   <relation name="occupies" active="#O_cmb" passive="#e_1" type="geo" />
   <relation name="occupies" active="#O_councilsec" passive="#b_0027" type="geo primary" />
   <relation name="occupies" active="#O_dma" passive="#b_0021" type="geo primary" />
@@ -10885,7 +10892,10 @@ data, and if so, how? -->
   <relation name="occupies" active="#engfac" passive="#b_0025" type="geo primary" />
   <relation name="occupies" active="#englib" passive="#b_0025" type="geo primary" />
   <relation name="occupies" active="#engsci" passive="#e_71" type="geo" />
-  <relation name="occupies" active="#engsci" passive="#e_9" type="geo" />
+  <relation name="occupies" active="#engsci" passive="#e_113" type="geo" />
+  <relation name="occupies" active="#engsci" passive="#e_160" type="geo" />
+  <relation name="occupies" active="#engsci" passive="#e_72" type="geo" />
+  <relation name="occupies" active="#engsci" passive="#e_161" type="geo" />
   <relation name="occupies" active="#envch" passive="#b_0053" type="geo primary" />
   <relation name="occupies" active="#epidem" passive="#b_0017" type="geo primary" />
   <relation name="occupies" active="#eurlaw" passive="#b_0025" type="geo primary" />
@@ -11142,14 +11152,14 @@ data, and if so, how? -->
                <event when="1880" type="construction"/>
                <event when="1934" type="acquisition"/>
                <location>
-                  <geo>-1.258787 51.760291</geo>
+                  <geo>-1.258863 51.760337</geo>
                </location>
             </place>
             <place type="building" obnCode="197" oxpID="23233754" oucsCode="e_72">
                <placeName>Jenkin Building</placeName>
                <event when="1914" type="construction"/>
                <location>
-                  <geo>-1.260091 51.761402</geo>
+                  <geo>-1.259852 51.761424</geo>
                </location>
             </place>
             <place type="building" obnCode="224" oxpID="23233759" oucsCode="e_77">
@@ -11243,7 +11253,7 @@ data, and if so, how? -->
                <placeName>Engineering And Technology Building</placeName>
                <event when="1989" type="construction"/>
                <location>
-                  <geo>-1.259709 51.761163</geo>
+                  <geo>-1.259970 51.760819</geo>
                </location>
             </place>
             <place type="building" obnCode="282" oxpID="23233798" oucsCode="e_116">
@@ -11409,6 +11419,9 @@ data, and if so, how? -->
                <placeName>Axis Point</placeName>
                <event when="2001" type="construction"/>
                <event when="2003" type="acquisition"/>
+	       <location>
+		 <geo>-1.270656 51.746418</geo>
+	       </location>
             </place>
             <place type="building" obnCode="372" oxpID="23233848" oucsCode="e_166">
                <placeName>42 St Giles</placeName>
@@ -11574,263 +11587,263 @@ data, and if so, how? -->
         <figure corresp="#wycl"/>
 	-->
             <figure corresp="#alls">
-               <graphic width="167px" height="125px" url="images/collegepictures/alls.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/alls.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:All_souls_college_oxford_university.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/en/8/88/All_souls_college_oxford_university.jpg</note>
             </figure>
             <figure corresp="#ball">
-               <graphic width="169px" height="125px" url="images/collegepictures/ball.jpg"/>
+               <graphic width="169px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/ball.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Balliol_College_Feb_2005.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/7/75/Balliol_College_Feb_2005.jpg</note>
             </figure>
             <figure corresp="#blac">
-               <graphic width="167px" height="125px" url="images/collegepictures/blac.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/blac.jpg"/>
                <figDesc>Photo by Janet McKnight</figDesc>
                <note>from http://www.flickr.com/photos/janetmck/1416569315/</note>
             </figure>
             <figure corresp="#bras">
-               <graphic width="94px" height="125px" url="images/collegepictures/bras.jpg"/>
+               <graphic width="94px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/bras.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Oxford_Brasenose_College.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/8/81/Oxford_Brasenose_College.jpg</note>
             </figure>
             <figure corresp="#chri">
-               <graphic width="225px" height="125px" url="images/collegepictures/chri.jpg"/>
+               <graphic width="225px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/chri.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Tom_Quad%2C_Christ_Church_2004-01-21.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/6/67/Tom_Quad%2C_Christ_Church_2004-01-21.jpg</note>
             </figure>
             <figure corresp="#corp">
-               <graphic width="94px" height="125px" url="images/collegepictures/corp.jpg"/>
+               <graphic width="94px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/corp.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Corpus_Quad.jpg</figDesc>
                <note>from http://upload.wikimedia.org/wikipedia/en/9/90/Corpus_Quad.jpg</note>
             </figure>
             <figure corresp="#exet">
-               <graphic width="95px" height="125px" url="images/collegepictures/exet.jpg"/>
+               <graphic width="95px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/exet.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Exeter_College%2C_Oxford.JPG</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/0/0a/Exeter_College%2C_Oxford.JPG</note>
             </figure>
             <figure corresp="#manc">
-               <graphic width="202px" height="125px" url="images/collegepictures/manc.jpg"/>
+               <graphic width="202px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/manc.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:HarrisManchesterDusk.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/en/b/ba/HarrisManchesterDusk.jpg</note>
             </figure>
             <figure corresp="#hert">
-               <graphic width="167px" height="125px" url="images/collegepictures/hert.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/hert.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Bridge_of_Sighs%2C_Hertford_College%2C_Oxford.JPG</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/c/cb/Bridge_of_Sighs%2C_Hertford_College%2C_Oxford.JPG</note>
             </figure>
             <figure corresp="#jesu">
-               <graphic width="203px" height="125px" url="images/collegepictures/jesu.jpg"/>
+               <graphic width="203px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/jesu.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Jesus2ndQuad.JPG</figDesc>
                <note>from http://upload.wikimedia.org/wikipedia/commons/8/88/Jesus2ndQuad.JPG</note>
             </figure>
             <figure corresp="#kebl">
-               <graphic width="154px" height="125px" url="images/collegepictures/kebl.jpg"/>
+               <graphic width="154px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/kebl.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Keble_College_Chapel_-_Oct_2006.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/b/b4/Keble_College_Chapel_-_Oct_2006.jpg</note>
             </figure>
             <figure corresp="#kell">
-               <graphic width="167px" height="125px" url="images/collegepictures/kell.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/kell.jpg"/>
                <figDesc>62 Banbury Road frontage</figDesc>
                <note>from Joanne Elvins, Kellogg, 2009-06-02</note>
             </figure>
             <figure corresp="#lady">
-               <graphic width="167px" height="125px" url="images/collegepictures/lady.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/lady.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Lmhtalbot1.jpg</figDesc>
                <note>from http://upload.wikimedia.org/wikipedia/en/0/09/Lmhtalbot1.jpg</note>
             </figure>
             <figure corresp="#lina">
-               <graphic width="238px" height="125px" url="images/collegepictures/lina.jpg"/>
+               <graphic width="238px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/lina.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:LinacreCollege.jpg</figDesc>
                <note>from http://upload.wikimedia.org/wikipedia/en/1/1d/LinacreCollege.jpg</note>
             </figure>
             <figure corresp="#linc">
-               <graphic width="210px" height="125px" url="images/collegepictures/linc.jpg"/>
+               <graphic width="210px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/linc.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:LincolnChapelQuad.jpg</figDesc>
                <note>from http://upload.wikimedia.org/wikipedia/en/1/15/LincolnChapelQuad.jpg</note>
             </figure>
             <figure corresp="#magd">
-               <graphic width="188px" height="125px" url="images/collegepictures/magd.jpg"/>
+               <graphic width="188px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/magd.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:MagdalenCollegeOxford20040613_CopyrightKaihsuTai.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/en/1/1f/MagdalenCollegeOxford20040613_CopyrightKaihsuTai.jpg</note>
             </figure>
             <figure corresp="#mans">
-               <graphic width="198px" height="125px" url="images/collegepictures/mans.jpg"/>
+               <graphic width="198px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/mans.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Mansfield1.jpg</figDesc>
                <note>from http://upload.wikimedia.org/wikipedia/en/4/44/Mansfield1.jpg</note>
             </figure>
             <figure corresp="#mert">
-               <graphic width="145px" height="125px" url="images/collegepictures/mert.jpg"/>
+               <graphic width="145px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/mert.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Merton_College_front_quad.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/3/37/Merton_College_front_quad.jpg</note>
             </figure>
             <figure corresp="#newc">
-               <graphic width="169px" height="125px" url="images/collegepictures/newc.jpg"/>
+               <graphic width="169px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/newc.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Newcollege_wall-hall-chapel_oxondude.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/en/4/40/Newcollege_wall-hall-chapel_oxondude.jpg</note>
             </figure>
             <figure corresp="#nuff">
-               <graphic width="94px" height="125px" url="images/collegepictures/nuff.jpg"/>
+               <graphic width="94px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/nuff.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Nuffield_College_Courtyard.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/a/af/Nuffield_College_Courtyard.jpg</note>
             </figure>
             <figure corresp="#orie">
-               <graphic width="84px" height="125px" url="images/collegepictures/orie.jpg"/>
+               <graphic width="84px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/orie.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Oriel_College_Main_Gate.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/f/fc/Oriel_College_Main_Gate.jpg</note>
             </figure>
             <figure corresp="#pemb">
-               <graphic width="167px" height="125px" url="images/collegepictures/pemb.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/pemb.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Pembroke_College_Chapel_Quad.JPG</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/c/c3/Pembroke_College_Chapel_Quad.JPG</note>
             </figure>
             <figure corresp="#quee">
-               <graphic width="188px" height="125px" url="images/collegepictures/quee.jpg"/>
+               <graphic width="188px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/quee.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:QueensCollegeOxford20040124CopyrightKaihsuTai.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/en/1/17/QueensCollegeOxford20040124CopyrightKaihsuTai.jpg</note>
             </figure>
             <figure corresp="#rege">
-               <graphic width="167px" height="125px" url="images/collegepictures/rege.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/rege.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Regent%27s_Park_College.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/en/1/1c/Regent%27s_Park_College.jpg</note>
             </figure>
             <figure corresp="#some">
-               <graphic width="167px" height="125px" url="images/collegepictures/some.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/some.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Somerville_College.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/8/8f/Somerville_College.jpg</note>
             </figure>
             <figure corresp="#sann">
-               <graphic width="94px" height="125px" url="images/collegepictures/sann.jpg"/>
+               <graphic width="94px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/sann.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:StAnne%27sRuthDeechBuilding.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/2/24/StAnne%27sRuthDeechBuilding.jpg</note>
             </figure>
             <figure corresp="#sant">
-               <graphic width="94px" height="125px" url="images/collegepictures/sant.jpg"/>
+               <graphic width="94px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/sant.jpg"/>
                <figDesc>Photo by Janet McKnight</figDesc>
                <note>from http://www.flickr.com/photos/janetmck/1416567879/</note>
             </figure>
             <figure corresp="#sben">
-               <graphic width="167px" height="125px" url="images/collegepictures/sben.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/sben.jpg"/>
                <figDesc>Photo by Janet McKnight</figDesc>
                <note>from http://www.flickr.com/photos/janetmck/1416570909/</note>
             </figure>
             <figure corresp="#scat">
-               <graphic width="188px" height="125px" url="images/collegepictures/scat.jpg"/>
+               <graphic width="188px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/scat.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Stcatz_East_Outside_Quad.JPG</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/en/f/fe/Stcatz_East_Outside_Quad.JPG</note>
             </figure>
             <figure corresp="#scro">
-               <graphic width="188px" height="125px" url="images/collegepictures/scro.jpg"/>
+               <graphic width="188px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/scro.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:StCrossOxford20050315_CopyrightKaihsuTai.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/9/95/StCrossOxford20050315_CopyrightKaihsuTai.jpg</note>
             </figure>
             <figure corresp="#sedm">
-               <graphic width="167px" height="125px" url="images/collegepictures/sedm.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/sedm.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:SEHQuad.jpg</figDesc>
                <note>from http://upload.wikimedia.org/wikipedia/en/4/40/SEHQuad.jpg</note>
             </figure>
             <figure corresp="#shug">
-               <graphic width="92px" height="125px" url="images/collegepictures/shug.jpg"/>
+               <graphic width="92px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/shug.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:St_Hugh%27s_Front.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/7/7d/St_Hugh%27s_Front.jpg</note>
             </figure>
             <figure corresp="#sjoh">
-               <graphic width="167px" height="125px" url="images/collegepictures/sjoh.jpg"/>
+               <graphic width="167px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/sjoh.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:St_John%27s_College_Canterbury_Quad.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/5/55/St_John%27s_College_Canterbury_Quad.jpg</note>
             </figure>
             <figure corresp="#spet">
-               <graphic width="169px" height="125px" url="images/collegepictures/spet.jpg"/>
+               <graphic width="169px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/spet.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:St_Peter%27s_College%2C_Oxford.JPG</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/2/23/St_Peter%27s_College%2C_Oxford.JPG</note>
             </figure>
             <figure corresp="#trin">
-               <graphic width="85px" height="125px" url="images/collegepictures/trin.jpg"/>
+               <graphic width="85px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/trin.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Trinity_college_by_longlong.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/en/f/f4/Trinity_college_by_longlong.jpg</note>
             </figure>
             <figure corresp="#univ">
-               <graphic width="169px" height="125px" url="images/collegepictures/univ.jpg"/>
+               <graphic width="169px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/univ.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:University_College_Oxford.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/commons/2/2c/University_College_Oxford.jpg</note>
             </figure>
             <figure corresp="#wadh">
-               <graphic width="188px" height="125px" url="images/collegepictures/wadh.jpg"/>
+               <graphic width="188px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/wadh.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Wadh.jpg</figDesc>
                <note>from http://upload.wikimedia.org/wikipedia/en/3/3a/Wadh.jpg</note>
             </figure>
             <figure corresp="#wolf">
-               <graphic width="240px" height="125px" url="images/collegepictures/wolf.jpg"/>
+               <graphic width="240px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/wolf.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:Wolfson_college_oxford.jpg</figDesc>
                <note>from
                   http://upload.wikimedia.org/wikipedia/en/8/82/Wolfson_college_oxford.jpg</note>
             </figure>
             <figure corresp="#worc">
-               <graphic width="188px" height="125px" url="images/collegepictures/worc.jpg"/>
+               <graphic width="188px" height="125px" url="http://m.ox.ac.uk/images/collegepictures/worc.jpg"/>
                <figDesc>http://en.wikipedia.org/wiki/Image:MKung_WorcQuad.JPG</figDesc>
                <note>from http://upload.wikimedia.org/wikipedia/en/3/3c/MKung_WorcQuad.JPG</note>
             </figure>
             <figure corresp="#grey">
-               <graphic width="1920px" height="2560px" url="images/collegepictures/GreyfriarsLodge_20090716.jpg"/>
+               <graphic width="1920px" height="2560px" url="http://m.ox.ac.uk/images/collegepictures/GreyfriarsLodge_20090716.jpg"/>
                <figDesc>From Iffley Road</figDesc>
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
             </figure>
             <figure corresp="#e_88">
-               <graphic width="2560px" height="1920px" url="images/obn240_SportsAdministratorsOffice_20090716.jpg"/>
+               <graphic width="2560px" height="1920px" url="http://m.ox.ac.uk/images/obn240_SportsAdministratorsOffice_20090716.jpg"/>
                <figDesc>Entrance to Administrators Offices from athletics track</figDesc>
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
             </figure>
             <figure corresp="#e_89">
-               <graphic width="2560px" height="1920px" url="images/obn241_CricketSchool_20090716.jpg"/>
+               <graphic width="2560px" height="1920px" url="http://m.ox.ac.uk/images/obn241_CricketSchool_20090716.jpg"/>
                <figDesc>Entrance to Cricket School</figDesc>
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
             </figure>
             <figure corresp="#e_90">
-               <graphic width="2560px" height="1920px" url="images/obn242_Gymnasium_20090716.jpg"/>
+               <graphic width="2560px" height="1920px" url="http://m.ox.ac.uk/images/obn242_Gymnasium_20090716.jpg"/>
                <figDesc>Main entrance to Sports Centre, gymnasium and other sports facilities</figDesc>
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
             </figure>
             <figure corresp="#e_91">
-               <graphic width="2560px" height="1920px" url="images/obn244_SquashCourts_20090716.jpg"/>
+               <graphic width="2560px" height="1920px" url="http://m.ox.ac.uk/images/obn244_SquashCourts_20090716.jpg"/>
                <figDesc>Entrance to Squash Courts</figDesc>
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
             </figure>
             <figure corresp="#e_117">
-               <graphic width="2560px" height="1920px" url="images/obn284_RugbyFives_20090716.jpg"/>
+               <graphic width="2560px" height="1920px" url="http://m.ox.ac.uk/images/obn284_RugbyFives_20090716.jpg"/>
                <figDesc>Entrance to Rugby Fives</figDesc>
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
             </figure>
             <figure corresp="#e_119">
-               <graphic width="2560px" height="1920px" url="images/obn288_RowingTank_20090716.jpg"/>
+               <graphic width="2560px" height="1920px" url="http://m.ox.ac.uk/images/obn288_RowingTank_20090716.jpg"/>
                <figDesc>Entrance to Rowing Tank</figDesc>
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
             </figure>
             <figure corresp="#e_120">
-               <graphic width="2560px" height="1920px" url="images/obn292_TennisCourts_20090716.jpg"/>
+               <graphic width="2560px" height="1920px" url="http://m.ox.ac.uk/images/obn292_TennisCourts_20090716.jpg"/>
                <figDesc>Tennis Courts</figDesc>
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
             </figure>
