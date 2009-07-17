@@ -12,7 +12,7 @@
 <name>Rhodes House</name>
 <description><![CDATA[Website: <a href="http://www.rhodeshouse.ox.ac.uk">http://www.rhodeshouse.ox.ac.uk</a><br/>]]></description>
 <Point>
-<coordinates>-1.255212,51.75806</coordinates>
+<coordinates>-1.255162,51.757855</coordinates>
 </Point>
 </Placemark>
 <Placemark OUCSCode="classics" id="http://m.ox.ac.uk/oxpoints/id/23233577">
@@ -40,7 +40,7 @@
 <name>Faculty of Philosophy</name>
 <description><![CDATA[Website: <a href="http://www.philosophy.ox.ac.uk/">http://www.philosophy.ox.ac.uk/</a><br/>]]></description>
 <Point>
-<coordinates>-1.259438,51.750202</coordinates>
+<coordinates>-1.255445,51.757428</coordinates>
 </Point>
 </Placemark>
 <Placemark OUCSCode="ulib" id="http://m.ox.ac.uk/oxpoints/id/23233598">
@@ -98,7 +98,7 @@
 <name>Oxford University Club</name>
 <description><![CDATA[Website: <a href="http://www.club.ox.ac.uk/">http://www.club.ox.ac.uk/</a><br/>]]></description>
 <Point>
-<coordinates>-1.2513148784637451,51.756783709900965</coordinates>
+<coordinates>-1.261586,51.762919</coordinates>
 </Point>
 </Placemark>
 <Placemark OUCSCode="phone" id="http://m.ox.ac.uk/oxpoints/id/23233593">
