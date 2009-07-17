@@ -11257,7 +11257,7 @@ data, and if so, how? -->
                <placeName>Engineering And Technology Building</placeName>
                <event when="1989" type="construction"/>
                <location>
-                  <geo>-1.259970 51.760819</geo>
+                  <geo>-1.259697 51.760763</geo>
                </location>
             </place>
             <place type="building" obnCode="282" oxpID="23233798" oucsCode="e_116">
@@ -11416,7 +11416,7 @@ data, and if so, how? -->
                <placeName>Information Engineering</placeName>
                <event when="2004" type="construction"/>
 	       <location>
-		 <geo>-1.259670 51.760991</geo>
+		 <geo>-1.259970 51.760819</geo>
 	       </location>
             </place>
             <place type="building" obnCode="363" oxpID="23233843" oucsCode="e_161">
