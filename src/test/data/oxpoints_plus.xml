@@ -99,6 +99,20 @@
                   <geo>-1.247657661066949 51.75700735453762</geo>
                </location>
             </place>
+            <place oucsCode="O_carpark11" oxpID="23233910" type="carpark">
+               <placeName>Institute of Advanced Technology, Begbroke Science Park Carpark</placeName>
+               <label>76 spaces (of which 4 disabled)</label>
+               <location>
+                  <geo>-1.304893 51.817719</geo>
+               </location>
+            </place>
+            <place oucsCode="O_cyclerack1" oxpID="23233911" type="cyclerack">
+               <placeName>Institute of Advanced Technology, Begbroke Science Park Cycle rack</placeName>
+               <label>10 spaces</label>
+               <location>
+                  <geo>-1.305514 51.818052</geo>
+               </location>
+            </place>
             <place oucsCode="O_stalban" oxpID="23232333" type="college">
                <placeName>St Alban Hall</placeName>
                <event when="1881" type="closed">
@@ -10990,6 +11004,15 @@ data, and if so, how? -->
   <relation name="occupies" active="#sport" passive="#e_117"	    type="geo"/>
   <relation name="occupies" active="#sport" passive="#e_119"	    type="geo"/>
   <relation name="occupies" active="#sport" passive="#e_120" type="geo"/>
+
+  <relation name="occupies" active="#begbroke" passive="#e_157" type="geo"/>
+  <relation name="occupies" active="#begbroke" passive="#e_139" type="geo"/>
+  <relation name="occupies" active="#begbroke" passive="#e_138" type="geo"/>
+  <relation name="occupies" active="#begbroke" passive="#e_136" type="geo"/>
+  <relation name="occupies" active="#begbroke" passive="#e_156" type="geo"/>
+  <relation name="occupies" active="#begbroke" passive="#e_140" type="geo"/>
+  <relation name="occupies" active="#begbroke" passive="#e_137" type="geo"/>
+  <relation name="occupies" active="#begbroke" passive="#O_carpark11" type="geo"/>
             <!--
              <relation name="uses" type="room" active="#O_bsp" passive="#r_0001"/>
              <relation name="uses" type="room" active="#ageing" passive="#b_0020r1"/>
@@ -11339,11 +11362,26 @@ data, and if so, how? -->
                <placeName>Christian Building, Begbroke Science Park</placeName>
                <event when="1820" type="construction"/>
                <event when="1998" type="acquisition"/>
+               <location>
+                  <geo>-1.306564 51.817733</geo>
+               </location>
+               <place type="room" oxpID="23233912" oucsCode="O_room1">
+                  <placeName>Oxford Room</placeName>
+                  <location>
+                     <geo>-1.306339 51.817865</geo>
+                  </location>
+               </place>
             </place>
             <place type="building" obnCode="322" oxpID="23233822" oucsCode="e_140">
                <placeName>Manor House, Begbroke Science Park</placeName>
                <event when="1604" type="construction"/>
                <event when="1998" type="acquisition"/>
+            </place>
+            <place type="building" oxpID="23233913" oucsCode="e_220">
+               <placeName>Begbroke Farmhouse, Begbroke Science Park</placeName>
+               <location>
+                  <geo>-1.306100 51.817874</geo>
+               </location>            
             </place>
             <place type="building" obnCode="333" oxpID="23233826" oucsCode="e_144">
                <placeName>Pathology Leslie Martin</placeName>
@@ -11400,6 +11438,9 @@ data, and if so, how? -->
             <place type="building" obnCode="352" oxpID="23233838" oucsCode="e_156">
                <placeName>IAT Building, Begbroke Science Park</placeName>
                <event when="2006" type="construction"/>
+               <location>
+                  <geo>-1.305334 51.818106</geo>
+               </location>
             </place>
             <place type="building" obnCode="353" oxpID="23233839" oucsCode="e_157">
                <placeName>APL, Begbroke Science Park</placeName>
@@ -11579,6 +11620,8 @@ data, and if so, how? -->
                <placeName>Old Road Campus Estates Annexe</placeName>
                <event when="2007" type="construction"/>
             </place>
+
+
 
          </listPlace>
          <div>
@@ -11850,6 +11893,47 @@ data, and if so, how? -->
                <graphic width="2560px" height="1920px" url="http://m.ox.ac.uk/images/obn292_TennisCourts_20090716.jpg"/>
                <figDesc>Tennis Courts</figDesc>
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
+            </figure>
+
+            <figure corresp="#e_352">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IAT_20090717.jpg"/>
+               <figDesc>Institute of Advanced Technology</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#O_carpark11">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IATCarpark_20090717.jpg"/>
+               <figDesc>Car park for the Institute of Advanced Technology</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#e_352">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IATEntrance_20090717.jpg"/>
+               <figDesc>Entrance to the Institute of Advanced Technology</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#O_cyclerack1">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IATCycleRack_20090717.jpg"/>
+               <figDesc>Cycle rack outside the Institute of Advanced Technology</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#e_321">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn321_ChristianBuildingRearReceptionEntrance_20090717.jpg"/>
+               <figDesc>Rear entrance to reception in the Christian Building</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#e_321">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn321_ChristianBuildingGoodsInward_20090717.jpg"/>
+               <figDesc>Goods inwards entrance to the Christian Building</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#O_room1">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/begbroke_oxford_room_20090717.jpg"/>
+               <figDesc>Oxford Room</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#begbrooke_farmhouse">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/begbroke_farmhouse_20090717.jpg"/>
+               <figDesc>Begbroke Farmhouse</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
             </figure>
          </div>
       </body>
