@@ -8067,9 +8067,8 @@ data, and if so, how? -->
                   </desc>
                </trait>
                <place oxpID="23233482" type="building" subtype="primary">
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.25482 51.75075</geo>
-                     <note>Submitted by Stephen Sangar</note>
+                  <location>
+		     <geo>-1.254147 51.751069,</geo>
                   </location>
                </place>
             </place>
@@ -8157,9 +8156,8 @@ data, and if so, how? -->
                <place oxpID="23233490" type="building" subtype="primary" obnCode="220">
                   <event when="1885" type="construction"/>
                   <placeName>Pitt Rivers Museum</placeName>
-                  <location when="2008-01-09T16:00:00">
-                     <geo>-1.2564 51.75903</geo>
-                     <note>Submitted by Stephen Sangar</note>
+                  <location>
+		     <geo>-1.255162 51.757855</geo>
                   </location>
                </place>
             </place>
@@ -8179,8 +8177,8 @@ data, and if so, how? -->
                <place oxpID="23233493" type="building" subtype="primary" obnCode="252">
                   <event when="1860" type="construction"/>
                   <placeName>University Museum of Natural History</placeName>
-                  <location when="2007-05-22T16:52:48.282+01:00">
-                     <geo>-1.256297 51.758522</geo>
+                  <location>
+		     <geo>-1.255162 51.757855</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
                   <place oxpID="23233494" type="room">
@@ -9387,7 +9385,7 @@ data, and if so, how? -->
                <place oxpID="23233596" type="building" subtype="primary">
                   <placeName>Rhodes House</placeName>
                   <location when="2007-05-22T16:58:28.068+01:00">
-                     <geo>-1.255212 51.75806</geo>
+                     <geo>-1.255162 51.757855</geo>
                      <note> recorded by Janet McKnight</note>
                   </location>
                   <place oxpID="23233597" type="room">
@@ -9651,7 +9649,7 @@ data, and if so, how? -->
                <event when="1965" type="construction"/>
                <placeName>Ewert House</placeName>
                <location>
-                  <geo>-1.263363 51.776683</geo>
+		 <geo>-1.262940 51.776657</geo>
                </location>
             </place>
             <place oucsCode="b_0016" oxpID="23233624" type="building" obnCode="155">
