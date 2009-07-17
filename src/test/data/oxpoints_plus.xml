@@ -8068,7 +8068,7 @@ data, and if so, how? -->
                </trait>
                <place oxpID="23233482" type="building" subtype="primary">
                   <location>
-		     <geo>-1.254147 51.751069,</geo>
+		     <geo>-1.254147 51.751069</geo>
                   </location>
                </place>
             </place>
