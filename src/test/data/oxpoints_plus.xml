@@ -10983,7 +10983,14 @@ data, and if so, how? -->
   <relation name="occupies" active="#vet" passive="#b_0043" type="geo primary" />
   <relation name="occupies" active="#voltaire" passive="#b_0009" type="geo primary" />
   <relation name="occupies" active="#zoo" passive="#b_0060" type="geo primary" />
-
+  <relation name="occupies" active="#sport" passive="#e_88"	    type="geo"/>
+  <relation name="occupies" active="#sport" passive="#e_89"	    type="geo"/>
+  <relation name="occupies" active="#sport" passive="#e_88"	    type="geo"/>
+  <relation name="occupies" active="#sport" passive="#e_90"	    type="geo"/>
+  <relation name="occupies" active="#sport" passive="#e_91"	    type="geo"/>
+  <relation name="occupies" active="#sport" passive="#e_117"	    type="geo"/>
+  <relation name="occupies" active="#sport" passive="#e_119"	    type="geo"/>
+  <relation name="occupies" active="#sport" passive="#e_120" type="geo"/>
             <!--
              <relation name="uses" type="room" active="#O_bsp" passive="#r_0001"/>
              <relation name="uses" type="room" active="#ageing" passive="#b_0020r1"/>
