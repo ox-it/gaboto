@@ -8157,7 +8157,7 @@ data, and if so, how? -->
                   <event when="1885" type="construction"/>
                   <placeName>Pitt Rivers Museum</placeName>
                   <location>
-		     <geo>-1.255162 51.757855</geo>
+                     <geo>-1.256055 51.758504</geo>
                   </location>
                </place>
             </place>
@@ -8178,8 +8178,7 @@ data, and if so, how? -->
                   <event when="1860" type="construction"/>
                   <placeName>University Museum of Natural History</placeName>
                   <location>
-		     <geo>-1.255162 51.757855</geo>
-                     <note> recorded by Janet McKnight</note>
+                     <geo>-1.256055 51.758504</geo>
                   </location>
                   <place oxpID="23233494" type="room">
                      <placeName>Lecture Room</placeName>
