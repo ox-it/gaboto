@@ -49,7 +49,13 @@
     </xsl:if>
     <xsl:if test="not(key('I',substring-after(@active,'#')))">
       <xsl:message>cannot find anything to point <xsl:value-of
-      select="@active"/> at</xsl:message>
+      select="@active"/> from</xsl:message>
+    </xsl:if>
+  </xsl:for-each>
+  <xsl:for-each select="//tei:figure">
+    <xsl:if test="not(key('I',substring-after(@corresp,'#')))">
+      <xsl:message>cannot find anything to point <xsl:value-of
+      select="@corresp"/> at</xsl:message>
     </xsl:if>
   </xsl:for-each>
 </xsl:template>
