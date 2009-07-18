@@ -3627,6 +3627,9 @@ data, and if so, how? -->
                   <event when="1981" type="construction"/>
                   <event when="1998" type="acquisition"/>
                   <placeName>3 Worcester Street</placeName>
+		  <location>
+		    <geo>-1.262945 51.754491</geo>
+		  </location>
                </place>
             </place>
             <place oucsCode="mcdp" oxpID="23232629" type="department">
@@ -9563,7 +9566,7 @@ data, and if so, how? -->
                <placeName>5 Worcester Street</placeName>
                <location type="address">
                   <address>
-	                    <addrLine>5-6 Worcester Street, Oxford</addrLine>
+		    <addrLine>5-6 Worcester Street, Oxford</addrLine>
                   </address>
                </location>
                <location>
@@ -11206,6 +11209,9 @@ data, and if so, how? -->
                <placeName>39a St Giles</placeName>
                <event when="1850" type="construction"/>
                <event when="1927" type="acquisition"/>
+	       <location>
+		 <geo>-1.260504 51.757997</geo>
+	       </location>
             </place>
             <place type="building" obnCode="240" oxpID="23233770" oucsCode="e_88">
                <placeName>Sports Centre Caretaker</placeName>
@@ -11318,6 +11324,9 @@ data, and if so, how? -->
             <place type="building" obnCode="294" oxpID="23233804" oucsCode="e_122">
                <placeName>Red Barn Cottage</placeName>
                <event when="1890" type="construction"/>
+	       <location>
+		 <geo>-1.26111 51.759499</geo>
+	       </location>
             </place>
             <place type="building" obnCode="297" oxpID="23233805" oucsCode="e_123">
                <placeName>Museum Telephone Exchange</placeName>
@@ -11471,6 +11480,9 @@ data, and if so, how? -->
             <place type="building" obnCode="372" oxpID="23233848" oucsCode="e_166">
                <placeName>42 St Giles</placeName>
                <event when="1820" type="construction"/>
+	       <location>
+		 <geo>-1.260396 51.757718</geo>
+	       </location>
             </place>
             <place type="building" obnCode="375" oxpID="23233849" oucsCode="e_167">
                <placeName>Wolfson College Annexe</placeName>
@@ -11496,6 +11508,9 @@ data, and if so, how? -->
                <placeName>6 Worcester Street</placeName>
                <event when="1988" type="construction"/>
                <event when="2006" type="acquisition"/>
+	       <location>
+		 <geo>-1.263327 51.753941</geo>
+	       </location>
             </place>
             <place type="building" obnCode="514" oxpID="23233859" oucsCode="e_177">
                <placeName>Waste Collection Store</placeName>
@@ -11504,18 +11519,30 @@ data, and if so, how? -->
                <placeName>2 Worcester Street</placeName>
                <event when="1988" type="construction"/>
                <event when="2009" type="acquisition"/>
+	       <location>
+		 <geo>-1.262820 51.754478</geo>
+	       </location>
             </place>
             <place type="building" obnCode="621" oxpID="23233861" oucsCode="e_179">
                <placeName>John Radcliffe Women's Centre</placeName>
                <event when="1970" type="construction"/>
+	       <location>
+		 <geo>-1.218312 51.762658</geo>
+	       </location>
             </place>
             <place type="building" obnCode="624" oxpID="23233864" oucsCode="e_182">
                <placeName>John Radcliffe Industrial</placeName>
-               <event when="1975" type="construction"/>
+	       <event when="1975" type="construction"/>
+	       <location>
+		 <geo>-1.218122720023169 51.76460803377564</geo>
+	       </location>
             </place>
             <place type="building" obnCode="629" oxpID="23233868" oucsCode="e_186">
                <placeName>John Radcliffe OCMR Building (MRS)</placeName>
                <event when="2003" type="construction"/>
+	       <location>
+		 <geo>-1.220957 51.764729</geo>
+	       </location>
             </place>
             <place type="building" obnCode="631" oxpID="23233870" oucsCode="e_188">
                <placeName>OCDEM 2, Churchill Hospital</placeName>
@@ -11586,6 +11613,9 @@ data, and if so, how? -->
             <place type="building" obnCode="679" oxpID="23233892" oucsCode="e_210">
                <placeName>John Radcliffe Cardiac Centre</placeName>
                <event when="1992" type="construction"/>
+			<location>
+				<geo>-1.221007006355271 51.76421657686504</geo>
+			</location>
             </place>
             <place type="building" obnCode="680" oxpID="23233893" oucsCode="e_211">
                <placeName>John Radcliffe Anaesthetic Modular Building</placeName>
@@ -11595,11 +11625,17 @@ data, and if so, how? -->
                <placeName>John Radcliffe West Wing And Children's Hospital</placeName>
                <event when="2006" type="construction"/>
                <event when="2007" type="acquisition"/>
+	       <location>
+		 <geo>-1.222609 51.765131</geo>
+	       </location>
             </place>
             <place type="building" obnCode="682" oxpID="23233895" oucsCode="e_213">
                <placeName>John Radcliffe Manor House</placeName>
                <event when="1776" type="construction"/>
-               <event when="2005" type="acquisition"/>
+	       <event when="2005" type="acquisition"/>
+	       <location>
+		 <geo>-1.215995473895831 51.76326773281799</geo>
+	       </location>
             </place>
             <place type="building" obnCode="685" oxpID="23233897" oucsCode="e_215">
                <placeName>Eagle House</placeName>
