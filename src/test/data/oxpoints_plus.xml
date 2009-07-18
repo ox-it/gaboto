@@ -11941,17 +11941,27 @@ data, and if so, how? -->
                <figDesc>Cycle rack outside the Institute of Advanced Technology</figDesc>
                <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
             </figure>
-	    <!-- nothing to link to
-            <figure corresp="#e_321">
+            <figure corresp="#e_139">
                <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn321_ChristianBuildingRearReceptionEntrance_20090717.jpg"/>
                <figDesc>Rear entrance to reception in the Christian Building</figDesc>
                <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
             </figure>
-            <figure corresp="#e_321">
+            <figure corresp="#e_139">
                <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn321_ChristianBuildingGoodsInward_20090717.jpg"/>
                <figDesc>Goods inwards entrance to the Christian Building</figDesc>
                <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
             </figure>
+            <figure corresp="#e_156">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IAT_20090717.jpg"/>
+               <figDesc>Institute of Advanced Technology</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#e_156">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IATEntrance_20090717.jpg"/>
+               <figDesc>Entrance to the Institute of Advanced Technology</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+	    <!-- nothing to link to
             <figure corresp="#O_room1">
                <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/begbroke_oxford_room_20090717.jpg"/>
                <figDesc>Oxford Room</figDesc>
@@ -11960,16 +11970,6 @@ data, and if so, how? -->
             <figure corresp="#begbrooke_farmhouse">
                <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/begbroke_farmhouse_20090717.jpg"/>
                <figDesc>Begbroke Farmhouse</figDesc>
-               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
-            </figure>
-            <figure corresp="#e_352">
-               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IAT_20090717.jpg"/>
-               <figDesc>Institute of Advanced Technology</figDesc>
-               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
-            </figure>
-            <figure corresp="#e_352">
-               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IATEntrance_20090717.jpg"/>
-               <figDesc>Entrance to the Institute of Advanced Technology</figDesc>
                <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
             </figure>
 	    -->
