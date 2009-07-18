@@ -116,6 +116,7 @@
 
     <!-- Scarey circularity -->
     <!-- comment out and ignore in tests to bootstrap -->
+
     <dependency>
       <groupId>uk.ac.ox.oucs.erewhon</groupId>
       <artifactId>oxpoints</artifactId>
