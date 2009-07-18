@@ -11017,8 +11017,8 @@ data, and if so, how? -->
   <relation name="occupies" active="#begbroke" passive="#e_156" type="geo"/>
   <relation name="occupies" active="#begbroke" passive="#e_140" type="geo"/>
   <relation name="occupies" active="#begbroke" passive="#e_137" type="geo"/>
-  <relation name="occupies" active="#begbroke" passive="#O_carpark11" type="geo"/>
-            <!--
+            <!-- not supported
+	     <relation name="occupies" active="#begbroke" passive="#O_carpark11" type="geo"/>
              <relation name="uses" type="room" active="#O_bsp" passive="#r_0001"/>
              <relation name="uses" type="room" active="#ageing" passive="#b_0020r1"/>
              <relation name="uses" type="room" active="#econlib" passive="#b_0020r2"/>
