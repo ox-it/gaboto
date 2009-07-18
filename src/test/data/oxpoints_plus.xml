@@ -11931,19 +11931,9 @@ data, and if so, how? -->
                <note>Taken by Tim Pizey using Pentax Optio100 2009-07-16</note>
             </figure>
 
-            <figure corresp="#e_352">
-               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IAT_20090717.jpg"/>
-               <figDesc>Institute of Advanced Technology</figDesc>
-               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
-            </figure>
             <figure corresp="#O_carpark11">
                <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IATCarpark_20090717.jpg"/>
                <figDesc>Car park for the Institute of Advanced Technology</figDesc>
-               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
-            </figure>
-            <figure corresp="#e_352">
-               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IATEntrance_20090717.jpg"/>
-               <figDesc>Entrance to the Institute of Advanced Technology</figDesc>
                <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
             </figure>
             <figure corresp="#O_cyclerack1">
@@ -11951,6 +11941,7 @@ data, and if so, how? -->
                <figDesc>Cycle rack outside the Institute of Advanced Technology</figDesc>
                <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
             </figure>
+	    <!-- nothing to link to
             <figure corresp="#e_321">
                <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn321_ChristianBuildingRearReceptionEntrance_20090717.jpg"/>
                <figDesc>Rear entrance to reception in the Christian Building</figDesc>
@@ -11971,6 +11962,17 @@ data, and if so, how? -->
                <figDesc>Begbroke Farmhouse</figDesc>
                <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
             </figure>
+            <figure corresp="#e_352">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IAT_20090717.jpg"/>
+               <figDesc>Institute of Advanced Technology</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#e_352">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IATEntrance_20090717.jpg"/>
+               <figDesc>Entrance to the Institute of Advanced Technology</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+	    -->
          </div>
       </body>
    </text>
