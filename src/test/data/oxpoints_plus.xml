@@ -106,6 +106,7 @@
                   <geo>-1.304893 51.817719</geo>
                </location>
             </place>
+<!--
             <place oucsCode="O_cyclerack1" oxpID="23233911" type="cyclerack">
                <placeName>Institute of Advanced Technology, Begbroke Science Park Cycle rack</placeName>
                <label>10 spaces</label>
@@ -113,6 +114,7 @@
                   <geo>-1.305514 51.818052</geo>
                </location>
             </place>
+-->
             <place oucsCode="O_stalban" oxpID="23232333" type="college">
                <placeName>St Alban Hall</placeName>
                <event when="1881" type="closed">
