@@ -8608,7 +8608,18 @@ data, and if so, how? -->
 
             </place>
             <place oucsCode="O_nightline" oxpID="23233530" type="uas">
-               <placeName>NightLine</placeName>
+               <placeName>Oxford Nightline</placeName>
+               <location type="address">
+                  <address>
+                     <addrLine>Basement flat, 16 Wellington Square</addrLine>
+                     <postcode>OX1 2HY</postcode>
+                  </address>
+               </location>
+               <trait type="url">
+                  <desc>
+                     <ptr target="http://oxfordnightline.org/"/>
+                  </desc>
+               </trait>
             </place>
             <place oucsCode="O_pad" oxpID="23233531" type="uas">
                <placeName>Public Affairs Directorate</placeName>
@@ -10833,6 +10844,7 @@ data, and if so, how? -->
   <relation name="occupies" active="#O_lsi" passive="#b_0028" type="geo primary" />
   <relation name="occupies" active="#O_lso" passive="#b_0027" type="geo primary" />
   <relation name="occupies" active="#O_mpu" passive="#b_0007" type="geo primary" />
+  <relation name="occupies" active="#O_nightline" passive="#b_0045" type="geo primary"/>
   <relation name="occupies" active="#O_ociam" passive="#e_1" type="geo" />
   <relation name="occupies" active="#O_ous" passive="#b_0037" type="geo primary" />
   <relation name="occupies" active="#O_pad" passive="#b_0027" type="geo primary" />
