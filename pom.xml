@@ -116,6 +116,7 @@
 
     <!-- Scarey circularity -->
     <!-- comment out and ignore in tests to bootstrap -->
+    <!-- ie mvn -Dmaven.test.skip=true clean install -->
 
     <dependency>
       <groupId>uk.ac.ox.oucs.erewhon</groupId>
@@ -362,7 +363,6 @@
 
 
   <repositories>
-
   <!--
     <repository>
       <releases />
@@ -373,6 +373,7 @@
       <name>Melati Repository</name>
       <url>http://melati.org/maven2/</url>
     </repository>
+    -->
 
     <repository>
       <releases />
@@ -383,7 +384,6 @@
       <name>bogof</name>
       <url>http://bogof.nsms.ox.ac.uk/mvn/maven2/</url>
     </repository>
-    -->
   </repositories>
 
   
