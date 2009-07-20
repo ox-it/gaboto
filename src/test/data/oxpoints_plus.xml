@@ -10971,7 +10971,7 @@ data, and if so, how? -->
   <relation name="occupies" active="#oucs" passive="#b_0051" type="geo primary" />
   <relation name="occupies" active="#oucs" passive="#b_0049" type="geo" />
   <relation name="occupies" active="#oucs" passive="#b_0050" type="geo" />
-  <relation name="occupies" active="#oucs" passive="#b_0051" type="geo" />
+  <relation name="occupies" active="#oucs" passive="#b_0005" type="geo" />
   <relation name="occupies" active="#ousoc" passive="#b_0027" type="geo primary" />
   <relation name="occupies" active="#oxman" passive="#b_0010" type="geo primary" />
   <relation name="occupies" active="#paed" passive="#b_0018" type="geo primary" />
