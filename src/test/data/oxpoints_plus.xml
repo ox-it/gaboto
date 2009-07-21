@@ -11345,6 +11345,10 @@ data, and if so, how? -->
             <place type="building" obnCode="297" oxpID="23233805" oucsCode="e_123">
                <placeName>Museum Telephone Exchange</placeName>
                <event when="1985" type="construction"/>
+               <location>
+                  <geo>-1.25645 51.75921</geo>
+                  <note>Recorded by Alex Dutton 2009-07-21</note>
+               </location>
             </place>
             <place type="building" obnCode="298" oxpID="23233806" oucsCode="e_124">
                <placeName>Bradmore Road Creche</placeName>
@@ -11963,6 +11967,11 @@ data, and if so, how? -->
             <figure corresp="#e_156">
                <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn352_IATEntrance_20090717.jpg"/>
                <figDesc>Entrance to the Institute of Advanced Technology</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#e_123">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn297_MuseumTelephoneExchange_20090721.jpg"/>
+               <figDesc>Museum Telephone Exchange</figDesc>
                <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
             </figure>
 	    <!-- nothing to link to
