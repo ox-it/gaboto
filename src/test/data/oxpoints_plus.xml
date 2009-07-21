@@ -8612,7 +8612,7 @@ data, and if so, how? -->
                <location type="address">
                   <address>
                      <addrLine>Basement flat, 16 Wellington Square</addrLine>
-                     <postcode>OX1 2HY</postcode>
+                     <postCode>OX1 2HY</postCode>
                   </address>
                </location>
                <trait type="url">
