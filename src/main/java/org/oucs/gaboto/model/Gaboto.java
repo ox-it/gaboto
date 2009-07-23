@@ -50,7 +50,6 @@ import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
-import org.oucs.gaboto.exceptions.IllegalAnnotationException;
 import org.oucs.gaboto.exceptions.NoTimeIndexSetException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.events.GabotoEvent;
@@ -570,12 +569,8 @@ public class Gaboto {
    *          Defines the graph from which the entity should be removed.
    */
   synchronized public void remove(GabotoEntity entity, TimeSpan ts) {
-    try {
-      for (Triple t : entity.getTriplesFor(true))
+    for (Triple t : entity.getTriplesFor(true))
         remove(ts, t);
-    } catch (IllegalAnnotationException e) {
-      throw new GabotoRuntimeException(e);
-    }
   }
 
   /**
