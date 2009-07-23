@@ -41,7 +41,6 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
-import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.timedim.TimeSpan;
@@ -420,11 +419,7 @@ public class GabotoSnapshot {
 		poolConfig.setResources(resources);
 		poolConfig.setAddReferencedEntitiesToPool(false);
 		
-		try {
-			return GabotoEntityPool.createFrom(poolConfig);
-		} catch (EntityPoolInvalidConfigurationException e) {
-			throw new GabotoRuntimeException(e);
-		}
+    return GabotoEntityPool.createFrom(poolConfig);
 	}
 	
 	/**
