@@ -40,7 +40,6 @@ import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.query.GabotoQuery;
@@ -59,7 +58,7 @@ public class TestPoolCreationPerformance {
 	}
 	
 	@Test
-	public void testSimplePoolCreation() throws EntityPoolInvalidConfigurationException{
+	public void testSimplePoolCreation() {
     //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
     Gaboto oxp = Utils.getOxpointsFromXML();
 
@@ -78,7 +77,7 @@ public class TestPoolCreationPerformance {
 	}
 	
 	@Test
-	public void testSimplePoolCreationWithAllPassive() throws EntityPoolInvalidConfigurationException{
+	public void testSimplePoolCreationWithAllPassive() {
     //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
     Gaboto oxp = Utils.getOxpointsFromXML();
 
