@@ -68,7 +68,12 @@ public class GabotoConfiguration {
 	
 	private GabotoOntologyLookup lookup;
 	
-	public static GabotoConfiguration fromConfigFile() {
+	
+	
+	private GabotoConfiguration() {
+  }
+
+  public static GabotoConfiguration fromConfigFile() {
 		try {
       return fromConfigFile("Gaboto.xml");
     } catch (Exception e) {

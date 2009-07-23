@@ -41,7 +41,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.model.GabotoOntologyLookup;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
@@ -154,7 +154,7 @@ public class Gaboto {
   Gaboto(Model cdg, NamedGraphSet graphset) {
     this.ngs = graphset;
     this.cdg = cdg;
-    this.config = GabotoLibrary.getConfig();
+    this.config = GabotoFactory.getConfig();
   }
 
   /**
@@ -173,11 +173,11 @@ public class Gaboto {
    * 
    * @throws GabotoException
    */
-  Gaboto(Model cdg, NamedGraphSet graphset, TimeDimensionIndexer idx)
+  public Gaboto(Model cdg, NamedGraphSet graphset, TimeDimensionIndexer idx)
       throws CorruptDataException {
     this.ngs = graphset;
     this.cdg = cdg;
-    this.config = GabotoLibrary.getConfig();
+    this.config = GabotoFactory.getConfig();
 
     // create an index on the time dimension
     idx.createIndex(cdg);
@@ -1380,7 +1380,7 @@ public class Gaboto {
 
   
   public GabotoOntologyLookup  getOntologyLookup() { 
-    return GabotoLibrary.getConfig().getGabotoOntologyLookup();
+    return GabotoFactory.getConfig().getGabotoOntologyLookup();
   }
 
   /**

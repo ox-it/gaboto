@@ -29,16 +29,15 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.model;
+package org.oucs.gaboto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Iterator;
 
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
 import org.oucs.gaboto.exceptions.GabotoException;
+import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.events.GabotoEvent;
 import org.oucs.gaboto.model.events.GabotoInsertionEvent;
 import org.oucs.gaboto.model.events.GabotoRemovalEvent;
@@ -176,14 +175,14 @@ public class GabotoFactory {
 			return persistentGaboto;
 		
 		// get config
-		GabotoConfiguration config = GabotoLibrary.getConfig();
+		GabotoConfiguration c = GabotoFactory.getConfig();
 		
 		// create persistent gaboto
-		String URL = config.getDbURL();
-		String USER = config.getDbUser();
-		String PW = config.getDbPassword();
+		String URL = c.getDbURL();
+		String USER = c.getDbUser();
+		String PW = c.getDbPassword();
 		try {
-			Class.forName(config.getDbDriver());
+			Class.forName(c.getDbDriver());
 		} catch (ClassNotFoundException e1) {
       throw new RuntimeException(e1);
 		}
@@ -201,7 +200,7 @@ public class GabotoFactory {
     Performance.stop();
 		
 		// if graphset is empty, create special graphs
-		if(! graphset.containsGraph(config.getGKG()))
+		if(! graphset.containsGraph(c.getGKG()))
 			createGKG(graphset);
 
 		// create object
@@ -246,13 +245,13 @@ public class GabotoFactory {
 			return cdg;
 		
 		// get config
-		GabotoConfiguration config = GabotoLibrary.getConfig();
+		GabotoConfiguration c = GabotoFactory.getConfig();
 		
-		String M_DB_URL         = config.getDbURL();
-		String M_DB_USER        = config.getDbUser();
-		String M_DB_PASSWD      = config.getDbPassword();
-		String M_DB             = config.getDbEngineName();
-		String M_DBDRIVER_CLASS = config.getDbDriver();
+		String M_DB_URL         = c.getDbURL();
+		String M_DB_USER        = c.getDbUser();
+		String M_DB_PASSWD      = c.getDbPassword();
+		String M_DB             = c.getDbEngineName();
+		String M_DBDRIVER_CLASS = c.getDbDriver();
 
 		// load the driver class just to provoke error
 		try {
@@ -283,20 +282,41 @@ public class GabotoFactory {
 	 */
 	private static void createGKG(NamedGraphSet graphset) {
 		// get config
-		GabotoConfiguration config = GabotoLibrary.getConfig();
+		GabotoConfiguration c = GabotoFactory.getConfig();
 		
-		if(graphset.containsGraph(config.getGKG()))
+		if(graphset.containsGraph(c.getGKG()))
 			throw new IllegalStateException("GKG already exists.");
 		
 		// Create gkg
-		graphset.createGraph(config.getGKG());
+		graphset.createGraph(c.getGKG());
 		
 		// add gkg to cdg
 		createCDG().getGraph().add(new Triple(
-				Node.createURI(config.getGKG()),
+				Node.createURI(c.getGKG()),
 				Node.createURI(RDF.type.getURI()),
 				Node.createURI(RDFCON.GlobalKnowledgeGraph.getURI())
 		));		
 	}
+
+
+  public static GabotoConfiguration config;
+
+
+  /**
+   * Initialises the Gaboto system (this has to be done before Gaboto can be used).
+   * @param config
+   */
+  public static void init(GabotoConfiguration configP){
+  	config = configP;
+  }
+  /**
+   * Returns the Gaboto configuration.
+   * @return The Gaboto configuration.
+   */
+  public static GabotoConfiguration getConfig(){
+  	if(config == null)
+  		config = GabotoConfiguration.fromConfigFile();
+  	return config;
+  }
 	
 }
