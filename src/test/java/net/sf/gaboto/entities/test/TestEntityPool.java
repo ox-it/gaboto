@@ -41,7 +41,6 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.entities.pool.filters.EntityFilter;
 import org.oucs.gaboto.entities.pool.filters.PropertyEqualsFilter;
 import org.oucs.gaboto.entities.pool.filters.PropertyExistsFilter;
-import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
@@ -277,8 +276,7 @@ public class TestEntityPool {
   }
 
   @Test
-  public void testEntityTypeFilter()
-      throws EntityPoolInvalidConfigurationException {
+  public void testEntityTypeFilter() {
     GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
@@ -306,9 +304,7 @@ public class TestEntityPool {
   }
 
   @Test
-  public void testResourceFilter()
-      throws EntityPoolInvalidConfigurationException,
-      ResourceDoesNotExistException {
+  public void testResourceFilter() throws ResourceDoesNotExistException {
     GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
     GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
