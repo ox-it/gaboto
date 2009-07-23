@@ -50,7 +50,6 @@ import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
-import org.oucs.gaboto.exceptions.NoTimeIndexSetException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.events.GabotoEvent;
 import org.oucs.gaboto.model.events.GabotoInsertionEvent;
