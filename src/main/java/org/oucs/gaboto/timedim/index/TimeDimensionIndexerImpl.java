@@ -62,7 +62,7 @@ import de.fuberlin.wiwiss.ng4j.NamedGraph;
  * @author Arno Mittelbach
  *
  */
-public class SimpleTimeDimensionIndexer implements TimeDimensionIndexer {
+public class TimeDimensionIndexerImpl implements TimeDimensionIndexer {
 
 	private Map<String, TimeSpan> lookup = new HashMap<String, TimeSpan>();
 	
