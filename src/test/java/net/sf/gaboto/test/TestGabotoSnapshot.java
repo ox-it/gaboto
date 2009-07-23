@@ -43,7 +43,7 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.model.QuerySolutionProcessorImpl;
+import org.oucs.gaboto.model.SPARQLQuerySolutionProcessorImpl;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
@@ -93,7 +93,7 @@ public class TestGabotoSnapshot {
 			String query = GabotoPredefinedQueries.getStandardPrefixes();
 			query += "SELECT ?name WHERE { <" + uri + ">  dc:title  ?name . }";
 			
-			nowSnap.execSPARQLSelect(query, new QuerySolutionProcessorImpl(){
+			nowSnap.execSPARQLSelect(query, new SPARQLQuerySolutionProcessorImpl(){
 
 				private int i = 1;
 				

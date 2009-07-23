@@ -45,10 +45,9 @@ import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.model.QuerySolutionProcessor;
+import org.oucs.gaboto.model.SPARQLQuerySolutionProcessor;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
@@ -120,7 +119,7 @@ public class TestGabotoEntity  {
 		
 	
 	@Test
-	public void testGetPropertyValue2() throws EntityAlreadyExistsException{
+	public void testGetPropertyValue2() throws Exception{
 		oxp = GabotoFactory.getPersistentGaboto();
 		Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 		
@@ -151,7 +150,7 @@ public class TestGabotoEntity  {
 	}
 	
 	@Test
-	public void testTypedLiteral1() throws EntityAlreadyExistsException{
+	public void testTypedLiteral1() throws Exception{
 		
 		String uri1 = oxp.generateID();
 		Carpark cp1 = new Carpark();
@@ -181,7 +180,7 @@ public class TestGabotoEntity  {
 		query += "}";
 		
 		final Collection<String> foundURIs = new HashSet<String>();
-		snap.execSPARQLSelect(query, new QuerySolutionProcessor(){
+		snap.execSPARQLSelect(query, new SPARQLQuerySolutionProcessor(){
 
 			public void processSolution(QuerySolution solution) {
 				foundURIs.add(solution.getResource("cp").getURI());

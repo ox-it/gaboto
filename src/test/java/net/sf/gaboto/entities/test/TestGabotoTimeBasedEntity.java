@@ -46,7 +46,6 @@ import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
-import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
@@ -258,8 +257,7 @@ public class TestGabotoTimeBasedEntity {
   }
 
   @Test
-  public void testAddEntityOverflow() throws EntityAlreadyExistsException,
-      ResourceDoesNotExistException {
+  public void testAddEntityOverflow() throws Exception {
     oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
@@ -284,7 +282,7 @@ public class TestGabotoTimeBasedEntity {
 
   // FIXME Sometimes fails!!!!!
   //@Test 
-  public void testAddEntityComplex() throws GabotoException {
+  public void testAddEntityComplex() throws Exception {
    // Gaboto oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
