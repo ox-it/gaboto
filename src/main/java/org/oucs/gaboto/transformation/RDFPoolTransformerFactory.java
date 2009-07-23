@@ -34,8 +34,8 @@ package org.oucs.gaboto.transformation;
 import java.io.StringWriter;
 
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.exceptions.UnsupportedQueryFormatException;
 import org.oucs.gaboto.model.query.GabotoQuery;
+import org.oucs.gaboto.model.query.UnsupportedQueryFormatException;
 
 import com.hp.hpl.jena.rdf.model.Model;
 
