@@ -32,16 +32,15 @@
 package org.oucs.gaboto;
 
 /**
- * Provides a common base class for Exceptions within Gaboto.
  * 
- * @author Arno Mittelbach
+ * The root of all Gaboto checked exceptions.
+ * 
+ * Very few exceptions are checked, only those where the application programmer 
+ * can take some effective action to remedy the problem.  
  *
  */
 abstract public class GabotoException extends Exception {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -895312186881926855L;
 
 	public GabotoException(){
@@ -52,5 +51,12 @@ abstract public class GabotoException extends Exception {
 		super(message);
 	}
 
+  public GabotoException(String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  public GabotoException(Throwable cause) {
+    super(cause);
+  }
 
 }
