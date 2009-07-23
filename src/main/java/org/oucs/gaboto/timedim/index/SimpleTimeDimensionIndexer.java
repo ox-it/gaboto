@@ -105,9 +105,7 @@ public class SimpleTimeDimensionIndexer implements TimeDimensionIndexer {
 				
 				add(graph, ts);
 			} catch(IllegalArgumentException e){
-				CorruptDataException cde = new CorruptDataException("The data seems to be corrupt. Can not load graph " + graph );
-				cde.initCause(e);
-				throw cde;
+				throw new CorruptDataException("The data seems to be corrupt. Can not load graph " + graph , e);
 			}
 		}
 		
