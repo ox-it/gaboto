@@ -96,7 +96,7 @@ public class RDFContainerTriplesGeneratorImpl implements RDFContainerTriplesGene
   public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode, boolean includeType) {
     List<Triple> triples = new ArrayList<Triple>();
 
-    // add the entities type
+    // add the entity's type
     if (includeType) {
       triples.add(new Triple(subjectNode, Node.createURI(RDF.type.getURI()), Node.createURI(rdfContainerObject
               .getType())));
