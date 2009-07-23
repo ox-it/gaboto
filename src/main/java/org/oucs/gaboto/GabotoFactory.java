@@ -38,8 +38,8 @@ import java.util.Iterator;
 
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.events.GabotoEvent;
-import org.oucs.gaboto.model.events.GabotoInsertionEvent;
-import org.oucs.gaboto.model.events.GabotoRemovalEvent;
+import org.oucs.gaboto.model.events.InsertionGabotoEvent;
+import org.oucs.gaboto.model.events.RemovalGabotoEvent;
 import org.oucs.gaboto.model.listener.UpdateListener;
 import org.oucs.gaboto.timedim.index.SimpleTimeDimensionIndexer;
 import org.oucs.gaboto.util.Performance;
@@ -210,16 +210,16 @@ public class GabotoFactory {
 		persistentGaboto.attachUpdateListener(new UpdateListener(){
 			public void updateOccured(GabotoEvent e) {
         // try to cast event to insertion
-        if(e instanceof GabotoInsertionEvent){
-          GabotoInsertionEvent event = (GabotoInsertionEvent) e;
+        if(e instanceof InsertionGabotoEvent){
+          InsertionGabotoEvent event = (InsertionGabotoEvent) e;
           if(event.getTimespan() != null)
             inMemoryGaboto.add(event.getTimespan(), event.getTriple());
           else
             inMemoryGaboto.add(event.getTriple());
         }
         // try to cast event to removal
-        else if(e instanceof GabotoRemovalEvent){
-          GabotoRemovalEvent event = (GabotoRemovalEvent) e;
+        else if(e instanceof RemovalGabotoEvent){
+          RemovalGabotoEvent event = (RemovalGabotoEvent) e;
           if(event.getQuad() != null)
             inMemoryGaboto.remove(event.getQuad());
           else if(event.getTimespan() != null && event.getTriple() != null )
