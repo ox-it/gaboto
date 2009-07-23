@@ -40,7 +40,6 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.QueryAlreadyPreparedException;
-import org.oucs.gaboto.exceptions.UnsupportedQueryFormatException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.transformation.RDFPoolTransformerFactory;
 import org.oucs.gaboto.transformation.json.JSONPoolTransformer;
