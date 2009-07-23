@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.transformation.json;
+package org.oucs.gaboto.transformation;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,10 +41,9 @@ import java.util.Map.Entry;
 import org.json.JSONException;
 import org.json.JSONStringer;
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.beans.GabotoBean;
-import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.transformation.EntityPoolTransformer;
+import org.oucs.gaboto.nodes.GabotoBean;
+import org.oucs.gaboto.nodes.GabotoEntity;
 
 /**
  * Transforms a GabotoEntityPool into JSON.

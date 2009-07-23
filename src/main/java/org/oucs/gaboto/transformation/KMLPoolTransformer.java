@@ -29,16 +29,15 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.transformation.kml;
+package org.oucs.gaboto.transformation;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.transformation.EntityPoolTransformer;
+import org.oucs.gaboto.nodes.GabotoEntity;
 import org.oucs.gaboto.util.XMLUtils;
 import org.oucs.gaboto.vocabulary.DC;
 import org.oucs.gaboto.vocabulary.GabotoKML;

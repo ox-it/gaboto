@@ -29,13 +29,12 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.transformation.json;
+package org.oucs.gaboto.transformation;
 
 import org.json.JSONException;
 import org.json.XML;
 import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.transformation.kml.KMLPoolTransformer;
 
 /**
  * Creates a representation of a KML File in JSON.
