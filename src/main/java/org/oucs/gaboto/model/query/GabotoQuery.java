@@ -32,7 +32,6 @@
 package org.oucs.gaboto.model.query;
 
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.model.Gaboto;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -113,10 +112,9 @@ public interface GabotoQuery {
 	/**
 	 * Should be called after the query is configured. 
 	 * 
-	 * @throws GabotoException
 	 * @throws QueryAlreadyPreparedException
 	 */
-	public void prepare() throws QueryAlreadyPreparedException, GabotoException;
+	public void prepare() throws QueryAlreadyPreparedException;
 	
 	/**
 	 * Executes the query and returns the specified output format (if supported).
@@ -124,9 +122,8 @@ public interface GabotoQuery {
 	 * @param format The output format.
 	 * @return The query results transformed into the specified output format.
 	 * 
-	 * @throws GabotoException
 	 */
-	public Object execute(String format) throws GabotoException;
+	public Object execute(String format);
 	
 	/**
 	 * Sets the Gaboto model the query should work with.

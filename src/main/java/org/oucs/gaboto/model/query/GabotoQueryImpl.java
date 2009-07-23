@@ -37,7 +37,6 @@ import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.transformation.RDFPoolTransformerFactory;
@@ -78,9 +77,8 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 	/**
 	 * Constructs the query and grabs an in-memory Gaboto object from the GabotoFactory.
 	 * 
-	 * @throws GabotoException 
 	 */
-	public GabotoQueryImpl() throws GabotoException{
+	public GabotoQueryImpl() {
 		this.gaboto = GabotoFactory.getInMemoryGaboto();
 	}
 	
@@ -127,14 +125,13 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 	 * 
 	 * @return Either a Jena Model or an GabotoEntityPool.
 	 * 
-	 * @throws GabotoException
 	 * @see #getResultType()
 	 * @see #execute(String)
 	 */
-	abstract protected Object execute() throws GabotoException;
+	abstract protected Object execute();
 	
 	
-	final public void prepare() throws QueryAlreadyPreparedException, GabotoException{
+	final public void prepare() throws QueryAlreadyPreparedException {
 		if(prepared)
 			throw new QueryAlreadyPreparedException();
 
@@ -145,7 +142,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 		prepared = true;
 	}
 
-	abstract protected void doPrepare() throws GabotoException;
+	abstract protected void doPrepare();
 
 	final public boolean isPrepared(){
 		return prepared;
@@ -155,9 +152,8 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 	 * Executes a query and transforms the result into the asked for output format (if supported). 
 	 * 
 	 * @param format The output format.
-	 * @throws GabotoException
 	 */
-	public Object execute(String format) throws GabotoException {
+	public Object execute(String format) {
 		logger.debug("Execute query " + this.getClass().getName() + " with requested format: " + format);
 		
 		// prepare if it is not prepared

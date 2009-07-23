@@ -36,7 +36,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Iterator;
 
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.events.GabotoEvent;
 import org.oucs.gaboto.model.events.GabotoInsertionEvent;
@@ -118,7 +117,6 @@ public class GabotoFactory {
 	 * </p>
 	 * 
 	 * @return An Gaboto object with an in-memory store.
-	 * @throws GabotoException
 	 * 
 	 * @see #getPersistentGaboto()
 	 */
@@ -165,7 +163,6 @@ public class GabotoFactory {
 	 * </p>
 	 * 
 	 * @return A new persistent Gaboto
-	 * @throws GabotoException 
 	 * @see #getInMemoryGaboto()
 	 * @see GabotoConfiguration
 	 */

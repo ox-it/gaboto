@@ -33,7 +33,6 @@ package org.oucs.gaboto.model.query.defined;
 
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.query.GabotoQueryImpl;
@@ -52,14 +51,14 @@ public class ListOfTypedEntities extends GabotoQueryImpl {
 	private TimeInstant timeInstant;
 	private boolean forceCreation;
 
-	public ListOfTypedEntities(String type, TimeInstant ti) throws GabotoException{
+	public ListOfTypedEntities(String type, TimeInstant ti) {
 		super();
 		this.type = type;
 		this.timeInstant = ti;
 		this.forceCreation = true;
 	}
 
-	public ListOfTypedEntities(String type, TimeInstant ti, boolean forceCreation) throws GabotoException{
+	public ListOfTypedEntities(String type, TimeInstant ti, boolean forceCreation) {
 		super();
 		this.type = type;
 		this.timeInstant = ti;
@@ -98,7 +97,7 @@ public class ListOfTypedEntities extends GabotoQueryImpl {
 	}
 
 	@Override
-	protected void doPrepare() throws GabotoException {
+	protected void doPrepare() {
 	  // Fool Eclipse
 	  if (forceCreation) 
 	    forceCreation = true;

@@ -38,7 +38,6 @@ import java.io.IOException;
 
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.exceptions.CorruptDataException;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
@@ -57,14 +56,14 @@ public class SimpleConstructSPARQLQuery extends GabotoQueryImpl {
   private TimeInstant timeInstant;
   private String query;
 
-  public SimpleConstructSPARQLQuery(TimeInstant ti, File query) throws GabotoException {
+  public SimpleConstructSPARQLQuery(TimeInstant ti, File query) {
     super();
     this.timeInstant = ti;
 
     readFile(query);
   }
 
-  public SimpleConstructSPARQLQuery(TimeInstant ti, String query) throws GabotoException {
+  public SimpleConstructSPARQLQuery(TimeInstant ti, String query){
     super();
     this.timeInstant = ti;
     this.query = query;
@@ -128,7 +127,7 @@ public class SimpleConstructSPARQLQuery extends GabotoQueryImpl {
   }
 
   @Override
-  protected void doPrepare() throws GabotoException {
+  protected void doPrepare() {
     // TODO Auto-generated method stub
 
   }

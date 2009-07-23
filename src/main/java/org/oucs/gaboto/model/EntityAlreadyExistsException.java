@@ -42,9 +42,6 @@ import org.oucs.gaboto.exceptions.GabotoException;
  */
 public class EntityAlreadyExistsException extends GabotoException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8990591830665990504L;
 
 	public EntityAlreadyExistsException(GabotoEntity entity){

@@ -438,8 +438,7 @@ public class Gaboto {
    * 
    * @see #add(GabotoEntity, boolean)
    */
-  synchronized public void add(GabotoEntity entity)
-      throws EntityAlreadyExistsException {
+  synchronized public void add(GabotoEntity entity) throws EntityAlreadyExistsException {
     add(entity, true);
   }
 
