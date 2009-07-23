@@ -40,7 +40,7 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.QueryAlreadyPreparedException;
-import org.oucs.gaboto.exceptions.UnsupportedFormatException;
+import org.oucs.gaboto.exceptions.UnsupportedQueryFormatException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.transformation.RDFPoolTransformerFactory;
 import org.oucs.gaboto.transformation.json.JSONPoolTransformer;
@@ -167,7 +167,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 			prepare();
 		
 		if(! isSupportedFormat(format))
-			throw new UnsupportedFormatException(format);
+			throw new UnsupportedQueryFormatException(format);
 		
 		Object result = execute();
 		
@@ -203,7 +203,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 		   format.equals(GabotoQuery.FORMAT_RDF_N3)){
 				try {
 					return RDFPoolTransformerFactory.getRDFPoolTransformer(format).transform(pool);
-				} catch (UnsupportedFormatException e) {
+				} catch (UnsupportedQueryFormatException e) {
           new GabotoRuntimeException(e);
 				}
 		}
