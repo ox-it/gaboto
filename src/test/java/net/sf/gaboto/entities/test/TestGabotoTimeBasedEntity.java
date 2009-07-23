@@ -46,7 +46,6 @@ import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
@@ -170,7 +169,7 @@ public class TestGabotoTimeBasedEntity {
   }
 
   @Test
-  public void testLoadingEntitiesSimple() throws GabotoException {
+  public void testLoadingEntitiesSimple() {
     //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
 
     TimeInstant now = TimeInstant.now();
@@ -228,7 +227,7 @@ public class TestGabotoTimeBasedEntity {
   }
 
   @Test
-  public void testAddEntitySimple() throws GabotoException {
+  public void testAddEntitySimple() throws Exception {
    // oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
@@ -334,7 +333,7 @@ public class TestGabotoTimeBasedEntity {
   }
 
   @Test(expected = ResourceDoesNotExistException.class)
-  public void testAddPurgeEntitySimple() throws GabotoException {
+  public void testAddPurgeEntitySimple() throws Exception {
     oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 
@@ -357,7 +356,7 @@ public class TestGabotoTimeBasedEntity {
 
   @SuppressWarnings("unchecked")
   @Test
-  public void testPurgeEntityComplex() throws GabotoException {
+  public void testPurgeEntityComplex() throws Exception {
     oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
 

@@ -36,7 +36,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.defined.SimpleConstructSPARQLQuery;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -58,7 +57,7 @@ public class TestSimpleConstructSPARQLQuery {
   }
 	
 	@Test
-	public void testQuery() throws GabotoException{
+	public void testQuery() throws Exception{
 		String query = GabotoPredefinedQueries.getStandardPrefixes();
 		query += "PREFIX oxp: <" + OxPointsVocab.NS + ">\n";
 		query += "CONSTRUCT { ?a ?b ?c. } WHERE {\n" +

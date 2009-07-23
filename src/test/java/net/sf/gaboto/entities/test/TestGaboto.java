@@ -47,7 +47,6 @@ import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.model.EntityAlreadyExistsException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -72,7 +71,7 @@ public class TestGaboto {
 	}
 	
 	@Test (expected=EntityAlreadyExistsException.class)
-	public void testAddDuplicate() throws GabotoException{
+	public void testAddDuplicate() throws Exception{
 		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
 		
 		Unit u = new Unit();
@@ -84,7 +83,7 @@ public class TestGaboto {
 	
 	
 	@Test
-	public void testAddRemove() throws GabotoException{
+	public void testAddRemove() throws Exception{
 		Gaboto oxp = GabotoFactory.getPersistentGaboto();
 		Gaboto oxp_m = GabotoFactory.getInMemoryGaboto();
 		
@@ -113,7 +112,7 @@ public class TestGaboto {
 	}
 	
 	@Test
-	public void testLoadEntity() throws GabotoException{
+	public void testLoadEntity() throws Exception{
 		Gaboto oxp = GabotoFactory.getPersistentGaboto();
 		Gaboto oxp_m = GabotoFactory.getInMemoryGaboto();
 		
@@ -133,7 +132,7 @@ public class TestGaboto {
 	
 	@SuppressWarnings("unchecked")
 	@Test
-	public void testAddRemove2() throws GabotoException{
+	public void testAddRemove2() throws Exception{
 		Gaboto oxp = GabotoFactory.getPersistentGaboto();
 		
 		Unit u = new Unit();

@@ -35,7 +35,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -49,7 +48,7 @@ public class TestQueryListOfTypedEntities {
 	}
 	
 	@Test
-	public void testQuery() throws GabotoException{
+	public void testQuery() throws Exception{
 		GabotoQuery query = new ListOfTypedEntities(OxPointsVocab.Building_URI, TimeInstant.now() );
 		String result = (String) query.execute(GabotoQuery.FORMAT_KML);
 		System.err.println(result);
