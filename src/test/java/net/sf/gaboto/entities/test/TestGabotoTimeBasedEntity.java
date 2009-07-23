@@ -44,9 +44,9 @@ import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+import org.oucs.gaboto.model.EntityDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.model.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.ListOfTypedEntities;
 import org.oucs.gaboto.nodes.GabotoEntity;
@@ -332,7 +332,7 @@ public class TestGabotoTimeBasedEntity {
     }
   }
 
-  @Test(expected = ResourceDoesNotExistException.class)
+  @Test(expected = EntityDoesNotExistException.class)
   public void testAddPurgeEntitySimple() throws Exception {
     oxp = GabotoFactory.getPersistentGaboto();
     Gaboto oxp_mem = GabotoFactory.getInMemoryGaboto();
