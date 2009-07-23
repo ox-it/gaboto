@@ -178,8 +178,7 @@ public class RDFContainerTriplesGeneratorImpl implements RDFContainerTriplesGene
    */
   private void getTriplesFor_SimpleURIProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples,
           String propertyURI, Method method) {
-    try {
-      Object object = method.invoke(rdfContainerObject, (Object[]) null);
+      Object object = invokeMethod(rdfContainerObject,method);
       if (object == null)
         return;
 
@@ -189,13 +188,11 @@ public class RDFContainerTriplesGeneratorImpl implements RDFContainerTriplesGene
       else if (object instanceof GabotoEntity)
         objectURI = ((GabotoEntity) object).getUri();
       else
-        throw new Exception();
+        throw new GabotoRuntimeException("Found object of class " + object.getClass() + 
+                " (" + object + ") when expecting a String or GabotoEntity");
 
       triples.add(new Triple(subjectNode, Node.createURI(propertyURI), Node.createURI(objectURI)));
 
-    } catch (Exception e) {
-      throw new GabotoRuntimeException(e);
-    }
   }
 
   /**
@@ -211,36 +208,31 @@ public class RDFContainerTriplesGeneratorImpl implements RDFContainerTriplesGene
    */
   private void getTriplesFor_SimpleLiteralProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples,
           String propertyURI, Method method) {
-    try {
-      Object object = method.invoke(rdfContainerObject, (Object[]) null);
-      if (object == null)
-        return;
+    Object object = invokeMethod(rdfContainerObject,method);
+    if (object == null)
+      return;
 
-      // find datatype
-      RDFDatatype datatype = null;
-      SimpleLiteralProperty annotation = method.getAnnotation(SimpleLiteralProperty.class);
+    // find datatype
+    RDFDatatype datatype = null;
+    SimpleLiteralProperty annotation = method.getAnnotation(SimpleLiteralProperty.class);
 
-      if (annotation.javaType().toLowerCase().equals("string"))
-        datatype = XSDDatatype.XSDstring;
-      else if (annotation.javaType().toLowerCase().equals("integer")
-              || annotation.javaType().toLowerCase().equals("int"))
-        datatype = XSDDatatype.XSDint;
-      else if (annotation.javaType().toLowerCase().equals("float"))
-        datatype = XSDDatatype.XSDfloat;
-      else if (annotation.javaType().toLowerCase().equals("double"))
-        datatype = XSDDatatype.XSDdouble;
-      else if (annotation.javaType().toLowerCase().equals("boolean"))
-        datatype = XSDDatatype.XSDboolean;
-      else {
-        throw new IllegalArgumentException("Unrecognized literal type: " + annotation.javaType());
-      }
-
-      triples.add(new Triple(subjectNode, Node.createURI(propertyURI), Node.createLiteral(String.valueOf(object), null,
-              datatype)));
-    } catch (Exception e) {
-      throw new GabotoRuntimeException(e);
+    if (annotation.javaType().toLowerCase().equals("string"))
+      datatype = XSDDatatype.XSDstring;
+    else if (annotation.javaType().toLowerCase().equals("integer")
+            || annotation.javaType().toLowerCase().equals("int"))
+      datatype = XSDDatatype.XSDint;
+    else if (annotation.javaType().toLowerCase().equals("float"))
+      datatype = XSDDatatype.XSDfloat;
+    else if (annotation.javaType().toLowerCase().equals("double"))
+      datatype = XSDDatatype.XSDdouble;
+    else if (annotation.javaType().toLowerCase().equals("boolean"))
+      datatype = XSDDatatype.XSDboolean;
+    else {
+      throw new IllegalArgumentException("Unrecognized literal type: " + annotation.javaType());
     }
 
+    triples.add(new Triple(subjectNode, Node.createURI(propertyURI), Node.createLiteral(String.valueOf(object), null,
+            datatype)));
   }
 
   /**
@@ -257,24 +249,21 @@ public class RDFContainerTriplesGeneratorImpl implements RDFContainerTriplesGene
    */
   private void getTriplesFor_ComplexProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples,
           String propertyURI, Method method) {
-    try {
-      Object object = method.invoke(rdfContainerObject, (Object[]) null);
+    Object object = invokeMethod(rdfContainerObject,method);
 
-      if (object == null)
-        return;
+    if (object == null)
+      return;
 
-      if (!(object instanceof GabotoBean))
-        throw new Exception();
+    if (!(object instanceof GabotoBean))
+      throw new GabotoRuntimeException("Found object of class " + object.getClass() + 
+              " (" + object + ") when expecting a GabotoBean");
 
-      GabotoBean bean = (GabotoBean) object;
+    GabotoBean bean = (GabotoBean) object;
 
-      Node blankBeanNode = GabotoEntityUtils.createAnonForBean(subjectNode.getURI(), propertyURI);
-      triples.add(new Triple(subjectNode, Node.createURI(propertyURI), blankBeanNode));
+    Node blankBeanNode = GabotoEntityUtils.createAnonForBean(subjectNode.getURI(), propertyURI);
+    triples.add(new Triple(subjectNode, Node.createURI(propertyURI), blankBeanNode));
 
-      triples.addAll(bean.getCorrespondingRDFTriples(blankBeanNode));
-    } catch (Exception e) {
-      throw new GabotoRuntimeException(e);
-    }
+    triples.addAll(bean.getCorrespondingRDFTriples(blankBeanNode));
   }
 
   /**
@@ -346,13 +335,7 @@ public class RDFContainerTriplesGeneratorImpl implements RDFContainerTriplesGene
     triples.add(new Triple(subjectNode, Node.createURI(propertyURI), bag));
 
     // fill bag
-    Object object;
-    try {
-      object = method.invoke(rdfContainerObject, (Object[]) null);
-    } catch (Exception e) {
-      throw new GabotoRuntimeException(e);
-    }
-
+    Object object = invokeMethod(rdfContainerObject,method);
     if (object == null)
       return;
 
