@@ -37,13 +37,12 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.QuerySolutionProcessorImpl;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -66,7 +65,7 @@ public class TestGabotoSnapshot {
 
 	@BeforeClass
   public static void setUp() throws Exception {
-    GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+    GabotoFactory.init(GabotoConfiguration.fromConfigFile());
   }
 	@AfterClass
   public static void tearDown() throws Exception {

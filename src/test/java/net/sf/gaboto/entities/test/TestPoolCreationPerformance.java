@@ -37,7 +37,7 @@ import net.sf.gaboto.test.Utils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
@@ -55,7 +55,7 @@ public class TestPoolCreationPerformance {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
-		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
 	}
 	
 	@Test

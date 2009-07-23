@@ -37,14 +37,14 @@ import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.timedim.TimeInstant;
 
 public class TestTimeInstant {
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
-		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
 	}
 
 	@Test (expected=IllegalStateException.class)

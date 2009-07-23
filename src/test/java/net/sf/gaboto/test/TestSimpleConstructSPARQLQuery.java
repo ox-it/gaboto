@@ -35,9 +35,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.exceptions.GabotoException;
-import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.defined.SimpleConstructSPARQLQuery;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -50,7 +49,7 @@ public class TestSimpleConstructSPARQLQuery {
 	public static void setUp() throws Exception {
 	  // HACK Some other test is not idempotent. 
 	  GabotoFactory.clear();
-		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
 	}
 
 	@AfterClass

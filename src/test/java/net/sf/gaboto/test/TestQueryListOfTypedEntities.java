@@ -34,7 +34,7 @@ package net.sf.gaboto.test;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
@@ -45,7 +45,7 @@ public class TestQueryListOfTypedEntities {
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
-		GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
 	}
 	
 	@Test

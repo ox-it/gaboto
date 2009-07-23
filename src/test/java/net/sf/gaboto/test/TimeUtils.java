@@ -3,7 +3,7 @@ package net.sf.gaboto.test;
 import java.util.Random;
 import java.util.UUID;
 
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 
@@ -71,7 +71,7 @@ public class TimeUtils {
   }
 
   public static String generateRandomURI() {
-    String uri = GabotoLibrary.getConfig().getNSData();
+    String uri = GabotoFactory.getConfig().getNSData();
 
     uri += UUID.randomUUID().toString().substring(0, 10);
 

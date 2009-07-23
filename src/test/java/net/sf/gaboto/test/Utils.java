@@ -39,9 +39,8 @@ import java.io.FileOutputStream;
 
 import org.custommonkey.xmlunit.XMLAssert;
 import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
 
 import uk.ac.ox.oucs.oxpoints.gaboto.TEIImporter;
 
@@ -77,7 +76,7 @@ public final class Utils {
     if(! file.exists())
       throw new RuntimeException ("Cannot open file " + filename);
     
-    GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+    GabotoFactory.init(GabotoConfiguration.fromConfigFile());
     Gaboto oxp = GabotoFactory.getEmptyInMemoryGaboto();
     //oxp = GabotoFactory.getInMemoryGaboto();
     new TEIImporter(oxp, file).run();

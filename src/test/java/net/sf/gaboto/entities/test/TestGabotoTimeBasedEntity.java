@@ -42,7 +42,7 @@ import net.sf.gaboto.test.TimeUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
@@ -50,7 +50,6 @@ import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.defined.ListOfTypedEntities;
@@ -70,7 +69,7 @@ public class TestGabotoTimeBasedEntity {
   
   @BeforeClass
   public static void setUp() throws Exception {
-    GabotoLibrary.init(GabotoConfiguration.fromConfigFile());
+    GabotoFactory.init(GabotoConfiguration.fromConfigFile());
     oxp = GabotoFactory.getPersistentGaboto();
   }
 
