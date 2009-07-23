@@ -39,7 +39,7 @@ import com.hp.hpl.jena.query.QuerySolution;
  * @author Arno Mittelbach
  * @version 0.1
  */
-public interface QuerySolutionProcessor {
+public interface SPARQLQuerySolutionProcessor {
 
 	/**
 	 * Processes the next solution.

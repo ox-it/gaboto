@@ -39,7 +39,7 @@ import com.hp.hpl.jena.query.QuerySolution;
  * @author Arno Mittelbach
  * @version 0.1
  */
-abstract public class QuerySolutionProcessorImpl implements QuerySolutionProcessor {
+abstract public class SPARQLQuerySolutionProcessorImpl implements SPARQLQuerySolutionProcessor {
 
 	public boolean stopProcessing() {
 		return false;
