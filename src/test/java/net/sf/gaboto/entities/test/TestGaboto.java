@@ -45,10 +45,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.entities.GabotoEntity;
-import org.oucs.gaboto.entities.GabotoTimeBasedEntity;
 import org.oucs.gaboto.model.EntityAlreadyExistsException;
 import org.oucs.gaboto.model.Gaboto;
+import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.nodes.GabotoTimeBasedEntity;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 

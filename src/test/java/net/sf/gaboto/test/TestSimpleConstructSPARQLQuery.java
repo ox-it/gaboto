@@ -37,7 +37,7 @@ import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.model.query.GabotoQuery;
-import org.oucs.gaboto.model.query.defined.SimpleConstructSPARQLQuery;
+import org.oucs.gaboto.model.query.SPARQLConstructQuery;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
@@ -67,7 +67,7 @@ public class TestSimpleConstructSPARQLQuery {
 		     "?a ?b ?c . \n" +
 		     "}";
 
-		SimpleConstructSPARQLQuery sparqlQuery = new SimpleConstructSPARQLQuery(TimeInstant.now(), query);
+		SPARQLConstructQuery sparqlQuery = new SPARQLConstructQuery(TimeInstant.now(), query);
 		String result = (String) sparqlQuery.execute(GabotoQuery.FORMAT_RDF_XML);
 		System.err.println(result);
 	}
