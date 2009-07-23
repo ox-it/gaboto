@@ -399,11 +399,9 @@ public class Gaboto {
     try {
       add(entity);
     } catch (EntityAlreadyExistsException e) {
-      CorruptDataException cde = new CorruptDataException(
+      throw new CorruptDataException(
           "Something went terribly wrong .. I just purged " + entity.getUri()
-              + ". It should not exist.");
-      cde.initCause(e);
-      throw cde;
+              + ". It should not exist.", e);
     }
   }
 
