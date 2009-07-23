@@ -33,15 +33,13 @@ package org.oucs.gaboto.reflection;
 
 import java.util.List;
 
-import org.oucs.gaboto.exceptions.IllegalAnnotationException;
-
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;
 
 public interface RDFContainerTripleGenerator {
 
-	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode) throws IllegalAnnotationException;
+	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode);
 	
-	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode, boolean includeType) throws IllegalAnnotationException;
+	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode, boolean includeType);
 	
 }
