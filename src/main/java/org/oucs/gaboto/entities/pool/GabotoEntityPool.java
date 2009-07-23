@@ -47,7 +47,6 @@ import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.filters.EntityFilter;
 import org.oucs.gaboto.entities.pool.filters.ResourceFilter;
 import org.oucs.gaboto.exceptions.CorruptDataException;
-import org.oucs.gaboto.exceptions.EntityClassNotFoundException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
@@ -498,7 +497,6 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * @param direct
    * @param bypassTests whether to check entity validity
    * 
-   * @throws EntityClassNotFoundException
    * @throws ResourceDoesNotExistException
    * @throws EntityDoesNotExistException
    */
