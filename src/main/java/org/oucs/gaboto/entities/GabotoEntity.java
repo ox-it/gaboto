@@ -51,7 +51,7 @@ import org.oucs.gaboto.exceptions.IllegalAnnotationException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.reflection.RDFContainer;
-import org.oucs.gaboto.reflection.RDFContainerTripleGeneratorImpl;
+import org.oucs.gaboto.reflection.RDFContainerTriplesGeneratorImpl;
 import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
@@ -757,7 +757,7 @@ abstract public class GabotoEntity implements RDFContainer {
 		if(this.getUri() == null)
 			throw new IllegalArgumentException("Entities need to have a defined uri");
 		
-		List<Triple> triples = RDFContainerTripleGeneratorImpl.getInstance().getTriplesFor(this, Node.createURI(getUri()), includeType);
+		List<Triple> triples = RDFContainerTriplesGeneratorImpl.getInstance().getTriplesFor(this, Node.createURI(getUri()), includeType);
 		
 		return triples;
 	}
