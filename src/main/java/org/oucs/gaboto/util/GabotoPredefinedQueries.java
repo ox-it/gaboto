@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map.Entry;
 
-import org.oucs.gaboto.GabotoLibrary;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.vocabulary.GabotoVocab;
 import org.oucs.gaboto.vocabulary.RDFCON;
 
@@ -64,7 +64,7 @@ public class GabotoPredefinedQueries {
 			    "PREFIX dc:<http://purl.org/dc/elements/1.1/>\n" +
 			   	"PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n" +
 			   	"PREFIX gaboto:<" + GabotoVocab.NS + ">\n" +
-			   	"PREFIX data:<" + GabotoLibrary.getConfig().getNSData() + ">\n" +
+			   	"PREFIX data:<" + GabotoFactory.getConfig().getNSData() + ">\n" +
 			  	"PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\n" +
 				  "PREFIX owl:<http://www.w3.org/2002/07/owl#>\n" +
 			  	"PREFIX xsd:<http://www.w3.org/2001/XMLSchema>\n" +
@@ -72,7 +72,7 @@ public class GabotoPredefinedQueries {
 			  	"PREFIX owl-time:<http://www.w3.org/2006/time#>\n" +
 			  	"PREFIX rdfg:<http://www.w3.org/2004/03/trix/rdfg-1/>\n";
 		
-		for(Entry<String, String> entry : GabotoLibrary.getConfig().getNamespacePrefixes().entrySet())
+		for(Entry<String, String> entry : GabotoFactory.getConfig().getNamespacePrefixes().entrySet())
 			prefixes += "PREFIX " + entry.getKey() + ":<" + entry.getValue() + ">\n";
 		
 		return prefixes + "\n";
