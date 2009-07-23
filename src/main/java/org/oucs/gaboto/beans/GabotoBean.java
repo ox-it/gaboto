@@ -42,7 +42,7 @@ import org.oucs.gaboto.entities.utils.GabotoEntityUtils;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.reflection.RDFContainer;
-import org.oucs.gaboto.reflection.RDFContainerTripleGeneratorImpl;
+import org.oucs.gaboto.reflection.RDFContainerTriplesGeneratorImpl;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;
@@ -96,7 +96,7 @@ public abstract class GabotoBean implements RDFContainer {
    * @return A list of RDF triples.
    */
   public List<Triple> getCorrespondingRDFTriples(Node blankNode) {
-    List<Triple> triples = RDFContainerTripleGeneratorImpl.getInstance()
+    List<Triple> triples = RDFContainerTriplesGeneratorImpl.getInstance()
         .getTriplesFor(this, blankNode);
     return triples;
   }
