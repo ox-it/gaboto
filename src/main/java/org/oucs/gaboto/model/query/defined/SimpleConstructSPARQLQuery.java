@@ -40,9 +40,9 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
-import org.oucs.gaboto.exceptions.NoTimeIndexSetException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
+import org.oucs.gaboto.model.NoTimeIndexSetException;
 import org.oucs.gaboto.model.query.GabotoQueryImpl;
 import org.oucs.gaboto.timedim.TimeInstant;
 
