@@ -48,7 +48,6 @@ import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
 import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
-import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -155,7 +154,7 @@ public class TestGaboto {
 	}
 	
 	@Test
-	public void testGetEntityURIs() throws EntityDoesNotExistException{
+	public void testGetEntityURIs() throws Exception {
 		Gaboto oxp = GabotoFactory.getInMemoryGaboto();
 		
 		Collection<String> uris = oxp.getEntityURIsFor(DC_11.title);
