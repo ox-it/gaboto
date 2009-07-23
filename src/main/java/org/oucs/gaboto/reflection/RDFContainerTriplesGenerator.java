@@ -33,6 +33,8 @@ package org.oucs.gaboto.reflection;
 
 import java.util.List;
 
+import org.oucs.gaboto.entities.GabotoEntity;
+
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;
 
@@ -41,8 +43,28 @@ import com.hp.hpl.jena.graph.Triple;
  */
 public interface RDFContainerTriplesGenerator {
 
+  /**
+   * Creates a list of RDF triples that represent this {@link GabotoEntity}.
+   * 
+   * <p>
+   * Same as: entity.getTriplesFor(true);
+   * </p>
+   * 
+   * @see #getTriplesFor(boolean)
+   * @return a list of triples that represent this entity.
+   */
 	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode);
 	
+  /**
+   * Creates a list of RDF triples that represent this {@link GabotoEntity}.
+   * 
+   * @param includeType
+   *          Whether or not a triple denoting the entities type should be added
+   *          to the list of triples.
+   * 
+   * @return a list of triples that represent this entity.
+   * 
+   */
 	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode, boolean includeType);
 	
 }

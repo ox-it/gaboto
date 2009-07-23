@@ -69,30 +69,10 @@ public class RDFContainerTriplesGeneratorImpl implements RDFContainerTriplesGene
     return instance;
   }
 
-  /**
-   * Creates a list of RDF triples that represent this {@link GabotoEntity}.
-   * 
-   * <p>
-   * Same as: entity.getTriplesFor(true);
-   * </p>
-   * 
-   * @see #getTriplesFor(boolean)
-   * @return a list of triples that represent this entity.
-   */
   public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode) {
     return getTriplesFor(rdfContainerObject, subjectNode, true);
   }
 
-  /**
-   * Creates a list of RDF triples that represent this {@link GabotoEntity}.
-   * 
-   * @param includeType
-   *          Whether or not a triple denoting the entities type should be added
-   *          to the list of triples.
-   * 
-   * @return a list of triples that represent this entity.
-   * 
-   */
   public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode, boolean includeType) {
     List<Triple> triples = new ArrayList<Triple>();
 
