@@ -34,6 +34,7 @@ package org.oucs.gaboto.model.query;
 import java.io.StringWriter;
 
 import org.apache.log4j.Logger;
+import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.exceptions.GabotoException;
@@ -41,7 +42,6 @@ import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.QueryAlreadyPreparedException;
 import org.oucs.gaboto.exceptions.UnsupportedFormatException;
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoFactory;
 import org.oucs.gaboto.transformation.RDFPoolTransformerFactory;
 import org.oucs.gaboto.transformation.json.JSONPoolTransformer;
 import org.oucs.gaboto.transformation.kml.KMLPoolTransformer;
