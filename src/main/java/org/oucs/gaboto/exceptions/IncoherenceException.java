@@ -38,15 +38,18 @@ package org.oucs.gaboto.exceptions;
  * @author Arno Mittelbach
  *
  */
-public class CorruptDataException extends GabotoRuntimeException {
+public class IncoherenceException extends GabotoRuntimeException {
+  private static final long serialVersionUID = -2814228062630437713L;
 
-	public CorruptDataException(String message, Throwable cause) {
+  public IncoherenceException(Throwable cause) {
+    super(cause);
+  }
+	public IncoherenceException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  private static final long serialVersionUID = -2814228062630437713L;
 
-	public CorruptDataException(String msg){
-		super(msg);
+  public IncoherenceException(String message){
+		super(message);
 	}
 }

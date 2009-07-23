@@ -39,7 +39,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * @author Arno Mittelbach
  *
  */
-public class ResourceDoesNotExistException extends GabotoRuntimeException {
+public class ResourceDoesNotExistException extends GabotoException {
 
 	private static final long serialVersionUID = -4330686588081577142L;
 
