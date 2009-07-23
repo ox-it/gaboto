@@ -503,9 +503,8 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * The entity adds itself to the supplied Jena Model.
 	 * 
 	 * @param model the JenaModel
-	 * @throws IllegalAnnotationException 
 	 */
-	public void addToModel(Model model) throws IllegalAnnotationException{
+	public void addToModel(Model model) {
 		Graph g = model.getGraph();
 		List<Triple> triples = getTriplesFor();
 		for(Triple t : triples)
@@ -553,7 +552,7 @@ abstract public class GabotoEntity implements RDFContainer {
   public Object getPropertyValue(String propURI, boolean searchInPassiveProperties, boolean searchInIndirectProperties){
 		Method directMethod = GabotoEntityUtils.getGetMethodFor(this, propURI);
 		
-		if(null != directMethod){
+		if(directMethod != null){
 			try {
 				Object value = directMethod.invoke(this, (Object[])null);
 				if(value != null)
