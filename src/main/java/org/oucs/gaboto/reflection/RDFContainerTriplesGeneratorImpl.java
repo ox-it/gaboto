@@ -36,8 +36,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.beans.GabotoBean;
 import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.entities.IllegalAnnotationException;
 import org.oucs.gaboto.entities.utils.BagComplexProperty;
 import org.oucs.gaboto.entities.utils.BagLiteralProperty;
 import org.oucs.gaboto.entities.utils.BagURIProperty;
@@ -45,9 +47,7 @@ import org.oucs.gaboto.entities.utils.ComplexProperty;
 import org.oucs.gaboto.entities.utils.GabotoEntityUtils;
 import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
 import org.oucs.gaboto.entities.utils.SimpleURIProperty;
-import org.oucs.gaboto.exceptions.CorruptDataException;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
-import org.oucs.gaboto.exceptions.IllegalAnnotationException;
+import org.oucs.gaboto.model.IncoherenceException;
 
 import com.hp.hpl.jena.datatypes.RDFDatatype;
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
@@ -403,7 +403,7 @@ public class RDFContainerTriplesGeneratorImpl implements RDFContainerTriplesGene
     int count = 1;
     for (Object o : (Collection) object) {
       if (o == null)
-        throw new CorruptDataException("Bag properties may not contain null values.");
+        throw new IncoherenceException("Bag properties may not contain null values.");
       triples
               .add(new Triple(bag, Node.createURI(RDF.li(count).getURI()), Node
                       .createURI(((GabotoEntity) o).getUri())));

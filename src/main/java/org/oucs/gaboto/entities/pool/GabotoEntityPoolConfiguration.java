@@ -34,9 +34,9 @@ package org.oucs.gaboto.entities.pool;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.pool.filters.EntityFilter;
 import org.oucs.gaboto.entities.pool.filters.ResourceFilter;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 

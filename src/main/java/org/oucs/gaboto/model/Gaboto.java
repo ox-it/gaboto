@@ -42,12 +42,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.model.GabotoOntologyLookup;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
-import org.oucs.gaboto.exceptions.CorruptDataException;
-import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.events.GabotoEvent;
 import org.oucs.gaboto.model.events.GabotoInsertionEvent;
 import org.oucs.gaboto.model.events.GabotoRemovalEvent;
@@ -394,7 +392,7 @@ public class Gaboto {
     try {
       add(entity);
     } catch (EntityAlreadyExistsException e) {
-      throw new CorruptDataException(
+      throw new IncoherenceException(
           "Something went terribly wrong .. I just purged " + entity.getUri()
               + ". It should not exist.", e);
     }
@@ -417,7 +415,7 @@ public class Gaboto {
       add(entity);
     } catch (EntityDoesNotExistException e) {
     } catch (EntityAlreadyExistsException e) {
-      throw new CorruptDataException(
+      throw new IncoherenceException(
           "Something went teribly wrong .. I just purged " + entity.getUri()
               + ". It should not exist.", e);
     }
@@ -1078,11 +1076,11 @@ public class Gaboto {
     if (it.hasNext()) {
       Quad quad = (Quad)it.next();
       if (it.hasNext())
-        throw new CorruptDataException("Corrupted data. " + uri
+        throw new IncoherenceException("Corrupted data. " + uri
             + " has two triples defining its type");
 
       if (!quad.getObject().isURI()) {
-        throw new CorruptDataException("Corrupted data. " + uri
+        throw new IncoherenceException("Corrupted data. " + uri
             + " has an invalid type.");
       }
 
@@ -1121,7 +1119,7 @@ public class Gaboto {
 
       if (!quad.getObject().isURI()) {
         logger.error("Corrupted data. " + uri + " has has not a valid type.");
-        throw new CorruptDataException("Corrupted data. " + uri
+        throw new IncoherenceException("Corrupted data. " + uri
             + " has has not a valid type.");
       }
 

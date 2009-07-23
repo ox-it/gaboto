@@ -31,8 +31,8 @@
  */
 package org.oucs.gaboto.model;
 
+import org.oucs.gaboto.GabotoException;
 import org.oucs.gaboto.entities.GabotoEntity;
-import org.oucs.gaboto.exceptions.GabotoException;
 
 /**
  * Is thrown when an entity is added to the Gaboto model that already exists.

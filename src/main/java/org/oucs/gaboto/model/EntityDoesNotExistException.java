@@ -29,41 +29,26 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.exceptions;
+package org.oucs.gaboto.model;
+
+import org.oucs.gaboto.GabotoRuntimeException;
+import org.oucs.gaboto.entities.GabotoEntity;
 
 /**
- * Base class for any runtime exception in the Gaboto system.
+ * Is thrown when an {@link GabotoEntity} is accessed that does not exist in the model.
  * 
  * @author Arno Mittelbach
  *
  */
-public class GabotoRuntimeException extends RuntimeException {
+public class EntityDoesNotExistException extends GabotoRuntimeException {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 39494612063670208L;
+	private static final long serialVersionUID = 4587236593997582145L;
 
-	/**
-   * @param message
-   * @param cause
-   */
-  public GabotoRuntimeException(String message, Throwable cause) {
-    super(message, cause);
-  }
-
-  /**
-   * @param cause
-   */
-  public GabotoRuntimeException(Throwable cause) {
-    super(cause);
-  }
-
-  public GabotoRuntimeException(){
-		super();
+	public EntityDoesNotExistException(GabotoEntity entity){
+		super("The entity " + entity.getUri() + " does not exist.");
 	}
 	
-	public GabotoRuntimeException(String message) {
-		super(message);
+	public EntityDoesNotExistException(String entityURI){
+		super("The entity " + entityURI + " does not exist.");
 	}
 }

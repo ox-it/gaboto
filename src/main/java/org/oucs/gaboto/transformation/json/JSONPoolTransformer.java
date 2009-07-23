@@ -40,10 +40,10 @@ import java.util.Map.Entry;
 
 import org.json.JSONException;
 import org.json.JSONStringer;
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.beans.GabotoBean;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.transformation.EntityPoolTransformer;
 
 /**

@@ -29,28 +29,27 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.exceptions;
+package org.oucs.gaboto.model;
+
+import org.oucs.gaboto.GabotoException;
+
+import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- * Provides a common base class for Exceptions within Gaboto.
+ * Is thrown when an RDF resource is accessed that does not exist.
  * 
  * @author Arno Mittelbach
  *
  */
-abstract public class GabotoException extends Exception {
+public class ResourceDoesNotExistException extends GabotoException {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -895312186881926855L;
+	private static final long serialVersionUID = -4330686588081577142L;
 
-	public GabotoException(){
-		super();
+	public ResourceDoesNotExistException(String uri){
+		super("No resource with the uri " + uri + " exists.");
 	}
 	
-	public GabotoException(String message) {
-		super(message);
+	public ResourceDoesNotExistException(Resource res){
+		this(res.getURI());
 	}
-
-
 }

@@ -29,27 +29,28 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.exceptions;
-
+package org.oucs.gaboto;
 
 /**
- * Is thrown when it is suspected that the data in Gaboto is corrupted.
- *  
+ * Provides a common base class for Exceptions within Gaboto.
+ * 
  * @author Arno Mittelbach
  *
  */
-public class IncoherenceException extends GabotoRuntimeException {
-  private static final long serialVersionUID = -2814228062630437713L;
+abstract public class GabotoException extends Exception {
 
-  public IncoherenceException(Throwable cause) {
-    super(cause);
-  }
-	public IncoherenceException(String message, Throwable cause) {
-    super(message, cause);
-  }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -895312186881926855L;
 
-
-  public IncoherenceException(String message){
+	public GabotoException(){
+		super();
+	}
+	
+	public GabotoException(String message) {
 		super(message);
 	}
+
+
 }

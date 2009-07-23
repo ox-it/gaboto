@@ -45,9 +45,9 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.utils.GabotoEntityUtils;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.timedim.TimeInstant;

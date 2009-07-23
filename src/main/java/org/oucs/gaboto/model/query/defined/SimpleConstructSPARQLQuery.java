@@ -36,11 +36,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.exceptions.CorruptDataException;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
+import org.oucs.gaboto.model.IncoherenceException;
 import org.oucs.gaboto.model.NoTimeIndexSetException;
 import org.oucs.gaboto.model.query.GabotoQueryImpl;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -112,7 +112,7 @@ public class SimpleConstructSPARQLQuery extends GabotoQueryImpl {
   }
 
   @Override
-  protected Object execute() throws NoTimeIndexSetException, CorruptDataException {
+  protected Object execute() throws NoTimeIndexSetException, IncoherenceException {
     GabotoSnapshot snapshot = getGaboto().getSnapshot(timeInstant);
 
     GabotoSnapshot intermediateSnap = snapshot.execSPARQLConstruct(query);

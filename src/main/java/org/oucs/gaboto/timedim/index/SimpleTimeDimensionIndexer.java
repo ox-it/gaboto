@@ -38,7 +38,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import org.oucs.gaboto.exceptions.CorruptDataException;
+import org.oucs.gaboto.model.IncoherenceException;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
@@ -66,7 +66,7 @@ public class SimpleTimeDimensionIndexer implements TimeDimensionIndexer {
 
 	private Map<String, TimeSpan> lookup = new HashMap<String, TimeSpan>();
 	
-	public void createIndex(Model cdg) throws CorruptDataException {
+	public void createIndex(Model cdg) throws IncoherenceException {
 		String query = GabotoPredefinedQueries.getTimeDimensionIndexQuery();
 		QueryExecution qe = QueryExecutionFactory.create( query, cdg );
 		ResultSet rs = qe.execSelect();
@@ -105,7 +105,7 @@ public class SimpleTimeDimensionIndexer implements TimeDimensionIndexer {
 				
 				add(graph, ts);
 			} catch(IllegalArgumentException e){
-				throw new CorruptDataException("The data seems to be corrupt. Can not load graph " + graph , e);
+				throw new IncoherenceException("The data seems to be corrupt. Can not load graph " + graph , e);
 			}
 		}
 		

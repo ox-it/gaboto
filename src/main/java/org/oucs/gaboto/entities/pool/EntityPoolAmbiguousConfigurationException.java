@@ -31,7 +31,7 @@
  */
 package org.oucs.gaboto.entities.pool;
 
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
+import org.oucs.gaboto.GabotoRuntimeException;
 
 /**
  * Is thrown if the {@link GabotoEntityPoolConfiguration} can be used for the creation of an {@link GabotoEntityPool}, but

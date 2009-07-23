@@ -36,10 +36,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.utils.GabotoEntityUtils;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.reflection.RDFContainer;
 import org.oucs.gaboto.reflection.RDFContainerTriplesGeneratorImpl;

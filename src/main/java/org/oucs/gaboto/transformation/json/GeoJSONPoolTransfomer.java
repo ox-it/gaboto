@@ -33,8 +33,8 @@ package org.oucs.gaboto.transformation.json;
 
 import org.json.JSONException;
 import org.json.XML;
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.transformation.kml.KMLPoolTransformer;
 
 /**

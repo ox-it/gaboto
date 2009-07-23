@@ -29,25 +29,22 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.exceptions;
+package org.oucs.gaboto.entities;
 
-import com.hp.hpl.jena.rdf.model.Resource;
+import org.oucs.gaboto.GabotoRuntimeException;
 
 /**
- * Is thrown when an RDF resource is accessed that does not exist.
+ * Is thrown if an {@link GabotoEntity} class uses annotation incorrectly.
  * 
  * @author Arno Mittelbach
- *
+ * @see GabotoEntity
  */
-public class ResourceDoesNotExistException extends GabotoException {
+public class IllegalAnnotationException extends GabotoRuntimeException{
 
-	private static final long serialVersionUID = -4330686588081577142L;
+	private static final long serialVersionUID = 6390552659060182857L;
 
-	public ResourceDoesNotExistException(String uri){
-		super("No resource with the uri " + uri + " exists.");
-	}
-	
-	public ResourceDoesNotExistException(Resource res){
-		this(res.getURI());
+	public IllegalAnnotationException(Class<?> clazz){
+		super("Class " + clazz.getName() + " contains invalid annotations.");
 	}
 }
+	

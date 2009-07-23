@@ -31,7 +31,7 @@
  */
 package org.oucs.gaboto.model.query;
 
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
+import org.oucs.gaboto.GabotoRuntimeException;
 
 /**
  * Is thrown if an unsupported format is supplied.

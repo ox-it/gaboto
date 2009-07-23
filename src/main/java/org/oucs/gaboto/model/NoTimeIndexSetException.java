@@ -31,7 +31,7 @@
  */
 package org.oucs.gaboto.model;
 
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
+import org.oucs.gaboto.GabotoRuntimeException;
 
 /**
  * Is thrown when a time index is accessed in an {@link Gaboto} model that did not create one.

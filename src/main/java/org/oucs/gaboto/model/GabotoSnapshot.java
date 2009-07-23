@@ -36,12 +36,10 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
-import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.timedim.TimeSpan;
 
 import com.hp.hpl.jena.graph.Node;
@@ -180,8 +178,6 @@ public class GabotoSnapshot {
 	 * @param uri The resource's URI
 	 * 
 	 * @return The RDF Resource
-	 * 
-	 * @throws ResourceDoesNotExistException 
 	 */
 	public Resource getResource(String uri) throws ResourceDoesNotExistException {
 		if(! containsResource(uri))
@@ -432,7 +428,12 @@ public class GabotoSnapshot {
 	public GabotoEntity loadEntity(String uri) {
 		Collection<Resource> resCol = new HashSet<Resource>();
 		
-		Resource res = this.getResource(uri);
+		Resource res;
+    try {
+      res = this.getResource(uri);
+    } catch (ResourceDoesNotExistException e) {
+      throw new EntityDoesNotExistException(uri);
+    }
 		resCol.add(res);
 		
 		// create config

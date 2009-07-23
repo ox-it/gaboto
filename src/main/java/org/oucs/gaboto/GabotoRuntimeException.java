@@ -29,22 +29,41 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.exceptions;
-
-import org.oucs.gaboto.entities.GabotoEntity;
+package org.oucs.gaboto;
 
 /**
- * Is thrown if an {@link GabotoEntity} class uses annotation incorrectly.
+ * Base class for any runtime exception in the Gaboto system.
  * 
  * @author Arno Mittelbach
- * @see GabotoEntity
+ *
  */
-public class IllegalAnnotationException extends GabotoRuntimeException{
+public class GabotoRuntimeException extends RuntimeException {
 
-	private static final long serialVersionUID = 6390552659060182857L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 39494612063670208L;
 
-	public IllegalAnnotationException(Class<?> clazz){
-		super("Class " + clazz.getName() + " contains invalid annotations.");
+	/**
+   * @param message
+   * @param cause
+   */
+  public GabotoRuntimeException(String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  /**
+   * @param cause
+   */
+  public GabotoRuntimeException(Throwable cause) {
+    super(cause);
+  }
+
+  public GabotoRuntimeException(){
+		super();
+	}
+	
+	public GabotoRuntimeException(String message) {
+		super(message);
 	}
 }
-	

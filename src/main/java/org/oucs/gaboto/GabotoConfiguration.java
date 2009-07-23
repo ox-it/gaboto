@@ -39,7 +39,6 @@ import java.util.Map;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.oucs.gaboto.model.GabotoOntologyLookup;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.util.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

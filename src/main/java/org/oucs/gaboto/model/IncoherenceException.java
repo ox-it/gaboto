@@ -29,25 +29,29 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.exceptions;
+package org.oucs.gaboto.model;
 
-import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.GabotoRuntimeException;
+
 
 /**
- * Is thrown when an {@link GabotoEntity} is accessed that does not exist in the model.
- * 
+ * Is thrown when it is suspected that the data in Gaboto is corrupted.
+ *  
  * @author Arno Mittelbach
  *
  */
-public class EntityDoesNotExistException extends GabotoRuntimeException {
+public class IncoherenceException extends GabotoRuntimeException {
+  private static final long serialVersionUID = -2814228062630437713L;
 
-	private static final long serialVersionUID = 4587236593997582145L;
+  public IncoherenceException(Throwable cause) {
+    super(cause);
+  }
+	public IncoherenceException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-	public EntityDoesNotExistException(GabotoEntity entity){
-		super("The entity " + entity.getUri() + " does not exist.");
-	}
-	
-	public EntityDoesNotExistException(String entityURI){
-		super("The entity " + entityURI + " does not exist.");
+
+  public IncoherenceException(String message){
+		super(message);
 	}
 }

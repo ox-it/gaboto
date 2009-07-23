@@ -39,10 +39,10 @@ import java.util.HashSet;
 import java.util.Map;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.beans.GabotoBean;
 import org.oucs.gaboto.entities.GabotoEntity;
-import org.oucs.gaboto.exceptions.GabotoRuntimeException;
-import org.oucs.gaboto.exceptions.IllegalAnnotationException;
+import org.oucs.gaboto.entities.IllegalAnnotationException;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.ontology.OntClass;
