@@ -36,77 +36,56 @@ import org.oucs.gaboto.timedim.TimeSpan;
 
 import com.hp.hpl.jena.graph.Triple;
 
-import de.fuberlin.wiwiss.ng4j.Quad;
-
 /**
- * Describes that a triple was removed from Gaboto.
+ * Describes that a new triple has been inserted into an Gaboto model.
  * 
  * @author Arno Mittelbach
  * @version 0.1
  */
-public class GabotoRemovalEvent extends GabotoEvent{
+public class InsertionGabotoEvent extends GabotoEvent {
 
 	private TimeSpan timespan;
 	private Triple triple;
-	private Quad quad;
 	
 	/**
-	 * Constructs a new removal event describing that a triple was removed from the gdg.
+	 * Constructs a new insertion event that describes that a triple was added to the gdg.
 	 * 
-	 * @param triple The triple that was removed from the gdg.
-	 * @see Gaboto#getGlobalKnowledgeGraph() 
+	 * @param triple The triple that was added.
+	 * @see Gaboto#getGlobalKnowledgeGraph()
 	 */
-	public GabotoRemovalEvent(Triple triple) {
+	public InsertionGabotoEvent(Triple triple) {
 		super();
 		this.triple = triple;
 	}
 
 	/**
-	 * Constructs a new removal event describing that a triple was removed from a specific graph (described by the time span).
+	 * Creates a new insertion event that describes that a triple was added to the graph described by the time span.
 	 * 
-	 * @param timespan The time span describing the graph the triple was removed from.
-	 * @param triple The triple that was removed from Gaboto.
+	 * @param timespan The time span.
+	 * @param triple The triple that was added.
 	 */
-	public GabotoRemovalEvent(TimeSpan timespan, Triple triple) {
+	public InsertionGabotoEvent(TimeSpan timespan, Triple triple) {
 		super();
 		this.timespan = timespan;
 		this.triple = triple;
 	}
+
 	
 	/**
-	 * Constructs a new removal event describing that a quad was removed from Gaboto.
+	 * Returns the time span that describes the graph the triple was added to.
 	 * 
-	 * @param quad The quad that was removed from the Gaboto.
-	 * @see Gaboto#getGlobalKnowledgeGraph() 
-	 */
-	public GabotoRemovalEvent(Quad quad) {
-		super();
-		this.setQuad(quad);
-	}
-
-	/**
-	 * Returns the time span that describes the graph the triple was removed from.
-	 * 
-	 * @return Null (in case the triple was removed from the gdg) or the time span describing the graph the tripple was removed from.
+	 * @return Null (in case the triple was added to the gdg) or the time span describing the graph the tripple was added to.
 	 */
 	public TimeSpan getTimespan() {
 		return timespan;
 	}
 
 	/**
-	 * Returns the triple that was removed from the Gaboto system.
+	 * Returns the triple that was added to the Gaboto system.
 	 * 
-	 * @return The triple that was removed from the Gaboto system.
+	 * @return The triple that was added to the Gaboto system.
 	 */
 	public Triple getTriple() {
 		return triple;
-	}
-
-	public void setQuad(Quad quad) {
-		this.quad = quad;
-	}
-
-	public Quad getQuad() {
-		return quad;
 	}
 }
