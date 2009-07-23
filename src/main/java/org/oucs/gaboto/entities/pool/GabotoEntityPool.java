@@ -52,7 +52,7 @@ import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.model.QuerySolutionProcessor;
+import org.oucs.gaboto.model.SPARQLQuerySolutionProcessor;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 
 import com.hp.hpl.jena.graph.Graph;
@@ -446,7 +446,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
             + "?bag ?li <" + entity.getUri() + "> .\n" + "}";
 
         // execute query
-        snapshot.execSPARQLSelect(query, new QuerySolutionProcessor() {
+        snapshot.execSPARQLSelect(query, new SPARQLQuerySolutionProcessor() {
           public void processSolution(QuerySolution solution) {
             Resource res = solution.getResource("res");
             if (res != null) {
@@ -491,9 +491,6 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    *          The snapshot the resource was taken from.
    * @param direct
    * @param bypassTests whether to check entity validity
-   * 
-   * @throws ResourceDoesNotExistException
-   * @throws EntityDoesNotExistException
    */
   GabotoEntity addEntity(Resource resource, GabotoSnapshot snapshotFrom,
       boolean direct, boolean bypassTests)  {
@@ -506,11 +503,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
     Statement typeStmt = resource.getProperty(RDF.type);
 
     if (typeStmt == null)
-      try {
-        type = gaboto.getTypeOf(resource.getURI());
-      } catch (EntityDoesNotExistException e1) {
-        throw new GabotoRuntimeException("No Gaboto Entity found for " + resource.getURI(), e1);
-      }
+      type = gaboto.getTypeOf(resource.getURI());
 
     if (type == null
         && (typeStmt == null || !typeStmt.getObject().isResource())) {
@@ -518,55 +511,55 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       return null;
     } else if (type == null && typeStmt != null)
       type = ((Resource) typeStmt.getObject()).getURI();
-
-    // // try to load entity class
-    try {
-      Class<?> entityClass = snapshot.getGaboto().getOntologyLookup().getEntityClassFor(type);
+    
+    Class<?> entityClass = snapshot.getGaboto().getOntologyLookup().getEntityClassFor(type);
 
       // instantiate
-      GabotoEntity entity = (GabotoEntity) entityClass.newInstance();
-
-      // test type
-      // is entity of allowed type or is it an indirect add
-      if (!bypassTests) {
-        if (direct && poolConfig != null && !poolConfig.getAcceptedTypes().isEmpty()
-            && !poolConfig.getAcceptedTypes().contains(entity.getType())) {
-          return null;
-        }
-        // is entity of an unaccepted type?
-        if (direct && null != poolConfig && !poolConfig.getUnacceptedTypes().isEmpty()
-            && poolConfig.getUnacceptedTypes().contains(entity.getType())) {
-          return null;
-        }
-      }
-
-      // resource filters
-      if (direct) {
-        // resource filters
-        boolean passedFilter = true;
-        for (ResourceFilter filter : poolConfig.getResourceFilters()) {
-          try {
-            filter.appliesTo().cast(entity);
-            if (!filter.filterResource(resource)) {
-              passedFilter = false;
-              break;
-            }
-          } catch (ClassCastException e) {
-            // On to the next one
-          }
-        }
-        if (!passedFilter)
-          return null;
-      }
-
-      // load entity
-      entity.loadFromSnapshot(resource, snapshotFrom, this);
-
-      // add entity
-      return this.addEntity(entity, direct);
+    GabotoEntity entity;
+    try {
+      entity = (GabotoEntity) entityClass.newInstance();
     } catch (Exception e) {
       throw new GabotoRuntimeException(e);
     }
+
+    // test type
+    // is entity of allowed type or is it an indirect add
+    if (!bypassTests) {
+      if (direct && poolConfig != null && !poolConfig.getAcceptedTypes().isEmpty()
+          && !poolConfig.getAcceptedTypes().contains(entity.getType())) {
+        return null;
+      }
+      // is entity of an unaccepted type?
+      if (direct && null != poolConfig && !poolConfig.getUnacceptedTypes().isEmpty()
+          && poolConfig.getUnacceptedTypes().contains(entity.getType())) {
+        return null;
+      }
+    }
+
+    // resource filters
+    if (direct) {
+      // resource filters
+      boolean passedFilter = true;
+      for (ResourceFilter filter : poolConfig.getResourceFilters()) {
+        try {
+          filter.appliesTo().cast(entity);
+          if (!filter.filterResource(resource)) {
+            passedFilter = false;
+            break;
+          }
+        } catch (ClassCastException e) {
+          // On to the next one
+        }
+      }
+      if (!passedFilter)
+        return null;
+    }
+
+    // load entity
+    entity.loadFromSnapshot(resource, snapshotFrom, this);
+
+    // add entity
+    return this.addEntity(entity, direct);
   }
 
   /**
