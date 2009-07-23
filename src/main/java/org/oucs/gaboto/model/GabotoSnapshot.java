@@ -499,7 +499,7 @@ public class GabotoSnapshot {
 	 * 
 	 * @param query The query to execute.
 	 */
-	public void execSPARQLSelect(String query, QuerySolutionProcessor processor){
+	public void execSPARQLSelect(String query, SPARQLQuerySolutionProcessor processor){
 		QueryExecution qexec = QueryExecutionFactory.create( query, getModel() );
 		
 		try{
