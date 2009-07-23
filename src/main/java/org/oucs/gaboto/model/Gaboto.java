@@ -46,7 +46,6 @@ import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.model.GabotoOntologyLookup;
 import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
 import org.oucs.gaboto.exceptions.CorruptDataException;
-import org.oucs.gaboto.exceptions.CorruptTimeIndexException;
 import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.GabotoException;
@@ -263,7 +262,6 @@ public class Gaboto {
    * @return A snapshot only containing flat RDF.
    * 
    * @throws NoTimeIndexSetException
-   * @throws CorruptTimeIndexException
    */
   public GabotoSnapshot getSnapshot(TimeInstant ti)
       throws NoTimeIndexSetException {
