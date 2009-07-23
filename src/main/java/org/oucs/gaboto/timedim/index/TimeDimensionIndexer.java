@@ -33,8 +33,6 @@ package org.oucs.gaboto.timedim.index;
 
 import java.util.Collection;
 
-import org.oucs.gaboto.exceptions.CorruptDataException;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
