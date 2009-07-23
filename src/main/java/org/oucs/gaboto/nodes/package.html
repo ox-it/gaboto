@@ -1,0 +1,37 @@
+<html>
+<body>
+<p>
+{@link org.oucs.gaboto.entities.GabotoEntity}s are java representations of objects from the Gaboto ontology. For each
+class in the OxPoints ontology there has to be a corresponding java representation. These
+{@link org.oucs.gaboto.entities.GabotoEntity}s follow the convention of JavaBeans (see 
+<a href="http://en.wikipedia.org/wiki/JavaBeans">JavaBeans on Wikipedia</a>) and can be 
+dynamically generated from the corresponding RDF or used to create RDF.
+</p>
+<p>
+Beans consist of get and set methods for each attribute  and additional annotations. 
+The annotations are then used by Gaboto to either generate entities from the RDF, RDF from
+entities or to transform entities into a different output format (e.g. 
+<a href="http://code.google.com/apis/kml/documentation/">KML</a>).
+</p>
+<p>While {@link org.oucs.gaboto.entities.GabotoEntity}s are representation of Gaboto objects
+at a specific point in time, {@link org.oucs.gaboto.entities.GabotoTimeBasedEntity} represent
+an Gaboto object over its lifespan.
+</p>
+<p>
+{@link org.oucs.gaboto.entities.GabotoTimeBasedEntity}s are used to set and change
+timebound properties or can be used to display the changes of an entity over time.
+</p>
+<p>
+GabotoBeans are simple objects following the convention of Java Beans (see the 
+<a href="http://en.wikipedia.org/wiki/JavaBeans">wikipedia article</a>). They represent
+complex properties for {@link org.oucs.gaboto.entities.GabotoEntity} that cannot be represented using 
+binary relationships (or in other words, need blank nodes and more than one rdf triple
+to be represented in the RDF Graph).
+</p>
+<p>
+An example for such a complex property would be the address of a building. As an example
+of how addresses could be stored in RDF, see the 
+<a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/#structuredproperties">RDF Primer</a>.
+</p>  
+</body>
+</html>
