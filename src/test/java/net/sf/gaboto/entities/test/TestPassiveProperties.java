@@ -40,7 +40,6 @@ import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -59,7 +58,7 @@ public class TestPassiveProperties  {
 	}
 	
 	@Test
-	public void testClassicPropertyLoading() throws EntityPoolInvalidConfigurationException{
+	public void testClassicPropertyLoading() {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
@@ -79,7 +78,7 @@ public class TestPassiveProperties  {
 	}
 	
 	@Test
-	public void testClassicPropertyLoading2() throws EntityPoolInvalidConfigurationException{
+	public void testClassicPropertyLoading2() {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
