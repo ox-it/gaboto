@@ -3,7 +3,8 @@ package org.json;
 import java.io.IOException;
 import java.io.Writer;
 
-// As per original but with one change marked NOTE TPP Change here
+// As per original but with two changes marked NOTE TPP Change here
+// Why not extend ? Because top is private so indentation is not possible
 
 /*
 Copyright (c) 2006 JSON.org
