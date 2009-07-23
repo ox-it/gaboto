@@ -46,7 +46,7 @@ import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
-import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
+import org.oucs.gaboto.entities.GabotoTimeBasedEntity;
 import org.oucs.gaboto.model.EntityAlreadyExistsException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.timedim.TimeInstant;
