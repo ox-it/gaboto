@@ -39,7 +39,6 @@ import java.util.Set;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
@@ -525,9 +524,8 @@ public class GabotoSnapshot {
 	 * Creates an {@link GabotoEntityPool} with a standard configuration from this snapshot.
 	 * 
 	 * @return An GabotoEntityPool build from this snapshot.
-	 * @throws CorruptDataException 
 	 */
-	public GabotoEntityPool buildEntityPool() throws CorruptDataException{
+	public GabotoEntityPool buildEntityPool() {
     return GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(this));
 	}
 	
