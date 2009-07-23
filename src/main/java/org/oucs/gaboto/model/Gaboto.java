@@ -1337,4 +1337,31 @@ public class Gaboto {
   public GabotoConfiguration getConfig() {
     return config;
   }
+
+  /**
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode() {
+    // TODO As we have overridden equals, 
+    throw new UnsupportedOperationException();
+  }
+
+  /**
+   * @see java.lang.Object#equals(java.lang.Object)
+   */
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (! (obj instanceof Gaboto))
+      return false;
+    else
+      if (cdg.isIsomorphicWith(((Gaboto)obj).cdg) &&
+          getJenaModelViewOnNamedGraphSet().isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet()))
+        return true;
+      else 
+        return super.equals(obj);
+  }
+
+
 }
