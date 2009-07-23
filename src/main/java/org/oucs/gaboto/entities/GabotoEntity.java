@@ -40,13 +40,11 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoRuntimeException;
+import org.oucs.gaboto.entities.annotations.SimpleLiteralProperty;
+import org.oucs.gaboto.entities.annotations.SimpleURIProperty;
 import org.oucs.gaboto.entities.pool.EntityExistsCallback;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.PassiveEntitiesRequest;
-import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
-import org.oucs.gaboto.entities.utils.GabotoEntityUtils;
-import org.oucs.gaboto.entities.utils.SimpleLiteralProperty;
-import org.oucs.gaboto.entities.utils.SimpleURIProperty;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.reflection.RDFContainer;
