@@ -92,7 +92,6 @@ public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenera
    * 
    * @return a list of triples that represent this entity.
    * 
-   * @throws IllegalAnnotationException
    */
   public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode, boolean includeType) {
     List<Triple> triples = new ArrayList<Triple>();
