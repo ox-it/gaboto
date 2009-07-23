@@ -738,9 +738,8 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * 
 	 * @see #getTriplesFor(boolean)
 	 * @return a list of triples that represent this entity.
-	 * @throws IllegalAnnotationException 
 	 */
-	public List<Triple> getTriplesFor() throws IllegalAnnotationException{
+	public List<Triple> getTriplesFor() {
 		return getTriplesFor(true);
 	}
 	
@@ -752,9 +751,8 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * 
 	 * @return a list of triples that represent this entity.
 	 * 
-	 * @throws IllegalAnnotationException 
 	 */
-	public List<Triple> getTriplesFor(boolean includeType) throws IllegalAnnotationException{
+	public List<Triple> getTriplesFor(boolean includeType) {
 		// if no uri
 		if(this.getUri() == null)
 			throw new IllegalArgumentException("Entities need to have a defined uri");
