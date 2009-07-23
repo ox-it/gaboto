@@ -48,7 +48,6 @@ import org.oucs.gaboto.entities.pool.filters.EntityFilter;
 import org.oucs.gaboto.entities.pool.filters.ResourceFilter;
 import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
-import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
@@ -140,10 +139,8 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * 
    * @param config
    *          The configuration.
-   * @throws EntityPoolInvalidConfigurationException
    */
-  public GabotoEntityPool(GabotoEntityPoolConfiguration config)
-      throws EntityPoolInvalidConfigurationException {
+  public GabotoEntityPool(GabotoEntityPoolConfiguration config) {
     this.gaboto = config.getGaboto();
     this.poolConfig = config;
   }
@@ -155,11 +152,9 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    *          The configuration
    * @return a new entity pool created from a given configuration.
    * 
-   * @throws EntityPoolInvalidConfigurationException
    */
-  public static GabotoEntityPool createFrom(GabotoEntityPoolConfiguration config)
-      throws EntityPoolInvalidConfigurationException {
-    config.testConfiguration();
+  public static GabotoEntityPool createFrom(GabotoEntityPoolConfiguration config) {
+    config.assertConfigurationValid();
 
     // get snapshot
     GabotoSnapshot snapshot = config.getSnapshot();
@@ -398,7 +393,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
       addPassiveEntitiesFor(entity);
   }
 
-  public void addPassiveEntitiesFor(GabotoEntity entity) {
+  public void addPassiveEntitiesFor(GabotoEntity entity) throws EntityDoesNotExistException {
     if (this.snapshot == null) 
       throw new GabotoRuntimeException("Cannot load passive entities as snapshot is null.");
 
@@ -501,7 +496,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * @throws EntityDoesNotExistException
    */
   GabotoEntity addEntity(Resource resource, GabotoSnapshot snapshotFrom,
-      boolean direct, boolean bypassTests) {
+      boolean direct, boolean bypassTests)  {
     if (!snapshotFrom.containsResource(resource))
       throw new ResourceDoesNotExistException(resource);
 
@@ -511,7 +506,11 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
     Statement typeStmt = resource.getProperty(RDF.type);
 
     if (typeStmt == null)
-      type = gaboto.getTypeOf(resource.getURI());
+      try {
+        type = gaboto.getTypeOf(resource.getURI());
+      } catch (EntityDoesNotExistException e1) {
+        throw new GabotoRuntimeException("No Gaboto Entity found for " + resource.getURI(), e1);
+      }
 
     if (type == null
         && (typeStmt == null || !typeStmt.getObject().isResource())) {

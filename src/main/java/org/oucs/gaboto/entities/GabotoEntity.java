@@ -435,7 +435,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	/**
 	 * Tries to resolve the direct references from the entity's pool (the pool it was last added to).
 	 */
-	public void resolveDirectReferences(){
+	public void resolveDirectReferences() {
 		resolveDirectReferences(createFromPool);
 	}
 
@@ -443,7 +443,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * Tries to resolve the entity's direct references from the passed pool.
 	 * @param pool The pool to load the direct references from.
 	 */
-	public void resolveDirectReferences(GabotoEntityPool pool) {
+	public void resolveDirectReferences(GabotoEntityPool pool)  {
 		if(isDirectReferencesResolved())
 			return;
 	
@@ -472,7 +472,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	/**
 	 * Tries to load passive entities from the entity's pool.
 	 */
-	public void loadPassiveEntities(){
+	public void loadPassiveEntities() {
 		loadPassiveEntities(createFromPool);
 	}
 		
@@ -480,7 +480,7 @@ abstract public class GabotoEntity implements RDFContainer {
 	 * Tries to load passive entities from the passed pool.
 	 * @param pool The pool to load the passive entities from.
 	 */
-	public void loadPassiveEntities(GabotoEntityPool pool){
+	public void loadPassiveEntities(GabotoEntityPool pool) {
 		if(passiveEntitiesLoaded)
 			return;
 		

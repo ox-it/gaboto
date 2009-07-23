@@ -47,9 +47,7 @@ import java.util.Map.Entry;
 import org.apache.log4j.Logger;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.utils.GabotoEntityUtils;
-import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
-import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.timedim.TimeInstant;
@@ -217,12 +215,9 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    * @return An GabotoTimeBasedEntity that contains all the information about
    *         the entity that is stored directly in the Gaboto model.
    * 
-   * @throws ResourceDoesNotExistException
-   * @throws EntityDoesNotExistException
    */
   @SuppressWarnings("unchecked")
-  public static GabotoTimeBasedEntity loadEntity(String uri, Gaboto gaboto) throws ResourceDoesNotExistException,
-          EntityDoesNotExistException {
+  public static GabotoTimeBasedEntity loadEntity(String uri, Gaboto gaboto) {
     logger.debug("Loading time based entity: " + uri);
 
     // find out the entities type

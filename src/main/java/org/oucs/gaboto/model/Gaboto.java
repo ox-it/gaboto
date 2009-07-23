@@ -48,9 +48,7 @@ import org.oucs.gaboto.entities.time.GabotoTimeBasedEntity;
 import org.oucs.gaboto.exceptions.CorruptDataException;
 import org.oucs.gaboto.exceptions.EntityAlreadyExistsException;
 import org.oucs.gaboto.exceptions.EntityDoesNotExistException;
-import org.oucs.gaboto.exceptions.GabotoException;
 import org.oucs.gaboto.exceptions.GabotoRuntimeException;
-import org.oucs.gaboto.exceptions.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.events.GabotoEvent;
 import org.oucs.gaboto.model.events.GabotoInsertionEvent;
 import org.oucs.gaboto.model.events.GabotoRemovalEvent;
@@ -168,10 +166,8 @@ public class Gaboto {
    * @param idx
    *          A time dimension indexer.
    * 
-   * @throws GabotoException
    */
-  public Gaboto(Model cdg, NamedGraphSet graphset, TimeDimensionIndexer idx)
-      throws CorruptDataException {
+  public Gaboto(Model cdg, NamedGraphSet graphset, TimeDimensionIndexer idx) {
     this.ngs = graphset;
     this.cdg = cdg;
     this.config = GabotoFactory.getConfig();
@@ -422,11 +418,9 @@ public class Gaboto {
       add(entity);
     } catch (EntityDoesNotExistException e) {
     } catch (EntityAlreadyExistsException e) {
-      CorruptDataException cde = new CorruptDataException(
+      throw new CorruptDataException(
           "Something went teribly wrong .. I just purged " + entity.getUri()
-              + ". It should not exist.");
-      cde.initCause(e);
-      throw cde;
+              + ". It should not exist.", e);
     }
   }
 
@@ -482,10 +476,8 @@ public class Gaboto {
    * @param entity
    *          The entity that is to be removed.
    * 
-   * @throws EntityDoesNotExistException
    */
-  synchronized public void purge(GabotoEntity entity)
-      throws EntityDoesNotExistException {
+  synchronized public void purge(GabotoEntity entity) {
     purge(entity.getUri());
   }
 
@@ -495,10 +487,8 @@ public class Gaboto {
    * @param entity
    *          The entity that is to be removed.
    * 
-   * @throws EntityDoesNotExistException
    */
-  synchronized public void purge(GabotoTimeBasedEntity entity)
-      throws EntityDoesNotExistException {
+  synchronized public void purge(GabotoTimeBasedEntity entity) {
     purge(entity.getUri());
   }
 
@@ -508,11 +498,9 @@ public class Gaboto {
    * @param entityURI
    *          The entity referenced by its URI.
    * 
-   * @throws EntityDoesNotExistException
    */
   @SuppressWarnings("unchecked")
-  synchronized public void purge(String entityURI)
-      throws EntityDoesNotExistException {
+  synchronized public void purge(String entityURI) {
     if (!containsEntity(entityURI))
       throw new EntityDoesNotExistException(entityURI);
 
@@ -1014,21 +1002,15 @@ public class Gaboto {
    * 
    * @return The entity.
    * 
-   * @throws EntityDoesNotExistException
    * @throws NoTimeIndexSetException
    */
-  public GabotoEntity getEntity(String uri, TimeInstant ti)
-      throws EntityDoesNotExistException {
+  public GabotoEntity getEntity(String uri, TimeInstant ti) {
     if (!containsEntity(uri))
       throw new EntityDoesNotExistException(uri);
 
     GabotoSnapshot snap = getSnapshot(ti);
 
-    try {
-      return snap.loadEntity(uri);
-    } catch (ResourceDoesNotExistException e) {
-      throw new GabotoRuntimeException(e);
-    }
+    return snap.loadEntity(uri);
   }
 
   /**
@@ -1037,18 +1019,12 @@ public class Gaboto {
    * @param uri
    *          The entity's URI.
    * @return A full representation of the entity.
-   * @throws EntityDoesNotExistException
    */
-  public GabotoTimeBasedEntity getEntityOverTime(String uri)
-      throws EntityDoesNotExistException {
+  public GabotoTimeBasedEntity getEntityOverTime(String uri) {
     if (!containsEntity(uri))
       throw new EntityDoesNotExistException(uri);
 
-    try {
-      return GabotoTimeBasedEntity.loadEntity(uri, this);
-    } catch (ResourceDoesNotExistException e) {
-      throw new GabotoRuntimeException(e);
-    }
+    return GabotoTimeBasedEntity.loadEntity(uri, this);
   }
 
   /**
@@ -1092,12 +1068,9 @@ public class Gaboto {
    * @param uri
    *          The entity's URI.
    * 
-   * @throws CorruptDataException
-   * @throws EntityDoesNotExistException
    */
   @SuppressWarnings("unchecked")
-  public String getTypeOf(String uri) throws CorruptDataException,
-      EntityDoesNotExistException {
+  public String getTypeOf(String uri) {
     if (!containsEntity(uri))
       throw new EntityDoesNotExistException(uri);
 
@@ -1133,12 +1106,9 @@ public class Gaboto {
    * 
    * @return The life time
    * 
-   * @throws CorruptDataException
-   * @throws EntityDoesNotExistException
    */
   @SuppressWarnings("unchecked")
-  public TimeSpan getEntitysLifetime(String uri) throws CorruptDataException,
-      EntityDoesNotExistException {
+  public TimeSpan getEntitysLifetime(String uri) {
     if (!containsEntity(uri))
       throw new EntityDoesNotExistException(uri);
 
@@ -1270,11 +1240,7 @@ public class Gaboto {
     Collection<GabotoTimeBasedEntity> entities = new HashSet<GabotoTimeBasedEntity>();
 
     for (String uri : getEntityURIsFor(prop, value)) {
-      try {
-        entities.add(getEntityOverTime(uri));
-      } catch (EntityDoesNotExistException e) {
-        throw new GabotoRuntimeException(e);
-      }
+      entities.add(getEntityOverTime(uri));
     }
 
     return entities;
@@ -1296,11 +1262,7 @@ public class Gaboto {
     Collection<GabotoTimeBasedEntity> entities = new HashSet<GabotoTimeBasedEntity>();
 
     for (String uri : getEntityURIsFor(prop, value)) {
-      try {
-        entities.add(getEntityOverTime(uri));
-      } catch (EntityDoesNotExistException e) {
-        throw new GabotoRuntimeException(e);
-      }
+      entities.add(getEntityOverTime(uri));
     }
 
     return entities;

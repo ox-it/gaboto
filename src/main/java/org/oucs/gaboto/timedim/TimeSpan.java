@@ -35,8 +35,8 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import org.oucs.gaboto.exceptions.NoTimeIndexSetException;
 import org.oucs.gaboto.model.Gaboto;
+import org.oucs.gaboto.model.NoTimeIndexSetException;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 
 import com.hp.hpl.jena.query.QueryExecution;
