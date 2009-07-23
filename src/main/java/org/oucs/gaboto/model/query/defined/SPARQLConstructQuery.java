@@ -51,32 +51,32 @@ import org.oucs.gaboto.timedim.TimeInstant;
  * @author Arno Mittelbach
  * @version 0.1
  */
-public class SimpleConstructSPARQLQuery extends GabotoQueryImpl {
+public class SPARQLConstructQuery extends GabotoQueryImpl {
 
   private TimeInstant timeInstant;
   private String query;
 
-  public SimpleConstructSPARQLQuery(TimeInstant ti, File query) {
+  public SPARQLConstructQuery(TimeInstant ti, File query) {
     super();
     this.timeInstant = ti;
 
     readFile(query);
   }
 
-  public SimpleConstructSPARQLQuery(TimeInstant ti, String query){
+  public SPARQLConstructQuery(TimeInstant ti, String query){
     super();
     this.timeInstant = ti;
     this.query = query;
   }
 
-  public SimpleConstructSPARQLQuery(Gaboto gaboto, TimeInstant ti, File query) {
+  public SPARQLConstructQuery(Gaboto gaboto, TimeInstant ti, File query) {
     super(gaboto);
     this.timeInstant = ti;
 
     readFile(query);
   }
 
-  public SimpleConstructSPARQLQuery(Gaboto gaboto, TimeInstant ti, String query) {
+  public SPARQLConstructQuery(Gaboto gaboto, TimeInstant ti, String query) {
     super(gaboto);
     this.timeInstant = ti;
     this.query = query;
