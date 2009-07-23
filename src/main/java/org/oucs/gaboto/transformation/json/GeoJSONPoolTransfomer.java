@@ -34,7 +34,7 @@ package org.oucs.gaboto.transformation.json;
 import org.json.JSONException;
 import org.json.XML;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.exceptions.PoolTransformationException;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.transformation.kml.KMLPoolTransformer;
 
 /**
@@ -51,9 +51,7 @@ public class GeoJSONPoolTransfomer extends KMLPoolTransformer {
 		try{
 			return XML.toJSONObject(transformed.trim()).toString();
 		} catch(JSONException e){
-			PoolTransformationException pte = new PoolTransformationException();
-			pte.initCause(e);
-			throw pte;
+		  throw new GabotoRuntimeException(e);
 		}
 	}
 }
