@@ -44,6 +44,9 @@ import org.oucs.gaboto.timedim.TimeInstant;
 
 
 /**
+ * Return all entities. 
+ * 
+ * 
  * @author Tim Pizey
  * @since 15 May 2009
  *
