@@ -37,7 +37,10 @@ import org.oucs.gaboto.entities.GabotoEntity;
 /**
  * Is thrown when an {@link GabotoEntity} is accessed that does not exist in the model.
  * 
- * @author Arno Mittelbach
+ * An unchecked exception, as it is thrown internally when there is little if anything a 
+ * programmer can do about it. 
+ * 
+ *  Arguably it could be split into EntityDoesNotExistException and EntityDoesNotExistRuntimeException.
  *
  */
 public class EntityDoesNotExistException extends GabotoRuntimeException {
