@@ -63,9 +63,8 @@ public interface TimeDimensionIndexer {
 	 * Builds the index.
 	 * 
 	 * @param graphset The graphset the index should be built upon.
-	 * @throws GabotoException
 	 */
-	public void createIndex(Model cdg) throws CorruptDataException;
+	public void createIndex(Model cdg);
 	
 	/**
 	 * Adds another graph to the index.
