@@ -34,7 +34,7 @@ package org.oucs.gaboto.transformation;
 import java.io.StringWriter;
 
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.exceptions.UnsupportedFormatException;
+import org.oucs.gaboto.exceptions.UnsupportedQueryFormatException;
 import org.oucs.gaboto.model.query.GabotoQuery;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -59,9 +59,9 @@ public class RDFPoolTransformerFactory {
 	 * @param format The RDF format 
 	 * @return A transformer object that transforms an entity pool into RDF.
 	 * 
-	 * @throws UnsupportedFormatException
+	 * @throws UnsupportedQueryFormatException
 	 */
-	public static EntityPoolTransformer getRDFPoolTransformer(final String format) throws UnsupportedFormatException{
+	public static EntityPoolTransformer getRDFPoolTransformer(final String format) throws UnsupportedQueryFormatException{
 		if(format.equals(GabotoQuery.FORMAT_RDF_XML) ||
 		   format.equals(GabotoQuery.FORMAT_RDF_XML_ABBREV) ||
 		   format.equals(GabotoQuery.FORMAT_RDF_TURTLE) ||
@@ -81,6 +81,6 @@ public class RDFPoolTransformerFactory {
 		   };
 		}
 		
-		throw new UnsupportedFormatException(format);
+		throw new UnsupportedQueryFormatException(format);
 	}
 }
