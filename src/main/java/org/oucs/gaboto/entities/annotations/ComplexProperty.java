@@ -37,8 +37,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.oucs.gaboto.beans.GabotoBean;
-import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.nodes.GabotoBean;
+import org.oucs.gaboto.nodes.GabotoEntity;
 
 /**
  * Used to annotate methods in {@link GabotoEntity}s that deal with complex properties.

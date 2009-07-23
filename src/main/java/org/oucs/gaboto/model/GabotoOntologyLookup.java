@@ -3,7 +3,7 @@ package org.oucs.gaboto.model;
 import java.util.Collection;
 import java.util.Set;
 
-import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.nodes.GabotoEntity;
 
 public interface GabotoOntologyLookup {
 

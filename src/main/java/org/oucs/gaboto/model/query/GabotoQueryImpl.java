@@ -39,9 +39,9 @@ import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.model.Gaboto;
+import org.oucs.gaboto.transformation.JSONPoolTransformer;
+import org.oucs.gaboto.transformation.KMLPoolTransformer;
 import org.oucs.gaboto.transformation.RDFPoolTransformerFactory;
-import org.oucs.gaboto.transformation.json.JSONPoolTransformer;
-import org.oucs.gaboto.transformation.kml.KMLPoolTransformer;
 
 import com.hp.hpl.jena.rdf.model.Model;
 

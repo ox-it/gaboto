@@ -32,7 +32,7 @@
 package org.oucs.gaboto.model;
 
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.nodes.GabotoEntity;
 
 /**
  * Is thrown when an {@link GabotoEntity} is accessed that does not exist in the model.

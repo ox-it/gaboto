@@ -31,7 +31,7 @@
  */
 package org.oucs.gaboto.entities.pool;
 
-import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.nodes.GabotoEntity;
 
 /**
  * Used by {@link GabotoEntity}s when being loaded from RDF to be notified when some specific entity was added to the pool. 

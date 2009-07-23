@@ -47,7 +47,7 @@ import java.util.Map.Entry;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.oucs.gaboto.beans.GabotoBean;
+import org.oucs.gaboto.nodes.GabotoBean;
 import org.oucs.gaboto.util.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

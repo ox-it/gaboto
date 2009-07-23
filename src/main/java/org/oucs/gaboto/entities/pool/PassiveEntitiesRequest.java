@@ -31,7 +31,7 @@
  */
 package org.oucs.gaboto.entities.pool;
 
-import org.oucs.gaboto.entities.GabotoEntity;
+import org.oucs.gaboto.nodes.GabotoEntity;
 
 public interface PassiveEntitiesRequest {
 

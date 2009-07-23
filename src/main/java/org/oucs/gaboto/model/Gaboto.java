@@ -43,13 +43,13 @@ import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.GabotoEntity;
-import org.oucs.gaboto.entities.GabotoTimeBasedEntity;
 import org.oucs.gaboto.model.GabotoOntologyLookup;
 import org.oucs.gaboto.model.events.GabotoEvent;
-import org.oucs.gaboto.model.events.GabotoInsertionEvent;
-import org.oucs.gaboto.model.events.GabotoRemovalEvent;
+import org.oucs.gaboto.model.events.InsertionGabotoEvent;
+import org.oucs.gaboto.model.events.RemovalGabotoEvent;
 import org.oucs.gaboto.model.listener.UpdateListener;
+import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.nodes.GabotoTimeBasedEntity;
 import org.oucs.gaboto.timedim.TimeInstant;
 import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.timedim.index.TimeDimensionIndexer;
@@ -572,13 +572,13 @@ public class Gaboto {
    * @see #attachUpdateListener(UpdateListener)
    * @see #detachUpdateListener(UpdateListener)
    * @see UpdateListener
-   * @see GabotoInsertionEvent
+   * @see InsertionGabotoEvent
    */
   synchronized public void add(Triple triple) {
     getGlobalKnowledgeGraph().add(triple);
 
     // inform listeners
-    triggerUpdateEvent(new GabotoInsertionEvent(triple));
+    triggerUpdateEvent(new InsertionGabotoEvent(triple));
   }
 
   /**
@@ -599,13 +599,13 @@ public class Gaboto {
    * @see #attachUpdateListener(UpdateListener)
    * @see #detachUpdateListener(UpdateListener)
    * @see UpdateListener
-   * @see GabotoRemovalEvent
+   * @see RemovalGabotoEvent
    */
   synchronized public void remove(Triple triple) {
     getGlobalKnowledgeGraph().delete(triple);
 
     // inform listeners
-    triggerUpdateEvent(new GabotoRemovalEvent(triple));
+    triggerUpdateEvent(new RemovalGabotoEvent(triple));
   }
 
   /**
@@ -631,7 +631,7 @@ public class Gaboto {
    * @see #attachUpdateListener(UpdateListener)
    * @see #detachUpdateListener(UpdateListener)
    * @see UpdateListener
-   * @see GabotoInsertionEvent
+   * @see InsertionGabotoEvent
    */
   synchronized public NamedGraph add(TimeSpan ts, Triple triple) {
     if (ts == null || ts.equals(TimeSpan.EXISTENCE)) {
@@ -659,7 +659,7 @@ public class Gaboto {
     graph.add(triple);
 
     // inform listeners
-    triggerUpdateEvent(new GabotoInsertionEvent(ts, triple));
+    triggerUpdateEvent(new InsertionGabotoEvent(ts, triple));
 
     return graph;
   }
@@ -681,7 +681,7 @@ public class Gaboto {
    * @see #attachUpdateListener(UpdateListener)
    * @see #detachUpdateListener(UpdateListener)
    * @see UpdateListener
-   * @see GabotoRemovalEvent
+   * @see RemovalGabotoEvent
    */
   synchronized public void remove(TimeSpan ts, Triple triple) {
     if (ts == null || ts.equals(TimeSpan.EXISTENCE)) {
@@ -693,7 +693,7 @@ public class Gaboto {
       NamedGraph graph = getGraph(ts);
       graph.delete(triple);
 
-      triggerUpdateEvent(new GabotoRemovalEvent(ts, triple));
+      triggerUpdateEvent(new RemovalGabotoEvent(ts, triple));
     }
   }
 
@@ -706,7 +706,7 @@ public class Gaboto {
   synchronized public void remove(Quad q) {
     getNamedGraphSet().removeQuad(q);
 
-    triggerUpdateEvent(new GabotoRemovalEvent(q));
+    triggerUpdateEvent(new RemovalGabotoEvent(q));
   }
 
   /**

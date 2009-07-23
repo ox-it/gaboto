@@ -37,9 +37,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
+import org.oucs.gaboto.nodes.GabotoEntity;
 import org.oucs.gaboto.timedim.TimeSpan;
 
 import com.hp.hpl.jena.graph.Node;
