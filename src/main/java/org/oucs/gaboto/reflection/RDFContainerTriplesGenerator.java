@@ -36,7 +36,10 @@ import java.util.List;
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;
 
-public interface RDFContainerTripleGenerator {
+/**
+ * A Generator of Lists of Triples for a given Container. 
+ */
+public interface RDFContainerTriplesGenerator {
 
 	public List<Triple> getTriplesFor(RDFContainer rdfContainerObject, Node subjectNode);
 	

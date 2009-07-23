@@ -55,16 +55,16 @@ import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-public class RDFContainerTripleGeneratorImpl implements RDFContainerTripleGenerator {
+public class RDFContainerTriplesGeneratorImpl implements RDFContainerTriplesGenerator {
 
-  private static RDFContainerTripleGenerator instance;
+  private static RDFContainerTriplesGenerator instance;
 
-  protected RDFContainerTripleGeneratorImpl() {
+  protected RDFContainerTriplesGeneratorImpl() {
   }
 
-  public static RDFContainerTripleGenerator getInstance() {
+  public static RDFContainerTriplesGenerator getInstance() {
     if (instance == null)
-      instance = new RDFContainerTripleGeneratorImpl();
+      instance = new RDFContainerTriplesGeneratorImpl();
 
     return instance;
   }
