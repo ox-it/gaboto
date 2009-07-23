@@ -36,7 +36,7 @@ import java.util.HashSet;
 
 import org.oucs.gaboto.entities.pool.filters.EntityFilter;
 import org.oucs.gaboto.entities.pool.filters.ResourceFilter;
-import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
+import org.oucs.gaboto.exceptions.GabotoRuntimeException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 
@@ -106,18 +106,14 @@ public class GabotoEntityPoolConfiguration {
    * Tests whether this configuration can be used to create an
    * {@link GabotoEntityPool}.
    * 
-   * @throws EntityPoolInvalidConfigurationException
-   * @throws EntityPoolAmbiguousConfigurationException
    */
-  public void testConfiguration()
-      throws EntityPoolInvalidConfigurationException,
-      EntityPoolAmbiguousConfigurationException {
+  public void assertConfigurationValid() {
     if (null == snapshot && (null == model || null == gaboto))
-      throw new EntityPoolInvalidConfigurationException(
+      throw new GabotoRuntimeException(
           "Either a snapshot or a jena and gaboto model have to be supplied.");
 
     if (null != snapshot && (null != model || null != gaboto))
-      throw new EntityPoolAmbiguousConfigurationException(
+      throw new GabotoRuntimeException(
           "Supplying a snapshot and a jena model/gaboto model is ambiguous.");
   }
 
