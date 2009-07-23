@@ -32,29 +32,18 @@
 package org.oucs.gaboto;
 
 /**
- * Base class for any runtime exception in the Gaboto system.
- * 
- * @author Arno Mittelbach
+ * Unless there is something the application programmer can do about an exception 
+ * then it should extend this class.  
  *
  */
 public class GabotoRuntimeException extends RuntimeException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 39494612063670208L;
 
-	/**
-   * @param message
-   * @param cause
-   */
   public GabotoRuntimeException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  /**
-   * @param cause
-   */
   public GabotoRuntimeException(Throwable cause) {
     super(cause);
   }
