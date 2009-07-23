@@ -128,8 +128,7 @@ public class SimpleConstructSPARQLQuery extends GabotoQueryImpl {
 
   @Override
   protected void doPrepare() {
-    // TODO Auto-generated method stub
-
+    // No op 
   }
 
 }
