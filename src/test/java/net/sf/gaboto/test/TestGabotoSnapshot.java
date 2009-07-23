@@ -41,7 +41,6 @@ import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.entities.GabotoEntity;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.exceptions.EntityPoolInvalidConfigurationException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.QuerySolutionProcessorImpl;
@@ -74,7 +73,7 @@ public class TestGabotoSnapshot {
   }
 	
 	@Test
-	public void testSPARQLSelect() throws EntityPoolInvalidConfigurationException {
+	public void testSPARQLSelect() {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
@@ -109,7 +108,7 @@ public class TestGabotoSnapshot {
 	}
 	
 	@Test
-	public void testSPARQLAsk() throws EntityPoolInvalidConfigurationException {
+	public void testSPARQLAsk() {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
@@ -132,7 +131,7 @@ public class TestGabotoSnapshot {
 	}
 	
 	@Test
-	public void testSPARQLDescribe() throws EntityPoolInvalidConfigurationException {
+	public void testSPARQLDescribe() {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
