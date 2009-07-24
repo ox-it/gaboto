@@ -76,9 +76,9 @@ public class AllEntities extends GabotoQueryImpl {
     // create snapshot
     GabotoSnapshot snapshot = getGaboto().getSnapshot(TimeInstant.now());
     // create config
-    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
+    GabotoEntityPoolConfiguration entityPoolConfig = new GabotoEntityPoolConfiguration(snapshot);
     
-    return GabotoEntityPool.createFrom(config);
+    return GabotoEntityPool.createFrom(entityPoolConfig);
   }
 
   @Override
