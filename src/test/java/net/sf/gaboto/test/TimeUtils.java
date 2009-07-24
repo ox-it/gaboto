@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.UUID;
 
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.timedim.TimeInstant;
-import org.oucs.gaboto.timedim.TimeSpan;
+import org.oucs.gaboto.time.TimeInstant;
+import org.oucs.gaboto.time.TimeSpan;
 
 public class TimeUtils {
   

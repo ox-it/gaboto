@@ -48,8 +48,8 @@ import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.SPARQLQuerySolutionProcessor;
 import org.oucs.gaboto.nodes.GabotoEntity;
-import org.oucs.gaboto.timedim.TimeInstant;
-import org.oucs.gaboto.timedim.TimeSpan;
+import org.oucs.gaboto.time.TimeInstant;
+import org.oucs.gaboto.time.TimeSpan;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 

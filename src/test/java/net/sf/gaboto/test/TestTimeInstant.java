@@ -38,7 +38,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.time.TimeInstant;
 
 public class TestTimeInstant {
 	

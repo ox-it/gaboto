@@ -42,7 +42,7 @@ import org.junit.Test;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.ListOfTypedEntities;
-import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 public class TestTEIImporter {

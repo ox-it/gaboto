@@ -37,7 +37,7 @@ import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.ListOfTypedEntities;
-import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 public class TestQueryListOfTypedEntities {

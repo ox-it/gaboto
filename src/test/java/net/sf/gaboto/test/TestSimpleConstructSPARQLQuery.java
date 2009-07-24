@@ -38,7 +38,7 @@ import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.SPARQLConstructQuery;
-import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
