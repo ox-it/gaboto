@@ -40,7 +40,7 @@ import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.nodes.GabotoEntity;
-import org.oucs.gaboto.timedim.TimeSpan;
+import org.oucs.gaboto.time.TimeSpan;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.ontology.OntClass;

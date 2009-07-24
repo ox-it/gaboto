@@ -50,9 +50,9 @@ import org.oucs.gaboto.model.events.RemovalGabotoEvent;
 import org.oucs.gaboto.model.listener.UpdateListener;
 import org.oucs.gaboto.nodes.GabotoEntity;
 import org.oucs.gaboto.nodes.GabotoTimeBasedEntity;
-import org.oucs.gaboto.timedim.TimeInstant;
-import org.oucs.gaboto.timedim.TimeSpan;
-import org.oucs.gaboto.timedim.index.TimeDimensionIndexer;
+import org.oucs.gaboto.time.TimeDimensionIndexer;
+import org.oucs.gaboto.time.TimeInstant;
+import org.oucs.gaboto.time.TimeSpan;
 import org.oucs.gaboto.vocabulary.RDFCON;
 import org.oucs.gaboto.vocabulary.RDFG;
 import org.oucs.gaboto.vocabulary.TimeVocab;
@@ -110,6 +110,8 @@ public class Gaboto {
 
   private static Logger logger = Logger.getLogger(Gaboto.class.getName());
 
+  private GabotoConfiguration config;
+
   /**
    * The next entity id.
    */
@@ -123,14 +125,12 @@ public class Gaboto {
   /**
    * Named graph set. 
    */
-  private NamedGraphSet ngs;
+  private NamedGraphSet namedGraphSet;
 
-  private TimeDimensionIndexer timeIdx;
+  /** Context Description Graph */
+  private Model contextDescriptionGraph;
 
-  /** context description graph */
-  private Model cdg;
-
-  private GabotoConfiguration config;
+  private TimeDimensionIndexer timeDimensionIndexer;
 
   /**
    * Creates a new Gaboto object using the passed graphset.
@@ -140,12 +140,12 @@ public class Gaboto {
    * Gaboto factory.
    * </p>
    * 
-   * @param graphset
+   * @param namedGraphSet
    *          The data.
    */
-  Gaboto(Model cdg, NamedGraphSet graphset) {
-    this.ngs = graphset;
-    this.cdg = cdg;
+  Gaboto(Model cdg, NamedGraphSet namedGraphSet) {
+    this.namedGraphSet = namedGraphSet;
+    this.contextDescriptionGraph = cdg;
     this.config = GabotoFactory.getConfig();
   }
 
@@ -165,13 +165,13 @@ public class Gaboto {
    * 
    */
   public Gaboto(Model cdg, NamedGraphSet graphset, TimeDimensionIndexer idx) {
-    this.ngs = graphset;
-    this.cdg = cdg;
+    this.namedGraphSet = graphset;
+    this.contextDescriptionGraph = cdg;
     this.config = GabotoFactory.getConfig();
 
     // create an index on the time dimension
     idx.createIndex(cdg);
-    this.timeIdx = idx;
+    this.timeDimensionIndexer = idx;
   }
 
   /**
@@ -182,9 +182,9 @@ public class Gaboto {
    *           Thrown if no time dimension index was created.
    */
   public TimeDimensionIndexer getTimeDimensionIndexer() {
-    if (timeIdx == null)
+    if (timeDimensionIndexer == null)
       throw new NoTimeIndexSetException();
-    return timeIdx;
+    return timeDimensionIndexer;
   }
 
   /**
@@ -194,7 +194,7 @@ public class Gaboto {
    *          The indexer.
    */
   public void setTimeDimensionIndexer(TimeDimensionIndexer idx) {
-    this.timeIdx = idx;
+    this.timeDimensionIndexer = idx;
   }
 
   /**
@@ -312,7 +312,7 @@ public class Gaboto {
     // fill model
     for (String g : graphURIs) {
       logger.debug("Adding graph to snapshot: " + g);
-      NamedGraph graph = ngs.getGraph(g);
+      NamedGraph graph = namedGraphSet.getGraph(g);
       if (graph == null)
         throw new IllegalArgumentException("Unknown graph: " + g);
 
@@ -839,7 +839,7 @@ public class Gaboto {
    * @return The named graph set.
    */
   public NamedGraphSet getNamedGraphSet() {
-    return this.ngs;
+    return this.namedGraphSet;
   }
 
   /**
@@ -901,7 +901,7 @@ public class Gaboto {
    * @return The global knowledge graph.
    */
   public NamedGraph getGlobalKnowledgeGraph() {
-    return ngs.getGraph(config.getGKG());
+    return namedGraphSet.getGraph(config.getGKG());
   }
 
   /**
@@ -915,7 +915,7 @@ public class Gaboto {
    * @return The context description graph.
    */
   public Model getContextDescriptionGraph() {
-    return cdg;
+    return contextDescriptionGraph;
   }
 
   /**
@@ -1347,7 +1347,7 @@ public class Gaboto {
     if (! (obj instanceof Gaboto))
       return false;
     else
-      if (cdg.isIsomorphicWith(((Gaboto)obj).cdg)) { 
+      if (contextDescriptionGraph.isIsomorphicWith(((Gaboto)obj).contextDescriptionGraph)) { 
         if (getJenaModelViewOnNamedGraphSet().
             isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet())) {           
           System.err.println("Hit");

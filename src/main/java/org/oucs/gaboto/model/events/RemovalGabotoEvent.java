@@ -32,7 +32,7 @@
 package org.oucs.gaboto.model.events;
 
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.timedim.TimeSpan;
+import org.oucs.gaboto.time.TimeSpan;
 
 import com.hp.hpl.jena.graph.Triple;
 

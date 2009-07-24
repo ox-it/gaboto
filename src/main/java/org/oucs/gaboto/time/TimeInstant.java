@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.timedim;
+package org.oucs.gaboto.time;
 
 import java.util.Calendar;
 
@@ -154,7 +154,7 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
 
   /**
    * With non-zero based months.
-   * @see org.oucs.gaboto.timedim.TimeSpan#toString()
+   * @see org.oucs.gaboto.time.TimeSpan#toString()
    */
   @Override
   public String toString() {

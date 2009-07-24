@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.timedim;
+package org.oucs.gaboto.time;
 
 import java.io.Serializable;
 import java.util.Calendar;

@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.timedim.index;
+package org.oucs.gaboto.time;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -38,9 +38,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.IncoherenceException;
-import org.oucs.gaboto.timedim.TimeInstant;
-import org.oucs.gaboto.timedim.TimeSpan;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 
 import com.hp.hpl.jena.query.QueryExecution;
@@ -55,17 +54,28 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import de.fuberlin.wiwiss.ng4j.NamedGraph;
 
 /**
- * This class does not use any proper data structure to do the task.
+ * <p>
+ * Querying the cdg (see {@link Gaboto#getContextDescriptionGraph()}) using SPARQL is
+ * hardly possible (or at least not feasible). TimeDimensionIndexer relieves Gaboto of
+ * that problem by parsing all time information into a Java representation and providing
+ * methods to query that information.
+ * </p>
+ * NOTE This class does not use any proper data structure to do the task.
  * 
  * TODO think of a proper tree to do the indexing!
  * 
  * @author Arno Mittelbach
  *
  */
-public class TimeDimensionIndexerImpl implements TimeDimensionIndexer {
+public class TimeDimensionIndexer {
 
 	private Map<String, TimeSpan> lookup = new HashMap<String, TimeSpan>();
 	
+  /**
+   * Builds the index.
+   * 
+   * @param graphset The graphset the index should be built upon.
+   */
 	public void createIndex(Model cdg) throws IncoherenceException {
 		String query = GabotoPredefinedQueries.getTimeDimensionIndexQuery();
 		QueryExecution qe = QueryExecutionFactory.create( query, cdg );
@@ -111,14 +121,33 @@ public class TimeDimensionIndexerImpl implements TimeDimensionIndexer {
 		
 	}
 	
+  /**
+   * Adds another graph to the index.
+   * 
+   * @param graph The graph's name.
+   * @param ts The graph's time span.
+   */
 	public void add(String graph, TimeSpan ts){
 		lookup.put(graph, ts);
 	}
 	
+  /**
+   * Adds another graph to the index.
+   * 
+   * @param graph The graph.
+   * @param ts The graph's time span.
+   */
 	public void add(NamedGraph graph, TimeSpan ts){
 		add(graph.getGraphName().getURI(), ts);
 	}
 
+  /**
+   * Returns the time span for a given graph
+   * 
+   * @param graphURI The graph's name.
+   * 
+   * @return The graph's time span (or null).
+   */
 	public Collection<String> getGraphsForDuration(TimeSpan ts) {
 		Set<String> graphs = new HashSet<String>();
 
@@ -129,6 +158,13 @@ public class TimeDimensionIndexerImpl implements TimeDimensionIndexer {
 		return graphs; 
 	}
 
+  /**
+   * Returns all the graphs that hold information which is valid at the given point in time.
+   * 
+   * @param ti The time instant.
+   * 
+   * @return A collection of graph names.
+   */
 	public Collection<String> getGraphsForInstant(TimeInstant ti) {
 		Set<String> graphs = new HashSet<String>();
 
@@ -139,6 +175,13 @@ public class TimeDimensionIndexerImpl implements TimeDimensionIndexer {
 		return graphs; 
 	}
 
+  /**
+   * Returns all the graphs that hold information which is valid over a given time span.
+   * 
+   * @param ts The time span.
+   * 
+   * @return A collection of graph names.
+   */
 	public TimeSpan getTimeSpanFor(String graphURI) {
 		return lookup.get(graphURI);
 	}

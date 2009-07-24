@@ -42,7 +42,7 @@ import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.IncoherenceException;
 import org.oucs.gaboto.model.NoTimeIndexSetException;
-import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.time.TimeInstant;
 
 /**
  * Query that allows to execute a SPARQL Construct query.

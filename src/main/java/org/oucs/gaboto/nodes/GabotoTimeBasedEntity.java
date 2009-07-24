@@ -48,8 +48,8 @@ import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoRuntimeException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.timedim.TimeInstant;
-import org.oucs.gaboto.timedim.TimeSpan;
+import org.oucs.gaboto.time.TimeInstant;
+import org.oucs.gaboto.time.TimeSpan;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;

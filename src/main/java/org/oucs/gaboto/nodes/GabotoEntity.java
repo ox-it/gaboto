@@ -47,7 +47,7 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.PassiveEntitiesRequest;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.timedim.TimeSpan;
+import org.oucs.gaboto.time.TimeSpan;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 import com.hp.hpl.jena.graph.Graph;

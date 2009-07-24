@@ -35,7 +35,7 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.timedim.TimeInstant;
+import org.oucs.gaboto.time.TimeInstant;
 
 /**
  * Simple query that grabs all entities of a specific type.

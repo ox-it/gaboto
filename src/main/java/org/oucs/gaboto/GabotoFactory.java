@@ -41,7 +41,7 @@ import org.oucs.gaboto.model.events.GabotoEvent;
 import org.oucs.gaboto.model.events.InsertionGabotoEvent;
 import org.oucs.gaboto.model.events.RemovalGabotoEvent;
 import org.oucs.gaboto.model.listener.UpdateListener;
-import org.oucs.gaboto.timedim.index.TimeDimensionIndexerImpl;
+import org.oucs.gaboto.time.TimeDimensionIndexer;
 import org.oucs.gaboto.util.Performance;
 import org.oucs.gaboto.vocabulary.RDFCON;
 
@@ -102,7 +102,7 @@ public class GabotoFactory {
 		// create non db-backed-up cdg
 		cdg = ModelFactory.createDefaultModel();
 		
-		return new Gaboto(cdg, graphset, new TimeDimensionIndexerImpl());
+		return new Gaboto(cdg, graphset, new TimeDimensionIndexer());
 	}
 	
 	/**
@@ -139,7 +139,7 @@ public class GabotoFactory {
 			graphset.addQuad((Quad)it.next());
     System.err.println("getInMemoryGaboto: have added quads");
 		
-		inMemoryGaboto = new Gaboto(createCDG(), graphset, new TimeDimensionIndexerImpl());
+		inMemoryGaboto = new Gaboto(createCDG(), graphset, new TimeDimensionIndexer());
 		
     System.err.println("getInMemoryGaboto: returning");
 		return inMemoryGaboto;
@@ -202,7 +202,7 @@ public class GabotoFactory {
 
 		// create object
     Performance.start("GabotoFactory new Gaboto");
-		persistentGaboto = new Gaboto(createCDG(), graphset, new TimeDimensionIndexerImpl());
+		persistentGaboto = new Gaboto(createCDG(), graphset, new TimeDimensionIndexer());
     Performance.stop();
 		
     Performance.start("GabotoFactory update listener");

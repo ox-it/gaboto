@@ -34,8 +34,8 @@ package org.oucs.gaboto.nodes;
 import java.util.Iterator;
 import java.util.List;
 
-import org.oucs.gaboto.timedim.TimeInstant;
-import org.oucs.gaboto.timedim.TimeSpan;
+import org.oucs.gaboto.time.TimeInstant;
+import org.oucs.gaboto.time.TimeSpan;
 
 /**
  * Iterates over a timeBased entity returning GabotoEntity objects in the correct order (sorted by time).
