@@ -40,7 +40,7 @@ import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.events.GabotoEvent;
 import org.oucs.gaboto.model.events.InsertionGabotoEvent;
 import org.oucs.gaboto.model.events.RemovalGabotoEvent;
-import org.oucs.gaboto.model.listener.UpdateListener;
+import org.oucs.gaboto.model.events.UpdateListener;
 import org.oucs.gaboto.time.TimeDimensionIndexer;
 import org.oucs.gaboto.util.Performance;
 import org.oucs.gaboto.vocabulary.RDFCON;

@@ -47,7 +47,7 @@ import org.oucs.gaboto.model.GabotoOntologyLookup;
 import org.oucs.gaboto.model.events.GabotoEvent;
 import org.oucs.gaboto.model.events.InsertionGabotoEvent;
 import org.oucs.gaboto.model.events.RemovalGabotoEvent;
-import org.oucs.gaboto.model.listener.UpdateListener;
+import org.oucs.gaboto.model.events.UpdateListener;
 import org.oucs.gaboto.nodes.GabotoEntity;
 import org.oucs.gaboto.nodes.GabotoTimeBasedEntity;
 import org.oucs.gaboto.time.TimeDimensionIndexer;

@@ -29,9 +29,8 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.model.listener;
+package org.oucs.gaboto.model.events;
 
-import org.oucs.gaboto.model.events.GabotoEvent;
 
 /**
  * Interface to allow objects to listen to updates of an Gaboto system.
