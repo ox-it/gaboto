@@ -1340,7 +1340,6 @@ public class Gaboto {
 
   /**
    * @see java.lang.Object#equals(java.lang.Object)
-   * FIXME cdg fails
    */
   @Override
   public boolean equals(Object obj) {
@@ -1348,12 +1347,17 @@ public class Gaboto {
     if (! (obj instanceof Gaboto))
       return false;
     else
-      if (getJenaModelViewOnNamedGraphSet().
-          isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet())) {           
-        return true;
+      if (cdg.isIsomorphicWith(((Gaboto)obj).cdg)) { 
+        if (getJenaModelViewOnNamedGraphSet().
+            isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet())) {           
+          return true;
+        } else { 
+          System.err.println("Super1");
+          return super.equals(obj);          
+        }
       } else { 
-        System.err.println("Super1");
-        return super.equals(obj);          
+          System.err.println("Super2");
+          return super.equals(obj);
       }
   }
 
