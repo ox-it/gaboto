@@ -1350,6 +1350,7 @@ public class Gaboto {
       if (cdg.isIsomorphicWith(((Gaboto)obj).cdg)) { 
         if (getJenaModelViewOnNamedGraphSet().
             isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet())) {           
+          System.err.println("Hit");
           return true;
         } else { 
           System.err.println("Super1");
