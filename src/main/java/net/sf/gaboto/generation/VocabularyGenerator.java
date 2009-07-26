@@ -489,28 +489,28 @@ public class VocabularyGenerator {
               "-i", "ontologies/Gaboto.owl",
               "-n", "GabotoVocab",
               "--classnamesuffix", "Vocab",
-              "-o", "src/main/java/org/oucs/gaboto/vocabulary/GabotoVocab.java",
+              "-o", "src/main/java/net/sf/gaboto/vocabulary/GabotoVocab.java",
               "--ontology",
-              "--package", "org.oucs.gaboto.vocabulary"
+              "--package", "net.sf.gaboto.vocabulary"
       });      
       new VocabularyGenerator().go(new String[] 
                                               {
               "-i", "ontologies/oxpoints.owl",
               "-n", "OxPointsVocab",
               "--classnamesuffix", "Vocab",
-              "-o", "src/main/java/org/oucs/gaboto/vocabulary/OxPointsVocab.java",
+              "-o", "src/main/java/net/sf/gaboto/vocabulary/OxPointsVocab.java",
               "--ontology",
-              "--package", "org.oucs.gaboto.vocabulary"
+              "--package", "net.sf.gaboto.vocabulary"
       });      
       new VocabularyGenerator().go(new String[] 
                                               {
               "-i", "ontologies/geo.owl",
               "-n", "GeoVocab",
               "--classnamesuffix", "Vocab",
-              "-o", "src/main/java/org/oucs/gaboto/vocabulary/GeoVocab.java",
+              "-o", "src/main/java/net/sf/gaboto/vocabulary/GeoVocab.java",
               "--include", "http://www.w3.org/2003/01/geo/wgs84_pos",
               "--ontology",
-              "--package", "org.oucs.gaboto.vocabulary"
+              "--package", "net.sf.gaboto.vocabulary"
       });      
     } else
       new VocabularyGenerator().go(args);
