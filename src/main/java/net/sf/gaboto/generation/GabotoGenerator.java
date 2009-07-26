@@ -1269,7 +1269,7 @@ public class GabotoGenerator {
                    "import org.oucs.gaboto.entities.GabotoEntity;\n" + 
                    "import org.oucs.gaboto.exceptions.GabotoRuntimeException;\n" + 
                    "\n" +
-                   "import org.oucs.gaboto.model.GabotoOntologyLookup;\n"  +
+                   "import org.oucs.gaboto.model.OntologyLookup;\n"  +
                    "\n" ;
 
     lookupClass += "\n\n";
@@ -1279,7 +1279,7 @@ public class GabotoGenerator {
     + " * @see " + this.getClass().getCanonicalName() + "\n"
     + " */\n";
     lookupClass += "@SuppressWarnings(\"unchecked\")\n";
-    lookupClass += "public class " + lookupClassName + " implements GabotoOntologyLookup {\n";
+    lookupClass += "public class " + lookupClassName + " implements OntologyLookup {\n";
 
     lookupClass += "  private static Map<String,String> entityClassLookupNames;\n";
     lookupClass += "  private static Map<String,Class<? extends GabotoEntity>> entityClassLookupClass;\n";
