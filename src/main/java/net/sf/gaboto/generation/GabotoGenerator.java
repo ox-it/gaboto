@@ -214,10 +214,10 @@ public class GabotoGenerator {
       return;
 
     JavaText classText = new JavaText();
-    classText.addImport("net.sf.gaboto.entities.pool.GabotoEntityPool");
-    classText.addImport("net.sf.gaboto.entities.utils.SimpleLiteralProperty");
+    classText.addImport("net.sf.gaboto.node.pool.EntityPool");
+    classText.addImport("net.sf.gaboto.node.annotation.SimpleLiteralProperty");
     classText.addImport("net.sf.gaboto.model.GabotoSnapshot");
-    classText.addImport("net.sf.gaboto.beans.GabotoBean");
+    classText.addImport("net.sf.gaboto.node.GabotoBean");
     classText.addImport("com.hp.hpl.jena.rdf.model.Literal"); 
     classText.addImport("com.hp.hpl.jena.rdf.model.Resource"); 
     classText.addImport("com.hp.hpl.jena.rdf.model.Statement");
@@ -233,7 +233,7 @@ public class GabotoGenerator {
 
     // loadEntityMethod
     boolean bBeanHasProperty = false;
-    String loadBeanMethod = "  public void loadFromResource(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {\n";
+    String loadBeanMethod = "  public void loadFromResource(Resource res, GabotoSnapshot snapshot, EntityPool pool) {\n";
     loadBeanMethod += "    super.loadFromResource(res, snapshot, pool);\n";
     loadBeanMethod += "    Statement stmt;\n\n";
 
@@ -337,7 +337,7 @@ public class GabotoGenerator {
     
     
     if (extendsClassName.equals("GabotoEntity"))
-      cText.addImport("net.sf.gaboto.entities." + extendsClassName);
+      cText.addImport("net.sf.gaboto.node." + extendsClassName);
     else 
       cText.addImport(entitiesPackageName + "." + extendsClassName);
     
@@ -367,7 +367,7 @@ public class GabotoGenerator {
     boolean entityHasPassiveProperty = false;
 
     String loadEntityMethod = 
-      "  public void loadFromSnapshot(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {\n" + 
+      "  public void loadFromSnapshot(Resource res, GabotoSnapshot snapshot, EntityPool pool) {\n" + 
       "    super.loadFromSnapshot(res, snapshot, pool);\n" + 
       "    Statement stmt;\n\n";
 
@@ -416,8 +416,8 @@ public class GabotoGenerator {
             loadEntityMethod += text.getLoadMethod();
           } else if (properties.item(j).getNodeName().equals("passiveProperty")) {
             entityHasPassiveProperty = true;
-            cText.addImport("net.sf.gaboto.entities.pool.PassiveEntitiesRequest");
-            cText.addImport("net.sf.gaboto.entities.utils.PassiveProperty");
+            cText.addImport("net.sf.gaboto.node.pool.PassiveEntitiesRequest");
+            cText.addImport("net.sf.gaboto.node.annotation.PassiveProperty");
 
             // cast property
             Element property = (Element) properties.item(j);
@@ -471,7 +471,7 @@ public class GabotoGenerator {
 
     if (indirectMethodLookup.size() > 0) {
       cText.addImport("java.util.ArrayList");
-      cText.addImport("net.sf.gaboto.exceptions.GabotoRuntimeException");
+      cText.addImport("net.sf.gaboto.GabotoRuntimeException");
       indirectPropertyLookupTable += "    List<Method> list;\n\n";
       indirectPropertyLookupTable += "    try {\n";
       for (Entry<String, List<String>> entry : indirectMethodLookup.entrySet()) {
@@ -518,13 +518,13 @@ public class GabotoGenerator {
     boolean abstractClass = entityEl.hasAttribute("abstract") ? entityEl.getAttribute("abstract").equals("true")
             : false;
     if (entityHasEntity | entityHasPassiveProperty)
-      cText.addImport("net.sf.gaboto.entities.GabotoEntity");
+      cText.addImport("net.sf.gaboto.node.GabotoEntity");
     
     if (customMethods.contains("StaticProperty"))
-      cText.addImport("net.sf.gaboto.entities.utils.StaticProperty");
+      cText.addImport("net.sf.gaboto.node.annotation.StaticProperty");
       
     if (entityHasPassiveProperty)
-      cText.addImport("net.sf.gaboto.entities.pool.GabotoEntityPool");
+      cText.addImport("net.sf.gaboto.node.pool.EntityPool");
     
     // build it all together
     String clazz = "package " + entitiesPackageName + ";\n\n";
@@ -593,11 +593,11 @@ public class GabotoGenerator {
     pt.indirectAnnotation = getIndirectAnnotation(property, indirectMethods, indirectMethodLookup, entityName,
             pt.getMethodName);
     if (!pt.indirectAnnotation.equals("")) { 
-      classText.addImport("net.sf.gaboto.entities.utils.IndirectProperty");      
+      classText.addImport("net.sf.gaboto.node.annotation.IndirectProperty");      
     }
     pt.unstoredAnnotation = getUnstoredAnnotation(property, unstoredMethods, pt.realPropTypeImpl);
     if (!pt.unstoredAnnotation.equals(""))
-      classText.addImport("net.sf.gaboto.entities.utils.UnstoredProperty");
+      classText.addImport("net.sf.gaboto.node.annotation.UnstoredProperty");
 
     // property definition
     pt.propertyDefinitions += "  private " + pt.realPropTypeInterface + " " + pt.propName + ";\n";
@@ -767,7 +767,7 @@ public class GabotoGenerator {
       passiveEntityRequests += "        return \"" + uri + "\";\n";
       passiveEntityRequests += "      }\n\n";
       passiveEntityRequests += "      public int getCollectionType() {\n";
-      passiveEntityRequests += "        return GabotoEntityPool.PASSIVE_PROPERTY_COLLECTION_TYPE_NONE;\n";
+      passiveEntityRequests += "        return EntityPool.PASSIVE_PROPERTY_COLLECTION_TYPE_NONE;\n";
       passiveEntityRequests += "      }\n\n";
       passiveEntityRequests += "      public void passiveEntityLoaded(GabotoEntity entity) {\n";
       passiveEntityRequests += "        " + addMethodName + "((" + propType + ")entity);\n";
@@ -783,7 +783,7 @@ public class GabotoGenerator {
       passiveEntityRequests += "        return \"" + uri + "\";\n";
       passiveEntityRequests += "      }\n\n";
       passiveEntityRequests += "      public int getCollectionType() {\n";
-      passiveEntityRequests += "        return GabotoEntityPool.PASSIVE_PROPERTY_COLLECTION_TYPE_BAG;\n";
+      passiveEntityRequests += "        return EntityPool.PASSIVE_PROPERTY_COLLECTION_TYPE_BAG;\n";
       passiveEntityRequests += "      }\n\n";
       passiveEntityRequests += "      public void passiveEntityLoaded(GabotoEntity entity) {\n";
       passiveEntityRequests += "        " + addMethodName + "((" + propType + ")entity);\n";
@@ -910,8 +910,8 @@ public class GabotoGenerator {
     switch (getPropertyAnnotationType(property)) {
     case SIMPLE_LITERAL_PROPERTY:
       cText.addImport("com.hp.hpl.jena.rdf.model.Literal");
-      cText.addImport("net.sf.gaboto.entities.utils.SimpleLiteralProperty");
-      cText.addImport("net.sf.gaboto.entities.pool.GabotoEntityPool");
+      cText.addImport("net.sf.gaboto.node.annotation.SimpleLiteralProperty");
+      cText.addImport("net.sf.gaboto.node.pool.EntityPool");
       loadEntity += "    // Load SIMPLE_LITERAL_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isLiteral())\n";
@@ -919,17 +919,17 @@ public class GabotoGenerator {
               + ");\n";
       break;
     case SIMPLE_URI_PROPERTY:
-      cText.addImport("net.sf.gaboto.entities.utils.SimpleURIProperty");
-      cText.addImport("net.sf.gaboto.entities.pool.EntityExistsCallback");
-      cText.addImport("net.sf.gaboto.entities.pool.GabotoEntityPool");
-      cText.addImport("net.sf.gaboto.entities.GabotoEntity");
+      cText.addImport("net.sf.gaboto.node.annotation.SimpleURIProperty");
+      cText.addImport("net.sf.gaboto.node.pool.EntityExistsCallback");
+      cText.addImport("net.sf.gaboto.node.pool.EntityPool");
+      cText.addImport("net.sf.gaboto.node.GabotoEntity");
       loadEntity += "    // Load SIMPLE_URI_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isResource()){\n";
       loadEntity += "      Resource missingReference = (Resource)stmt.getObject();\n";
 
       loadEntity += "      EntityExistsCallback callback = new EntityExistsCallback(){\n";
-      loadEntity += "        public void entityExists(GabotoEntityPool p, GabotoEntity entity) {\n";
+      loadEntity += "        public void entityExists(EntityPool p, GabotoEntity entity) {\n";
       loadEntity += "          " + setMethodName + "((" + realPropTypeInterface + ")entity);\n";
       loadEntity += "        }\n";
       loadEntity += "      };\n";
@@ -939,7 +939,7 @@ public class GabotoGenerator {
       break;
     case SIMPLE_COMPLEX_PROPERTY:
       cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
-      cText.addImport("net.sf.gaboto.entities.utils.ComplexProperty");
+      cText.addImport("net.sf.gaboto.node.annotation.ComplexProperty");
       loadEntity += "    // Load SIMPLE_COMPLEX_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isAnon()){\n";
@@ -955,9 +955,9 @@ public class GabotoGenerator {
       cText.addImport("com.hp.hpl.jena.rdf.model.Bag");
       cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
       cText.addImport("com.hp.hpl.jena.rdf.model.NodeIterator");
-      cText.addImport("net.sf.gaboto.entities.pool.GabotoEntityPool");
-      cText.addImport("net.sf.gaboto.entities.pool.EntityExistsCallback");
-      cText.addImport("net.sf.gaboto.entities.utils.BagURIProperty");
+      cText.addImport("net.sf.gaboto.node.pool.EntityPool");
+      cText.addImport("net.sf.gaboto.node.pool.EntityExistsCallback");
+      cText.addImport("net.sf.gaboto.node.annotation.BagURIProperty");
       loadEntity += "    // Load BAG_URI_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isResource() && null != stmt.getBag()){\n";
@@ -971,7 +971,7 @@ public class GabotoGenerator {
       loadEntity += "        Resource missingReference = (Resource)node;\n";
 
       loadEntity += "        EntityExistsCallback callback = new EntityExistsCallback(){\n";
-      loadEntity += "          public void entityExists(GabotoEntityPool p, GabotoEntity entity) {\n";
+      loadEntity += "          public void entityExists(EntityPool p, GabotoEntity entity) {\n";
       loadEntity += "            " + addMethodName + "((" + propType + ") entity);\n";
       loadEntity += "          }\n";
       loadEntity += "        };\n";
@@ -986,7 +986,7 @@ public class GabotoGenerator {
       cText.addImport("com.hp.hpl.jena.rdf.model.Bag");
       cText.addImport("com.hp.hpl.jena.rdf.model.NodeIterator");
       cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
-      cText.addImport("net.sf.gaboto.entities.utils.BagLiteralProperty");
+      cText.addImport("net.sf.gaboto.node.annotation.BagLiteralProperty");
       loadEntity += "    // Load BAG_LITERAL_PROPERTY " + propertyName + "\n";
       loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
       loadEntity += "    if(stmt != null && stmt.getObject().isResource() && stmt.getBag() != null){\n";
@@ -1003,7 +1003,7 @@ public class GabotoGenerator {
     case BAG_COMPLEX_PROPERTY:
       cText.addImport("java.util.Collection");
       cText.addImport("java.util.HashSet");
-      cText.addImport("net.sf.gaboto.entities.utils.BagComplexProperty");
+      cText.addImport("net.sf.gaboto.node.annotation.BagComplexProperty");
       cText.addImport("com.hp.hpl.jena.rdf.model.Bag");
       cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
       cText.addImport("com.hp.hpl.jena.rdf.model.NodeIterator");
@@ -1039,14 +1039,15 @@ public class GabotoGenerator {
     else if (propType.equals("Boolean")) {}
     else { 
       // Check if this is a bean
+      String beanName = beansPackageName + "." + propType;
       try {
-        Class<?> clazz = Class.forName(beansPackageName + "." + propType);
+        Class<?> clazz = Class.forName(beanName);
         if (clazz.newInstance() instanceof GabotoBean)
-          classText.addImport(beansPackageName + "." + propType );
+          classText.addImport(beanName);
         System.err.println(propType + " is a bean");
       } catch (ClassNotFoundException e) {
-        System.err.println("Here2" + beansPackageName + "." + propType);
         // Simple types eg String
+        System.err.println("Class not found " + beanName);
       } catch (Exception e) {
         throw new RuntimeException(e);
       }
@@ -1232,9 +1233,10 @@ public class GabotoGenerator {
     }
 
     // Check if this is a bean
+    String beanName = beansPackageName + "." + propType;
     // FIXME There is a bootstrap problem here
     try {
-      Class<?> clazz = Class.forName(beansPackageName + "." + propType);
+      Class<?> clazz = Class.forName(beanName);
       if (clazz.newInstance() instanceof GabotoBean)
         if (collection == null)
           return SIMPLE_COMPLEX_PROPERTY;
@@ -1243,10 +1245,11 @@ public class GabotoGenerator {
     } catch (ClassNotFoundException e) {
       // Simple type eg String
       // or non bean property
+    } catch (NoClassDefFoundError e) {
+      throw new RuntimeException("Delete generated code with errors " + beanName, e);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
-
     if (collection == null)
       return SIMPLE_LITERAL_PROPERTY;
     else if (collection.equals("bag"))
@@ -1267,8 +1270,8 @@ public class GabotoGenerator {
                    "import java.util.Map;\n" + 
                    "import java.util.Set;\n" + 
                    "\n"  + 
-                   "import net.sf.gaboto.entities.GabotoEntity;\n" + 
-                   "import net.sf.gaboto.exceptions.GabotoRuntimeException;\n" + 
+                   "import net.sf.gaboto.node.GabotoEntity;\n" + 
+                   "import net.sf.gaboto.GabotoRuntimeException;\n" + 
                    "\n" +
                    "import net.sf.gaboto.model.OntologyLookup;\n"  +
                    "\n" ;
