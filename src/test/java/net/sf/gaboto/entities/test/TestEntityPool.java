@@ -35,14 +35,14 @@ import net.sf.gaboto.test.Utils;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.entities.pool.filters.EntityFilter;
-import org.oucs.gaboto.entities.pool.filters.PropertyEqualsFilter;
-import org.oucs.gaboto.entities.pool.filters.PropertyExistsFilter;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.EntityPoolConfiguration;
+import org.oucs.gaboto.node.pool.filter.EntityFilter;
+import org.oucs.gaboto.node.pool.filter.PropertyEqualsFilter;
+import org.oucs.gaboto.node.pool.filter.PropertyExistsFilter;
 import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
@@ -95,8 +95,8 @@ public class TestEntityPool {
     }
 
     // create entitypool
-    GabotoEntityPool pool = GabotoEntityPool
-        .createFrom(new GabotoEntityPoolConfiguration(snap));
+    EntityPool pool = EntityPool
+        .createFrom(new EntityPoolConfiguration(snap));
 
     assertEquals(nrOfBuildings, pool.getEntities(new Building()).size());
     assertEquals(nrOfColleges, pool.getEntities(new College()).size());
@@ -108,8 +108,8 @@ public class TestEntityPool {
     // as long as there is no data for the future in the system, this should
     // hold
     Model m1 = oxp.getSnapshot(TimeInstant.now()).getModel();
-    GabotoEntityPool pool = GabotoEntityPool
-        .createFrom(new GabotoEntityPoolConfiguration(oxp, m1));
+    EntityPool pool = EntityPool
+        .createFrom(new EntityPoolConfiguration(oxp, m1));
     Model m2 = pool.createJenaModel();
 
     StmtIterator it = m1.listStatements();
@@ -132,29 +132,29 @@ public class TestEntityPool {
 
     GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 1, 1));
 
-    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+    EntityPoolConfiguration config = new EntityPoolConfiguration(
         snap);
     config.setAddReferencedEntitiesToPool(false);
     config.addAcceptedType(OxPointsVocab.College_URI);
 
-    GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+    EntityPool pool = EntityPool.createFrom(config);
 
     for (GabotoEntity e : pool.getEntities())
       assertTrue(e instanceof College);
 
-    config = new GabotoEntityPoolConfiguration(snap);
+    config = new EntityPoolConfiguration(snap);
     config.addAcceptedType(OxPointsVocab.Building_URI);
     config.setAddReferencedEntitiesToPool(false);
-    pool = GabotoEntityPool.createFrom(config);
+    pool = EntityPool.createFrom(config);
 
     for (GabotoEntity e : pool.getEntities())
       assertTrue(e instanceof Building);
 
-    config = new GabotoEntityPoolConfiguration(snap);
+    config = new EntityPoolConfiguration(snap);
     config.addAcceptedType(OxPointsVocab.College_URI);
     config.setAddReferencedEntitiesToPool(true);
 
-    pool = GabotoEntityPool.createFrom(config);
+    pool = EntityPool.createFrom(config);
 
     // Access some properties
     for (College c : pool.getEntities(new College())) {
@@ -178,7 +178,7 @@ public class TestEntityPool {
   public void testEntityFilter()  {
     GabotoSnapshot snap = oxp.getSnapshot(new TimeInstant(2000, 1, 1));
 
-    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+    EntityPoolConfiguration config = new EntityPoolConfiguration(
         snap);
     config.addEntityFilter(new EntityFilter() {
 
@@ -193,11 +193,11 @@ public class TestEntityPool {
       }
     });
 
-    GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+    EntityPool pool = EntityPool.createFrom(config);
 
     assertTrue(pool.getEntities(new College()).isEmpty());
 
-    config = new GabotoEntityPoolConfiguration(snap);
+    config = new EntityPoolConfiguration(snap);
     config.addEntityFilter(new EntityFilter() {
 
       @Override
@@ -208,7 +208,7 @@ public class TestEntityPool {
       }
     });
 
-    pool = GabotoEntityPool.createFrom(config);
+    pool = EntityPool.createFrom(config);
 
     for (GabotoEntity e : pool.getEntities())
       assertTrue(e instanceof College);
@@ -218,7 +218,7 @@ public class TestEntityPool {
   public void testEntityFilter2()  {
     GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
-    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+    EntityPoolConfiguration config = new EntityPoolConfiguration(
         snap);
     config.addEntityFilter(new EntityFilter() {
 
@@ -271,23 +271,23 @@ public class TestEntityPool {
       }
     });
 
-    GabotoEntityPool.createFrom(config);
+    EntityPool.createFrom(config);
   }
 
   @Test
   public void testEntityTypeFilter() {
     GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
-    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+    EntityPoolConfiguration config = new EntityPoolConfiguration(
         snap);
     config.addAcceptedType(OxPointsVocab.College_URI);
-    GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+    EntityPool pool = EntityPool.createFrom(config);
     for (GabotoEntity e : pool.getEntities())
       assertEquals(OxPointsVocab.College_URI, e.getType());
 
-    config = new GabotoEntityPoolConfiguration(snap);
+    config = new EntityPoolConfiguration(snap);
     config.addUnacceptedType(OxPointsVocab.College_URI);
-    pool = GabotoEntityPool.createFrom(config);
+    pool = EntityPool.createFrom(config);
 
     boolean bCollege = false;
     boolean bBuilding = false;
@@ -306,30 +306,30 @@ public class TestEntityPool {
   public void testResourceFilter() throws Exception {
     GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
 
-    GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(
+    EntityPoolConfiguration config = new EntityPoolConfiguration(
         snap);
     config.addAcceptedType(OxPointsVocab.College_URI);
     config.addResourceFilter(new PropertyExistsFilter(DC_11.title));
-    GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+    EntityPool pool = EntityPool.createFrom(config);
     assertTrue("We have an empty pool; size: " + pool.getSize(),
         pool.getSize() > 0);
 
-    config = new GabotoEntityPoolConfiguration(snap);
+    config = new EntityPoolConfiguration(snap);
     config.addAcceptedType(OxPointsVocab.College_URI);
     config.addResourceFilter(new PropertyEqualsFilter(DC_11.title,
         "Somerville College"));
-    pool = GabotoEntityPool.createFrom(config);
+    pool = EntityPool.createFrom(config);
     assertTrue("Pool size is greater than 1:" + pool.getSize(),
         pool.getSize() == 1);
 
     Resource col = snap.getResource(pool.getEntities().toArray(
         new GabotoEntity[1])[0].getUri());
-    config = new GabotoEntityPoolConfiguration(snap);
+    config = new EntityPoolConfiguration(snap);
     config.addAcceptedType(OxPointsVocab.College_URI);
     config.addResource(col);
     config.addResourceFilter(new PropertyEqualsFilter(DC_11.title,
         "Somerville College"));
-    pool = GabotoEntityPool.createFrom(config);
+    pool = EntityPool.createFrom(config);
     assertTrue(pool.getSize() == 1);
 
   }

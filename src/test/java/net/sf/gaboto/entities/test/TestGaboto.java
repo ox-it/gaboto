@@ -47,8 +47,8 @@ import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.model.EntityAlreadyExistsException;
 import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.nodes.GabotoEntity;
-import org.oucs.gaboto.nodes.GabotoTimeBasedEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.GabotoTimeBasedEntity;
 import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.time.TimeSpan;
 

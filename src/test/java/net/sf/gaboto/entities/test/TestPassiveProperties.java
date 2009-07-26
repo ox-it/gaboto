@@ -37,11 +37,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.EntityPoolConfiguration;
 import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
@@ -62,9 +62,9 @@ public class TestPassiveProperties  {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
+		EntityPoolConfiguration config = new EntityPoolConfiguration(snapshot);
 		config.addAcceptedType(OxPointsVocab.Website_URI);
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+		EntityPool pool = EntityPool.createFrom(config);
 		
 		boolean foundPassive = false;
     for(GabotoEntity e : pool.getEntities()){
@@ -82,9 +82,9 @@ public class TestPassiveProperties  {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snapshot);
+		EntityPoolConfiguration config = new EntityPoolConfiguration(snapshot);
 		config.addAcceptedType(OxPointsVocab.College_URI);
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+		EntityPool pool = EntityPool.createFrom(config);
 		
 		boolean foundPassive = false;
 		for(GabotoEntity e : pool.getEntities()){

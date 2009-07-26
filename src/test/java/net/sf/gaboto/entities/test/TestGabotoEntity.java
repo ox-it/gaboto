@@ -43,11 +43,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.SPARQLQuerySolutionProcessor;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
 import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.time.TimeSpan;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
@@ -142,7 +142,7 @@ public class TestGabotoEntity  {
 		oxp.add(u);
 		
 		// create pool for passive properties
-		GabotoEntityPool pool = new GabotoEntityPool(oxp_mem, oxp_mem.getSnapshot(TimeInstant.now()));
+		EntityPool pool = new EntityPool(oxp_mem, oxp_mem.getSnapshot(TimeInstant.now()));
 		pool.addEntity(b);
 		pool.addEntity(u);
 		
@@ -207,7 +207,7 @@ public class TestGabotoEntity  {
     
     GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
     
-    GabotoEntityPool pool = new GabotoEntityPool(oxp, nowSnap);
+    EntityPool pool = new EntityPool(oxp, nowSnap);
     GabotoEntity passiveParticipant = nowSnap.loadEntity("http://m.ox.ac.uk/oxpoints/id/23232562");
     Property prop = OxPointsVocab.MODEL.getObjectProperty("http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#occupies");
     Set<Entry<String, Object>> passiveProperties = passiveParticipant.getAllPassiveProperties().entrySet(); 
@@ -244,11 +244,11 @@ public class TestGabotoEntity  {
     
     GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
     
-    GabotoEntityPool pool = new GabotoEntityPool(oxp, nowSnap);
+    EntityPool pool = new EntityPool(oxp, nowSnap);
     GabotoEntity passiveParticipant = nowSnap.loadEntity("http://m.ox.ac.uk/oxpoints/id/23232562");
     Property prop = OxPointsVocab.MODEL.getObjectProperty("http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#occupies");
     
-    GabotoEntityPool allEntitiesWithProp = nowSnap.loadEntitiesWithProperty(prop);
+    EntityPool allEntitiesWithProp = nowSnap.loadEntitiesWithProperty(prop);
     for(GabotoEntity e : allEntitiesWithProp.getEntities()) {
       if (e.getPropertyValue(prop) != null) {
         if (e.getPropertyValue(prop) instanceof HashSet) { 

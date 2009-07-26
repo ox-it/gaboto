@@ -38,12 +38,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.SPARQLQuerySolutionProcessorImpl;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.EntityPoolConfiguration;
 import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
@@ -77,11 +77,11 @@ public class TestGabotoSnapshot {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(nowSnap);
+		EntityPoolConfiguration config = new EntityPoolConfiguration(nowSnap);
 		config.addAcceptedType(OxPointsVocab.College_URI);
 		config.setAddReferencedEntitiesToPool(false);
 	
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+		EntityPool pool = EntityPool.createFrom(config);
 		
 		
 		
@@ -113,11 +113,11 @@ public class TestGabotoSnapshot {
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
 		
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(nowSnap);
+		EntityPoolConfiguration config = new EntityPoolConfiguration(nowSnap);
 		config.addAcceptedType(OxPointsVocab.College_URI);
 		config.setAddReferencedEntitiesToPool(false);
 	
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+		EntityPool pool = EntityPool.createFrom(config);
 		
 		for(GabotoEntity e : pool.getEntities()){
 			College col = (College) e;
@@ -135,10 +135,10 @@ public class TestGabotoSnapshot {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(nowSnap);
+		EntityPoolConfiguration config = new EntityPoolConfiguration(nowSnap);
 		config.addAcceptedType(OxPointsVocab.College_URI);
 	
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+		EntityPool pool = EntityPool.createFrom(config);
     assertTrue("it is " + pool.getSize(), pool.getSize() != 0);
 		GabotoSnapshot collegeSnap = pool.createSnapshot();
 		
@@ -166,7 +166,7 @@ public class TestGabotoSnapshot {
     Gaboto oxp = Utils.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
-		GabotoEntityPool pool = nowSnap.loadEntitiesWithProperty(DC_11.title, "Somerville College");
+		EntityPool pool = nowSnap.loadEntitiesWithProperty(DC_11.title, "Somerville College");
     assertTrue("it is " + pool.getSize(), pool.getSize() == 1);
 	}
 }

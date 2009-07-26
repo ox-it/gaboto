@@ -38,11 +38,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.query.GabotoQuery;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.EntityPoolConfiguration;
 import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.util.PerformanceAverager;
 
@@ -67,8 +67,8 @@ public class TestPoolCreationPerformance {
 			perf.start("creation");
 			
 			GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
-			GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snap);
-			GabotoEntityPool.createFrom(config);
+			EntityPoolConfiguration config = new EntityPoolConfiguration(snap);
+			EntityPool.createFrom(config);
 			
 			perf.stop();
 		}
@@ -86,9 +86,9 @@ public class TestPoolCreationPerformance {
 			perf.start("creation");
 			
 			GabotoSnapshot snap = oxp.getSnapshot(TimeInstant.now());
-			GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(snap);
+			EntityPoolConfiguration config = new EntityPoolConfiguration(snap);
 			config.setCreatePassiveEntities(true);
-			GabotoEntityPool.createFrom(config);
+			EntityPool.createFrom(config);
 			
 			perf.stop();
 		}

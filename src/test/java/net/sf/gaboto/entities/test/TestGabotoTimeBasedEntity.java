@@ -43,14 +43,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.model.EntityDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.ListOfTypedEntities;
-import org.oucs.gaboto.nodes.GabotoEntity;
-import org.oucs.gaboto.nodes.GabotoTimeBasedEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.GabotoTimeBasedEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
 import org.oucs.gaboto.time.TimeInstant;
 import org.oucs.gaboto.time.TimeSpan;
 import org.oucs.gaboto.vocabulary.DC;
@@ -175,7 +175,7 @@ public class TestGabotoTimeBasedEntity {
     TimeInstant now = TimeInstant.now();
 
     GabotoQuery query = new ListOfTypedEntities(OxPointsVocab.College_URI, now);
-    GabotoEntityPool pool = (GabotoEntityPool) query
+    EntityPool pool = (EntityPool) query
         .execute(GabotoQuery.FORMAT_ENTITY_POOL);
 
     for (College c : pool.getEntities(new College())) {
