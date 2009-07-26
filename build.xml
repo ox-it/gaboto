@@ -13,8 +13,8 @@
     <property name="example-data.dir"     value="rdfdata"/>
     <property name="deploy.tmp.dir"     value="deploy_tmp"/>
     <property name="deploy.dir"    value="deploy"/>
-    <property name="vocab.dir"     value="src/main/java/org/oucs/gaboto/vocabulary"/>
-    <property name="package.name"  value="org.oucs.gaboto"/>
+    <property name="vocab.dir"     value="src/main/java/net.sf/gaboto/vocabulary"/>
+    <property name="package.name"  value="net.sf.gaboto"/>
 
      <path id="cp" >
       <pathelement path=""/>
