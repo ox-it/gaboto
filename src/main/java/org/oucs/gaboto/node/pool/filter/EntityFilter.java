@@ -29,21 +29,49 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.model.events;
+package org.oucs.gaboto.node.pool.filter;
 
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.EntityPoolConfiguration;
 
 /**
- * Interface to allow objects to listen to updates of an Gaboto system.
+ * EntityFilters can be used to guide the creation process of {@link EntityPool}s. 
+ * 
+ * <p>
+ * EntityFilters are an easy to use high-level tool to filter the entities that are added to an
+ * {@link EntityPool}. However, the filters are only applied after the entity was created,
+ * thereby having a slight drawback on the performance in contrast to, for example,
+ * (properly written) SPARQL filters. 
+ * </p>
  * 
  * @author Arno Mittelbach
  * @version 0.1
+ * @see EntityPoolConfiguration
+ * @see EntityPool
  */
-public interface UpdateListener {
+public abstract class EntityFilter {
 
+	
 	/**
-	 * Called whenever the underlying Gaboto was updated (triples added or removed).
+	 * Defines to what entity type this filter applies to.
 	 * 
-	 * @param e
+	 * @see GabotoEntity#getType()
+	 * @return To what entity type this filter applies to.
 	 */
-	public void updateOccured(GabotoEvent e);
+	public Class<? extends GabotoEntity> appliesTo(){
+		return GabotoEntity.class;
+	}
+	
+	/**
+	 * Performs the actual filter operation.
+	 * 
+	 * <p>
+	 * Returns false if the entity did not pass the filter criteria. True otherwise.
+	 * </p>
+	 * 
+	 * @param entity The entity to be filtered.
+	 * @return false|true (reject|pass). 
+	 */
+	abstract public boolean filterEntity(GabotoEntity entity);
 }

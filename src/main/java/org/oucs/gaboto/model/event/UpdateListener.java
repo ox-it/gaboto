@@ -29,63 +29,21 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.model.events;
+package org.oucs.gaboto.model.event;
 
-import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.time.TimeSpan;
-
-import com.hp.hpl.jena.graph.Triple;
 
 /**
- * Describes that a new triple has been inserted into an Gaboto model.
+ * Interface to allow objects to listen to updates of an Gaboto system.
  * 
  * @author Arno Mittelbach
  * @version 0.1
  */
-public class InsertionGabotoEvent extends GabotoEvent {
-
-	private TimeSpan timespan;
-	private Triple triple;
-	
-	/**
-	 * Constructs a new insertion event that describes that a triple was added to the gdg.
-	 * 
-	 * @param triple The triple that was added.
-	 * @see Gaboto#getGlobalKnowledgeGraph()
-	 */
-	public InsertionGabotoEvent(Triple triple) {
-		super();
-		this.triple = triple;
-	}
+public interface UpdateListener {
 
 	/**
-	 * Creates a new insertion event that describes that a triple was added to the graph described by the time span.
+	 * Called whenever the underlying Gaboto was updated (triples added or removed).
 	 * 
-	 * @param timespan The time span.
-	 * @param triple The triple that was added.
+	 * @param e
 	 */
-	public InsertionGabotoEvent(TimeSpan timespan, Triple triple) {
-		super();
-		this.timespan = timespan;
-		this.triple = triple;
-	}
-
-	
-	/**
-	 * Returns the time span that describes the graph the triple was added to.
-	 * 
-	 * @return Null (in case the triple was added to the gdg) or the time span describing the graph the tripple was added to.
-	 */
-	public TimeSpan getTimespan() {
-		return timespan;
-	}
-
-	/**
-	 * Returns the triple that was added to the Gaboto system.
-	 * 
-	 * @return The triple that was added to the Gaboto system.
-	 */
-	public Triple getTriple() {
-		return triple;
-	}
+	public void updateOccured(GabotoEvent e);
 }

@@ -43,11 +43,11 @@ import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoConfiguration;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.model.GabotoOntologyLookup;
-import org.oucs.gaboto.model.events.GabotoEvent;
-import org.oucs.gaboto.model.events.InsertionGabotoEvent;
-import org.oucs.gaboto.model.events.RemovalGabotoEvent;
-import org.oucs.gaboto.model.events.UpdateListener;
+import org.oucs.gaboto.model.OntologyLookup;
+import org.oucs.gaboto.model.event.GabotoEvent;
+import org.oucs.gaboto.model.event.InsertionGabotoEvent;
+import org.oucs.gaboto.model.event.RemovalGabotoEvent;
+import org.oucs.gaboto.model.event.UpdateListener;
 import org.oucs.gaboto.node.GabotoEntity;
 import org.oucs.gaboto.node.GabotoTimeBasedEntity;
 import org.oucs.gaboto.time.TimeDimensionIndexer;
@@ -1327,7 +1327,7 @@ public class Gaboto {
   }
 
   
-  public GabotoOntologyLookup  getOntologyLookup() { 
+  public OntologyLookup  getOntologyLookup() { 
     return GabotoFactory.getConfig().getGabotoOntologyLookup();
   }
 

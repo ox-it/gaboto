@@ -35,10 +35,10 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.pool.filters.EntityFilter;
-import org.oucs.gaboto.entities.pool.filters.ResourceFilter;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
+import org.oucs.gaboto.node.pool.filter.EntityFilter;
+import org.oucs.gaboto.node.pool.filter.ResourceFilter;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;

@@ -38,7 +38,7 @@ import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.oucs.gaboto.model.GabotoOntologyLookup;
+import org.oucs.gaboto.model.OntologyLookup;
 import org.oucs.gaboto.util.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -65,7 +65,7 @@ public class GabotoConfiguration {
 	
 	private Map<String, String> namespacePrefixes = new HashMap<String, String>();
 	
-	private GabotoOntologyLookup lookup;
+	private OntologyLookup lookup;
 	
 	
 	
@@ -142,9 +142,9 @@ public class GabotoConfiguration {
         } catch (Exception e) {
           throw new GabotoRuntimeException(e);
         }
-        if (!(object instanceof GabotoOntologyLookup))
+        if (!(object instanceof OntologyLookup))
           throw new GabotoRuntimeException("GabotoOntologyLookup is not of correct type " + lookupName);
-        config.lookup = (GabotoOntologyLookup)object;
+        config.lookup = (OntologyLookup)object;
         } else throw new GabotoRuntimeException("Unrecognised configuration section " + configSection.getNodeName());
 		}
 		
@@ -230,7 +230,7 @@ public class GabotoConfiguration {
 		this.namespacePrefixes = namespacePrefixes;
 	}
 
-  public GabotoOntologyLookup getGabotoOntologyLookup() {
+  public OntologyLookup getGabotoOntologyLookup() {
     return lookup;
   }
 	

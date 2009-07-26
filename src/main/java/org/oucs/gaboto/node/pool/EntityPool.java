@@ -44,8 +44,6 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.pool.filters.EntityFilter;
-import org.oucs.gaboto.entities.pool.filters.ResourceFilter;
 import org.oucs.gaboto.model.EntityDoesNotExistException;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
@@ -53,6 +51,8 @@ import org.oucs.gaboto.model.IncoherenceException;
 import org.oucs.gaboto.model.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.SPARQLQuerySolutionProcessor;
 import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.filter.EntityFilter;
+import org.oucs.gaboto.node.pool.filter.ResourceFilter;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 
 import com.hp.hpl.jena.graph.Graph;

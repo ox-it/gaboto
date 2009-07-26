@@ -5,7 +5,7 @@ import java.util.Set;
 
 import org.oucs.gaboto.node.GabotoEntity;
 
-public interface GabotoOntologyLookup {
+public interface OntologyLookup {
 
   public abstract Set<String> getRegisteredClassesAsURIs();
 
