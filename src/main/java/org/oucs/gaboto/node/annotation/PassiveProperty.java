@@ -29,41 +29,26 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.nodes;
+package org.oucs.gaboto.node.annotation;
 
-import java.util.List;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-
-import com.hp.hpl.jena.graph.Node;
-import com.hp.hpl.jena.graph.Triple;
+import org.oucs.gaboto.node.GabotoEntity;
 
 /**
- * A Generator of Lists of Triples for a given Container. 
+ * Used to annotate methods in {@link GabotoEntity}s that deal with passive properties.
+ * 
+ * @author Arno Mittelbach
+ *
  */
-public interface RDFTypedTriplesListFactory {
-
-  /**
-   * Creates a list of RDF triples that represent this {@link GabotoEntity}.
-   * 
-   * <p>
-   * Same as: entity.getTriplesFor(true);
-   * </p>
-   * 
-   * @see #getTriplesFor(boolean)
-   * @return a list of triples that represent this entity.
-   */
-	public List<Triple> getTriplesFor(RDFTyped rdfContainerObject, Node subjectNode);
-	
-  /**
-   * Creates a list of RDF triples that represent this {@link GabotoEntity}.
-   * 
-   * @param includeType
-   *          Whether or not a triple denoting the entities type should be added
-   *          to the list of triples.
-   * 
-   * @return a list of triples that represent this entity.
-   * 
-   */
-	public List<Triple> getTriplesFor(RDFTyped rdfContainerObject, Node subjectNode, boolean includeType);
-	
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface PassiveProperty {
+	public String uri();
+	public String entity();
 }

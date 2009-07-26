@@ -31,7 +31,7 @@
  */
 package org.oucs.gaboto.entities.pool.filters;
 
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
 
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;

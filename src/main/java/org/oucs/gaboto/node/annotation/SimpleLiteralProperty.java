@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.annotations;
+package org.oucs.gaboto.node.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -37,28 +37,42 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
 
 /**
- * Used to annotate methods in {@link GabotoEntity}s that deal with static properties.
+ * Used to annotate methods in {@link GabotoEntity}s that deal with simple literal properties.
  * 
  * <p>
- * Static properties are properties that are not stored but created from reusing
- * values from other properties. For example the description of an entity could 
- * consist of its title and its main website.
+ * Simple properties are properties that consist of exactly 1 RDF triple where
+ * the object is a literal.
+ * </p>
+ * 
+ * <p>
+ * An example for a simple literal property would be anything marked up with 
+ * the Dublin Core title property.
+ *  
+ * <pre>
+ * oxpdata:someCollege	  dc:title		"some Name" .
+ * </pre>
  * </p>
  * 
  * @author Arno Mittelbach
- *
+ * @version 0.1
+ * @see GabotoEntity
+ * @see BagLiteralProperty
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface StaticProperty {
+public @interface SimpleLiteralProperty {
 	
 	/**
 	 * Returns the URI of the corresponding property. 
 	 * @return The URI of the corresponding property.
 	 */
 	public String value();
+	
+	public String datatypeType();
+	
+	public String javaType();
 }

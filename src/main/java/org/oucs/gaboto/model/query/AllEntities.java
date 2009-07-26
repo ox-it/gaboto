@@ -34,10 +34,10 @@
  */
 package org.oucs.gaboto.model.query;
 
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.EntityPoolConfiguration;
 import org.oucs.gaboto.time.TimeInstant;
 
 
@@ -76,9 +76,9 @@ public class AllEntities extends GabotoQueryImpl {
     // create snapshot
     GabotoSnapshot snapshot = getGaboto().getSnapshot(TimeInstant.now());
     // create config
-    GabotoEntityPoolConfiguration entityPoolConfig = new GabotoEntityPoolConfiguration(snapshot);
+    EntityPoolConfiguration entityPoolConfig = new EntityPoolConfiguration(snapshot);
     
-    return GabotoEntityPool.createFrom(entityPoolConfig);
+    return EntityPool.createFrom(entityPoolConfig);
   }
 
   @Override

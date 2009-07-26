@@ -29,22 +29,34 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.nodes;
+package org.oucs.gaboto.node.annotation;
 
-import org.oucs.gaboto.GabotoRuntimeException;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import org.oucs.gaboto.node.GabotoEntity;
 
 /**
- * Is thrown if an {@link GabotoEntity} class uses annotation incorrectly.
+ * Used to annotate methods in {@link GabotoEntity}s that deal with unstored properties.
  * 
+ * <p>
+ * Unstored properties are properties that are not stored directly, but
+ * that have the same value as a directly stored property.
+ * </p>
  * @author Arno Mittelbach
- * @see GabotoEntity
+ *
  */
-public class IllegalAnnotationException extends GabotoRuntimeException{
-
-	private static final long serialVersionUID = 6390552659060182857L;
-
-	public IllegalAnnotationException(Class<?> clazz){
-		super("Class " + clazz.getName() + " contains invalid annotations.");
-	}
-}
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface UnstoredProperty {
 	
+	/**
+	 * 
+	 * @return the value
+	 */
+	public String[] value();
+}

@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.pool;
+package org.oucs.gaboto.node.pool;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -52,7 +52,7 @@ import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.IncoherenceException;
 import org.oucs.gaboto.model.ResourceDoesNotExistException;
 import org.oucs.gaboto.model.SPARQLQuerySolutionProcessor;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
 import org.oucs.gaboto.util.GabotoPredefinedQueries;
 
 import com.hp.hpl.jena.graph.Graph;
@@ -71,25 +71,25 @@ import com.hp.hpl.jena.vocabulary.RDF;
  * A collection of {@link GabotoEntity}s.
  * 
  * <p>
- * An {@link GabotoEntityPool} can be seen as a collection of
- * {@link GabotoEntity}s that have something in common. {@link GabotoEntityPool}s 
+ * An {@link EntityPool} can be seen as a collection of
+ * {@link GabotoEntity}s that have something in common. {@link EntityPool}s 
  * can be created by simply adding entities "by hand" or they can be
  * automatically created from an {@link GabotoSnapshot} or a Jena {@link Model}.
  * </p>
  * 
  * <p>
  * The automatic creation is configured using a
- * {@link GabotoEntityPoolConfiguration} object.
+ * {@link EntityPoolConfiguration} object.
  * </p>
  * 
  * @author Arno Mittelbach
  * @version 0.1
  * 
- * @see GabotoEntityPoolConfiguration
+ * @see EntityPoolConfiguration
  */
-public class GabotoEntityPool implements Collection<GabotoEntity> {
+public class EntityPool implements Collection<GabotoEntity> {
 
-  private static Logger logger = Logger.getLogger(GabotoEntityPool.class
+  private static Logger logger = Logger.getLogger(EntityPool.class
       .getName());
 
   public static final int PASSIVE_PROPERTY_COLLECTION_TYPE_NONE = 1;
@@ -100,7 +100,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
 
   private HashSet<String> directEntities = new HashSet<String>();
 
-  private GabotoEntityPoolConfiguration poolConfig;
+  private EntityPoolConfiguration poolConfig;
 
   private Gaboto gaboto;
 
@@ -116,16 +116,16 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * 
    * @see #GabotoEntityPool(Gaboto, GabotoSnapshot)
    */
-  public GabotoEntityPool(Gaboto gaboto) {
+  public EntityPool(Gaboto gaboto) {
     this.gaboto = gaboto;
   }
 
-  public GabotoEntityPool(Gaboto gaboto, GabotoSnapshot snapshot) {
+  public EntityPool(Gaboto gaboto, GabotoSnapshot snapshot) {
     this.gaboto = gaboto;
     this.snapshot = snapshot;
   }
 
-  public GabotoEntityPool(GabotoSnapshot snapshot) {
+  public EntityPool(GabotoSnapshot snapshot) {
     this.gaboto = snapshot.getGaboto();
     this.snapshot = snapshot;
   }
@@ -140,7 +140,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * @param config
    *          The configuration.
    */
-  public GabotoEntityPool(GabotoEntityPoolConfiguration config) {
+  public EntityPool(EntityPoolConfiguration config) {
     this.gaboto = config.getGaboto();
     this.poolConfig = config;
   }
@@ -153,7 +153,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * @return a new entity pool created from a given configuration.
    * 
    */
-  public static GabotoEntityPool createFrom(GabotoEntityPoolConfiguration config) {
+  public static EntityPool createFrom(EntityPoolConfiguration config) {
     config.assertConfigurationValid();
 
     // get snapshot
@@ -174,8 +174,8 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    *          snapshot to use
    * @return a GabotoEntityPool
    */
-  public static GabotoEntityPool createFrom(GabotoSnapshot snapshot) {
-    return createFrom(new GabotoEntityPoolConfiguration(snapshot), snapshot);
+  public static EntityPool createFrom(GabotoSnapshot snapshot) {
+    return createFrom(new EntityPoolConfiguration(snapshot), snapshot);
   }
 
   /**
@@ -185,9 +185,9 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * @param snapshot
    * @return The created entity pool.
    */
-  private static GabotoEntityPool createFrom(
-      GabotoEntityPoolConfiguration config, GabotoSnapshot snapshot) {
-    GabotoEntityPool pool = new GabotoEntityPool(snapshot.getGaboto());
+  private static EntityPool createFrom(
+      EntityPoolConfiguration config, GabotoSnapshot snapshot) {
+    EntityPool pool = new EntityPool(snapshot.getGaboto());
     pool.poolConfig = config;
     pool.snapshot = snapshot;
 
@@ -271,10 +271,10 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * @param resources
    * @return The created entity pool.
    */
-  private static GabotoEntityPool createFrom(
-      GabotoEntityPoolConfiguration config, GabotoSnapshot snapshot,
+  private static EntityPool createFrom(
+      EntityPoolConfiguration config, GabotoSnapshot snapshot,
       Collection<Resource> resources) {
-    GabotoEntityPool pool = new GabotoEntityPool(snapshot.getGaboto());
+    EntityPool pool = new EntityPool(snapshot.getGaboto());
     pool.poolConfig = config;
     pool.snapshot = snapshot;
 
@@ -315,7 +315,7 @@ public class GabotoEntityPool implements Collection<GabotoEntity> {
    * 
    * @param config
    */
-  public void setConfig(GabotoEntityPoolConfiguration config) {
+  public void setConfig(EntityPoolConfiguration config) {
     this.poolConfig = config;
   }
 

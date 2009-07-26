@@ -33,9 +33,9 @@ package org.oucs.gaboto.transformation;
 
 import java.io.StringWriter;
 
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.model.query.GabotoQuery;
 import org.oucs.gaboto.model.query.UnsupportedQueryFormatException;
+import org.oucs.gaboto.node.pool.EntityPool;
 
 import com.hp.hpl.jena.rdf.model.Model;
 
@@ -70,7 +70,7 @@ public class RDFPoolTransformerFactory {
 
 			// create transformer object
 			return new EntityPoolTransformer(){
-				public String transform(GabotoEntityPool pool) {
+				public String transform(EntityPool pool) {
 					Model model = pool.createJenaModel();
 					
 					StringWriter sWriter = new StringWriter();

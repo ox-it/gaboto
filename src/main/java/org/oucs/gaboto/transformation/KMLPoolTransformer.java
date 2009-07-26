@@ -36,8 +36,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
 import org.oucs.gaboto.util.XMLUtils;
 import org.oucs.gaboto.vocabulary.DC;
 import org.oucs.gaboto.vocabulary.GabotoKML;
@@ -75,7 +75,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
   
   private int nesting = 1;
 	
-	public String transform(GabotoEntityPool pool) {
+	public String transform(EntityPool pool) {
 		Document kmlDoc = getKMLDocumentTemplate();
 		Element documentEl = (Element) kmlDoc.getElementsByTagName("Document").item(0);
 		

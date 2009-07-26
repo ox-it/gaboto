@@ -41,9 +41,9 @@ import java.util.Map.Entry;
 import org.json.JSONException;
 import org.json.JSONStringer;
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.nodes.GabotoBean;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoBean;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
 
 /**
  * Transforms a GabotoEntityPool into JSON.
@@ -79,7 +79,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   private int collectProperties = COLLECT_DIRECT_PROPERTIES 
       | COLLECT_INDIRECT_PROPERTIES | COLLECT_PASSIVE_PROPERTIES;
 
-  public String transform(GabotoEntityPool pool) {
+  public String transform(EntityPool pool) {
     Collection<GabotoEntity> entities = pool.getEntities();
     // Initialize level map
     for (GabotoEntity entity : entities) {

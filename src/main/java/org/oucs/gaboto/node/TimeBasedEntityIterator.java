@@ -29,26 +29,70 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.annotations;
+package org.oucs.gaboto.node;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.util.Iterator;
+import java.util.List;
 
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.time.TimeInstant;
+import org.oucs.gaboto.time.TimeSpan;
 
 /**
- * Used to annotate methods in {@link GabotoEntity}s that deal with passive properties.
+ * Iterates over a timeBased entity returning GabotoEntity objects in the correct order (sorted by time).
+ * 
+ * <p>
+ * Does not implement remove.
+ * </p>
  * 
  * @author Arno Mittelbach
+ * @version 0.1
  *
  */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface PassiveProperty {
-	public String uri();
-	public String entity();
+public class TimeBasedEntityIterator implements Iterator<GabotoEntity> {
+
+	private GabotoTimeBasedEntity tbEntity;
+	private GabotoEntity entity;
+
+	private List<TimeSpan> timespans;
+	
+	private int index; 
+	
+	public TimeBasedEntityIterator(GabotoTimeBasedEntity tbEntity){
+		this.tbEntity = tbEntity;
+		timespans = tbEntity.getTimeSpansSorted();
+		
+		index = 0;
+		this.entity = tbEntity.getEntity(timespans.get(index).getBegin());
+		index++;
+	}
+	
+	public boolean hasNext() {
+		return null != this.entity;
+	}
+
+	public GabotoEntity next() {
+		GabotoEntity tmp = entity;
+		
+		try{
+			TimeInstant begin = timespans.get(index).getBegin();
+			if(tmp == null)
+				System.out.println("lala");
+			
+			while(entity.getTimeSpan().getBegin().canUnify(begin)){
+				index++;
+				begin = timespans.get(index).getBegin();
+			}
+			entity = tbEntity.getEntity(begin);
+			index++;
+		} catch(IndexOutOfBoundsException e){
+			entity = null;
+		}
+		
+		return tmp;
+	}
+
+	public void remove() {
+		// not implemented
+	}
+
 }

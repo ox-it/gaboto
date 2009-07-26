@@ -31,15 +31,15 @@
  */
 package org.oucs.gaboto.transformation;
 
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+import org.oucs.gaboto.node.pool.EntityPool;
 
 /**
- * Provides an interface for a class that transforms an {@link GabotoEntityPool} into some output format.
+ * Provides an interface for a class that transforms an {@link EntityPool} into some output format.
  * 
  * 
  * @author Arno Mittelbach
  * @version 0.1
- * @see GabotoEntityPool
+ * @see EntityPool
  */
 public interface EntityPoolTransformer {
 
@@ -49,6 +49,6 @@ public interface EntityPoolTransformer {
 	 * @param pool
 	 * @return Some output format.
 	 */
-	public String transform(GabotoEntityPool pool);
+	public String transform(EntityPool pool);
 	
 }

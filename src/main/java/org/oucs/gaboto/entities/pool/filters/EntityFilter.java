@@ -31,24 +31,24 @@
  */
 package org.oucs.gaboto.entities.pool.filters;
 
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.EntityPoolConfiguration;
 
 /**
- * EntityFilters can be used to guide the creation process of {@link GabotoEntityPool}s. 
+ * EntityFilters can be used to guide the creation process of {@link EntityPool}s. 
  * 
  * <p>
  * EntityFilters are an easy to use high-level tool to filter the entities that are added to an
- * {@link GabotoEntityPool}. However, the filters are only applied after the entity was created,
+ * {@link EntityPool}. However, the filters are only applied after the entity was created,
  * thereby having a slight drawback on the performance in contrast to, for example,
  * (properly written) SPARQL filters. 
  * </p>
  * 
  * @author Arno Mittelbach
  * @version 0.1
- * @see GabotoEntityPoolConfiguration
- * @see GabotoEntityPool
+ * @see EntityPoolConfiguration
+ * @see EntityPool
  */
 public abstract class EntityFilter {
 

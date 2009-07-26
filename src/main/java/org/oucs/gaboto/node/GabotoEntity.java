@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.nodes;
+package org.oucs.gaboto.node;
 
 import java.lang.reflect.Method;
 import java.util.Collection;
@@ -40,13 +40,13 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.annotations.SimpleLiteralProperty;
-import org.oucs.gaboto.entities.annotations.SimpleURIProperty;
-import org.oucs.gaboto.entities.pool.EntityExistsCallback;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.PassiveEntitiesRequest;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
+import org.oucs.gaboto.node.annotation.SimpleLiteralProperty;
+import org.oucs.gaboto.node.annotation.SimpleURIProperty;
+import org.oucs.gaboto.node.pool.EntityExistsCallback;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.PassiveEntitiesRequest;
 import org.oucs.gaboto.time.TimeSpan;
 import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
@@ -80,7 +80,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * 
  * <p>
  * For implementation details on how this dynamic loading of entities and their serialization to RDF
- * is done have a look at the methods {@link #loadFromSnapshot(Resource, GabotoSnapshot, GabotoEntityPool)},
+ * is done have a look at the methods {@link #loadFromSnapshot(Resource, GabotoSnapshot, EntityPool)},
  * {@link #getTriplesFor()}.
  * </p>
  * 
@@ -283,7 +283,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * @version 0.1
  * 
  * @see GabotoTimeBasedEntity
- * @see GabotoEntityPool
+ * @see EntityPool
  */
 abstract public class GabotoEntity implements RDFTyped {
 
@@ -302,7 +302,7 @@ abstract public class GabotoEntity implements RDFTyped {
 	/**
 	 * Stores the pool, this entity was created from
 	 */
-	private GabotoEntityPool createFromPool = null;
+	private EntityPool createFromPool = null;
 
 	
 	/**
@@ -334,7 +334,7 @@ abstract public class GabotoEntity implements RDFTyped {
 		return newEntity;
 	}
 	
-	final public void setCreatedFromPool(GabotoEntityPool pool){
+	final public void setCreatedFromPool(EntityPool pool){
 		this.createFromPool = pool;
 	}
 	
@@ -438,7 +438,7 @@ abstract public class GabotoEntity implements RDFTyped {
 	 * Tries to resolve the entity's direct references from the passed pool.
 	 * @param pool The pool to load the direct references from.
 	 */
-	public void resolveDirectReferences(GabotoEntityPool pool)  {
+	public void resolveDirectReferences(EntityPool pool)  {
 		if(isDirectReferencesResolved())
 			return;
 	
@@ -475,7 +475,7 @@ abstract public class GabotoEntity implements RDFTyped {
 	 * Tries to load passive entities from the passed pool.
 	 * @param pool The pool to load the passive entities from.
 	 */
-	public void loadPassiveEntities(GabotoEntityPool pool) {
+	public void loadPassiveEntities(EntityPool pool) {
 		if(passiveEntitiesLoaded)
 			return;
 		
@@ -710,7 +710,7 @@ abstract public class GabotoEntity implements RDFTyped {
 	 * @param pool The entity pool that is currently created (used for references to other entities).
 	 *
 	 */
-	public void loadFromSnapshot(Resource res, GabotoSnapshot snapshot, GabotoEntityPool pool) {
+	public void loadFromSnapshot(Resource res, GabotoSnapshot snapshot, EntityPool pool) {
 		// set uri
 		this.setUri(res.getURI());
 

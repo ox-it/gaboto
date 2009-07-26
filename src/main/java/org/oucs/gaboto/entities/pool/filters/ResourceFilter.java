@@ -31,13 +31,13 @@
  */
 package org.oucs.gaboto.entities.pool.filters;
 
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
 
 import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- * ResourceFilters can be used to guide the creation process of {@link GabotoEntityPool}s.
+ * ResourceFilters can be used to guide the creation process of {@link EntityPool}s.
  * 
  * <p>
  * In contrast to {@link EntityFilter}s, ResourceFilters are applied before an entity is fully
@@ -46,7 +46,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * 
  * @author Arno Mittelbach
  * @version 0.1
- * @see GabotoEntityPool
+ * @see EntityPool
  * @see EntityFilter
  */
 public abstract class ResourceFilter {

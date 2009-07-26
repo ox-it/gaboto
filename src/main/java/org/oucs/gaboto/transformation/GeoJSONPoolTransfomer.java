@@ -34,7 +34,7 @@ package org.oucs.gaboto.transformation;
 import org.json.JSONException;
 import org.json.XML;
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
+import org.oucs.gaboto.node.pool.EntityPool;
 
 /**
  * Creates a representation of a KML File in JSON.
@@ -44,7 +44,7 @@ import org.oucs.gaboto.entities.pool.GabotoEntityPool;
  */
 public class GeoJSONPoolTransfomer extends KMLPoolTransformer {
   
-	public String transform(GabotoEntityPool pool) {
+	public String transform(EntityPool pool) {
 	  String transformed = super.transform(pool);
 			
 		try{

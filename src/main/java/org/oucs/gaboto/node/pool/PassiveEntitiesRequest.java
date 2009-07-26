@@ -29,24 +29,18 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.pool;
+package org.oucs.gaboto.node.pool;
 
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
 
-/**
- * Used by {@link GabotoEntity}s when being loaded from RDF to be notified when some specific entity was added to the pool. 
- * 
- * 
- * @author Arno Mittelbach
- *
- */
-public interface EntityExistsCallback {
+public interface PassiveEntitiesRequest {
 
-	/**
-	 * Method that is called, when the entity was added.
-	 * 
-	 * @param pool The pool.
-	 * @param entity The entity that was requested.
-	 */
-	public void entityExists(GabotoEntityPool pool, GabotoEntity entity);
+	public String getUri();
+	
+	public String getType();
+	
+	public int getCollectionType();
+	
+	public void passiveEntityLoaded(GabotoEntity entity);
+
 }

@@ -36,9 +36,9 @@ import java.io.StringWriter;
 import org.apache.log4j.Logger;
 import org.oucs.gaboto.GabotoFactory;
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
 import org.oucs.gaboto.model.Gaboto;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.EntityPoolConfiguration;
 import org.oucs.gaboto.transformation.JSONPoolTransformer;
 import org.oucs.gaboto.transformation.KMLPoolTransformer;
 import org.oucs.gaboto.transformation.RDFPoolTransformerFactory;
@@ -65,7 +65,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 	protected final static int RESULT_TYPE_MODEL = 1;
 	
 	/**
-	 * Describes that a Query creates an {@link GabotoEntityPool}
+	 * Describes that a Query creates an {@link EntityPool}
 	 */
 	protected final static int RESULT_TYPE_ENTITY_POOL = 2;
 	
@@ -121,7 +121,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 	abstract public int getResultType();
 	
 	/**
-	 * Performs the actual query work and returns either a Jena {@link Model} or an {@link GabotoEntityPool} as defined by {@link #getResultType()}.
+	 * Performs the actual query work and returns either a Jena {@link Model} or an {@link EntityPool} as defined by {@link #getResultType()}.
 	 * 
 	 * @return Either a Jena Model or an GabotoEntityPool.
 	 * 
@@ -169,21 +169,21 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 		case RESULT_TYPE_MODEL:
 			return formatResult((Model) result, format);
 		case RESULT_TYPE_ENTITY_POOL:
-			return formatResult((GabotoEntityPool)result, format);
+			return formatResult((EntityPool)result, format);
 		default: 
 			return result;
 		}
 	}
 	
 	/**
-	 * Formats results of the type {@link GabotoEntityPool} into the specified output format.
+	 * Formats results of the type {@link EntityPool} into the specified output format.
 	 * 
 	 * @param pool The entity pool to be transformed.
 	 * @param format The output format.
 	 * 
 	 * @return The transformed pool.
 	 */
-	protected Object formatResult(GabotoEntityPool pool, String format) {
+	protected Object formatResult(EntityPool pool, String format) {
 		if(format.equals(GabotoQuery.FORMAT_JENA_MODEL))
 			return pool.createJenaModel();
 
@@ -222,7 +222,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 	 * @param format The output format.
 	 * @return The pool per default.
 	 */
-	protected Object formatResult_customFormat(GabotoEntityPool pool, String format) {
+	protected Object formatResult_customFormat(EntityPool pool, String format) {
 		return pool;
 	}
 
@@ -239,7 +239,7 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 			return model;
 		
 		if(format.equals(GabotoQuery.FORMAT_ENTITY_POOL)){
-			return GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(getGaboto(), model));
+			return EntityPool.createFrom(new EntityPoolConfiguration(getGaboto(), model));
 		}
 
 		if(format.equals(GabotoQuery.FORMAT_RDF_XML) ||
@@ -254,12 +254,12 @@ abstract public class GabotoQueryImpl implements GabotoQuery {
 		
 		if(format.equals(GabotoQuery.FORMAT_KML)){
       return new KMLPoolTransformer().transform(
-              GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(getGaboto(), model)));
+              EntityPool.createFrom(new EntityPoolConfiguration(getGaboto(), model)));
     }
 		
 		if(format.equals(GabotoQuery.FORMAT_JSON)){
       return new JSONPoolTransformer().transform(
-              GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(getGaboto(), model)));
+              EntityPool.createFrom(new EntityPoolConfiguration(getGaboto(), model)));
 		}
 		
 		return formatResult_customFormat(model, format);

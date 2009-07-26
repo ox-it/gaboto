@@ -31,8 +31,8 @@
  */
 package org.oucs.gaboto.model.query;
 
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.model.Gaboto;
+import org.oucs.gaboto.node.pool.EntityPool;
 
 import com.hp.hpl.jena.rdf.model.Model;
 
@@ -80,7 +80,7 @@ public interface GabotoQuery {
 	public static String FORMAT_JENA_MODEL = "JENA_MODEL";
 	
 	/**
-	 * An {@link GabotoEntityPool}
+	 * An {@link EntityPool}
 	 */
 	public static String FORMAT_ENTITY_POOL = "GABOTO_ENTITY_POOL";
 	

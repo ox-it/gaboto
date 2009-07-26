@@ -29,56 +29,24 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.annotations;
+package org.oucs.gaboto.node.pool;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-import org.oucs.gaboto.nodes.GabotoBean;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.GabotoRuntimeException;
 
 /**
- * Used to annotate methods in {@link GabotoEntity}s that deal with complex properties.
- * 
- * <p>
- * Complex properties are properties that consist of 1 RDF triple where the subject
- * is an {@link GabotoEntity} and the object is a blank node. 
- * Several further triples may then use the blank node to describe the data.
- * </p>
- * 
- * <p>
- * A complex property needs to have a corresponding {@link GabotoBean} that 
- * represents it in Java. 
- * </p>
- * 
- * <p>
- * An example for a complex property would be the location of places:
- * <pre>
- * oxpdata:somePlace	oxp:hasLocation		_blankNode .
- * _blankNode			rdf:type			gml:Point ;
- * 						gml:pos				"42.34 -71.21" .
- * </pre>
- * </p>
+ * Is thrown if the {@link EntityPoolConfiguration} can be used for the creation of an {@link EntityPool}, but
+ * if it is ambiguous in some way.
  * 
  * @author Arno Mittelbach
- * @version 0.1
- * 
- * @see GabotoEntity
- * @see GabotoBean
- * @see BagComplexProperty
- *
+ * @see EntityPool
+ * @see EntityPoolConfiguration
  */
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface ComplexProperty {
-	
-	/**
-	 * Returns the URI of the corresponding property. 
-	 * @return The URI of the corresponding property.
-	 */
-	public String value();
+public class EntityPoolAmbiguousConfigurationException extends
+		GabotoRuntimeException {
+
+	private static final long serialVersionUID = 8376775080480820745L;
+
+	public EntityPoolAmbiguousConfigurationException(String msg){
+		super(msg);
+	}
 }

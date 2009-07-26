@@ -29,14 +29,49 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.nodes;
+package org.oucs.gaboto.node.annotation;
 
-public interface RDFTyped {
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import org.oucs.gaboto.node.GabotoBean;
+import org.oucs.gaboto.node.GabotoEntity;
+
+/**
+ * Used to annotate methods in {@link GabotoEntity}s that deal with Complex Bag Properties.
+ * 
+ * <p>
+ * RDF bags represent an unordered collection of items in RDF (For more information 
+ * on RDF bags see the <a href="http://www.w3.org/TR/REC-rdf-syntax/#collections">RDF Primer 
+ * section Collections</a>). 
+ * </p>
+ * 
+ * <p>
+ * Complex Bag Properties are properties that store an unordered collection of complex properties
+ * (see {@link ComplexProperty}). An example could be the storage of multiple locations for a place
+ * (one for Google Maps, one for Microsoft Live Maps, one for Yahoo Maps, ...).
+ * </p>
+ * 
+ * @author Arno Mittelbach
+ * @version 0.1
+ *
+ * @see GabotoEntity
+ * 
+ * @see GabotoBean
+ * @see ComplexProperty
+ *
+ */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface BagComplexProperty {
 	
 	/**
-	 * Every entity has a defined type. 
-	 * 
-	 * @return The entity's type (ontology class). 
+	 * Returns the URI of the corresponding property. 
+	 * @return The URI of the corresponding property.
 	 */
-	abstract public String getType();
+	public String value();
 }

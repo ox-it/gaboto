@@ -29,18 +29,36 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.pool;
+package org.oucs.gaboto.node.annotation;
 
-import org.oucs.gaboto.nodes.GabotoEntity;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public interface PassiveEntitiesRequest {
+import org.oucs.gaboto.node.GabotoEntity;
 
-	public String getUri();
+/**
+ * Used to annotate methods in {@link GabotoEntity}s that deal with static properties.
+ * 
+ * <p>
+ * Static properties are properties that are not stored but created from reusing
+ * values from other properties. For example the description of an entity could 
+ * consist of its title and its main website.
+ * </p>
+ * 
+ * @author Arno Mittelbach
+ *
+ */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface StaticProperty {
 	
-	public String getType();
-	
-	public int getCollectionType();
-	
-	public void passiveEntityLoaded(GabotoEntity entity);
-
+	/**
+	 * Returns the URI of the corresponding property. 
+	 * @return The URI of the corresponding property.
+	 */
+	public String value();
 }

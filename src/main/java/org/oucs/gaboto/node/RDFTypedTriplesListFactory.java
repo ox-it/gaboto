@@ -29,70 +29,41 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.nodes;
+package org.oucs.gaboto.node;
 
-import java.util.Iterator;
 import java.util.List;
 
-import org.oucs.gaboto.time.TimeInstant;
-import org.oucs.gaboto.time.TimeSpan;
+
+import com.hp.hpl.jena.graph.Node;
+import com.hp.hpl.jena.graph.Triple;
 
 /**
- * Iterates over a timeBased entity returning GabotoEntity objects in the correct order (sorted by time).
- * 
- * <p>
- * Does not implement remove.
- * </p>
- * 
- * @author Arno Mittelbach
- * @version 0.1
- *
+ * A Generator of Lists of Triples for a given Container. 
  */
-public class TimeBasedEntityIterator implements Iterator<GabotoEntity> {
+public interface RDFTypedTriplesListFactory {
 
-	private GabotoTimeBasedEntity tbEntity;
-	private GabotoEntity entity;
-
-	private List<TimeSpan> timespans;
+  /**
+   * Creates a list of RDF triples that represent this {@link GabotoEntity}.
+   * 
+   * <p>
+   * Same as: entity.getTriplesFor(true);
+   * </p>
+   * 
+   * @see #getTriplesFor(boolean)
+   * @return a list of triples that represent this entity.
+   */
+	public List<Triple> getTriplesFor(RDFTyped rdfContainerObject, Node subjectNode);
 	
-	private int index; 
+  /**
+   * Creates a list of RDF triples that represent this {@link GabotoEntity}.
+   * 
+   * @param includeType
+   *          Whether or not a triple denoting the entities type should be added
+   *          to the list of triples.
+   * 
+   * @return a list of triples that represent this entity.
+   * 
+   */
+	public List<Triple> getTriplesFor(RDFTyped rdfContainerObject, Node subjectNode, boolean includeType);
 	
-	public TimeBasedEntityIterator(GabotoTimeBasedEntity tbEntity){
-		this.tbEntity = tbEntity;
-		timespans = tbEntity.getTimeSpansSorted();
-		
-		index = 0;
-		this.entity = tbEntity.getEntity(timespans.get(index).getBegin());
-		index++;
-	}
-	
-	public boolean hasNext() {
-		return null != this.entity;
-	}
-
-	public GabotoEntity next() {
-		GabotoEntity tmp = entity;
-		
-		try{
-			TimeInstant begin = timespans.get(index).getBegin();
-			if(tmp == null)
-				System.out.println("lala");
-			
-			while(entity.getTimeSpan().getBegin().canUnify(begin)){
-				index++;
-				begin = timespans.get(index).getBegin();
-			}
-			entity = tbEntity.getEntity(begin);
-			index++;
-		} catch(IndexOutOfBoundsException e){
-			entity = null;
-		}
-		
-		return tmp;
-	}
-
-	public void remove() {
-		// not implemented
-	}
-
 }

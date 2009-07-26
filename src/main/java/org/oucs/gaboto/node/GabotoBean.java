@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.nodes;
+package org.oucs.gaboto.node;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -37,8 +37,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.model.GabotoSnapshot;
+import org.oucs.gaboto.node.pool.EntityPool;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.graph.Triple;
@@ -113,7 +113,7 @@ public abstract class GabotoBean implements RDFTyped {
    *          {@link GabotoBean}.
    */
   public void loadFromResource(Resource res, GabotoSnapshot snapshot,
-      GabotoEntityPool pool) {
+      EntityPool pool) {
     // load bean
     // FIXME Why commented out?
     // throw new RuntimeException("Not yet implemented");

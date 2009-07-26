@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.annotations;
+package org.oucs.gaboto.node.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -37,42 +37,36 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
 
 /**
- * Used to annotate methods in {@link GabotoEntity}s that deal with simple literal properties.
+ * Used to annotate methods in {@link GabotoEntity}s that deal with URI Bag Properties.
  * 
  * <p>
- * Simple properties are properties that consist of exactly 1 RDF triple where
- * the object is a literal.
+ * RDF bags represent an unordered collection of items in RDF (For more information 
+ * on RDF bags see the <a href="http://www.w3.org/TR/REC-rdf-syntax/#collections">RDF Primer 
+ * section Collections</a>). 
  * </p>
  * 
  * <p>
- * An example for a simple literal property would be anything marked up with 
- * the Dublin Core title property.
- *  
- * <pre>
- * oxpdata:someCollege	  dc:title		"some Name" .
- * </pre>
+ * URI Bag Properties are properties that store an unordered collection of {@link GabotoEntity}
+ * references (using URIs). An example could be Gaboto occupiedBy relationship.
  * </p>
  * 
  * @author Arno Mittelbach
  * @version 0.1
+ * 
  * @see GabotoEntity
- * @see BagLiteralProperty
+ * @see SimpleURIProperty
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface SimpleLiteralProperty {
+public @interface BagURIProperty {
 	
 	/**
 	 * Returns the URI of the corresponding property. 
 	 * @return The URI of the corresponding property.
 	 */
 	public String value();
-	
-	public String datatypeType();
-	
-	public String javaType();
 }

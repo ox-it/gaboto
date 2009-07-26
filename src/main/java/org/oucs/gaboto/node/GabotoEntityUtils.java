@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.nodes;
+package org.oucs.gaboto.node;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -40,16 +40,16 @@ import java.util.Map;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.annotations.BagComplexProperty;
-import org.oucs.gaboto.entities.annotations.BagLiteralProperty;
-import org.oucs.gaboto.entities.annotations.BagURIProperty;
-import org.oucs.gaboto.entities.annotations.ComplexProperty;
-import org.oucs.gaboto.entities.annotations.IndirectProperty;
-import org.oucs.gaboto.entities.annotations.PassiveProperty;
-import org.oucs.gaboto.entities.annotations.SimpleLiteralProperty;
-import org.oucs.gaboto.entities.annotations.SimpleURIProperty;
-import org.oucs.gaboto.entities.annotations.StaticProperty;
-import org.oucs.gaboto.entities.annotations.UnstoredProperty;
+import org.oucs.gaboto.node.annotation.BagComplexProperty;
+import org.oucs.gaboto.node.annotation.BagLiteralProperty;
+import org.oucs.gaboto.node.annotation.BagURIProperty;
+import org.oucs.gaboto.node.annotation.ComplexProperty;
+import org.oucs.gaboto.node.annotation.IndirectProperty;
+import org.oucs.gaboto.node.annotation.PassiveProperty;
+import org.oucs.gaboto.node.annotation.SimpleLiteralProperty;
+import org.oucs.gaboto.node.annotation.SimpleURIProperty;
+import org.oucs.gaboto.node.annotation.StaticProperty;
+import org.oucs.gaboto.node.annotation.UnstoredProperty;
 
 import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.ontology.OntClass;

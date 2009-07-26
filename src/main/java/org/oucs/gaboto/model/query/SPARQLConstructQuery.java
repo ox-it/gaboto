@@ -37,11 +37,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
 import org.oucs.gaboto.model.Gaboto;
 import org.oucs.gaboto.model.GabotoSnapshot;
 import org.oucs.gaboto.model.IncoherenceException;
 import org.oucs.gaboto.model.NoTimeIndexSetException;
+import org.oucs.gaboto.node.pool.EntityPool;
 import org.oucs.gaboto.time.TimeInstant;
 
 /**
@@ -117,7 +117,7 @@ public class SPARQLConstructQuery extends GabotoQueryImpl {
     GabotoSnapshot intermediateSnap = snapshot.execSPARQLConstruct(query);
 
     // create resultPool from model
-    GabotoEntityPool resultPool = intermediateSnap.buildEntityPool();
+    EntityPool resultPool = intermediateSnap.buildEntityPool();
 
     // set snapshot
     resultPool.setSnapshot(snapshot);

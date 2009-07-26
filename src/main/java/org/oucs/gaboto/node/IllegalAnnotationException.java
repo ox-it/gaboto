@@ -29,24 +29,22 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.pool;
+package org.oucs.gaboto.node;
 
 import org.oucs.gaboto.GabotoRuntimeException;
 
 /**
- * Is thrown if the {@link GabotoEntityPoolConfiguration} can be used for the creation of an {@link GabotoEntityPool}, but
- * if it is ambiguous in some way.
+ * Is thrown if an {@link GabotoEntity} class uses annotation incorrectly.
  * 
  * @author Arno Mittelbach
- * @see GabotoEntityPool
- * @see GabotoEntityPoolConfiguration
+ * @see GabotoEntity
  */
-public class EntityPoolAmbiguousConfigurationException extends
-		GabotoRuntimeException {
+public class IllegalAnnotationException extends GabotoRuntimeException{
 
-	private static final long serialVersionUID = 8376775080480820745L;
+	private static final long serialVersionUID = 6390552659060182857L;
 
-	public EntityPoolAmbiguousConfigurationException(String msg){
-		super(msg);
+	public IllegalAnnotationException(Class<?> clazz){
+		super("Class " + clazz.getName() + " contains invalid annotations.");
 	}
 }
+	

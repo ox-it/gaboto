@@ -37,9 +37,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.oucs.gaboto.GabotoRuntimeException;
-import org.oucs.gaboto.entities.pool.GabotoEntityPool;
-import org.oucs.gaboto.entities.pool.GabotoEntityPoolConfiguration;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
+import org.oucs.gaboto.node.pool.EntityPool;
+import org.oucs.gaboto.node.pool.EntityPoolConfiguration;
 import org.oucs.gaboto.time.TimeSpan;
 
 import com.hp.hpl.jena.graph.Node;
@@ -68,7 +68,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
  * {@link GabotoSnapshot}s provide one solution to this problem. They allow you to represent
  * the part of the data you are interested in in one flat RDF graph that you can then easily
  * query against. Furthermore, snapshots can be used to automatically create the java representation of
- * {@link GabotoEntity}s using a {@link GabotoEntityPool}.
+ * {@link GabotoEntity}s using a {@link EntityPool}.
  * </p>
  * 
  * @author Arno Mittelbach
@@ -206,7 +206,7 @@ public class GabotoSnapshot {
 		return containsResource(res.getURI());
 	}
 	
-	public GabotoEntityPool loadEntitiesWithProperty(String propURI){
+	public EntityPool loadEntitiesWithProperty(String propURI){
 		return loadEntitiesWithProperty(getProperty(propURI));
 	}
 	
@@ -216,7 +216,7 @@ public class GabotoSnapshot {
 	 * @param prop The property
 	 * @return An entity pool with all entities that have this property.
 	 */
-	public GabotoEntityPool loadEntitiesWithProperty(Property prop){
+	public EntityPool loadEntitiesWithProperty(Property prop){
 		Collection<Resource> resources = new HashSet<Resource>();
 		ResIterator it = model.listResourcesWithProperty(prop);
 		while(it.hasNext())
@@ -227,7 +227,7 @@ public class GabotoSnapshot {
 	
 	
 	
-	public GabotoEntityPool loadEntitiesWithProperty(String propURI, boolean value){
+	public EntityPool loadEntitiesWithProperty(String propURI, boolean value){
 		Property prop = getProperty(propURI);
     if(prop == null)
 			throw new GabotoRuntimeException("Property not found"); 
@@ -242,7 +242,7 @@ public class GabotoSnapshot {
 	 * @param value The property's value
 	 * @return An entity pool with all entities that have this property.
 	 */
-	public GabotoEntityPool loadEntitiesWithProperty(Property prop, boolean value){
+	public EntityPool loadEntitiesWithProperty(Property prop, boolean value){
 		Collection<Resource> resources = new HashSet<Resource>();
 		ResIterator it = model.listResourcesWithProperty(prop, value);
 		while(it.hasNext())
@@ -252,10 +252,10 @@ public class GabotoSnapshot {
 	}
 	
 	
-	public GabotoEntityPool loadEntitiesWithProperty(String propURI, char value){
+	public EntityPool loadEntitiesWithProperty(String propURI, char value){
 		Property prop = getProperty(propURI);
     if(prop == null)
-			return new GabotoEntityPool(this.gaboto, this);
+			return new EntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
 	}
@@ -267,7 +267,7 @@ public class GabotoSnapshot {
 	 * @param value The property's value
 	 * @return An entity pool with all entities that have this property.
 	 */
-	public GabotoEntityPool loadEntitiesWithProperty(Property prop, char value){
+	public EntityPool loadEntitiesWithProperty(Property prop, char value){
 		Collection<Resource> resources = new HashSet<Resource>();
 		ResIterator it = model.listResourcesWithProperty(prop, value);
 		while(it.hasNext())
@@ -276,10 +276,10 @@ public class GabotoSnapshot {
 		return loadEntityPoolFromResources(resources);
 	}
 	
-	public GabotoEntityPool loadEntitiesWithProperty(String propURI, double value){
+	public EntityPool loadEntitiesWithProperty(String propURI, double value){
 		Property prop = getProperty(propURI);
     if(prop == null)
-			return new GabotoEntityPool(this.gaboto, this);
+			return new EntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
 	}
@@ -291,7 +291,7 @@ public class GabotoSnapshot {
 	 * @param value The property's value
 	 * @return An entity pool with all entities that have this property.
 	 */
-	public GabotoEntityPool loadEntitiesWithProperty(Property prop, double value){
+	public EntityPool loadEntitiesWithProperty(Property prop, double value){
 		Collection<Resource> resources = new HashSet<Resource>();
 		ResIterator it = model.listResourcesWithProperty(prop, value);
 		while(it.hasNext())
@@ -300,10 +300,10 @@ public class GabotoSnapshot {
 		return loadEntityPoolFromResources(resources);
 	}	
 	
-	public GabotoEntityPool loadEntitiesWithProperty(String propURI, float value){
+	public EntityPool loadEntitiesWithProperty(String propURI, float value){
 		Property prop = getProperty(propURI);
     if(prop == null)
-			return new GabotoEntityPool(this.gaboto, this);
+			return new EntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
 	}
@@ -315,7 +315,7 @@ public class GabotoSnapshot {
 	 * @param value The property's value
 	 * @return An entity pool with all entities that have this property.
 	 */
-	public GabotoEntityPool loadEntitiesWithProperty(Property prop, float value){
+	public EntityPool loadEntitiesWithProperty(Property prop, float value){
 		Collection<Resource> resources = new HashSet<Resource>();
 		ResIterator it = model.listResourcesWithProperty(prop, value);
 		while(it.hasNext())
@@ -324,10 +324,10 @@ public class GabotoSnapshot {
 		return loadEntityPoolFromResources(resources);
 	}	
 	
-	public GabotoEntityPool loadEntitiesWithProperty(String propURI, long value){
+	public EntityPool loadEntitiesWithProperty(String propURI, long value){
 		Property prop = getProperty(propURI);
     if(prop == null)
-			return new GabotoEntityPool(this.gaboto, this);
+			return new EntityPool(this.gaboto, this);
 		
 		return loadEntitiesWithProperty(getProperty(propURI), value);
 	}
@@ -339,7 +339,7 @@ public class GabotoSnapshot {
 	 * @param value The property's value
 	 * @return An entity pool with all entities that have this property.
 	 */
-	public GabotoEntityPool loadEntitiesWithProperty(Property prop, long value){
+	public EntityPool loadEntitiesWithProperty(Property prop, long value){
 		Collection<Resource> resources = new HashSet<Resource>();
 		ResIterator it = model.listResourcesWithProperty(prop, value);
 		while(it.hasNext())
@@ -348,14 +348,14 @@ public class GabotoSnapshot {
 		return loadEntityPoolFromResources(resources);
 	}	
 	
-	public GabotoEntityPool loadEntitiesWithProperty(String propURI, String value){
+	public EntityPool loadEntitiesWithProperty(String propURI, String value){
 		Property prop = getProperty(propURI);
     if (prop == null)
       throw new GabotoRuntimeException("Property not found: " + propURI);
 		return loadEntitiesWithProperty(prop, value);
 	}
 	
-	public GabotoEntityPool loadEntitiesWithProperty(String propURI, Object value){
+	public EntityPool loadEntitiesWithProperty(String propURI, Object value){
 		Property prop = getProperty(propURI);
     if (prop == null)
       throw new GabotoRuntimeException("Property not found: " + propURI);
@@ -363,7 +363,7 @@ public class GabotoSnapshot {
 	}
 	
 	
-	public GabotoEntityPool loadEntitiesWithProperty(Property prop, String value){
+	public EntityPool loadEntitiesWithProperty(Property prop, String value){
    return loadEntitiesWithProperty(prop, (Object)value);
 	}
 	
@@ -374,7 +374,7 @@ public class GabotoSnapshot {
 	 * @param value The property's value
 	 * @return An entity pool with all entities that have this property.
 	 */
-	public GabotoEntityPool loadEntitiesWithProperty(Property prop, Object value){
+	public EntityPool loadEntitiesWithProperty(Property prop, Object value){
 		Collection<Resource> resources = new HashSet<Resource>();
 		ResIterator it = model.listResourcesWithProperty(prop, value);
 		while(it.hasNext())
@@ -390,7 +390,7 @@ public class GabotoSnapshot {
 	 * @param value The property's value
 	 * @return An entity pool with all entities that have this property.
 	 */
-	public GabotoEntityPool loadEntitiesWithProperty(Property prop, RDFNode value){
+	public EntityPool loadEntitiesWithProperty(Property prop, RDFNode value){
     System.err.println("Value " + value);
 		Collection<Resource> resources = new HashSet<Resource>();
 		ResIterator it = model.listResourcesWithProperty(prop, value);
@@ -409,12 +409,12 @@ public class GabotoSnapshot {
 	 * @param resources The collection of resources
 	 * @return The entity pool
 	 */
-	private GabotoEntityPool loadEntityPoolFromResources(Collection<Resource> resources) {
-		GabotoEntityPoolConfiguration poolConfig = new GabotoEntityPoolConfiguration(this);
+	private EntityPool loadEntityPoolFromResources(Collection<Resource> resources) {
+		EntityPoolConfiguration poolConfig = new EntityPoolConfiguration(this);
 		poolConfig.setResources(resources);
 		poolConfig.setAddReferencedEntitiesToPool(false);
 		
-    return GabotoEntityPool.createFrom(poolConfig);
+    return EntityPool.createFrom(poolConfig);
 	}
 	
 	/**
@@ -437,10 +437,10 @@ public class GabotoSnapshot {
 		resCol.add(res);
 		
 		// create config
-		GabotoEntityPoolConfiguration config = new GabotoEntityPoolConfiguration(this);
+		EntityPoolConfiguration config = new EntityPoolConfiguration(this);
 		config.setResources(resCol);
 
-		GabotoEntityPool pool = GabotoEntityPool.createFrom(config);
+		EntityPool pool = EntityPool.createFrom(config);
 		
 		return pool.getEntity(uri);
 	}
@@ -522,12 +522,12 @@ public class GabotoSnapshot {
 	}
 	
 	/**
-	 * Creates an {@link GabotoEntityPool} with a standard configuration from this snapshot.
+	 * Creates an {@link EntityPool} with a standard configuration from this snapshot.
 	 * 
 	 * @return An GabotoEntityPool build from this snapshot.
 	 */
-	public GabotoEntityPool buildEntityPool() {
-    return GabotoEntityPool.createFrom(new GabotoEntityPoolConfiguration(this));
+	public EntityPool buildEntityPool() {
+    return EntityPool.createFrom(new EntityPoolConfiguration(this));
 	}
 	
 	/**

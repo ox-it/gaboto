@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.annotations;
+package org.oucs.gaboto.node.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -37,28 +37,48 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoBean;
+import org.oucs.gaboto.node.GabotoEntity;
 
 /**
- * Used to annotate methods in {@link GabotoEntity}s that deal with indirect properties.
+ * Used to annotate methods in {@link GabotoEntity}s that deal with complex properties.
  * 
  * <p>
- * Indirect properties indicate that a certain property is not stored directly with an
- * entity, but with an entity that is referenced (not necessarily directly) from this
- * entity.
+ * Complex properties are properties that consist of 1 RDF triple where the subject
+ * is an {@link GabotoEntity} and the object is a blank node. 
+ * Several further triples may then use the blank node to describe the data.
+ * </p>
+ * 
+ * <p>
+ * A complex property needs to have a corresponding {@link GabotoBean} that 
+ * represents it in Java. 
+ * </p>
+ * 
+ * <p>
+ * An example for a complex property would be the location of places:
+ * <pre>
+ * oxpdata:somePlace	oxp:hasLocation		_blankNode .
+ * _blankNode			rdf:type			gml:Point ;
+ * 						gml:pos				"42.34 -71.21" .
+ * </pre>
  * </p>
  * 
  * @author Arno Mittelbach
+ * @version 0.1
+ * 
+ * @see GabotoEntity
+ * @see GabotoBean
+ * @see BagComplexProperty
  *
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface IndirectProperty {
+public @interface ComplexProperty {
 	
 	/**
-	 * 
-	 * @return the value
+	 * Returns the URI of the corresponding property. 
+	 * @return The URI of the corresponding property.
 	 */
-	public String[] value();
+	public String value();
 }

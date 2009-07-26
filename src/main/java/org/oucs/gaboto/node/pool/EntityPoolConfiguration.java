@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.pool;
+package org.oucs.gaboto.node.pool;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -44,10 +44,10 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- * Used to configure the creation of {@link GabotoEntityPool}s.
+ * Used to configure the creation of {@link EntityPool}s.
  * 
  * <p>
- * An {@link GabotoEntityPool} can either be created from an
+ * An {@link EntityPool} can either be created from an
  * {@link GabotoSnapshot} or from a Jena {@link Model} and an {@link Gaboto}
  * object. This can be seen as the source from which the pool is created. All
  * other options define which entities from the source are to be added to the
@@ -56,9 +56,9 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * 
  * @author Arno Mittelbach
  * @version 0.1
- * @see GabotoEntityPool
+ * @see EntityPool
  */
-public class GabotoEntityPoolConfiguration {
+public class EntityPoolConfiguration {
 
   private Model model = null;
 
@@ -87,7 +87,7 @@ public class GabotoEntityPoolConfiguration {
   /**
    * @param snapshot
    */
-  public GabotoEntityPoolConfiguration(GabotoSnapshot snapshot) {
+  public EntityPoolConfiguration(GabotoSnapshot snapshot) {
     super();
     this.snapshot = snapshot;
   }
@@ -96,7 +96,7 @@ public class GabotoEntityPoolConfiguration {
    * @param gaboto
    * @param model
    */
-  public GabotoEntityPoolConfiguration(Gaboto gaboto, Model model) {
+  public EntityPoolConfiguration(Gaboto gaboto, Model model) {
     super();
     this.gaboto = gaboto;
     this.model = model;
@@ -104,7 +104,7 @@ public class GabotoEntityPoolConfiguration {
 
   /**
    * Tests whether this configuration can be used to create an
-   * {@link GabotoEntityPool}.
+   * {@link EntityPool}.
    * 
    */
   public void assertConfigurationValid() {

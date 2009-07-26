@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package org.oucs.gaboto.entities.annotations;
+package org.oucs.gaboto.node.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -37,41 +37,28 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.oucs.gaboto.nodes.GabotoBean;
-import org.oucs.gaboto.nodes.GabotoEntity;
+import org.oucs.gaboto.node.GabotoEntity;
 
 /**
- * Used to annotate methods in {@link GabotoEntity}s that deal with Complex Bag Properties.
+ * Used to annotate methods in {@link GabotoEntity}s that deal with indirect properties.
  * 
  * <p>
- * RDF bags represent an unordered collection of items in RDF (For more information 
- * on RDF bags see the <a href="http://www.w3.org/TR/REC-rdf-syntax/#collections">RDF Primer 
- * section Collections</a>). 
- * </p>
- * 
- * <p>
- * Complex Bag Properties are properties that store an unordered collection of complex properties
- * (see {@link ComplexProperty}). An example could be the storage of multiple locations for a place
- * (one for Google Maps, one for Microsoft Live Maps, one for Yahoo Maps, ...).
+ * Indirect properties indicate that a certain property is not stored directly with an
+ * entity, but with an entity that is referenced (not necessarily directly) from this
+ * entity.
  * </p>
  * 
  * @author Arno Mittelbach
- * @version 0.1
- *
- * @see GabotoEntity
- * 
- * @see GabotoBean
- * @see ComplexProperty
  *
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface BagComplexProperty {
+public @interface IndirectProperty {
 	
 	/**
-	 * Returns the URI of the corresponding property. 
-	 * @return The URI of the corresponding property.
+	 * 
+	 * @return the value
 	 */
-	public String value();
+	public String[] value();
 }
