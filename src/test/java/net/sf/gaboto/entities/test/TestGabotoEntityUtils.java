@@ -35,9 +35,10 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import net.sf.gaboto.vocabulary.DC;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.vocabulary.DC;
 
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Unit;

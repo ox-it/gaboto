@@ -37,21 +37,21 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import net.sf.gaboto.GabotoConfiguration;
+import net.sf.gaboto.GabotoFactory;
+import net.sf.gaboto.model.Gaboto;
+import net.sf.gaboto.model.GabotoSnapshot;
+import net.sf.gaboto.model.SPARQLQuerySolutionProcessor;
+import net.sf.gaboto.node.GabotoEntity;
+import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.test.Utils;
+import net.sf.gaboto.time.TimeInstant;
+import net.sf.gaboto.time.TimeSpan;
+import net.sf.gaboto.util.GabotoPredefinedQueries;
+import net.sf.gaboto.vocabulary.OxPointsVocab;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.model.SPARQLQuerySolutionProcessor;
-import org.oucs.gaboto.node.GabotoEntity;
-import org.oucs.gaboto.node.pool.EntityPool;
-import org.oucs.gaboto.time.TimeInstant;
-import org.oucs.gaboto.time.TimeSpan;
-import org.oucs.gaboto.util.GabotoPredefinedQueries;
-import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 import uk.ac.ox.oucs.oxpoints.gaboto.beans.Location;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;

@@ -34,11 +34,12 @@ package net.sf.gaboto.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import net.sf.gaboto.GabotoConfiguration;
+import net.sf.gaboto.GabotoFactory;
+import net.sf.gaboto.time.TimeInstant;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.time.TimeInstant;
 
 public class TestTimeInstant {
 	

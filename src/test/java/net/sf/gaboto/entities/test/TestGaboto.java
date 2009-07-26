@@ -38,19 +38,19 @@ import static org.junit.Assert.assertTrue;
 import java.util.Collection;
 import java.util.Iterator;
 
+import net.sf.gaboto.GabotoConfiguration;
+import net.sf.gaboto.GabotoFactory;
+import net.sf.gaboto.model.EntityAlreadyExistsException;
+import net.sf.gaboto.model.Gaboto;
+import net.sf.gaboto.node.GabotoEntity;
+import net.sf.gaboto.node.GabotoTimeBasedEntity;
 import net.sf.gaboto.test.TimeUtils;
+import net.sf.gaboto.time.TimeInstant;
+import net.sf.gaboto.time.TimeSpan;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.model.EntityAlreadyExistsException;
-import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.node.GabotoEntity;
-import org.oucs.gaboto.node.GabotoTimeBasedEntity;
-import org.oucs.gaboto.time.TimeInstant;
-import org.oucs.gaboto.time.TimeSpan;
 
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Unit;

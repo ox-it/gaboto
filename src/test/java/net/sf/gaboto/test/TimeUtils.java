@@ -3,9 +3,10 @@ package net.sf.gaboto.test;
 import java.util.Random;
 import java.util.UUID;
 
-import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.time.TimeInstant;
-import org.oucs.gaboto.time.TimeSpan;
+import net.sf.gaboto.GabotoFactory;
+import net.sf.gaboto.time.TimeInstant;
+import net.sf.gaboto.time.TimeSpan;
+
 
 public class TimeUtils {
   

@@ -32,7 +32,7 @@
 
 package net.sf.gaboto.test;
 
-import org.oucs.gaboto.GabotoConfiguration;
+import net.sf.gaboto.GabotoConfiguration;
 
 import junit.framework.TestCase;
 
@@ -64,7 +64,7 @@ public class GabotoConfigurationTest extends TestCase {
   }
 
   /**
-   * Test method for {@link org.oucs.gaboto.GabotoConfiguration#fromConfigFile()}.
+   * Test method for {@link net.sf.gaboto.GabotoConfiguration#fromConfigFile()}.
    */
   public void testFromConfigFile() throws Exception {
     GabotoConfiguration gc = GabotoConfiguration.fromConfigFile();

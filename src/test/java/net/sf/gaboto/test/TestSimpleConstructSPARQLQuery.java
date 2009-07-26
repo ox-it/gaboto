@@ -31,16 +31,17 @@
  */
 package net.sf.gaboto.test;
 
+import net.sf.gaboto.GabotoConfiguration;
+import net.sf.gaboto.GabotoFactory;
+import net.sf.gaboto.model.query.GabotoQuery;
+import net.sf.gaboto.model.query.SPARQLConstructQuery;
+import net.sf.gaboto.time.TimeInstant;
+import net.sf.gaboto.util.GabotoPredefinedQueries;
+import net.sf.gaboto.vocabulary.OxPointsVocab;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.model.query.GabotoQuery;
-import org.oucs.gaboto.model.query.SPARQLConstructQuery;
-import org.oucs.gaboto.time.TimeInstant;
-import org.oucs.gaboto.util.GabotoPredefinedQueries;
-import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 public class TestSimpleConstructSPARQLQuery {
 

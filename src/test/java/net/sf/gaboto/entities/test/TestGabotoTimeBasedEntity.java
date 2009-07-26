@@ -37,24 +37,24 @@ import static org.junit.Assert.assertTrue;
 import java.util.Iterator;
 import java.util.UUID;
 
+import net.sf.gaboto.GabotoConfiguration;
+import net.sf.gaboto.GabotoFactory;
+import net.sf.gaboto.model.EntityDoesNotExistException;
+import net.sf.gaboto.model.Gaboto;
+import net.sf.gaboto.model.GabotoSnapshot;
+import net.sf.gaboto.model.query.GabotoQuery;
+import net.sf.gaboto.model.query.ListOfTypedEntities;
+import net.sf.gaboto.node.GabotoEntity;
+import net.sf.gaboto.node.GabotoTimeBasedEntity;
+import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.test.TimeUtils;
+import net.sf.gaboto.time.TimeInstant;
+import net.sf.gaboto.time.TimeSpan;
+import net.sf.gaboto.vocabulary.DC;
+import net.sf.gaboto.vocabulary.OxPointsVocab;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.model.EntityDoesNotExistException;
-import org.oucs.gaboto.model.Gaboto;
-import org.oucs.gaboto.model.GabotoSnapshot;
-import org.oucs.gaboto.model.query.GabotoQuery;
-import org.oucs.gaboto.model.query.ListOfTypedEntities;
-import org.oucs.gaboto.node.GabotoEntity;
-import org.oucs.gaboto.node.GabotoTimeBasedEntity;
-import org.oucs.gaboto.node.pool.EntityPool;
-import org.oucs.gaboto.time.TimeInstant;
-import org.oucs.gaboto.time.TimeSpan;
-import org.oucs.gaboto.vocabulary.DC;
-import org.oucs.gaboto.vocabulary.OxPointsVocab;
 
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.College;

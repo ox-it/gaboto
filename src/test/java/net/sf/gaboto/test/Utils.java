@@ -37,10 +37,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import net.sf.gaboto.GabotoConfiguration;
+import net.sf.gaboto.GabotoFactory;
+import net.sf.gaboto.model.Gaboto;
+
 import org.custommonkey.xmlunit.XMLAssert;
-import org.oucs.gaboto.GabotoConfiguration;
-import org.oucs.gaboto.GabotoFactory;
-import org.oucs.gaboto.model.Gaboto;
 
 import uk.ac.ox.oucs.oxpoints.gaboto.TEIImporter;
 

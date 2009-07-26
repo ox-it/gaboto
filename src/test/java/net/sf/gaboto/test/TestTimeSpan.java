@@ -35,9 +35,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import net.sf.gaboto.time.TimeInstant;
+import net.sf.gaboto.time.TimeSpan;
+
 import org.junit.Test;
-import org.oucs.gaboto.time.TimeInstant;
-import org.oucs.gaboto.time.TimeSpan;
 
 public class TestTimeSpan {
 
