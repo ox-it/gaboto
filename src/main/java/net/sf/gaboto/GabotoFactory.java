@@ -37,11 +37,10 @@ import java.sql.SQLException;
 import java.util.Iterator;
 
 
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.event.GabotoEvent;
-import net.sf.gaboto.model.event.InsertionGabotoEvent;
-import net.sf.gaboto.model.event.RemovalGabotoEvent;
-import net.sf.gaboto.model.event.UpdateListener;
+import net.sf.gaboto.event.GabotoEvent;
+import net.sf.gaboto.event.InsertionGabotoEvent;
+import net.sf.gaboto.event.RemovalGabotoEvent;
+import net.sf.gaboto.event.UpdateListener;
 import net.sf.gaboto.time.TimeDimensionIndexer;
 import net.sf.gaboto.util.Performance;
 import net.sf.gaboto.vocabulary.RDFCON;

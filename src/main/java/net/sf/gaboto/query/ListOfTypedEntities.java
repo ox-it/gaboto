@@ -1,7 +1,7 @@
 /**
  * Copyright 2009 University of Oxford
  *
- * Written by Tim Pizey for the Erewhon Project
+ * Written by Arno Mittelbach for the Erewhon Project
  *
  * All rights reserved.
  *
@@ -29,61 +29,78 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-/**
- * 
- */
-package net.sf.gaboto.model.query;
+package net.sf.gaboto.query;
 
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.GabotoSnapshot;
+import net.sf.gaboto.Gaboto;
+import net.sf.gaboto.GabotoSnapshot;
 import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.node.pool.EntityPoolConfiguration;
 import net.sf.gaboto.time.TimeInstant;
 
 
-
-
 /**
- * Return all entities. 
+ * Simple query that grabs all entities of a specific type.
  * 
  * 
- * @author Tim Pizey
- * @since 15 May 2009
- *
+ * @author Arno Mittelbach
+ * @version 0.1
  */
-public class AllEntities extends GabotoQueryImpl {
+public class ListOfTypedEntities extends GabotoQueryImpl {
+	
+	private String type;
+	private TimeInstant timeInstant;
+	private boolean forceCreation;
 
-  public AllEntities() {
-    super();
-  }
-  
-  
+	public ListOfTypedEntities(String type, TimeInstant ti) {
+		super();
+		this.type = type;
+		this.timeInstant = ti;
+		this.forceCreation = true;
+	}
 
-  /**
-   * @param gaboto
-   */
-  public AllEntities(Gaboto gaboto) {
-    super(gaboto);
-  }
+	public ListOfTypedEntities(String type, TimeInstant ti, boolean forceCreation) {
+		super();
+		this.type = type;
+		this.timeInstant = ti;
+		this.forceCreation = forceCreation;
+	}
+	
+	public ListOfTypedEntities(Gaboto gaboto, String type, TimeInstant ti) {
+		super(gaboto);
+		this.type = type;
+		this.timeInstant = ti;
+		this.forceCreation = true;
+	}
 
+	public ListOfTypedEntities(Gaboto gaboto, String type, TimeInstant ti, boolean forceCreation) {
+		super(gaboto);
+		this.type = type;
+		this.timeInstant = ti;
+		this.forceCreation = forceCreation;
+	}
+	
+	
+	@Override
+	public int getResultType() {
+		return GabotoQueryImpl.RESULT_TYPE_ENTITY_POOL;
+	}
 
+	@Override
+	public Object execute() {
+		// create snapshot
+		GabotoSnapshot snapshot = getGaboto().getSnapshot(timeInstant);
+		// create config
+		EntityPoolConfiguration config = new EntityPoolConfiguration(snapshot);
+		config.addAcceptedType(type);
+		
+  	return EntityPool.createFrom(config);
+	}
 
-  @Override
-  protected void doPrepare() {
-  }
-
-  @Override
-  protected Object execute() {
-    // create snapshot
-    GabotoSnapshot snapshot = getGaboto().getSnapshot(TimeInstant.now());
-    // create config
-    EntityPoolConfiguration entityPoolConfig = new EntityPoolConfiguration(snapshot);
-    
-    return EntityPool.createFrom(entityPoolConfig);
-  }
-
-  @Override
-  public int getResultType() {
-    return GabotoQueryImpl.RESULT_TYPE_ENTITY_POOL;
-  }
+	@Override
+	protected void doPrepare() {
+	  // Fool Eclipse
+	  if (forceCreation) 
+	    forceCreation = true;
+	}
+	
 }

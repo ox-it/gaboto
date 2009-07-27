@@ -1,7 +1,7 @@
 /**
  * Copyright 2009 University of Oxford
  *
- * Written by Arno Mittelbach for the Erewhon Project
+ * Written by Tim Pizey for the Erewhon Project
  *
  * All rights reserved.
  *
@@ -29,27 +29,61 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model;
+/**
+ * 
+ */
+package net.sf.gaboto.query;
 
-import net.sf.gaboto.GabotoException;
-import net.sf.gaboto.node.GabotoEntity;
+import net.sf.gaboto.Gaboto;
+import net.sf.gaboto.GabotoSnapshot;
+import net.sf.gaboto.node.pool.EntityPool;
+import net.sf.gaboto.node.pool.EntityPoolConfiguration;
+import net.sf.gaboto.time.TimeInstant;
+
+
 
 
 /**
- * Is thrown when an entity is added to the Gaboto model that already exists.
+ * Return all entities. 
  * 
- * @author Arno Mittelbach
+ * 
+ * @author Tim Pizey
+ * @since 15 May 2009
  *
  */
-public class EntityAlreadyExistsException extends GabotoException {
+public class AllEntities extends GabotoQueryImpl {
 
-	private static final long serialVersionUID = -8990591830665990504L;
+  public AllEntities() {
+    super();
+  }
+  
+  
 
-	public EntityAlreadyExistsException(GabotoEntity entity){
-		super("The entity " + entity.getUri() + " already exists.");
-	}
-	
-	public EntityAlreadyExistsException(String entityURI){
-		super("The entity " + entityURI + " already exists.");
-	}
+  /**
+   * @param gaboto
+   */
+  public AllEntities(Gaboto gaboto) {
+    super(gaboto);
+  }
+
+
+
+  @Override
+  protected void doPrepare() {
+  }
+
+  @Override
+  protected Object execute() {
+    // create snapshot
+    GabotoSnapshot snapshot = getGaboto().getSnapshot(TimeInstant.now());
+    // create config
+    EntityPoolConfiguration entityPoolConfig = new EntityPoolConfiguration(snapshot);
+    
+    return EntityPool.createFrom(entityPoolConfig);
+  }
+
+  @Override
+  public int getResultType() {
+    return GabotoQueryImpl.RESULT_TYPE_ENTITY_POOL;
+  }
 }

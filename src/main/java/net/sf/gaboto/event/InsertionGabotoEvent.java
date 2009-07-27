@@ -29,27 +29,64 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model;
+package net.sf.gaboto.event;
 
-import net.sf.gaboto.GabotoException;
+import net.sf.gaboto.Gaboto;
+import net.sf.gaboto.time.TimeSpan;
 
-import com.hp.hpl.jena.rdf.model.Resource;
+
+import com.hp.hpl.jena.graph.Triple;
 
 /**
- * Is thrown when an RDF resource is accessed that does not exist.
+ * Describes that a new triple has been inserted into an Gaboto model.
  * 
  * @author Arno Mittelbach
- *
+ * @version 0.1
  */
-public class ResourceDoesNotExistException extends GabotoException {
+public class InsertionGabotoEvent extends GabotoEvent {
 
-	private static final long serialVersionUID = -4330686588081577142L;
-
-	public ResourceDoesNotExistException(String uri){
-		super("No resource with the uri " + uri + " exists.");
-	}
+	private TimeSpan timespan;
+	private Triple triple;
 	
-	public ResourceDoesNotExistException(Resource res){
-		this(res.getURI());
+	/**
+	 * Constructs a new insertion event that describes that a triple was added to the gdg.
+	 * 
+	 * @param triple The triple that was added.
+	 * @see Gaboto#getGlobalKnowledgeGraph()
+	 */
+	public InsertionGabotoEvent(Triple triple) {
+		super();
+		this.triple = triple;
+	}
+
+	/**
+	 * Creates a new insertion event that describes that a triple was added to the graph described by the time span.
+	 * 
+	 * @param timespan The time span.
+	 * @param triple The triple that was added.
+	 */
+	public InsertionGabotoEvent(TimeSpan timespan, Triple triple) {
+		super();
+		this.timespan = timespan;
+		this.triple = triple;
+	}
+
+	
+	/**
+	 * Returns the time span that describes the graph the triple was added to.
+	 * 
+	 * @return Null (in case the triple was added to the gdg) or the time span describing the graph the tripple was added to.
+	 */
+	public TimeSpan getTimespan() {
+		return timespan;
+	}
+
+	/**
+	 * Returns the triple that was added to the Gaboto system.
+	 * 
+	 * @return The triple that was added to the Gaboto system.
+	 */
+	public Triple getTriple() {
+		return triple;
 	}
 }

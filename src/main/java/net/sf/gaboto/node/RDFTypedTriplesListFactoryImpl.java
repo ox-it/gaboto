@@ -37,7 +37,7 @@ import java.util.Collection;
 import java.util.List;
 
 import net.sf.gaboto.GabotoRuntimeException;
-import net.sf.gaboto.model.IncoherenceException;
+import net.sf.gaboto.IncoherenceException;
 import net.sf.gaboto.node.annotation.BagComplexProperty;
 import net.sf.gaboto.node.annotation.BagLiteralProperty;
 import net.sf.gaboto.node.annotation.BagURIProperty;

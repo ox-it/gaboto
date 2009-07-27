@@ -38,8 +38,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.IncoherenceException;
+import net.sf.gaboto.Gaboto;
+import net.sf.gaboto.IncoherenceException;
 import net.sf.gaboto.util.GabotoPredefinedQueries;
 
 

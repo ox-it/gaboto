@@ -29,29 +29,26 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model;
+package net.sf.gaboto;
 
-import net.sf.gaboto.GabotoRuntimeException;
 
+import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- * Is thrown when it is suspected that the data in Gaboto is corrupted.
- *  
+ * Is thrown when an RDF resource is accessed that does not exist.
+ * 
  * @author Arno Mittelbach
  *
  */
-public class IncoherenceException extends GabotoRuntimeException {
-  private static final long serialVersionUID = -2814228062630437713L;
+public class ResourceDoesNotExistException extends GabotoException {
 
-  public IncoherenceException(Throwable cause) {
-    super(cause);
-  }
-	public IncoherenceException(String message, Throwable cause) {
-    super(message, cause);
-  }
+	private static final long serialVersionUID = -4330686588081577142L;
 
-
-  public IncoherenceException(String message){
-		super(message);
+	public ResourceDoesNotExistException(String uri){
+		super("No resource with the uri " + uri + " exists.");
+	}
+	
+	public ResourceDoesNotExistException(Resource res){
+		this(res.getURI());
 	}
 }

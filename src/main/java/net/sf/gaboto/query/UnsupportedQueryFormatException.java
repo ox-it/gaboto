@@ -29,20 +29,21 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model;
+package net.sf.gaboto.query;
 
-import com.hp.hpl.jena.query.QuerySolution;
+import net.sf.gaboto.GabotoRuntimeException;
 
 /**
- * Implementation of {@link QuerySolution} that keeps on processing until no further results can be found.
+ * Is thrown if an unsupported format is supplied.
  * 
  * @author Arno Mittelbach
- * @version 0.1
+ *
  */
-abstract public class SPARQLQuerySolutionProcessorImpl implements SPARQLQuerySolutionProcessor {
+public class UnsupportedQueryFormatException extends GabotoRuntimeException {
 
-	public boolean stopProcessing() {
-		return false;
+	private static final long serialVersionUID = 4854482856761719696L;
+
+	public UnsupportedQueryFormatException(String format){
+		super("Unsupported format: " + format);
 	}
-
 }

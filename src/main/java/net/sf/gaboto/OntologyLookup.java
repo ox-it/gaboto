@@ -1,4 +1,4 @@
-package net.sf.gaboto.model;
+package net.sf.gaboto;
 
 import java.util.Collection;
 import java.util.Set;

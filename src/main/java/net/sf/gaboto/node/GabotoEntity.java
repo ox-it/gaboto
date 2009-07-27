@@ -38,9 +38,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.gaboto.Gaboto;
 import net.sf.gaboto.GabotoRuntimeException;
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.GabotoSnapshot;
+import net.sf.gaboto.GabotoSnapshot;
 import net.sf.gaboto.node.annotation.SimpleLiteralProperty;
 import net.sf.gaboto.node.annotation.SimpleURIProperty;
 import net.sf.gaboto.node.pool.EntityExistsCallback;

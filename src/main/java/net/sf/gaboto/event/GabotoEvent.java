@@ -29,21 +29,15 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model.event;
-
+package net.sf.gaboto.event;
 
 /**
- * Interface to allow objects to listen to updates of an Gaboto system.
+ * Common base class for events in Gaboto.
+ * 
  * 
  * @author Arno Mittelbach
  * @version 0.1
  */
-public interface UpdateListener {
+abstract public class GabotoEvent {
 
-	/**
-	 * Called whenever the underlying Gaboto was updated (triples added or removed).
-	 * 
-	 * @param e
-	 */
-	public void updateOccured(GabotoEvent e);
 }

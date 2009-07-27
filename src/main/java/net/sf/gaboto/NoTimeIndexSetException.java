@@ -29,78 +29,23 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model.query;
-
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.GabotoSnapshot;
-import net.sf.gaboto.node.pool.EntityPool;
-import net.sf.gaboto.node.pool.EntityPoolConfiguration;
-import net.sf.gaboto.time.TimeInstant;
+package net.sf.gaboto;
 
 
 /**
- * Simple query that grabs all entities of a specific type.
- * 
+ * Is thrown when a time index is accessed in an Gaboto model that did not contain one.
  * 
  * @author Arno Mittelbach
- * @version 0.1
  */
-public class ListOfTypedEntities extends GabotoQueryImpl {
-	
-	private String type;
-	private TimeInstant timeInstant;
-	private boolean forceCreation;
+public class NoTimeIndexSetException extends GabotoRuntimeException {
 
-	public ListOfTypedEntities(String type, TimeInstant ti) {
-		super();
-		this.type = type;
-		this.timeInstant = ti;
-		this.forceCreation = true;
-	}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6321682744335392798L;
 
-	public ListOfTypedEntities(String type, TimeInstant ti, boolean forceCreation) {
-		super();
-		this.type = type;
-		this.timeInstant = ti;
-		this.forceCreation = forceCreation;
+	public NoTimeIndexSetException(){
+		super("No time index has been set for this Gaboto object." + 
+		        " You are probably dealing with a persistent object, where indexing is too costly.");
 	}
-	
-	public ListOfTypedEntities(Gaboto gaboto, String type, TimeInstant ti) {
-		super(gaboto);
-		this.type = type;
-		this.timeInstant = ti;
-		this.forceCreation = true;
-	}
-
-	public ListOfTypedEntities(Gaboto gaboto, String type, TimeInstant ti, boolean forceCreation) {
-		super(gaboto);
-		this.type = type;
-		this.timeInstant = ti;
-		this.forceCreation = forceCreation;
-	}
-	
-	
-	@Override
-	public int getResultType() {
-		return GabotoQueryImpl.RESULT_TYPE_ENTITY_POOL;
-	}
-
-	@Override
-	public Object execute() {
-		// create snapshot
-		GabotoSnapshot snapshot = getGaboto().getSnapshot(timeInstant);
-		// create config
-		EntityPoolConfiguration config = new EntityPoolConfiguration(snapshot);
-		config.addAcceptedType(type);
-		
-  	return EntityPool.createFrom(config);
-	}
-
-	@Override
-	protected void doPrepare() {
-	  // Fool Eclipse
-	  if (forceCreation) 
-	    forceCreation = true;
-	}
-	
 }

@@ -29,18 +29,18 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model.query;
+package net.sf.gaboto.query;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import net.sf.gaboto.Gaboto;
 import net.sf.gaboto.GabotoRuntimeException;
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.GabotoSnapshot;
-import net.sf.gaboto.model.IncoherenceException;
-import net.sf.gaboto.model.NoTimeIndexSetException;
+import net.sf.gaboto.GabotoSnapshot;
+import net.sf.gaboto.IncoherenceException;
+import net.sf.gaboto.NoTimeIndexSetException;
 import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.time.TimeInstant;
 

@@ -44,9 +44,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import net.sf.gaboto.Gaboto;
 import net.sf.gaboto.GabotoRuntimeException;
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.GabotoSnapshot;
+import net.sf.gaboto.GabotoSnapshot;
 import net.sf.gaboto.time.TimeInstant;
 import net.sf.gaboto.time.TimeSpan;
 

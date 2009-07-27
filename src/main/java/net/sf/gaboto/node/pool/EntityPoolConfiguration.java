@@ -34,9 +34,9 @@ package net.sf.gaboto.node.pool;
 import java.util.Collection;
 import java.util.HashSet;
 
+import net.sf.gaboto.Gaboto;
 import net.sf.gaboto.GabotoRuntimeException;
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.GabotoSnapshot;
+import net.sf.gaboto.GabotoSnapshot;
 import net.sf.gaboto.node.pool.filter.EntityFilter;
 import net.sf.gaboto.node.pool.filter.ResourceFilter;
 

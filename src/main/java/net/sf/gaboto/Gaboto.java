@@ -29,7 +29,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model;
+package net.sf.gaboto;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,14 +39,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-import net.sf.gaboto.GabotoConfiguration;
-import net.sf.gaboto.GabotoFactory;
-import net.sf.gaboto.GabotoRuntimeException;
-import net.sf.gaboto.model.OntologyLookup;
-import net.sf.gaboto.model.event.GabotoEvent;
-import net.sf.gaboto.model.event.InsertionGabotoEvent;
-import net.sf.gaboto.model.event.RemovalGabotoEvent;
-import net.sf.gaboto.model.event.UpdateListener;
+import net.sf.gaboto.event.GabotoEvent;
+import net.sf.gaboto.event.InsertionGabotoEvent;
+import net.sf.gaboto.event.RemovalGabotoEvent;
+import net.sf.gaboto.event.UpdateListener;
 import net.sf.gaboto.node.GabotoEntity;
 import net.sf.gaboto.node.GabotoTimeBasedEntity;
 import net.sf.gaboto.time.TimeDimensionIndexer;

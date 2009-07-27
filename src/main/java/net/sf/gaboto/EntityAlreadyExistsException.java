@@ -29,15 +29,26 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model.event;
+package net.sf.gaboto;
+
+import net.sf.gaboto.node.GabotoEntity;
+
 
 /**
- * Common base class for events in Gaboto.
- * 
+ * Is thrown when an entity is added to the Gaboto model that already exists.
  * 
  * @author Arno Mittelbach
- * @version 0.1
+ *
  */
-abstract public class GabotoEvent {
+public class EntityAlreadyExistsException extends GabotoException {
 
+	private static final long serialVersionUID = -8990591830665990504L;
+
+	public EntityAlreadyExistsException(GabotoEntity entity){
+		super("The entity " + entity.getUri() + " already exists.");
+	}
+	
+	public EntityAlreadyExistsException(String entityURI){
+		super("The entity " + entityURI + " already exists.");
+	}
 }

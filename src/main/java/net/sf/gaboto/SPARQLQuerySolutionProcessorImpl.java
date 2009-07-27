@@ -29,18 +29,21 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model.query;
+package net.sf.gaboto;
 
-import net.sf.gaboto.GabotoRuntimeException;
 
-public class QueryAlreadyPreparedException extends GabotoRuntimeException {
+import com.hp.hpl.jena.query.QuerySolution;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8901223251761229284L;
+/**
+ * Implementation of {@link QuerySolution} that keeps on processing until no further results can be found.
+ * 
+ * @author Arno Mittelbach
+ * @version 0.1
+ */
+abstract public class SPARQLQuerySolutionProcessorImpl implements SPARQLQuerySolutionProcessor {
 
-	public QueryAlreadyPreparedException(){
-		super("The query has already been prepared.");
+	public boolean stopProcessing() {
+		return false;
 	}
+
 }

@@ -29,24 +29,18 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model;
+package net.sf.gaboto.query;
 
 import net.sf.gaboto.GabotoRuntimeException;
 
-/**
- * Is thrown when a time index is accessed in an Gaboto model that did not contain one.
- * 
- * @author Arno Mittelbach
- */
-public class NoTimeIndexSetException extends GabotoRuntimeException {
+public class QueryAlreadyPreparedException extends GabotoRuntimeException {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6321682744335392798L;
+	private static final long serialVersionUID = 8901223251761229284L;
 
-	public NoTimeIndexSetException(){
-		super("No time index has been set for this Gaboto object." + 
-		        " You are probably dealing with a persistent object, where indexing is too costly.");
+	public QueryAlreadyPreparedException(){
+		super("The query has already been prepared.");
 	}
 }

@@ -29,21 +29,28 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.sf.gaboto.model.query;
+package net.sf.gaboto;
 
-import net.sf.gaboto.GabotoRuntimeException;
+
 
 /**
- * Is thrown if an unsupported format is supplied.
- * 
+ * Is thrown when it is suspected that the data in Gaboto is corrupted.
+ *  
  * @author Arno Mittelbach
  *
  */
-public class UnsupportedQueryFormatException extends GabotoRuntimeException {
+public class IncoherenceException extends GabotoRuntimeException {
+  private static final long serialVersionUID = -2814228062630437713L;
 
-	private static final long serialVersionUID = 4854482856761719696L;
+  public IncoherenceException(Throwable cause) {
+    super(cause);
+  }
+	public IncoherenceException(String message, Throwable cause) {
+    super(message, cause);
+  }
 
-	public UnsupportedQueryFormatException(String format){
-		super("Unsupported format: " + format);
+
+  public IncoherenceException(String message){
+		super(message);
 	}
 }

@@ -33,9 +33,9 @@ package net.sf.gaboto.transformation;
 
 import java.io.StringWriter;
 
-import net.sf.gaboto.model.query.GabotoQuery;
-import net.sf.gaboto.model.query.UnsupportedQueryFormatException;
 import net.sf.gaboto.node.pool.EntityPool;
+import net.sf.gaboto.query.GabotoQuery;
+import net.sf.gaboto.query.UnsupportedQueryFormatException;
 
 
 import com.hp.hpl.jena.rdf.model.Model;

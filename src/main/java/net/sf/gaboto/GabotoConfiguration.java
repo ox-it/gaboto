@@ -38,7 +38,6 @@ import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import net.sf.gaboto.model.OntologyLookup;
 import net.sf.gaboto.util.XMLUtils;
 
 import org.w3c.dom.Document;
