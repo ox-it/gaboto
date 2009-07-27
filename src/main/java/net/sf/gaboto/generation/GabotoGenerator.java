@@ -216,7 +216,7 @@ public class GabotoGenerator {
     JavaText classText = new JavaText();
     classText.addImport("net.sf.gaboto.node.pool.EntityPool");
     classText.addImport("net.sf.gaboto.node.annotation.SimpleLiteralProperty");
-    classText.addImport("net.sf.gaboto.Snapshot");
+    classText.addImport("net.sf.gaboto.GabotoSnapshot");
     classText.addImport("net.sf.gaboto.node.GabotoBean");
     classText.addImport("com.hp.hpl.jena.rdf.model.Literal"); 
     classText.addImport("com.hp.hpl.jena.rdf.model.Resource"); 
@@ -405,7 +405,7 @@ public class GabotoGenerator {
             entityHasProperty = true;
             cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
             cText.addImport("com.hp.hpl.jena.rdf.model.Statement");
-            cText.addImport("net.sf.gaboto.Snapshot");
+            cText.addImport("net.sf.gaboto.GabotoSnapshot");
             // cast property
             Element property = (Element) properties.item(j);
 
