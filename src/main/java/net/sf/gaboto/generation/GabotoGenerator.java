@@ -1379,7 +1379,7 @@ public class GabotoGenerator {
    * @param args
    */
   public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-    generate(new File("src/main/conf/Gaboto.xml"), new File("examples/oxpoints/src/main/java"), "uk.ac.ox.oucs.oxpoints.gaboto");
+    generate(new File("src/main/conf/Gaboto.xml"), new File("src/main/java"), "uk.ac.ox.oucs.oxpoints.gaboto");
   }
 
   public static void generate(File config, File outputDir, String packageName) throws ParserConfigurationException,

@@ -50,7 +50,7 @@ import net.sf.gaboto.query.ListOfTypedEntities;
 import net.sf.gaboto.test.TimeUtils;
 import net.sf.gaboto.time.TimeInstant;
 import net.sf.gaboto.time.TimeSpan;
-import net.sf.gaboto.vocabulary.DC;
+import net.sf.gaboto.vocabulary.DCVocab;
 import net.sf.gaboto.vocabulary.OxPointsVocab;
 
 import org.junit.BeforeClass;
@@ -89,7 +89,7 @@ public class TestGabotoTimeBasedEntity {
   public void testAddPropertyException2() throws Exception {
     GabotoTimeBasedEntity entity = new GabotoTimeBasedEntity(Building.class,
         oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), new TimeSpan(100, 10, 2, 10, 10, 10));
-    entity.addProperty(new TimeSpan(600, 0, 0), DC.title, "lila");
+    entity.addProperty(new TimeSpan(600, 0, 0), DCVocab.title, "lila");
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -116,8 +116,8 @@ public class TestGabotoTimeBasedEntity {
     String name2 = "but not from 700-900";
 
     // set different names
-    entityTB.addProperty(DC.title, name1);
-    entityTB.addProperty(new TimeSpan(700, 1, 1, 200, 0, 0), DC.title, name2);
+    entityTB.addProperty(DCVocab.title, name1);
+    entityTB.addProperty(new TimeSpan(700, 1, 1, 200, 0, 0), DCVocab.title, name2);
 
     Building entityEarly = (Building) entityTB.getEntity(new TimeInstant(600,
         null, null));
@@ -148,11 +148,11 @@ public class TestGabotoTimeBasedEntity {
       if (j % 100 == 0)
         System.out.print(".");
       // set different names
-      entityTB.addProperty(DC.title, name1);
+      entityTB.addProperty(DCVocab.title, name1);
 
       for (int i = 0; i < 100; i++) {
         TimeSpan ts = TimeUtils.getRandomTimespan(0.9, 0.9, 0.9, 0.9, 0.9, 0.9);
-        entityTB.addProperty(ts, DC.title, TimeUtils.generateRandomURI());
+        entityTB.addProperty(ts, DCVocab.title, TimeUtils.generateRandomURI());
       }
 
       Iterator<GabotoEntity> it = entityTB.iterator();
@@ -199,7 +199,7 @@ public class TestGabotoTimeBasedEntity {
         oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), ts);
 
     String name1 = TimeUtils.generateRandomURI();
-    entityTB.addProperty(DC.title, name1);
+    entityTB.addProperty(DCVocab.title, name1);
     Iterator<GabotoEntity> it = entityTB.iterator();
     while (it.hasNext()) {
       GabotoEntity entity = it.next();
@@ -217,7 +217,7 @@ public class TestGabotoTimeBasedEntity {
           TimeUtils.getRandomTimespan());
 
       String name1 = TimeUtils.generateRandomURI();
-      entityTB.addProperty(DC.title, name1);
+      entityTB.addProperty(DCVocab.title, name1);
       Iterator<GabotoEntity> it = entityTB.iterator();
       while (it.hasNext()) {
         GabotoEntity entity = it.next();
@@ -237,7 +237,7 @@ public class TestGabotoTimeBasedEntity {
           TimeUtils.generateRandomURI(), TimeUtils.getRandomTimespan());
 
       String name = TimeUtils.generateRandomURI();
-      timeBasedEntity.addProperty(DC.title, name);
+      timeBasedEntity.addProperty(DCVocab.title, name);
       oxp.add(timeBasedEntity);
 
       // create snapshot
@@ -265,7 +265,7 @@ public class TestGabotoTimeBasedEntity {
         oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), ts);
 
     String name1 = TimeUtils.generateRandomURI();
-    entityTB.addProperty(DC.title, name1);
+    entityTB.addProperty(DCVocab.title, name1);
     oxp.add(entityTB);
 
     // create snapshot
@@ -296,7 +296,7 @@ public class TestGabotoTimeBasedEntity {
         String name = "Name" + UUID.randomUUID().toString().substring(0, 10);
         try {
           entityTB.addProperty(TimeUtils.getRandomTimespan(),
-              DC.title, name);
+              DCVocab.title, name);
         } catch (IllegalArgumentException e) {
         }
       }
@@ -342,7 +342,7 @@ public class TestGabotoTimeBasedEntity {
           Building.class, oxp.getOntologyLookup().getTypeURIForEntityClass(Building.class), TimeUtils.generateRandomURI(), TimeUtils.getRandomTimespan());
 
       String name1 = TimeUtils.generateRandomURI();
-      entityTB.addProperty(DC.title, name1);
+      entityTB.addProperty(DCVocab.title, name1);
       oxp.add(entityTB);
 
       oxp.purge(entityTB.getUri());
@@ -367,7 +367,7 @@ public class TestGabotoTimeBasedEntity {
 
       for (int j = 0; j < 100; j++) {
         String name1 = TimeUtils.generateRandomURI();
-        entityTB.addProperty(span, DC.title, name1);
+        entityTB.addProperty(span, DCVocab.title, name1);
       }
 
       oxp.add(entityTB);

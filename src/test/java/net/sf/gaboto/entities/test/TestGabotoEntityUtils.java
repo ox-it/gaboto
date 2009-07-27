@@ -35,7 +35,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import net.sf.gaboto.vocabulary.DC;
+import net.sf.gaboto.vocabulary.DCVocab;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -66,7 +66,7 @@ public class TestGabotoEntityUtils {
 		
 		assertTrue(triples.contains(new Triple(
 			Node.createURI(b.getUri()),
-			Node.createURI(DC.title_URI),
+			Node.createURI(DCVocab.title_URI),
 			Node.createLiteral(b.getName(), null, XSDDatatype.XSDstring)
 		)));
 	}

@@ -43,7 +43,7 @@ import net.sf.gaboto.event.RemovalGabotoEvent;
 import net.sf.gaboto.event.UpdateListener;
 import net.sf.gaboto.time.TimeDimensionIndexer;
 import net.sf.gaboto.util.Performance;
-import net.sf.gaboto.vocabulary.RDFCON;
+import net.sf.gaboto.vocabulary.RDFContext;
 
 
 import com.hp.hpl.jena.db.DBConnection;
@@ -292,7 +292,7 @@ public class GabotoFactory {
 		createCDG().getGraph().add(new Triple(
 				Node.createURI(c.getGKG()),
 				Node.createURI(RDF.type.getURI()),
-				Node.createURI(RDFCON.GlobalKnowledgeGraph.getURI())
+				Node.createURI(RDFContext.GlobalKnowledgeGraph.getURI())
 		));		
 	}
 

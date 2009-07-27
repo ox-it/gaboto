@@ -37,7 +37,7 @@ import java.util.Map.Entry;
 
 import net.sf.gaboto.GabotoFactory;
 import net.sf.gaboto.vocabulary.GabotoVocab;
-import net.sf.gaboto.vocabulary.RDFCON;
+import net.sf.gaboto.vocabulary.RDFContext;
 
 
 public class GabotoPredefinedQueries {
@@ -69,7 +69,7 @@ public class GabotoPredefinedQueries {
 			  	"PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>\n" +
 				  "PREFIX owl:<http://www.w3.org/2002/07/owl#>\n" +
 			  	"PREFIX xsd:<http://www.w3.org/2001/XMLSchema>\n" +
-			  	"PREFIX rdfcon:<" + RDFCON.NS + ">\n" +
+			  	"PREFIX rdfcon:<" + RDFContext.NS + ">\n" +
 			  	"PREFIX owl-time:<http://www.w3.org/2006/time#>\n" +
 			  	"PREFIX rdfg:<http://www.w3.org/2004/03/trix/rdfg-1/>\n";
 		

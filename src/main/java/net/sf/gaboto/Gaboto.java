@@ -48,8 +48,8 @@ import net.sf.gaboto.node.GabotoTimeBasedEntity;
 import net.sf.gaboto.time.TimeDimensionIndexer;
 import net.sf.gaboto.time.TimeInstant;
 import net.sf.gaboto.time.TimeSpan;
-import net.sf.gaboto.vocabulary.RDFCON;
-import net.sf.gaboto.vocabulary.RDFG;
+import net.sf.gaboto.vocabulary.RDFContext;
+import net.sf.gaboto.vocabulary.RDFGraph;
 import net.sf.gaboto.vocabulary.TimeVocab;
 
 import org.apache.log4j.Logger;
@@ -743,16 +743,16 @@ public class Gaboto {
     // say that the graph is a graph. We do that in the cdg as well to have all
     // the information on the graph in the cdg
     cdgGraph.add(new Triple(Node.createURI(name), Node.createURI(RDF.type
-        .getURI()), Node.createURI(RDFG.Graph.getURI())));
+        .getURI()), Node.createURI(RDFGraph.Graph.getURI())));
 
     // say that the graph is actually a graph
     cdgGraph.add(new Triple(Node.createURI(name), Node.createURI(RDF.type
-        .getURI()), Node.createURI(RDFG.Graph.getURI())));
+        .getURI()), Node.createURI(RDFGraph.Graph.getURI())));
 
     // attach a temporal dimension to the graph
     Node tempD = Node.createAnon();
     cdgGraph.add(new Triple(Node.createURI(name), Node
-        .createURI(RDFCON.hasTemporalDimension.getURI()), tempD));
+        .createURI(RDFContext.hasTemporalDimension.getURI()), tempD));
 
     // Say that the temporal dimension is actually a Interval
     cdgGraph.add(new Triple(tempD, Node.createURI(RDF.type.getURI()), Node

@@ -39,8 +39,8 @@ import java.util.Map;
 import net.sf.gaboto.node.GabotoEntity;
 import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.util.XMLUtils;
-import net.sf.gaboto.vocabulary.DC;
-import net.sf.gaboto.vocabulary.GabotoKML;
+import net.sf.gaboto.vocabulary.DCVocab;
+import net.sf.gaboto.vocabulary.GabotoKMLVocab;
 import net.sf.gaboto.vocabulary.OxPointsVocab;
 
 import org.w3c.dom.CDATASection;
@@ -181,7 +181,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	 * @param entity
 	 */
 	private void addNameToElement(Document kmlDoc, Element parentEl, GabotoEntity entity) {
-		String name = (String) entity.getPropertyValue(DC.title);
+		String name = (String) entity.getPropertyValue(DCVocab.title);
 		
 		if(name != null){
 			// traverse to parent
@@ -198,12 +198,12 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	}
 	
 	private String getParentsNameRecursive(GabotoEntity entity) {
-		Object obj = entity.getPropertyValue(GabotoKML.parent_URI);
+		Object obj = entity.getPropertyValue(GabotoKMLVocab.parent_URI);
 		
 		if(obj instanceof GabotoEntity){
 			GabotoEntity parent = (GabotoEntity) obj;
 			
-			String name = (String) parent.getPropertyValue(DC.title);
+			String name = (String) parent.getPropertyValue(DCVocab.title);
 			
 			if(name != null){
 				return ", " + name + getParentsNameRecursive(parent);
@@ -214,7 +214,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	}
 
 	private void addDescriptionToElement(Document kmlDoc, Element parentEl, GabotoEntity entity) {
-		String description = (String) entity.getPropertyValue(DC.description);
+		String description = (String) entity.getPropertyValue(DCVocab.description);
 		
 		if(description != null){
 			// add description to placemark
