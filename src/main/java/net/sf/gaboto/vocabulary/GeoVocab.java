@@ -29,7 +29,7 @@ public class GeoVocab {
     ObjectProperty exterior = MODEL.createObjectProperty( "http://www.opengis.net/gml/exterior" );
     
     
-      /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
     public static final 
     String featurename_URI = "http://www.opengis.net/gml/featurename";
     public static final 

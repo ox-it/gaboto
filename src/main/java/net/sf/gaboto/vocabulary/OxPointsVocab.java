@@ -119,7 +119,7 @@ public class OxPointsVocab {
     ObjectProperty uses = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#uses" );
     
     
-      /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
     /** <p>Describe the height of an image</p> */
     public static final 
     String height_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#height";

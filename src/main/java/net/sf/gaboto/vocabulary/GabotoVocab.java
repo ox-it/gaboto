@@ -24,7 +24,7 @@ public class GabotoVocab {
     
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeObjectProperties() */
     
-      /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
+    /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
     
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeAnnotationProperties() */
     
