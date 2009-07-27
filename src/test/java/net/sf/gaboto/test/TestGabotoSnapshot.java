@@ -31,11 +31,11 @@
  */
 package net.sf.gaboto.test;
 
+import net.sf.gaboto.Gaboto;
 import net.sf.gaboto.GabotoConfiguration;
 import net.sf.gaboto.GabotoFactory;
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.GabotoSnapshot;
-import net.sf.gaboto.model.SPARQLQuerySolutionProcessorImpl;
+import net.sf.gaboto.GabotoSnapshot;
+import net.sf.gaboto.SPARQLQuerySolutionProcessorImpl;
 import net.sf.gaboto.node.GabotoEntity;
 import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.node.pool.EntityPoolConfiguration;

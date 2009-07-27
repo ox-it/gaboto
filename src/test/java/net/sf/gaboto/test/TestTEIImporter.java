@@ -36,9 +36,9 @@ import java.io.FileOutputStream;
 
 
 
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.query.GabotoQuery;
-import net.sf.gaboto.model.query.ListOfTypedEntities;
+import net.sf.gaboto.Gaboto;
+import net.sf.gaboto.query.GabotoQuery;
+import net.sf.gaboto.query.ListOfTypedEntities;
 import net.sf.gaboto.time.TimeInstant;
 import net.sf.gaboto.vocabulary.OxPointsVocab;
 

@@ -37,11 +37,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import net.sf.gaboto.Gaboto;
 import net.sf.gaboto.GabotoConfiguration;
 import net.sf.gaboto.GabotoFactory;
-import net.sf.gaboto.model.Gaboto;
-import net.sf.gaboto.model.GabotoSnapshot;
-import net.sf.gaboto.model.SPARQLQuerySolutionProcessor;
+import net.sf.gaboto.GabotoSnapshot;
+import net.sf.gaboto.SPARQLQuerySolutionProcessor;
 import net.sf.gaboto.node.GabotoEntity;
 import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.test.Utils;

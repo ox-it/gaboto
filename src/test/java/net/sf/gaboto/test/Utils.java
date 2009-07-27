@@ -37,9 +37,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import net.sf.gaboto.Gaboto;
 import net.sf.gaboto.GabotoConfiguration;
 import net.sf.gaboto.GabotoFactory;
-import net.sf.gaboto.model.Gaboto;
 
 import org.custommonkey.xmlunit.XMLAssert;
 

@@ -33,8 +33,8 @@ package net.sf.gaboto.test;
 
 import net.sf.gaboto.GabotoConfiguration;
 import net.sf.gaboto.GabotoFactory;
-import net.sf.gaboto.model.query.GabotoQuery;
-import net.sf.gaboto.model.query.ListOfTypedEntities;
+import net.sf.gaboto.query.GabotoQuery;
+import net.sf.gaboto.query.ListOfTypedEntities;
 import net.sf.gaboto.time.TimeInstant;
 import net.sf.gaboto.vocabulary.OxPointsVocab;
 

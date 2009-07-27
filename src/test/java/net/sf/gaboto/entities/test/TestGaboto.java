@@ -38,10 +38,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.Collection;
 import java.util.Iterator;
 
+import net.sf.gaboto.EntityAlreadyExistsException;
+import net.sf.gaboto.Gaboto;
 import net.sf.gaboto.GabotoConfiguration;
 import net.sf.gaboto.GabotoFactory;
-import net.sf.gaboto.model.EntityAlreadyExistsException;
-import net.sf.gaboto.model.Gaboto;
 import net.sf.gaboto.node.GabotoEntity;
 import net.sf.gaboto.node.GabotoTimeBasedEntity;
 import net.sf.gaboto.test.TimeUtils;
