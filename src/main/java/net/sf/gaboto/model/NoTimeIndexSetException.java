@@ -34,10 +34,9 @@ package net.sf.gaboto.model;
 import net.sf.gaboto.GabotoRuntimeException;
 
 /**
- * Is thrown when a time index is accessed in an {@link Gaboto} model that did not create one.
+ * Is thrown when a time index is accessed in an Gaboto model that did not contain one.
  * 
  * @author Arno Mittelbach
- * @see Gaboto
  */
 public class NoTimeIndexSetException extends GabotoRuntimeException {
 
