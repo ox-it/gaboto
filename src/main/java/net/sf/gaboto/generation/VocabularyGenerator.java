@@ -1285,7 +1285,7 @@ public class VocabularyGenerator {
   /** Write any datatype properties in the vocabulary */
   @SuppressWarnings("unchecked")
   protected void writeDatatypeProperties() {
-    write(1, "  /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ \n");
+    write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ \n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
 
     if (!isTrue(OPT_LANG_RDFS)) {
