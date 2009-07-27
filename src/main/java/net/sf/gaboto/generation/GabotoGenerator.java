@@ -1273,7 +1273,7 @@ public class GabotoGenerator {
                    "import net.sf.gaboto.node.GabotoEntity;\n" + 
                    "import net.sf.gaboto.GabotoRuntimeException;\n" + 
                    "\n" +
-                   "import net.sf.gaboto.model.OntologyLookup;\n"  +
+                   "import net.sf.gaboto.OntologyLookup;\n"  +
                    "\n" ;
 
     lookupClass += "\n\n";
