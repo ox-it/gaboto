@@ -141,8 +141,6 @@
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/test/java</testSourceDirectory>
     <plugins>
-    <!-- FIXME I cannot get maven to use the classpath it says it has 
-               for now just run this using eclipse -->
       <plugin>
        <groupId>org.codehaus.mojo</groupId>
        <artifactId>exec-maven-plugin</artifactId>
