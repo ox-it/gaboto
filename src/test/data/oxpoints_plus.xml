@@ -117,7 +117,7 @@
 -->
             <place oucsCode="O_stalban" oxpID="23232333" type="college">
                <placeName>St Alban Hall</placeName>
-               <event when="1881" type="closed">
+               <event when="1881" type="ended">
                   <label>Merged with Merton College</label>
                </event>
                <event when="1420" type="founded">
