@@ -1365,7 +1365,6 @@ public class VocabularyGenerator {
   }
 
   /** Write any vanilla RDF properties in the vocabulary */
-  @SuppressWarnings("unchecked")
   protected void writeRDFProperties(boolean useOntProperty) {
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
     String propType = useOntProperty ? "OntProperty" : "Property";
@@ -1467,7 +1466,6 @@ public class VocabularyGenerator {
   }
 
   /** Write individuals as ontology terms */
-  @SuppressWarnings("unchecked")
   protected void writeOntIndividuals() {
     write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntIndividuals() */\n");
     String template = hasValue(OPT_INDIVIDUAL_TEMPLATE) ? getValue(OPT_INDIVIDUAL_TEMPLATE)
@@ -1495,7 +1493,6 @@ public class VocabularyGenerator {
   }
 
   /** Write individuals as vanilla RDF terms */
-  @SuppressWarnings("unchecked")
   protected void writeRDFIndividuals() {
     String template = hasValue(OPT_INDIVIDUAL_TEMPLATE) ? getValue(OPT_INDIVIDUAL_TEMPLATE) : DEFAULT_TEMPLATE;
 
@@ -1505,7 +1502,7 @@ public class VocabularyGenerator {
   }
 
   /** Answer an iterator over the individuals selected for output */
-  protected ExtendedIterator selectIndividuals() {
+  protected ExtendedIterator<? extends RDFNode> selectIndividuals() {
     List<Resource> candidates = new ArrayList<Resource>();
     for (StmtIterator i = m_source.listStatements(null, RDF.type, (RDFNode) null); i.hasNext();) {
       Statement candidate = i.nextStatement();
@@ -1814,7 +1811,7 @@ public class VocabularyGenerator {
    * Answer an iterator that contains the elements of the given iterator, but
    * sorted by URI
    */
-  protected ExtendedIterator sorted(List<? extends RDFNode> members) {
+  protected ExtendedIterator<? extends RDFNode> sorted(List<? extends RDFNode> members) {
     Collections.sort(members, new Comparator<RDFNode>() {
       public int compare(RDFNode n0, RDFNode n1) {
         if (n0.isLiteral() || n1.isLiteral()) {
