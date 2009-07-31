@@ -314,7 +314,7 @@ public class Gaboto {
         throw new IllegalArgumentException("Unknown graph: " + g);
 
       // add statements to snapshot model
-      ExtendedIterator it = graph.find(Node.ANY, Node.ANY, Node.ANY);
+      ExtendedIterator<Triple> it = graph.find(Node.ANY, Node.ANY, Node.ANY);
       while (it.hasNext()) {
         Triple t = (Triple)it.next();
 
@@ -325,7 +325,7 @@ public class Gaboto {
 
     // add gdg
     Graph gkg = getGlobalKnowledgeGraph();
-    ExtendedIterator it = gkg.find(Node.ANY, Node.ANY, Node.ANY);
+    ExtendedIterator<Triple> it = gkg.find(Node.ANY, Node.ANY, Node.ANY);
     while (it.hasNext())
       newModelsDefaultGraph.add((Triple)it.next());
 
@@ -492,7 +492,6 @@ public class Gaboto {
    *          The entity referenced by its URI.
    * 
    */
-  @SuppressWarnings("unchecked")
   synchronized public void purge(String entityURI) {
     if (!containsEntity(entityURI))
       throw new EntityDoesNotExistException(entityURI);
@@ -500,7 +499,7 @@ public class Gaboto {
     logger.debug("Attempting to purge " + entityURI);
 
     // load time-based entity
-    Iterator it = getNamedGraphSet().findQuads(Node.ANY,
+    Iterator<?> it = getNamedGraphSet().findQuads(Node.ANY,
         Node.createURI(entityURI), Node.ANY, Node.ANY);
     while (it.hasNext()) {
       Quad q = (Quad)it.next();
@@ -1062,12 +1061,11 @@ public class Gaboto {
    *          The entity's URI.
    * 
    */
-  @SuppressWarnings("unchecked")
   public String getTypeOf(String uri) {
     if (!containsEntity(uri))
       throw new EntityDoesNotExistException(uri);
 
-    Iterator it = getNamedGraphSet().findQuads(Node.ANY, Node.createURI(uri),
+    Iterator<?> it = getNamedGraphSet().findQuads(Node.ANY, Node.createURI(uri),
         Node.createURI(RDF.type.getURI()), Node.ANY);
 
     if (it.hasNext()) {
@@ -1100,12 +1098,11 @@ public class Gaboto {
    * @return The life time
    * 
    */
-  @SuppressWarnings("unchecked")
   public TimeSpan getEntitysLifetime(String uri) {
     if (!containsEntity(uri))
       throw new EntityDoesNotExistException(uri);
 
-    Iterator it = getNamedGraphSet().findQuads(Node.ANY, Node.createURI(uri),
+    Iterator<?> it = getNamedGraphSet().findQuads(Node.ANY, Node.createURI(uri),
         Node.createURI(RDF.type.getURI()), Node.ANY);
 
     if (it.hasNext()) {
