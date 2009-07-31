@@ -31,7 +31,7 @@
  */
 package net.sf.gaboto.test;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -52,6 +52,38 @@ public final class Utils {
   public static String actualOutputDir = "target";
   public static String filename = "src/test/data/oxpoints_plus.xml"; 
 
+  public static void assertGeneratedFileContentsStringEqual(String canonicalFilename) throws Exception {
+    File actualFile = new File(actualOutputDir, canonicalFilename);
+    FileInputStream actualFileInputStream = new FileInputStream(actualFile);
+    byte[] a = new byte[actualFileInputStream.available()];
+    actualFileInputStream.read(a);
+    actualFileInputStream.close();
+    String actual = new String(a);
+    
+    File referenceFile = new File(referenceOutputDir, canonicalFilename);
+    FileInputStream referenceFileInputStream = new FileInputStream(referenceFile);
+    byte[] b = new byte[referenceFileInputStream.available()];
+    referenceFileInputStream.read(b);
+    referenceFileInputStream.close();
+    String cached = new String(b);
+    assertEquals("Cached not equal to generated", cached, actual);
+  }
+  public static void assertFileContentsStringEqual(String filename1, String filename2) throws Exception {
+    File actualFile = new File(actualOutputDir, filename1);
+    FileInputStream actualFileInputStream = new FileInputStream(actualFile);
+    byte[] a = new byte[actualFileInputStream.available()];
+    actualFileInputStream.read(a);
+    actualFileInputStream.close();
+    String actual = new String(a);
+    
+    File referenceFile = new File(actualOutputDir, filename2);
+    FileInputStream referenceFileInputStream = new FileInputStream(referenceFile);
+    byte[] b = new byte[referenceFileInputStream.available()];
+    referenceFileInputStream.read(b);
+    referenceFileInputStream.close();
+    String cached = new String(b);
+    assertEquals("Cached not equal to generated", cached, actual);
+  }
 
   public static void assertXmlEqual(String actual, String fileName) throws Exception { 
     File actualFile = new File(actualOutputDir, fileName);
@@ -72,16 +104,20 @@ public final class Utils {
       fail("Reference output file generated: " + referenceFile.getCanonicalPath() + " modify generateCached and rerun");
     }
   }
-  public static Gaboto getOxpointsFromXML() { 
-    File file = new File(filename);
+  public static Gaboto getOxpointsFromXML() {
+    return getOxpointsFromXML(filename);
+  }
+  public static Gaboto getOxpointsFromXML(String filenameIn) { 
+    System.err.println("Reading oxp from " + filenameIn);
+    File file = new File(filenameIn);
     if(! file.exists())
-      throw new RuntimeException ("Cannot open file " + filename);
+      throw new RuntimeException ("Cannot open file " + filenameIn);
     
     GabotoFactory.init(GabotoConfiguration.fromConfigFile());
     Gaboto oxp = GabotoFactory.getEmptyInMemoryGaboto();
     //oxp = GabotoFactory.getInMemoryGaboto();
     new TEIImporter(oxp, file).run();
     return oxp;
+    
   }
- 
 }
