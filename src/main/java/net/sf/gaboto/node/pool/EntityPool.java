@@ -421,7 +421,7 @@ public class EntityPool implements Collection<GabotoEntity> {
     for (final PassiveEntitiesRequest request : requests) {
 
       if (request.getCollectionType() == PASSIVE_PROPERTY_COLLECTION_TYPE_NONE) {
-        ExtendedIterator it = graph.find(Node.ANY, Node.createURI(request
+        ExtendedIterator<Triple> it = graph.find(Node.ANY, Node.createURI(request
             .getUri()), Node.createURI(entity.getUri()));
         while (it.hasNext()) {
           Triple t = (Triple) it.next();
