@@ -68,6 +68,8 @@ public final class Utils {
     String cached = new String(b);
     assertEquals("Cached not equal to generated", cached, actual);
   }
+  
+  // FIXME the website should be within the cdg graph
   public static void assertFileContentsStringEqual(String filename1, String filename2) throws Exception {
     File actualFile = new File(actualOutputDir, filename1);
     FileInputStream actualFileInputStream = new FileInputStream(actualFile);
