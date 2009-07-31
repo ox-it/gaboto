@@ -676,7 +676,7 @@ public class TimeSpan implements Serializable {
    * @return True if it has an upper bound.
    */
   public boolean hasFixedDuration() {
-    return null != durationDay || null != durationMonth || null != durationYear;
+    return durationDay != null || durationMonth != null || durationYear != null;
   }
 
   @Override
