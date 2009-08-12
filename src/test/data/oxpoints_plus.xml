@@ -10960,7 +10960,6 @@ data, and if so, how? -->
   <relation name="occupies" active="#mpls" passive="#b_0029" type="geo" />
   <relation name="occupies" active="#npeu" passive="#b_0073" type="geo primary" />
   <relation name="occupies" active="#npeu" passive="#e_201" type="geo" />
-  <relation name="occupies" active="#npeu" passive="#b_0017" type="geo" />
   <relation name="occupies" active="#obst" passive="#b_0018" type="geo primary" />
   <relation name="occupies" active="#ocdem" passive="#b_0040" type="geo primary" />
   <relation name="occupies" active="#oerc" passive="#e_52" type="geo primary" />
