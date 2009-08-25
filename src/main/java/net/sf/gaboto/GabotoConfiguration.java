@@ -210,15 +210,15 @@ public class GabotoConfiguration {
 		NSData = data;
 	}
 
-	public String getGKG(){
+	public String getGlobalKnowledgeGraphURI(){
 		return NSGraphs + "gkg.rdf";
 	}
 	
-	public String getCDG(){
+	public String getContextDependantGraphURI(){
 		return NSGraphs + "cdg.rdf";
 	}
 	
-	public String getDefaultGraph(){
+	public String getDefaultGraphURI(){
 		return NSGraphs + "default.rdf";
 	}
 
