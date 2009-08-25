@@ -74,7 +74,7 @@ public class GabotoFactory {
 	
 	static Gaboto inMemoryGaboto = null;
 	
-	/* Context Dependent Graph */
+	/** Context Dependent Graph */
 	private static Model cdg = null;
 	
 	
