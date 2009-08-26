@@ -34,8 +34,6 @@ package net.sf.gaboto.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import net.sf.gaboto.GabotoConfiguration;
-import net.sf.gaboto.GabotoFactory;
 import net.sf.gaboto.time.TimeInstant;
 
 import org.junit.BeforeClass;
@@ -45,7 +43,6 @@ public class TestTimeInstant {
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
-		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
 	}
 
 	@Test (expected=IllegalStateException.class)

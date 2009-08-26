@@ -38,7 +38,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 import net.sf.gaboto.Gaboto;
-import net.sf.gaboto.GabotoConfiguration;
 import net.sf.gaboto.GabotoFactory;
 
 import org.custommonkey.xmlunit.XMLAssert;
@@ -52,41 +51,35 @@ public final class Utils {
   public static String actualOutputDir = "target";
   public static String filename = "src/test/data/oxpoints_plus.xml"; 
 
-  public static void assertGeneratedFileContentsStringEqual(String canonicalFilename) throws Exception {
-    File actualFile = new File(actualOutputDir, canonicalFilename);
+  public static void assertFileContentsStringEqual(String fileName) throws Exception {
+    assertFileContentsStringEqual(fileName, fileName);
+  }  
+  public static void assertFileContentsStringEqual(String expectedFilename, String actualFilename) throws Exception {
+    File actualFile = new File(actualOutputDir, actualFilename);
     FileInputStream actualFileInputStream = new FileInputStream(actualFile);
-    byte[] a = new byte[actualFileInputStream.available()];
-    actualFileInputStream.read(a);
+    byte[] actualBytes = new byte[actualFileInputStream.available()];
+    actualFileInputStream.read(actualBytes);
     actualFileInputStream.close();
-    String actual = new String(a);
-    
-    File referenceFile = new File(referenceOutputDir, canonicalFilename);
-    FileInputStream referenceFileInputStream = new FileInputStream(referenceFile);
-    byte[] b = new byte[referenceFileInputStream.available()];
-    referenceFileInputStream.read(b);
-    referenceFileInputStream.close();
-    String cached = new String(b);
-    assertEquals("Cached not equal to generated", cached, actual);
-  }
-  
-  // FIXME the website should be within the cdg graph
-  public static void assertFileContentsStringEqual(String filename1, String filename2) throws Exception {
-    File actualFile = new File(actualOutputDir, filename1);
-    FileInputStream actualFileInputStream = new FileInputStream(actualFile);
-    byte[] a = new byte[actualFileInputStream.available()];
-    actualFileInputStream.read(a);
-    actualFileInputStream.close();
-    String actual = new String(a);
-    
-    File referenceFile = new File(actualOutputDir, filename2);
-    FileInputStream referenceFileInputStream = new FileInputStream(referenceFile);
-    byte[] b = new byte[referenceFileInputStream.available()];
-    referenceFileInputStream.read(b);
-    referenceFileInputStream.close();
-    String cached = new String(b);
-    assertEquals("Cached not equal to generated", cached, actual);
-  }
+    String actual = new String(actualBytes);
 
+    File expectedFile = new File(referenceOutputDir, expectedFilename);
+    if (expectedFile.exists()) {
+      FileInputStream expectedFileInputStream = new FileInputStream(expectedFile);
+      byte[] expectedBytes = new byte[expectedFileInputStream.available()];
+      expectedFileInputStream.read(expectedBytes);
+      expectedFileInputStream.close();
+      String expected = new String(expectedBytes);
+      assertEquals("Cached not equal to generated", expected, actual);
+    } else {
+      actualFile.renameTo(expectedFile);      
+      fail("Reference output file generated: " + expectedFile.getCanonicalPath() + ", rerun");
+    }
+  }
+  public static void assertXmlEqual(String fileName) throws Exception { 
+    File actualFile = new File(actualOutputDir, fileName);
+    File expectedFile = new File(referenceOutputDir, fileName);
+    assertXmlEqual(expectedFile, actualFile);
+  }
   public static void assertXmlEqual(String actual, String fileName) throws Exception { 
     File actualFile = new File(actualOutputDir, fileName);
     FileOutputStream actualOutputStream = new FileOutputStream(actualFile);
@@ -106,6 +99,29 @@ public final class Utils {
       fail("Reference output file generated: " + referenceFile.getCanonicalPath() + " modify generateCached and rerun");
     }
   }
+  public static void assertXmlEqual(File referenceFile, File actualFile) throws Exception { 
+    if (referenceFile.exists()) {
+      FileInputStream referenceFileInputstream = new FileInputStream (referenceFile);
+      byte[] referenceFileBuffer = new byte[referenceFileInputstream.available()];
+      referenceFileInputstream.read(referenceFileBuffer);
+      referenceFileInputstream.close ();
+      String expected = new String(referenceFileBuffer);
+      
+      FileInputStream actualFileInputstream = new FileInputStream (actualFile);
+      byte[] actualFileBuffer = new byte[actualFileInputstream.available()];
+      actualFileInputstream.read(actualFileBuffer);
+      actualFileInputstream.close ();
+      String actual = new String(actualFileBuffer);
+      
+      
+      XMLAssert.assertXMLEqual("Cached not equal to generated", expected, actual);
+    } else { 
+      actualFile.renameTo(referenceFile);
+      fail("Reference output file generated: " + referenceFile.getCanonicalPath() + " modify generateCached and rerun");
+    }
+  }
+  
+  
   public static Gaboto getOxpointsFromXML() {
     return getOxpointsFromXML(filename);
   }
@@ -115,9 +131,7 @@ public final class Utils {
     if(! file.exists())
       throw new RuntimeException ("Cannot open file " + filenameIn);
     
-    GabotoFactory.init(GabotoConfiguration.fromConfigFile());
     Gaboto oxp = GabotoFactory.getEmptyInMemoryGaboto();
-    //oxp = GabotoFactory.getInMemoryGaboto();
     new TEIImporter(oxp, file).run();
     return oxp;
     

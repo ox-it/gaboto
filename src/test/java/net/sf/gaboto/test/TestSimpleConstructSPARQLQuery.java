@@ -31,8 +31,6 @@
  */
 package net.sf.gaboto.test;
 
-import net.sf.gaboto.GabotoConfiguration;
-import net.sf.gaboto.GabotoFactory;
 import net.sf.gaboto.query.GabotoQuery;
 import net.sf.gaboto.query.SPARQLConstructQuery;
 import net.sf.gaboto.time.TimeInstant;
@@ -47,14 +45,10 @@ public class TestSimpleConstructSPARQLQuery {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
-	  // HACK Some other test is not idempotent. 
-	  GabotoFactory.clear();
-		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
 	}
 
 	@AfterClass
   public static void tearDown() { 
-    GabotoFactory.clear();
   }
 	
 	@Test

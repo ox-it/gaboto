@@ -32,8 +32,6 @@
 package net.sf.gaboto.test;
 
 import net.sf.gaboto.Gaboto;
-import net.sf.gaboto.GabotoConfiguration;
-import net.sf.gaboto.GabotoFactory;
 import net.sf.gaboto.GabotoSnapshot;
 import net.sf.gaboto.SPARQLQuerySolutionProcessorImpl;
 import net.sf.gaboto.node.GabotoEntity;
@@ -64,12 +62,9 @@ public class TestGabotoSnapshot {
 
 	@BeforeClass
   public static void setUp() throws Exception {
-    GabotoFactory.init(GabotoConfiguration.fromConfigFile());
   }
 	@AfterClass
   public static void tearDown() throws Exception {
-	  // FIXME I do not understand the need for this
-	  GabotoFactory.clear();
   }
 	
 	@Test

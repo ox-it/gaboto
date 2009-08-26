@@ -31,8 +31,6 @@
  */
 package net.sf.gaboto.test;
 
-import net.sf.gaboto.GabotoConfiguration;
-import net.sf.gaboto.GabotoFactory;
 import net.sf.gaboto.query.GabotoQuery;
 import net.sf.gaboto.query.ListOfTypedEntities;
 import net.sf.gaboto.time.TimeInstant;
@@ -45,7 +43,6 @@ public class TestQueryListOfTypedEntities {
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
-		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
 	}
 	
 	@Test
