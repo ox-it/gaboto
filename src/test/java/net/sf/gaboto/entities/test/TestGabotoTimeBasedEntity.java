@@ -39,7 +39,6 @@ import java.util.UUID;
 
 import net.sf.gaboto.EntityDoesNotExistException;
 import net.sf.gaboto.Gaboto;
-import net.sf.gaboto.GabotoConfiguration;
 import net.sf.gaboto.GabotoFactory;
 import net.sf.gaboto.GabotoSnapshot;
 import net.sf.gaboto.node.GabotoEntity;
@@ -67,7 +66,6 @@ public class TestGabotoTimeBasedEntity {
   
   @BeforeClass
   public static void setUp() throws Exception {
-    GabotoFactory.init(GabotoConfiguration.fromConfigFile());
     oxp = GabotoFactory.getPersistentGaboto();
   }
 

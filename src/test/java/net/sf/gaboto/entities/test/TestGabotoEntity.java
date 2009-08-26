@@ -38,7 +38,6 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import net.sf.gaboto.Gaboto;
-import net.sf.gaboto.GabotoConfiguration;
 import net.sf.gaboto.GabotoFactory;
 import net.sf.gaboto.GabotoSnapshot;
 import net.sf.gaboto.SPARQLQuerySolutionProcessor;
@@ -71,7 +70,6 @@ public class TestGabotoEntity  {
 
   @BeforeClass
 	public  static void setUp() throws Exception {
-		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
     //oxp = GabotoFactory.getPersistentGaboto();
     oxp = GabotoFactory.getInMemoryGaboto();
     //oxp = GabotoFactory.getEmptyInMemoryGaboto();

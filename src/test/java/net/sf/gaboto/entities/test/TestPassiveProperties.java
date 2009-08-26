@@ -32,8 +32,6 @@
 package net.sf.gaboto.entities.test;
 
 import net.sf.gaboto.Gaboto;
-import net.sf.gaboto.GabotoConfiguration;
-import net.sf.gaboto.GabotoFactory;
 import net.sf.gaboto.GabotoSnapshot;
 import net.sf.gaboto.node.GabotoEntity;
 import net.sf.gaboto.node.pool.EntityPool;
@@ -54,7 +52,6 @@ public class TestPassiveProperties  {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
-		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
 	}
 	
 	@Test

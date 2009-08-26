@@ -40,7 +40,6 @@ import java.util.Iterator;
 
 import net.sf.gaboto.EntityAlreadyExistsException;
 import net.sf.gaboto.Gaboto;
-import net.sf.gaboto.GabotoConfiguration;
 import net.sf.gaboto.GabotoFactory;
 import net.sf.gaboto.node.GabotoEntity;
 import net.sf.gaboto.node.GabotoTimeBasedEntity;
@@ -62,12 +61,10 @@ public class TestGaboto {
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
-		GabotoFactory.init(GabotoConfiguration.fromConfigFile());
 	}
 
 	@AfterClass
 	public static void tearDown() { 
-    GabotoFactory.clear();
 	}
 	
 	@Test (expected=EntityAlreadyExistsException.class)
