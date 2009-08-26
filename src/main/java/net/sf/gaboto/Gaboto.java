@@ -141,9 +141,7 @@ public class Gaboto {
    *          The data.
    */
   Gaboto(Model cdg, NamedGraphSet namedGraphSet) {
-    this.namedGraphSet = namedGraphSet;
-    this.contextDescriptionGraph = cdg;
-    this.config = GabotoFactory.getConfig();
+    this(cdg, namedGraphSet, null);
   }
 
   /**
@@ -162,13 +160,14 @@ public class Gaboto {
    * 
    */
   public Gaboto(Model cdg, NamedGraphSet graphset, TimeDimensionIndexer idx) {
-    this.namedGraphSet = graphset;
     this.contextDescriptionGraph = cdg;
+    this.namedGraphSet = graphset;
     this.config = GabotoFactory.getConfig();
-
-    // create an index on the time dimension
-    idx.createIndex(cdg);
-    this.timeDimensionIndexer = idx;
+    if (idx != null) {
+      // create an index on the time dimension
+      idx.createIndex(cdg);
+      this.timeDimensionIndexer = idx;
+    }
   }
 
   /**
@@ -897,15 +896,15 @@ public class Gaboto {
    * @return The global knowledge graph.
    */
   public NamedGraph getGlobalKnowledgeGraph() {
-    return namedGraphSet.getGraph(config.getGKG());
+    return namedGraphSet.getGraph(config.getGlobalKnowledgeGraphURI());
   }
 
   /**
    * Returns the context description graph.
    * 
    * <p>
-   * For more information about the context description graph see <a href="http://oxforderewhon.wordpress.com/2008/12/10/rdf-and-the-time-dimension-part-2/"
-   * > RDF and the Time Dimension - Part 2</a>.
+   * For more information about the context description graph see 
+   * <a href="http://oxforderewhon.wordpress.com/2008/12/10/rdf-and-the-time-dimension-part-2/"> RDF and the Time Dimension - Part 2</a>.
    * </p>
    * 
    * @return The context description graph.
@@ -927,7 +926,7 @@ public class Gaboto {
    * @return A Jena Model view on the underlying NamedGraphSet.
    */
   public Model getJenaModelViewOnNamedGraphSet() {
-    return getNamedGraphSet().asJenaModel(config.getDefaultGraph());
+    return getNamedGraphSet().asJenaModel(config.getDefaultGraphURI());
   }
 
   /**
@@ -1340,20 +1339,21 @@ public class Gaboto {
     if (this == obj) return true;
     if (! (obj instanceof Gaboto))
       return false;
-    else
-      if (contextDescriptionGraph.isIsomorphicWith(((Gaboto)obj).contextDescriptionGraph)) { 
+    else { 
+      if (getContextDescriptionGraph().isIsomorphicWith(((Gaboto)obj).getContextDescriptionGraph())) { 
         if (getJenaModelViewOnNamedGraphSet().
-            isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet())) {           
-          System.err.println("Hit");
+                isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet())) {           
           return true;
         } else { 
-          System.err.println("Super1");
           return super.equals(obj);          
         }
       } else { 
-          System.err.println("Super2");
-          return super.equals(obj);
+        if (getJenaModelViewOnNamedGraphSet().
+                isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet())) {           
+        }
+        return super.equals(obj);
       }
+    }
   }
 
 
