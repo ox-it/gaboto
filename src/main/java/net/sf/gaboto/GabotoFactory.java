@@ -74,18 +74,19 @@ public class GabotoFactory {
 	
 	static Gaboto inMemoryGaboto = null;
 	
-	/** Context Dependent Graph */
-	private static Model cdg = null;
+	private static Model contextDescriptiontGraph = null;
 	
-	
+  public static GabotoConfiguration config  = GabotoConfiguration.fromConfigFile();
+
   /**
-   * HACK used in tests.
+   * Returns the Gaboto configuration.
+   * @return The Gaboto configuration.
    */
-  public static void clear() { 
-    inMemoryGaboto = null;
-    persistentGaboto = null;
-    cdg = null;
+  public static GabotoConfiguration getConfig(){
+    return config;
   }
+  
+	
 	/**
 	 * Creates an empty in memory Gaboto model that is not linked to any persistent data store.
 	 * 
@@ -95,15 +96,9 @@ public class GabotoFactory {
 	 * 
 	 * @return A new Gaboto object.
 	 */
-	public static Gaboto getEmptyInMemoryGaboto(){
-		// Create a new graphset and copy graphs
+	public static Gaboto getEmptyInMemoryGaboto() {
 		NamedGraphSet graphset = new NamedGraphSetImpl();
-    createGKG(graphset);
-		
-		// create non db-backed-up cdg
-		cdg = ModelFactory.createDefaultModel();
-		
-		return new Gaboto(cdg, graphset, new TimeDimensionIndexer());
+		return new Gaboto(createGlobalKnowledgeGraph(ModelFactory.createDefaultModel(), graphset), graphset, new TimeDimensionIndexer());
 	}
 	
 	/**
@@ -123,8 +118,9 @@ public class GabotoFactory {
 	 */
 	@SuppressWarnings("unchecked")
 	public static Gaboto getInMemoryGaboto() {
-		if(inMemoryGaboto != null)
+		if(inMemoryGaboto != null) {
 			return inMemoryGaboto;
+		}
 		
 		Gaboto po = getPersistentGaboto();
 		
@@ -140,7 +136,7 @@ public class GabotoFactory {
 			graphset.addQuad((Quad)it.next());
     System.err.println("getInMemoryGaboto: have added quads");
 		
-		inMemoryGaboto = new Gaboto(createCDG(), graphset, new TimeDimensionIndexer());
+		inMemoryGaboto = new Gaboto(createDbBackedCDG(), graphset, new TimeDimensionIndexer());
 		
     System.err.println("getInMemoryGaboto: returning");
 		return inMemoryGaboto;
@@ -198,12 +194,11 @@ public class GabotoFactory {
     Performance.stop();
 		
 		// if graphset is empty, create special graphs
-		if(! graphset.containsGraph(c.getGKG()))
-			createGKG(graphset);
+    Model cdg = createGlobalKnowledgeGraph(createDbBackedCDG(), graphset);
 
 		// create object
     Performance.start("GabotoFactory new Gaboto");
-		persistentGaboto = new Gaboto(createCDG(), graphset, new TimeDimensionIndexer());
+		persistentGaboto = new Gaboto(cdg, graphset, new TimeDimensionIndexer());
     Performance.stop();
 		
     Performance.start("GabotoFactory update listener");
@@ -238,10 +233,11 @@ public class GabotoFactory {
 	/**
 	 * Adds the cdg to the graphset.
 	 */
-	private static Model createCDG() {
-		if(cdg != null)
-			return cdg;
-		
+	private static Model createDbBackedCDG() {
+	  System.err.println("In createCDG");
+		if(contextDescriptiontGraph != null) {
+			return contextDescriptiontGraph;
+		}
 		// get config
 		GabotoConfiguration c = GabotoFactory.getConfig();
 		
@@ -263,58 +259,38 @@ public class GabotoFactory {
 
 		// create a model maker with the given connection parameters
 		ModelMaker maker = ModelFactory.createModelRDBMaker(conn);
-    System.err.println("GF.type:" + conn.getDatabaseType());
+		
 		// create cdg
 		if(maker.hasModel("cdg"))
-			cdg = maker.openModel("cdg");
+			contextDescriptiontGraph = maker.openModel("cdg");
 		else
-			cdg = maker.createModel("cdg");
+			contextDescriptiontGraph = maker.createModel("cdg");
 		
-		return cdg;
+		return contextDescriptiontGraph;
 	}
 	
 	
 	/**
 	 * Adds the Global Knowledge Graph (GKG) to the graphset
+	 * @param cdg Context Description Graph
 	 * @param graphset
 	 */
-	private static void createGKG(NamedGraphSet graphset) {
-		// get config
-		GabotoConfiguration c = GabotoFactory.getConfig();
+	private static Model createGlobalKnowledgeGraph(Model cdg, NamedGraphSet graphset) {
 		
-		if(graphset.containsGraph(c.getGKG()))
-			throw new IllegalStateException("GKG already exists.");
+		if(graphset.containsGraph(config.getGlobalKnowledgeGraphURI()))
+			throw new IllegalStateException("GlobalKnowledgeGraph already exists.");
 		
-		// Create gkg
-		graphset.createGraph(c.getGKG());
+		// Create Global Knowledge Graph
+		graphset.createGraph(config.getGlobalKnowledgeGraphURI());
 		
-		// add gkg to cdg
-		createCDG().getGraph().add(new Triple(
-				Node.createURI(c.getGKG()),
+		// add Global Knowledge Graph to Context Description Graph
+		cdg.getGraph().add(new Triple(
+				Node.createURI(config.getGlobalKnowledgeGraphURI()),
 				Node.createURI(RDF.type.getURI()),
 				Node.createURI(RDFContext.GlobalKnowledgeGraph.getURI())
-		));		
+		));
+		return cdg;
 	}
 
 
-  public static GabotoConfiguration config;
-
-
-  /**
-   * Initialises the Gaboto system (this has to be done before Gaboto can be used).
-   * @param config
-   */
-  public static void init(GabotoConfiguration configP){
-  	config = configP;
-  }
-  /**
-   * Returns the Gaboto configuration.
-   * @return The Gaboto configuration.
-   */
-  public static GabotoConfiguration getConfig(){
-  	if(config == null)
-  		config = GabotoConfiguration.fromConfigFile();
-  	return config;
-  }
-	
 }
