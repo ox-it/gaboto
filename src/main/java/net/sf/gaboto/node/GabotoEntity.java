@@ -349,7 +349,6 @@ abstract public class GabotoEntity implements RDFTyped {
 	
 	final protected void removeMissingReference(String uriToRemove){
 		missingEntityReferences.remove(uriToRemove);
-		//missingEntityReferenceCallbacks.remove(uri);
 	}
 	
 	
