@@ -9079,8 +9079,6 @@ data, and if so, how? -->
                      <ptr target="http://weblearn.ox.ac.uk/site/asuc/oucs/"/>
                   </desc>
                </trait>
-
-
             </place>
             <place oucsCode="ousoc" oxpID="23233568" type="uas">
                <placeName>Oxford University Society</placeName>
@@ -9446,15 +9444,6 @@ data, and if so, how? -->
             </place>
 
 
-         </listPlace>
-
-         <listPlace>
-            <location>
-               <geo>-1.26035 51.76001</geo>
-            </location>
-         </listPlace>
-
-         <listPlace>
             <place oucsCode="b_0001" oxpID="23233599" type="building" obnCode="194">
                <event when="1880" type="construction"/>
                <event when="1912" type="acquisition"/>
