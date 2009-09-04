@@ -218,6 +218,11 @@ public class GabotoConfiguration {
 		return NSGraphs + "cdg.rdf";
 	}
 	
+	/**
+	 * Used to merge all graphs into a single model.
+	 *  
+	 * @return "default"
+	 */
 	public String getDefaultGraphURI(){
 		return NSGraphs + "default.rdf";
 	}
