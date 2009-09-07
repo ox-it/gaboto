@@ -711,6 +711,7 @@
                   </location>
                </place>
                <place oxpID="23232381" type="building">
+		 <placeName>(unknown building)</placeName>
                   <place oxpID="23232382" type="room">
                      <placeName>Meeting Room</placeName>
                   </place>
@@ -972,9 +973,7 @@
                   </location>
                </place>
                <place oxpID="23232403" type="building">
-                  <place oxpID="23232404" type="room">
-                     <placeName>The Chapel</placeName>
-                  </place>
+		 <placeName>The Chapel</placeName>
                </place>
             </place>
             <place oucsCode="newc" oxpID="23232405" type="college">
@@ -1007,6 +1006,7 @@
                   </location>
                </place>
                <place oxpID="23232407" type="building">
+		 <placeName>(unknown building)</placeName>
                   <place oxpID="23232408" type="room">
                      <placeName>Lecture Room 6</placeName>
                   </place>
@@ -1139,23 +1139,27 @@
                   </location>
                </place>
                <place oxpID="23232418" type="building">
+		 <placeName>(unknown building)</placeName>
                   <place oxpID="23232419" type="room">
                      <placeName>Boat House</placeName>
                   </place>
-                  <place oxpID="23232420" type="room">
-                     <placeName>Chapel and Fellows' Garden</placeName>
-                  </place>
-                  <place oxpID="23232421" type="room">
-                     <placeName>Memorial Room</placeName>
-                  </place>
-                  <place oxpID="23232422" type="room">
-                     <placeName>The Hall</placeName>
-                  </place>
-               </place>
-            </place>
-            <place oucsCode="rege" oxpID="23232423" type="college">
-               <placeName>Regent's Park College</placeName>
-               <event when="1927" type="founded">
+	       </place>
+	       <place oxpID="23232420" type="building">
+		 <placeName>Chapel and Fellows' Garden</placeName>
+	       </place>
+	       <place type="building" oxpID="23233914">
+		 <placeName>(unknown building)</placeName>
+		 <place oxpID="23232421" type="room">
+		   <placeName>Memorial Room</placeName>
+		 </place>
+	       </place>
+	       <place oxpID="23232422" type="building">
+		 <placeName>The Hall</placeName>
+	       </place>
+	    </place>
+	    <place oucsCode="rege" oxpID="23232423" type="college">
+	      <placeName>Regent's Park College</placeName>
+	      <event when="1927" type="founded">
                   <label>Foundation</label>
                </event>
                <location type="address">
@@ -1246,6 +1250,7 @@
                   </location>
                </place>
                <place oxpID="23232429" type="building">
+		 <placeName>(unknown building)</placeName>
                   <place oxpID="23232430" type="room">
                      <placeName>Dahrendorf Room</placeName>
                   </place>
@@ -1326,6 +1331,7 @@
                   </location>
                </place>
                <place oxpID="23232439" type="building">
+		 <placeName>(unknown building)</placeName>
                   <place oxpID="23232440" type="room">
                      <placeName>Bernard Sunley Lecture Theatre</placeName>
                   </place>

@@ -38,7 +38,9 @@
       </xsl:if>
       <xsl:if test="(@type='building' and not(.//tei:geo))">
 	<xsl:message>Place <xsl:value-of
-	select="tei:placeName"/>: <xsl:value-of
+	select="tei:placeName"/>:<xsl:value-of
+	select="../tei:placeName"/>:<xsl:value-of
+	select="../../tei:placeName"/>: <xsl:value-of
 	select="@obnCode"/>/<xsl:value-of select="@oucsCode"/> has no location</xsl:message>
       </xsl:if>
     </xsl:for-each>
