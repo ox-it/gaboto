@@ -10898,7 +10898,8 @@ data, and if so, how? -->
   <relation name="occupies" active="#conted" passive="#b_0015" type="geo" />
   <relation name="occupies" active="#conted" passive="#b_0030" type="geo" />
   <relation name="occupies" active="#conted" passive="#b_0031" type="geo primary" />
- <relation name="occupies" active="#conted" passive="#b_0055" type="geo" />
+  <relation name="occupies" active="#conted" passive="#b_0055" type="geo" />
+  <relation name="occupies" active="#conted" passive="#e_129" type="geo" />
   <relation name="occupies" active="#counsel" passive="#b_0033" type="geo primary" />
   <relation name="occupies" active="#crim" passive="#b_0020" type="geo primary" />
   <relation name="occupies" active="#devoff" passive="#b_0027" type="geo primary" />
@@ -11266,6 +11267,10 @@ data, and if so, how? -->
             <place type="building" obnCode="265" oxpID="23233787" oucsCode="e_105">
                <placeName>43-48 Wellington Square</placeName>
                <event when="1875" type="construction"/>
+               <location>
+                   <geo>-1.2623 51.7572</geo>
+                   <note>Guesstimated from OSM and low accuracy GPS trace by Alex Dutton 2009-09-08</note>
+               </location>
             </place>
             <place type="building" obnCode="267" oxpID="23233788" oucsCode="e_106">
                <placeName>John Krebs Field Station, Wytham</placeName>
@@ -11360,6 +11365,10 @@ data, and if so, how? -->
             <place type="building" obnCode="306" oxpID="23233811" oucsCode="e_129">
                <placeName>9 Wellington Square</placeName>
                <event when="1875" type="construction"/>
+               <location>
+                   <geo>-1.2618 51.7577</geo>
+                   <note>Guesstimated from OSM map and low accuracy GPS trace by Alex Dutton 2009-09-08</note>
+               </location>
             </place>
             <place type="building" obnCode="310" oxpID="23233815" oucsCode="e_133">
                <placeName>Osney Mead Warehouse</placeName>
@@ -11969,6 +11978,11 @@ data, and if so, how? -->
                <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn297_MuseumTelephoneExchange_20090721.jpg"/>
                <figDesc>Museum Telephone Exchange</figDesc>
                <note>Taken by Alex Dutton using Nokia E71 2009-07-17</note>
+            </figure>
+            <figure corresp="#e_129">
+               <graphic width="2048px" height="1536px" url="http://m.ox.ac.uk/images/obn306_9WellingtonSquare_20090907.jpg"/>
+               <figDesc>Residential Accommodation at 9 Wellington Square</figDesc>
+               <note>Taken by Alex Dutton using Nokia E71 2009-09-07</note>
             </figure>
 	    <!-- nothing to link to
             <figure corresp="#O_room1">
