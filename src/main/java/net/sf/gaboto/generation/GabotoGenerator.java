@@ -1376,10 +1376,14 @@ public class GabotoGenerator {
   }
   
   /**
+   * Main that can be called from Maven in examples/oxpoints directory or from eclipse.
    * @param args
    */
   public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-    generate(new File("src/main/conf/Gaboto.xml"), new File("src/main/java"), "uk.ac.ox.oucs.oxpoints.gaboto");
+    if (args.length == 3)
+      generate(new File(args[0]), new File(args[1]), args[2]);
+    else
+      generate(new File("examples/oxpoints/src/main/conf/Gaboto.xml"), new File("examples/oxpoints/src/main/java"), "uk.ac.ox.oucs.oxpoints.gaboto");
   }
 
   public static void generate(File config, File outputDir, String packageName) throws ParserConfigurationException,
