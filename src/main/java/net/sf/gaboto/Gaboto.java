@@ -62,6 +62,8 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.RDF;
 
@@ -252,7 +254,7 @@ public class Gaboto {
    */
   public GabotoSnapshot getSnapshot(TimeInstant ti)
       throws NoTimeIndexSetException {
-    logger.debug("Creating snapshot for time instant " + ti);
+    System.err.println("Creating snapshot for time instant " + ti);
     Collection<String> graphURIs = getTimeDimensionIndexer().getGraphsForInstant(ti);
     return getSnapshot(graphURIs);
   }
@@ -433,6 +435,7 @@ public class Gaboto {
    * @see #add(GabotoEntity, boolean)
    */
   synchronized public void add(GabotoEntity entity) throws EntityAlreadyExistsException {
+    System.err.println("Adding:"+entity);
     add(entity, true);
   }
 
@@ -1345,13 +1348,31 @@ public class Gaboto {
                 isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet())) {           
           return true;
         } else { 
-          return super.equals(obj);          
+          Model us = getJenaModelViewOnNamedGraphSet();
+          Model them = ((Gaboto)obj).getJenaModelViewOnNamedGraphSet();
+          StmtIterator ours = us.listStatements();
+          System.err.println("unique to us");
+          while (ours.hasNext()) {
+            Statement s = ours.next();
+            if (!them.contains(s)) 
+              System.err.println(s);
+          }
+          System.err.println("unique to them");
+          StmtIterator theirs = them.listStatements();
+          while (theirs.hasNext()) {
+            Statement s = theirs.next();
+            if (!us.contains(s)) 
+              System.err.println(s);
+          }
+          
+          return false;          
         }
       } else { 
         if (getJenaModelViewOnNamedGraphSet().
                 isIsomorphicWith(((Gaboto)obj).getJenaModelViewOnNamedGraphSet())) {           
+          System.err.println("CDGs only differ ");
         }
-        return super.equals(obj);
+        return false;
       }
     }
   }
