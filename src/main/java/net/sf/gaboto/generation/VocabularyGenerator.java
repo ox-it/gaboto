@@ -1254,7 +1254,7 @@ public class VocabularyGenerator {
 
     // count all of the namespaces used in the model
     for (StmtIterator i = m_source.listStatements(); i.hasNext();) {
-      Statement s = (Statement) i.next();
+      Statement s = i.next();
       countNamespace(s.getSubject(), nsCount);
       countNamespace(s.getPredicate(), nsCount);
       if (s.getObject().isResource()) {
