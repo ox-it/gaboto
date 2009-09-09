@@ -317,7 +317,7 @@ public class Gaboto {
       // add statements to snapshot model
       ExtendedIterator<Triple> it = graph.find(Node.ANY, Node.ANY, Node.ANY);
       while (it.hasNext()) {
-        Triple t = (Triple)it.next();
+        Triple t = it.next();
 
         // add triple to model's graph
         newModelsDefaultGraph.add(t);
@@ -328,7 +328,7 @@ public class Gaboto {
     Graph gkg = getGlobalKnowledgeGraph();
     ExtendedIterator<Triple> it = gkg.find(Node.ANY, Node.ANY, Node.ANY);
     while (it.hasNext())
-      newModelsDefaultGraph.add((Triple)it.next());
+      newModelsDefaultGraph.add(it.next());
 
     return snapshot;
   }
