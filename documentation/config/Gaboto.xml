@@ -7,23 +7,47 @@
     <!ENTITY gabotoKML "http://ns.ox.ac.uk/namespace/gaboto/kml/2009/03/owl#" >
 ]>
 <Gaboto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    
+
     <config>
-        <namespaces
-            graphs="http://ns.ox.ac.uk/namespaces/oxpoints/graphs#"
-            data="http://ns.ox.ac.uk/namespaces/oxpoints/data/"
-        />
-        
+        <lookupClass class="uk.ac.ox.oucs.oxpoints.gaboto.OxpointsGabotoOntologyLookup" />
+        <namespaces graphs="http://ns.ox.ac.uk/namespaces/oxpoints/graphs#"
+            data="http://m.ox.ac.uk/oxpoints/id/"/>
+
         <namespacePrefixes>
             <namespacePrefix prefix="oxp" ns="http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#"/>
         </namespacePrefixes>
-        
+
         <database>
+            <!-- We have our own copy of the driver, there is a bug in the jena one -->
+            <engineName>HSQLDB_GABOTO</engineName>
+            <!-- 
+                <url>jdbc:hsqldb:/dist/gaboto/db/oxpoints</url>
+            -->
+            <url>jdbc:hsqldb:mem:oxpoints</url>
+            <user>sa</user>
+            <password/>
+            <driver>org.hsqldb.jdbcDriver</driver>
+            <!--
+            <engineName>PostgreSQL</engineName>
+            <url>jdbc:postgresql:oxpoints</url>
+            <user>postgres</user>
+            <password></password>    
+            <driver>org.postgresql.Driver</driver>
+            -->
+            <!--
+                <engineName>PostgreSQL</engineName>
+                <url>jdbc:postgresql://sysdev-db1.oucs.ox.ac.uk:5432/oxpoints?ssl=true</url>
+                <user>oxpoints_web</user>
+                <password>2iBRosz=arg.T</password>
+                <driver>org.postgresql.Driver</driver>
+            -->
+            <!--
             <engineName>MySQL</engineName>
-            <url>jdbc:mysql://localhost:8889/oxp</url>
-            <user>gabotoUser</user>
-            <password>gabotoPassword</password>
+            <url>jdbc:mysql://localhost/oxp</url>
+            <user>root</user>
+            <password></password>
             <driver>com.mysql.jdbc.Driver</driver>
+            -->
         </database>
     </config>
 
@@ -41,26 +65,32 @@
                 <property name="pos" type="String" uri="&geo;pos"/>
             </properties>
             <customMethods>
-                <method> 
+                <method>
                     <![CDATA[
-                    public Double getLatitude(){ 
-                        try{ 
-                            return Double.valueOf(getPos().split(" ")[1]); 
-                        }catch(NumberFormatException e){ 
-                            return null; 
-                        } 
-                     } 
+  public Double getLatitude() {
+    String p = getPos();
+    if (p == null) 
+      return null;
+    try {
+      return Double.valueOf(p.split(" ")[1]);
+    } catch (NumberFormatException e) {
+      return null;
+    }
+  }
                      ]]>
                 </method>
-                <method> 
+                <method>
                     <![CDATA[
-                    public Double getLongitude(){ 
-                        try{ 
-                            return Double.valueOf(getPos().split(" ")[0]); 
-                        }catch(NumberFormatException e){ 
-                            return null; 
-                        } 
-                    } 
+  public Double getLongitude() {
+    String p = getPos();
+    if (p == null) 
+      return null;
+    try {
+      return Double.valueOf(p.split(" ")[0]);
+    } catch (NumberFormatException e) {
+      return null;
+    }
+  }
                     ]]>
                 </method>
             </customMethods>
@@ -71,7 +101,7 @@
 
     <GabotoEntities>
 
-        <!-- Common bas class -->
+        <!-- Common base class -->
         <GabotoEntity name="OxpEntity" type="&oxp;OxpEntity" abstract="true">
 
             <properties>
@@ -96,6 +126,8 @@
                     <properties>
                         <property name="name" type="String" uri="&dc;title"/>
 
+                        <property name="OUCSCode" type="String" uri="&oxp;hasOUCSCode"/>
+                        <property name="OBNCode"  type="String" uri="&oxp;hasOBNCode"/>
                         <property name="parent" type="Place"
                             uri="&oxp;physicallyContainedWithin">
                             <indirectProperty uri="&oxp;hasLocation"/>
@@ -123,7 +155,7 @@
 
                         <GabotoEntity name="Carpark" type="&oxp;Carpark">
                             <properties>
-                                <property name="capacity" type="int" uri="&oxp;capacity"/>
+                                <property name="capacity" type="Integer" uri="&oxp;capacity"/>
                             </properties>
                         </GabotoEntity>
 
@@ -141,11 +173,10 @@
 
                 <GabotoEntity name="Unit" type="&oxp;Unit">
                     <properties>
+                        <property name="OUCSCode" type="String" uri="&oxp;hasOUCSCode"/>
                         <property name="address" type="Address" uri="&v;adr"/>
 
                         <property name="homepage" type="Website" uri="&oxp;hasHomepage"/>
-
-                        <property name="OUCSCode" type="String" uri="&oxp;hasOUCSCode"/>
 
                         <property name="itHomepage" type="Website" uri="&oxp;hasITHomepage"/>
 
@@ -180,9 +211,9 @@
     public String getDescription(){
         String description = "";
         
-        if(null != getHomepage())
+        if(getHomepage() != null)
             description += "Website: <a href=\"" + getHomepage().getUri() + "\">" + getHomepage().getUri() + "</a><br/>";
-        if(null != getImages() && getImages().size() > 0){
+        if(getImages() != null && getImages().size() > 0){
         	Image img = getImages().iterator().next();
         	description += "<img src=\"" + img.getUri() + "\" width=\"" + img.getWidth() + "\" height=\"" + img.getHeight() + "\"/>";
         }
@@ -221,14 +252,14 @@
 
                 <GabotoEntity name="Website" type="&oxp;Website">
                     <properties>
-                        <passiveProperty name="isWeblearnIn" type="OxpEntity"
-                            relationshipType="1:N" uri="&oxp;hasWeblearn"/>
+                        <passiveProperty name="isWeblearnIn" type="OxpEntity" relationshipType="1:N"
+                            uri="&oxp;hasWeblearn"/>
 
                         <passiveProperty name="isITHomepageIn" type="OxpEntity"
                             relationshipType="1:N" uri="&oxp;hasITHomepage"/>
 
-                        <passiveProperty name="isHomepageIn" type="OxpEntity"
-                            relationshipType="1:N" uri="&oxp;hasHomepage"/>
+                        <passiveProperty name="isHomepageIn" type="OxpEntity" relationshipType="1:N"
+                            uri="&oxp;hasHomepage"/>
 
                         <passiveProperty name="isLibraryHomepageIn" type="OxpEntity"
                             relationshipType="1:N" uri="&oxp;hasLibraryHomepage"/>
