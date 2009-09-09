@@ -1472,7 +1472,7 @@ public class VocabularyGenerator {
             : DEFAULT_INDIVIDUAL_TEMPLATE;
 
     for (Iterator<? extends RDFNode> i = selectIndividuals(); i.hasNext();) {
-      Individual ind = (Individual) ((Resource) i.next()).as(Individual.class);
+      Individual ind = ((Resource) i.next()).as(Individual.class);
 
       // do we have a local class resource
       Resource cls = ind.getOntClass();
