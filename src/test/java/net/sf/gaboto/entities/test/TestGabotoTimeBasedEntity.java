@@ -47,6 +47,7 @@ import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.query.GabotoQuery;
 import net.sf.gaboto.query.ListOfTypedEntities;
 import net.sf.gaboto.test.TimeUtils;
+import net.sf.gaboto.test.Utils;
 import net.sf.gaboto.time.TimeInstant;
 import net.sf.gaboto.time.TimeSpan;
 import net.sf.gaboto.vocabulary.DCVocab;
@@ -376,5 +377,17 @@ public class TestGabotoTimeBasedEntity {
           Node.createURI(entityTB.getUri()), Node.ANY, Node.ANY);
       assertTrue(!it.hasNext());
     }
+  }
+  
+  @Test
+  // FIXME These should be different
+  public void testStAlbans() throws Exception { 
+    oxp = Utils.getOxpointsFromXML("src/test/data/oxpoints_plus.xml");    
+    GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
+    Utils.assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "Now.xml");
+
+    query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, new TimeInstant(1700,1,1) );
+    Utils.assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "1700.xml");
+    
   }
 }
