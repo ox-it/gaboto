@@ -384,10 +384,10 @@ public class TestGabotoTimeBasedEntity {
   public void testStAlbans() throws Exception { 
     oxp = Utils.getOxpointsFromXML("src/test/data/oxpoints_plus.xml");    
     GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
-    Utils.assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "Now.xml");
+    Utils.assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "saintAlbansNow.xml");
 
     query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, new TimeInstant(1700,1,1) );
-    Utils.assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "1700.xml");
+    Utils.assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "saintAlbans1700.xml");
     
   }
 }
