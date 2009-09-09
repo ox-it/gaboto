@@ -424,7 +424,7 @@ public class EntityPool implements Collection<GabotoEntity> {
         ExtendedIterator<Triple> it = graph.find(Node.ANY, Node.createURI(request
             .getUri()), Node.createURI(entity.getUri()));
         while (it.hasNext()) {
-          Triple t = (Triple) it.next();
+          Triple t = it.next();
           if (!t.getSubject().isURI())
             throw new IncoherenceException("The node should really be a uri!");
 
