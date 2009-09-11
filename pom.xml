@@ -99,17 +99,6 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Scarey circularity -->
-    <!-- Comment out and ignore in tests to bootstrap -->
-    <!-- ie mvn -Dmaven.test.skip=true clean install -->
-
-    <dependency>
-      <groupId>uk.ac.ox.oucs.erewhon</groupId>
-      <artifactId>oxpoints</artifactId>
-      <version>0.2</version>
-      <scope>test</scope>
-    </dependency>
-
     <dependency>
      <groupId>xmlunit</groupId>
      <artifactId>xmlunit</artifactId>
