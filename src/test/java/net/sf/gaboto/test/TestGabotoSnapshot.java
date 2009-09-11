@@ -46,6 +46,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import uk.ac.ox.oucs.oxpoints.OxpointsFactory;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.College;
 
 import com.hp.hpl.jena.query.QuerySolution;
@@ -69,7 +70,7 @@ public class TestGabotoSnapshot {
 	
 	@Test
 	public void testSPARQLSelect() {
-    Gaboto oxp = Utils.getOxpointsFromXML();
+    Gaboto oxp = OxpointsFactory.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
 		EntityPoolConfiguration config = new EntityPoolConfiguration(nowSnap);
@@ -104,7 +105,7 @@ public class TestGabotoSnapshot {
 	
 	@Test
 	public void testSPARQLAsk() {
-    Gaboto oxp = Utils.getOxpointsFromXML();
+    Gaboto oxp = OxpointsFactory.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
 		
@@ -127,7 +128,7 @@ public class TestGabotoSnapshot {
 	
 	@Test
 	public void testSPARQLDescribe() {
-    Gaboto oxp = Utils.getOxpointsFromXML();
+    Gaboto oxp = OxpointsFactory.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
 		EntityPoolConfiguration config = new EntityPoolConfiguration(nowSnap);
@@ -158,7 +159,7 @@ public class TestGabotoSnapshot {
 	
 	@Test
 	public void testLoadEntities(){
-    Gaboto oxp = Utils.getOxpointsFromXML();
+    Gaboto oxp = OxpointsFactory.getOxpointsFromXML();
 		
 		GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
 		EntityPool pool = nowSnap.loadEntitiesWithProperty(DC_11.title, "Somerville College");

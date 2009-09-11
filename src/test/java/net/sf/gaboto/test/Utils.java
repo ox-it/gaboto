@@ -31,25 +31,20 @@
  */
 package net.sf.gaboto.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import net.sf.gaboto.Gaboto;
-import net.sf.gaboto.GabotoFactory;
-
 import org.custommonkey.xmlunit.XMLAssert;
-
-import uk.ac.ox.oucs.oxpoints.gaboto.TEIImporter;
 
 public final class Utils {
 
   
   public static String referenceOutputDir = "src/test/reference";
   public static String actualOutputDir = "target";
-  public static String filename = "src/test/data/oxpoints_plus.xml"; 
 
   public static void assertFileContentsStringEqual(String fileName) throws Exception {
     assertFileContentsStringEqual(fileName, fileName);
@@ -122,18 +117,4 @@ public final class Utils {
   }
   
   
-  public static Gaboto getOxpointsFromXML() {
-    return getOxpointsFromXML(filename);
-  }
-  public static Gaboto getOxpointsFromXML(String filenameIn) { 
-    System.err.println("Reading oxp from " + filenameIn);
-    File file = new File(filenameIn);
-    if(! file.exists())
-      throw new RuntimeException ("Cannot open file " + filenameIn);
-    
-    Gaboto oxp = GabotoFactory.getEmptyInMemoryGaboto();
-    new TEIImporter(oxp, file).run();
-    return oxp;
-    
-  }
 }

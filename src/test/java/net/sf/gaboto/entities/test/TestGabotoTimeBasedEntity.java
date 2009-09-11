@@ -56,6 +56,7 @@ import net.sf.gaboto.vocabulary.OxPointsVocab;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import uk.ac.ox.oucs.oxpoints.OxpointsFactory;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.College;
 
@@ -382,7 +383,7 @@ public class TestGabotoTimeBasedEntity {
   @Test
   // FIXME These should be different
   public void testStAlbans() throws Exception { 
-    oxp = Utils.getOxpointsFromXML("src/test/data/saintAlbans.xml");    
+    oxp = OxpointsFactory.getOxpointsFromXML("src/test/data/saintAlbans.xml");    
     GabotoQuery query = new ListOfTypedEntities(oxp, OxPointsVocab.Unit_URI, TimeInstant.now() );
     
     Utils.assertXmlEqual((String)query.execute(GabotoQuery.FORMAT_RDF_XML), "saintAlbansNow.xml");

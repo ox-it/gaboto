@@ -39,13 +39,13 @@ import net.sf.gaboto.node.pool.EntityPoolConfiguration;
 import net.sf.gaboto.node.pool.filter.EntityFilter;
 import net.sf.gaboto.node.pool.filter.PropertyEqualsFilter;
 import net.sf.gaboto.node.pool.filter.PropertyExistsFilter;
-import net.sf.gaboto.test.Utils;
 import net.sf.gaboto.time.TimeInstant;
 import net.sf.gaboto.vocabulary.OxPointsVocab;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import uk.ac.ox.oucs.oxpoints.OxpointsFactory;
 import uk.ac.ox.oucs.oxpoints.gaboto.beans.Location;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.College;
@@ -67,7 +67,7 @@ public class TestEntityPool {
 
   @BeforeClass
   public static void setUp() throws Exception {
-    oxp = Utils.getOxpointsFromXML();
+    oxp = OxpointsFactory.getOxpointsFromXML();
   }
 
   @Test

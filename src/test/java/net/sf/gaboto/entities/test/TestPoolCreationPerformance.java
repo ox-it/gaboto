@@ -45,6 +45,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import uk.ac.ox.oucs.oxpoints.CollegesNearEntity;
+import uk.ac.ox.oucs.oxpoints.OxpointsFactory;
 
 public class TestPoolCreationPerformance {
 
@@ -57,7 +58,7 @@ public class TestPoolCreationPerformance {
 	@Test
 	public void testSimplePoolCreation() {
     //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
-    Gaboto oxp = Utils.getOxpointsFromXML();
+    Gaboto oxp = OxpointsFactory.getOxpointsFromXML();
 
 		PerformanceAverager perf = new PerformanceAverager("Simple Pool Creation");
 		for(int i = 0; i < RUNS; i++){
@@ -76,7 +77,7 @@ public class TestPoolCreationPerformance {
 	@Test
 	public void testSimplePoolCreationWithAllPassive() {
     //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
-    Gaboto oxp = Utils.getOxpointsFromXML();
+    Gaboto oxp = OxpointsFactory.getOxpointsFromXML();
 
 		PerformanceAverager perf = new PerformanceAverager("Simple Pool Creation with passive creation");
 		for(int i = 0; i < RUNS; i++){
@@ -96,7 +97,7 @@ public class TestPoolCreationPerformance {
 	@Test
 	public void testQuery1() throws Exception{
     //Gaboto oxp = GabotoFactory.getInMemoryGaboto();
-    Gaboto oxp = Utils.getOxpointsFromXML();
+    Gaboto oxp = OxpointsFactory.getOxpointsFromXML();
 
 		CollegesNearEntity query = new CollegesNearEntity(oxp, "Somerville College", 10, TimeInstant.now());
 		query.prepare();

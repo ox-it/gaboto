@@ -46,13 +46,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import uk.ac.ox.oucs.oxpoints.OxpointsFactory;
+
 public class TestTEIImporter {
 
   public static Gaboto oxp = null;
   
   @Before
   public void setUp() throws Exception {
-    oxp = Utils.getOxpointsFromXML();    
+    oxp = OxpointsFactory.getOxpointsFromXML();    
   }
 
   @After

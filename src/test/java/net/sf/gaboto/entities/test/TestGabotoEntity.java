@@ -52,6 +52,7 @@ import net.sf.gaboto.vocabulary.OxPointsVocab;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import uk.ac.ox.oucs.oxpoints.OxpointsFactory;
 import uk.ac.ox.oucs.oxpoints.gaboto.beans.Location;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Building;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Carpark;
@@ -195,13 +196,13 @@ public class TestGabotoEntity  {
 	
   @Test
   public void testLoad() { 
-    oxp = Utils.getOxpointsFromXML();
+    oxp = OxpointsFactory.getOxpointsFromXML();
   }
 	
 	@SuppressWarnings("unchecked")
   @Test
   public void testPassiveProperties() { 
-    oxp = Utils.getOxpointsFromXML();
+    oxp = OxpointsFactory.getOxpointsFromXML();
     
     GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
     
@@ -238,7 +239,7 @@ public class TestGabotoEntity  {
   @SuppressWarnings("unchecked")
   @Test
   public void testPassivePropertiesTheLongWay() { 
-    oxp = Utils.getOxpointsFromXML();
+    oxp = OxpointsFactory.getOxpointsFromXML();
     
     GabotoSnapshot nowSnap = oxp.getSnapshot(TimeInstant.now());
     

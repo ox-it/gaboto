@@ -43,6 +43,7 @@ import net.sf.gaboto.vocabulary.OxPointsVocab;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import uk.ac.ox.oucs.oxpoints.OxpointsFactory;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.College;
 import uk.ac.ox.oucs.oxpoints.gaboto.entities.Website;
 import static org.junit.Assert.assertTrue;
@@ -56,7 +57,7 @@ public class TestPassiveProperties  {
 	
 	@Test
 	public void testClassicPropertyLoading() {
-    Gaboto oxp = Utils.getOxpointsFromXML();
+    Gaboto oxp = OxpointsFactory.getOxpointsFromXML();
 		
 		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
 		EntityPoolConfiguration config = new EntityPoolConfiguration(snapshot);
@@ -76,7 +77,7 @@ public class TestPassiveProperties  {
 	
 	@Test
 	public void testClassicPropertyLoading2() {
-    Gaboto oxp = Utils.getOxpointsFromXML();
+    Gaboto oxp = OxpointsFactory.getOxpointsFromXML();
 		
 		GabotoSnapshot snapshot = oxp.getSnapshot(TimeInstant.now());
 		EntityPoolConfiguration config = new EntityPoolConfiguration(snapshot);
