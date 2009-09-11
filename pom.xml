@@ -72,12 +72,14 @@
 -->
 
     <!-- Only declared as optional in json-lib: Grrr -->
-    <!-- dependency>
+    <!--
+    <dependency>
       <groupId>xom</groupId>
       <artifactId>xom</artifactId>
        <version>1.1</version>
        <scope>compile</scope>
-    </dependency -->
+    </dependency>
+    -->
     <dependency>
      <groupId>mysql</groupId>
      <artifactId>mysql-connector-java</artifactId>
@@ -98,7 +100,7 @@
     </dependency>
 
     <!-- Scarey circularity -->
-    <!-- comment out and ignore in tests to bootstrap -->
+    <!-- Comment out and ignore in tests to bootstrap -->
     <!-- ie mvn -Dmaven.test.skip=true clean install -->
 
     <dependency>
