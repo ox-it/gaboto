@@ -1300,13 +1300,12 @@ public class Gaboto {
     getContextDescriptionGraph().write(os, format);
   }
 
+  /**
+   * @param oxpIS graphs file input stream 
+   * @param cdgIS context description file input stream
+   */
   public void read(InputStream oxpIS, InputStream cdgIS) {
-    if (oxpIS == null)
-      throw new NullPointerException();
-    if (cdgIS == null)
-      throw new NullPointerException();
-    getNamedGraphSet().read(oxpIS, "TRIG", null);
-    getContextDescriptionGraph().read(cdgIS, "RDF/XML");
+    read(oxpIS, "TRIG", cdgIS, "RDF/XML");
   }
 
   /**
@@ -1318,6 +1317,10 @@ public class Gaboto {
    */
   public void read(InputStream oxpIS, String oxpFormat, InputStream cdgIS,
       String cdgFormat) {
+    if (oxpIS == null)
+      throw new NullPointerException();
+    if (cdgIS == null)
+      throw new NullPointerException();
     getNamedGraphSet().read(oxpIS, oxpFormat, null);
     getContextDescriptionGraph().read(cdgIS, cdgFormat);
   }
