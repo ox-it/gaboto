@@ -214,7 +214,7 @@ public class EntityPool implements Collection<GabotoEntity> {
         Class<?> entityClass = snapshot.getGaboto().getOntologyLookup().getEntityClassFor(type);
 
         // get everything in the model of that type
-        // TODO Be careful here if we have an inferencing model
+        // NOTE Be careful here if we have an inferencing model
 
         ResIterator it = model.listSubjectsWithProperty(RDF.type, snapshot
             .getProperty(type));
