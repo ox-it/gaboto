@@ -165,7 +165,8 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    * 
    * @param entityClass
    *          The corresponding GabotoEntity class.
-   * @param typeURI TODO
+   * @param typeURI 
+   *           The type of this entity
    * @param uri
    *          The URI of the entity.
    * @see GabotoEntity
@@ -179,7 +180,8 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    * 
    * @param entityClass
    *          The corresponding GabotoEntity class.
-   * @param type TODO
+   * @param type 
+   *          The Type of the entity
    * @param uri
    *          The URI of the entity.
    * @param timespan
@@ -188,17 +190,11 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    */
   public GabotoTimeBasedEntity(Class<? extends GabotoEntity> entityClass, String type, String uri, TimeSpan timespan) {
     this.entityClass = entityClass;
-
-    // type
-    this.type = type;//GabotoOntologyLookup.getTypeURIForEntityClass(entityClass);
+    this.type = type;
     if (this.type == null) {
       throw new NullPointerException();
     }
-
-    // uri
     this.uri = uri;
-
-    // timespan
     this.lifespan = timespan.canonicalize();
   }
 
