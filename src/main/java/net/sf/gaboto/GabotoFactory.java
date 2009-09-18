@@ -31,6 +31,9 @@
  */
 package net.sf.gaboto;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -87,7 +90,22 @@ public class GabotoFactory {
   }
   
 	
-	/**
+  public static Gaboto readPersistedGaboto(String directoryName) {
+    return readPersistedGaboto(directoryName, Gaboto.GRAPH_FILE_NAME, Gaboto.CDG_FILE_NAME);
+  }
+  public static Gaboto readPersistedGaboto(String directoryName, String graphName, String contextName) {
+    File graphs = new File(directoryName, graphName);
+    File context = new File(directoryName, contextName);
+    Gaboto g = getEmptyInMemoryGaboto();
+    try {
+      g.read(new FileInputStream(graphs), new FileInputStream(context));
+    } catch (FileNotFoundException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    return g;
+  }
+
+  /**
 	 * Creates an empty in memory Gaboto model that is not linked to any persistent data store.
 	 * 
 	 * <p>
