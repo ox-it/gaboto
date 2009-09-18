@@ -114,6 +114,9 @@ public class Gaboto {
   private static Logger logger = Logger.getLogger(Gaboto.class.getName());
 
   private GabotoConfiguration config;
+  
+  public final static String GRAPH_FILE_NAME = "graphs.rdf"; 
+  public final static String CDG_FILE_NAME = "cdg.rdf"; 
 
   /**
    * The next entity id.
@@ -134,6 +137,7 @@ public class Gaboto {
   private Model contextDescriptionGraph;
 
   private TimeDimensionIndexer timeDimensionIndexer;
+  
 
   /**
    * Creates a new Gaboto object using the passed graphset.
@@ -1308,7 +1312,7 @@ public class Gaboto {
    * @param oxpIS graphs file input stream 
    * @param cdgIS context description file input stream
    */
-  public void read(InputStream oxpIS, InputStream cdgIS) {
+  void read(InputStream oxpIS, InputStream cdgIS) {
     read(oxpIS, "TRIG", cdgIS, "RDF/XML");
   }
 
