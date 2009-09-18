@@ -222,7 +222,8 @@ public class GabotoFactory {
             inMemoryGaboto.remove(event.getTimespan(), event.getTriple());
           else if(event.getTriple() != null)
             inMemoryGaboto.remove(event.getTriple());
-        }
+        } else 
+          throw new GabotoRuntimeException("Unexpected update type: " + e.getClass());
 			}
 		});
 		
