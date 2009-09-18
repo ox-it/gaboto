@@ -159,6 +159,10 @@ public class GabotoFactory {
 	 * querying the data, an in-memory Gaboto should be used.
 	 * </p>
 	 * 
+	 * <p>
+	 * Update the persistent and the in-memory copy is updated.
+	 * </p>
+	 * 
 	 * @return A new persistent Gaboto
 	 * @see #getInMemoryGaboto()
 	 * @see GabotoConfiguration
