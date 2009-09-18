@@ -31,6 +31,10 @@
  */
 package net.sf.gaboto;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -119,7 +123,7 @@ public class Gaboto {
   /**
    * Update listeners.
    */
-  private List<UpdateListener> updateListener = new ArrayList<UpdateListener>();
+  private List<UpdateListener> updateListeners = new ArrayList<UpdateListener>();
 
   /**
    * Named graph set. 
@@ -209,7 +213,7 @@ public class Gaboto {
    *          The update listener to be attached.
    */
   public void attachUpdateListener(UpdateListener listener) {
-    updateListener.add(listener);
+    updateListeners.add(listener);
   }
 
   /**
@@ -219,7 +223,7 @@ public class Gaboto {
    *          The update listener to be detached.
    */
   public void detachUpdateListener(UpdateListener listener) {
-    updateListener.remove(listener);
+    updateListeners.remove(listener);
   }
 
   /**
@@ -339,7 +343,7 @@ public class Gaboto {
    * @param e
    */
   private void triggerUpdateEvent(GabotoEvent e) {
-    for (UpdateListener u : updateListener)
+    for (UpdateListener u : updateListeners)
       u.updateOccured(e);
   }
 
@@ -1309,6 +1313,15 @@ public class Gaboto {
   }
 
   /**
+   * @param oxpIS graphs file input stream 
+   */
+  public void read(InputStream oxpIS) {
+    if (oxpIS == null)
+      throw new NullPointerException();
+    getNamedGraphSet().read(oxpIS, "TRIG", config.getNSData());
+  }
+
+  /**
    * 
    * @param oxpIS
    * @param oxpFormat
@@ -1378,6 +1391,37 @@ public class Gaboto {
         return false;
       }
     }
+  }
+
+  public void persistToDisk(String actualOutputDir) {
+    File graphsFile = new File(actualOutputDir, "graphs.rdf");
+    FileOutputStream actualOutputStream;
+    try {
+      actualOutputStream = new FileOutputStream(graphsFile);
+    } catch (FileNotFoundException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    write(actualOutputStream);
+    try {
+      actualOutputStream.close();
+    } catch (IOException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    
+    File contextFile = new File(actualOutputDir, "cdg.rdf");
+    FileOutputStream contextOutputStream;
+    try {
+      contextOutputStream = new FileOutputStream(contextFile);
+    } catch (FileNotFoundException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    writeCDG(contextOutputStream);
+    try {
+      contextOutputStream.close();
+    } catch (IOException e) {
+      throw new GabotoRuntimeException(e);
+    }
+    
   }
 
 
