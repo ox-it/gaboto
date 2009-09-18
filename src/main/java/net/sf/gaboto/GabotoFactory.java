@@ -96,12 +96,19 @@ public class GabotoFactory {
   public static Gaboto readPersistedGaboto(String directoryName, String graphName, String contextName) {
     File graphs = new File(directoryName, graphName);
     File context = new File(directoryName, contextName);
-    Gaboto g = getEmptyInMemoryGaboto();
+    FileInputStream graphsFileInputStream; 
+    FileInputStream contextFileInputStream; 
     try {
-      g.read(new FileInputStream(graphs), new FileInputStream(context));
+      graphsFileInputStream = new FileInputStream(graphs); 
+      contextFileInputStream = new FileInputStream(context); 
     } catch (FileNotFoundException e) {
       throw new GabotoRuntimeException(e);
     }
+    return readPersistedGaboto(graphsFileInputStream, contextFileInputStream);
+  }
+  public static Gaboto readPersistedGaboto(FileInputStream graphsFileInputStream, FileInputStream contextFileInputStream) {
+    Gaboto g = getEmptyInMemoryGaboto();
+    g.read(graphsFileInputStream, contextFileInputStream);
     return g;
   }
 
