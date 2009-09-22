@@ -124,6 +124,13 @@ public class Gaboto {
   long id = 23232322;
 
   /**
+   * @return the id
+   */
+  public long getCurrentHighestId() {
+    return id;
+  }
+
+  /**
    * Update listeners.
    */
   private List<UpdateListener> updateListeners = new ArrayList<UpdateListener>();
@@ -235,10 +242,14 @@ public class Gaboto {
    * 
    * @return A new unique new.
    */
-  public String generateID() {
+  public String generateIdUri() {
     String tmpId = generateId();
-    while (containsResource(tmpId))
+    System.err.println("ID:"+tmpId);
+    while (containsResource(tmpId)) {  
       tmpId = generateId();
+      System.err.println("ID:"+tmpId);
+    }
+
     return tmpId;
   }
 
@@ -1060,6 +1071,9 @@ public class Gaboto {
    * @return True, if the resource exists.
    */
   public boolean containsResource(String uri) {
+    System.err.println("Uri:" + uri);
+    System.err.println("created:"+Node.createURI(uri));
+
     return getNamedGraphSet().containsQuad(
         new Quad(Node.ANY, Node.createURI(uri), Node.ANY, Node.ANY));
   }
