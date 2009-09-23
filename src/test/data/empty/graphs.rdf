@@ -1,0 +1,6 @@
+@prefix ns2:     <http://www.opengis.net/gml/> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix ns1:     <http://nwalsh.com/rdf/vCard#> .
+@prefix ns0:     <http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
