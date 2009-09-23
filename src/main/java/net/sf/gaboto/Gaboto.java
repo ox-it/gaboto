@@ -117,7 +117,7 @@ public class Gaboto {
   private GabotoConfiguration config;
   
   public final static String GRAPH_FILE_NAME = "graphs.rdf"; 
-  public final static String CDG_FILE_NAME = "cdg.rdf"; 
+  public final static String CDG_FILE_NAME = "cdg.xml"; 
 
   /**
    * The next entity id.
@@ -1340,7 +1340,7 @@ public class Gaboto {
     getNamedGraphSet().read(graphIS, "TRIG", config.getNSData());
   }
   public void read(String graphTrig) { 
-    getNamedGraphSet().read(new StringReader(graphTrig), "TRIG", config.getNSData());    
+    getNamedGraphSet().read(new StringReader(graphTrig), "TRIG", null);    
   }
   /**
    * 
@@ -1415,7 +1415,7 @@ public class Gaboto {
   }
 
   public void persistToDisk(String actualOutputDir) {
-    File graphsFile = new File(actualOutputDir, "graphs.rdf");
+    File graphsFile = new File(actualOutputDir, GRAPH_FILE_NAME);
     FileOutputStream actualOutputStream;
     try {
       actualOutputStream = new FileOutputStream(graphsFile);
@@ -1429,7 +1429,11 @@ public class Gaboto {
       throw new GabotoRuntimeException(e);
     }
     
-    File contextFile = new File(actualOutputDir, "cdg.rdf");
+    File contextFile = new File(actualOutputDir, CDG_FILE_NAME);
+    
+    
+    
+    
     FileOutputStream contextOutputStream;
     try {
       contextOutputStream = new FileOutputStream(contextFile);
