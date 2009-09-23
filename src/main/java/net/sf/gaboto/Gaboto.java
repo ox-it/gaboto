@@ -1324,23 +1324,23 @@ public class Gaboto {
   }
 
   /**
-   * @param oxpIS graphs file input stream 
+   * @param graphIS graphs file input stream 
    * @param cdgIS context description file input stream
    */
-  void read(InputStream oxpIS, InputStream cdgIS) {
-    read(oxpIS, "TRIG", cdgIS, "RDF/XML");
+  void read(InputStream graphIS, InputStream cdgIS) {
+    read(graphIS, "TRIG", cdgIS, "RDF/XML");
   }
 
   /**
-   * @param oxpIS graphs file input stream 
+   * @param graphIS graphs file input stream 
    */
-  public void read(InputStream oxpIS) {
-    if (oxpIS == null)
+  public void read(InputStream graphIS) {
+    if (graphIS == null)
       throw new NullPointerException();
-    getNamedGraphSet().read(oxpIS, "TRIG", config.getNSData());
+    getNamedGraphSet().read(graphIS, "TRIG", config.getNSData());
   }
-  public void read(String trig) { 
-    getNamedGraphSet().read(new StringReader(trig), "TRIG", config.getNSData());    
+  public void read(String graphTrig) { 
+    getNamedGraphSet().read(new StringReader(graphTrig), "TRIG", config.getNSData());    
   }
   /**
    * 
