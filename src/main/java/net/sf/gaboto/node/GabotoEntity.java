@@ -331,7 +331,7 @@ abstract public class GabotoEntity implements RDFTyped {
 	}
 	
 	final static public <T extends GabotoEntity> T createNew(Gaboto gaboto, T newEntity){
-		newEntity.setUri(gaboto.generateID());
+		newEntity.setUri(gaboto.generateIdUri());
 		return newEntity;
 	}
 	
