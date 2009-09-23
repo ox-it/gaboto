@@ -37,6 +37,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -1338,7 +1339,9 @@ public class Gaboto {
       throw new NullPointerException();
     getNamedGraphSet().read(oxpIS, "TRIG", config.getNSData());
   }
-
+  public void read(String trig) { 
+    getNamedGraphSet().read(new StringReader(trig), "TRIG", config.getNSData());    
+  }
   /**
    * 
    * @param oxpIS
