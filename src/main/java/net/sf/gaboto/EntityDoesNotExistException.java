@@ -48,10 +48,10 @@ public class EntityDoesNotExistException extends GabotoRuntimeException {
 	private static final long serialVersionUID = 4587236593997582145L;
 
 	public EntityDoesNotExistException(GabotoEntity entity){
-		super("The entity " + entity.getUri() + " does not exist.");
+		super("The entity with URI " + entity.getUri() + " does not exist.");
 	}
 	
 	public EntityDoesNotExistException(String entityURI){
-		super("The entity " + entityURI + " does not exist.");
+		super("The entity with URI " + entityURI + " does not exist.");
 	}
 }
