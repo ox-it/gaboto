@@ -78,6 +78,7 @@ public class TimeDimensionIndexer {
    * @param graphset The graphset the index should be built upon.
    */
 	public void createIndex(Model cdg) throws IncoherenceException {
+	  System.err.println("Creating time index");
 		String query = GabotoPredefinedQueries.getTimeDimensionIndexQuery();
 		QueryExecution qe = QueryExecutionFactory.create( query, cdg );
 		ResultSet rs = qe.execSelect();
@@ -104,14 +105,14 @@ public class TimeDimensionIndexer {
 				ts.setStartYear(((Literal)startYearNode).getInt());
 				if(null != startMonthNode)
 					ts.setStartMonth(((Literal)startMonthNode).getInt());
-				if(null != startDayNode)
+				if(startDayNode != null)
 					ts.setStartDay(((Literal)startDayNode).getInt());
 				
-				if(null != durationYearNode)
+				if(durationYearNode != null)
 					ts.setDurationYear(((Literal)durationYearNode).getInt());
-				if(null != durationMonthNode)
+				if(durationMonthNode != null)
 					ts.setDurationMonth(((Literal)durationMonthNode).getInt());
-				if(null != durationDayNode)
+				if(durationDayNode != null)
 					ts.setDurationDay(((Literal)durationDayNode).getInt());
 				
 				add(graph, ts);
@@ -169,9 +170,13 @@ public class TimeDimensionIndexer {
 	public Collection<String> getGraphsForInstant(TimeInstant ti) {
 		Set<String> graphs = new HashSet<String>();
 
-		for(Entry<String, TimeSpan> entry : lookup.entrySet())
-			if(entry.getValue().contains(ti))
+		for(Entry<String, TimeSpan> entry : lookup.entrySet()) { 
+			if(entry.getValue().contains(ti)) {
 				graphs.add(entry.getKey());
+			} else { 
+			  //System.err.println("Ignoring " + entry.getKey());			  
+			}
+		}
 		
 		return graphs; 
 	}
