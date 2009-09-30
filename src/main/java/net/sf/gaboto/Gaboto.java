@@ -117,7 +117,10 @@ public class Gaboto {
   private GabotoConfiguration config;
   
   public final static String GRAPH_FILE_NAME = "graphs.rdf"; 
-  public final static String CDG_FILE_NAME = "cdg.xml"; 
+  public final static String CDG_FILE_NAME   = "cdg.xml"; 
+  
+  public final static String GRAPH_LANGUAGE = "TRIG"; 
+  public final static String CDG_LANGUAGE   = "RDF/XML"; 
 
   /**
    * The next entity id.
@@ -208,6 +211,7 @@ public class Gaboto {
    *          The indexer.
    */
   public void setTimeDimensionIndexer(TimeDimensionIndexer idx) {
+    System.err.println("gaboto.setTimeDimensionIndexer Called");
     this.timeDimensionIndexer = idx;
   }
 
@@ -215,6 +219,7 @@ public class Gaboto {
    * Triggers a recreation of the time dimension index.
    */
   public void recreateTimeDimensionIndex() {
+    System.err.println("gaboto.recreateTimeDimensionIndex Called");
     this.getTimeDimensionIndexer().createIndex(getContextDescriptionGraph());
   }
 
@@ -294,6 +299,15 @@ public class Gaboto {
     return getSnapshot(uris);
   }
 
+  public GabotoSnapshot getSnapshot() {
+    Collection<String> uris = new HashSet<String>();
+
+    Iterator<NamedGraph> it = namedGraphSet.listGraphs();
+    while (it.hasNext())  
+      uris.add(it.next().getGraphName().getURI());
+    return getSnapshot(uris);
+  }
+  
   /**
    * Creates an {@link GabotoSnapshot} that only contains the data from the
    * passed graph.
@@ -326,10 +340,10 @@ public class Gaboto {
     // create snapshot
     GabotoSnapshot snapshot = new GabotoSnapshot(model, this);
 
-    logger.debug("Adding " + graphURIs.size() + " graphs to snapshot");
+    System.err.println("Adding " + graphURIs.size() + " graphs to snapshot");
     // fill model
     for (String g : graphURIs) {
-      logger.debug("Adding graph to snapshot: " + g);
+      System.err.println("Adding graph to snapshot: " + g);
       NamedGraph graph = namedGraphSet.getGraph(g);
       if (graph == null)
         throw new IllegalArgumentException("Unknown graph: " + g);
@@ -376,8 +390,8 @@ public class Gaboto {
     if (containsEntity(entityTB.getUri()))
       throw new EntityAlreadyExistsException(entityTB.getUri());
 
-    logger.debug("Adding time based entity to gaboto: " + entityTB);
-    logger.debug("TimeSpans in tbEntity: " + entityTB.getTimeSpansSorted());
+    System.err.println("Adding time based entity to gaboto: " + entityTB);
+    System.err.println("TimeSpans in tbEntity: " + entityTB.getTimeSpansSorted());
 
     // add triple denoting entities type and lifespan
     add(entityTB.getTimeSpan(), entityTB.getRDFTypeTriple());
@@ -478,7 +492,7 @@ public class Gaboto {
     if (containsEntity(entity) && includeType)
       throw new EntityAlreadyExistsException(entity);
 
-    logger.debug("Adding entity to gaboto: " + entity);
+    System.err.println("Adding entity to gaboto: " + entity);
 
     TimeSpan ts = entity.getTimeSpan().canonicalize();
     for (Triple t : entity.getTriplesFor(includeType))
@@ -518,7 +532,7 @@ public class Gaboto {
     if (!containsEntity(entityURI))
       throw new EntityDoesNotExistException(entityURI);
 
-    logger.debug("Attempting to purge " + entityURI);
+    System.err.println("Attempting to purge " + entityURI);
 
     // load time-based entity
     Iterator<?> it = getNamedGraphSet().findQuads(Node.ANY,
@@ -671,7 +685,7 @@ public class Gaboto {
       }
     }
 
-    logger.debug("Adding triple " + triple + " to graph "
+    System.err.println("Adding triple " + triple + " to graph "
         + graph.getGraphName().getURI());
 
     graph.add(triple);
@@ -1289,7 +1303,7 @@ public class Gaboto {
    *          The OutputStream to write to.
    */
   public void write(OutputStream os) {
-    getNamedGraphSet().write(os, "TRIG", null);
+    getNamedGraphSet().write(os, GRAPH_LANGUAGE, null);
   }
 
   /**
@@ -1328,7 +1342,7 @@ public class Gaboto {
    * @param cdgIS context description file input stream
    */
   void read(InputStream graphIS, InputStream cdgIS) {
-    read(graphIS, "TRIG", cdgIS, "RDF/XML");
+    read(graphIS, GRAPH_LANGUAGE, cdgIS, CDG_LANGUAGE);
   }
 
   /**
@@ -1337,10 +1351,13 @@ public class Gaboto {
   public void read(InputStream graphIS) {
     if (graphIS == null)
       throw new NullPointerException();
-    getNamedGraphSet().read(graphIS, "TRIG", config.getNSData());
+    getNamedGraphSet().read(graphIS, GRAPH_LANGUAGE, config.getNSData());
   }
-  public void read(String graphTrig) { 
-    getNamedGraphSet().read(new StringReader(graphTrig), "TRIG", null);    
+  public void read(String graphXml) { 
+    read(graphXml,GRAPH_LANGUAGE);
+  }
+  public void read(String graphXml, String format) { 
+    getNamedGraphSet().read(new StringReader(graphXml), format, null);    
   }
   /**
    * 
