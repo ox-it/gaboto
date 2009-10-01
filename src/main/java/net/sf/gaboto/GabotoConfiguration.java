@@ -61,7 +61,8 @@ public class GabotoConfiguration {
 	private String dbDriver;
 	
 	private String NSGraphs = "http://gaboto.sf.net/graphs/";
-	private String NSData   = "http://gaboto.sf.net/data/";
+  private String NSData   = "http://gaboto.sf.net/data/";
+  private String dataDirectory  = "/var/lib/gaboto/oxpoints";
 	
 	private Map<String, String> namespacePrefixes = new HashMap<String, String>();
 	
@@ -239,5 +240,19 @@ public class GabotoConfiguration {
     return lookup;
   }
 	
+  /**
+   * @return the dataDir
+   */
+  public String getDataDirectory() {
+    return dataDirectory;
+  }
+
+  /**
+   * @param dataDir the dataDir to set
+   */
+  public void setDataDirectory(String dataDir) {
+    this.dataDirectory = dataDir;
+  }
+
 	
 }
