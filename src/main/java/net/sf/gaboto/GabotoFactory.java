@@ -47,6 +47,7 @@ import net.sf.gaboto.event.InsertionGabotoEvent;
 import net.sf.gaboto.event.RemovalGabotoEvent;
 import net.sf.gaboto.event.UpdateListener;
 import net.sf.gaboto.time.TimeDimensionIndexer;
+import net.sf.gaboto.time.TimeInstant;
 import net.sf.gaboto.util.Performance;
 import net.sf.gaboto.vocabulary.RDFContext;
 
@@ -84,6 +85,7 @@ public class GabotoFactory {
   public static GabotoConfiguration config  = GabotoConfiguration.fromConfigFile();
 
   private static HashMap<String,Gaboto> knownStores = new HashMap<String,Gaboto>();
+  private static HashMap<String,GabotoSnapshot> knownSnapshots = new HashMap<String,GabotoSnapshot>();
   
   /**
    * Returns the Gaboto configuration.
@@ -110,6 +112,20 @@ public class GabotoFactory {
     return it;
 	}
 	
+	/**
+	 * @return a cached or newly minted GabotSnapshot
+	 */
+	public static GabotoSnapshot getSnapshot(String directoryName, TimeInstant timeInstant) { 
+	  GabotoSnapshot it = null;
+	  String key = directoryName + ":" + timeInstant.toString();
+	  synchronized(knownSnapshots){
+	    it = knownSnapshots.get(key);
+	    if (it == null) 
+	      it = knownSnapshots.put(key, getGaboto(directoryName).getSnapshot(timeInstant));
+	  }
+	  return it;
+	}
+	
   private static Gaboto readPersistedGaboto(String directoryName) {
     return readPersistedGaboto(directoryName, Gaboto.GRAPH_FILE_NAME, Gaboto.CDG_FILE_NAME);
   }
@@ -129,6 +145,7 @@ public class GabotoFactory {
   public static Gaboto readPersistedGaboto(InputStream graphsInputStream, InputStream contextInputStream) {
     Gaboto g = getEmptyInMemoryGaboto();
     g.read(graphsInputStream, contextInputStream);
+    g.recreateTimeDimensionIndex();
     return g;
   }
 
