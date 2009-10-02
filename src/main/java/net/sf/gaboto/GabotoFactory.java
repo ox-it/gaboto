@@ -38,7 +38,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 
 
@@ -84,8 +84,8 @@ public class GabotoFactory {
 	
   public static GabotoConfiguration config  = GabotoConfiguration.fromConfigFile();
 
-  private static HashMap<String,Gaboto> knownStores = new HashMap<String,Gaboto>();
-  private static HashMap<String,GabotoSnapshot> knownSnapshots = new HashMap<String,GabotoSnapshot>();
+  private static Hashtable<String,Gaboto> knownStores = new Hashtable<String,Gaboto>();
+  private static Hashtable<String,GabotoSnapshot> knownSnapshots = new Hashtable<String,GabotoSnapshot>();
   
   /**
    * Returns the Gaboto configuration.
@@ -106,12 +106,21 @@ public class GabotoFactory {
     synchronized(knownStores) {
       it = knownStores.get(directoryName);
       if (it == null)
-        it = knownStores.put(directoryName, readPersistedGaboto(directoryName));
-      
+        knownStores.put(directoryName, readPersistedGaboto(directoryName));
+      it = knownStores.get(directoryName);
     }
     return it;
-	}
-	
+  }
+	public static Gaboto refreshedGaboto(String directoryName) { 
+    if (directoryName == null)
+      throw new NullPointerException();
+    Gaboto it = null;
+    synchronized(knownStores) {
+      knownStores.put(directoryName, readPersistedGaboto(directoryName));
+      it = knownStores.get(directoryName);
+    }
+    return it;
+  }
 	/**
 	 * @return a cached or newly minted GabotSnapshot
 	 */
@@ -119,9 +128,12 @@ public class GabotoFactory {
 	  GabotoSnapshot it = null;
 	  String key = directoryName + ":" + timeInstant.toString();
 	  synchronized(knownSnapshots){
-	    it = knownSnapshots.get(key);
-	    if (it == null) 
-	      it = knownSnapshots.put(key, getGaboto(directoryName).getSnapshot(timeInstant));
+      it = knownSnapshots.get(key);
+	    if (it == null) {
+	      it = getGaboto(directoryName).getSnapshot(timeInstant);
+	      knownSnapshots.put(key, it);
+	    }
+      System.err.println("");
 	  }
 	  return it;
 	}

@@ -217,6 +217,7 @@ public class Gaboto {
 
   /**
    * Triggers a recreation of the time dimension index.
+   * TPP - No idea when this should be created or why it is public
    */
   public void recreateTimeDimensionIndex() {
     System.err.println("gaboto.recreateTimeDimensionIndex Called");
