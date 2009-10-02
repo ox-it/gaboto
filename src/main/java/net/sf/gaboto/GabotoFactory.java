@@ -38,6 +38,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Iterator;
 
 
@@ -82,6 +83,8 @@ public class GabotoFactory {
 	
   public static GabotoConfiguration config  = GabotoConfiguration.fromConfigFile();
 
+  private static HashMap<String,Gaboto> knownStores = new HashMap<String,Gaboto>();
+  
   /**
    * Returns the Gaboto configuration.
    * @return The Gaboto configuration.
@@ -90,8 +93,24 @@ public class GabotoFactory {
     return config;
   }
   
+	/**
+	 * @param directoryName name of the store, normnally a diretory name
+	 * @return a cached or newly minted Gaboto
+	 */
+	public static Gaboto getGaboto(String directoryName) { 
+    if (directoryName == null)
+      throw new NullPointerException();
+    Gaboto it = null;
+    synchronized(knownStores) {
+      it = knownStores.get(directoryName);
+      if (it == null)
+        it = knownStores.put(directoryName, readPersistedGaboto(directoryName));
+      
+    }
+    return it;
+	}
 	
-  public static Gaboto readPersistedGaboto(String directoryName) {
+  private static Gaboto readPersistedGaboto(String directoryName) {
     return readPersistedGaboto(directoryName, Gaboto.GRAPH_FILE_NAME, Gaboto.CDG_FILE_NAME);
   }
   public static Gaboto readPersistedGaboto(String directoryName, String graphName, String contextName) {
