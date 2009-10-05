@@ -66,6 +66,24 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
   }
 
   /**
+   * @param time YYYY, YYYY-MM or YYYY-MM-DD
+   */
+  public TimeInstant(String time) {
+    String[] bits = time.split("-");
+    if (bits.length == 1)
+      setStartYear(new Integer(bits[0]));
+    else if (bits.length == 2) {
+      setStartYear(new Integer(bits[0]));
+      setStartMonth(new Integer(bits[1]));
+    } else if (bits.length == 3) {
+      setStartYear(new Integer(bits[0]));
+      setStartMonth(new Integer(bits[1]));
+      setStartDay(new Integer(bits[1]));
+    } else throw new IllegalArgumentException(time);
+    
+  }
+
+  /**
    * Create an instance from a Calendar..
    * 
    * @param calendar
