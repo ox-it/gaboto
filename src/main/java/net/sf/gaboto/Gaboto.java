@@ -57,8 +57,6 @@ import net.sf.gaboto.vocabulary.RDFContext;
 import net.sf.gaboto.vocabulary.RDFGraph;
 import net.sf.gaboto.vocabulary.TimeVocab;
 
-import org.apache.log4j.Logger;
-
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.graph.Graph;
 import com.hp.hpl.jena.graph.Node;
@@ -112,7 +110,6 @@ import de.fuberlin.wiwiss.ng4j.Quad;
  */
 public class Gaboto {
 
-  private static Logger logger = Logger.getLogger(Gaboto.class.getName());
 
   private GabotoConfiguration config;
   
@@ -1148,11 +1145,11 @@ public class Gaboto {
     if (it.hasNext()) {
       Quad quad = (Quad)it.next();
       if (it.hasNext())
-        logger.error("Corrupted data. " + uri
+        System.err.println("Corrupted data. " + uri
             + " has to triples defining its type");
 
       if (!quad.getObject().isURI()) {
-        logger.error("Corrupted data. " + uri + " has has not a valid type.");
+        System.err.println("Corrupted data. " + uri + " has has not a valid type.");
         throw new IncoherenceException("Corrupted data. " + uri
             + " has has not a valid type.");
       }
