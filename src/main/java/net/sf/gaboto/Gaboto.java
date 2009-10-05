@@ -359,9 +359,13 @@ public class Gaboto {
     // add gdg
     Graph gkg = getGlobalKnowledgeGraph();
     ExtendedIterator<Triple> it = gkg.find(Node.ANY, Node.ANY, Node.ANY);
-    while (it.hasNext())
-      newModelsDefaultGraph.add(it.next());
-
+    int gkgCount = 0;
+    while (it.hasNext()) {
+      Triple t = it.next();
+      newModelsDefaultGraph.add(t);
+      gkgCount++;
+    }
+    System.err.println("Added " + gkgCount + " from gkg");
     return snapshot;
   }
 
