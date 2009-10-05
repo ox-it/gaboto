@@ -78,14 +78,15 @@ public class TimeDimensionIndexer {
    * @param graphset The graphset the index should be built upon.
    */
 	public void createIndex(Model cdg) throws IncoherenceException {
-	  System.err.println("Creating time index");
+    System.err.println("Creating time index");
 		String query = GabotoPredefinedQueries.getTimeDimensionIndexQuery();
 		QueryExecution qe = QueryExecutionFactory.create( query, cdg );
 		ResultSet rs = qe.execSelect();
 
-	
+		int count = 0;
 		while(rs.hasNext()){
 			QuerySolution qs = rs.nextSolution();
+			count++;
 			
 			// get variables
 			RDFNode graphNode = qs.get("graph");
@@ -121,6 +122,7 @@ public class TimeDimensionIndexer {
 			}
 		}
 		
+    System.err.println("Added " + count + " to time index");
 	}
 	
   /**
@@ -174,7 +176,7 @@ public class TimeDimensionIndexer {
 			if(entry.getValue().contains(ti)) {
 				graphs.add(entry.getKey());
 			} else { 
-			  //System.err.println("Ignoring " + entry.getKey());			  
+			  System.err.println("Ignoring " + entry.getKey());			  
 			}
 		}
 		
