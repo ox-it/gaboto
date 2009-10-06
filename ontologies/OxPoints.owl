@@ -318,6 +318,14 @@
             >Describes any kind of library.</rdfs:comment>
     </owl:Class>
     
+    <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#SubLibrary -->
+
+    <owl:Class rdf:about="#SubLibrary">
+        <rdfs:subClassOf rdf:resource="#Libary"/>
+        <rdfs:comment
+            >Describes a library with a parent.</rdfs:comment>
+    </owl:Class>
+    
 
 
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Museum -->
