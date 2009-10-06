@@ -86,7 +86,7 @@
     <testSourceDirectory>src/test/java</testSourceDirectory>
     <plugins>
 <!-- Only works once class files are generated
-    
+-->    
     <plugin>
        <groupId>org.codehaus.mojo</groupId>
        <artifactId>exec-maven-plugin</artifactId>
@@ -106,13 +106,13 @@
         <dependency>
          <groupId>net.sf.gaboto</groupId>
          <artifactId>gaboto</artifactId>
-         <version>0.3</version>
+         <version>${project.version}</version>
 	 <type>jar</type>
         </dependency>
        </dependencies>
       </plugin>
       
--->      
+<!-- -->      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
