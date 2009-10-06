@@ -484,6 +484,7 @@ public class VocabularyGenerator {
    */
   public static void main(String[] args) {
     if (args.length == 0) { 
+      System.err.println("Invoked")
       new VocabularyGenerator().go(new String[] 
                                               {
               "-i", "ontologies/DC.owl",
