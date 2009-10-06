@@ -85,15 +85,14 @@
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/test/java</testSourceDirectory>
     <plugins>
-<!-- Only works once class files are generated
--->    
+<!-- Only works once class files are generated-->    
     <plugin>
        <groupId>org.codehaus.mojo</groupId>
        <artifactId>exec-maven-plugin</artifactId>
        <executions>
          <execution>
           <id>GenerateVocabulary</id>
-          <phase>generate-sources</phase>
+          <phase>process-test-resources</phase>
            <goals>
              <goal>java</goal>
            </goals>
@@ -113,45 +112,6 @@
       </plugin>
       
 <!-- -->      
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <redirectTestOutputToFile>true</redirectTestOutputToFile>
-          <forkMode>once</forkMode>
-          <!-- threadCount>1</threadCount-->
-          <!-- childDelegation>false</childDelegation -->
-          <useFile>true</useFile>
-          <includes>
-           <include>**/*Test.java</include>
-           <include>**/Test*.java</include>
-          </includes>
-          <excludes>
-	  <!-- Odd HACK-->
-            <exclude>**/**1*</exclude>
-            <exclude>**/**2*</exclude>
-            <exclude>**/**3*</exclude>
-            <exclude>**/**4*</exclude>
-            <exclude>**/**5*</exclude>
-            <exclude>**/**6*</exclude>
-	  <!-- Too slow -->
-          <!-- 
-            <exclude>**/TestPoolCreationPerformance.java</exclude>
-            <exclude>**/TestEntityPool*</exclude>
-            <exclude>**/TestGabotoSnapshot*</exclude>
-	    <exclude>**/TestSimpleConstructSPARQLQuery*</exclude>
-	    <exclude>**/BuildingsOccupiedByCollegeTest*</exclude>
-	    <exclude>**/TestGabotoEntity*</exclude>
-	    <exclude>**/TestGabotoTimeBasedEntity*</exclude>
-	    <exclude>**/TestPassiveProperties*</exclude>
-	    <exclude>**/GabotoTest*</exclude>
-	    <exclude>**/TestQueryListOfTypedEntities*</exclude>
-	    
-          -->
-	    
-	   </excludes>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -215,14 +175,6 @@
         </configuration>
       </plugin>
       <plugin>
-       <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-surefire-report-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
@@ -247,11 +199,13 @@
           <targetJdk>1.6</targetJdk>
         </configuration>
       </plugin>
--->
+     -->
+      <!--
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
       </plugin>
+     -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
@@ -265,14 +219,18 @@
          </tags>
         </configuration>
       </plugin>
+      <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
       </plugin>
+     -->
+      <!--
       <plugin>
        <groupId>net.sf</groupId>
        <artifactId>stat-scm</artifactId>
      </plugin>
+     -->
       <plugin>
        <groupId>org.apache.maven.plugins</groupId>
        <artifactId>maven-javadoc-plugin</artifactId>
@@ -297,17 +255,16 @@
    <downloadUrl>http://bogof.nsms.ox.ac.uk/maven2/</downloadUrl>
 -->
 
-<!--
     <repository>
       <id>melati</id>
       <name>melati</name>
       <url>scp://melati.org/data/www/maven2/</url>
     </repository>
+<!--
     <site>
       <id>melati</id>
       <url>scp://melati.org/data/www/uriinterface/</url>
     </site>
--->
   <repository>
    <id>bogof</id>
    <name>bogof</name>
@@ -317,6 +274,7 @@
    <id>bogof</id>
    <url>scp://maven2@bogof.nsms.ox.ac.uk:/home/maven2/project/${pom.artifactId}</url>
   </site>
+-->
 
  </distributionManagement>
 
