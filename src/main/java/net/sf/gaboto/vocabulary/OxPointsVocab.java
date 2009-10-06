@@ -223,6 +223,12 @@ public class OxPointsVocab {
     public static final 
     OntClass Site = MODEL.createClass( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Site" );
     
+    /** <p>Describes a library with a parent.</p> */
+    public static final 
+    String SubLibrary_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#SubLibrary";
+    public static final 
+    OntClass SubLibrary = MODEL.createClass( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#SubLibrary" );
+    
     public static final 
     String Unit_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Unit";
     public static final 
