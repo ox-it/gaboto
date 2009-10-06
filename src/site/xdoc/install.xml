@@ -31,29 +31,23 @@ sun java 6
 <li>
 maven2
 </li>
-<li>
-postgresql 
-</li>
-<li>
-Mysql
-</li>
 </ul>
 </subsection>
-<subsection name="Configuration">
-<p>
-install postgresql, 
-edit /etc/postgresql/8.3/main/pg_hba.conf
-add trust as ipv4 mechanism for localhost.
-</p>p>
-<pre>
-su postgres
-
-createdb oxpoints
-
-su root
-/etc/init.d.postgresql restart
-
-</pre>pre>
+<subsection name="Regeneration">
+  <ol>
+    <li>Edit OxPoints.owl</li>
+    <li>Uncomment generation stage in both pom.xml files</li>
+    <li>Run VocabularyGenerator </li>
+    <li>
+     Edit examples/oxpoints/src/main/conf/Gaboto.xml to reflect changes in ontology
+    </li>
+    <li>
+      Run GabotoGenerator (from Eclipse)
+    </li>
+    <li>
+      Reflect changes in oxpm
+    </li>
+  </ol>
 </subsection>
 <subsection name="Installation">
 <p>
