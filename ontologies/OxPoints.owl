@@ -178,7 +178,13 @@
             >Defines that an entity is a subset of another entity (1:N)</rdfs:comment>
     </owl:ObjectProperty>
     
-
+	<owl:ObjectProperty rdf:about="#usedFor">
+		<rdfs:comment>The functions for which a room is used.</rdfs:comment>
+	</owl:ObjectProperty>
+	
+	<owl:ObjectProperty rdf:about="#sublocationType">
+		<rdfs:comment>The type of library sublocation (e.g. book-stack, reading-room)</rdfs:comment>
+	</owl:ObjectProperty>
 
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#uses -->
 

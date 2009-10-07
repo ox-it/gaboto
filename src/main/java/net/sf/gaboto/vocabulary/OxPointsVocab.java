@@ -107,11 +107,23 @@ public class OxPointsVocab {
     public static final 
     ObjectProperty physicallyContainedWithin = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#physicallyContainedWithin" );
     
+    /** <p>The type of library sublocation (e.g. book-stack, reading-room)</p> */
+    public static final 
+    String sublocationType_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#sublocationType";
+    public static final 
+    ObjectProperty sublocationType = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#sublocationType" );
+    
     /** <p>Defines that an entity is a subset of another entity (1:N)</p> */
     public static final 
     String subsetOf_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#subsetOf";
     public static final 
     ObjectProperty subsetOf = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#subsetOf" );
+    
+    /** <p>The functions for which a room is used.</p> */
+    public static final 
+    String usedFor_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#usedFor";
+    public static final 
+    ObjectProperty usedFor = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#usedFor" );
     
     public static final 
     String uses_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#uses";
