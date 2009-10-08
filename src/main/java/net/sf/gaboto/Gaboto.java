@@ -680,9 +680,6 @@ public class Gaboto {
       }
     }
 
-    System.err.println("Adding triple " + triple + " to graph "
-        + graph.getGraphName().getURI());
-
     graph.add(triple);
 
     // inform listeners
@@ -1081,9 +1078,6 @@ public class Gaboto {
    * @return True, if the resource exists.
    */
   public boolean containsResource(String uri) {
-    System.err.println("Uri:" + uri);
-    System.err.println("created:"+Node.createURI(uri));
-
     return getNamedGraphSet().containsQuad(
         new Quad(Node.ANY, Node.createURI(uri), Node.ANY, Node.ANY));
   }
