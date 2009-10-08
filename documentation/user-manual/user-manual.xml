@@ -1307,7 +1307,7 @@ Collection<GabotoTimeBasedEntity> tbEntities = gaboto.loadEntitiesOverTimeWithPr
     PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
     PREFIX owl:<http://www.w3.org/2002/07/owl#>
     PREFIX xsd:<http://www.w3.org/2001/XMLSchema>
-    PREFIX rdfcon:<http://ns.ox.ac.uk/namespace/rdfcon/2009/02/owl#>
+    PREFIX rdfcon:<http://ns.ox.ac.uk/namespace/rdfcontext/2009/02/owl#>
     PREFIX owl-time:<http://www.w3.org/2006/time#>
     PREFIX rdfg:<http://www.w3.org/2004/03/trix/rdfg-1/>
     PREFIX oxp:<http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#>
@@ -2070,7 +2070,7 @@ public class CollegesNearEntity extends GabotoQueryImpl {
                                 <![CDATA[
     <http://ns.ox.ac.uk/namespaces/gaboto/graphs#tg-1900~100-0-0>
           a       <http://www.w3.org/2004/03/trix/rdfg-1/Graph> ;
-          <http://ns.ox.ac.uk/namespace/rdfcon/2009/02/owl#hasTemporalDimension>
+          <http://ns.ox.ac.uk/namespace/rdfcontext/2009/02/owl#hasTemporalDimension>
                   [ a       <http://www.w3.org/2006/time#Interval> ;
                     <http://www.w3.org/2006/time#hasBeginning>
                             [ a       <http://www.w3.org/2006/time#Instant> ;
@@ -2094,7 +2094,7 @@ public class CollegesNearEntity extends GabotoQueryImpl {
                   ] .
     
     <http://ns.ox.ac.uk/namespaces/gaboto/graphs#gkg.rdf>
-          a       <http://ns.ox.ac.uk/namespace/rdfcon/2009/02/owl#GlobalKnowledgeGraph> .
+          a       <http://ns.ox.ac.uk/namespace/rdfcontext/2009/02/owl#GlobalKnowledgeGraph> .
                                 
                                 ]]>
                             </eg>
