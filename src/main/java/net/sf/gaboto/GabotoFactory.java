@@ -133,7 +133,6 @@ public class GabotoFactory {
 	      it = getGaboto(directoryName).getSnapshot(timeInstant);
 	      knownSnapshots.put(key, it);
 	    }
-      System.err.println("");
 	  }
 	  return it;
 	}
