@@ -26,7 +26,7 @@ WHERE
        ?dim a owl-time:Interval;
           owl-time:hasBeginning ?begin .
 
-       #beginning is an instance
+       #beginning is an instant
        ?begin a owl-time:Instant;
            owl-time:hasDateTimeDescription ?beginDesc.
      
