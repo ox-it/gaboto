@@ -208,7 +208,6 @@ public class Gaboto {
    *          The indexer.
    */
   public void setTimeDimensionIndexer(TimeDimensionIndexer idx) {
-    System.err.println("gaboto.setTimeDimensionIndexer Called");
     this.timeDimensionIndexer = idx;
   }
 
@@ -217,7 +216,6 @@ public class Gaboto {
    * TPP - No idea when this should be created or why it is public
    */
   public void recreateTimeDimensionIndex() {
-    System.err.println("gaboto.recreateTimeDimensionIndex Called");
     this.getTimeDimensionIndexer().createIndex(getContextDescriptionGraph());
   }
 
@@ -248,10 +246,8 @@ public class Gaboto {
    */
   public String generateIdUri() {
     String tmpId = generateId();
-    System.err.println("ID:"+tmpId);
     while (containsResource(tmpId)) {  
       tmpId = generateId();
-      System.err.println("ID:"+tmpId);
     }
 
     return tmpId;
@@ -341,7 +337,6 @@ public class Gaboto {
     System.err.println("Adding " + graphURIs.size() + " graphs to snapshot");
     // fill model
     for (String g : graphURIs) {
-      System.err.println("Adding graph to snapshot: " + g);
       NamedGraph graph = namedGraphSet.getGraph(g);
       if (graph == null)
         throw new IllegalArgumentException("Unknown graph: " + g);
@@ -471,7 +466,6 @@ public class Gaboto {
    * @see #add(GabotoEntity, boolean)
    */
   synchronized public void add(GabotoEntity entity) throws EntityAlreadyExistsException {
-    System.err.println("Adding:"+entity);
     add(entity, true);
   }
 
@@ -494,7 +488,6 @@ public class Gaboto {
     if (containsEntity(entity) && includeType)
       throw new EntityAlreadyExistsException(entity);
 
-    System.err.println("Adding entity to gaboto: " + entity);
 
     TimeSpan ts = entity.getTimeSpan().canonicalize();
     for (Triple t : entity.getTriplesFor(includeType))
