@@ -49,15 +49,45 @@ maven2
     </li>
   </ol>
 </subsection>
-<subsection name="Installation">
+<subsection name="Installation on a clean machine">
 <p>
-Run tests and install to local Maven repository:
+Note if necessary comment out a plugin in pom.xml, install and then uncomment and repeat.
+Another trick is to install without running tests: 
 </p>
+<pre>
+mvn -Dmaven.tst.skip=true run 
+</pre>
 <pre>
 svn checkout gaboto
 
-mvn install deploy site site:deploy
+mvn clean install
+
+cd examples/oxpoints 
+
+mvn clean install
+
+cd /Erewhon/oxpq
+
+mvn install 
+
 </pre>
+</subsection>
+<subsection name="Data Files">
+<p>
+Setup data files using links from svn checkout to /var/lib/gaboto eg 
+</p>
+<pre>
+ln -s /var/lib/hudson/.hudson/jobs/oxpoints/workspace/trunk/examples/oxpoints/src/test/reference/oxpoints /var/lib/gaboto/oxpoints
+</pre>
+<p>
+For the tests to pass you also need  
+</p>
+<pre>
+ln -s /var/lib/hudson/.hudson/jobs/oxpq/workspace/oxpq /dist/oxpq
+</pre>
+<p>
+And a writable directory /dist/oxpm
+</p>
 </subsection>
 </section>
 </body>
