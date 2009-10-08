@@ -18,6 +18,7 @@
     </menu>
     <menu name="Gaboto">
       <item name="About"             href="index.html"/>
+      <item name="Install"           href="install.html"/>
       <item name="FAQ"               href="FAQ.html"/>
       <item name="Workshop"          href="20090522Workshop/gaboto.pdf" />
     </menu>
