@@ -86,8 +86,8 @@
     <testSourceDirectory>src/test/java</testSourceDirectory>
     <plugins>
 <!-- Only works once class files are generated-->    
-<!-- Comment out when going up a version --> 
-
+<!-- Comment out when going up a version or on a fresh install--> 
+<!--
     <plugin>
        <groupId>org.codehaus.mojo</groupId>
        <artifactId>exec-maven-plugin</artifactId>
@@ -112,7 +112,7 @@
         </dependency>
        </dependencies>
       </plugin>
-      
+-->      
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
