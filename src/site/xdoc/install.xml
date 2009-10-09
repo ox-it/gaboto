@@ -34,6 +34,9 @@ maven2
 </ul>
 </subsection>
 <subsection name="Regeneration">
+<p>
+If you edit an OWL ontology file or 
+</p>
   <ol>
     <li>Edit OxPoints.owl</li>
     <li>Uncomment generation stage in both pom.xml files</li>
@@ -51,7 +54,10 @@ maven2
 </subsection>
 <subsection name="Installation on a clean machine">
 <p>
-Note if necessary comment out a plugin in pom.xml, install and then uncomment and repeat.
+<b>Note</b> if necessary comment out a plugin in pom.xml, install and then uncomment and repeat.
+ 
+</p>
+<p>
 Another trick is to install without running tests: 
 </p>
 <pre>
@@ -89,6 +95,21 @@ ln -s /var/lib/hudson/.hudson/jobs/oxpq/workspace/oxpq /dist/oxpq
 And a writable directory /dist/oxpm
 </p>
 </subsection>
+<subsection name="Updating data">
+<pre>
+Edit oxpoints_plus.xml
+Run tests 
+diff target/graphs.rdf src/test/reference/oxpoints/graphs.rdf
+if things look right 
+  cp target/graphs.rdf src/test/reference/oxpoints/graphs.rdf
+run tests
+if all pass 
+ commit
+
+</pre>
+
+</subsection>
+
 </section>
 </body>
 </document>
