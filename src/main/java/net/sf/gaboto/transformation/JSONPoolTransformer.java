@@ -130,7 +130,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
       return;
     }
     
-    System.err.println("DIRECT PROPERTIES");
+    //System.err.println("DIRECT PROPERTIES");
 
     if ((getCollectProperties() & COLLECT_DIRECT_PROPERTIES) == COLLECT_DIRECT_PROPERTIES) {
       for (Entry<String, Object> entry : entity.getAllDirectProperties().entrySet()) {
@@ -138,7 +138,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
       }
     }
 
-    System.err.println("INDIRECT PROPERTIES");
+    //System.err.println("INDIRECT PROPERTIES");
     
     if ((getCollectProperties() & COLLECT_INDIRECT_PROPERTIES) == COLLECT_INDIRECT_PROPERTIES) {
       for (Entry<String, Object> entry : entity.getAllIndirectProperties().entrySet()) {
@@ -149,7 +149,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
       }
     }
 
-    System.err.println("PASSIVE PROPERTIES");
+    //System.err.println("PASSIVE PROPERTIES");
 
     if ((getCollectProperties() & COLLECT_PASSIVE_PROPERTIES) == COLLECT_PASSIVE_PROPERTIES) {
       Set<Entry<String, Object>> passiveProperties = entity.getAllPassiveProperties().entrySet();
@@ -160,11 +160,11 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
             propertiesDefined = true;
         }        
         if (propertiesDefined) { 
-          System.err.println(passiveProperties.size());
+          //System.err.println(passiveProperties.size());
           addKey(json, "passiveProperties");
           startObject(json);
           for (Entry<String, Object> entry : passiveProperties) {
-            System.err.println("passive entry" + entry.getKey() + "=" + entry.getValue());
+            //System.err.println("passive entry" + entry.getKey() + "=" + entry.getValue());
             addMember(json, entry.getKey(), entry.getValue(), level);
           }
           endObject(json);
@@ -177,7 +177,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   HashMap<String, Object> contents = null;
   String indent = "";
   private JSONStringer startObject(JSONStringer jsonStringer) { 
-    System.err.println(indent + "Start Object");
+    //System.err.println(indent + "Start Object");
     try {
       jsonStringer.object();
     } catch (JSONException e) {
@@ -194,7 +194,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
       throw new GabotoRuntimeException(e);
     }
     indent = indent.substring(0, indent.length() -1);
-    System.err.println(indent + "End Object");
+    //System.err.println(indent + "End Object");
     return jsonStringer;
   }
   
@@ -216,7 +216,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   }
 
   private JSONStringer addKey(JSONStringer jsonStringer, String key) {
-    System.err.println(indent + "Adding key " + key);
+    //System.err.println(indent + "Adding key " + key);
     try {
       jsonStringer.key(key);
     } catch (JSONException e) {
@@ -225,7 +225,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     return jsonStringer;
   }
   private JSONStringer addValue(JSONStringer jsonStringer, String value)  {
-    System.err.println(indent + "Adding value " + value);
+    //System.err.println(indent + "Adding value " + value);
     try {
       jsonStringer.value(value);
     } catch (JSONException e) {
@@ -234,7 +234,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     return jsonStringer;
   }
   private JSONStringer addValue(JSONStringer jsonStringer, boolean value) {
-    System.err.println(indent + "Adding value " + value);
+    //System.err.println(indent + "Adding value " + value);
     try {
       jsonStringer.value(value);
     } catch (JSONException e) {
@@ -243,7 +243,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     return jsonStringer;
   }
   private JSONStringer addValue(JSONStringer jsonStringer, Object value){
-    System.err.println(indent + "Adding value " + value);
+    //System.err.println(indent + "Adding value " + value);
     try {
       jsonStringer.value(value);
     } catch (JSONException e) {
@@ -297,7 +297,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
         addKey(json, key);
         addValue(jsonStringer, null);
       } catch (JSONException e) {
-        System.err.println("Null value, already added " + key);
+        //System.err.println("Null value, already added " + key);
       }
       */    
     else
