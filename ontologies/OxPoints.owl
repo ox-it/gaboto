@@ -80,7 +80,7 @@
             >Describes that an entity has a specific location</rdfs:comment>
     </owl:ObjectProperty>
     
-
+	
 
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOBNCode -->
 
@@ -222,6 +222,13 @@
         <rdfs:domain rdf:resource="#Image"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
+    
+	<owl:ObjectProperty rdf:about="#hasOSMIdentifier">
+        <rdfs:comment
+            >Links to OpenStreetMap entities</rdfs:comment>
+        <rdfs:domain rdf:resource="#Place"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:ObjectProperty>
     
 
 

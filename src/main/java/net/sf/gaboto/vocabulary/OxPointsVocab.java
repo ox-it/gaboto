@@ -65,6 +65,12 @@ public class OxPointsVocab {
     public static final 
     ObjectProperty hasOLISCode = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOLISCode" );
     
+    /** <p>Links to OpenStreetMap entities</p> */
+    public static final 
+    String hasOSMIdentifier_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOSMIdentifier";
+    public static final 
+    ObjectProperty hasOSMIdentifier = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOSMIdentifier" );
+    
     /** <p>The naming scheme for entities introduced by OUCS</p> */
     public static final 
     String hasOUCSCode_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOUCSCode";
