@@ -483,9 +483,17 @@ public class Gaboto {
    * 
    * @see #add(GabotoEntity, boolean)
    */
-  synchronized private void add(GabotoEntity entity, boolean includeType)
+  
+
+  public synchronized void add(GabotoEntity entity, boolean includeType)
+  	  throws EntityAlreadyExistsException {
+	  add(entity, false, includeType);
+	  
+  }
+
+  public synchronized void add(GabotoEntity entity, boolean withoutDuplicityCheck, boolean includeType)
       throws EntityAlreadyExistsException {
-    if (containsEntity(entity) && includeType)
+    if (!withoutDuplicityCheck && containsEntity(entity) && includeType)
       throw new EntityAlreadyExistsException(entity);
 
 

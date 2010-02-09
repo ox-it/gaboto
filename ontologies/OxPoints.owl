@@ -223,6 +223,14 @@
         <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
     
+    <owl:DatatypeProperty rdf:about="#description">
+        <rdfs:comment
+            >Provides a description of an image</rdfs:comment>
+        <rdfs:domain rdf:resource="#Image"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+        
+    
 	<owl:ObjectProperty rdf:about="#hasOSMIdentifier">
         <rdfs:comment
             >Links to OpenStreetMap entities</rdfs:comment>
@@ -249,7 +257,17 @@
         <rdfs:subClassOf rdf:resource="#Place"/>
     </owl:Class>
     
+    <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Portal -->
 
+    <owl:Class rdf:about="#Portal">
+        <rdfs:subClassOf rdf:resource="#Place"/>
+    </owl:Class>
+
+    <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Access -->
+
+    <owl:Class rdf:about="#Access">
+        <rdfs:subClassOf rdf:resource="#OxpEntity"/>
+    </owl:Class>
 
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Carpark -->
 

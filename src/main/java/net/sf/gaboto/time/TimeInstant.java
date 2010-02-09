@@ -265,5 +265,13 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
     // they seem to be equal
     return 0;
   }
+  
+	public TimeInstant clone() {
+		return new TimeInstant(
+				this.getStartYear(),
+				this.getStartMonth(),
+				this.getStartDay()
+		);
+	}
 
 }

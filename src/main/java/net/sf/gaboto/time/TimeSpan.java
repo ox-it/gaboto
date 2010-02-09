@@ -220,6 +220,8 @@ public class TimeSpan implements Serializable {
    * @return The time span.
    */
   public static TimeSpan createFromInstants(TimeInstant begin, TimeInstant end) {
+	  begin = begin.clone();
+	  end = end.clone();
     if (begin.canUnify(end)) 
       // FIXME WTF looks like a hack
       return createFromInstants(begin, TimeInstant.oneYearOn(begin));

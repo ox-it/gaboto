@@ -75,92 +75,92 @@ import de.fuberlin.wiwiss.ng4j.impl.NamedGraphSetImpl;
  * @version 0.1
  */
 public class GabotoFactory {
-	
-	private static Gaboto persistentGaboto = null;
-	
-	static Gaboto inMemoryGaboto = null;
-	
-	private static Model contextDescriptiontGraph = null;
-	
-  public static GabotoConfiguration config  = GabotoConfiguration.fromConfigFile();
 
-  private static Hashtable<String,Gaboto> knownStores = new Hashtable<String,Gaboto>();
-  private static Hashtable<String,GabotoSnapshot> knownSnapshots = new Hashtable<String,GabotoSnapshot>();
-  
-  /**
-   * Returns the Gaboto configuration.
-   * @return The Gaboto configuration.
-   */
-  public static GabotoConfiguration getConfig(){
-    return config;
-  }
-  
+	private static Gaboto persistentGaboto = null;
+
+	static Gaboto inMemoryGaboto = null;
+
+	private static Model contextDescriptiontGraph = null;
+
+	public static GabotoConfiguration config  = GabotoConfiguration.fromConfigFile();
+
+	private static Hashtable<String,Gaboto> knownStores = new Hashtable<String,Gaboto>();
+	private static Hashtable<String,GabotoSnapshot> knownSnapshots = new Hashtable<String,GabotoSnapshot>();
+
+	/**
+	 * Returns the Gaboto configuration.
+	 * @return The Gaboto configuration.
+	 */
+	public static GabotoConfiguration getConfig(){
+		return config;
+	}
+
 	/**
 	 * @param directoryName name of the store, normnally a diretory name
 	 * @return a cached or newly minted Gaboto
 	 */
 	public static Gaboto getGaboto(String directoryName) { 
-    if (directoryName == null)
-      throw new NullPointerException();
-    Gaboto it = null;
-    synchronized(knownStores) {
-      it = knownStores.get(directoryName);
-      if (it == null)
-        knownStores.put(directoryName, readPersistedGaboto(directoryName));
-      it = knownStores.get(directoryName);
-    }
-    return it;
-  }
+		if (directoryName == null)
+			throw new NullPointerException();
+		Gaboto it = null;
+		synchronized(knownStores) {
+			it = knownStores.get(directoryName);
+			if (it == null)
+				knownStores.put(directoryName, readPersistedGaboto(directoryName));
+			it = knownStores.get(directoryName);
+		}
+		return it;
+	}
 	public static Gaboto refreshedGaboto(String directoryName) { 
-    if (directoryName == null)
-      throw new NullPointerException();
-    Gaboto it = null;
-    synchronized(knownStores) {
-      knownStores.put(directoryName, readPersistedGaboto(directoryName));
-      it = knownStores.get(directoryName);
-    }
-    return it;
-  }
+		if (directoryName == null)
+			throw new NullPointerException();
+		Gaboto it = null;
+		synchronized(knownStores) {
+			knownStores.put(directoryName, readPersistedGaboto(directoryName));
+			it = knownStores.get(directoryName);
+		}
+		return it;
+	}
 	/**
 	 * @return a cached or newly minted GabotSnapshot
 	 */
 	public static GabotoSnapshot getSnapshot(String directoryName, TimeInstant timeInstant) { 
-	  GabotoSnapshot it = null;
-	  String key = directoryName + ":" + timeInstant.toString();
-	  synchronized(knownSnapshots){
-      it = knownSnapshots.get(key);
-	    if (it == null) {
-	      it = getGaboto(directoryName).getSnapshot(timeInstant);
-	      knownSnapshots.put(key, it);
-	    }
-	  }
-	  return it;
+		GabotoSnapshot it = null;
+		String key = directoryName + ":" + timeInstant.toString();
+		synchronized(knownSnapshots){
+			it = knownSnapshots.get(key);
+			if (it == null) {
+				it = getGaboto(directoryName).getSnapshot(timeInstant);
+				knownSnapshots.put(key, it);
+			}
+		}
+		return it;
 	}
-	
-  private static Gaboto readPersistedGaboto(String directoryName) {
-    return readPersistedGaboto(directoryName, Gaboto.GRAPH_FILE_NAME, Gaboto.CDG_FILE_NAME);
-  }
-  public static Gaboto readPersistedGaboto(String directoryName, String graphName, String contextName) {
-    File graphs = new File(directoryName, graphName);
-    File context = new File(directoryName, contextName);
-    FileInputStream graphsFileInputStream; 
-    FileInputStream contextFileInputStream; 
-    try {
-      graphsFileInputStream = new FileInputStream(graphs); 
-      contextFileInputStream = new FileInputStream(context); 
-    } catch (FileNotFoundException e) {
-      throw new GabotoRuntimeException(e);
-    }
-    return readPersistedGaboto(graphsFileInputStream, contextFileInputStream);
-  }
-  public static Gaboto readPersistedGaboto(InputStream graphsInputStream, InputStream contextInputStream) {
-    Gaboto g = getEmptyInMemoryGaboto();
-    g.read(graphsInputStream, contextInputStream);
-    g.recreateTimeDimensionIndex();
-    return g;
-  }
 
-  /**
+	private static Gaboto readPersistedGaboto(String directoryName) {
+		return readPersistedGaboto(directoryName, Gaboto.GRAPH_FILE_NAME, Gaboto.CDG_FILE_NAME);
+	}
+	public static Gaboto readPersistedGaboto(String directoryName, String graphName, String contextName) {
+		File graphs = new File(directoryName, graphName);
+		File context = new File(directoryName, contextName);
+		FileInputStream graphsFileInputStream; 
+		FileInputStream contextFileInputStream; 
+		try {
+			graphsFileInputStream = new FileInputStream(graphs); 
+			contextFileInputStream = new FileInputStream(context); 
+		} catch (FileNotFoundException e) {
+			throw new GabotoRuntimeException(e);
+		}
+		return readPersistedGaboto(graphsFileInputStream, contextFileInputStream);
+	}
+	public static Gaboto readPersistedGaboto(InputStream graphsInputStream, InputStream contextInputStream) {
+		Gaboto g = getEmptyInMemoryGaboto();
+		g.read(graphsInputStream, contextInputStream);
+		g.recreateTimeDimensionIndex();
+		return g;
+	}
+
+	/**
 	 * Creates an empty in memory Gaboto model that is not linked to any persistent data store.
 	 * 
 	 * <p>
@@ -173,7 +173,7 @@ public class GabotoFactory {
 		NamedGraphSet graphset = new NamedGraphSetImpl();
 		return new Gaboto(createGlobalKnowledgeGraph(ModelFactory.createDefaultModel(), graphset), graphset, new TimeDimensionIndexer());
 	}
-	
+
 	/**
 	 * Creates a new in-memory Gaboto system that is kept in sync with the persistent Gaboto object.
 	 * 
@@ -194,27 +194,27 @@ public class GabotoFactory {
 		if(inMemoryGaboto != null) {
 			return inMemoryGaboto;
 		}
-		
+
 		Gaboto po = getPersistentGaboto();
-		
+
 		// Create a new graphset and copy graphs
 		NamedGraphSet graphset = new NamedGraphSetImpl();
 		Iterator graphIt = po.getNamedGraphSet().listGraphs();
 		while(graphIt.hasNext())
 			graphset.createGraph(((NamedGraph)graphIt.next()).getGraphName());
-    System.err.println("getInMemoryGaboto: have created graphs");
-		
+		System.err.println("getInMemoryGaboto: have created graphs");
+
 		Iterator it = po.getNamedGraphSet().findQuads(Node.ANY, Node.ANY, Node.ANY, Node.ANY);
 		while(it.hasNext())
 			graphset.addQuad((Quad)it.next());
-    System.err.println("getInMemoryGaboto: have added quads");
-		
+		System.err.println("getInMemoryGaboto: have added quads");
+
 		inMemoryGaboto = new Gaboto(createDbBackedCDG(), graphset, new TimeDimensionIndexer());
-		
-    System.err.println("getInMemoryGaboto: returning");
+
+		System.err.println("getInMemoryGaboto: returning");
 		return inMemoryGaboto;
 	}
-	
+
 
 	/**
 	 * Creates a new Gaboto model with a persistent data store.
@@ -244,10 +244,10 @@ public class GabotoFactory {
 		// does it already exist?
 		if(persistentGaboto != null)
 			return persistentGaboto;
-		
+
 		// get config
 		GabotoConfiguration c = GabotoFactory.getConfig();
-		
+
 		// create persistent gaboto
 		String URL = c.getDbURL();
 		String USER = c.getDbUser();
@@ -255,56 +255,56 @@ public class GabotoFactory {
 		try {
 			Class.forName(c.getDbDriver());
 		} catch (ClassNotFoundException e1) {
-      throw new RuntimeException(e1);
+			throw new RuntimeException(e1);
 		}
 		Connection connection = null;
-    System.err.println("URL:"+URL + " USER:"+USER+ " PWD:"+PW);
+		System.err.println("URL:"+URL + " USER:"+USER+ " PWD:"+PW);
 		try {
-      connection = DriverManager.getConnection(URL, USER, PW);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
+			connection = DriverManager.getConnection(URL, USER, PW);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 
 		// Create a new graphset
-    Performance.start("GabotoFactory new NamedGraphSetDB");
+		Performance.start("GabotoFactory new NamedGraphSetDB");
 		NamedGraphSet graphset = new NamedGraphSetDB(connection);
-    Performance.stop();
-		
+		Performance.stop();
+
 		// if graphset is empty, create special graphs
-    Model cdg = createGlobalKnowledgeGraph(createDbBackedCDG(), graphset);
+		Model cdg = createGlobalKnowledgeGraph(createDbBackedCDG(), graphset);
 
 		// create object
-    Performance.start("GabotoFactory new Gaboto");
+		Performance.start("GabotoFactory new Gaboto");
 		persistentGaboto = new Gaboto(cdg, graphset, new TimeDimensionIndexer());
-    Performance.stop();
-		
-    Performance.start("GabotoFactory update listener");
+		Performance.stop();
+
+		Performance.start("GabotoFactory update listener");
 		// attach update listener
 		persistentGaboto.attachUpdateListener(new UpdateListener(){
 			public void updateOccured(GabotoEvent e) {
-        // try to cast event to insertion
-        if(e instanceof InsertionGabotoEvent){
-          InsertionGabotoEvent event = (InsertionGabotoEvent) e;
-          if(event.getTimespan() != null)
-            inMemoryGaboto.add(event.getTimespan(), event.getTriple());
-          else
-            inMemoryGaboto.add(event.getTriple());
-        }
-        // try to cast event to removal
-        else if(e instanceof RemovalGabotoEvent){
-          RemovalGabotoEvent event = (RemovalGabotoEvent) e;
-          if(event.getQuad() != null)
-            inMemoryGaboto.remove(event.getQuad());
-          else if(event.getTimespan() != null && event.getTriple() != null )
-            inMemoryGaboto.remove(event.getTimespan(), event.getTriple());
-          else if(event.getTriple() != null)
-            inMemoryGaboto.remove(event.getTriple());
-        } else 
-          throw new GabotoRuntimeException("Unexpected update type: " + e.getClass());
+				// try to cast event to insertion
+				if(e instanceof InsertionGabotoEvent){
+					InsertionGabotoEvent event = (InsertionGabotoEvent) e;
+					if(event.getTimespan() != null)
+						inMemoryGaboto.add(event.getTimespan(), event.getTriple());
+					else
+						inMemoryGaboto.add(event.getTriple());
+				}
+				// try to cast event to removal
+				else if(e instanceof RemovalGabotoEvent){
+					RemovalGabotoEvent event = (RemovalGabotoEvent) e;
+					if(event.getQuad() != null)
+						inMemoryGaboto.remove(event.getQuad());
+					else if(event.getTimespan() != null && event.getTriple() != null )
+						inMemoryGaboto.remove(event.getTimespan(), event.getTriple());
+					else if(event.getTriple() != null)
+						inMemoryGaboto.remove(event.getTriple());
+				} else 
+					throw new GabotoRuntimeException("Unexpected update type: " + e.getClass());
 			}
 		});
-		
-    Performance.stop();
+
+		Performance.stop();
 		return persistentGaboto;
 	}
 
@@ -312,13 +312,13 @@ public class GabotoFactory {
 	 * Adds the cdg to the graphset.
 	 */
 	private static Model createDbBackedCDG() {
-	  System.err.println("In createCDG");
+		System.err.println("In createCDG");
 		if(contextDescriptiontGraph != null) {
 			return contextDescriptiontGraph;
 		}
 		// get config
 		GabotoConfiguration c = GabotoFactory.getConfig();
-		
+
 		String M_DB_URL         = c.getDbURL();
 		String M_DB_USER        = c.getDbUser();
 		String M_DB_PASSWD      = c.getDbPassword();
@@ -329,7 +329,7 @@ public class GabotoFactory {
 		try {
 			Class.forName(M_DBDRIVER_CLASS);
 		} catch (ClassNotFoundException e) {
-      throw new RuntimeException(e);
+			throw new RuntimeException(e);
 		}
 
 		// create a database connection
@@ -337,30 +337,30 @@ public class GabotoFactory {
 
 		// create a model maker with the given connection parameters
 		ModelMaker maker = ModelFactory.createModelRDBMaker(conn);
-		
+
 		// create cdg
 		if(maker.hasModel("cdg"))
 			contextDescriptiontGraph = maker.openModel("cdg");
 		else
 			contextDescriptiontGraph = maker.createModel("cdg");
-		
+
 		return contextDescriptiontGraph;
 	}
-	
-	
+
+
 	/**
 	 * Adds the Global Knowledge Graph (GKG) to the graphset
 	 * @param cdg Context Description Graph
 	 * @param graphset
 	 */
 	private static Model createGlobalKnowledgeGraph(Model cdg, NamedGraphSet graphset) {
-		
+
 		if(graphset.containsGraph(config.getGlobalKnowledgeGraphURI()))
 			throw new IllegalStateException("GlobalKnowledgeGraph already exists.");
-		
+
 		// Create Global Knowledge Graph
 		graphset.createGraph(config.getGlobalKnowledgeGraphURI());
-		
+
 		// add Global Knowledge Graph to Context Description Graph
 		cdg.getGraph().add(new Triple(
 				Node.createURI(config.getGlobalKnowledgeGraphURI()),
