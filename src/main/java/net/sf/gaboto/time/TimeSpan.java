@@ -633,10 +633,13 @@ public class TimeSpan implements Serializable {
 
     int daysInMonth = getDaysInMonth(year, month);
 
+    // FIXME Use logging instead
+    /*
     if (day + durationDays >= daysInMonth)
       System.err.println(day +"+"+ durationDays +">="+ daysInMonth);
     else
       System.err.println(day +"+"+ durationDays +"<"+ daysInMonth);
+    */
     return day + durationDays >= daysInMonth;
   }
 

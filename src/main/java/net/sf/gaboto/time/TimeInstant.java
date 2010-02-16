@@ -204,7 +204,6 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
   public boolean canUnify(TimeInstant ti) {
     if (this.startYear.equals(ti.getStartYear())) {
       if (this.getStartMonth() == null || ti.getStartMonth() == null) {
-        System.err.println("Can unify");
         return true;
       } else if (this.getStartMonth().equals(ti.getStartMonth())) {
         if (this.getStartDay() == null || ti.getStartDay() == null) { 

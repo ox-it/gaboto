@@ -207,7 +207,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
   public static GabotoTimeBasedEntity loadEntity(String uri, Gaboto gaboto) {
     logger.debug("Loading time based entity: " + uri);
 
-    // find out the entities type
+    // find out the entity's type
     String typeURI = gaboto.getTypeOf(uri);
 
     // entity class

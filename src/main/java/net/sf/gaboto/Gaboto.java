@@ -1145,7 +1145,7 @@ public class Gaboto {
       Quad quad = (Quad)it.next();
       if (it.hasNext())
         System.err.println("Corrupted data. " + uri
-            + " has to triples defining its type");
+            + " has two triples defining its type");
 
       if (!quad.getObject().isURI()) {
         System.err.println("Corrupted data. " + uri + " has has not a valid type.");
