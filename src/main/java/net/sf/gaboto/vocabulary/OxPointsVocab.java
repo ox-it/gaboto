@@ -138,6 +138,12 @@ public class OxPointsVocab {
     
     
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
+    /** <p>Provides a description of an image</p> */
+    public static final 
+    String description_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#description";
+    public static final 
+    DatatypeProperty description = MODEL.createDatatypeProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#description" );
+    
     /** <p>Describe the height of an image</p> */
     public static final 
     String height_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#height";
@@ -154,6 +160,11 @@ public class OxPointsVocab {
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeAnnotationProperties() */
     
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntClasses() */
+    public static final 
+    String Access_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Access";
+    public static final 
+    OntClass Access = MODEL.createClass( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Access" );
+    
     public static final 
     String Building_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Building";
     public static final 
@@ -225,6 +236,11 @@ public class OxPointsVocab {
     String Place_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Place";
     public static final 
     OntClass Place = MODEL.createClass( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Place" );
+    
+    public static final 
+    String Portal_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Portal";
+    public static final 
+    OntClass Portal = MODEL.createClass( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Portal" );
     
     public static final 
     String Room_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Room";
