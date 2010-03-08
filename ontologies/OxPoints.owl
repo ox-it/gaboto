@@ -282,6 +282,10 @@
     <owl:Class rdf:about="#College">
         <rdfs:subClassOf rdf:resource="#Unit"/>
     </owl:Class>
+
+    <owl:Class rdf:about="#Hall">
+        <rdfs:subClassOf rdf:resource="#Unit"/>
+    </owl:Class>
     
 
 

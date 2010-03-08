@@ -211,6 +211,11 @@ public class OxPointsVocab {
     OntClass Group = MODEL.createClass( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Group" );
     
     public static final 
+    String Hall_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Hall";
+    public static final 
+    OntClass Hall = MODEL.createClass( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Hall" );
+    
+    public static final 
     String Image_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Image";
     public static final 
     OntClass Image = MODEL.createClass( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#Image" );
