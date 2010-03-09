@@ -334,7 +334,7 @@ public class Gaboto {
     // create snapshot
     GabotoSnapshot snapshot = new GabotoSnapshot(model, this);
 
-    System.err.println("Adding " + graphURIs.size() + " graphs to snapshot");
+    //System.err.println("Adding " + graphURIs.size() + " graphs to snapshot");
     // fill model
     for (String g : graphURIs) {
       NamedGraph graph = namedGraphSet.getGraph(g);
@@ -387,8 +387,8 @@ public class Gaboto {
     if (containsEntity(entityTB.getUri()))
       throw new EntityAlreadyExistsException(entityTB.getUri());
 
-    System.err.println("Adding time based entity to gaboto: " + entityTB);
-    System.err.println("TimeSpans in tbEntity: " + entityTB.getTimeSpansSorted());
+    //System.err.println("Adding time based entity to gaboto: " + entityTB);
+    //System.err.println("TimeSpans in tbEntity: " + entityTB.getTimeSpansSorted());
 
     // add triple denoting entities type and lifespan
     add(entityTB.getTimeSpan(), entityTB.getRDFTypeTriple());

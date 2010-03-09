@@ -91,6 +91,8 @@ public class GabotoGenerator {
   public final static int LITERAL_TYPE_FLOAT = 3;
   public final static int LITERAL_TYPE_DOUBLE = 4;
   public final static int LITERAL_TYPE_BOOLEAN = 5;
+  public final static int LITERAL_TYPE_DATETIME = 6;
+  public final static int LITERAL_TYPE_DATE = 7;
 
   public final static int SIMPLE_LITERAL_PROPERTY = 1;
   public final static int SIMPLE_URI_PROPERTY = 2;
@@ -1183,8 +1185,12 @@ public class GabotoGenerator {
     case LITERAL_TYPE_DOUBLE:
       return "getDouble()";
     case LITERAL_TYPE_BOOLEAN:
-      return "getBoolean()";
-    }
+        return "getBoolean()";
+    case LITERAL_TYPE_DATETIME:
+        return "getString()";
+    case LITERAL_TYPE_DATE:
+        return "getString()";
+      }
 
     return null;
   }
@@ -1205,7 +1211,11 @@ public class GabotoGenerator {
     if (propType.equals("float"))
       return LITERAL_TYPE_FLOAT;
     if (propType.equals("boolean"))
-      return LITERAL_TYPE_BOOLEAN;
+        return LITERAL_TYPE_BOOLEAN;
+    if (propType.equals("datetime"))
+        return LITERAL_TYPE_DATETIME;
+    if (propType.equals("date"))
+        return LITERAL_TYPE_DATE;
 
     throw new IllegalArgumentException("Unknown literal type: " + propType);
   }

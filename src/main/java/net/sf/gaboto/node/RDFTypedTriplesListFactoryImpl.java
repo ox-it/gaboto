@@ -219,11 +219,15 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
             || annotation.javaType().toLowerCase().equals("int"))
       datatype = XSDDatatype.XSDint;
     else if (annotation.javaType().toLowerCase().equals("float"))
-      datatype = XSDDatatype.XSDfloat;
+    	datatype = XSDDatatype.XSDfloat;
     else if (annotation.javaType().toLowerCase().equals("double"))
-      datatype = XSDDatatype.XSDdouble;
+    	datatype = XSDDatatype.XSDdouble;
     else if (annotation.javaType().toLowerCase().equals("boolean"))
-      datatype = XSDDatatype.XSDboolean;
+    	datatype = XSDDatatype.XSDboolean;
+    else if (annotation.javaType().toLowerCase().equals("datetime"))
+    	datatype = XSDDatatype.XSDdateTime;
+    else if (annotation.javaType().toLowerCase().equals("date"))
+    	datatype = XSDDatatype.XSDdate;
     else {
       throw new IllegalArgumentException("Unrecognized literal type: " + annotation.javaType());
     }

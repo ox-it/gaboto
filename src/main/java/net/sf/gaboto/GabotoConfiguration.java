@@ -61,8 +61,9 @@ public class GabotoConfiguration {
 	private String dbDriver;
 	
 	private String NSGraphs = "http://gaboto.sf.net/graphs/";
-  private String NSData   = "http://gaboto.sf.net/data/";
-  private String dataDirectory  = "/var/lib/gaboto/oxpoints";
+    private String NSData   = "http://gaboto.sf.net/data/";
+    private String dataDirectory  = "/var/lib/gaboto/oxpoints";
+    private String imagesPrefix  = "http://example.com/images/";
 	
 	private Map<String, String> namespacePrefixes = new HashMap<String, String>();
 	
@@ -117,8 +118,9 @@ public class GabotoConfiguration {
 					}
 				}
       } else if(configSection.getNodeName().equals("namespaces")){
-        config.NSData = configSection.getAttribute("data");
-        config.NSGraphs = configSection.getAttribute("graphs");
+    	  config.NSData = configSection.getAttribute("data");
+    	  config.imagesPrefix = configSection.getAttribute("images");
+    	  config.NSGraphs = configSection.getAttribute("graphs");
       } else if(configSection.getNodeName().equals("namespacePrefixes")){
 				NodeList nspChildren = configSection.getChildNodes();
 				for(int j = 0; j < nspChildren.getLength(); j++){
@@ -209,6 +211,14 @@ public class GabotoConfiguration {
 
 	public void setNSData(String data) {
 		NSData = data;
+	}
+
+	public String getImagesPrefix() {
+		return imagesPrefix;
+	}
+
+	public void setImagesPrefix(String data) {
+		imagesPrefix = data;
 	}
 
 	public String getGlobalKnowledgeGraphURI(){
