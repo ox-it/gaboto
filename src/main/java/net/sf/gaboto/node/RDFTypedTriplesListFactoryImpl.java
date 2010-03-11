@@ -209,28 +209,8 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
     if (object == null)
       return;
 
-    // find datatype
-    RDFDatatype datatype = null;
     SimpleLiteralProperty annotation = method.getAnnotation(SimpleLiteralProperty.class);
-
-    if (annotation.javaType().toLowerCase().equals("string"))
-      datatype = XSDDatatype.XSDstring;
-    else if (annotation.javaType().toLowerCase().equals("integer")
-            || annotation.javaType().toLowerCase().equals("int"))
-      datatype = XSDDatatype.XSDint;
-    else if (annotation.javaType().toLowerCase().equals("float"))
-    	datatype = XSDDatatype.XSDfloat;
-    else if (annotation.javaType().toLowerCase().equals("double"))
-    	datatype = XSDDatatype.XSDdouble;
-    else if (annotation.javaType().toLowerCase().equals("boolean"))
-    	datatype = XSDDatatype.XSDboolean;
-    else if (annotation.javaType().toLowerCase().equals("datetime"))
-    	datatype = XSDDatatype.XSDdateTime;
-    else if (annotation.javaType().toLowerCase().equals("date"))
-    	datatype = XSDDatatype.XSDdate;
-    else {
-      throw new IllegalArgumentException("Unrecognized literal type: " + annotation.javaType());
-    }
+    RDFDatatype datatype = getDatatypeForAnnotation(annotation);
 
     triples.add(new Triple(subjectNode, Node.createURI(propertyURI), Node.createLiteral(String.valueOf(object), null,
             datatype)));
@@ -281,14 +261,7 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
   @SuppressWarnings("unchecked")
   private void getTriplesFor_BagComplexProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples,
           String propertyURI, Method method) {
-    // create bag
-    Node bag = GabotoEntityUtils.createAnonForBag(subjectNode.getURI(), propertyURI);
-    triples.add(new Triple(bag, Node.createURI(RDF.type.getURI()), Node.createURI(RDF.Bag.getURI())));
-
-    // add bag to entity
-    triples.add(new Triple(subjectNode, Node.createURI(propertyURI), bag));
-
-    // fill bag
+	  
     Object object = invokeMethod(rdfContainerObject,method);
 
     if (object == null)
@@ -307,7 +280,7 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
       triples.addAll(bean.getCorrespondingRDFTriples(blankBeanNode));
 
       // add blank node to bag
-      triples.add(new Triple(bag, Node.createURI(RDF.li(count).getURI()), blankBeanNode));
+      triples.add(new Triple(subjectNode, Node.createURI(propertyURI), blankBeanNode));
 
       count++;
     }
@@ -327,46 +300,24 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
    */
   @SuppressWarnings("unchecked")
   private void getTriplesFor_BagLiteralProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples,
-          String propertyURI, Method method) {
-    // create bag
-    Node bag = GabotoEntityUtils.createAnonForBag(subjectNode.getURI(), propertyURI);
-    triples.add(new Triple(bag, Node.createURI(RDF.type.getURI()), Node.createURI(RDF.Bag.getURI())));
+		  String propertyURI, Method method) {
 
-    // add bag to entity
-    triples.add(new Triple(subjectNode, Node.createURI(propertyURI), bag));
 
-    // fill bag
-    Object object = invokeMethod(rdfContainerObject,method);
-    if (object == null)
-      return;
+	  Object object = invokeMethod(rdfContainerObject,method);
+	  if (object == null)
+		  return;
 
-    if (!(object instanceof Collection))
-      throw new IllegalAnnotationException(rdfContainerObject.getClass());
+	  if (!(object instanceof Collection))
+		  throw new IllegalAnnotationException(rdfContainerObject.getClass());
 
-    /*
-     * // find datatype RDFDatatype datatype = null; BagLiteralProperty
-     * annotation = method.getAnnotation(BagLiteralProperty.class);
-     * 
-     * if(annotation.javaType().toLowerCase().equals("string")) datatype =
-     * XSDDatatype.XSDstring; else
-     * if(annotation.javaType().toLowerCase().equals("integer") ||
-     * annotation.javaType().toLowerCase().equals("int") ) datatype =
-     * XSDDatatype.XSDint; else
-     * if(annotation.javaType().toLowerCase().equals("float")) datatype =
-     * XSDDatatype.XSDfloat; else
-     * if(annotation.javaType().toLowerCase().equals("double")) datatype =
-     * XSDDatatype.XSDdouble; else
-     * if(annotation.javaType().toLowerCase().equals("boolean")) datatype =
-     * XSDDatatype.XSDboolean; else { throw new
-     * IllegalArgumentException("Unrecognised literal type: " +
-     * annotation.javaType()); }
-     */
-    // loop over collection
-    int count = 1;
-    for (Object o : (Collection) object) {
-      triples.add(new Triple(bag, Node.createURI(RDF.li(count).getURI()), Node.createLiteral((String) o)));
-      count++;
-    }
+	  BagLiteralProperty annotation = method.getAnnotation(BagLiteralProperty.class);
+	  RDFDatatype datatype = getDatatypeForAnnotation(annotation);
+	  
+	  int count = 1;
+	  for (Object o : (Collection) object) {
+		  triples.add(new Triple(subjectNode, Node.createURI(propertyURI), Node.createLiteral((String) o, null, datatype)));
+		  count++;
+	  }
 
   }
 
@@ -384,13 +335,6 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
   @SuppressWarnings("unchecked")
   private void getTriplesFor_BagURIProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples,
           String propertyURI, Method method) {
-    // create bag
-    Node bag = GabotoEntityUtils.createAnonForBag(subjectNode.getURI(), propertyURI);
-    triples.add(new Triple(bag, Node.createURI(RDF.type.getURI()), Node.createURI(RDF.Bag.getURI())));
-
-    // add bag to entity
-    triples.add(new Triple(subjectNode, Node.createURI(propertyURI), bag));
-
     // fill bag
     Object object = invokeMethod(rdfContainerObject,method);
 
@@ -406,11 +350,40 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
       if (o == null)
         throw new IncoherenceException("Bag properties may not contain null values.");
       triples
-              .add(new Triple(bag, Node.createURI(RDF.li(count).getURI()), Node
+              .add(new Triple(subjectNode, Node.createURI(propertyURI), Node
                       .createURI(((GabotoEntity) o).getUri())));
       count++;
     }
 
+  }
+  
+  private RDFDatatype getDatatypeForAnnotation(Object annotation) {
+	  String type;
+	  
+	  if (annotation instanceof SimpleLiteralProperty)
+		  type = ((SimpleLiteralProperty) annotation).javaType().toLowerCase();
+	  else if (annotation instanceof BagLiteralProperty)
+		  type = ((BagLiteralProperty) annotation).javaType().toLowerCase();
+	  else
+		  throw new IllegalArgumentException("Argument must be either BagLiteralProperty or SimpleLiteralProperty.");
+	  
+	  if (type.equals("string"))
+	  	  return XSDDatatype.XSDstring;
+	  else if (type.equals("integer") || type.equals("int"))
+		  return XSDDatatype.XSDint;
+	  else if (type.equals("float"))
+		  return XSDDatatype.XSDfloat;
+	  else if (type.equals("double"))
+		  return XSDDatatype.XSDdouble;
+	  else if (type.equals("boolean"))
+		  return XSDDatatype.XSDboolean;
+	  else if (type.equals("datetime"))
+		  return XSDDatatype.XSDdateTime;
+	  else if (type.equals("date"))
+		  return XSDDatatype.XSDdate;
+	  else {
+		  throw new IllegalArgumentException("Unrecognized literal type: " + type);
+	  }
   }
 
   

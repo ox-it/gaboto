@@ -954,28 +954,25 @@ public class GabotoGenerator {
       cText.addImport("java.util.Collection");
       cText.addImport("java.util.HashSet");
       cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
-      cText.addImport("com.hp.hpl.jena.rdf.model.Bag");
       cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
-      cText.addImport("com.hp.hpl.jena.rdf.model.NodeIterator");
+      cText.addImport("com.hp.hpl.jena.rdf.model.StmtIterator");
       cText.addImport("net.sf.gaboto.node.pool.EntityPool");
       cText.addImport("net.sf.gaboto.node.pool.EntityExistsCallback");
       cText.addImport("net.sf.gaboto.node.annotation.BagURIProperty");
       loadEntity += "    // Load BAG_URI_PROPERTY " + propertyName + "\n";
-      loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-      loadEntity += "    if(stmt != null && stmt.getObject().isResource() && null != stmt.getBag()){\n";
-      loadEntity += "      Bag bag = stmt.getBag();\n";
-      loadEntity += "      NodeIterator nodeIt = bag.iterator();\n";
-      loadEntity += "      while(nodeIt.hasNext()){\n";
-      loadEntity += "        RDFNode node = nodeIt.nextNode();\n";
-      loadEntity += "        if(! node.isResource())\n";
-      loadEntity += "          throw new IllegalArgumentException(\"node should be a resource\");\n\n";
+      loadEntity += "    {\n";
+      loadEntity += "        StmtIterator stmts = res.listProperties(snapshot.getProperty(\"" + uri + "\"));\n";
+      loadEntity += "        while (stmts.hasNext()) {\n";
+      loadEntity += "            RDFNode node = stmts.next().getObject();\n";
+      loadEntity += "            if(! node.isResource())\n";
+      loadEntity += "              throw new IllegalArgumentException(\"node should be a resource\");\n\n";
 
-      loadEntity += "        Resource missingReference = (Resource)node;\n";
+      loadEntity += "            Resource missingReference = (Resource)node;\n";
 
-      loadEntity += "        EntityExistsCallback callback = new EntityExistsCallback(){\n";
-      loadEntity += "          public void entityExists(EntityPool p, GabotoEntity entity) {\n";
-      loadEntity += "            " + addMethodName + "((" + propType + ") entity);\n";
-      loadEntity += "          }\n";
+      loadEntity += "            EntityExistsCallback callback = new EntityExistsCallback(){\n";
+      loadEntity += "              public void entityExists(EntityPool p, GabotoEntity entity) {\n";
+      loadEntity += "                " + addMethodName + "((" + propType + ") entity);\n";
+      loadEntity += "            }\n";
       loadEntity += "        };\n";
 
       loadEntity += "        this.addMissingReference(missingReference, callback);\n";
@@ -985,44 +982,38 @@ public class GabotoGenerator {
     case BAG_LITERAL_PROPERTY:
       cText.addImport("java.util.Collection");
       cText.addImport("java.util.HashSet");
-      cText.addImport("com.hp.hpl.jena.rdf.model.Bag");
-      cText.addImport("com.hp.hpl.jena.rdf.model.NodeIterator");
       cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
+      cText.addImport("com.hp.hpl.jena.rdf.model.StmtIterator");
       cText.addImport("net.sf.gaboto.node.annotation.BagLiteralProperty");
       loadEntity += "    // Load BAG_LITERAL_PROPERTY " + propertyName + "\n";
-      loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-      loadEntity += "    if(stmt != null && stmt.getObject().isResource() && stmt.getBag() != null){\n";
-      loadEntity += "      Bag bag = stmt.getBag();\n";
-      loadEntity += "      NodeIterator nodeIt = bag.iterator();\n";
-      loadEntity += "      while(nodeIt.hasNext()){\n";
-      loadEntity += "        RDFNode node = nodeIt.nextNode();\n";
-      loadEntity += "        if(! node.isLiteral())\n";
-      loadEntity += "          throw new IllegalArgumentException(\"node should be a literal\");\n\n";
-      loadEntity += "        " + addMethodName + "(((Literal)node)." + getLiteralGetMethod(property) + ");\n";
-      loadEntity += "      }\n\n";
+      loadEntity += "    {\n";
+      loadEntity += "        StmtIterator stmts = res.listProperties(snapshot.getProperty(\"" + uri + "\"));\n";
+      loadEntity += "        while (stmts.hasNext()) {\n";
+      loadEntity += "            RDFNode node = stmts.next().getObject();\n";
+      loadEntity += "            if(! node.isLiteral())\n";
+      loadEntity += "              throw new IllegalArgumentException(\"node should be a literal\");\n\n";
+      loadEntity += "            " + addMethodName + "(((Literal)node)." + getLiteralGetMethod(property) + ");\n";
+      loadEntity += "        }\n";
       loadEntity += "    }\n";
       break;
     case BAG_COMPLEX_PROPERTY:
       cText.addImport("java.util.Collection");
       cText.addImport("java.util.HashSet");
       cText.addImport("net.sf.gaboto.node.annotation.BagComplexProperty");
-      cText.addImport("com.hp.hpl.jena.rdf.model.Bag");
+      cText.addImport("com.hp.hpl.jena.rdf.model.StmtIterator");
       cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
-      cText.addImport("com.hp.hpl.jena.rdf.model.NodeIterator");
       loadEntity += "    // Load BAG_COMPLEX_PROPERTY " + propertyName + "\n";
-      loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-      loadEntity += "    if(stmt != null  && stmt.getObject().isResource() && stmt.getBag() != null){\n";
-      loadEntity += "      Bag bag = stmt.getBag();\n";
-      loadEntity += "      NodeIterator nodeIt = bag.iterator();\n";
-      loadEntity += "      while(nodeIt.hasNext()){\n";
-      loadEntity += "        RDFNode node = nodeIt.nextNode();\n";
-      loadEntity += "        if(! node.isAnon())\n";
-      loadEntity += "          throw new IllegalArgumentException(\"node should be a blank node\");\n\n";
-      loadEntity += "        " + realPropTypeInterface + " " + propertyName + " = new " + realPropTypeInterface
+      loadEntity += "    {\n";
+      loadEntity += "        StmtIterator stmts = res.listProperties(snapshot.getProperty(\"" + uri + "\"));\n";
+      loadEntity += "        while (stmts.hasNext()) {\n";
+      loadEntity += "            RDFNode node = nodeIt.next().getObject();\n";
+      loadEntity += "            if(! node.isAnon())\n";
+      loadEntity += "              throw new IllegalArgumentException(\"node should be a blank node\");\n\n";
+      loadEntity += "            " + realPropTypeInterface + " " + propertyName + " = new " + realPropTypeInterface
               + "();\n";
-      loadEntity += "        " + propertyName + ".loadFromResource((Resource)node, snapshot, pool);\n";
+      loadEntity += "            " + propertyName + ".loadFromResource((Resource)node, snapshot, pool);\n";
       loadEntity += "            " + addMethodName + "(" + propertyName + ");\n";
-      loadEntity += "      }\n\n";
+      loadEntity += "        }\n\n";
       loadEntity += "    }\n";
       break;
     }
