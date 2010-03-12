@@ -130,6 +130,10 @@ public class EntityPool implements Collection<GabotoEntity> {
     this.gaboto = snapshot.getGaboto();
     this.snapshot = snapshot;
   }
+  
+  public Gaboto getGaboto() {
+	  return this.gaboto;
+  }
 
   /**
    * Creates a new, empty entity pool with a given configuration.

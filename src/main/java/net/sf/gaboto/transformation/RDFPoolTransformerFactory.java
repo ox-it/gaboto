@@ -32,6 +32,7 @@
 package net.sf.gaboto.transformation;
 
 import java.io.StringWriter;
+import java.util.Map.Entry;
 
 import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.query.GabotoQuery;
@@ -74,12 +75,9 @@ public class RDFPoolTransformerFactory {
 				public String transform(EntityPool pool) {
 					Model model = pool.createJenaModel();
 					
-					model.setNsPrefix("foaf", "http://xmlns.com/foaf/0.1/");
-					model.setNsPrefix("oxp", "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#");
-					model.setNsPrefix("geo", "http://www.opengis.net/gml/");
-					model.setNsPrefix("vCard", "http://nwalsh.com/rdf/vCard#");
-					model.setNsPrefix("exif", "http://www.w3.org/2003/12/exif/ns");
-
+					for (Entry<String,String> entry : pool.getGaboto().getConfig().getNamespacePrefixes().entrySet())
+						model.setNsPrefix(entry.getKey(), entry.getValue());
+					
 					StringWriter sWriter = new StringWriter();
 					model.write(sWriter, format);
 					return sWriter.toString();
