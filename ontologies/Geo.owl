@@ -3,12 +3,12 @@
 
 <!DOCTYPE rdf:RDF [
     <!ENTITY gml "http://www.opengis.net/gml/" >
-    <!ENTITY geo "http://www.georss.org/georss/" >
+    <!ENTITY georss "http://www.georss.org/georss/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY geo2003 "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+    <!ENTITY geo "http://www.w3.org/2003/01/geo/wgs84_pos#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
 ]>
 
@@ -17,12 +17,12 @@
      xml:base="http://www.opengis.net/gml/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
-     xmlns:geo="http://www.georss.org/georss/"
+     xmlns:georss="http://www.georss.org/georss/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:gml="http://www.opengis.net/gml/"
-     xmlns:geo2003="http://www.w3.org/2003/01/geo/wgs84_pos#">
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
     <owl:Ontology rdf:about="">
         <rdfs:label>GEO_2007</rdfs:label>
         <owl:versionInfo>geo_2007</owl:versionInfo>
@@ -44,7 +44,7 @@
 
     <!-- http://www.georss.org/georss/where -->
 
-    <owl:ObjectProperty rdf:about="&geo;where">
+    <owl:ObjectProperty rdf:about="&georss;where">
         <rdfs:domain rdf:resource="_Feature"/>
         <rdfs:range rdf:resource="_Geometry"/>
     </owl:ObjectProperty>
@@ -74,7 +74,7 @@
 
     <!-- http://www.georss.org/georss/box -->
 
-    <owl:DatatypeProperty rdf:about="&geo;box">
+    <owl:DatatypeProperty rdf:about="&georss;box">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment
             >From the GeoRSS Simple vocabulary</rdfs:comment>
@@ -86,7 +86,7 @@
 
     <!-- http://www.georss.org/georss/elev -->
 
-    <owl:DatatypeProperty rdf:about="&geo;elev">
+    <owl:DatatypeProperty rdf:about="&georss;elev">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment
             >From the GeoRSS Simple vocabulary</rdfs:comment>
@@ -98,7 +98,7 @@
 
     <!-- http://www.georss.org/georss/floor -->
 
-    <owl:DatatypeProperty rdf:about="&geo;floor">
+    <owl:DatatypeProperty rdf:about="&georss;floor">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment
             >From the GeoRSS Simple vocabulary</rdfs:comment>
@@ -110,7 +110,7 @@
 
     <!-- http://www.georss.org/georss/line -->
 
-    <owl:DatatypeProperty rdf:about="&geo;line">
+    <owl:DatatypeProperty rdf:about="&georss;line">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment
             >From the GeoRSS Simple vocabulary</rdfs:comment>
@@ -122,7 +122,7 @@
 
     <!-- http://www.georss.org/georss/point -->
 
-    <owl:DatatypeProperty rdf:about="&geo;point">
+    <owl:DatatypeProperty rdf:about="&georss;point">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment
             >From the GeoRSS Simple vocabulary</rdfs:comment>
@@ -134,7 +134,7 @@
 
     <!-- http://www.georss.org/georss/polygon -->
 
-    <owl:DatatypeProperty rdf:about="&geo;polygon">
+    <owl:DatatypeProperty rdf:about="&georss;polygon">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment
             >From the GeoRSS Simple vocabulary</rdfs:comment>
@@ -146,7 +146,7 @@
 
     <!-- http://www.georss.org/georss/radius -->
 
-    <owl:DatatypeProperty rdf:about="&geo;radius">
+    <owl:DatatypeProperty rdf:about="&georss;radius">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment
             >From the GeoRSS Simple vocabulary</rdfs:comment>
@@ -222,7 +222,7 @@
 
     <!-- http://www.w3.org/2003/01/geo/wgs84_pos#lat -->
 
-    <owl:DatatypeProperty rdf:about="&geo2003;lat">
+    <owl:DatatypeProperty rdf:about="&geo;lat">
         <rdfs:comment
             >From the W3C Geo vocabulary</rdfs:comment>
         <rdfs:domain rdf:resource="_Feature"/>
@@ -233,7 +233,7 @@
 
     <!-- http://www.w3.org/2003/01/geo/wgs84_pos#long -->
 
-    <owl:DatatypeProperty rdf:about="&geo2003;long">
+    <owl:DatatypeProperty rdf:about="&geo;long">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdfs:comment
             >From the W3C Geo vocabulary</rdfs:comment>

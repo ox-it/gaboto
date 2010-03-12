@@ -70,17 +70,6 @@
         <rdfs:comment
             >Library Homepage</rdfs:comment>
     </owl:ObjectProperty>
-    
-
-
-    <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasLocation -->
-
-    <owl:ObjectProperty rdf:about="#hasLocation">
-        <rdfs:comment
-            >Describes that an entity has a specific location</rdfs:comment>
-    </owl:ObjectProperty>
-    
-	
 
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOBNCode -->
 
@@ -88,8 +77,6 @@
         <rdfs:comment
             >The naming scheme for entities introduced by Estates</rdfs:comment>
     </owl:ObjectProperty>
-    
-
 
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOLISCode -->
 
@@ -99,7 +86,6 @@
     </owl:ObjectProperty>
     
 
-
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOUCSCode -->
 
     <owl:ObjectProperty rdf:about="#hasOUCSCode">
@@ -107,7 +93,6 @@
             >The naming scheme for entities introduced by OUCS</rdfs:comment>
     </owl:ObjectProperty>
     
-
 
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasPrimaryPlace -->
 
@@ -119,7 +104,6 @@
     </owl:ObjectProperty>
     
 
-
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasWeblearn -->
 
     <owl:ObjectProperty rdf:about="#hasWeblearn">
@@ -127,16 +111,6 @@
             >Describes that an entity has a weblearn</rdfs:comment>
     </owl:ObjectProperty>
     
-
-
-    <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#homepage -->
-
-    <owl:ObjectProperty rdf:about="#homepage">
-        <rdfs:comment
-            >Describes that an entity has a homepage</rdfs:comment>
-    </owl:ObjectProperty>
-    
-
 
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#inImage -->
 

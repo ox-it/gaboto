@@ -82,6 +82,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 
   public String transform(EntityPool pool) {
     Collection<GabotoEntity> entities = pool.getEntities();
+    Map<String,String> namespaces = pool.getGaboto().getConfig().getNamespacePrefixes();
     // Initialize level map
     for (GabotoEntity entity : entities) {
       levelMap.put(entity, new Integer(1));
@@ -91,13 +92,13 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     
     startArray(json);
     for (GabotoEntity entity : entities) {
-      addEntity(json, entity, 1);
+      addEntity(json, entity, namespaces, 1);
     }
     endArray(json);
     return  json.toString();
   }
 
-  private void addEntity(JSONStringer json, GabotoEntity entity, int level) {
+  private void addEntity(JSONStringer json, GabotoEntity entity, Map<String,String> namespaces, int level) {
     //System.err.println("JSONPoolTransformer.addEntity:" + entity.getUri());
     // begin new object
     startObject(json);
@@ -134,7 +135,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
 
     if ((getCollectProperties() & COLLECT_DIRECT_PROPERTIES) == COLLECT_DIRECT_PROPERTIES) {
       for (Entry<String, Object> entry : entity.getAllDirectProperties().entrySet()) {
-        addMember(json, entry.getKey(), entry.getValue(), level);
+        addMember(json, entry.getKey(), entry.getValue(), namespaces, level);
       }
     }
 
@@ -145,7 +146,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
         // For Rooms, for example, it is possible for a property to exist in 
         // direct and indirect properties
         if (!entity.getAllDirectProperties().containsKey(entry.getKey()))
-          addMember(json, entry.getKey(), entry.getValue(), level);
+          addMember(json, entry.getKey(), entry.getValue(), namespaces, level);
       }
     }
 
@@ -165,7 +166,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
           startObject(json);
           for (Entry<String, Object> entry : passiveProperties) {
             //System.err.println("passive entry" + entry.getKey() + "=" + entry.getValue());
-            addMember(json, entry.getKey(), entry.getValue(), level);
+            addMember(json, entry.getKey(), entry.getValue(), namespaces, level);
           }
           endObject(json);
         }
@@ -253,10 +254,10 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   }
   
   @SuppressWarnings("unchecked")
-  private void addMember(JSONStringer jsonStringer, String memberName, Object memberValue,  int level) {
+  private void addMember(JSONStringer jsonStringer, String memberName, Object memberValue, Map<String,String> namespaces, int level) {
     if (memberValue == null)
       return; // No need to define null values
-    String key = simplifyKey(memberName);
+    String key = simplifyKey(namespaces, memberName);
     if(contents.containsKey(key))
       throw new RuntimeException("Already in" + key);
     if (memberValue instanceof String) {
@@ -270,14 +271,14 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
       addValue(jsonStringer, memberValue);
     } else if (memberValue instanceof GabotoEntity) {
       addKey(jsonStringer, key);
-      addEntity(jsonStringer, (GabotoEntity) memberValue, level + 1);
+      addEntity(jsonStringer, (GabotoEntity) memberValue, namespaces, level + 1);
     } else if (memberValue instanceof Collection) {
       if (((Collection<GabotoEntity>) memberValue).size() == 0)
         return;
       addKey(jsonStringer, key);
       startArray(jsonStringer);
       for (GabotoEntity innerEntity : (Collection<GabotoEntity>) memberValue) {
-        addEntity(jsonStringer, innerEntity, level + 1);
+        addEntity(jsonStringer, innerEntity, namespaces, level + 1);
       }
       endArray(jsonStringer);
     } else if (memberValue instanceof GabotoBean) {
@@ -291,7 +292,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
         //return;
       }
       // beans should be put into the same level ..
-      addBean(jsonStringer, (GabotoBean) memberValue, level);
+      addBean(jsonStringer, (GabotoBean) memberValue, namespaces, level);
     }  
       /*
        * If it is decided that null are needed after all 
@@ -308,7 +309,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
           memberValue + "( Class " + memberValue.getClass() + ")");
   }
   @SuppressWarnings("unchecked")
-  private void addBean(JSONStringer json, GabotoBean bean, int level) {
+  private void addBean(JSONStringer json, GabotoBean bean, Map<String,String> namespaces, int level) {
     if (level > nesting) {
       startObject(json);
       addKey(json,"nestingLimitReached");
@@ -320,7 +321,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     startObject(json);
 
     for (Entry<String, Object> entry : bean.getAllProperties().entrySet()) {
-      String  key = simplifyKey(entry.getKey()); 
+      String  key = simplifyKey(namespaces, entry.getKey()); 
       Object value = entry.getValue(); 
       if (value == null) {  
         // Do nothing, this is javascript
@@ -329,17 +330,17 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
         addValue(json, value);
       } else if (value instanceof GabotoEntity) {
         addKey(json, key);
-        addEntity(json, (GabotoEntity)value, level + 1);
+        addEntity(json, (GabotoEntity)value, namespaces, level + 1);
       } else if (value instanceof Collection) {
         addKey(json, key);
         startArray(json);
         for (GabotoEntity innerEntity : (Collection<GabotoEntity>)value) {
-          addEntity(json, innerEntity, level + 1);
+          addEntity(json, innerEntity, namespaces, level + 1);
         }
         endArray(json);
       } else if (value instanceof GabotoBean) {
         addKey(json, key);
-        addBean(json, (GabotoBean)value, level + 1);
+        addBean(json, (GabotoBean)value, namespaces, level + 1);
       } else
         throw new RuntimeException("Unanticipated type: " + key + "(" + value + ")" ); 
     }
@@ -394,15 +395,13 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   }
 
 
-  private String simplifyKey(String k) {
+  private String simplifyKey(Map<String,String> namespaces, String k) {
     String s = k;
-    s = s.replaceAll("http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#",
-        "oxp_");
-    s = s.replaceAll("http://ns.ox.ac.uk/namespace/gaboto/kml/2009/03/owl#",
-        "gab_");
-    s = s.replaceAll("http://purl.org/dc/elements/1.1/", "dc_");
-    s = s.replaceAll("http://nwalsh.com/rdf/vCard#", "vCard_");
-    s = s.replaceAll("http://www.opengis.net/gml/", "geo_");
+    for (Entry<String,String> entry : namespaces.entrySet())
+    	if (s.startsWith(entry.getValue())) {
+    		s = entry.getKey() + s.substring(entry.getValue().length());
+    		break;
+    	}
     return s;
   }
 

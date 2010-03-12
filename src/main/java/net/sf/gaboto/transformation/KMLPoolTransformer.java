@@ -41,6 +41,7 @@ import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.util.XMLUtils;
 import net.sf.gaboto.vocabulary.DCVocab;
 import net.sf.gaboto.vocabulary.GabotoKMLVocab;
+import net.sf.gaboto.vocabulary.GeoVocab;
 import net.sf.gaboto.vocabulary.OxPointsVocab;
 
 import org.w3c.dom.CDATASection;
@@ -136,14 +137,14 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	private void addPlacemark(Document kmlDoc, Element parentEl,
 			GabotoEntity entity) {
 		Element placemark = kmlDoc.createElementNS(KML_NS, "Placemark");
-		
+
 		Object idName = entity.getPropertyValue(OxPointsVocab.hasOUCSCode);
-    if (idName != null)
-      placemark.setAttribute("OUCSCode", idName.toString());
-    idName = entity.getPropertyValue(OxPointsVocab.hasOLISCode);
-    if (idName != null)
-      placemark.setAttribute("OLISCode", idName.toString());
-    placemark.setAttribute("id", entity.getUri());
+		if (idName != null)
+			placemark.setAttribute("OUCSCode", idName.toString());
+		idName = entity.getPropertyValue(OxPointsVocab.hasOLISCode);
+		if (idName != null)
+			placemark.setAttribute("OLISCode", idName.toString());
+		placemark.setAttribute("id", entity.getUri());
 		parentEl.appendChild(placemark);
 		addNameToElement(kmlDoc, placemark, entity);
 		addDescriptionToElement(kmlDoc, placemark, entity);
@@ -157,10 +158,10 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	 * @param entity
 	 */
 	private void addPointToElement(Document kmlDoc, Element parentEl, GabotoEntity entity) {
-    Object o = entity.getPropertyValue(OxPointsVocab.hasLocation);
-		
-		if(o != null){
-	    String location = entity.getPropertyValue(OxPointsVocab.hasLocation).toString();
+	    Object long_ = entity.getPropertyValue(GeoVocab.long_);
+	    Object lat = entity.getPropertyValue(GeoVocab.lat);
+	    
+		if(long_ != null && lat != null){
 			// add Point to placemark
 			Element pointEl = kmlDoc.createElementNS(KML_NS, "Point");
 			parentEl.appendChild(pointEl);
@@ -168,7 +169,7 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 			Element coordinatesEl = kmlDoc.createElementNS(KML_NS, "coordinates");
 			pointEl.appendChild(coordinatesEl);
 			
-			String latlong = location.split(" ")[0] + "," + location.split(" ")[1];  
+			String latlong = long_.toString() + "," + lat.toString();
 			//add coordinates @todo .. take care of number format
 			coordinatesEl.appendChild(kmlDoc.createTextNode(latlong));
 		}

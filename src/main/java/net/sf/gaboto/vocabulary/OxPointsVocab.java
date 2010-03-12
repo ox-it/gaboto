@@ -47,12 +47,6 @@ public class OxPointsVocab {
     public static final 
     ObjectProperty hasLibraryHomepage = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasLibraryHomepage" );
     
-    /** <p>Describes that an entity has a specific location</p> */
-    public static final 
-    String hasLocation_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasLocation";
-    public static final 
-    ObjectProperty hasLocation = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasLocation" );
-    
     /** <p>The naming scheme for entities introduced by Estates</p> */
     public static final 
     String hasOBNCode_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOBNCode";
@@ -88,12 +82,6 @@ public class OxPointsVocab {
     String hasWeblearn_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasWeblearn";
     public static final 
     ObjectProperty hasWeblearn = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasWeblearn" );
-    
-    /** <p>Describes that an entity has a homepage</p> */
-    public static final 
-    String homepage_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#homepage";
-    public static final 
-    ObjectProperty homepage = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#homepage" );
     
     /** <p>The Place is depicted within the Image</p> */
     public static final 
