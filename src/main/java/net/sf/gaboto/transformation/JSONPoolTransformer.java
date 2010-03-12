@@ -262,6 +262,9 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     if (memberValue instanceof String) {
       addKey(jsonStringer, key);
       addValue(jsonStringer, memberValue);
+    } else if (memberValue instanceof Float) {
+    	addKey(jsonStringer, key);
+    	addValue(jsonStringer, memberValue);
     } else if (memberValue instanceof Integer) {
       addKey(jsonStringer, key);
       addValue(jsonStringer, memberValue);

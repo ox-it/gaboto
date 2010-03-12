@@ -74,6 +74,12 @@ public class RDFPoolTransformerFactory {
 				public String transform(EntityPool pool) {
 					Model model = pool.createJenaModel();
 					
+					model.setNsPrefix("foaf", "http://xmlns.com/foaf/0.1/");
+					model.setNsPrefix("oxp", "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#");
+					model.setNsPrefix("geo", "http://www.opengis.net/gml/");
+					model.setNsPrefix("vCard", "http://nwalsh.com/rdf/vCard#");
+					model.setNsPrefix("exif", "http://www.w3.org/2003/12/exif/ns");
+
 					StringWriter sWriter = new StringWriter();
 					model.write(sWriter, format);
 					return sWriter.toString();

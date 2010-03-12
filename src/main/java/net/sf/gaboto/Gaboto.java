@@ -1351,7 +1351,7 @@ public class Gaboto {
     getNamedGraphSet().read(graphIS, GRAPH_LANGUAGE, config.getNSData());
   }
   public void read(String graphXml) { 
-    read(graphXml,GRAPH_LANGUAGE);
+    read(graphXml, GRAPH_LANGUAGE);
   }
   public void read(String graphXml, String format) { 
     getNamedGraphSet().read(new StringReader(graphXml), format, null);    
