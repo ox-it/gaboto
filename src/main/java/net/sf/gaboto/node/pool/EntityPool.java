@@ -453,9 +453,7 @@ public class EntityPool implements Collection<GabotoEntity> {
         query += "SELECT ?res WHERE {\n"
             + "?res <"
             + request.getUri()
-            + "> ?bag .\n"
-            + "?bag rdf:type <http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag> .\n"
-            + "?bag ?li <" + entity.getUri() + "> .\n" + "}";
+            + "> <" + entity.getUri() + "> .\n" + "}";
 
         // execute query
         snapshot.execSPARQLSelect(query, new SPARQLQuerySolutionProcessor() {

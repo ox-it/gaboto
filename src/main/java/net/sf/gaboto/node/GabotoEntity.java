@@ -632,14 +632,14 @@ abstract public class GabotoEntity implements RDFTyped {
 		Method m = GabotoEntityUtils.getPassiveGetMethodFor(this.getClass(), propURI);
 		if(m != null){
 			try {
-	      //System.err.println("For class " + this.getClass() + 
-	      //        " found passive method " + m.getName() + ":" + m.invoke(this, (Object[])null));
+				//System.err.println("For class " + this.getClass() + 
+				//        " found passive method " + m.getName() + ":" + m.invoke(this, (Object[])null));
 				return m.invoke(this, (Object[])null);
-      } catch (Exception e) {
-        throw new GabotoRuntimeException(e);
-      } 
+			} catch (Exception e) {
+				throw new GabotoRuntimeException(e);
+			} 
 		}
-		
+
 		return null;
 	}	
 	

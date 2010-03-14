@@ -74,11 +74,11 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
       setStartYear(new Integer(bits[0]));
     else if (bits.length == 2) {
       setStartYear(new Integer(bits[0]));
-      setStartMonth(new Integer(bits[1]));
+      setStartMonth(new Integer(bits[1])-1);
     } else if (bits.length == 3) {
       setStartYear(new Integer(bits[0]));
-      setStartMonth(new Integer(bits[1]));
-      setStartDay(new Integer(bits[1]));
+      setStartMonth(new Integer(bits[1])-1);
+      setStartDay(new Integer(bits[2]));
     } else throw new IllegalArgumentException(time);
     
   }

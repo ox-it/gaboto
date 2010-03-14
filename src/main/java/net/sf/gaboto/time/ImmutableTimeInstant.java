@@ -28,13 +28,16 @@ public class ImmutableTimeInstant extends TimeInstant {
 				super.setStartYear(new Integer(bits[0]));
 			else if (bits.length == 2) {
 				super.setStartYear(new Integer(bits[0]));
-				super.setStartMonth(new Integer(bits[1]));
+				super.setStartMonth(new Integer(bits[1])-1);
 			} else if (bits.length == 3) {
 				super.setStartYear(new Integer(bits[0]));
-				super.setStartMonth(new Integer(bits[1]));
+				super.setStartMonth(new Integer(bits[1])-1);
 				super.setStartDay(new Integer(bits[2]));
 			} else throw new IllegalArgumentException(time);
 		}
+		
+		if (time.equals("2010-03-02"))
+			System.out.println("Bar");
 	}
 
 	@Override

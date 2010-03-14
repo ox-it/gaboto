@@ -228,15 +228,16 @@ public class TimeSpan implements Serializable {
     else if (begin.compareTo(end) != -1)  
       throw new IllegalArgumentException(
           "Begin has to be earlier than end. begin: " + begin + ", end: " + end  );
-
+    
     if (begin.startMonth == null)
-      end.setStartMonth(null);  // WTF ???
-    if (begin.startMonth != null && end.startMonth == null)
-      end.setStartMonth(1);
+    	begin.setStartMonth(0);
+    if (end.startMonth == null)
+    	end.setStartMonth(0);
+
     if (begin.startDay == null)
-      end.setStartDay(null);
-    if (begin.startDay != null && end.startDay == null)
-      end.setStartDay(1);
+    	begin.setStartDay(1);
+    if (end.startMonth == null)
+    	end.setStartDay(1);
 
     // everything seems ok
 
@@ -257,7 +258,7 @@ public class TimeSpan implements Serializable {
     if (end.startDay != null) {
       if (end.startDay < begin.startDay) {
         int daysInMonth = 0;
-        if (end.startMonth > 1)
+        if (end.startMonth > 0)
           daysInMonth = getDaysInMonth(end.startYear, end.startMonth - 1);
         else
           daysInMonth = getDaysInMonth(end.startYear - 1, 11);
@@ -290,6 +291,10 @@ public class TimeSpan implements Serializable {
     ts.setDurationDay(durationDays);
     ts.setDurationMonth(durationMonths);
     ts.setDurationYear(durationYears);
+    
+    if (begin.startYear == 1424 && end.startYear == 2010)
+    	System.out.println("Foo");
+    
 
     return ts;
   }
@@ -549,7 +554,7 @@ public class TimeSpan implements Serializable {
 
     TimeInstant end = this.getEnd();
     int compE = ti.compareTo(end);
-    if (compE <= 0 || ti.canUnify(end))
+    if (compE < 0 || ti.canUnify(end))
       return true;
 
     return false;
