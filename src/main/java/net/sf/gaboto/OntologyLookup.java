@@ -20,4 +20,5 @@ public interface OntologyLookup {
   public abstract String getTypeURIForEntityClass(
       Class<? extends GabotoEntity> clazz);
 
+  public abstract String getURIForName(String name);
 }

@@ -1291,7 +1291,8 @@ public class GabotoGenerator {
     lookupClass += "  private static Map<Class<? extends GabotoEntity>, String> classToURILookup;\n";
     lookupClass += "  private static Collection<String> entityClassNames;\n";
     lookupClass += "  private static Set<String> entityTypes;\n\n";
-
+    lookupClass += "  private static Map<String,String> nameToURILookup;\n";
+    
     lookupClass += "  static{\n";
     lookupClass += "    entityClassLookupNames = new HashMap<String,String>();\n\n";
     for (Entry<String, String> entry : entityClassLookup.entrySet()) {
@@ -1323,6 +1324,14 @@ public class GabotoGenerator {
     lookupClass += "      throw new GabotoRuntimeException(e);\n";
     lookupClass += "    }\n";
     lookupClass += "  }\n\n";
+    
+    lookupClass += "  static {\n";
+    lookupClass += "    nameToURILookup = new HashMap<String,String>();\n";
+    for (Entry<String, String> entry : entityClassLookup.entrySet()) {
+        lookupClass += "    nameToURILookup.put(\"" + entry.getValue() + "\", \"" + entry.getKey() + "\");\n";
+      }
+      lookupClass += "  }\n\n";
+
 
     lookupClass += "  static{\n";
     lookupClass += "    entityTypes = new HashSet<String>();\n\n";
@@ -1358,6 +1367,10 @@ public class GabotoGenerator {
 
     lookupClass += "  public String getTypeURIForEntityClass(Class<? extends GabotoEntity> clazz){\n";
     lookupClass += "    return classToURILookup.get(clazz);\n";
+    lookupClass += "  }\n\n";
+
+    lookupClass += "  public String getURIForName(String name){\n";
+    lookupClass += "    return nameToURILookup.get(name);\n";
     lookupClass += "  }\n\n";
 
     lookupClass += "}\n";

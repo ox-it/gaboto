@@ -399,7 +399,7 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     String s = k;
     for (Entry<String,String> entry : namespaces.entrySet())
     	if (s.startsWith(entry.getValue())) {
-    		s = entry.getKey() + s.substring(entry.getValue().length());
+    		s = entry.getKey() + "_" + s.substring(entry.getValue().length());
     		break;
     	}
     return s;
