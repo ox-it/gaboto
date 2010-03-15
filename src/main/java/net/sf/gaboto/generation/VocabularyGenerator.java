@@ -496,6 +496,15 @@ public class VocabularyGenerator {
       });      
       new VocabularyGenerator().go(new String[] 
                                               {
+              "-i", "ontologies/DCTerms.owl",
+              "-n", "DCTermsVocab",
+              "--classnamesuffix", "Vocab",
+              "-o", "src/main/java/net/sf/gaboto/vocabulary/DCTermsVocab.java",
+              "--ontology",
+              "--package", "net.sf.gaboto.vocabulary"
+      });      
+      new VocabularyGenerator().go(new String[] 
+                                              {
               "-i", "ontologies/Gaboto.owl",
               "-n", "GabotoVocab",
               "--classnamesuffix", "Vocab",
