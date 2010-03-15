@@ -40,7 +40,7 @@ import com.hp.hpl.jena.query.QuerySolution;
  * @version 0.1
  */
 public interface SPARQLQuerySolutionProcessor {
-
+	
 	/**
 	 * Processes the next solution.
 	 * 

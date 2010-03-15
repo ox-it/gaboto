@@ -570,8 +570,26 @@ public class VocabularyGenerator {
       new VocabularyGenerator().go(new String[] 
                                               {
               "-i", "ontologies/VCard.owl",
-              "-n", "VCard",
-              "-o", "src/main/java/net/sf/gaboto/vocabulary/VCard.java",
+              "-n", "VCardVocab",
+              "-o", "src/main/java/net/sf/gaboto/vocabulary/VCardVocab.java",
+              "--ontology",
+              "--package", "net.sf.gaboto.vocabulary"
+      });
+/* No idea why this doesn't work
+      new VocabularyGenerator().go(new String[] 
+                                              {
+              "-i", "ontologies/OWL.owl",
+              "-n", "OWLVocab",
+              "-o", "src/main/java/net/sf/gaboto/vocabulary/OWLVocab.java",
+              "--ontology",
+              "--package", "net.sf.gaboto.vocabulary"
+      });
+*/
+      new VocabularyGenerator().go(new String[] 
+                                              {
+              "-i", "ontologies/FOAF.owl",
+              "-n", "FOAFVocab",
+              "-o", "src/main/java/net/sf/gaboto/vocabulary/FOAFVocab.java",
               "--ontology",
               "--package", "net.sf.gaboto.vocabulary"
       });      
