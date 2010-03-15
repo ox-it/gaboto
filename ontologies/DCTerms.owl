@@ -1,0 +1,22 @@
+<rdf:RDF xml:base="http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl"
+         xmlns:dcterms="http://purl.org/dc/terms/" 
+         xmlns="http://purl.org/dc/terms/" 
+         xmlns:dc="http://purl.org/dc/elements/1.1/" 
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<owl:Ontology rdf:about="" />
+    
+ <owl:Ontology rdf:about="http://purl.org/dc/terms/" />
+ 
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isPartOf">
+     <rdfs:label xml:lang="en-US">Is Part Of</rdfs:label>
+    <dc:description xml:lang="en-US">A related resource in which the described resource is physically or logically included.</dc:description>
+    <rdfs:comment xml:lang="en-US">
+        	This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.
+    </rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms"/>
+ </owl:AnnotationProperty>
+
+ </rdf:RDF>
