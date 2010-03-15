@@ -131,6 +131,8 @@ public class GabotoConfiguration {
 						continue;
 					config.namespacePrefixes.put(namespacePrefix.getAttribute("prefix"), namespacePrefix.getAttribute("ns"));
 				}
+      } else if (configSection.getNodeName().equals("dataDirectory")) {
+    	  config.setDataDirectory(configSection.getTextContent());
       } else if(configSection.getNodeName().equals("lookupClass")){
         String lookupName =  configSection.getAttribute("class");
         Class<?> clazz;
