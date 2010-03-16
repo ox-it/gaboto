@@ -1,0 +1,30 @@
+<rdf:RDF xml:base="http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl"
+         xmlns:dcterms="http://purl.org/dc/terms/" 
+         xmlns="http://xmlns.com/foaf/0.1/" 
+         xmlns:dc="http://purl.org/dc/elements/1.1/" 
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/">
+
+<owl:Ontology rdf:about="" />
+    
+ <owl:Ontology rdf:about="http://xmlns.com/foaf/0.1/" />
+ 
+  <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/depiction">
+     <rdfs:label xml:lang="en-US">A depiction of some thing</rdfs:label>
+    <rdfs:comment xml:lang="en-US">
+        	The depiction property is a relationship between a thing and an Image that depicts it. As such it is an inverse of the depicts relationship.
+    </rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+ </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/homepage">
+     <rdfs:label xml:lang="en-US">A homepage for some thing</rdfs:label>
+    <rdfs:comment xml:lang="en-US">
+        	The homepage property relates something to a homepage about it.
+    </rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+ </owl:ObjectProperty>
+
+ </rdf:RDF>
