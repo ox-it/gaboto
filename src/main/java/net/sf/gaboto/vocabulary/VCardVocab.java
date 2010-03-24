@@ -13,7 +13,7 @@ public class VCardVocab {
     public static OntModel MODEL = ModelFactory.createOntologyModel( OntModelSpec.OWL_MEM, null );
     
     /** <p>The namespace of the vocabulary as a string</p> */
-    public static final String NS = "http://nwalsh.com/rdf/vCard#";
+    public static final String NS = "http://www.w3.org/2006/vcard/ns#";
     
     /** <p>The namespace of the vocabulary as a string</p>
      *  @see #NS */
@@ -23,363 +23,441 @@ public class VCardVocab {
     public static final Resource NAMESPACE = MODEL.createResource( NS );
     
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeObjectProperties() */
-    /** <p>A postal or street address of a person.</p> */
+    /** <p>A postal or street address of a person</p> */
     public static final 
-    String adr_URI = "http://nwalsh.com/rdf/vCard#adr";
+    String adr_URI = "http://www.w3.org/2006/vcard/ns#adr";
     public static final 
-    ObjectProperty adr = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#adr" );
+    ObjectProperty adr = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#adr" );
     
-    /** <p>A person that acts as one's agent.</p> */
+    /** <p>A person that acts as one's agent</p> */
     public static final 
-    String agent_URI = "http://nwalsh.com/rdf/vCard#agent";
+    String agent_URI = "http://www.w3.org/2006/vcard/ns#agent";
     public static final 
-    ObjectProperty agent = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#agent" );
+    ObjectProperty agent = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#agent" );
     
-    /** <p>An email address.</p> */
+    /** <p>An email address</p> */
     public static final 
-    String email_URI = "http://nwalsh.com/rdf/vCard#email";
+    String email_URI = "http://www.w3.org/2006/vcard/ns#email";
     public static final 
-    ObjectProperty email = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#email" );
+    ObjectProperty email = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#email" );
     
-    /** <p>A fax number of a person.</p> */
+    /** <p>A geographic location associated with a person</p> */
     public static final 
-    String fax_URI = "http://nwalsh.com/rdf/vCard#fax";
+    String geo_URI = "http://www.w3.org/2006/vcard/ns#geo";
     public static final 
-    ObjectProperty fax = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#fax" );
+    ObjectProperty geo = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#geo" );
     
-    /** <p>A geographic location associated with a person.</p> */
+    /** <p>A key (e.g, PKI key) of a person</p> */
     public static final 
-    String geo_URI = "http://nwalsh.com/rdf/vCard#geo";
+    String key_URI = "http://www.w3.org/2006/vcard/ns#key";
     public static final 
-    ObjectProperty geo = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#geo" );
+    ObjectProperty key = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#key" );
     
-    /** <p>A home address of a person.</p> */
+    /** <p>A logo associated with a person or their organization</p> */
     public static final 
-    String homeAdr_URI = "http://nwalsh.com/rdf/vCard#homeAdr";
+    String logo_URI = "http://www.w3.org/2006/vcard/ns#logo";
     public static final 
-    ObjectProperty homeAdr = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#homeAdr" );
+    ObjectProperty logo = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#logo" );
     
-    /** <p>A home phone number of a person.</p> */
+    /** <p>The components of the name of a person</p> */
     public static final 
-    String homeTel_URI = "http://nwalsh.com/rdf/vCard#homeTel";
+    String n_URI = "http://www.w3.org/2006/vcard/ns#n";
     public static final 
-    ObjectProperty homeTel = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#homeTel" );
+    ObjectProperty n = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#n" );
     
-    /** <p>A key (e.g, PKI key) of a person.</p> */
+    /** <p>An organization associated with a person</p> */
     public static final 
-    String key_URI = "http://nwalsh.com/rdf/vCard#key";
+    String org_URI = "http://www.w3.org/2006/vcard/ns#org";
     public static final 
-    ObjectProperty key = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#key" );
+    ObjectProperty org = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#org" );
     
-    /** <p>A logo associated with a person or their organization.</p> */
+    /** <p>A photograph of a person</p> */
     public static final 
-    String logo_URI = "http://nwalsh.com/rdf/vCard#logo";
+    String photo_URI = "http://www.w3.org/2006/vcard/ns#photo";
     public static final 
-    ObjectProperty logo = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#logo" );
+    ObjectProperty photo = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#photo" );
     
-    /** <p>A mobile email address of a person.</p> */
+    /** <p>A sound (e.g., a greeting or pronounciation) of a person</p> */
     public static final 
-    String mobileEmail_URI = "http://nwalsh.com/rdf/vCard#mobileEmail";
+    String sound_URI = "http://www.w3.org/2006/vcard/ns#sound";
     public static final 
-    ObjectProperty mobileEmail = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#mobileEmail" );
+    ObjectProperty sound = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#sound" );
     
-    /** <p>A mobile phone number of a person.</p> */
+    /** <p>A telephone number of a person</p> */
     public static final 
-    String mobileTel_URI = "http://nwalsh.com/rdf/vCard#mobileTel";
+    String tel_URI = "http://www.w3.org/2006/vcard/ns#tel";
     public static final 
-    ObjectProperty mobileTel = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#mobileTel" );
+    ObjectProperty tel = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#tel" );
     
-    /** <p>The components of the name of a person.</p> */
+    /** <p>A URL associated with a person</p> */
     public static final 
-    String n_URI = "http://nwalsh.com/rdf/vCard#n";
+    String url_URI = "http://www.w3.org/2006/vcard/ns#url";
     public static final 
-    ObjectProperty n = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#n" );
-    
-    /** <p>An organization associated with a person.</p> */
-    public static final 
-    String org_URI = "http://nwalsh.com/rdf/vCard#org";
-    public static final 
-    ObjectProperty org = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#org" );
-    
-    /** <p>An email address unaffiliated with any particular organization or employer; 
-     *  a personal email address.</p>
-     */
-    public static final 
-    String personalEmail_URI = "http://nwalsh.com/rdf/vCard#personalEmail";
-    public static final 
-    ObjectProperty personalEmail = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#personalEmail" );
-    
-    /** <p>A photograph of a person.</p> */
-    public static final 
-    String photo_URI = "http://nwalsh.com/rdf/vCard#photo";
-    public static final 
-    ObjectProperty photo = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#photo" );
-    
-    /** <p>A sound (e.g., a greeting or pronounciation) of a person.</p> */
-    public static final 
-    String sound_URI = "http://nwalsh.com/rdf/vCard#sound";
-    public static final 
-    ObjectProperty sound = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#sound" );
-    
-    /** <p>A telephone number of a person.</p> */
-    public static final 
-    String tel_URI = "http://nwalsh.com/rdf/vCard#tel";
-    public static final 
-    ObjectProperty tel = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#tel" );
-    
-    /** <p>An (explicitly) unlabeled address of a person.</p> */
-    public static final 
-    String unlabeledAdr_URI = "http://nwalsh.com/rdf/vCard#unlabeledAdr";
-    public static final 
-    ObjectProperty unlabeledAdr = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#unlabeledAdr" );
-    
-    /** <p>An (explicitly) unlabeled email address of a person.</p> */
-    public static final 
-    String unlabeledEmail_URI = "http://nwalsh.com/rdf/vCard#unlabeledEmail";
-    public static final 
-    ObjectProperty unlabeledEmail = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#unlabeledEmail" );
-    
-    /** <p>An (explicitly) unlabeled phone number of a person.</p> */
-    public static final 
-    String unlabeledTel_URI = "http://nwalsh.com/rdf/vCard#unlabeledTel";
-    public static final 
-    ObjectProperty unlabeledTel = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#unlabeledTel" );
-    
-    /** <p>A URL associated with a person.</p> */
-    public static final 
-    String url_URI = "http://nwalsh.com/rdf/vCard#url";
-    public static final 
-    ObjectProperty url = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#url" );
-    
-    /** <p>A work address of a person.</p> */
-    public static final 
-    String workAdr_URI = "http://nwalsh.com/rdf/vCard#workAdr";
-    public static final 
-    ObjectProperty workAdr = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#workAdr" );
-    
-    /** <p>A work email address of a person.</p> */
-    public static final 
-    String workEmail_URI = "http://nwalsh.com/rdf/vCard#workEmail";
-    public static final 
-    ObjectProperty workEmail = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#workEmail" );
-    
-    /** <p>A work phone number of a person.</p> */
-    public static final 
-    String workTel_URI = "http://nwalsh.com/rdf/vCard#workTel";
-    public static final 
-    ObjectProperty workTel = MODEL.createObjectProperty( "http://nwalsh.com/rdf/vCard#workTel" );
+    ObjectProperty url = MODEL.createObjectProperty( "http://www.w3.org/2006/vcard/ns#url" );
     
     
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ 
-    /** <p>An additional part of a person's name.</p> */
+    /** <p>An additional part of a person's name</p> */
     public static final 
-    String additional_name_URI = "http://nwalsh.com/rdf/vCard#additional-name";
+    String additional_name_URI = "http://www.w3.org/2006/vcard/ns#additional-name";
     public static final 
-    DatatypeProperty additional_name = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#additional-name" );
+    DatatypeProperty additional_name = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#additional-name" );
     
-    /** <p>The birthday of a person.</p> */
+    /** <p>The birthday of a person</p> */
     public static final 
-    String bday_URI = "http://nwalsh.com/rdf/vCard#bday";
+    String bday_URI = "http://www.w3.org/2006/vcard/ns#bday";
     public static final 
-    DatatypeProperty bday = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#bday" );
+    DatatypeProperty bday = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#bday" );
     
-    /** <p>A category of a vCard.</p> */
+    /** <p>A category of a vCard</p> */
     public static final 
-    String category_URI = "http://nwalsh.com/rdf/vCard#category";
+    String category_URI = "http://www.w3.org/2006/vcard/ns#category";
     public static final 
-    DatatypeProperty category = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#category" );
+    DatatypeProperty category = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#category" );
     
-    /** <p>A class (e.g., public, private, etc.) of a vCard.</p> */
+    /** <p>A class (e.g., public, private, etc.) of a vCard</p> */
     public static final 
-    String class__URI = "http://nwalsh.com/rdf/vCard#class";
+    String class__URI = "http://www.w3.org/2006/vcard/ns#class";
     public static final 
-    DatatypeProperty class_ = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#class" );
+    DatatypeProperty class_ = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#class" );
     
-    /** <p>The country of a postal address.</p> */
+    /** <p>The country of a postal address</p> */
     public static final 
-    String country_name_URI = "http://nwalsh.com/rdf/vCard#country-name";
+    String country_name_URI = "http://www.w3.org/2006/vcard/ns#country-name";
     public static final 
-    DatatypeProperty country_name = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#country-name" );
+    DatatypeProperty country_name = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#country-name" );
     
-    /** <p>The extended address of a postal address.</p> */
+    /** <p>The extended address of a postal address</p> */
     public static final 
-    String extended_address_URI = "http://nwalsh.com/rdf/vCard#extended-address";
+    String extended_address_URI = "http://www.w3.org/2006/vcard/ns#extended-address";
     public static final 
-    DatatypeProperty extended_address = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#extended-address" );
+    DatatypeProperty extended_address = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#extended-address" );
     
-    /** <p>A family name part of a person's name.</p> */
+    /** <p>A family name part of a person's name</p> */
     public static final 
-    String family_name_URI = "http://nwalsh.com/rdf/vCard#family-name";
+    String family_name_URI = "http://www.w3.org/2006/vcard/ns#family-name";
     public static final 
-    DatatypeProperty family_name = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#family-name" );
+    DatatypeProperty family_name = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#family-name" );
     
-    /** <p>A formatted name of a person.</p> */
+    /** <p>A formatted name of a person</p> */
     public static final 
-    String fn_URI = "http://nwalsh.com/rdf/vCard#fn";
+    String fn_URI = "http://www.w3.org/2006/vcard/ns#fn";
     public static final 
-    DatatypeProperty fn = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#fn" );
+    DatatypeProperty fn = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#fn" );
     
-    /** <p>A given name part of a person's name.</p> */
+    /** <p>A given name part of a person's name</p> */
     public static final 
-    String given_name_URI = "http://nwalsh.com/rdf/vCard#given-name";
+    String given_name_URI = "http://www.w3.org/2006/vcard/ns#given-name";
     public static final 
-    DatatypeProperty given_name = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#given-name" );
+    DatatypeProperty given_name = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#given-name" );
     
-    /** <p>An honorific prefix part of a person's name.</p> */
+    /** <p>An honorific prefix part of a person's name</p> */
     public static final 
-    String honorific_prefix_URI = "http://nwalsh.com/rdf/vCard#honorific-prefix";
+    String honorific_prefix_URI = "http://www.w3.org/2006/vcard/ns#honorific-prefix";
     public static final 
-    DatatypeProperty honorific_prefix = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#honorific-prefix" );
+    DatatypeProperty honorific_prefix = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#honorific-prefix" );
     
-    /** <p>An honorific suffix part of a person's name.</p> */
+    /** <p>An honorific suffix part of a person's name</p> */
     public static final 
-    String honorific_suffix_URI = "http://nwalsh.com/rdf/vCard#honorific-suffix";
+    String honorific_suffix_URI = "http://www.w3.org/2006/vcard/ns#honorific-suffix";
     public static final 
-    DatatypeProperty honorific_suffix = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#honorific-suffix" );
+    DatatypeProperty honorific_suffix = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#honorific-suffix" );
     
     /** <p>The formatted version of a postal address (a string with embedded line breaks, 
-     *  punctuation, etc.).</p>
+     *  punctuation, etc.)</p>
      */
     public static final 
-    String label_URI = "http://nwalsh.com/rdf/vCard#label";
+    String label_URI = "http://www.w3.org/2006/vcard/ns#label";
     public static final 
-    DatatypeProperty label = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#label" );
+    DatatypeProperty label = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#label" );
     
-    /** <p>The latitude of a geographic location.</p> */
+    /** <p>The latitude of the location of the vCard object</p> */
     public static final 
-    String latitude_URI = "http://nwalsh.com/rdf/vCard#latitude";
+    String latitude_URI = "http://www.w3.org/2006/vcard/ns#latitude";
     public static final 
-    DatatypeProperty latitude = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#latitude" );
+    DatatypeProperty latitude = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#latitude" );
     
-    /** <p>The locality (e.g., city) of a postal address.</p> */
+    /** <p>The locality (e.g., city) of a postal address</p> */
     public static final 
-    String locality_URI = "http://nwalsh.com/rdf/vCard#locality";
+    String locality_URI = "http://www.w3.org/2006/vcard/ns#locality";
     public static final 
-    DatatypeProperty locality = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#locality" );
+    DatatypeProperty locality = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#locality" );
     
-    /** <p>The longitude of a geographic location</p> */
+    /** <p>The longitude of the location of the vCard object</p> */
     public static final 
-    String longitude_URI = "http://nwalsh.com/rdf/vCard#longitude";
+    String longitude_URI = "http://www.w3.org/2006/vcard/ns#longitude";
     public static final 
-    DatatypeProperty longitude = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#longitude" );
+    DatatypeProperty longitude = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#longitude" );
     
-    /** <p>A mailer associated with a vCard.</p> */
+    /** <p>A mailer associated with a vCard</p> */
     public static final 
-    String mailer_URI = "http://nwalsh.com/rdf/vCard#mailer";
+    String mailer_URI = "http://www.w3.org/2006/vcard/ns#mailer";
     public static final 
-    DatatypeProperty mailer = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#mailer" );
+    DatatypeProperty mailer = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#mailer" );
     
-    /** <p>Notes about a person on a vCard.</p> */
+    /** <p>The nickname of a person</p> */
     public static final 
-    String note_URI = "http://nwalsh.com/rdf/vCard#note";
+    String nickname_URI = "http://www.w3.org/2006/vcard/ns#nickname";
     public static final 
-    DatatypeProperty note = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#note" );
+    DatatypeProperty nickname = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#nickname" );
     
-    /** <p>The name of an organization.</p> */
+    /** <p>Notes about a person on a vCard</p> */
     public static final 
-    String organization_name_URI = "http://nwalsh.com/rdf/vCard#organization-name";
+    String note_URI = "http://www.w3.org/2006/vcard/ns#note";
     public static final 
-    DatatypeProperty organization_name = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#organization-name" );
+    DatatypeProperty note = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#note" );
     
-    /** <p>The name of a unit within an organization.</p> */
+    /** <p>The name of an organization</p> */
     public static final 
-    String organization_unit_URI = "http://nwalsh.com/rdf/vCard#organization-unit";
+    String organization_name_URI = "http://www.w3.org/2006/vcard/ns#organization-name";
     public static final 
-    DatatypeProperty organization_unit = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#organization-unit" );
+    DatatypeProperty organization_name = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#organization-name" );
     
-    /** <p>The post office box of a postal address.</p> */
+    /** <p>The name of a unit within an organization</p> */
     public static final 
-    String post_office_box_URI = "http://nwalsh.com/rdf/vCard#post-office-box";
+    String organization_unit_URI = "http://www.w3.org/2006/vcard/ns#organization-unit";
     public static final 
-    DatatypeProperty post_office_box = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#post-office-box" );
+    DatatypeProperty organization_unit = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#organization-unit" );
     
-    /** <p>The postal code (e.g., U.S. ZIP code) of a postal address.</p> */
+    /** <p>The post office box of a postal address</p> */
     public static final 
-    String postal_code_URI = "http://nwalsh.com/rdf/vCard#postal-code";
+    String post_office_box_URI = "http://www.w3.org/2006/vcard/ns#post-office-box";
     public static final 
-    DatatypeProperty postal_code = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#postal-code" );
+    DatatypeProperty post_office_box = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#post-office-box" );
     
-    /** <p>The region (e.g., state or province) of a postal address.</p> */
+    /** <p>The postal code (e.g., U.S. ZIP code) of a postal address</p> */
     public static final 
-    String region_URI = "http://nwalsh.com/rdf/vCard#region";
+    String postal_code_URI = "http://www.w3.org/2006/vcard/ns#postal-code";
     public static final 
-    DatatypeProperty region = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#region" );
+    DatatypeProperty postal_code = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#postal-code" );
     
-    /** <p>The timestamp of a revision of a vCard.</p> */
+    /** <p>The Identifier for the product that created the vCard object</p> */
     public static final 
-    String rev_URI = "http://nwalsh.com/rdf/vCard#rev";
+    String prodid_URI = "http://www.w3.org/2006/vcard/ns#prodid";
     public static final 
-    DatatypeProperty rev = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#rev" );
+    DatatypeProperty prodid = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#prodid" );
     
-    /** <p>A role a person plays within an organization.</p> */
+    /** <p>The region (e.g., state or province) of a postal address</p> */
     public static final 
-    String role_URI = "http://nwalsh.com/rdf/vCard#role";
+    String region_URI = "http://www.w3.org/2006/vcard/ns#region";
     public static final 
-    DatatypeProperty role = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#role" );
+    DatatypeProperty region = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#region" );
     
-    /** <p>A version of a person's name suitable for collation.</p> */
+    /** <p>The timestamp of a revision of a vCard</p> */
     public static final 
-    String sort_string_URI = "http://nwalsh.com/rdf/vCard#sort-string";
+    String rev_URI = "http://www.w3.org/2006/vcard/ns#rev";
     public static final 
-    DatatypeProperty sort_string = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#sort-string" );
+    DatatypeProperty rev = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#rev" );
     
-    /** <p>The street address of a postal address.</p> */
+    /** <p>A role a person plays within an organization</p> */
     public static final 
-    String street_address_URI = "http://nwalsh.com/rdf/vCard#street-address";
+    String role_URI = "http://www.w3.org/2006/vcard/ns#role";
     public static final 
-    DatatypeProperty street_address = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#street-address" );
+    DatatypeProperty role = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#role" );
     
-    /** <p>A person's title.</p> */
+    /** <p>A version of a person's name suitable for collation</p> */
     public static final 
-    String title_URI = "http://nwalsh.com/rdf/vCard#title";
+    String sort_string_URI = "http://www.w3.org/2006/vcard/ns#sort-string";
     public static final 
-    DatatypeProperty title = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#title" );
+    DatatypeProperty sort_string = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#sort-string" );
     
-    /** <p>A timezone associated with a person.</p> */
+    /** <p>The street address of a postal address</p> */
     public static final 
-    String tz_URI = "http://nwalsh.com/rdf/vCard#tz";
+    String street_address_URI = "http://www.w3.org/2006/vcard/ns#street-address";
     public static final 
-    DatatypeProperty tz = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#tz" );
+    DatatypeProperty street_address = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#street-address" );
     
-    /** <p>A UID of a person's vCard.</p> */
+    /** <p>A person's title</p> */
     public static final 
-    String uid_URI = "http://nwalsh.com/rdf/vCard#uid";
+    String title_URI = "http://www.w3.org/2006/vcard/ns#title";
     public static final 
-    DatatypeProperty uid = MODEL.createDatatypeProperty( "http://nwalsh.com/rdf/vCard#uid" );
+    DatatypeProperty title = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#title" );
+    
+    /** <p>A timezone associated with a person</p> */
+    public static final 
+    String tz_URI = "http://www.w3.org/2006/vcard/ns#tz";
+    public static final 
+    DatatypeProperty tz = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#tz" );
+    
+    /** <p>A UID of a person's vCard</p> */
+    public static final 
+    String uid_URI = "http://www.w3.org/2006/vcard/ns#uid";
+    public static final 
+    DatatypeProperty uid = MODEL.createDatatypeProperty( "http://www.w3.org/2006/vcard/ns#uid" );
     
     
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeAnnotationProperties() */
     
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntClasses() */
-    /** <p>Resources that are vCard (postal) addresses.</p> */
+    /** <p>Resources that are vCard Addresses</p> */
     public static final 
-    String Address_URI = "http://nwalsh.com/rdf/vCard#Address";
+    String Address_URI = "http://www.w3.org/2006/vcard/ns#Address";
     public static final 
-    OntClass Address = MODEL.createClass( "http://nwalsh.com/rdf/vCard#Address" );
+    OntClass Address = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Address" );
     
-    /** <p>Resources that are vCard geographic locations.</p> */
+    /** <p>Bulletin Board System Communications</p> */
     public static final 
-    String Geo_URI = "http://nwalsh.com/rdf/vCard#Geo";
+    String BBS_URI = "http://www.w3.org/2006/vcard/ns#BBS";
     public static final 
-    OntClass Geo = MODEL.createClass( "http://nwalsh.com/rdf/vCard#Geo" );
+    OntClass BBS = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#BBS" );
     
-    /** <p>Resources that are vCard personal names.</p> */
+    /** <p>Car Telephone</p> */
     public static final 
-    String Name_URI = "http://nwalsh.com/rdf/vCard#Name";
+    String Car_URI = "http://www.w3.org/2006/vcard/ns#Car";
     public static final 
-    OntClass Name = MODEL.createClass( "http://nwalsh.com/rdf/vCard#Name" );
+    OntClass Car = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Car" );
     
-    /** <p>Resources that are vCard organizations.</p> */
+    /** <p>Cellular or Mobile Telephone</p> */
     public static final 
-    String Organization_URI = "http://nwalsh.com/rdf/vCard#Organization";
+    String Cell_URI = "http://www.w3.org/2006/vcard/ns#Cell";
     public static final 
-    OntClass Organization = MODEL.createClass( "http://nwalsh.com/rdf/vCard#Organization" );
+    OntClass Cell = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Cell" );
     
-    /** <p>Resources that are vCards.</p> */
+    /** <p>Information related to a Domestic Address or Label</p> */
     public static final 
-    String VCard_URI = "http://nwalsh.com/rdf/vCard#VCard";
+    String Dom_URI = "http://www.w3.org/2006/vcard/ns#Dom";
     public static final 
-    OntClass VCard = MODEL.createClass( "http://nwalsh.com/rdf/vCard#VCard" );
+    OntClass Dom = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Dom" );
+    
+    /** <p>Resources that are vCard Email Addresses</p> */
+    public static final 
+    String Email_URI = "http://www.w3.org/2006/vcard/ns#Email";
+    public static final 
+    OntClass Email = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Email" );
+    
+    /** <p>Fax Communications</p> */
+    public static final 
+    String Fax_URI = "http://www.w3.org/2006/vcard/ns#Fax";
+    public static final 
+    OntClass Fax = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Fax" );
+    
+    /** <p>Information related to a Home Address, Label, or Telephone</p> */
+    public static final 
+    String Home_URI = "http://www.w3.org/2006/vcard/ns#Home";
+    public static final 
+    OntClass Home = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Home" );
+    
+    /** <p>ISDN Communications</p> */
+    public static final 
+    String ISDN_URI = "http://www.w3.org/2006/vcard/ns#ISDN";
+    public static final 
+    OntClass ISDN = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#ISDN" );
+    
+    /** <p>Internet Email</p> */
+    public static final 
+    String Internet_URI = "http://www.w3.org/2006/vcard/ns#Internet";
+    public static final 
+    OntClass Internet = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Internet" );
+    
+    /** <p>Information related to an International Address or Label</p> */
+    public static final 
+    String Intl_URI = "http://www.w3.org/2006/vcard/ns#Intl";
+    public static final 
+    OntClass Intl = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Intl" );
+    
+    /** <p>Resources that are vCard Labels</p> */
+    public static final 
+    String Label_URI = "http://www.w3.org/2006/vcard/ns#Label";
+    public static final 
+    OntClass Label = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Label" );
+    
+    /** <p>Resources that are vCard geographic locations</p> */
+    public static final 
+    String Location_URI = "http://www.w3.org/2006/vcard/ns#Location";
+    public static final 
+    OntClass Location = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Location" );
+    
+    /** <p>Modem Communications</p> */
+    public static final 
+    String Modem_URI = "http://www.w3.org/2006/vcard/ns#Modem";
+    public static final 
+    OntClass Modem = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Modem" );
+    
+    /** <p>Voice Message Communications</p> */
+    public static final 
+    String Msg_URI = "http://www.w3.org/2006/vcard/ns#Msg";
+    public static final 
+    OntClass Msg = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Msg" );
+    
+    /** <p>Resources that are vCard personal names</p> */
+    public static final 
+    String Name_URI = "http://www.w3.org/2006/vcard/ns#Name";
+    public static final 
+    OntClass Name = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Name" );
+    
+    /** <p>Resources that are vCard organizations</p> */
+    public static final 
+    String Organization_URI = "http://www.w3.org/2006/vcard/ns#Organization";
+    public static final 
+    OntClass Organization = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Organization" );
+    
+    /** <p>Personal Communications Service</p> */
+    public static final 
+    String PCS_URI = "http://www.w3.org/2006/vcard/ns#PCS";
+    public static final 
+    OntClass PCS = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#PCS" );
+    
+    /** <p>Pager Communications</p> */
+    public static final 
+    String Pager_URI = "http://www.w3.org/2006/vcard/ns#Pager";
+    public static final 
+    OntClass Pager = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Pager" );
+    
+    /** <p>Information related to a Parcel Address or Label</p> */
+    public static final 
+    String Parcel_URI = "http://www.w3.org/2006/vcard/ns#Parcel";
+    public static final 
+    OntClass Parcel = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Parcel" );
+    
+    /** <p>Information related to a Postal Address or Label</p> */
+    public static final 
+    String Postal_URI = "http://www.w3.org/2006/vcard/ns#Postal";
+    public static final 
+    OntClass Postal = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Postal" );
+    
+    /** <p>Information related to a Preferred Address, Email, Label, or Telephone</p> */
+    public static final 
+    String Pref_URI = "http://www.w3.org/2006/vcard/ns#Pref";
+    public static final 
+    OntClass Pref = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Pref" );
+    
+    /** <p>TelephoneResources that are vCard Telephony communication mechanisms</p> */
+    public static final 
+    String Tel_URI = "http://www.w3.org/2006/vcard/ns#Tel";
+    public static final 
+    OntClass Tel = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Tel" );
+    
+    /** <p>Resources that are vCards and the URIs that denote these vCards can also be 
+     *  the same URIs that denote people/orgs</p>
+     */
+    public static final 
+    String VCard_URI = "http://www.w3.org/2006/vcard/ns#VCard";
+    public static final 
+    OntClass VCard = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#VCard" );
+    
+    /** <p>Video Communications</p> */
+    public static final 
+    String Video_URI = "http://www.w3.org/2006/vcard/ns#Video";
+    public static final 
+    OntClass Video = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Video" );
+    
+    /** <p>Voice Communications</p> */
+    public static final 
+    String Voice_URI = "http://www.w3.org/2006/vcard/ns#Voice";
+    public static final 
+    OntClass Voice = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Voice" );
+    
+    /** <p>Information related to a Work Address, Label, or Telephone</p> */
+    public static final 
+    String Work_URI = "http://www.w3.org/2006/vcard/ns#Work";
+    public static final 
+    OntClass Work = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#Work" );
+    
+    /** <p>X.400 Email</p> */
+    public static final 
+    String X400_URI = "http://www.w3.org/2006/vcard/ns#X400";
+    public static final 
+    OntClass X400 = MODEL.createClass( "http://www.w3.org/2006/vcard/ns#X400" );
     
     
     /** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntIndividuals() */

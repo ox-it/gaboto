@@ -277,8 +277,14 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
         return;
       addKey(jsonStringer, key);
       startArray(jsonStringer);
-      for (GabotoEntity innerEntity : (Collection<GabotoEntity>) memberValue) {
-        addEntity(jsonStringer, innerEntity, namespaces, level + 1);
+      
+      for (Object innerEntity : (Collection<? extends Object>) memberValue) {
+    	  if (innerEntity instanceof GabotoEntity)
+    		  addEntity(jsonStringer, (GabotoEntity) innerEntity, namespaces, level + 1);
+    	  else if (innerEntity instanceof GabotoBean)
+    		  addBean(jsonStringer, (GabotoBean) innerEntity, namespaces, level + 1);
+    	  else
+    		  addValue(jsonStringer, innerEntity.toString());
       }
       endArray(jsonStringer);
     } else if (memberValue instanceof GabotoBean) {

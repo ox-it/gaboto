@@ -36,8 +36,6 @@ public class ImmutableTimeInstant extends TimeInstant {
 			} else throw new IllegalArgumentException(time);
 		}
 		
-		if (time.equals("2010-03-02"))
-			System.out.println("Bar");
 	}
 
 	@Override

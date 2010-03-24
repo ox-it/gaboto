@@ -292,10 +292,6 @@ public class TimeSpan implements Serializable {
     ts.setDurationMonth(durationMonths);
     ts.setDurationYear(durationYears);
     
-    if (begin.startYear == 1424 && end.startYear == 2010)
-    	System.out.println("Foo");
-    
-
     return ts;
   }
 

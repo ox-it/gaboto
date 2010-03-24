@@ -212,6 +212,7 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
     SimpleLiteralProperty annotation = method.getAnnotation(SimpleLiteralProperty.class);
     RDFDatatype datatype = getDatatypeForAnnotation(annotation);
 
+
     triples.add(new Triple(subjectNode, Node.createURI(propertyURI), Node.createLiteral(String.valueOf(object), null,
             datatype)));
   }
@@ -241,7 +242,7 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
 
     GabotoBean bean = (GabotoBean) object;
 
-    Node blankBeanNode = GabotoEntityUtils.createAnonForBean(subjectNode.getURI(), propertyURI);
+    Node blankBeanNode = GabotoEntityUtils.createAnonForBean(subjectNode.getURI(), propertyURI, bean);
     triples.add(new Triple(subjectNode, Node.createURI(propertyURI), blankBeanNode));
 
     triples.addAll(bean.getCorrespondingRDFTriples(blankBeanNode));
@@ -276,7 +277,7 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
       GabotoBean bean = (GabotoBean) o;
 
       // create blank node
-      Node blankBeanNode = GabotoEntityUtils.createAnonForBean(subjectNode.getURI(), propertyURI);
+      Node blankBeanNode = GabotoEntityUtils.createAnonForBean(subjectNode.getURI(), propertyURI, bean);
       triples.addAll(bean.getCorrespondingRDFTriples(blankBeanNode));
 
       // add blank node to bag

@@ -110,8 +110,8 @@ public class GabotoEntityUtils {
    * @return A new blank node with a reconstructible URI.
    * @see GabotoBean
    */
-  public static Node createAnonForBean(String uri, String propertyUri) {
-    return Node.createAnon(new AnonId(uri + "#bean-" + propertyUri.hashCode()));
+  public static Node createAnonForBean(String uri, String propertyUri, GabotoBean bean) {
+    return Node.createAnon(new AnonId(uri + "#bean-" + propertyUri.hashCode() + "-" + bean.toString().hashCode()));
   }
 
   /**
