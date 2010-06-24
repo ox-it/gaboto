@@ -34,19 +34,26 @@ package net.sf.gaboto.transformation;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.gaboto.node.GabotoEntity;
 import net.sf.gaboto.node.pool.EntityPool;
 import net.sf.gaboto.util.XMLUtils;
 import net.sf.gaboto.vocabulary.DCVocab;
+import net.sf.gaboto.vocabulary.FOAFVocab;
 import net.sf.gaboto.vocabulary.GabotoKMLVocab;
 import net.sf.gaboto.vocabulary.GeoVocab;
 import net.sf.gaboto.vocabulary.OxPointsVocab;
 
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
 import org.w3c.dom.CDATASection;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import com.hp.hpl.jena.ontology.ObjectProperty;
 
 
 /**
@@ -215,9 +222,25 @@ public class KMLPoolTransformer implements EntityPoolTransformer {
 	}
 
 	private void addDescriptionToElement(Document kmlDoc, Element parentEl, GabotoEntity entity) {
+		final ObjectProperty[] websiteProperties = {FOAFVocab.homepage, OxPointsVocab.hasLibraryHomepage, OxPointsVocab.hasITHomepage, OxPointsVocab.hasWeblearn};
+		final String[] websiteNames = {"Homepage", "Library homepage", "IT homepage", "WebLearn"};
+
 		String description = (String) entity.getPropertyValue(DCVocab.description);
 		
-		if(description != null){
+		List<String> websites = new LinkedList<String>();
+		for (int i = 0; i < websiteProperties.length; i++) {
+			Object website = entity.getPropertyValue(websiteProperties[i]);
+			if (website != null && website instanceof GabotoEntity) {
+				String url = ((GabotoEntity) website).getUri();
+				websites.add(websiteNames[i] + ": <a href=\"" + StringEscapeUtils.escapeXml(url) + "\">" + StringEscapeUtils.escapeHtml(url) + "</a>");
+			}
+		}
+		
+		description = (description == null) ? "" : ("<p>" + StringEscapeUtils.escapeHtml(description) + "</p>");
+		description += (websites.size() == 0) ? "" : ("<p>" + StringUtils.join(websites, "<br/>") + "</p>");
+		
+		if(description.length() > 0){
+			
 			// add description to placemark
 			Element descriptionEl = kmlDoc.createElementNS(KML_NS, "description");
 			CDATASection cdata = kmlDoc.createCDATASection(description);
