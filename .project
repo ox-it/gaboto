@@ -1,6 +1,6 @@
 <projectDescription>
   <name>gaboto</name>
-  <comment>Gaboto maps java objects onto RDF.</comment>
+  <comment>Gaboto maps java objects onto RDF. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
   <projects/>
   <buildSpec>
     <buildCommand>
