@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.Map.Entry;
 
@@ -52,6 +53,7 @@ import net.sf.gaboto.util.XMLUtils;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -83,6 +85,7 @@ public class GabotoGenerator {
 	private Collection<String> entityTypes = new HashSet<String>();
 	private Map<String, String> entityClassLookup = new HashMap<String, String>();
 	private Map<String, String> beanClassLookup = new HashMap<String, String>();
+	private Collection<String> beanNames;
 
 	// Type 2 uri
 	private Map<String, String> entityTypeURILookup = new HashMap<String, String>();
@@ -117,6 +120,8 @@ public class GabotoGenerator {
 	public void run() throws ParserConfigurationException, SAXException, IOException {
 		// load document
 		Document doc = XMLUtils.readInputFileIntoJAXPDoc(config);
+		
+		beanNames = getBeanNames(doc);
 
 		Element root = doc.getDocumentElement();
 		NodeList children = root.getChildNodes();
@@ -968,6 +973,8 @@ public class GabotoGenerator {
 		case SIMPLE_COMPLEX_PROPERTY:
 			cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
 			cText.addImport("net.sf.gaboto.node.annotation.ComplexProperty");
+			cText.addImport(beansPackageName + "." + propType);
+			cText.addImport(packageName + "." + lookupClassName);
 			loadEntity += "    // Load SIMPLE_COMPLEX_PROPERTY " + propertyName + "\n";
 			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
 			loadEntity += "    if(stmt != null && stmt.getObject().isAnon()){\n";
@@ -1009,6 +1016,7 @@ public class GabotoGenerator {
 			cText.addImport("java.util.Collection");
 			cText.addImport("java.util.HashSet");
 			cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
+			cText.addImport("com.hp.hpl.jena.rdf.model.Literal");
 			cText.addImport("com.hp.hpl.jena.rdf.model.StmtIterator");
 			cText.addImport("net.sf.gaboto.node.annotation.BagLiteralProperty");
 			loadEntity += "    // Load BAG_LITERAL_PROPERTY " + propertyName + "\n";
@@ -1026,6 +1034,7 @@ public class GabotoGenerator {
 			cText.addImport("java.util.Collection");
 			cText.addImport("java.util.HashSet");
 			cText.addImport("net.sf.gaboto.node.annotation.BagComplexProperty");
+			cText.addImport(beansPackageName + "." + propType);
 			cText.addImport(packageName + "." + lookupClassName);
 			cText.addImport("com.hp.hpl.jena.rdf.model.StmtIterator");
 			cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
@@ -1269,23 +1278,12 @@ public class GabotoGenerator {
 		}
 
 		// Check if this is a bean
-		String beanName = beansPackageName + "." + propType;
-		// FIXME There is a bootstrap problem here
-		try {
-			Class<?> clazz = Class.forName(beanName);
-			if (clazz.newInstance() instanceof GabotoBean)
-				if (collection == null)
-					return SIMPLE_COMPLEX_PROPERTY;
-				else if (collection.equals("bag"))
-					return BAG_COMPLEX_PROPERTY;
-		} catch (ClassNotFoundException e) {
-			// Simple type eg String
-			// or non bean property
-		} catch (NoClassDefFoundError e) {
-			throw new RuntimeException("Delete generated code with errors " + beanName, e);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+		if (beanNames.contains(propType))
+			if (collection == null)
+				return SIMPLE_COMPLEX_PROPERTY;
+			else if (collection.equals("bag"))
+				return BAG_COMPLEX_PROPERTY;
+		
 		if (collection == null)
 			return SIMPLE_LITERAL_PROPERTY;
 		else if (collection.equals("bag"))
@@ -1441,6 +1439,24 @@ public class GabotoGenerator {
 		}
 
 
+	}
+	
+	private Collection<String> getBeanNames(Document doc) {
+		Set<String> names = new HashSet<String>();
+		getBeanNames(doc.getDocumentElement(), names);
+		return names;
+	}
+	
+	private void getBeanNames(Element elem, Set<String> names) {
+		if (elem.getNodeName() == "GabotoBean")
+			names.add(elem.getAttribute("name"));
+		
+		NodeList nodes = elem.getChildNodes();
+		for (int i = 0; i < nodes.getLength(); i++) {
+			Node node = nodes.item(i);
+			if (node instanceof Element)
+				getBeanNames((Element) node, names);
+		}
 	}
 
 	/**
