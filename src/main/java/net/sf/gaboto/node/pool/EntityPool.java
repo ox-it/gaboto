@@ -523,6 +523,9 @@ public class EntityPool implements Collection<GabotoEntity> {
       type = ((Resource) typeStmt.getObject()).getURI();
     
     Class<?> entityClass = snapshot.getGaboto().getOntologyLookup().getEntityClassFor(type);
+    
+    if (entityClass == null)
+    	throw new IncoherenceException("Couldn't find class for type '" + type + "'.");
 
       // instantiate
     GabotoEntity entity;

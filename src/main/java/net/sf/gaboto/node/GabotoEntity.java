@@ -31,6 +31,7 @@
  */
 package net.sf.gaboto.node;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
@@ -635,6 +636,8 @@ abstract public class GabotoEntity implements RDFTyped {
 				//System.err.println("For class " + this.getClass() + 
 				//        " found passive method " + m.getName() + ":" + m.invoke(this, (Object[])null));
 				return m.invoke(this, (Object[])null);
+			} catch (InvocationTargetException e) {
+				throw new GabotoRuntimeException(e.getCause());
 			} catch (Exception e) {
 				throw new GabotoRuntimeException(e);
 			} 
