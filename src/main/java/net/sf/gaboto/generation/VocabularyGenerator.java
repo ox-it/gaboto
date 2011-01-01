@@ -1351,7 +1351,6 @@ public class VocabularyGenerator {
   }
 
   /** Write any object properties in the vocabulary */
-  @SuppressWarnings("unchecked")
   protected void writeObjectProperties() {
     write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeObjectProperties() */\n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
@@ -1365,7 +1364,6 @@ public class VocabularyGenerator {
   }
 
   /** Write any datatype properties in the vocabulary */
-  @SuppressWarnings("unchecked")
   protected void writeDatatypeProperties() {
     write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeDatatypeProperties() */ \n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
@@ -1379,7 +1377,6 @@ public class VocabularyGenerator {
   }
 
   /** Write any annotation properties in the vocabulary */
-  @SuppressWarnings("unchecked")
   protected void writeAnnotationProperties() {
     write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeAnnotationProperties() */\n");
     String template = hasValue(OPT_PROP_TEMPLATE) ? getValue(OPT_PROP_TEMPLATE) : DEFAULT_PROP_TEMPLATE;
@@ -1439,7 +1436,6 @@ public class VocabularyGenerator {
   }
 
   /** Write classes as ontology terms */
-  @SuppressWarnings("unchecked")
   protected void writeOntClasses() {
     write(1, "/** @see net.sf.gaboto.generation.VocabularyGenerator#writeOntClasses() */\n");
     String template = hasValue(OPT_CLASS_TEMPLATE) ? getValue(OPT_CLASS_TEMPLATE) : DEFAULT_CLASS_TEMPLATE;
@@ -1451,7 +1447,6 @@ public class VocabularyGenerator {
   }
 
   /** Write classes as vanilla RDF terms */
-  @SuppressWarnings("unchecked")
   protected void writeRDFClasses() {
     String template = hasValue(OPT_CLASS_TEMPLATE) ? getValue(OPT_CLASS_TEMPLATE) : DEFAULT_TEMPLATE;
 
@@ -1464,10 +1459,10 @@ public class VocabularyGenerator {
     }
 
     // collect the classes to list
-    List<Resource> classes = m_source.listStatements(null, RDF.type, cls).mapWith(new Map1() {
+    List<Resource> classes = m_source.listStatements(null, RDF.type, cls).mapWith(new Map1<Statement,Resource>() {
       @Override
-      public Object map1(Object arg0) {
-        return ((Statement) arg0).getSubject();
+      public Resource map1(Statement arg0) {
+        return arg0.getSubject();
       }
     }).toList();
 
@@ -1830,8 +1825,7 @@ public class VocabularyGenerator {
    * Answer an iterator that contains the elements of the given list, but sorted
    * by URI
    */
-  @SuppressWarnings("unchecked")
-  protected ExtendedIterator sorted(ExtendedIterator i) {
+  protected ExtendedIterator<? extends RDFNode> sorted(ExtendedIterator<? extends RDFNode> i) {
     return sorted(i.toList());
   }
 

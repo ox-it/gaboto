@@ -259,7 +259,6 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
    * @param propertyURI
    * @param method
    */
-  @SuppressWarnings("unchecked")
   private void getTriplesFor_BagComplexProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples,
           String propertyURI, Method method) {
 	  
@@ -268,12 +267,12 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
     if (object == null)
       return;
 
-    if (!(object instanceof Collection))
+    if (!(object instanceof Collection<?>))
       throw new IllegalAnnotationException(rdfContainerObject.getClass());
 
     // loop over collection
     int count = 1;
-    for (Object o : (Collection) object) {
+    for (Object o : (Collection<?>) object) {
       GabotoBean bean = (GabotoBean) o;
 
       // create blank node
@@ -299,7 +298,6 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
    * @param propertyURI
    * @param method
    */
-  @SuppressWarnings("unchecked")
   private void getTriplesFor_BagLiteralProperty(Object rdfContainerObject, Node subjectNode, List<Triple> triples,
 		  String propertyURI, Method method) {
 
@@ -308,14 +306,14 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
 	  if (object == null)
 		  return;
 
-	  if (!(object instanceof Collection))
+	  if (!(object instanceof Collection<?>))
 		  throw new IllegalAnnotationException(rdfContainerObject.getClass());
 
 	  BagLiteralProperty annotation = method.getAnnotation(BagLiteralProperty.class);
 	  RDFDatatype datatype = getDatatypeForAnnotation(annotation);
 	  
 	  int count = 1;
-	  for (Object o : (Collection) object) {
+	  for (Object o : (Collection<?>) object) {
 		  triples.add(new Triple(subjectNode, Node.createURI(propertyURI), Node.createLiteral((String) o, null, datatype)));
 		  count++;
 	  }
@@ -347,7 +345,7 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
 
     // loop over collection
     int count = 1;
-    for (Object o : (Collection) object) {
+    for (Object o : (Collection<Object>) object) {
       if (o == null)
         throw new IncoherenceException("Bag properties may not contain null values.");
       triples

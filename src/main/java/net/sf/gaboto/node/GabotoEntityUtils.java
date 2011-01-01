@@ -142,13 +142,13 @@ public class GabotoEntityUtils {
    * @see GabotoEntity
    */
   @SuppressWarnings("unchecked")
-  public static Class<? extends GabotoEntity> getEntityClassFor(OntClass type) {
+public static Class<? extends GabotoEntity> getEntityClassFor(OntClass type) {
     String packageName = GabotoEntity.class.getPackage().getName();
     String localName = type.getLocalName();
 
     try {
-      Class clazz = Class.forName(packageName + "." + localName);
-      return clazz;
+      Class<?> clazz = Class.forName(packageName + "." + localName);
+      return (Class<? extends GabotoEntity>) clazz;
     } catch (ClassNotFoundException e) {
       IllegalArgumentException iae = new IllegalArgumentException(
           "No class found for " + type.getURI());

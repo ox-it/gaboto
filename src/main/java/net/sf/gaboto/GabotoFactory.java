@@ -189,7 +189,6 @@ public class GabotoFactory {
 	 * 
 	 * @see #getPersistentGaboto()
 	 */
-	@SuppressWarnings("unchecked")
 	public static Gaboto getInMemoryGaboto() {
 		if(inMemoryGaboto != null) {
 			return inMemoryGaboto;
@@ -199,12 +198,12 @@ public class GabotoFactory {
 
 		// Create a new graphset and copy graphs
 		NamedGraphSet graphset = new NamedGraphSetImpl();
-		Iterator graphIt = po.getNamedGraphSet().listGraphs();
+		Iterator<NamedGraph> graphIt = po.getNamedGraphSet().listGraphs();
 		while(graphIt.hasNext())
 			graphset.createGraph(((NamedGraph)graphIt.next()).getGraphName());
 		System.err.println("getInMemoryGaboto: have created graphs");
 
-		Iterator it = po.getNamedGraphSet().findQuads(Node.ANY, Node.ANY, Node.ANY, Node.ANY);
+		Iterator<?> it = po.getNamedGraphSet().findQuads(Node.ANY, Node.ANY, Node.ANY, Node.ANY);
 		while(it.hasNext())
 			graphset.addQuad((Quad)it.next());
 		System.err.println("getInMemoryGaboto: have added quads");

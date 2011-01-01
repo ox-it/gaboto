@@ -203,7 +203,6 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
    *         the entity that is stored directly in the Gaboto model.
    * 
    */
-  @SuppressWarnings("unchecked")
   public static GabotoTimeBasedEntity loadEntity(String uri, Gaboto gaboto) {
     logger.debug("Loading time based entity: " + uri);
 
@@ -223,7 +222,7 @@ public class GabotoTimeBasedEntity implements Iterable<GabotoEntity> {
     // find all graphs that are talking about the entity
     NamedGraphSet graphSet = gaboto.getNamedGraphSet();
 
-    Iterator it = graphSet.findQuads(Node.ANY, Node.createURI(uri), Node.ANY, Node.ANY);
+    Iterator<?> it = graphSet.findQuads(Node.ANY, Node.createURI(uri), Node.ANY, Node.ANY);
 
     Set<String> seenGraphs = new HashSet<String>();
     while (it.hasNext()) {
