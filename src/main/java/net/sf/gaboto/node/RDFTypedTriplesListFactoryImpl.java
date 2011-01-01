@@ -119,7 +119,8 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
     			  continue;
     	  Node propertyURI = Node.createURI(anno.value());
     	  String resource = (String) invokeMethod(rdfContainerObject,method);
-    	  triples.add(new Triple(subjectNode, propertyURI, Node.createURI(resource)));
+    	  if (resource != null)
+    		  triples.add(new Triple(subjectNode, propertyURI, Node.createURI(resource)));
       } else if (method.isAnnotationPresent(ComplexProperty.class)) { // complex
                                                                       // property?
         ComplexProperty anno = method.getAnnotation(ComplexProperty.class);
