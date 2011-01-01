@@ -42,6 +42,7 @@ import net.sf.gaboto.GabotoRuntimeException;
 import net.sf.gaboto.IncoherenceException;
 import net.sf.gaboto.node.annotation.BagComplexProperty;
 import net.sf.gaboto.node.annotation.BagLiteralProperty;
+import net.sf.gaboto.node.annotation.BagResourceProperty;
 import net.sf.gaboto.node.annotation.BagURIProperty;
 import net.sf.gaboto.node.annotation.ComplexProperty;
 import net.sf.gaboto.node.annotation.ResourceProperty;
@@ -74,9 +75,7 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
   }
 
   public List<Triple> getTriplesFor(RDFTyped rdfContainerObject, Node subjectNode, boolean includeType) {
-	if (rdfContainerObject instanceof OnlineAccount)
-		System.out.println("Here");
-    List<Triple> triples = new ArrayList<Triple>();
+	List<Triple> triples = new ArrayList<Triple>();
 
     // add the entity's type
     if (includeType) {
@@ -169,6 +168,17 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
 
         // process
         getTriplesFor_BagComplexProperty(rdfContainerObject, subjectNode, triples, propertyURI, method);
+      } else if (method.isAnnotationPresent(BagResourceProperty.class)) {
+    	  BagResourceProperty anno = method.getAnnotation(BagResourceProperty.class);
+    	  if (!GabotoEntityUtils.IsGETMethod(method))
+    			  continue;
+    	  Node propertyURI = Node.createURI(anno.value());
+    	  Collection<?> resources = (Collection<?>) invokeMethod(rdfContainerObject,method);
+    	  if (resources != null)
+    		  for (Object resource : resources) {
+    			  if (resource instanceof String)
+    				  triples.add(new Triple(subjectNode, propertyURI, Node.createURI((String) resource)));
+    		  }
       }
     }
 

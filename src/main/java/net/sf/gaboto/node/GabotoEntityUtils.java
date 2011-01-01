@@ -41,6 +41,7 @@ import java.util.Map;
 import net.sf.gaboto.GabotoRuntimeException;
 import net.sf.gaboto.node.annotation.BagComplexProperty;
 import net.sf.gaboto.node.annotation.BagLiteralProperty;
+import net.sf.gaboto.node.annotation.BagResourceProperty;
 import net.sf.gaboto.node.annotation.BagURIProperty;
 import net.sf.gaboto.node.annotation.ComplexProperty;
 import net.sf.gaboto.node.annotation.IndirectProperty;
@@ -90,7 +91,7 @@ public class GabotoEntityUtils {
   public static final Class<?>[] PROPERTY_ANNOTATIONS = new Class<?>[] {
       SimpleURIProperty.class, SimpleLiteralProperty.class,
       ComplexProperty.class, BagURIProperty.class, BagLiteralProperty.class,
-      BagComplexProperty.class, ResourceProperty.class };
+      BagComplexProperty.class, ResourceProperty.class, BagResourceProperty.class };
 
   public static final Class<UnstoredProperty> UNSTORED_PROPERTY_ANNOTATION = UnstoredProperty.class;
 

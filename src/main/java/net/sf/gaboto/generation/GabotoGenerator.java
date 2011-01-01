@@ -611,6 +611,7 @@ public class GabotoGenerator {
 		+ property.getAttribute("name").substring(1);
 		pt.propNameUCFirst = pt.propName.substring(0, 1).toUpperCase() + pt.propName.substring(1);
 		pt.propType = property.getAttribute("type");
+		pt.propTypeItem = property.getAttribute("type");
 		pt.collection = property.getAttribute("collection").toLowerCase();
 		pt.uri = property.getAttribute("uri");
 
@@ -620,10 +621,11 @@ public class GabotoGenerator {
 		if (pt.propType.equals("Resource")) {
 			pt.realPropTypeInterface = "String";	
 			pt.realPropTypeImpl = "String";	
+			pt.propTypeItem = "String";	
 		}
 		if (pt.collection.equals("bag")) {
-			pt.realPropTypeInterface = "Collection<" + pt.propType + ">";
-			pt.realPropTypeImpl = "HashSet<" + pt.propType + ">";
+			pt.realPropTypeInterface = "Collection<" + pt.propTypeItem + ">";
+			pt.realPropTypeImpl = "HashSet<" + pt.propTypeItem + ">";
 		}
 
 		pt.getMethodName = "get" + pt.propNameUCFirst;
@@ -707,7 +709,7 @@ public class GabotoGenerator {
 				break;
 			default:
 				pt.methodDefinitions += 
-					getAddMethod("public", addMethodName, pt.propType, pt.realPropTypeImpl, parameterName,
+					getAddMethod("public", addMethodName, pt.propTypeItem, pt.realPropTypeImpl, parameterName,
 							pt.propName);
 				break;
 			}
@@ -904,14 +906,14 @@ public class GabotoGenerator {
 		return methodDefinition;
 	}
 
-	private String getAddMethod(String visibility, String methodName, String propType, String realPropTypeImpl,
+	private String getAddMethod(String visibility, String methodName, String propTypeItem, String realPropTypeImpl,
 			String parameterName, String memberName) {
 		String methodDefinition = "";
 
 		if (visibility.equals("package"))
 			visibility = "";
 
-		methodDefinition += "  " + visibility + " void " + methodName + "(" + propType + " " + parameterName + "P){\n";
+		methodDefinition += "  " + visibility + " void " + methodName + "(" + propTypeItem + " " + parameterName + "P){\n";
 		methodDefinition += "    if(this." + memberName + " == null)\n";
 		methodDefinition += "      set" + ucFirstLetter(memberName) + "( new " + realPropTypeImpl + "() );\n";
 		methodDefinition += "    this." + memberName + ".add(" + parameterName + "P);\n";
@@ -1075,7 +1077,19 @@ public class GabotoGenerator {
 			loadEntity += "        }\n\n";
 			loadEntity += "    }\n";
 			break;
-		}
+		case BAG_RESOURCE_PROPERTY:
+			cText.addImport("net.sf.gaboto.node.annotation.BagResourceProperty");
+			loadEntity += "    // Load BAG_RESOURCE_PROPERTY " + propertyName + "\n";
+			loadEntity += "    {\n";
+			loadEntity += "        StmtIterator stmts = res.listProperties(snapshot.getProperty(\"" + uri + "\"));\n";
+			loadEntity += "        while (stmts.hasNext()) {\n";
+			loadEntity += "            RDFNode node = stmts.next().getObject();\n";
+			loadEntity += "            if(node.isLiteral()){\n";
+			loadEntity += "                this." + addMethodName + "(((Literal)node).getLexicalForm());\n";
+			loadEntity += "            }\n";
+			loadEntity += "        }\n";
+			loadEntity += "    }\n";
+			break;		}
 
 		return loadEntity + "\n";
 	}
@@ -1532,6 +1546,7 @@ public class GabotoGenerator {
 		String propName = "";
 		String propNameUCFirst = "";
 		String propType = "";
+		String propTypeItem = "";
 		String collection = "";
 		String uri = "";
 
