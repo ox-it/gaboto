@@ -45,6 +45,7 @@ import net.sf.gaboto.node.annotation.BagURIProperty;
 import net.sf.gaboto.node.annotation.ComplexProperty;
 import net.sf.gaboto.node.annotation.IndirectProperty;
 import net.sf.gaboto.node.annotation.PassiveProperty;
+import net.sf.gaboto.node.annotation.ResourceProperty;
 import net.sf.gaboto.node.annotation.SimpleLiteralProperty;
 import net.sf.gaboto.node.annotation.SimpleURIProperty;
 import net.sf.gaboto.node.annotation.StaticProperty;
@@ -89,7 +90,7 @@ public class GabotoEntityUtils {
   public static final Class<?>[] PROPERTY_ANNOTATIONS = new Class<?>[] {
       SimpleURIProperty.class, SimpleLiteralProperty.class,
       ComplexProperty.class, BagURIProperty.class, BagLiteralProperty.class,
-      BagComplexProperty.class };
+      BagComplexProperty.class, ResourceProperty.class };
 
   public static final Class<UnstoredProperty> UNSTORED_PROPERTY_ANNOTATION = UnstoredProperty.class;
 
@@ -608,7 +609,7 @@ public static Class<? extends GabotoEntity> getEntityClassFor(OntClass type) {
     if (!found && method.isAnnotationPresent(INDIRECT_PROPERTY_ANNOTATION))
       found = true;
     if (!found && method.isAnnotationPresent(STATIC_PROPERTY_ANNOTATION))
-      found = true;
+        found = true;
 
     if (!found)
       return false;

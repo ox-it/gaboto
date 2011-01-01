@@ -97,13 +97,16 @@ public class GabotoGenerator {
 	public final static int LITERAL_TYPE_BOOLEAN = 5;
 	public final static int LITERAL_TYPE_DATETIME = 6;
 	public final static int LITERAL_TYPE_DATE = 7;
+	
 
 	public final static int SIMPLE_LITERAL_PROPERTY = 1;
 	public final static int SIMPLE_URI_PROPERTY = 2;
 	public final static int SIMPLE_COMPLEX_PROPERTY = 3;
-	public final static int BAG_LITERAL_PROPERTY = 4;
-	public final static int BAG_URI_PROPERTY = 5;
-	public final static int BAG_COMPLEX_PROPERTY = 6;
+	public final static int SIMPLE_RESOURCE_PROPERTY = 4;
+	public final static int BAG_LITERAL_PROPERTY = 5;
+	public final static int BAG_URI_PROPERTY = 6;
+	public final static int BAG_COMPLEX_PROPERTY = 7;
+	public final static int BAG_RESOURCE_PROPERTY = 8;
 
 	public GabotoGenerator(File config, File outputDir, String packageName) {
 		String packageRelativeDirectoryName = packageName.replace('.', '/');
@@ -614,6 +617,10 @@ public class GabotoGenerator {
 		// real prop type
 		pt.realPropTypeInterface = pt.propType;
 		pt.realPropTypeImpl = pt.propType;
+		if (pt.propType.equals("Resource")) {
+			pt.realPropTypeInterface = "String";	
+			pt.realPropTypeImpl = "String";	
+		}
 		if (pt.collection.equals("bag")) {
 			pt.realPropTypeInterface = "Collection<" + pt.propType + ">";
 			pt.realPropTypeImpl = "HashSet<" + pt.propType + ">";
@@ -983,7 +990,15 @@ public class GabotoGenerator {
 			loadEntity += "      " + setMethodName + "(bean);\n";
 			loadEntity += "    }\n";
 			break;
-		case BAG_URI_PROPERTY:
+		case SIMPLE_RESOURCE_PROPERTY:
+			cText.addImport("net.sf.gaboto.node.annotation.ResourceProperty");
+			loadEntity += "    // Load SIMPLE_RESOURCE_PROPERTY " + propertyName + "\n";
+			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
+			loadEntity += "    if(stmt != null && stmt.getObject().isLiteral()){\n";
+			loadEntity += "      this." + setMethodName + "(((Literal)stmt.getObject()).getLexicalForm());\n";
+			loadEntity += "    }\n";
+			break;
+	case BAG_URI_PROPERTY:
 			cText.addImport("java.util.Collection");
 			cText.addImport("java.util.HashSet");
 			cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
@@ -1049,7 +1064,7 @@ public class GabotoGenerator {
 			loadEntity += "            String type = anon_res.getProperty(snapshot.getProperty(\"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\")).getObject().toString();\n";
 			loadEntity += "            " + propType + " prop;\n";
 			loadEntity += "            try {\n";
-			loadEntity += "                prop = (Tel) (new OxpointsGabotoOntologyLookup()).getBeanClassFor(type).newInstance();\n";
+			loadEntity += "                prop = (" + propType + ") (new OxpointsGabotoOntologyLookup()).getBeanClassFor(type).newInstance();\n";
 			loadEntity += "            } catch (InstantiationException e) {\n";
 			loadEntity += "                throw new GabotoRuntimeException();\n";
 			loadEntity += "            } catch (IllegalAccessException e) {\n";
@@ -1191,6 +1206,8 @@ public class GabotoGenerator {
 			+ "\",\n" + "    javaType = \"" + propType + "\"\n" + "  )";
 		case SIMPLE_COMPLEX_PROPERTY:
 			return "@ComplexProperty(\"" + uri + "\")";
+		case SIMPLE_RESOURCE_PROPERTY:
+			return "@ResourceProperty(\"" + uri + "\")";
 		case BAG_URI_PROPERTY:
 			return "@BagURIProperty(\"" + uri + "\")";
 		case BAG_LITERAL_PROPERTY:
@@ -1198,6 +1215,8 @@ public class GabotoGenerator {
 			+ "\",\n" + "    javaType = \"" + propType + "\"\n" + "  )";
 		case BAG_COMPLEX_PROPERTY:
 			return "@BagComplexProperty(\"" + uri + "\")";
+		case BAG_RESOURCE_PROPERTY:
+			return "@BagResourceProperty(\"" + uri + "\")";
 		}
 
 		return "";
@@ -1268,6 +1287,13 @@ public class GabotoGenerator {
 				collection = null;
 			else
 				collection = collection.toLowerCase();
+		}
+		
+		if (propType.equals("Resource")) {
+			if (collection == null)
+				return SIMPLE_RESOURCE_PROPERTY;
+			else if (collection.equals("bag"))
+				return BAG_RESOURCE_PROPERTY;
 		}
 
 		if (entityNames.contains(propType) || propType.equals("GabotoEntity")) {

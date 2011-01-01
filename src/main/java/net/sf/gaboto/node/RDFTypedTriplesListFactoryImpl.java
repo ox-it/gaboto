@@ -36,12 +36,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import uk.ac.ox.oucs.oxpoints.gaboto.beans.OnlineAccount;
+
 import net.sf.gaboto.GabotoRuntimeException;
 import net.sf.gaboto.IncoherenceException;
 import net.sf.gaboto.node.annotation.BagComplexProperty;
 import net.sf.gaboto.node.annotation.BagLiteralProperty;
 import net.sf.gaboto.node.annotation.BagURIProperty;
 import net.sf.gaboto.node.annotation.ComplexProperty;
+import net.sf.gaboto.node.annotation.ResourceProperty;
 import net.sf.gaboto.node.annotation.SimpleLiteralProperty;
 import net.sf.gaboto.node.annotation.SimpleURIProperty;
 
@@ -71,6 +74,8 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
   }
 
   public List<Triple> getTriplesFor(RDFTyped rdfContainerObject, Node subjectNode, boolean includeType) {
+	if (rdfContainerObject instanceof OnlineAccount)
+		System.out.println("Here");
     List<Triple> triples = new ArrayList<Triple>();
 
     // add the entity's type
@@ -108,6 +113,14 @@ public class RDFTypedTriplesListFactoryImpl implements RDFTypedTriplesListFactor
 
         // process
         getTriplesFor_SimpleLiteralProperty(rdfContainerObject, subjectNode, triples, propertyURI, method);
+      
+      } else if (method.isAnnotationPresent(ResourceProperty.class)) {
+    	  ResourceProperty anno = method.getAnnotation(ResourceProperty.class);
+    	  if (!GabotoEntityUtils.IsGETMethod(method))
+    			  continue;
+    	  Node propertyURI = Node.createURI(anno.value());
+    	  String resource = (String) invokeMethod(rdfContainerObject,method);
+    	  triples.add(new Triple(subjectNode, propertyURI, Node.createURI(resource)));
       } else if (method.isAnnotationPresent(ComplexProperty.class)) { // complex
                                                                       // property?
         ComplexProperty anno = method.getAnnotation(ComplexProperty.class);
