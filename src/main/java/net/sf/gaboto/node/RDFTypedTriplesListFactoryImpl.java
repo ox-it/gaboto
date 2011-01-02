@@ -36,8 +36,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import uk.ac.ox.oucs.oxpoints.gaboto.beans.OnlineAccount;
-
 import net.sf.gaboto.GabotoRuntimeException;
 import net.sf.gaboto.IncoherenceException;
 import net.sf.gaboto.node.annotation.BagComplexProperty;
