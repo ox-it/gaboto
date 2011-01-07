@@ -559,7 +559,7 @@ public class GabotoGenerator {
 		if (customMethods.contains("StaticProperty"))
 			cText.addImport("net.sf.gaboto.node.annotation.StaticProperty");
 
-		if (entityHasPassiveProperty)
+		if (entityHasPassiveProperty || entityHasProperty)
 			cText.addImport("net.sf.gaboto.node.pool.EntityPool");
 
 		// build it all together
@@ -996,8 +996,8 @@ public class GabotoGenerator {
 			cText.addImport("net.sf.gaboto.node.annotation.ResourceProperty");
 			loadEntity += "    // Load SIMPLE_RESOURCE_PROPERTY " + propertyName + "\n";
 			loadEntity += "    stmt = res.getProperty(snapshot.getProperty(\"" + uri + "\"));\n";
-			loadEntity += "    if(stmt != null && stmt.getObject().isLiteral()){\n";
-			loadEntity += "      this." + setMethodName + "(((Literal)stmt.getObject()).getLexicalForm());\n";
+			loadEntity += "    if(stmt != null && stmt.getObject().isURIResource()){\n";
+			loadEntity += "      this." + setMethodName + "(((Resource) stmt.getObject()).getURI());\n";
 			loadEntity += "    }\n";
 			break;
 	case BAG_URI_PROPERTY:
@@ -1084,8 +1084,8 @@ public class GabotoGenerator {
 			loadEntity += "        StmtIterator stmts = res.listProperties(snapshot.getProperty(\"" + uri + "\"));\n";
 			loadEntity += "        while (stmts.hasNext()) {\n";
 			loadEntity += "            RDFNode node = stmts.next().getObject();\n";
-			loadEntity += "            if(node.isLiteral()){\n";
-			loadEntity += "                this." + addMethodName + "(((Literal)node).getLexicalForm());\n";
+			loadEntity += "            if(node.isURIResource()){\n";
+			loadEntity += "                this." + addMethodName + "(((Resource) node).getURI());\n";
 			loadEntity += "            }\n";
 			loadEntity += "        }\n";
 			loadEntity += "    }\n";
