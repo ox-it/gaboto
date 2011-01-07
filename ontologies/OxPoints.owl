@@ -78,6 +78,13 @@
             >The naming scheme for entities introduced by Estates</rdfs:comment>
     </owl:ObjectProperty>
 
+    <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasFinanceCode -->
+
+    <owl:ObjectProperty rdf:about="#hasFinanceCode">
+        <rdfs:comment
+            >The naming scheme for entities introduced by Finance (i.e. the two letter codes for units)</rdfs:comment>
+    </owl:ObjectProperty>
+
     <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOLISCode -->
 
     <owl:ObjectProperty rdf:about="#hasOLISCode">

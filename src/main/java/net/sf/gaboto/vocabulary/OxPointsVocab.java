@@ -35,6 +35,14 @@ public class OxPointsVocab {
     public static final 
     ObjectProperty capacity = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#capacity" );
     
+    /** <p>The naming scheme for entities introduced by Finance (i.e. the two letter 
+     *  codes for units)</p>
+     */
+    public static final 
+    String hasFinanceCode_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasFinanceCode";
+    public static final 
+    ObjectProperty hasFinanceCode = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasFinanceCode" );
+    
     /** <p>Describes that an entity has a homepage for its it people</p> */
     public static final 
     String hasITHomepage_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasITHomepage";
