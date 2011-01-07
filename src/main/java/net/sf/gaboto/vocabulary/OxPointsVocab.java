@@ -79,12 +79,6 @@ public class OxPointsVocab {
     public static final 
     ObjectProperty hasOUCSCode = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOUCSCode" );
     
-    /** <p>Defines the primary place for an entity</p> */
-    public static final 
-    String hasPrimaryPlace_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasPrimaryPlace";
-    public static final 
-    ObjectProperty hasPrimaryPlace = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasPrimaryPlace" );
-    
     /** <p>Describes that an entity has a weblearn</p> */
     public static final 
     String hasWeblearn_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasWeblearn";
@@ -108,6 +102,12 @@ public class OxPointsVocab {
     String physicallyContainedWithin_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#physicallyContainedWithin";
     public static final 
     ObjectProperty physicallyContainedWithin = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#physicallyContainedWithin" );
+    
+    /** <p>Defines the primary place for an entity</p> */
+    public static final 
+    String primaryPlace_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#primaryPlace";
+    public static final 
+    ObjectProperty primaryPlace = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#primaryPlace" );
     
     /** <p>The type of library sublocation (e.g. book-stack, reading-room)</p> */
     public static final 

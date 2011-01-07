@@ -101,9 +101,9 @@
     </owl:ObjectProperty>
     
 
-    <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasPrimaryPlace -->
+    <!-- http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#primaryPlace -->
 
-    <owl:ObjectProperty rdf:about="#hasPrimaryPlace">
+    <owl:ObjectProperty rdf:about="#primaryPlace">
         <rdfs:comment
             >Defines the primary place for an entity</rdfs:comment>
         <rdfs:range rdf:resource="#Place"/>
