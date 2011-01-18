@@ -1006,6 +1006,7 @@ public class GabotoGenerator {
 			cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
 			cText.addImport("com.hp.hpl.jena.rdf.model.Resource");
 			cText.addImport("com.hp.hpl.jena.rdf.model.StmtIterator");
+			cText.addImport("net.sf.gaboto.node.GabotoEntity");
 			cText.addImport("net.sf.gaboto.node.pool.EntityPool");
 			cText.addImport("net.sf.gaboto.node.pool.EntityExistsCallback");
 			cText.addImport("net.sf.gaboto.node.annotation.BagURIProperty");

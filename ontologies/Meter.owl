@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY vcard "http://www.w3.org/2006/vcard/ns#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY wgs "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+    <!ENTITY ns "http://www.w3.org/2006/vcard/ns#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY meter "http://purl.org/meter/" >
+
+]>
+
+
+<rdf:RDF xmlns="&meter;" xml:base="&meter;"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:meter="&meter;">
+    <owl:Ontology rdf:about="http://purl.org/meter/">
+       <dc:title>An Ontology for metering</dc:title>
+        <dc:creator>Alexander Dutton</dc:creator>
+    </owl:Ontology>
+    
+
+    <owl:ObjectProperty rdf:about="measures">
+
+        <rdfs:label>measures</rdfs:label>
+        <rdfs:comment
+            >A resource measured by this measure.</rdfs:comment>
+        <rdfs:range rdf:resource="Measure"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="measure">
+
+        <rdfs:label>has measure</rdfs:label>
+        <rdfs:comment
+            >A measure provided by this meter. </rdfs:comment>
+        <rdfs:domain rdf:resource="Meter"/>
+        <rdfs:range rdf:resource="Measure"/>
+    </owl:ObjectProperty>
+    
+        <owl:ObjectProperty rdf:about="downstreamOf">
+
+        <rdfs:label>is a downstream measure of</rdfs:label>
+        <rdfs:comment
+            >Everything that passes through this measure also passed through the upstream measure.</rdfs:comment>
+        <rdfs:domain rdf:resource="Meter"/>
+        <rdfs:range rdf:resource="Measure"/>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="supplies">
+
+        <rdfs:label>supplies</rdfs:label>
+        <rdfs:comment
+            >An object supplied by the resource passing through this measure</rdfs:comment>
+        <rdfs:domain rdf:resource="Measure"/>
+    </owl:ObjectProperty>
+    
+
+    <owl:Class rdf:about="Meter">
+        <rdfs:label>Meter</rdfs:label>
+        <rdfs:comment>A physical entity that provides measures</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="Measure">
+        <rdfs:label>Measure</rdfs:label>
+        <rdfs:comment>A conceptual thing relating a meter to something that it measures</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>

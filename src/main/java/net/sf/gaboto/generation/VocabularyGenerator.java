@@ -593,6 +593,14 @@ public class VocabularyGenerator {
               "--ontology",
               "--package", "net.sf.gaboto.vocabulary"
       });      
+      new VocabularyGenerator().go(new String[] 
+                                              {
+              "-i", "ontologies/Meter.owl",
+              "-n", "MeterVocab",
+              "-o", "src/main/java/net/sf/gaboto/vocabulary/MeterVocab.java",
+              "--ontology",
+              "--package", "net.sf.gaboto.vocabulary"
+      });      
       
     } else
       new VocabularyGenerator().go(args);
