@@ -316,14 +316,6 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   }
   @SuppressWarnings("unchecked")
   private void addBean(JSONStringer json, GabotoBean bean, Map<String,String> namespaces, int level) {
-    if (level > nesting) {
-      startObject(json);
-      addKey(json,"nestingLimitReached");
-      addValue(json, true);
-      endObject(json);
-      return;
-    }
-
     startObject(json);
 
     for (Entry<String, Object> entry : bean.getAllProperties().entrySet()) {
@@ -336,17 +328,23 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
         addValue(json, value);
       } else if (value instanceof GabotoEntity) {
         addKey(json, key);
-        addEntity(json, (GabotoEntity)value, namespaces, level + 1);
+        addEntity(json, (GabotoEntity)value, namespaces, level);
       } else if (value instanceof Collection) {
         addKey(json, key);
         startArray(json);
         for (GabotoEntity innerEntity : (Collection<GabotoEntity>)value) {
-          addEntity(json, innerEntity, namespaces, level + 1);
+          addEntity(json, innerEntity, namespaces, level);
         }
         endArray(json);
+      } else if (value instanceof Float) {
+      	addKey(json, key);
+      	addValue(json, value);
+      } else if (value instanceof Integer) {
+        addKey(json, key);
+        addValue(json, value);
       } else if (value instanceof GabotoBean) {
         addKey(json, key);
-        addBean(json, (GabotoBean)value, namespaces, level + 1);
+        addBean(json, (GabotoBean)value, namespaces, level);
       } else
         throw new RuntimeException("Unanticipated type: " + key + "(" + value + ")" ); 
     }
