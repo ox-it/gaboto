@@ -318,6 +318,9 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   private void addBean(JSONStringer json, GabotoBean bean, Map<String,String> namespaces, int level) {
     startObject(json);
 
+    addKey(json, "type");
+    addValue(json, bean.getType());
+
     for (Entry<String, Object> entry : bean.getAllProperties().entrySet()) {
       String  key = simplifyKey(namespaces, entry.getKey()); 
       Object value = entry.getValue(); 
