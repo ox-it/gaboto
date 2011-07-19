@@ -1056,6 +1056,7 @@ public class GabotoGenerator {
 			cText.addImport(packageName + "." + lookupClassName);
 			cText.addImport("com.hp.hpl.jena.rdf.model.StmtIterator");
 			cText.addImport("com.hp.hpl.jena.rdf.model.RDFNode");
+			cText.addImport("net.sf.gaboto.GabotoRuntimeException");
 			loadEntity += "    // Load BAG_COMPLEX_PROPERTY " + propertyName + "\n";
 			loadEntity += "    {\n";
 			loadEntity += "        StmtIterator stmts = res.listProperties(snapshot.getProperty(\"" + uri + "\"));\n";
