@@ -89,7 +89,12 @@
 
     <owl:ObjectProperty rdf:about="#hasOLISCode">
         <rdfs:comment
-            >The naming scheme for entities introduced by OLIS</rdfs:comment>
+            >The naming scheme for entities introduced by the old OLIS system</rdfs:comment>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="#hasOLISAlephCode">
+        <rdfs:comment
+            >The naming scheme for entities introduced by the OLIS Aleph system</rdfs:comment>
     </owl:ObjectProperty>
     
 

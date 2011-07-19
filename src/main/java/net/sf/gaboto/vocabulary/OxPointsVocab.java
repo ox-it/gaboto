@@ -61,7 +61,13 @@ public class OxPointsVocab {
     public static final 
     ObjectProperty hasOBNCode = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOBNCode" );
     
-    /** <p>The naming scheme for entities introduced by OLIS</p> */
+    /** <p>The naming scheme for entities introduced by the OLIS Aleph system</p> */
+    public static final 
+    String hasOLISAlephCode_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOLISAlephCode";
+    public static final 
+    ObjectProperty hasOLISAlephCode = MODEL.createObjectProperty( "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOLISAlephCode" );
+    
+    /** <p>The naming scheme for entities introduced by the old OLIS system</p> */
     public static final 
     String hasOLISCode_URI = "http://ns.ox.ac.uk/namespace/oxpoints/2009/02/owl#hasOLISCode";
     public static final 
