@@ -601,6 +601,14 @@ public class VocabularyGenerator {
               "--ontology",
               "--package", "net.sf.gaboto.vocabulary"
       });      
+      new VocabularyGenerator().go(new String[] 
+                                              {
+              "-i", "ontologies/skos.owl",
+              "-n", "SKOSVocab",
+              "-o", "src/main/java/net/sf/gaboto/vocabulary/SKOSVocab.java",
+              "--ontology",
+              "--package", "net.sf.gaboto.vocabulary"
+      });      
       
     } else
       new VocabularyGenerator().go(args);

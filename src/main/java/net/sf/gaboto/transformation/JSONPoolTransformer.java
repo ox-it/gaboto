@@ -46,6 +46,8 @@ import net.sf.gaboto.node.pool.EntityPool;
 import org.json.JSONException;
 import org.json.JSONStringer;
 
+import com.hp.hpl.jena.vocabulary.RDFS;
+
 /**
  * Transforms a GabotoEntityPool into JSON.
  * 
@@ -125,6 +127,11 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     }
 
     if (level > nesting) {
+      Object label = entity.getPropertyValue(RDFS.label);
+      if (label != null && label instanceof String) {
+    	  addKey(json, "rdfs_label");
+    	  addValue(json, label);
+      }
       addKey(json, "nestingLimitReached");
       addValue(json, true);
       endObject(json);
