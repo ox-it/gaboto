@@ -48,6 +48,24 @@
      <artifactId>ng4j</artifactId>
      <version>0.9.4-SNAPSHOT</version>
     </dependency>
+        <dependency>
+      <groupId>com.hp.hpl.jena</groupId>
+      <artifactId>tdb</artifactId>
+      <version>0.8.7</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.14</version>
+    </dependency>
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr</artifactId>
+      <version>3.3</version>
+    </dependency>
+
+
+
 
 
     <dependency>
