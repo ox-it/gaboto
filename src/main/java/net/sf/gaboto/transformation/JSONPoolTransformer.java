@@ -274,9 +274,12 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
     	addKey(jsonStringer, key);
     	addValue(jsonStringer, memberValue);
     } else if (memberValue instanceof Integer) {
-      addKey(jsonStringer, key);
-      addValue(jsonStringer, memberValue);
-    } else if (memberValue instanceof GabotoEntity) {
+        addKey(jsonStringer, key);
+        addValue(jsonStringer, memberValue);
+    } else if (memberValue instanceof Boolean) {
+        addKey(jsonStringer, key);
+        addValue(jsonStringer, memberValue);
+      } else if (memberValue instanceof GabotoEntity) {
       addKey(jsonStringer, key);
       addEntity(jsonStringer, (GabotoEntity) memberValue, namespaces, level + 1);
     } else if (memberValue instanceof Collection) {
@@ -323,43 +326,46 @@ public class JSONPoolTransformer implements EntityPoolTransformer {
   }
   @SuppressWarnings("unchecked")
   private void addBean(JSONStringer json, GabotoBean bean, Map<String,String> namespaces, int level) {
-    startObject(json);
+	  startObject(json);
 
-    addKey(json, "type");
-    addValue(json, bean.getType());
+	  addKey(json, "type");
+	  addValue(json, bean.getType());
 
-    for (Entry<String, Object> entry : bean.getAllProperties().entrySet()) {
-      String  key = simplifyKey(namespaces, entry.getKey()); 
-      Object value = entry.getValue(); 
-      if (value == null) {  
-        // Do nothing, this is javascript
-      } else if (value instanceof String) {
-        addKey(json, key);
-        addValue(json, value);
-      } else if (value instanceof GabotoEntity) {
-        addKey(json, key);
-        addEntity(json, (GabotoEntity)value, namespaces, level);
-      } else if (value instanceof Collection) {
-        addKey(json, key);
-        startArray(json);
-        for (GabotoEntity innerEntity : (Collection<GabotoEntity>)value) {
-          addEntity(json, innerEntity, namespaces, level);
-        }
-        endArray(json);
-      } else if (value instanceof Float) {
-      	addKey(json, key);
-      	addValue(json, value);
-      } else if (value instanceof Integer) {
-        addKey(json, key);
-        addValue(json, value);
-      } else if (value instanceof GabotoBean) {
-        addKey(json, key);
-        addBean(json, (GabotoBean)value, namespaces, level);
-      } else
-        throw new RuntimeException("Unanticipated type: " + key + "(" + value + ")" ); 
-    }
+	  for (Entry<String, Object> entry : bean.getAllProperties().entrySet()) {
+		  String  key = simplifyKey(namespaces, entry.getKey()); 
+		  Object value = entry.getValue(); 
+		  if (value == null) {  
+			  // Do nothing, this is javascript
+		  } else if (value instanceof String) {
+			  addKey(json, key);
+			  addValue(json, value);
+		  } else if (value instanceof GabotoEntity) {
+			  addKey(json, key);
+			  addEntity(json, (GabotoEntity)value, namespaces, level);
+		  } else if (value instanceof Collection) {
+			  addKey(json, key);
+			  startArray(json);
+			  for (GabotoEntity innerEntity : (Collection<GabotoEntity>)value) {
+				  addEntity(json, innerEntity, namespaces, level);
+			  }
+			  endArray(json);
+		  } else if (value instanceof Float) {
+			  addKey(json, key);
+			  addValue(json, value);
+		  } else if (value instanceof Integer) {
+			  addKey(json, key);
+			  addValue(json, value);
+		  } else if (value instanceof Boolean) {
+			  addKey(json, key);
+			  addValue(json, value);
+		  } else if (value instanceof GabotoBean) {
+			  addKey(json, key);
+			  addBean(json, (GabotoBean)value, namespaces, level);
+		  } else
+			  throw new RuntimeException("Unanticipated type: " + key + "(" + value + ")" ); 
+	  }
 
-    endObject(json);
+	  endObject(json);
   }
 
   /**
