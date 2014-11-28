@@ -1,0 +1,17 @@
+Source: gaboto
+Section: java
+Priority: extra
+Maintainer: Alexander Dutton <alexander.dutton@it.ox.ac.uk>
+Build-Depends: debhelper
+Standards-Version: 3.8.4
+Homepage: https://github.com/ox-it/gaboto
+Vcs-Git: git://github.com/ox-it/gaboto.git
+
+Package: libgaboto-java
+Section: java
+Architecture: all
+Description: RDF object-relational mapper
+ Gaboto maps first class java objects onto RDF. By this it introduces a layer
+ on top of RDF giving you RDF's flexibility in storing objects, their
+ properties and the relationships between objects while preserving the full
+ power of java objects.
