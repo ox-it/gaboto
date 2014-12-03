@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+VERSION := $(shell parsechangelog --all --format rfc822 | grep-dctrl -esVersion . | colrm 1 9)
+SOURCE_VERSION := $(shell echo ${VERSION} | grep "^[0-9.]*" -o)
+
+%:
+	dh $@
+
+override_dh_clean:
+	mvn clean
+
+override_dh_auto_install:
+	mvn package -Dmaven.test.skip=true
+	mkdir -p debian/libgaboto-java/usr/share/java
+	cp target/gaboto-${SOURCE_VERSION}.jar debian/libgaboto-java/usr/share/java/gaboto.jar

@@ -1,0 +1,8 @@
+Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
+Name: gaboto
+Maintainer: Alexander Dutton <alexander.dutton@it.ox.ac.uk>
+Source: https://github.com/ox-it/gaboto
+
+Copyright: 2009-2014 University of Oxford <github@it.ox.ac.uk>
+License: BSD
+
