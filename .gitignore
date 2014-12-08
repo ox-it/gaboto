@@ -1,1 +1,8 @@
 target
+debian/debhelper.log
+debian/files
+debian/libgaboto-java.debhelper.log
+debian/libgaboto-java.substvars
+debian/libgaboto-java/
+debian/substvars
+
