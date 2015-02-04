@@ -162,12 +162,9 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
 
     TimeInstant ti = (TimeInstant) obj;
 
-    return (this.getStartYear() == ti.getStartYear() || (null != this
-        .getStartYear() && this.getStartYear().equals(ti.getStartYear())))
-        && (this.getStartMonth() == ti.getStartMonth() || (null != this
-            .getStartMonth() && this.getStartMonth().equals(ti.getStartMonth())))
-        && (this.getStartDay() == ti.getStartDay() || (null != this
-            .getStartDay() && this.getStartDay().equals(ti.getStartDay())));
+    return (this.getStartYear() == ti.getStartYear())
+        && (this.getStartMonth() == ti.getStartMonth())
+        && (this.getStartDay() == ti.getStartDay());
   }
 
   /**
@@ -226,43 +223,26 @@ public class TimeInstant extends TimeSpan implements Comparable<TimeInstant> {
    * 
    * @return -1, if this instant is earlier. 1, if it is later. 0 else.
    */
-  public int compareTo(TimeInstant ti) {
-    if (this.startYear < ti.getStartYear()) { 
-      return -1;
-    } else if (this.startYear > ti.getStartYear())
-      return 1;
-    else {
-      // years are the same
+  public int compareTo(TimeInstant other) {
+	  if (this.startYear < other.getStartYear()) return -1;
+	  else if (this.startYear > other.getStartYear()) return 1;
 
-      if (this.getStartMonth() == null && ti.getStartMonth() == null)
-        return 0;
-      // we define that if one is null then both are more or less equal
-      else if (this.getStartMonth() == null)
-        return 0;
-      else if (ti.getStartMonth() == null)
-        return 0;
-      else if (this.getStartMonth() < ti.getStartMonth())
-        return -1;
-      else if (this.getStartMonth() > ti.getStartMonth())
-        return 1;
-      else {
-        // months are the same
+	  int thisMonth = this.getStartMonth() != null ? this.getStartMonth() : 0;
+	  int otherMonth = other.getStartMonth() != null ? other.getStartMonth() : 0;
+	  if (thisMonth < otherMonth) return -1;
+	  else if (thisMonth > otherMonth) return 1;
 
-        if (this.getStartDay() == null && ti.getStartDay() == null)
-          return 0;
-        // we define that if one is null then both are more or less equal
-        else if (this.getStartDay() == null)
-          return 0;
-        else if (ti.getStartDay() == null)
-          return 0;
-        else if (this.getStartDay() < ti.getStartDay())
-          return -1;
-        else if (this.getStartDay() > ti.getStartDay())
-          return 1;
-      }
-    }
-    // they seem to be equal
-    return 0;
+	  int thisDay = this.getStartDay() != null ? this.getStartDay() : 0;
+	  int otherDay = other.getStartDay() != null ? other.getStartDay() : 0;
+	  if (thisDay < otherDay) return -1;
+	  else if (thisDay > otherDay) return 1;
+
+	  return 0;
+  }
+
+  public int hashCode() {
+	  int data[] = {this.startYear, this.startMonth, this.startDay};
+	  return data.hashCode();
   }
   
 	public TimeInstant clone() {
