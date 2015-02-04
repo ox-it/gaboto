@@ -1,3 +1,9 @@
+gaboto (0.4.7) unstable; urgency=low
+
+  * Fixed equality and comparison on TimeInstants.
+
+ -- Alexander Dutton <alexander.dutton@it.ox.ac.uk>  Wed, 4 Feb 2015 13:26:41 +0000
+
 gaboto (0.4.6) unstable; urgency=low
 
   * Initial release.
