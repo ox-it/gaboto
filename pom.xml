@@ -22,6 +22,10 @@
     <url>http://erewhonoxford.wordpress.com/</url>
   </organization>
 
+  <properties>
+    <additionalparam>-Xdoclint:none</additionalparam>
+  </properties>
+
   <licenses>
     <license>
       <name>Apache</name>
