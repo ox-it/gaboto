@@ -318,7 +318,7 @@
       </snapshots>
       <id>melati</id>
       <name>Melati Repository</name>
-      <url>http://melati.org/maven2/</url>
+      <url>https://melati.org/maven2/</url>
     </repository>
 
     <!-- Holds ng4j repo -->
@@ -329,7 +329,7 @@
       </snapshots>
       <id>bogof</id>
       <name>bogof</name>
-      <url>http://bogof.nsms.ox.ac.uk/mvn/maven2/</url>
+      <url>https://bogof.nsms.ox.ac.uk/mvn/maven2/</url>
     </repository>
 
   </repositories>
